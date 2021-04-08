@@ -1,0 +1,331 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.800
+Hello. My name is Noah Gift,
+
+00:00:01.800 --> 00:00:04.290
+and I'm the founder of Pragmatic AI Labs,
+
+00:00:04.290 --> 00:00:06.570
+and I wrote the book Pragmatic AI.
+
+00:00:06.570 --> 00:00:09.030
+It Introduction to Cloud-Based Machine Learning,
+
+00:00:09.030 --> 00:00:11.985
+as well as the book, Python for DevOps by O'Reilly.
+
+00:00:11.985 --> 00:00:15.900
+I lecture at Northwestern, UC Berkeley and UC Davis.
+
+00:00:15.900 --> 00:00:20.385
+Today, I'm going to discuss containerization of an existing application.
+
+00:00:20.385 --> 00:00:24.540
+We're going to cover a Flask app that has pandas embedded
+
+00:00:24.540 --> 00:00:27.900
+and plugins that give us additional functionality.
+
+00:00:27.900 --> 00:00:31.620
+We're going to take this data engineering app and modify it,
+
+00:00:31.620 --> 00:00:33.360
+so it's a containerized application.
+
+00:00:33.360 --> 00:00:34.245
+Let's get started.
+
+00:00:34.245 --> 00:00:40.010
+Okay. Now that we are able to go through and get this downloaded application,
+
+00:00:40.010 --> 00:00:42.710
+let me go through and show you a little bit of the setup here.
+
+00:00:42.710 --> 00:00:46.130
+So, there's a Docker file in the main directory,
+
+00:00:46.130 --> 00:00:47.180
+there's a makefile,
+
+00:00:47.180 --> 00:00:49.255
+some of the things we've seen previously,
+
+00:00:49.255 --> 00:00:51.990
+there's a CircleCI configuration,
+
+00:00:51.990 --> 00:00:53.930
+there's also requirements file.
+
+00:00:53.930 --> 00:00:58.940
+So these are really the basics of most Flask apps
+
+00:00:58.940 --> 00:01:01.850
+that have, let's say, data engineering bent to them.
+
+00:01:01.850 --> 00:01:06.220
+So I'm going to go next here and look inside of this Flask app.
+
+00:01:06.220 --> 00:01:11.360
+Just show you some of the source code so you can see what it looks like.
+
+00:01:11.360 --> 00:01:16.270
+So to start with, you can see that I've been able to import Flask.
+
+00:01:16.270 --> 00:01:17.860
+I have a few imports here.
+
+00:01:17.860 --> 00:01:21.620
+I also have a swagger implementation that we'll show later
+
+00:01:21.620 --> 00:01:26.425
+that gives API documentation, import some libraries.
+
+00:01:26.425 --> 00:01:30.755
+These two custom libraries that I've created in a lib
+
+00:01:30.755 --> 00:01:35.200
+actually have some utilities that are plugins that are dynamically loaded.
+
+00:01:35.200 --> 00:01:36.820
+So to start with,
+
+00:01:36.820 --> 00:01:42.535
+there's a helper function that decodes Base64 packages.
+
+00:01:42.535 --> 00:01:44.645
+Then this is the beginning of the application.
+
+00:01:44.645 --> 00:01:46.040
+There's a very simple route here,
+
+00:01:46.040 --> 00:01:48.390
+and you can see how straight forward Flask is.
+
+00:01:48.390 --> 00:01:49.925
+You put a decorator on top,
+
+00:01:49.925 --> 00:01:51.365
+you define a function,
+
+00:01:51.365 --> 00:01:55.040
+and then you return back some bit of information.
+
+00:01:55.040 --> 00:01:59.870
+Now, if we scroll down to a more interesting application here
+
+00:01:59.870 --> 00:02:02.225
+or a more interesting route,
+
+00:02:02.225 --> 00:02:05.010
+you can see I have app.route/API/funcs,
+
+00:02:05.080 --> 00:02:07.670
+and I define a GET method.
+
+00:02:07.670 --> 00:02:13.310
+So what this does is it utilizes this Flask override here
+
+00:02:13.310 --> 00:02:17.330
+that embeds the swagger documentation inside
+
+00:02:17.330 --> 00:02:21.620
+by using this very specific docstring format.
+
+00:02:21.620 --> 00:02:25.850
+Then what this "return jsonify" does is
+
+00:02:25.850 --> 00:02:28.865
+it shows us all of the plugins that are loaded locally.
+
+00:02:28.865 --> 00:02:31.835
+Finally, this is the heart of the application,
+
+00:02:31.835 --> 00:02:34.565
+is it's a group_by operation.
+
+00:02:34.565 --> 00:02:39.480
+What this does is it consumes essentially a CSV payload
+
+00:02:39.480 --> 00:02:44.530
+and allows the CSV payload to do some kind of an aggregation operation.
+
+00:02:44.530 --> 00:02:46.240
+So if I scroll down here.
+
+00:02:46.240 --> 00:02:48.710
+This isn't that interesting to look at
+
+00:02:48.710 --> 00:02:54.370
+but in a nutshell, it gives us really the logistics around loading this Flask app.
+
+00:02:54.370 --> 00:02:57.770
+Then finally, you can see that once I've done my operation,
+
+00:02:57.770 --> 00:03:02.650
+I return back a JSON file and then I return back a status.HTTP_200_OK.
+
+00:03:02.650 --> 00:03:06.325
+So if you scroll on to the very very end here,
+
+00:03:06.325 --> 00:03:09.810
+probably the most important step for containerizing it,
+
+00:03:09.810 --> 00:03:13.050
+is that we can see it runs on port 5001.
+
+00:03:13.050 --> 00:03:15.515
+So if I go back down here,
+
+00:03:15.515 --> 00:03:19.495
+what I'm going to do next here is I'm going to open up that nlib directory,
+
+00:03:19.495 --> 00:03:21.770
+and this is where the plugins are loaded.
+
+00:03:21.770 --> 00:03:23.455
+Let's go ahead and look at that.
+
+00:03:23.455 --> 00:03:25.700
+I look at this nlib directory.
+
+00:03:25.700 --> 00:03:30.590
+What happens here is anytime a Python file lives inside this directory,
+
+00:03:30.590 --> 00:03:33.455
+it gets loaded automatically as a Flask app.
+
+00:03:33.455 --> 00:03:37.405
+So if I go through here and I look at utilities, for example,
+
+00:03:37.405 --> 00:03:40.370
+you can see that I used something called importlib
+
+00:03:40.370 --> 00:03:44.435
+and it's a plugin that actually embeds it inside a Flask.
+
+00:03:44.435 --> 00:03:47.270
+So you can follow that convention if you wanted to
+
+00:03:47.270 --> 00:03:51.575
+and load whatever aggregation functions you want it to inside a Flask.
+
+00:03:51.575 --> 00:03:53.690
+Next, what we're going to do here
+
+00:03:53.690 --> 00:03:58.670
+is look at how I can then containerize this and put it into a Docker file.
+
+00:03:58.670 --> 00:04:01.795
+So let's go ahead and look at that Docker file.
+
+00:04:01.795 --> 00:04:04.050
+What happens here is,
+
+00:04:04.050 --> 00:04:06.180
+I first used this base image,
+
+00:04:06.180 --> 00:04:08.435
+and this is again something we learned before,
+
+00:04:08.435 --> 00:04:14.770
+but it's a base Python image that allows me to build out the skeleton for my Flask app.
+
+00:04:14.770 --> 00:04:17.925
+Next, I create a working directory.
+
+00:04:17.925 --> 00:04:21.595
+Inside of here, I have a /app directory that I'm going to use.
+
+00:04:21.595 --> 00:04:24.435
+Then, this is probably the most important part,
+
+00:04:24.435 --> 00:04:30.220
+is I copy that Flask source code directly inside of this app directory.
+
+00:04:30.220 --> 00:04:32.530
+So the next section that I'm going to do
+
+00:04:32.530 --> 00:04:36.250
+is I'm going to look at how to run this Flask app using our makefile.
+
+00:04:36.250 --> 00:04:38.350
+So we covered this earlier.
+
+00:04:38.350 --> 00:04:43.420
+A makefile is a great way to actually add a bunch of instructions inside for application.
+
+00:04:43.420 --> 00:04:47.330
+So I'm going to go ahead and look at some of these instructions inside of here.
+
+00:04:47.330 --> 00:04:49.280
+So I have a Juypter section,
+
+00:04:49.280 --> 00:04:51.145
+I have a setup section,
+
+00:04:51.145 --> 00:04:52.140
+I have an environment,
+
+00:04:52.140 --> 00:04:55.880
+so this shows me basically what's happening in my Python project.
+
+00:04:55.880 --> 00:04:58.535
+I have a lint. We've talked about that previously.
+
+00:04:58.535 --> 00:05:01.860
+I have an ability to lint-circleci.
+
+00:05:01.860 --> 00:05:03.350
+I have a test section.
+
+00:05:03.350 --> 00:05:05.015
+I have an install section.
+
+00:05:05.015 --> 00:05:06.885
+I have a validate command.
+
+00:05:06.885 --> 00:05:09.480
+Then for this particular application,
+
+00:05:09.480 --> 00:05:10.665
+and this is the important part,
+
+00:05:10.665 --> 00:05:12.090
+is I have a start-api.
+
+00:05:12.090 --> 00:05:13.470
+What this is going to do is
+
+00:05:13.470 --> 00:05:15.570
+it's going to cd into that Flask Directory,
+
+00:05:15.570 --> 00:05:18.585
+set the PYTHONPATH so I can load those plugins,
+
+00:05:18.585 --> 00:05:22.370
+and then it's going to actually run this web app.
+
+00:05:22.370 --> 00:05:24.785
+So let's go ahead and get that running.
+
+00:05:24.785 --> 00:05:27.715
+So if I say, make start-api,
+
+00:05:27.715 --> 00:05:30.225
+this will actually set the PYTHONPATH,
+
+00:05:30.225 --> 00:05:31.645
+get this running locally,
+
+00:05:31.645 --> 00:05:37.415
+and then allow me to actually run this on port 5001.
+
+00:05:37.415 --> 00:05:40.750
+So from here, we actually have a running Flask app.
+
+00:05:40.750 --> 00:05:44.310
+Now, let's go ahead and move on to the next section.
+

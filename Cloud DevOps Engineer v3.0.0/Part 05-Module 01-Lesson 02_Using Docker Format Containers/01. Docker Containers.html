@@ -1,0 +1,253 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Docker Containers</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Using Docker Format Containers</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Docker Containers.html">01. Docker Containers</a>
+    </li>
+    <li class="">
+      <a href="02. Exercise Setting Up a Local Environment.html">02. Exercise: Setting Up a Local Environment</a>
+    </li>
+    <li class="">
+      <a href="03. Makefiles.html">03. Makefiles</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Create A Basic Makefile.html">04. Exercise: Create A Basic Makefile</a>
+    </li>
+    <li class="">
+      <a href="05. Install Docker.html">05. Install Docker</a>
+    </li>
+    <li class="">
+      <a href="06. Linting and CircleCI.html">06. Linting and CircleCI</a>
+    </li>
+    <li class="">
+      <a href="07. Running Dockerfiles.html">07. Running Dockerfiles</a>
+    </li>
+    <li class="">
+      <a href="08. Exercise Deploying to Amazon ECR.html">08. Exercise: Deploying to Amazon ECR</a>
+    </li>
+    <li class="">
+      <a href="09. Summary.html">09. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">01. Docker Containers</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Docker Format Containers</p></h3>
+  <div>
+  <h2 id="docker-containers">Docker Containers</h2>
+<h3 id="getting-started-with-docker">Getting started with Docker</h3>
+<p>There are two main components of Docker:  <a href="https://www.docker.com/products/docker-desktop" rel="noopener noreferrer" target="_blank">Docker Desktop</a> and <a href="https://www.docker.com/products/docker-hub" rel="noopener noreferrer" target="_blank">Docker Hub</a>.</p>
+<p><img src="media/unnamed-980750-0.gif" alt="docker-ecosystem" /></p>
+<h4 id="docker-desktop-overview">Docker Desktop Overview</h4>
+<p>The desktop application contains the container runtime which allows containers to execute.  The Docker App itself orchestrates the local development workflow including the ability to use <a href="https://github.com/kubernetes/kubernetes" rel="noopener noreferrer" target="_blank">Kubernetes</a>, which is an open-source system for managing containerized applications that came out of Google.</p>
+<h4 id="docker-hub-overview">Docker Hub Overview</h4>
+<p>So what is Docker Hub and what problem does it solve?  Just as the <a href="https://git-scm.com/" rel="noopener noreferrer" target="_blank"><code>git</code></a> source code ecosystem has local developer tools like <a href="https://www.vim.org/" rel="noopener noreferrer" target="_blank">vim</a>, <a href="https://www.gnu.org/software/emacs/" rel="noopener noreferrer" target="_blank">emacs</a>, <a href="https://code.visualstudio.com/" rel="noopener noreferrer" target="_blank">Visual Studio Code</a> or <a href="https://developer.apple.com/xcode/" rel="noopener noreferrer" target="_blank">XCode</a> that work with it, Docker Desktop works with Docker containers and allows for local use and development.</p>
+<p>When collaborating with <code>git</code> outside of the local environment, developers often use platforms like <a href="https://github.com/" rel="noopener noreferrer" target="_blank">Github</a> or <a href="https://about.gitlab.com/" rel="noopener noreferrer" target="_blank">Gitlab</a> to communicate with other parties and share code.  <a href="https://hub.docker.com/" rel="noopener noreferrer" target="_blank">Docker Hub</a> works in a similar way.  Docker Hub allows developers to share docker containers that can serve as a base image for building new solutions.  </p>
+<p>These base images can be built by experts and certified to be high quality:  i.e. the <a href="https://hub.docker.com/_/python" rel="noopener noreferrer" target="_blank">official Python developers have a base image</a>.  This allows a developer to leverage the expertise of the true expert on a particular software component and improve the overall quality of their container.  This is a similar concept to using a library developed by another developer versus writing it yourself.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C04 L02 A01 Docker Containers</p></h3>
+  <video controls>
+  <source src="01. ND9991 C04 L02 A01 Docker Containers-gYB82PT4nkM.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="01. ND9991 C04 L02 A01 Docker Containers-gYB82PT4nkM.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Real-World Use Cases of Docker Containers</p></h3>
+  <div>
+  <h3 id="real-world-examples-of-containers">Real-World Examples of Containers</h3>
+<p>What problem do <a href="https://docs.docker.com/engine/docker-overview/" rel="noopener noreferrer" target="_blank">Docker format containers</a> solve?  In a nutshell, the operating system runtime can be packaged along with the code, and this solves a particularly complicated problem with a long history.  There is a famous meme that goes "It works on my machine!".  While this is often told as a joke to illustrate the complexity of deploying software, it is also true.  Containers solve this exact problem.  If the code works in a container, then the container configuration can be checked in as code.  Another way to describe this concept is that the actual Infrastructure is treated as code.  This is called IaC (Infrastructure as Code).</p>
+<p>Here are a few specific examples:</p>
+<h4 id="developer-shares-local-project">Developer Shares Local Project</h4>
+<p>A developer can work on a web application that uses <code>flask</code> (a popular Python web framework).  The installation and configuration of the underlying operating system is handled by the Docker container file.  Another team member can checkout the code and use <code>docker run</code> to run the project.  This eliminates what could be a multi-day problem of configuring a laptop correctly to run a software project.</p>
+<h4 id="data-scientist-shares-jupyter-notebook-with-a-researcher-at-another-university">Data Scientist shares Jupyter Notebook with a Researcher at another University</h4>
+<p>A data scientist working with <a href="https://jupyter.org/" rel="noopener noreferrer" target="_blank">jupyter</a> style notebooks wants to share a complex data science project that has multiple dependencies on C, Fortran, R, and Python code.  They package up the runtime as a Docker container and eliminate the back and forth over several weeks that occurs when sharing a project like this.  </p>
+<h4 id="a-machine-learning-engineer-load-tests-a-production-machine-learning-model">A Machine Learning Engineer Load Tests a Production Machine Learning Model</h4>
+<p>A Machine learning engineer has been tasked with taking a new model and deploying it to production.  Previously, they were concerned about how to accurately test the accuracy of the new model before committing to it.  The model recommends products to paying customers and, if it is inaccurate, it costs the company a lot of money.  Using containers, it is possible to deploy the model to a fraction of the customers, only 10%, and if there are problems, it can be quickly reverted.  If the model performs well, it can quickly replace the existing models.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Why Docker Containers vs Virtual Machines?</p></h3>
+  <div>
+  <h4 id="why-docker-containers-vs-virtual-machines">Why Docker Containers vs Virtual Machines?</h4>
+<p>What is the difference between a container and a virtual machine?  Here is a breakdown:</p>
+<ul>
+<li>Size:  Containers are much smaller than Virtual Machines (VM) and run as isolated processes versus virtualized hardware.  VMs can be GBs while containers can be MBs.</li>
+<li>Speed:  Virtual Machines can be slow to boot and take minutes to launch.  A container can spawn much more quickly typically in seconds.</li>
+<li>Composability:  Containers are designed to be programmatically built and are defined as source code in an Infrastructure as Code project (IaC).  Virtual Machines are often replicas of a manually built system.  Containers make IaC workflows possible because they are defined as a file and checked into source control alongside the project’s source code.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Reflect: Docker Containers</p></h3>
+  <div>
+  <p><strong>QUESTION: <p>Reflect</p></strong></p>
+  <ul>
+<li>What is Docker/a container? How is it different from a virtual machine?</li>
+<li>What is the advantage of docker containers?</li>
+</ul>
+
+  <details>
+    <summary><strong>ANSWER:</strong></summary>
+    <p><p>Thanks for your response.</p></p>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="02. Exercise Setting Up a Local Environment.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('01. Docker Containers')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

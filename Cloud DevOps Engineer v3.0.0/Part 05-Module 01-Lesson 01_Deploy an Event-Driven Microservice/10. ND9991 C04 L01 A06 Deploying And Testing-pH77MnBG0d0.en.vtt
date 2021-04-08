@@ -1,0 +1,220 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.550
+The next step is actually even easier.
+
+00:00:02.550 --> 00:00:05.265
+I can now deploy this into the Amazon cloud.
+
+00:00:05.265 --> 00:00:08.940
+So if I go here and I right-click on this function,
+
+00:00:08.940 --> 00:00:11.250
+I can go and I can say "Deploy".
+
+00:00:11.250 --> 00:00:16.140
+Here we go, I click on "Deploy" and now it's taking this whole directory full of
+
+00:00:16.140 --> 00:00:21.810
+everything that I set up and it's out now deploying it to the AWS cloud.
+
+00:00:21.810 --> 00:00:26.610
+Now what I can do is I can actually go back to AWS,
+
+00:00:26.610 --> 00:00:29.175
+and I can actually check out that function.
+
+00:00:29.175 --> 00:00:30.405
+So let's go ahead and do that.
+
+00:00:30.405 --> 00:00:32.680
+Lets go to Console.
+
+00:00:33.260 --> 00:00:37.270
+Now if I type in "Lambda",
+
+00:00:39.650 --> 00:00:46.425
+we can see that a lambda function if I sort by last modified,
+
+00:00:46.425 --> 00:00:49.835
+I can see here's my helloudacity function.
+
+00:00:49.835 --> 00:00:54.625
+I know that was created 16 seconds ago so that's my function, I can click on it.
+
+00:00:54.625 --> 00:00:58.700
+Now what I can do is I can see this console
+
+00:00:58.700 --> 00:01:01.010
+that shows me a lot more about what's happening
+
+00:01:01.010 --> 00:01:02.825
+inside of AWS Lambda.
+
+00:01:02.825 --> 00:01:05.600
+Here we have the lambda itself,
+
+00:01:05.600 --> 00:01:09.050
+we have some events that actually go across.
+
+00:01:09.050 --> 00:01:10.675
+We have just talked about events,
+
+00:01:10.675 --> 00:01:12.320
+and there's also triggers on the left.
+
+00:01:12.320 --> 00:01:15.380
+So if I wanted to run this on let's say a timer,
+
+00:01:15.380 --> 00:01:18.170
+I could go through and I can say CloudWatch Events.
+
+00:01:18.170 --> 00:01:22.060
+Then what that could do is it can run on let's say a daily level.
+
+00:01:22.060 --> 00:01:25.235
+What I'm going to do here though is something even simpler,
+
+00:01:25.235 --> 00:01:28.550
+is I'm going to actually edit it also inside of AWS.
+
+00:01:28.550 --> 00:01:31.160
+Now remember, I wrote this code from Cloud9
+
+00:01:31.160 --> 00:01:33.305
+and now I'm deploying it into lambda.
+
+00:01:33.305 --> 00:01:35.050
+So here we go,
+
+00:01:35.050 --> 00:01:37.200
+here's my function, I could edit it,
+
+00:01:37.200 --> 00:01:39.945
+let's actually edit it if I want,
+
+00:01:39.945 --> 00:01:42.110
+but I'm actually going to test this.
+
+00:01:42.110 --> 00:01:46.025
+So I'm going to click on "Test" and then it's going to configure a test event.
+
+00:01:46.025 --> 00:01:48.045
+In this example, here we go,
+
+00:01:48.045 --> 00:01:52.740
+I can say my test from Udacity.
+
+00:01:52.740 --> 00:01:54.645
+Then instead of this,
+
+00:01:54.645 --> 00:01:57.540
+I don't like that I'm just going to make something much simpler.
+
+00:01:57.540 --> 00:02:00.585
+I'm going to go through here,
+
+00:02:00.585 --> 00:02:07.170
+and I'm going to make my own JSON structure here.
+
+00:02:07.170 --> 00:02:09.075
+This will just be one,
+
+00:02:09.075 --> 00:02:11.385
+and this will be two.
+
+00:02:11.385 --> 00:02:15.440
+There we go. Now I can go ahead and save this, create this event.
+
+00:02:15.440 --> 00:02:17.615
+Now that that test is in saved,
+
+00:02:17.615 --> 00:02:24.080
+I can see my test from Udacity I can run and pass that payload into my function.
+
+00:02:24.080 --> 00:02:26.420
+This lambda function does almost nothing.
+
+00:02:26.420 --> 00:02:30.155
+All it does is print out that it got the event and return the event.
+
+00:02:30.155 --> 00:02:34.190
+So here we go, let's press that test and of course,
+
+00:02:34.190 --> 00:02:37.160
+we are able to get back that response.
+
+00:02:37.160 --> 00:02:39.170
+I also can look at the log.
+
+00:02:39.170 --> 00:02:42.285
+The log also tells me that this was my event,
+
+00:02:42.285 --> 00:02:43.765
+there we go one and two.
+
+00:02:43.765 --> 00:02:48.380
+Another really powerful thing about this ecosystem is that I can look at
+
+00:02:48.380 --> 00:02:50.840
+this AdaBoost log here and actually get
+
+00:02:50.840 --> 00:02:53.960
+access to that log statement that was actually printed out.
+
+00:02:53.960 --> 00:02:56.885
+The way you do that is you go to monitoring,
+
+00:02:56.885 --> 00:03:01.730
+and then I actually go to view logs and cloud watch logs.
+
+00:03:01.730 --> 00:03:04.355
+Here we go, we click on this link.
+
+00:03:04.355 --> 00:03:07.375
+You can see here that a new log statement was just created.
+
+00:03:07.375 --> 00:03:09.530
+I should be able to go and see
+
+00:03:09.530 --> 00:03:14.310
+that print statement that I printed out it should show up in my logs.
+
+00:03:14.560 --> 00:03:19.895
+Here we go, there's my event zero, one and two.
+
+00:03:19.895 --> 00:03:22.735
+So really in a nutshell,
+
+00:03:22.735 --> 00:03:26.570
+this lambda ecosystem really from soup to nuts,
+
+00:03:26.570 --> 00:03:28.415
+it started with Cloud9,
+
+00:03:28.415 --> 00:03:32.840
+then it went to the lambda management console, I ran it,
+
+00:03:32.840 --> 00:03:38.870
+and then I also got access to this whole cloud-based ecosystem that shows log.
+
+00:03:38.870 --> 00:03:42.305
+So this is really a power of doing something that's cloud native is in.
+
+00:03:42.305 --> 00:03:44.090
+I developed it in the cloud,
+
+00:03:44.090 --> 00:03:46.130
+I've tested it in the cloud,
+
+00:03:46.130 --> 00:03:47.830
+deployed it in the cloud,
+
+00:03:47.830 --> 00:03:49.880
+and I actually maintain it in the cloud.
+
+00:03:49.880 --> 00:03:54.780
+So it's really all of the advantages of a cloud data system.
+

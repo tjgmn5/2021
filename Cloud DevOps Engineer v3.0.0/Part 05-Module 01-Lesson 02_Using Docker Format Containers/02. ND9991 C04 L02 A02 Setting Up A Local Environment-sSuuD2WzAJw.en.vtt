@@ -1,0 +1,127 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.640
+Let's go ahead and set up a local environment
+
+00:00:02.640 --> 00:00:05.669
+so that we can get started with using containers.
+
+00:00:05.669 --> 00:00:08.794
+Let's go ahead and demo setting up a local environments.
+
+00:00:08.794 --> 00:00:14.800
+What I'm going to do first, is I'm going to make a package called local environment.
+
+00:00:16.010 --> 00:00:19.340
+I'm going to cd into this local environment.
+
+00:00:19.339 --> 00:00:21.679
+Now I'm going to go ahead and run this command
+
+00:00:21.679 --> 00:00:26.195
+python3 -m venv venv and create a virtual environment.
+
+00:00:26.195 --> 00:00:31.655
+So what this does is it isolates python so that it's located just in this directory.
+
+00:00:31.655 --> 00:00:35.950
+Now to use it, I'm going to first show you my existing Python.
+
+00:00:35.950 --> 00:00:41.195
+So if I say which python3, you can see that it's in user local band python3.
+
+00:00:41.195 --> 00:00:44.170
+That's a problem if I want to work on multiple applications.
+
+00:00:44.170 --> 00:00:47.465
+So I need to make sure I use this virtual environment that I set up.
+
+00:00:47.465 --> 00:00:52.550
+To do that, I run source venv/bin/activate,
+
+00:00:52.549 --> 00:00:56.109
+and now after I run which python3,
+
+00:00:56.109 --> 00:00:59.839
+you can see that it's located in my virtual environment.
+
+00:00:59.840 --> 00:01:01.805
+From here, the next step is,
+
+00:01:01.804 --> 00:01:04.625
+I'm going to want to install a few packages to get me started.
+
+00:01:04.625 --> 00:01:06.890
+So the first package I'm going to install is,
+
+00:01:06.890 --> 00:01:10.140
+I'm going to do a pip install pylint.
+
+00:01:10.159 --> 00:01:14.030
+Pylint is a package that links your Python code
+
+00:01:14.030 --> 00:01:16.489
+and ensures that it's syntactically correct.
+
+00:01:16.489 --> 00:01:18.170
+Another thing I'm going to run,
+
+00:01:18.170 --> 00:01:21.140
+is I'm going to do a pip install upgrade pip.
+
+00:01:21.140 --> 00:01:24.400
+So I want to make sure I have the latest version of
+
+00:01:24.400 --> 00:01:29.380
+the pip package installer. There we go.
+
+00:01:29.379 --> 00:01:32.304
+Once that's done, what I'm going to do is,
+
+00:01:32.305 --> 00:01:36.320
+I'm going to install Python black which is a source code editor.
+
+00:01:36.319 --> 00:01:45.309
+Pip install black. What this does is it reformats your code
+
+00:01:45.310 --> 00:01:49.670
+so that it complies with the latest Python standards.
+
+00:01:49.670 --> 00:01:56.230
+Then finally, I'm going to install Pytest which is a commonly used testing framework.
+
+00:01:56.230 --> 00:02:03.640
+Pip install pytest. Great. At this point,
+
+00:02:03.640 --> 00:02:08.604
+now I have a local environment setup that I can install and test Python.
+
+00:02:08.604 --> 00:02:13.884
+Probably one last thing that is a nice finishing touch is to install IPython.
+
+00:02:13.884 --> 00:02:18.039
+So if I do pip install ipython,
+
+00:02:18.039 --> 00:02:21.569
+that'll also give me an interactive interpreter
+
+00:02:21.569 --> 00:02:24.900
+that's richer than the regular Python interpreter.
+
+00:02:26.409 --> 00:02:29.299
+Great. Now I can test this out,
+
+00:02:29.300 --> 00:02:34.035
+and say ipython and then from here,
+
+00:02:34.034 --> 00:02:41.699
+I can do import os.listdir just to make sure everything is working.
+
+00:02:42.819 --> 00:02:45.754
+Great. Everything looks like it's working.
+
+00:02:45.754 --> 00:02:49.650
+Now I can go on and move on to my docker container setup.
+

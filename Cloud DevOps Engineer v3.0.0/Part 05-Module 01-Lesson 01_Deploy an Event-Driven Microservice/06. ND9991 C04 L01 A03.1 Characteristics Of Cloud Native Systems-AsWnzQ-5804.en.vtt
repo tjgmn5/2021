@@ -1,0 +1,106 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.794
+So again, what are some characteristics of Cloud-Native systems?
+
+00:00:03.794 --> 00:00:07.875
+They're Elastic, so they can scale up and scale down.
+
+00:00:07.875 --> 00:00:09.449
+They're also Fault- tolerant,
+
+00:00:09.449 --> 00:00:14.099
+so a typical cloud system will have many regions around the world.
+
+00:00:14.099 --> 00:00:15.490
+Inside of those regions,
+
+00:00:15.490 --> 00:00:18.870
+they also have different availability zones,
+
+00:00:18.870 --> 00:00:23.219
+and these different availability zones will actually have this fault- tolerance built in.
+
+00:00:23.219 --> 00:00:26.910
+So let's say there was availability zone A,
+
+00:00:26.910 --> 00:00:28.515
+there's availability zone B,
+
+00:00:28.515 --> 00:00:31.035
+there's availability zone C,
+
+00:00:31.035 --> 00:00:34.020
+you can actually design your application across all three of
+
+00:00:34.020 --> 00:00:37.065
+those availability zones and if one of them went down,
+
+00:00:37.064 --> 00:00:38.804
+your application will still run.
+
+00:00:38.804 --> 00:00:42.390
+That's this concept of designed for failure.
+
+00:00:42.390 --> 00:00:46.924
+One company that's really made a big deal of this is Netflix.
+
+00:00:46.924 --> 00:00:52.919
+Netflix has built their infrastructure on top of the AWS Cloud provider.
+
+00:00:52.920 --> 00:00:58.234
+As a result, they've intentionally planned on things constantly failing.
+
+00:00:58.234 --> 00:01:00.094
+That's really a design principle.
+
+00:01:00.094 --> 00:01:02.464
+That's a Cloud-Native design principle as said.
+
+00:01:02.465 --> 00:01:04.685
+You should expect things should fail.
+
+00:01:04.685 --> 00:01:09.439
+You should expect that occasionally an availability zone will die
+
+00:01:09.438 --> 00:01:11.419
+and you need to account for the fact that
+
+00:01:11.420 --> 00:01:14.200
+you'll have your application in another availability zone.
+
+00:01:14.200 --> 00:01:17.210
+You can also account for the fact that a region would
+
+00:01:17.209 --> 00:01:21.259
+die and you also have your application run in a different region.
+
+00:01:21.260 --> 00:01:27.020
+So these are all core concepts that are really completely orthogonal to
+
+00:01:27.019 --> 00:01:32.914
+a traditional database or a traditional data center or non-cloud native system
+
+00:01:32.915 --> 00:01:34.760
+and it's a different way of thinking.
+
+00:01:34.760 --> 00:01:37.510
+Finally, we've talked about this previously.
+
+00:01:37.510 --> 00:01:40.155
+This is an Event-driven architecture.
+
+00:01:40.155 --> 00:01:42.605
+You don't need to have servers running constantly.
+
+00:01:42.605 --> 00:01:43.910
+You can create logic,
+
+00:01:43.909 --> 00:01:48.769
+put the logic somewhere in the Cloud and then eventually when that logic needs to run,
+
+00:01:48.769 --> 00:01:51.479
+you'll actually get a response.
+

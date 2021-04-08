@@ -1,0 +1,181 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.600
+Okay. Now, we've got the whole Docker file build,
+
+00:00:03.600 --> 00:00:05.850
+everything's working and we're ready to get it running.
+
+00:00:05.850 --> 00:00:08.460
+So what I'm going to do, is I'm going to look at
+
+00:00:08.460 --> 00:00:11.790
+this run docker steps file that I've got here.
+
+00:00:11.790 --> 00:00:14.400
+So one of the things that we can do here
+
+00:00:14.400 --> 00:00:17.340
+is make sure that we build the Docker image locally.
+
+00:00:17.340 --> 00:00:20.490
+So this is very similar to what we've done in another lesson.
+
+00:00:20.490 --> 00:00:22.155
+Let's go ahead and build that.
+
+00:00:22.155 --> 00:00:27.900
+Docker build dash, dash tag equals API, so I'm going to tag it as API.
+
+00:00:27.900 --> 00:00:34.240
+I'm going to build locally this Docker image that we just went through configuring.
+
+00:00:39.290 --> 00:00:44.160
+Okay. Great. Now, we've been able to load and build the image locally,
+
+00:00:44.160 --> 00:00:48.050
+and you can see it's successfully built with this unique cache
+
+00:00:48.050 --> 00:00:50.590
+and also the successful tag message.
+
+00:00:50.590 --> 00:00:54.305
+Now, let's look at our run script again and see what's next.
+
+00:00:54.305 --> 00:00:59.120
+The next thing we want to do is we want to run Docker image at last to verify,
+
+00:00:59.120 --> 00:01:05.075
+that Docker image is located locally in my build directory.
+
+00:01:05.075 --> 00:01:10.745
+I can see that it is actually called API and actually it's created 27 seconds ago.
+
+00:01:10.745 --> 00:01:16.525
+Perfect. Next, if we look at the build script here.
+
+00:01:16.525 --> 00:01:20.510
+The final step is actually to run the container
+
+00:01:20.510 --> 00:01:23.900
+and make sure that it can actually be deployed locally.
+
+00:01:23.900 --> 00:01:27.350
+So I'm going to go through and do docker run.
+
+00:01:27.350 --> 00:01:34.370
+I'm a run and connect the two ports together and have them exposed via this API.
+
+00:01:34.370 --> 00:01:37.025
+We go docker run.
+
+00:01:37.025 --> 00:01:42.745
+Now, we can see that it's running on port 5001.
+
+00:01:42.745 --> 00:01:44.900
+Great. Now, that we've been able to get this running.
+
+00:01:44.900 --> 00:01:46.490
+I'm going to go over to a web browser
+
+00:01:46.490 --> 00:01:49.535
+and verify that I can look at the API documentation.
+
+00:01:49.535 --> 00:01:51.430
+If you remember this is running swagger.
+
+00:01:51.430 --> 00:01:53.420
+So I can go through and I can look at all the routes
+
+00:01:53.420 --> 00:01:55.315
+and actually explore the application.
+
+00:01:55.315 --> 00:01:57.920
+Again, this will be running locally for my container,
+
+00:01:57.920 --> 00:02:00.740
+so I'm going to go and toggle over there.
+
+00:02:00.740 --> 00:02:03.230
+Now, if I go through and I refresh this,
+
+00:02:03.230 --> 00:02:07.385
+you can see that it shows the two routes that are set up in this application.
+
+00:02:07.385 --> 00:02:12.125
+One of them is API F-U-N-C-K or API funcs.
+
+00:02:12.125 --> 00:02:15.350
+It shows me all the functions are plugins that we've got available.
+
+00:02:15.350 --> 00:02:17.200
+I'm going to click " Get".
+
+00:02:17.200 --> 00:02:20.845
+Now, I can actually try out this API if I want.
+
+00:02:20.845 --> 00:02:23.060
+It gives me the description of what it says.
+
+00:02:23.060 --> 00:02:25.505
+It says, ''Return list of appliable functions.''
+
+00:02:25.505 --> 00:02:28.685
+Great. I'm going to go ahead and click "Try it out".
+
+00:02:28.685 --> 00:02:32.315
+It's going to go through here and run that.
+
+00:02:32.315 --> 00:02:36.420
+Once it runs, then I can actually show by clicking,
+
+00:02:36.420 --> 00:02:40.640
+"Execute", the exact code command that you would run
+
+00:02:40.640 --> 00:02:42.110
+if you were going to run this locally.
+
+00:02:42.110 --> 00:02:44.780
+That's one of the really powerful things about swagger.
+
+00:02:44.780 --> 00:02:49.460
+But also it shows me that it is in fact working so I have the response body.
+
+00:02:49.460 --> 00:02:51.365
+It shows me the plug-ins that are loaded.
+
+00:02:51.365 --> 00:02:54.785
+So it looks like this deployment was a successful deployment.
+
+00:02:54.785 --> 00:02:57.350
+So what I'm going to do next year is I'm going to toggle back
+
+00:02:57.350 --> 00:03:02.900
+to my terminal and verify that actual route is in the log files.
+
+00:03:02.900 --> 00:03:06.665
+If I go back here, you can see in fact it did call
+
+00:03:06.665 --> 00:03:10.880
+slash API funcs and have a one to one mapping here.
+
+00:03:10.880 --> 00:03:13.535
+Have containerized my existing application,
+
+00:03:13.535 --> 00:03:15.770
+and I can verify that it works in a web browser.
+
+00:03:15.770 --> 00:03:17.870
+So we're essentially ready to go.
+
+00:03:17.870 --> 00:03:21.200
+The last thing that you may want to do is go through and do a load test
+
+00:03:21.200 --> 00:03:24.840
+or some performance test to make sure that this is working.
+
+00:03:24.840 --> 00:03:28.840
+But in general, the application is ready for production.
+

@@ -1,0 +1,352 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Makefiles</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Using Docker Format Containers</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Docker Containers.html">01. Docker Containers</a>
+    </li>
+    <li class="">
+      <a href="02. Exercise Setting Up a Local Environment.html">02. Exercise: Setting Up a Local Environment</a>
+    </li>
+    <li class="">
+      <a href="03. Makefiles.html">03. Makefiles</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Create A Basic Makefile.html">04. Exercise: Create A Basic Makefile</a>
+    </li>
+    <li class="">
+      <a href="05. Install Docker.html">05. Install Docker</a>
+    </li>
+    <li class="">
+      <a href="06. Linting and CircleCI.html">06. Linting and CircleCI</a>
+    </li>
+    <li class="">
+      <a href="07. Running Dockerfiles.html">07. Running Dockerfiles</a>
+    </li>
+    <li class="">
+      <a href="08. Exercise Deploying to Amazon ECR.html">08. Exercise: Deploying to Amazon ECR</a>
+    </li>
+    <li class="">
+      <a href="09. Summary.html">09. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">03. Makefiles</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h2 id="makefiles">Makefiles</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C04 L02 A03 Makefiles</p></h3>
+  <video controls>
+  <source src="03. ND9991 C04 L02 A03 Makefiles-Zy3noyI7Q-I.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="03. ND9991 C04 L02 A03 Makefiles-Zy3noyI7Q-I.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>You can follow along with Noah's code <a href="https://github.com/udacity/DevOps_Microservices/tree/master/Lesson-2-Docker-format-containers/myrepo" rel="noopener noreferrer" target="_blank">here</a>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Setup Makefile</p></h3>
+  <div>
+  <h3 id="setup-makefile">Setup Makefile</h3>
+<p>Just like <code>vim</code>, mastering <code>Makefiles</code> can take years, but a minimalistic approach provides immediate benefits.  A main benefit to a <code>Makefile</code> is the ability to enforce a convention. If everytime you work a project you follow a few simple steps, it reduces the possibility of errors in building and testing a project.</p>
+<p>A typical Python project can be improved by adding a <code>Makefile</code> with the following steps:  <code>make setup</code>, <code>make install</code>, <code>make test</code>, <code>make lint</code> and <code>make all</code>.  </p>
+<pre><code class="Makefile language-Makefile">setup:
+    python3 -m venv ~/.myrepo
+
+install:
+    pip install --upgrade pip &amp;&amp;\
+        pip install -r requirements.txt
+
+test:
+    python -m pytest -vv --cov=myrepolib tests/*.py
+    python -m pytest --nbval notebook.ipynb
+
+
+lint:
+    pylint --disable=R,C myrepolib cli web
+
+all: install lint test</code></pre>
+<p>This example is from a tutorial repository called <a href="https://github.com/noahgift/myrepo" rel="noopener noreferrer" target="_blank"><code>myrepo</code></a>.  There is also an article about how to use it from <a href="https://circleci.com/blog/increase-reliability-in-data-science-and-machine-learning-projects-with-circleci/" rel="noopener noreferrer" target="_blank">CircleCI</a>.</p>
+<p>The general idea is that a convention eliminates the need to think about what to do.  For every project, there is a common way to install software, a common way to test software and a common way to test and lint software.  Just like <code>vim</code>, a <code>Makefile</code> build system is often already on a Unix or Linux system.  Even Microsoft uses the <a href="https://azure.microsoft.com/en-us/overview/linux-on-azure/" rel="noopener noreferrer" target="_blank">Linux operating system in Azure</a>, and the result is that Linux is the preferred deployment target for most software.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h4 id="noahs-makefile">Noah's Makefile</h4>
+<p>Here is what is contained in Noah's Makefile:</p>
+<pre><code class="Makefile language-Makefile">setup:
+    python3 -m venv ~/.myrepo
+
+install:
+    pip install -r requirements.txt
+
+test:
+    python -m pytest -vv --cov=myrepolib tests/*.py
+    python -m pytest --nbval notebook.ipynb
+
+lint:
+    pylint --disable=R,C myrepolib cli web
+
+all: install lint test</code></pre>
+<p>Note that each line is indented with a tab.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h4 id="noahs-requirementstxt">Noah's <code>requirements.txt</code></h4>
+<p>Below are the libraries included in Noah's <code>requirements.txt</code> file:</p>
+<pre><code class="pseudo language-pseudo">pytest
+pylint
+jupyter
+pytest-cov
+pandas
+nbval
+click
+flask
+requests</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="makefile-creation-recap"><code>Makefile</code> Creation Recap</h3>
+<p>Let’s recap the key concepts of <em>creating</em> a <code>Makefile</code>.</p>
+<ul>
+<li><code>setup</code>: You have seen most of this line before, which is dealing with our Python 3 virtual environment.</li>
+<li><code>install</code>: This installs the requirements for our environment. In our case, it also install the <code>pytest</code> and <code>pylint</code> libraries used later on in the Makefile.</li>
+<li><code>test</code>: This is broken into two parts for testing.<ul>
+<li>First, it will use <code>.py</code> files in the <code>tests</code> directory. The <code>-vv</code> flag ensures short test durations are still shown (see <a href="https://docs.pytest.org/en/latest/usage.html#profiling-test-execution-duration" rel="noopener noreferrer" target="_blank">documentation</a>), while the <code>-cov</code> flag helps to calculate what the test coverage of the code is (see <a href="https://pypi.org/project/pytest-cov/" rel="noopener noreferrer" target="_blank">documentation</a>) in a given directory.</li>
+<li>The second line is used to test Jupyter Notebook cells. The <code>--nbval</code> flag makes pytest pay attention to jupyter notebooks (see <a href="https://nbval.readthedocs.io/en/latest/" rel="noopener noreferrer" target="_blank">documentation</a>).</li></ul></li>
+<li><code>lint</code>: This will lint what is in the <code>myrepolib</code> directory, as well as the <code>cli.py</code> and <code>web.py</code> files in our current directory (see video). The <code>--disable=R,C</code> is used to disable the "convention" (C) and "refactor" (R) message classes (see related <a href="https://stackoverflow.com/questions/31907762/pylint-to-show-only-warnings-and-errors" rel="noopener noreferrer" target="_blank">Stack Overflow post</a>).</li>
+<li><code>all</code>: You may notice this line looks a little different than the above lines, with the commands on the same line. This will execute our <code>install</code>, <code>lint</code> and <code>test</code> commands.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="makefile-usage-recap"><code>Makefile</code> Usage Recap</h3>
+<p>Let’s recap the key concepts of a <em>using</em> a <code>Makefile</code>.</p>
+<p>Once the Makefile is created, you can use:</p>
+<ul>
+<li><code>make install</code></li>
+<li><code>make lint</code></li>
+</ul>
+<p>to install dependencies and test your code.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Makefiles</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What is Makefile's purpose?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="900402" id="rbk1">
+        <label for="rbk1"><p>Test software</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="900402" id="rbk2">
+        <label for="rbk2"><p>Install software</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="900402" id="rbk3">
+        <label for="rbk3"><p>Build executables or scripts</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk4" name="900402" id="rbk4">
+        <label for="rbk4"><p>Collect and run tasks</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk5" name="900402" id="rbk5">
+        <label for="rbk5"><p>All of the above</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    All of the above
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h4 id="additional-references">Additional References</h4>
+<ul>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets" rel="noopener noreferrer" target="_blank">More on Makefiles</a></li>
+<li><a href="http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/" rel="noopener noreferrer" target="_blank">Makefile tutorial</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="04. Exercise Create A Basic Makefile.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. Makefiles')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

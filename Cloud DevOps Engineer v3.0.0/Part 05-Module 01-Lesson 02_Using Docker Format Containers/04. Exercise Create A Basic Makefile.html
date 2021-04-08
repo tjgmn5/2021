@@ -1,0 +1,220 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Create A Basic Makefile</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Using Docker Format Containers</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Docker Containers.html">01. Docker Containers</a>
+    </li>
+    <li class="">
+      <a href="02. Exercise Setting Up a Local Environment.html">02. Exercise: Setting Up a Local Environment</a>
+    </li>
+    <li class="">
+      <a href="03. Makefiles.html">03. Makefiles</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Create A Basic Makefile.html">04. Exercise: Create A Basic Makefile</a>
+    </li>
+    <li class="">
+      <a href="05. Install Docker.html">05. Install Docker</a>
+    </li>
+    <li class="">
+      <a href="06. Linting and CircleCI.html">06. Linting and CircleCI</a>
+    </li>
+    <li class="">
+      <a href="07. Running Dockerfiles.html">07. Running Dockerfiles</a>
+    </li>
+    <li class="">
+      <a href="08. Exercise Deploying to Amazon ECR.html">08. Exercise: Deploying to Amazon ECR</a>
+    </li>
+    <li class="">
+      <a href="09. Summary.html">09. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. Exercise: Create A Basic Makefile</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="exercise-create-a-basic-makefile">Exercise: Create A Basic Makefile</h2>
+<p>Makefiles can be incredibly useful ways to build up a chain of commands that build, test and deploy software.</p>
+<p>Now that you've seen an example of a Makefile, you are ready to create one of your own. Makefiles have plenty of different commands and variables that can be used - check out <a href="https://makefiletutorial.com/" rel="noopener noreferrer" target="_blank">this page</a> for a long list of them.</p>
+<p>While you will start from scratch in this exercise, if you need to look at another example of a Makefile, you can check out <a href="https://github.com/udacity/DevOps_Microservices/tree/master/Lesson-3-Containerization/Makefile" rel="noopener noreferrer" target="_blank">this Makefile</a> in the course repository. This additional example Makefile will be used in the next lesson on containerization.</p>
+<h3 id="instructions">Instructions</h3>
+<ul>
+<li>Create an empty <code>Makefile</code> using the <code>touch</code> command</li>
+<li>Create two commands:  <code>cmd1</code> and <code>cmd2</code> and make this <code>echo</code> the name of the command. <ul>
+<li>Note that Makefiles will normally print out each line as it goes, but here we want it to just explicitly <code>echo</code> the command names. Check out the link above to figure out how you can stop a line from printing. </li>
+<li>Makefiles have an automatic variable that contains the target name for the commands you create. You can also find this in the link above to add to your Makefile.</li></ul></li>
+<li>Create an <code>all</code> command that runs both <code>cmd1</code> and <code>cmd2</code> </li>
+<li>Run <code>make all</code> to see the output</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="one-potential-solution">One Potential Solution</h3>
+<div id="spoiler_1" style="display:none">
+Here is an example of a Makefile you could create for this exercise:<pre><code>cmd1:
+        @echo "$@"
+
+cmd2:
+        @echo "$@"
+
+all: cmd1 cmd2</code></pre>
+
+Note that after `cmd1` and `cmd2`, and before `@echo`, should be a tab. The `@` at the start of these lines prevents `make` from automatically printing the lines, while `"$@"` is the variable for a string containing the target name, in this case either `cmd1` or `cmd2`. To double-check that `make` is actually showing the command name from within the command itself, try to `echo` something else from within one of them, such as `Hello World!`, and check the results.
+</div>
+<p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler_1') .style.display=='none') {document.getElementById('spoiler_1') .style.display=''}else{document.getElementById('spoiler_1') .style.display='none'}">Show Solution</button></p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. Install Docker.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Exercise: Create A Basic Makefile')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

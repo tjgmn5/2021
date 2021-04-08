@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.225
+Now that we know the basic structure about Docker,
+
+00:00:03.225 --> 00:00:04.310
+we've seen flask running.
+
+00:00:04.310 --> 00:00:08.340
+Let's get into how to actually install the packages inside of this Docker file.
+
+00:00:08.340 --> 00:00:11.370
+So if we go back again to this Docker file,
+
+00:00:11.370 --> 00:00:13.110
+let's take a look at it,
+
+00:00:13.110 --> 00:00:17.805
+the part that installs the packages is this block right here.
+
+00:00:17.805 --> 00:00:19.020
+So what I do is I say,
+
+00:00:19.020 --> 00:00:21.750
+pip install --upgrade pip.
+
+00:00:21.750 --> 00:00:24.360
+So this is a great first step to make sure that I'm
+
+00:00:24.360 --> 00:00:27.660
+using the latest version of pip inside my Docker container.
+
+00:00:27.660 --> 00:00:31.890
+Next, what I do, is actually go through here and I
+
+00:00:31.890 --> 00:00:36.240
+actually install the requirements that are inside this TXT file.
+
+00:00:36.240 --> 00:00:42.415
+So really that's all that's necessary is I say pip install and then I do -r requirements.
+
+00:00:42.415 --> 00:00:44.550
+We've already seen what you do in there,
+
+00:00:44.550 --> 00:00:48.165
+you just add different Python packages
+
+00:00:48.165 --> 00:00:51.720
+and then this will run when I build my Docker image.
+

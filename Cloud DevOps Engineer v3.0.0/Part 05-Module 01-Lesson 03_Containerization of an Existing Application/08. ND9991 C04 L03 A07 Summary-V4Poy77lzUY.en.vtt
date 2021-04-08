@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.379
+Okay, we're finished with building and containerizing this application,
+
+00:00:04.379 --> 00:00:06.779
+and we've gone through quite a few steps.
+
+00:00:06.780 --> 00:00:08.759
+Let's go through and summarize those.
+
+00:00:08.759 --> 00:00:12.509
+First, we're able to look at a base Docker image
+
+00:00:12.509 --> 00:00:15.689
+and use that to build out the rest of our application.
+
+00:00:15.689 --> 00:00:20.864
+Next, we went through and installed the packages by using the Docker file.
+
+00:00:20.864 --> 00:00:23.339
+Then, we wanted to copy in the application,
+
+00:00:23.339 --> 00:00:24.975
+so we took the Flask app,
+
+00:00:24.975 --> 00:00:26.040
+we took the plugins,
+
+00:00:26.039 --> 00:00:27.989
+we copied those packages,
+
+00:00:27.989 --> 00:00:30.269
+and we put them inside of our Docker container.
+
+00:00:30.269 --> 00:00:32.429
+Next, we went into app set up,
+
+00:00:32.429 --> 00:00:37.064
+and so we were able to actually make sure that the ports were the correct ports,
+
+00:00:37.064 --> 00:00:40.155
+and the ports were connecting to our host application.
+
+00:00:40.155 --> 00:00:42.215
+Finally, we went to app start.
+
+00:00:42.215 --> 00:00:44.310
+This is a really important final step.
+
+00:00:44.310 --> 00:00:47.840
+What this does is, it verifies that when the container is built,
+
+00:00:47.840 --> 00:00:49.955
+it'll actually launch and run,
+
+00:00:49.954 --> 00:00:53.299
+and it's ready to actually be deployed in a production environment.
+
+00:00:53.299 --> 00:00:56.279
+So it's a really important final step that really
+
+00:00:56.280 --> 00:00:59.759
+is the last thing you should check off your list.
+
+00:00:59.759 --> 00:01:03.710
+Once you've done that, the final thing we did was we went to a web browser,
+
+00:01:03.710 --> 00:01:05.945
+and we verified that our application was running.
+
+00:01:05.944 --> 00:01:10.159
+So this is really a pretty straightforward process once you get used to it,
+
+00:01:10.159 --> 00:01:14.899
+and you can take what you've learned from this demo and apply it to your project.
+

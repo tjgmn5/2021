@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.065
+Hello. My name is Noah Gift and I'm the founder of Pragmatic AI Labs.
+
+00:00:04.065 --> 00:00:07.080
+I wrote the book, Pragmatic AI: An Introduction
+
+00:00:07.080 --> 00:00:08.700
+to Cloud-Based Machine Learning,
+
+00:00:08.700 --> 00:00:12.240
+as well as the book, Python for DevOps by O'Reilly.
+
+00:00:12.240 --> 00:00:14.265
+I lecture at Northwestern,
+
+00:00:14.265 --> 00:00:16.530
+UC Berkeley, and UC Davis.
+
+00:00:16.530 --> 00:00:19.560
+Today, I'm going to discuss using Docker format containers.
+
+00:00:19.560 --> 00:00:21.430
+Let's get started.
+
+00:00:21.800 --> 00:00:26.970
+Docker containers are a really powerful concept.
+
+00:00:26.970 --> 00:00:31.080
+What they are is serverless technology that enables you to
+
+00:00:31.080 --> 00:00:35.985
+do a different level of abstraction that you're used to doing normally.
+
+00:00:35.985 --> 00:00:40.035
+In a nutshell, what is a container? Why would I use it?
+
+00:00:40.035 --> 00:00:42.305
+Well, it's just like a virtual machine.
+
+00:00:42.305 --> 00:00:44.120
+But in the case of a container,
+
+00:00:44.120 --> 00:00:45.800
+it's a single purpose.
+
+00:00:45.800 --> 00:00:51.560
+It also allows you to package code in all of the dependencies in one bundle.
+
+00:00:51.560 --> 00:00:55.460
+Another feature of containers is that they take up less space
+
+00:00:55.460 --> 00:00:56.330
+than a virtual machine.
+
+00:00:56.330 --> 00:00:59.570
+So a virtual machine could let's say take a gigabytes of space.
+
+00:00:59.570 --> 00:01:03.290
+A container can take a let's say a 100 megabytes of space.
+
+00:01:03.290 --> 00:01:07.430
+One other distinction between a container and a virtual machine is
+
+00:01:07.430 --> 00:01:11.450
+that multiple virtual machines can run on the same local host.
+
+00:01:11.450 --> 00:01:13.865
+So in the case of a virtual machine,
+
+00:01:13.865 --> 00:01:18.170
+that's really dedicated to a particular instance.
+
+00:01:18.170 --> 00:01:19.865
+Maybe you can run a couple.
+
+00:01:19.865 --> 00:01:21.050
+But in the case of containers,
+
+00:01:21.050 --> 00:01:24.380
+you could run many many different containers
+
+00:01:24.380 --> 00:01:28.200
+because of the size and also how lightweight they are.
+
+00:01:28.330 --> 00:01:35.000
+Containers are really about having many apps running on one host versus
+
+00:01:35.000 --> 00:01:41.265
+one virtual machine or one host that runs in application in the pre-Cloud era.
+
+00:01:41.265 --> 00:01:44.250
+Additionally, containers are portable.
+
+00:01:44.250 --> 00:01:48.680
+So what this does is it allows an app to move from one host to
+
+00:01:48.680 --> 00:01:53.375
+another host and that abstraction is basically hidden away from the developer.
+
+00:01:53.375 --> 00:01:56.450
+Another thing that's interesting about containers is that they're
+
+00:01:56.450 --> 00:02:00.270
+more flexible abstractions than virtual machines.
+

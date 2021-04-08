@@ -1,0 +1,266 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Deploy &amp; Use API Gateway</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Deploy an Event-Driven Microservice</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Outline.html">01. Lesson Outline</a>
+    </li>
+    <li class="">
+      <a href="02. Functions as a Service (FaaS).html">02. Functions as a Service (FaaS)</a>
+    </li>
+    <li class="">
+      <a href="03. A Model for Serverless.html">03. A Model for Serverless</a>
+    </li>
+    <li class="">
+      <a href="04. Benefits of FaaS.html">04. Benefits of FaaS</a>
+    </li>
+    <li class="">
+      <a href="05. Cloud-Native.html">05. Cloud-Native</a>
+    </li>
+    <li class="">
+      <a href="06. Characteristics of Cloud-Native Systems.html">06. Characteristics of Cloud-Native Systems</a>
+    </li>
+    <li class="">
+      <a href="07. AWS Account &amp; Resources.html">07. AWS Account &amp; Resources</a>
+    </li>
+    <li class="">
+      <a href="08. Cloud9 Environment.html">08. Cloud9 Environment</a>
+    </li>
+    <li class="">
+      <a href="09. Lambda Functions.html">09. Lambda Functions</a>
+    </li>
+    <li class="">
+      <a href="10. Deploying and Testing.html">10. Deploying and Testing</a>
+    </li>
+    <li class="">
+      <a href="11. Tutorial Making Change.html">11. Tutorial: Making Change</a>
+    </li>
+    <li class="">
+      <a href="12. Event-Handling.html">12. Event-Handling</a>
+    </li>
+    <li class="">
+      <a href="13. Events &amp; Response.html">13. Events &amp; Response</a>
+    </li>
+    <li class="">
+      <a href="14. Create a Test.html">14. Create a Test</a>
+    </li>
+    <li class="">
+      <a href="15. Deploy &amp; Use API Gateway.html">15. Deploy &amp; Use API Gateway</a>
+    </li>
+    <li class="">
+      <a href="16. Creating a Virtual Environment.html">16. Creating a Virtual Environment</a>
+    </li>
+    <li class="">
+      <a href="17. Exercise Wikipedia.html">17. Exercise: Wikipedia</a>
+    </li>
+    <li class="">
+      <a href="18. Exercise Code.html">18. Exercise Code</a>
+    </li>
+    <li class="">
+      <a href="19. Wikipedia Example.html">19. Wikipedia Example</a>
+    </li>
+    <li class="">
+      <a href="20. Test &amp; Response.html">20. Test &amp; Response</a>
+    </li>
+    <li class="">
+      <a href="21. Summary.html">21. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">15. Deploy & Use API Gateway</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Deploy Header</p></h3>
+  <div>
+  <h2 id="deploy--use-api-gateway">Deploy &amp; Use API Gateway</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C04 L01 A08 A09</p></h3>
+  <video controls>
+  <source src="15. ND9991 C04 L01 A08 A09-E5H7TvBnqEg.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="15. ND9991 C04 L01 A08 A09-E5H7TvBnqEg.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <p><em>Note:</em> You may need to select and deploy an API Gateway for your own use within the AWS Lambda dashboard for your function in order to follow this video.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="ipython">IPython</h3>
+<p>The IPython environment gives you a way to write a program line-by-line in a terminal window, but the commands in this environment are different than typical shell commands. For example, if you want to do a <code>pip install ___</code> within an IPython environment, you have to put a <code>!</code> before the shell command: <code>!pip install ___</code>.</p>
+<p>You can exit out of the IPython environment by typing in: <code>exit()</code>.  Note this also works on the regular Python interpreter. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Concept Summary:  Testing a Web Service built with API Gateway and Cloud9</p></h3>
+  <div>
+  <p>In this section, the following steps occur:</p>
+<ol>
+<li>An AWS Lambda function was created in AWS Cloud9 in the local development environment.</li>
+<li>This AWS Lambda function returns the “correct” change and also has an API Gateway trigger.</li>
+<li>The AWS Lambda function was tested locally using a JSON payload.</li>
+<li>This AWS Lambda function was deployed to AWS. </li>
+<li>The deployment created an HTTP URL.</li>
+<li>Locally in Cloud9, the Python requests library was installed and it was used to make an API call to the HTTP URL.  This URL could be requested from anywhere in the world.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="16. Creating a Virtual Environment.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('15. Deploy &amp; Use API Gateway')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

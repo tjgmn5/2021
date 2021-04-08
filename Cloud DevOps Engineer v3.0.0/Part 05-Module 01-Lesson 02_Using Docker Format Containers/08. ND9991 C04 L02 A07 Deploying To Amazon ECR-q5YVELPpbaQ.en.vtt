@@ -1,0 +1,241 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.140
+Okay, we've got everything running.
+
+00:00:02.140 --> 00:00:03.600
+We have a build server,
+
+00:00:03.600 --> 00:00:04.830
+we have local Docker,
+
+00:00:04.830 --> 00:00:05.790
+we have lint files,
+
+00:00:05.790 --> 00:00:07.259
+we have a Python environment.
+
+00:00:07.259 --> 00:00:11.099
+The final step here is we're going to get this whole environment,
+
+00:00:11.099 --> 00:00:12.960
+this micro service we've created,
+
+00:00:12.960 --> 00:00:15.970
+deployed inside of Amazon environment.
+
+00:00:15.970 --> 00:00:19.890
+To do that, we're going to use Amazon's Elastic Container Registry.
+
+00:00:19.890 --> 00:00:23.429
+So that allows us to put our whole bundled container
+
+00:00:23.429 --> 00:00:26.339
+plus its application inside of Amazon itself.
+
+00:00:26.339 --> 00:00:28.230
+So let's go ahead and set that up.
+
+00:00:28.230 --> 00:00:31.045
+So in order to set this up,
+
+00:00:31.045 --> 00:00:33.740
+we're going to need to go to Amazon Container Services.
+
+00:00:33.740 --> 00:00:38.585
+Let's go and show how you would do that inside of the Amazon Management Console.
+
+00:00:38.585 --> 00:00:41.075
+We would go through here and type in ECR.
+
+00:00:41.075 --> 00:00:44.625
+So go to fully-managed Docker container registry.
+
+00:00:44.625 --> 00:00:46.909
+Next, what we're going to do here is
+
+00:00:46.909 --> 00:00:48.799
+we're going to create a repository
+
+00:00:48.799 --> 00:00:52.924
+so that we can keep all of our source code inside of that repository
+
+00:00:52.924 --> 00:00:56.629
+along with the container itself, that whole bundle.
+
+00:00:56.630 --> 00:01:00.635
+Okay. Now, I go and I say repository configuration
+
+00:01:00.634 --> 00:01:05.224
+and here we'll call this Udacity. There we go.
+
+00:01:05.224 --> 00:01:08.194
+Now I've got this local environment set up
+
+00:01:08.194 --> 00:01:11.944
+and I can go ahead and select this container registry.
+
+00:01:11.944 --> 00:01:13.969
+You can see there's no images located.
+
+00:01:13.969 --> 00:01:18.590
+So I'm going to need to push my image into this container registry.
+
+00:01:18.590 --> 00:01:20.960
+I'm going to view the push commands here.
+
+00:01:20.959 --> 00:01:24.199
+The first step is that I'm going to need to authenticate
+
+00:01:24.200 --> 00:01:27.500
+so that Amazon can verify that I have the privileges
+
+00:01:27.500 --> 00:01:33.094
+to take my container and put it inside of this particular repository.
+
+00:01:33.094 --> 00:01:35.265
+So I'm going to copy that,
+
+00:01:35.265 --> 00:01:37.590
+and now, I'm going to go to the terminal.
+
+00:01:37.590 --> 00:01:40.445
+Okay. Let's go ahead and authenticate.
+
+00:01:40.444 --> 00:01:41.989
+So I'm going to paste that command in
+
+00:01:41.989 --> 00:01:46.310
+and what it does is it asks for my own credentials locally
+
+00:01:46.310 --> 00:01:48.079
+to authenticate against AWS.
+
+00:01:48.079 --> 00:01:50.209
+Let's see.
+
+00:01:50.209 --> 00:01:53.544
+Great. So, login is successful.
+
+00:01:53.545 --> 00:01:58.915
+Next, what we're going to do is we're going to build this container locally here.
+
+00:01:58.915 --> 00:02:00.715
+So let's go ahead and do that.
+
+00:02:00.715 --> 00:02:02.439
+Let's paste that command in.
+
+00:02:02.439 --> 00:02:05.289
+So, it says docker build -t udacity.
+
+00:02:05.290 --> 00:02:11.284
+So it's going to name it the same name as that local repository.
+
+00:02:11.284 --> 00:02:13.965
+Great. It was able to do that.
+
+00:02:13.965 --> 00:02:17.110
+In step 3, what we're going to do is we're going to tag this
+
+00:02:17.110 --> 00:02:20.890
+so that we can push this image to this repository.
+
+00:02:20.889 --> 00:02:22.689
+So let's go ahead and copy that command.
+
+00:02:22.689 --> 00:02:25.389
+We go, let's go to the top here, clear it up a little bit,
+
+00:02:25.389 --> 00:02:29.049
+and run this command docker tag udacity:latest
+
+00:02:29.050 --> 00:02:33.130
+and go through and actually give it this remote repo.
+
+00:02:33.129 --> 00:02:40.240
+So this is a unique URL that's associated with my personal container registry.
+
+00:02:40.240 --> 00:02:42.320
+There we go. That worked.
+
+00:02:42.319 --> 00:02:44.509
+Now, let's go to this docker push command.
+
+00:02:44.509 --> 00:02:45.469
+This is the final step.
+
+00:02:45.469 --> 00:02:49.490
+What this does is it runs this command
+
+00:02:49.490 --> 00:02:54.080
+that pushes the image to the newly created Amazon repository.
+
+00:02:54.080 --> 00:02:55.915
+It's going to run that.
+
+00:02:55.914 --> 00:02:58.620
+Okay, so you can see it says docker push.
+
+00:02:58.620 --> 00:03:03.634
+Again, I give it that unique URL and I have udacity:latest.
+
+00:03:03.634 --> 00:03:07.739
+Now, we're pushing this to Amazon
+
+00:03:07.740 --> 00:03:12.590
+and once this is done, we'll go back inside of Amazon's Elastic Container Registry
+
+00:03:12.590 --> 00:03:15.719
+and verify that we can actually get it out.
+
+00:03:19.550 --> 00:03:22.460
+Great. That should have taken a few minutes
+
+00:03:22.460 --> 00:03:26.150
+and once it's done, now it's available for anyone in my company
+
+00:03:26.150 --> 00:03:28.960
+to actually pull down that container and deploy it.
+
+00:03:28.960 --> 00:03:32.490
+Or if I want to scale it up to thousands and thousands of nodes.
+
+00:03:32.490 --> 00:03:35.210
+Let's go ahead and see what it looks like.
+
+00:03:35.210 --> 00:03:39.500
+So if I close this and I do a refresh here,
+
+00:03:39.500 --> 00:03:44.194
+I can see that now I have access to this latest image here.
+
+00:03:44.194 --> 00:03:48.000
+What's powerful about that is if I want to,
+
+00:03:48.000 --> 00:03:51.949
+I can actually go through and I can pull that as well locally
+
+00:03:51.949 --> 00:03:52.939
+and test that as well.
+
+00:03:52.939 --> 00:03:55.069
+So again, it's a really powerful workflow
+
+00:03:55.069 --> 00:03:58.209
+to be able to build this, run it locally, test it,
+
+00:03:58.210 --> 00:03:59.950
+make sure my build server works,
+
+00:03:59.949 --> 00:04:02.989
+then go and push it to this remote container registry
+
+00:04:02.990 --> 00:04:06.439
+and then be able to scale it out in any part of Amazon
+
+00:04:06.439 --> 00:04:09.780
+or even give it to another person on my team.
+

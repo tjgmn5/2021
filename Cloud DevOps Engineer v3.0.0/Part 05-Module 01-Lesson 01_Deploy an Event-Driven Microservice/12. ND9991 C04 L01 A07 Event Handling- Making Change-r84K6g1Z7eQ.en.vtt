@@ -1,0 +1,169 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.050 --> 00:00:03.929
+Let's go back again to this new function that we've created
+
+00:00:03.930 --> 00:00:05.849
+and do something a little more sophisticated.
+
+00:00:05.849 --> 00:00:10.994
+So I have, just like a cooking show, a little bit of code already ready for us.
+
+00:00:10.994 --> 00:00:15.299
+I'm going to paste this in, and really the important part here is that
+
+00:00:15.300 --> 00:00:19.440
+I actually have this wider code that understands
+
+00:00:19.440 --> 00:00:22.260
+that it's going to be called by a web service.
+
+00:00:22.260 --> 00:00:24.870
+So it knows that a body is going to appear inside of
+
+00:00:24.870 --> 00:00:27.929
+this event and that actually loads in the JSON.
+
+00:00:27.929 --> 00:00:30.600
+Then there's an algorithm that determines
+
+00:00:30.600 --> 00:00:33.929
+the correct number of coins but that's not really not that important.
+
+00:00:33.929 --> 00:00:37.049
+The main thing is that after it figures out the correct number of coins
+
+00:00:37.049 --> 00:00:42.679
+that go in to this function is going to return back a status code of 200.
+
+00:00:42.679 --> 00:00:43.929
+What that means is that,
+
+00:00:43.929 --> 00:00:47.945
+the web service is going to tell whoever calls it that it was okay.
+
+00:00:47.945 --> 00:00:50.825
+Everything was processed successfully.
+
+00:00:50.825 --> 00:00:56.615
+Also it's going to send out a header that says Content-type application JSON.
+
+00:00:56.615 --> 00:01:00.829
+This also tells the person that's receiving the code that this is a JSON payload.
+
+00:01:00.829 --> 00:01:04.310
+Finally, the JSON itself is actually returned back.
+
+00:01:04.310 --> 00:01:07.460
+So this is really an important thing to know about is that there's
+
+00:01:07.459 --> 00:01:11.424
+this structure that you're sending this metadata about what it is you did.
+
+00:01:11.424 --> 00:01:14.614
+Finally, that all gets returned back via a response.
+
+00:01:14.614 --> 00:01:20.140
+So to test this out, all I have to do is again go to this run function,
+
+00:01:20.140 --> 00:01:21.859
+and there's a couple ways I can test it out.
+
+00:01:21.859 --> 00:01:27.769
+I can test it out with Lambda local or I can test it out with API Gateway local.
+
+00:01:27.769 --> 00:01:31.444
+What I'm going to do is I'm actually going to first test it out with Lambda local.
+
+00:01:31.444 --> 00:01:35.599
+So this is like calling the function basically just like a Python function.
+
+00:01:35.599 --> 00:01:38.659
+Here we go. I can go ahead and say,
+
+00:01:38.659 --> 00:01:43.054
+''amount,'' and then I can put in a number like 137.
+
+00:01:43.055 --> 00:01:47.905
+So basically ''$1.37.''
+
+00:01:47.905 --> 00:01:52.174
+Then let's go and pass that into the function and see what happens.
+
+00:01:52.174 --> 00:01:55.189
+Here we go and return back a successful response.
+
+00:01:55.189 --> 00:01:59.704
+You can see it was five quarters and one dime and two pennies.
+
+00:01:59.704 --> 00:02:05.989
+That's actually returning back from the Python and also the logs themselves.
+
+00:02:05.989 --> 00:02:08.090
+Anytime you have a print statement, there's
+
+00:02:08.090 --> 00:02:10.670
+that print statement, it shows up in the function logs.
+
+00:02:10.669 --> 00:02:12.769
+Now, I'm going to actually make it a little more
+
+00:02:12.770 --> 00:02:16.265
+sophisticated and I'm going to call it like it's a web service.
+
+00:02:16.264 --> 00:02:21.289
+So what I can do is go to this Lambda and go to API Gateway local.
+
+00:02:21.289 --> 00:02:24.469
+Now it's going to look a little bit different because I'm going
+
+00:02:24.469 --> 00:02:27.784
+to give it a JSON payload instead of a Python dictionary.
+
+00:02:27.784 --> 00:02:31.520
+So I go to method and I change the method to post.
+
+00:02:31.520 --> 00:02:34.719
+What that does is it allows me to attach a payload to it,
+
+00:02:34.719 --> 00:02:38.000
+and I have the path here which is the change route.
+
+00:02:38.000 --> 00:02:40.789
+I'm going to go ahead and do the same thing I did before.
+
+00:02:40.789 --> 00:02:42.155
+So I'm going to type in amount,
+
+00:02:42.155 --> 00:02:46.354
+and then I'm going to type in a number 189.
+
+00:02:46.354 --> 00:02:49.169
+Again, that will be in a string.
+
+00:02:50.030 --> 00:02:55.534
+Once I pass this in, now I can actually expect that it'll act like
+
+00:02:55.534 --> 00:02:58.819
+a traditional web service and here you see that it actually
+
+00:02:58.819 --> 00:03:02.870
+returns back a really nicely formatted JSON response
+
+00:03:02.870 --> 00:03:06.629
+and it's got seven quarters one dime and four pennies.
+
+00:03:06.629 --> 00:03:10.310
+Also it gives back the content type application JSON
+
+00:03:10.310 --> 00:03:12.395
+and also tells me the content length.
+
+00:03:12.395 --> 00:03:16.360
+So it's giving me a well-formed HTTP response back,
+
+00:03:16.360 --> 00:03:22.290
+and now it's actually ready to be deployed as a microservice in AWS.
+

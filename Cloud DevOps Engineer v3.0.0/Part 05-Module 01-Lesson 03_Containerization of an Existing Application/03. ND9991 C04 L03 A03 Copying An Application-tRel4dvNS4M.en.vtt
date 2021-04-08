@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.760
+Okay, now that we've been able to install packages,
+
+00:00:02.760 --> 00:00:06.030
+now let's look at what's involved in copying application.
+
+00:00:06.030 --> 00:00:08.985
+So if we go back to this docker file here,
+
+00:00:08.985 --> 00:00:12.750
+you can see that what I do is actually copy
+
+00:00:12.750 --> 00:00:17.940
+the source code here directly into my working application.
+
+00:00:17.940 --> 00:00:23.010
+If you remember, one of the things that we also will need to do is,
+
+00:00:23.010 --> 00:00:27.930
+we'll also need to make sure that the plugins directory is also loaded.
+
+00:00:27.930 --> 00:00:31.185
+So let's go ahead and add another line here.
+
+00:00:31.185 --> 00:00:34.980
+Will do this and we'll say nLib,
+
+00:00:34.980 --> 00:00:40.925
+and then we'll add that directly inside of the app directory as well.
+
+00:00:40.925 --> 00:00:47.180
+So it's really important to make sure that not only do I copy the flask app itself,
+
+00:00:47.180 --> 00:00:52.420
+but also in copying any additional source code or modules that are necessary.
+
+00:00:52.420 --> 00:00:53.690
+You can see how you do that.
+
+00:00:53.690 --> 00:00:56.600
+You just add this copy command, and then you specify
+
+00:00:56.600 --> 00:00:59.640
+the destination directory where it needs to live.
+

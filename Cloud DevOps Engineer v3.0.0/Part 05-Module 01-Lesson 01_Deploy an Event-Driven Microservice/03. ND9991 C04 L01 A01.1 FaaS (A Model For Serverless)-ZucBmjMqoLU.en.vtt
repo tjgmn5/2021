@@ -1,0 +1,154 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.240
+Let's talk about a model for Serverless.
+
+00:00:03.240 --> 00:00:05.475
+So what is a model for Serverless?
+
+00:00:05.475 --> 00:00:07.800
+It's going to evolve frameworks.
+
+00:00:07.800 --> 00:00:09.990
+It's going to involve platforms.
+
+00:00:09.990 --> 00:00:14.460
+It's also going to involve tools and some of the different tools and
+
+00:00:14.460 --> 00:00:18.875
+frameworks that you may have heard of is actually Serverless itself.
+
+00:00:18.875 --> 00:00:22.670
+So there's a framework that deploys Serverless models called Serverless,
+
+00:00:22.670 --> 00:00:26.015
+and it packaged together everything from
+
+00:00:26.015 --> 00:00:31.175
+node-based applications to Python based applications to Java based applications.
+
+00:00:31.175 --> 00:00:34.100
+Another one that I like to use is called Chalice.
+
+00:00:34.100 --> 00:00:37.970
+Chalice is a decorator based approach where you install it.
+
+00:00:37.970 --> 00:00:40.520
+You put a decorator on top of a function,
+
+00:00:40.520 --> 00:00:43.985
+and then that function automatically gets deployed as a web service.
+
+00:00:43.985 --> 00:00:48.030
+Another way that you can deploy tools is you can use
+
+00:00:48.030 --> 00:00:53.160
+AWS's Infrastructure as a Code CloudFormation.
+
+00:00:53.160 --> 00:00:59.330
+Also terraform, which is a third party company made by HashiCorp can also build
+
+00:00:59.330 --> 00:01:05.480
+out lambdas that could actually be triggered inside of configuration files,
+
+00:01:05.480 --> 00:01:10.415
+and those configuration files then get deployed into the Amazon ecosystem.
+
+00:01:10.415 --> 00:01:13.655
+Finally, terraform also could work with
+
+00:01:13.655 --> 00:01:16.640
+other Cloud providers and it could deploy let's
+
+00:01:16.640 --> 00:01:19.980
+say Google Cloud Functions or Azure Cloud Functions.
+
+00:01:19.980 --> 00:01:22.344
+Now, if we look at events and actions,
+
+00:01:22.344 --> 00:01:24.500
+this is really an important concept.
+
+00:01:24.500 --> 00:01:28.040
+So let's look at what a event could actually be.
+
+00:01:28.040 --> 00:01:31.475
+It could be an example of let's say uploading the file.
+
+00:01:31.475 --> 00:01:36.545
+So if you take a file and you upload it and directly put it into Amazon S3,
+
+00:01:36.545 --> 00:01:41.405
+that file when it's actually persisted onto the S3 ecosystem,
+
+00:01:41.405 --> 00:01:43.045
+it's going to trigger an event.
+
+00:01:43.045 --> 00:01:46.040
+You can have a lambda that's waiting for that event,
+
+00:01:46.040 --> 00:01:49.985
+and that event actually then has some other action associated with it.
+
+00:01:49.985 --> 00:01:53.750
+That event could be let's say I want
+
+00:01:53.750 --> 00:01:58.220
+to trigger transforming this image file into a video file,
+
+00:01:58.220 --> 00:02:00.680
+or I want to take this image and I want to
+
+00:02:00.680 --> 00:02:03.965
+shrink it into a smaller size or to a different format.
+
+00:02:03.965 --> 00:02:06.725
+Another event could be putting a message in a queue.
+
+00:02:06.725 --> 00:02:10.330
+So you have an event that comes into this queue.
+
+00:02:10.330 --> 00:02:12.990
+All of a sudden another lambdas listening,
+
+00:02:12.990 --> 00:02:16.250
+and that lambda could go through and process that message.
+
+00:02:16.250 --> 00:02:19.520
+Another fascinating way to think about events is time.
+
+00:02:19.520 --> 00:02:21.970
+So in the case of time,
+
+00:02:21.970 --> 00:02:26.525
+one of the things that can happen is you could actually create a whole ETL pipeline.
+
+00:02:26.525 --> 00:02:30.235
+ETL stands for Extract Transfer Load,
+
+00:02:30.235 --> 00:02:34.940
+and this extract transfer load pipeline could be triggered on a periodic interval,
+
+00:02:34.940 --> 00:02:36.275
+let's say once a day,
+
+00:02:36.275 --> 00:02:39.500
+and it could go through and talk to a relational database,
+
+00:02:39.500 --> 00:02:41.420
+pull out some information transform
+
+00:02:41.420 --> 00:02:44.360
+it and then put that into your machine learning system.
+
+00:02:44.360 --> 00:02:47.825
+So in general, to really summarize here,
+
+00:02:47.825 --> 00:02:50.735
+an event is something that leads to an action,
+
+00:02:50.735 --> 00:02:53.310
+and that action is a piece of code.
+

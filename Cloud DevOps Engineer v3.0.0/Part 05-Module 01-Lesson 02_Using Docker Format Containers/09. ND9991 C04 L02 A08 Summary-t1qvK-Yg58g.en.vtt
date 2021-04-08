@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.819
+All right. We've done quite a bit in our lesson today.
+
+00:00:02.819 --> 00:00:05.879
+What we did is we set up a local development environment,
+
+00:00:05.879 --> 00:00:07.500
+and inside that development environment,
+
+00:00:07.500 --> 00:00:10.185
+we install Python and got our packages running.
+
+00:00:10.185 --> 00:00:13.169
+Next, we went through and we learned about makefiles and
+
+00:00:13.169 --> 00:00:16.259
+how makefiles are very powerful but old
+
+00:00:16.260 --> 00:00:18.675
+technology that allows us to put
+
+00:00:18.675 --> 00:00:23.205
+multiple commands together and package them into a logical runner.
+
+00:00:23.204 --> 00:00:25.469
+Next, we went to installing Docker.
+
+00:00:25.469 --> 00:00:27.209
+So inside of Docker,
+
+00:00:27.210 --> 00:00:32.204
+it gives us the ability to not just run docker containers but also to run Kubernetes.
+
+00:00:32.204 --> 00:00:34.994
+Then finally, we got into Linton with Docker.
+
+00:00:34.994 --> 00:00:37.144
+So we were able to use had a lint,
+
+00:00:37.145 --> 00:00:40.640
+test our Linton capabilities and then verify that they
+
+00:00:40.640 --> 00:00:44.899
+work with a SaaS-based build provider CircleCI.
+
+00:00:44.899 --> 00:00:47.600
+Then after we got all that setup,
+
+00:00:47.600 --> 00:00:49.715
+we were able to start working on our application.
+
+00:00:49.715 --> 00:00:52.325
+What we did is we ran Docker locally and we
+
+00:00:52.325 --> 00:00:55.280
+verified that we can install bash and run bash
+
+00:00:55.280 --> 00:00:57.859
+and get a Ubuntu running and then verify that
+
+00:00:57.859 --> 00:01:01.344
+those Python packages were actually installed in that container.
+
+00:01:01.344 --> 00:01:05.090
+Then the final step was to go through and take a customized
+
+00:01:05.090 --> 00:01:06.350
+container that we built,
+
+00:01:06.349 --> 00:01:10.250
+deployed it to Amazon ECR and then verify that we're able
+
+00:01:10.250 --> 00:01:11.855
+to actually upload that,
+
+00:01:11.855 --> 00:01:14.590
+and it's now living in our Container Registry.
+
+00:01:14.590 --> 00:01:17.990
+What's powerful about this is it now allows us to deploy
+
+00:01:17.989 --> 00:01:21.259
+that container into thousands of nodes and actually reach
+
+00:01:21.260 --> 00:01:25.850
+a scale and also a reliability that previously didn't exist before
+
+00:01:25.849 --> 00:01:31.509
+containers were a widescale technology that's been used in the marketplace.
+

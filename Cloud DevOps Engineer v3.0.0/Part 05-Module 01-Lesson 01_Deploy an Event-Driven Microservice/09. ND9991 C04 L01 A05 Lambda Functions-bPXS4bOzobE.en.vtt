@@ -1,0 +1,244 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.139
+So we're going to go ahead and create
+
+00:00:01.139 --> 00:00:05.294
+a Hello World Lambda function inside of AWS Cloud9.
+
+00:00:05.294 --> 00:00:09.929
+I'm going go to this icon here and this icon is actually a Lambda icon.
+
+00:00:09.929 --> 00:00:12.164
+It says create a new Lambda function.
+
+00:00:12.164 --> 00:00:13.514
+So I go through here,
+
+00:00:13.515 --> 00:00:15.044
+I create a new Lambda function,
+
+00:00:15.044 --> 00:00:16.844
+and we'll just call this hello,
+
+00:00:16.844 --> 00:00:19.750
+and we'll call this helloudacity.
+
+00:00:20.000 --> 00:00:24.134
+It's going to create a function name and an application name.
+
+00:00:24.135 --> 00:00:25.875
+In this next section,
+
+00:00:25.875 --> 00:00:28.980
+I can decide whether I want to do JavaScript or Python.
+
+00:00:28.980 --> 00:00:31.905
+I'm going to go ahead and pick Python 3.6,
+
+00:00:31.905 --> 00:00:35.984
+I'm going to pick a template here that says hello-world-python 3.
+
+00:00:35.984 --> 00:00:38.460
+There we go and I have two options.
+
+00:00:38.460 --> 00:00:41.570
+I can do a function trigger that does basically
+
+00:00:41.570 --> 00:00:45.230
+nothing and I can just execute it without an API,
+
+00:00:45.229 --> 00:00:47.119
+or I can choose API gateway.
+
+00:00:47.119 --> 00:00:49.489
+API Gateway basically turns it into
+
+00:00:49.490 --> 00:00:54.035
+a full web service that underneath the hood is just running Python function.
+
+00:00:54.034 --> 00:00:57.139
+I'm going to say no, and just say no function trigger,
+
+00:00:57.140 --> 00:00:59.149
+and then here's these two options;
+
+00:00:59.149 --> 00:01:03.679
+one is that I can choose the default memory which is most of the time fine,
+
+00:01:03.679 --> 00:01:07.424
+or I also can give it more advanced privileges.
+
+00:01:07.424 --> 00:01:09.799
+In this case because it's a hello world function,
+
+00:01:09.799 --> 00:01:12.769
+I'm not going to give it more privileges but you could go and
+
+00:01:12.769 --> 00:01:16.069
+allow it to let's say access a relational database,
+
+00:01:16.069 --> 00:01:18.469
+or access the S3 file system or do
+
+00:01:18.469 --> 00:01:22.179
+something that's very AWS specific and this is where you do that.
+
+00:01:22.180 --> 00:01:24.815
+So I'm going to let it auto-generated role.
+
+00:01:24.814 --> 00:01:27.995
+There we go. My serverless application is ready,
+
+00:01:27.995 --> 00:01:29.680
+and I say finish.
+
+00:01:29.680 --> 00:01:32.430
+This takes just one second and you can see
+
+00:01:32.430 --> 00:01:35.655
+now I have this helloudacity folder here,
+
+00:01:35.655 --> 00:01:37.390
+and if I go ahead and I click here,
+
+00:01:37.390 --> 00:01:41.659
+I can see that it created this example function for me.
+
+00:01:41.659 --> 00:01:45.259
+So let's go ahead and actually make it even simpler.
+
+00:01:45.260 --> 00:01:46.579
+This is too complex.
+
+00:01:46.579 --> 00:01:48.200
+I don't want this,
+
+00:01:48.200 --> 00:01:51.305
+I'm going to take all this out,
+
+00:01:51.305 --> 00:01:56.540
+and I'm going to take out this line of code and the only thing I really care about,
+
+00:01:56.540 --> 00:02:00.295
+is I actually want to process
+
+00:02:00.295 --> 00:02:04.070
+an event and I want to actually do something with that event it.
+
+00:02:04.069 --> 00:02:07.489
+So I'm going to add a line here that just says print,
+
+00:02:07.489 --> 00:02:14.668
+and I'm going to add a statement that says this was my event,
+
+00:02:14.669 --> 00:02:17.689
+and then I will put in the event inside of
+
+00:02:17.689 --> 00:02:23.689
+this F-String and then I will turn back the same event.
+
+00:02:23.689 --> 00:02:27.520
+All right. We have basically two line function here,
+
+00:02:27.520 --> 00:02:30.320
+and then I'm going to take this out here as well.
+
+00:02:30.319 --> 00:02:31.864
+I don't want that in there,
+
+00:02:31.865 --> 00:02:35.240
+and we have a very small Lambda function.
+
+00:02:35.240 --> 00:02:38.350
+I also don't need this JSON.
+
+00:02:38.349 --> 00:02:42.469
+In this case, I can just have this few lines of code here.
+
+00:02:42.469 --> 00:02:47.344
+So this is telling me actually that there's some invalid syntax.
+
+00:02:47.344 --> 00:02:51.830
+So one of the things that we can do to fix that is that I can go
+
+00:02:51.830 --> 00:02:56.180
+ahead and tell this editor that I am using Python 3.
+
+00:02:56.180 --> 00:02:58.640
+So I'm going to go to this gear menu
+
+00:02:58.639 --> 00:03:01.879
+here and I'm going to scroll down here to Python support,
+
+00:03:01.879 --> 00:03:03.439
+and I'm going to look and see up.
+
+00:03:03.439 --> 00:03:07.259
+It says it thinks it's Python 2 for the syntax highlighting.
+
+00:03:07.259 --> 00:03:08.984
+I'm going to change it to Python 3.
+
+00:03:08.985 --> 00:03:10.470
+I go ahead and close it,
+
+00:03:10.469 --> 00:03:14.389
+and now you'll see that this will go away.
+
+00:03:14.389 --> 00:03:16.489
+So next what I'm going to do is I'm going
+
+00:03:16.490 --> 00:03:18.409
+to go ahead and run this Lambda function.
+
+00:03:18.409 --> 00:03:20.354
+So there's a run icon right here,
+
+00:03:20.354 --> 00:03:23.234
+I click on the run, and now I can set it a payload.
+
+00:03:23.235 --> 00:03:25.220
+This payload is really just like a dictionary.
+
+00:03:25.219 --> 00:03:33.789
+So I'm going to go through here and say events from terminal,
+
+00:03:33.789 --> 00:03:37.564
+and then I'll put it in something pie.
+
+00:03:37.564 --> 00:03:40.474
+There's my event, I go ahead and run it,
+
+00:03:40.474 --> 00:03:42.319
+and what's it's going to do is it's going to pass
+
+00:03:42.319 --> 00:03:45.094
+this payload back into this Lambda function.
+
+00:03:45.094 --> 00:03:47.990
+You can see the response was exactly what I passed
+
+00:03:47.990 --> 00:03:50.314
+in a bit from terminal and high,
+
+00:03:50.314 --> 00:03:53.270
+and then I go through here and I have a log,
+
+00:03:53.270 --> 00:03:54.530
+and this is the function log.
+
+00:03:54.530 --> 00:03:57.890
+It says, this was my event and it was this line of code.
+
+00:03:57.889 --> 00:04:01.264
+So you can see it's really just a couple lines of code.
+
+00:04:01.264 --> 00:04:03.379
+You can do some really powerful things,
+
+00:04:03.379 --> 00:04:08.400
+and now I actually have this function that I tested locally.
+

@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.180
+Okay. Now let's look at the app start itself.
+
+00:00:03.180 --> 00:00:07.620
+So not only do you need to go in and set up the base image,
+
+00:00:07.620 --> 00:00:10.320
+install things inside of their copy or source code,
+
+00:00:10.320 --> 00:00:12.420
+but you also need to be thinking about, "Well,
+
+00:00:12.420 --> 00:00:15.780
+what do I do when I run this Docker image?
+
+00:00:15.780 --> 00:00:21.090
+How do I make it automatically start the service that I actually want to talk to you?"
+
+00:00:21.090 --> 00:00:23.865
+So let's go ahead and see how that works.
+
+00:00:23.865 --> 00:00:28.350
+So the way you do that is you go through and you create this command,
+
+00:00:28.350 --> 00:00:31.860
+and this command as it actually run at the very end of your Docker file.
+
+00:00:31.860 --> 00:00:36.150
+So we see here that this command is going to run the Python
+
+00:00:36.150 --> 00:00:40.200
+interpreter that's inside of this base Docker image right here.
+
+00:00:40.200 --> 00:00:42.315
+We know it's going to be Python 3.7.
+
+00:00:42.315 --> 00:00:45.720
+Then we know that we've copied web.py
+
+00:00:45.720 --> 00:00:48.665
+which is essentially at the root level of the directory.
+
+00:00:48.665 --> 00:00:53.030
+So web.py will now start up automatically because we told
+
+00:00:53.030 --> 00:00:57.440
+it explicitly to run at the very end of our Docker configurations.
+
+00:00:57.440 --> 00:00:59.150
+So this is a really important final step.
+
+00:00:59.150 --> 00:01:00.250
+It's only one line of code.
+
+00:01:00.250 --> 00:01:03.950
+But it's important to think about that if you're building something that's a service,
+
+00:01:03.950 --> 00:01:09.270
+you need to start the service at the very end of your Docker file configuration.
+

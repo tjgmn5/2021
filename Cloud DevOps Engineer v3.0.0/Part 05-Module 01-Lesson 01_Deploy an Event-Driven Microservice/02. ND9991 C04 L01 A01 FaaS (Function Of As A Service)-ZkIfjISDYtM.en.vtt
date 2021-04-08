@@ -1,0 +1,187 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.055
+Hi, my name is Noah Gift.
+
+00:00:02.055 --> 00:00:04.380
+I'm the founder of Progmatic AI Labs.
+
+00:00:04.379 --> 00:00:06.299
+I wrote the book Progmatic AI,
+
+00:00:06.299 --> 00:00:08.550
+an introduction to Cloud-based machine learning.
+
+00:00:08.550 --> 00:00:12.870
+I lecture at Northwestern, UC, Berkeley, and UC, Davis.
+
+00:00:12.869 --> 00:00:19.244
+Today, I'm going to discuss deploying a serverless event-driven microservice application.
+
+00:00:19.245 --> 00:00:23.700
+Function as a service is really just as simple as it sounds,
+
+00:00:23.699 --> 00:00:25.605
+it's a function that gets deployed.
+
+00:00:25.605 --> 00:00:28.815
+It's actually a type of serverless technology.
+
+00:00:28.815 --> 00:00:33.289
+One of the really fascinating things about a function is you can have an input,
+
+00:00:33.289 --> 00:00:34.534
+you can have an output,
+
+00:00:34.534 --> 00:00:35.944
+you can have a few lines of code,
+
+00:00:35.945 --> 00:00:37.880
+and you can do amazing things.
+
+00:00:37.880 --> 00:00:40.040
+Some of the amazing things you can do are,
+
+00:00:40.039 --> 00:00:43.339
+respond to events like a file getting uploaded,
+
+00:00:43.340 --> 00:00:48.109
+or having a website, or eventually even doing
+
+00:00:48.109 --> 00:00:50.000
+a machine learning prediction.
+
+00:00:50.000 --> 00:00:54.109
+So if you look at a function as a service in general,
+
+00:00:54.109 --> 00:00:58.759
+one of the really leaders in function as a service is AWS Lambda.
+
+00:00:58.759 --> 00:01:06.539
+AWS Lambda has inside of it a ecosystem that supports all of AWS' functionality,
+
+00:01:06.540 --> 00:01:11.075
+and it really is one of the key services that AWS provides.
+
+00:01:11.075 --> 00:01:14.579
+In general though, function as service isn't just AdaBoost Lambda,
+
+00:01:14.579 --> 00:01:18.004
+it's a serverless platform that executes logic.
+
+00:01:18.004 --> 00:01:20.629
+It typically does not store data,
+
+00:01:20.629 --> 00:01:23.704
+and also, it's typically event-driven.
+
+00:01:23.704 --> 00:01:25.780
+AWS Lambda as I mentioned,
+
+00:01:25.780 --> 00:01:27.500
+was the first public Cloud offering but
+
+00:01:27.500 --> 00:01:31.969
+many other Cloud providers are also doing function as a service.
+
+00:01:31.969 --> 00:01:36.319
+So if we look at a function as a service application,
+
+00:01:36.319 --> 00:01:38.500
+data engineering, that's one of them.
+
+00:01:38.500 --> 00:01:42.575
+Machine-learning, that's another application of function as a service.
+
+00:01:42.575 --> 00:01:45.365
+Also, single page web apps.
+
+00:01:45.364 --> 00:01:49.819
+Finally, mobile apps can also be an example of function as a service.
+
+00:01:49.819 --> 00:01:52.279
+Let's go and look into these a little bit and break it down.
+
+00:01:52.280 --> 00:01:57.530
+So what could a data engineering function as a service application really do?
+
+00:01:57.530 --> 00:02:01.829
+One of the things it can do is it can have a function that's sitting in the Cloud,
+
+00:02:01.829 --> 00:02:06.844
+and it's reading a list of companies from a serverless database.
+
+00:02:06.844 --> 00:02:10.219
+That serverless database could have Google,
+
+00:02:10.219 --> 00:02:15.604
+Facebook, Amazon, typical fame-based companies.
+
+00:02:15.604 --> 00:02:18.679
+Then it could actually pass that information on
+
+00:02:18.680 --> 00:02:23.224
+a timed interval over to let's say, an Amazon SQS queue.
+
+00:02:23.224 --> 00:02:26.780
+After that, there'll be another Lambda that's sitting there
+
+00:02:26.780 --> 00:02:31.090
+grabbing information and doing advanced natural language processing.
+
+00:02:31.090 --> 00:02:33.700
+So in terms of data engineering,
+
+00:02:33.699 --> 00:02:38.299
+you can also go through and do this advanced natural language processing.
+
+00:02:38.300 --> 00:02:40.465
+Now, in terms of machine learning,
+
+00:02:40.465 --> 00:02:43.319
+if we look at machine learning function as a service,
+
+00:02:43.319 --> 00:02:46.639
+a really good example actually is right out of Amazon.
+
+00:02:46.639 --> 00:02:49.654
+They have an example of an AWS Lambda that
+
+00:02:49.655 --> 00:02:53.430
+has IMEXnet model that's already been pre-configured,
+
+00:02:53.430 --> 00:02:55.605
+and it's been uploaded to the Cloud,
+
+00:02:55.604 --> 00:02:58.114
+then you can just call this serverless function
+
+00:02:58.115 --> 00:03:00.280
+on demand when you want to make a prediction.
+
+00:03:00.280 --> 00:03:02.340
+In terms of a single page web app,
+
+00:03:02.340 --> 00:03:04.459
+one of the things you can do is you can deploy
+
+00:03:04.459 --> 00:03:09.139
+basically a JavaScript page into S3,
+
+00:03:09.139 --> 00:03:12.290
+do static hosting, and then you can actually have
+
+00:03:12.289 --> 00:03:16.159
+the authentication occur via Lambda function that sits in the cloud.
+
+00:03:16.159 --> 00:03:19.159
+Finally, with mobile apps, one of the things that you can do
+
+00:03:19.159 --> 00:03:21.349
+is you're going to have events that get triggered,
+
+00:03:21.349 --> 00:03:24.509
+and those events are actually Lambda functions.
+

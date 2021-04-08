@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.050 --> 00:00:05.925
+Let's get into doing a slightly different form of Lambda development,
+
+00:00:05.925 --> 00:00:07.890
+we'll get into the console here.
+
+00:00:07.890 --> 00:00:12.420
+Before we really talked only about functions that have run alone,
+
+00:00:12.420 --> 00:00:15.980
+but we're going to create a function that's triggered by an API gateway.
+
+00:00:15.980 --> 00:00:20.355
+So to do that, I'm going to go through here and call this marcoweb,
+
+00:00:20.355 --> 00:00:23.805
+and then I'm going to select run time here, Python 3.8.
+
+00:00:23.805 --> 00:00:28.035
+Next, what I'll do is I'll wait for this to configure ,
+
+00:00:28.035 --> 00:00:30.690
+and I'm going to build this function that's going to
+
+00:00:30.690 --> 00:00:33.630
+have a trigger that is a Web service,
+
+00:00:33.630 --> 00:00:36.480
+and this trigger will be a API gateway service,
+
+00:00:36.480 --> 00:00:40.200
+so you can see here this is a Lambda_handler,
+
+00:00:40.200 --> 00:00:42.540
+I'm going to remove this implement,
+
+00:00:42.540 --> 00:00:44.795
+and then I'm going to select in here,
+
+00:00:44.795 --> 00:00:49.755
+I'm going to select the word "Polo",
+
+00:00:49.755 --> 00:00:53.040
+and then I'm going to go ahead and save.
+
+00:00:53.040 --> 00:00:56.405
+Then the next thing I'm going to do is I'm going to
+
+00:00:56.405 --> 00:01:00.010
+go up here and I'm going to select a trigger,
+
+00:01:00.010 --> 00:01:02.765
+and this trigger will be this API gateway.
+
+00:01:02.765 --> 00:01:07.025
+You can see here that there's an existing API or create a new one,
+
+00:01:07.025 --> 00:01:08.300
+we'll go ahead and create a new one,
+
+00:01:08.300 --> 00:01:10.760
+let's create a new API here.
+
+00:01:10.760 --> 00:01:15.025
+Then under here you can see that this says HTTP
+
+00:01:15.025 --> 00:01:20.345
+API ideal for building REST-based APIs that proxy to Lambda functions.
+
+00:01:20.345 --> 00:01:22.250
+So we'll go ahead and select this,
+
+00:01:22.250 --> 00:01:24.160
+and also you'll see that is open,
+
+00:01:24.160 --> 00:01:26.145
+so anybody can make a request.
+
+00:01:26.145 --> 00:01:27.890
+Now when I do this,
+
+00:01:27.890 --> 00:01:32.825
+it'll allow me to now trigger this Lambda function by just clicking on this link.
+
+00:01:32.825 --> 00:01:35.210
+You can see that I can call it from an API,
+
+00:01:35.210 --> 00:01:36.410
+I can call for a command line tool,
+
+00:01:36.410 --> 00:01:37.865
+or I could just click on it.
+
+00:01:37.865 --> 00:01:40.210
+This will return back Polo.
+
+00:01:40.210 --> 00:01:42.840
+There you go, and you can see that it returns back Polo.
+
+00:01:42.840 --> 00:01:44.520
+So that's really the idea here is that,
+
+00:01:44.520 --> 00:01:50.060
+Lambdas can be triggered either as a standalone function that can talk to S3 services,
+
+00:01:50.060 --> 00:01:51.245
+or in this case,
+
+00:01:51.245 --> 00:01:55.260
+you can see that it was triggered via an API gateway.
+

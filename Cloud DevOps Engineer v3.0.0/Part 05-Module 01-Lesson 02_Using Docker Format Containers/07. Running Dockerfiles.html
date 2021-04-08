@@ -1,0 +1,303 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Running Dockerfiles</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Using Docker Format Containers</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Docker Containers.html">01. Docker Containers</a>
+    </li>
+    <li class="">
+      <a href="02. Exercise Setting Up a Local Environment.html">02. Exercise: Setting Up a Local Environment</a>
+    </li>
+    <li class="">
+      <a href="03. Makefiles.html">03. Makefiles</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Create A Basic Makefile.html">04. Exercise: Create A Basic Makefile</a>
+    </li>
+    <li class="">
+      <a href="05. Install Docker.html">05. Install Docker</a>
+    </li>
+    <li class="">
+      <a href="06. Linting and CircleCI.html">06. Linting and CircleCI</a>
+    </li>
+    <li class="">
+      <a href="07. Running Dockerfiles.html">07. Running Dockerfiles</a>
+    </li>
+    <li class="">
+      <a href="08. Exercise Deploying to Amazon ECR.html">08. Exercise: Deploying to Amazon ECR</a>
+    </li>
+    <li class="">
+      <a href="09. Summary.html">09. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">07. Running Dockerfiles</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h2 id="running-dockerfiles">Running Dockerfiles</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Using "base" images</p></h3>
+  <div>
+  <h3 id="using-base-images">Using "base" images</h3>
+<p>One of the advantages of the Docker workflow for developers is the ability to use certified containers from the "official" development teams.  In this diagram a developer uses the official Python base image which is developed by the core Python developers.  This is accomplished by the <code>FROM</code> statement which loads in a previously created container image.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>base image</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/base-image.png" alt="**Docker &quot;Base&quot; Image Workflow**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Docker "Base" Image Workflow</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>base image description</p></h3>
+  <div>
+  <p>As the developer makes changes to the <code>Dockerfile</code>, they test locally, then push the changes to a private Docker Hub repo.  After this, the changes can be used by a deployment process to a Cloud or by another developer.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C04 L02 A06 Running Dockerfiles</p></h3>
+  <video controls>
+  <source src="07. ND9991 C04 L02 A06 Running Dockerfiles-OyML94gbcDc.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="07. ND9991 C04 L02 A06 Running Dockerfiles-OyML94gbcDc.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>You can find Noah's code <a href="https://github.com/udacity/DevOps_Microservices/tree/master/Lesson-2-Docker-format-containers/class-demos" rel="noopener noreferrer" target="_blank">here</a>, within the <code>demos</code> subdirectory. Note that he has begun filling out the <code>Dockerfile</code> and <code>run_docker.sh</code> files in the video.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="docker-cheat-sheet">Docker Cheat Sheet</h3>
+<ul>
+<li>Use <code>docker image ls</code> to see all of your created Docker images</li>
+<li><code>docker run -it {image name} bash</code> ran Noah's Docker image</li>
+</ul>
+<p>Here is a quick <a href="https://www.docker.com/sites/default/files/Docker_CheatSheet_08.09.2016_0.pdf" rel="noopener noreferrer" target="_blank">Docker cheat sheet for your reference</a>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="noahs-dockerfile">Noah's Dockerfile</h3>
+<p>Below is Noah's Dockerfile for your reference:</p>
+<pre><code>FROM python:3.7.3-stretch
+
+# Working Directory
+WORKDIR /app
+
+# Copy source code to working directory
+COPY . app.py /app/
+
+# Install packages from requirements.txt
+# hadolint ignore=DL3013
+RUN pip install --upgrade pip &amp;&amp;\
+    pip install --trusted-host pypi.python.org -r requirements.txt</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Dockerfiles</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What is <code>FROM</code> in a Dockerfile?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="900408" id="rbk1">
+        <label for="rbk1"><p>A compile step</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="900408" id="rbk2">
+        <label for="rbk2"><p>A directive to load code</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="900408" id="rbk3">
+        <label for="rbk3"><p>A python library</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk4" name="900408" id="rbk4">
+        <label for="rbk4"><p>A way to use C extensions</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk5" name="900408" id="rbk5">
+        <label for="rbk5"><p>All of the above</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    A directive to load code
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="08. Exercise Deploying to Amazon ECR.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. Running Dockerfiles')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

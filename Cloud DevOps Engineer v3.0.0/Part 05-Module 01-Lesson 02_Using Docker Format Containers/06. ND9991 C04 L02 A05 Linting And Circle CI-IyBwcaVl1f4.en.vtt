@@ -1,0 +1,376 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.440
+Okay. Now, we're ready for the next step,
+
+00:00:02.440 --> 00:00:04.855
+which is we're going to get into linting,
+
+00:00:04.855 --> 00:00:06.550
+not just the Python code,
+
+00:00:06.550 --> 00:00:09.340
+but also linting Docker containers themselves
+
+00:00:09.340 --> 00:00:12.070
+and also looking at the Dockerfile format
+
+00:00:12.070 --> 00:00:16.000
+so that it's ready to actually be more fully configured.
+
+00:00:16.000 --> 00:00:18.280
+Finally, we're going to set up CircleCI
+
+00:00:18.280 --> 00:00:20.380
+which is a SaaS-based build system
+
+00:00:20.380 --> 00:00:22.810
+to test everything all in one fell swoop.
+
+00:00:22.810 --> 00:00:25.390
+Let's look at a more sophisticated Makefile
+
+00:00:25.390 --> 00:00:27.295
+and see what that can look like.
+
+00:00:27.295 --> 00:00:30.970
+So again, I have the same virtual environment set up.
+
+00:00:30.970 --> 00:00:33.340
+I can go through here and do an install.
+
+00:00:33.340 --> 00:00:36.790
+Then there's a new interesting twist here,
+
+00:00:36.790 --> 00:00:40.350
+which is there's this config file for CircleCI,
+
+00:00:40.350 --> 00:00:42.810
+which is a SaaS-based build system.
+
+00:00:42.810 --> 00:00:46.520
+What that does is it goes through and it validates that my project,
+
+00:00:46.520 --> 00:00:51.070
+not only works locally and runs in local Docker container,
+
+00:00:51.070 --> 00:00:53.690
+but also works remotely as well.
+
+00:00:53.690 --> 00:00:56.330
+What's interesting is that with CircleCI,
+
+00:00:56.330 --> 00:01:00.500
+you can actually tap into this whole virtual environments
+
+00:01:00.500 --> 00:01:05.360
+and also the container system by running it locally
+
+00:01:05.360 --> 00:01:09.290
+and seeing what it'll look like when it runs in their SaaS build environment.
+
+00:01:09.290 --> 00:01:13.865
+You can see that it's done via "circleci local execute".
+
+00:01:13.865 --> 00:01:19.995
+Finally, there's a lint directive here that has one more step from the previous example,
+
+00:01:19.995 --> 00:01:23.100
+and that's using something called hadolint.
+
+00:01:23.100 --> 00:01:27.865
+Hadolint is a tool that will go through and lint your Dockerfile.
+
+00:01:27.865 --> 00:01:29.960
+So let's go ahead and look at what
+
+00:01:29.960 --> 00:01:33.590
+that Dockerfile and lint process is going to look like.
+
+00:01:33.590 --> 00:01:36.140
+So I'm going to go into that directory here.
+
+00:01:36.140 --> 00:01:43.260
+Let's go into "demos" and let's look at this project here.
+
+00:01:43.610 --> 00:01:47.570
+Now, what I'm going to do is I'm going to go ahead
+
+00:01:47.570 --> 00:01:51.665
+and look at what a Dockerfile looks like in the context of linting it.
+
+00:01:51.665 --> 00:01:55.745
+You can see here, this is just a really basic Dockerfile.
+
+00:01:55.745 --> 00:02:01.410
+So what I could do is I could say hadolint Dockerfile,
+
+00:02:01.410 --> 00:02:02.985
+and it'll go through.
+
+00:02:02.985 --> 00:02:04.780
+If it doesn't complain about anything,
+
+00:02:04.780 --> 00:02:06.710
+then we know the Dockerfile is fine.
+
+00:02:06.710 --> 00:02:10.620
+If I go through and I mess something up intentionally
+
+00:02:10.620 --> 00:02:13.170
+and I say, "This is bad,"
+
+00:02:13.170 --> 00:02:17.205
+and again, put some weird step here.
+
+00:02:17.205 --> 00:02:20.955
+Let's go through and run it again.
+
+00:02:20.955 --> 00:02:27.230
+You can see here that it has warned me that there's a problem right on line 3.
+
+00:02:27.230 --> 00:02:29.265
+So if I go back here again,
+
+00:02:29.265 --> 00:02:33.515
+I can go and I can delete this from the Dockerfile.
+
+00:02:33.515 --> 00:02:38.395
+So it also has that same style that a regular pylint has,
+
+00:02:38.395 --> 00:02:41.905
+that allows me to actually verify that things are working properly.
+
+00:02:41.905 --> 00:02:47.330
+Another thing that we can check out is this local CircleCI config.
+
+00:02:47.330 --> 00:02:51.410
+So if we go through here and I do an ls-la,
+
+00:02:51.410 --> 00:02:54.105
+you can see that it's a hidden directory.
+
+00:02:54.105 --> 00:02:56.895
+So I'm going to go into this CircleCI directory.
+
+00:02:56.895 --> 00:02:59.305
+Now, I'm going to look at this config file,
+
+00:02:59.305 --> 00:03:01.550
+and let's walk through what it does.
+
+00:03:01.550 --> 00:03:06.610
+So what it does is it starts off with declaring a job.
+
+00:03:06.610 --> 00:03:10.070
+So this is a job that will run in their SaaS build environment.
+
+00:03:10.070 --> 00:03:14.600
+We can actually use the exact same base Docker image
+
+00:03:14.600 --> 00:03:17.110
+that we're using in our project.
+
+00:03:17.110 --> 00:03:19.820
+So what's great about this is I can test Docker locally,
+
+00:03:19.820 --> 00:03:21.310
+and we'll get into that in a second,
+
+00:03:21.310 --> 00:03:24.315
+and I also can test it in their SaaS environment.
+
+00:03:24.315 --> 00:03:27.770
+So the first thing that I'm going to do once I've used this image
+
+00:03:27.770 --> 00:03:28.940
+is I'm going to go through,
+
+00:03:28.940 --> 00:03:32.360
+and I'm going to download and install the dependencies.
+
+00:03:32.360 --> 00:03:33.680
+So that's done right here.
+
+00:03:33.680 --> 00:03:36.760
+I again make a virtual environment just like we did earlier,
+
+00:03:36.760 --> 00:03:39.875
+but in this case, I'm going to make it in their SaaS build environment,
+
+00:03:39.875 --> 00:03:41.120
+I'm going to activate it,
+
+00:03:41.120 --> 00:03:43.340
+and then I'm going to run this "make install".
+
+00:03:43.340 --> 00:03:46.190
+The next step is, we would go through here
+
+00:03:46.190 --> 00:03:49.890
+and do a wget to download the hadolint binary
+
+00:03:49.890 --> 00:03:55.305
+and use that to actually be the linting tool for our Dockerfile.
+
+00:03:55.305 --> 00:04:00.090
+Next, I go ahead and I run this command "make lint"
+
+00:04:00.090 --> 00:04:03.555
+and that goes through and it runs those two commands that we had showed earlier,
+
+00:04:03.555 --> 00:04:06.089
+which is it does a lint for the Dockerfile
+
+00:04:06.089 --> 00:04:08.235
+and also does a lint for our Python code.
+
+00:04:08.235 --> 00:04:11.930
+So really, this is just an extra step of validation
+
+00:04:11.930 --> 00:04:15.800
+that is going to happen every single time a change is made to our environment.
+
+00:04:15.800 --> 00:04:18.275
+So let's go ahead and see how that would work.
+
+00:04:18.275 --> 00:04:20.100
+If I say here,
+
+00:04:20.100 --> 00:04:24.630
+I say make command and I do make space tab,
+
+00:04:24.630 --> 00:04:28.120
+you'll see that there's a run-circleci-local.
+
+00:04:28.120 --> 00:04:31.000
+So let's go ahead and run that command.
+
+00:04:31.000 --> 00:04:34.760
+What this is going to do is actually going to simulate
+
+00:04:34.760 --> 00:04:40.040
+exactly what it's going to do in the remote CircleCI environment,
+
+00:04:40.040 --> 00:04:43.780
+because it has the same Docker container.
+
+00:04:49.190 --> 00:04:51.810
+Great. So that looks like it's working.
+
+00:04:51.810 --> 00:04:53.340
+It's installing the packages.
+
+00:04:53.340 --> 00:04:55.480
+Once it's done installing the packages,
+
+00:04:55.480 --> 00:04:58.850
+then it's going to go through and do the lint operation.
+
+00:04:59.700 --> 00:05:01.120
+There we go.
+
+00:05:01.120 --> 00:05:05.365
+So now it's downloading the hadolint binary
+
+00:05:05.365 --> 00:05:09.490
+and it's going to install it inside of its local environment.
+
+00:05:09.490 --> 00:05:12.630
+Once that's done, now we can go through
+
+00:05:12.630 --> 00:05:16.380
+and run the hadolint, which lints the Dockerfile
+
+00:05:16.380 --> 00:05:19.585
+and also run the pylint, which lints our Python code.
+
+00:05:19.585 --> 00:05:21.505
+Great. Everything works locally.
+
+00:05:21.505 --> 00:05:26.350
+The final step here to test this whole dockerized SaaS build environment
+
+00:05:26.350 --> 00:05:28.345
+is to go look at CircleCI itself.
+
+00:05:28.345 --> 00:05:30.565
+So let's go ahead and look at how that looks.
+
+00:05:30.565 --> 00:05:37.085
+So here's what a CircleCI environment looks like every time a job is successfully run.
+
+00:05:37.085 --> 00:05:42.185
+It does the exact same sequence of steps as what happened locally in the terminal.
+
+00:05:42.185 --> 00:05:45.035
+So step 1 is you set up an environment.
+
+00:05:45.035 --> 00:05:48.335
+So it goes through and it gets that Docker container we told it about.
+
+00:05:48.335 --> 00:05:51.125
+Step 2 is it checks out the source code,
+
+00:05:51.125 --> 00:05:54.245
+goes through and does all the commands that we've told it.
+
+00:05:54.245 --> 00:05:58.175
+Finally, it goes through and installs those dependencies.
+
+00:05:58.175 --> 00:06:02.000
+Again, you can see that it's actually putting hadolint in there.
+
+00:06:02.000 --> 00:06:05.000
+Then finally, the last step is it's going to go through
+
+00:06:05.000 --> 00:06:07.220
+and run that command that we told it about,
+
+00:06:07.220 --> 00:06:09.185
+which is that run lint command.
+
+00:06:09.185 --> 00:06:14.020
+So you can see here its sources the virtual environment and it runs make lint.
+
+00:06:14.020 --> 00:06:17.150
+So what's so powerful about this automated setup is
+
+00:06:17.150 --> 00:06:20.704
+that exactly what I did in my terminal locally,
+
+00:06:20.704 --> 00:06:22.265
+the build servers doing.
+
+00:06:22.265 --> 00:06:23.630
+That means that, let's say
+
+00:06:23.630 --> 00:06:26.990
+a second or third or fourth developer that works on that project,
+
+00:06:26.990 --> 00:06:29.600
+they can look at CircleCI and they can see
+
+00:06:29.600 --> 00:06:32.990
+that they know what the working status of the system,
+
+00:06:32.990 --> 00:06:36.860
+not just at the source code level which in itself is pretty powerful,
+
+00:06:36.860 --> 00:06:39.290
+but also at the application level.
+
+00:06:39.290 --> 00:06:42.859
+So the exact Docker container has been validated
+
+00:06:42.859 --> 00:06:44.810
+along with the source code at the same time.
+
+00:06:44.810 --> 00:06:49.820
+So this is just another level of professionalism and automation
+
+00:06:49.820 --> 00:06:53.670
+that can occur in a software engineering project
+

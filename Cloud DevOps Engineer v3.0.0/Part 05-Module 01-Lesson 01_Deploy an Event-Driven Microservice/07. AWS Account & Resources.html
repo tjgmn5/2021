@@ -1,0 +1,291 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AWS Account &amp; Resources</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Deploy an Event-Driven Microservice</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Outline.html">01. Lesson Outline</a>
+    </li>
+    <li class="">
+      <a href="02. Functions as a Service (FaaS).html">02. Functions as a Service (FaaS)</a>
+    </li>
+    <li class="">
+      <a href="03. A Model for Serverless.html">03. A Model for Serverless</a>
+    </li>
+    <li class="">
+      <a href="04. Benefits of FaaS.html">04. Benefits of FaaS</a>
+    </li>
+    <li class="">
+      <a href="05. Cloud-Native.html">05. Cloud-Native</a>
+    </li>
+    <li class="">
+      <a href="06. Characteristics of Cloud-Native Systems.html">06. Characteristics of Cloud-Native Systems</a>
+    </li>
+    <li class="">
+      <a href="07. AWS Account &amp; Resources.html">07. AWS Account &amp; Resources</a>
+    </li>
+    <li class="">
+      <a href="08. Cloud9 Environment.html">08. Cloud9 Environment</a>
+    </li>
+    <li class="">
+      <a href="09. Lambda Functions.html">09. Lambda Functions</a>
+    </li>
+    <li class="">
+      <a href="10. Deploying and Testing.html">10. Deploying and Testing</a>
+    </li>
+    <li class="">
+      <a href="11. Tutorial Making Change.html">11. Tutorial: Making Change</a>
+    </li>
+    <li class="">
+      <a href="12. Event-Handling.html">12. Event-Handling</a>
+    </li>
+    <li class="">
+      <a href="13. Events &amp; Response.html">13. Events &amp; Response</a>
+    </li>
+    <li class="">
+      <a href="14. Create a Test.html">14. Create a Test</a>
+    </li>
+    <li class="">
+      <a href="15. Deploy &amp; Use API Gateway.html">15. Deploy &amp; Use API Gateway</a>
+    </li>
+    <li class="">
+      <a href="16. Creating a Virtual Environment.html">16. Creating a Virtual Environment</a>
+    </li>
+    <li class="">
+      <a href="17. Exercise Wikipedia.html">17. Exercise: Wikipedia</a>
+    </li>
+    <li class="">
+      <a href="18. Exercise Code.html">18. Exercise Code</a>
+    </li>
+    <li class="">
+      <a href="19. Wikipedia Example.html">19. Wikipedia Example</a>
+    </li>
+    <li class="">
+      <a href="20. Test &amp; Response.html">20. Test &amp; Response</a>
+    </li>
+    <li class="">
+      <a href="21. Summary.html">21. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">07. AWS Account & Resources</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h2 id="aws-console--cloud9-environment">AWS Console &amp; Cloud9 Environment</h2>
+<p>The majority of work that you do in this lesson will be completed using <a href="https://aws.amazon.com/cloud9/" rel="noopener noreferrer" target="_blank">AWS Cloud9</a>, which lets you code, run, and debug code in your browser! For certain exercises, you will be expected to work through a Cloud9 environment, which has access to all the libraries we need as well as data management and deployment tools!</p>
+<p>If you are familiar with the AWS console and Cloud9, you may proceed to the next video to get set up. If not, it is suggested that you read through these instructions carefully to set up an AWS account.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <hr />
+<h3 id="1-create-an-aws-account">1. Create an AWS Account</h3>
+<p>First, visit <a href="https://aws.amazon.com" rel="noopener noreferrer" target="_blank">Amazon AWS</a> and click on the <strong>Create an AWS Account</strong> button.</p>
+<ul>
+<li>If you have an AWS account already, sign in.</li>
+<li>Otherwise, sign up for an AWS account.</li>
+</ul>
+<p>When you register, you will need to provide a credit card, but you won’t be charged for anything at this point. You will also need to choose a support plan, and you can choose the <strong>free Basic Support Plan</strong>.</p>
+<p>After you've signed up, you should receive your AWS account confirmation email in a few minutes. Then return to <a href="https://aws.amazon.com" rel="noopener noreferrer" target="_blank">Amazon AWS</a> and sign in.</p>
+<h3 id="the-console">The Console</h3>
+<p>In the future, you can access the AWS console by visiting <a href="https://console.aws.amazon.com" rel="noopener noreferrer" target="_blank">console.aws.amazon.com</a>. The AWS console is a central hub from which you can access all of the various Amazon Web Services, including SageMaker.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="2-apply-aws-credits">2. Apply AWS Credits</h3>
+<p>All students are provided with a free set of AWS credits.  To get your AWS credits, go to the 'Resources' tab in the left of the classroom; there will be an 'AWS Credits' link to click there.  </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-05-26-at-7.10.18-pm.png" alt="AWS credits in the &quot;Resources&quot; tab" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>AWS credits in the "Resources" tab</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <p>Click on the 'Go to AWS' button to request your credits. This should bring up a form which you will need to complete.  </p>
+<blockquote>
+  <p>In your AWS account, <strong>your AWS Account ID can be found under 'My Account',</strong> which is itself found in the dropdown under the name of your account, between the bell and the 'Global' dropdown.</p>
+</blockquote>
+<p>After you've gone through all the steps, you'll receive an email with your code.  The email will be sent to the email address you entered on the AWS credits application.  It may take up to 48 hours to receive this email, though it is much quicker in most cases</p>
+<p>Under "AWS Promotional Credit " in the email, you'll find your code. Use this code on the link provided, which is your <a href="https://console.aws.amazon.com/billing/home?#/credits" rel="noopener noreferrer" target="_blank">account credits page</a>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="3-set-up-a-cloud9-environment">3. Set up a Cloud9 Environment</h3>
+<p>Then, you'll need to set up a Cloud9 environment that is connected to the <a href="https://github.com/udacity/DevOps_Microservices" rel="noopener noreferrer" target="_blank">main Github repository</a> for this course.  This environment will be the primary way in which we interact with the Cloud9 ecosystem.</p>
+<blockquote>
+  <p>Watch the <em>next</em> video to see how to set up this environment.</p>
+</blockquote>
+<blockquote>
+  <p>You can also read (instead of watch) the instructions for creating a Cloud9 environment on Noah's <a href="https://github.com/noahgift/awslambda/blob/master/beginners_guide_aws_lambda.ipynb" rel="noopener noreferrer" target="_blank">Github page</a>.</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="08. Cloud9 Environment.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. AWS Account &amp; Resources')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

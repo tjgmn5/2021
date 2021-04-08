@@ -1,0 +1,211 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.219
+Let's go ahead and look at the Makefile setup which is the next step in our journey
+
+00:00:05.219 --> 00:00:10.320
+to make this local environment able to be running dockerize containers.
+
+00:00:10.320 --> 00:00:14.565
+So what I'm going to do is move over to my shell.
+
+00:00:14.564 --> 00:00:18.314
+From here, I'm going to run a command that allows me to check out
+
+00:00:18.315 --> 00:00:23.220
+a template that has many of the tools that I normally use on our projects.
+
+00:00:23.219 --> 00:00:26.279
+So I do a git clone, here we go.
+
+00:00:26.280 --> 00:00:29.984
+Now, I'm going to cd into this my repo directory,
+
+00:00:29.984 --> 00:00:34.155
+and one of the things I'm going to do is look at something called a Makefile.
+
+00:00:34.155 --> 00:00:39.000
+So let's go ahead and look at this LS command here.
+
+00:00:39.000 --> 00:00:43.549
+From here, if I do ls, this is too small.
+
+00:00:43.549 --> 00:00:46.625
+Let's go ahead and look at the contents of this directory.
+
+00:00:46.625 --> 00:00:50.028
+One of the things that's in this directory is something called a Makefile,
+
+00:00:50.029 --> 00:00:52.145
+and a Makefile has been around for decades.
+
+00:00:52.145 --> 00:00:57.230
+What it is, is really as a convention that the unix shell is aware of
+
+00:00:57.229 --> 00:01:00.424
+that allows you to put a bunch of commands in it and run those commands.
+
+00:01:00.424 --> 00:01:06.185
+It's really a very convenient way to set up an order of operations in your project.
+
+00:01:06.185 --> 00:01:10.734
+So if we look at this Makefile, and I open it up with Vim,
+
+00:01:10.734 --> 00:01:15.875
+you can see that there's several different steps here or directives.
+
+00:01:15.875 --> 00:01:17.930
+There's a setup directive here at the top,
+
+00:01:17.930 --> 00:01:21.530
+and inside here is where I would create a virtual environment.
+
+00:01:21.530 --> 00:01:23.915
+We've already done that so I can skip that step.
+
+00:01:23.915 --> 00:01:27.770
+Next, we can look at this install, pip install.
+
+00:01:27.769 --> 00:01:31.310
+What this does is allows us to actually refer to
+
+00:01:31.310 --> 00:01:35.015
+a list of packages that will be installed in the requirement file.
+
+00:01:35.015 --> 00:01:36.859
+So every time I update my project,
+
+00:01:36.859 --> 00:01:38.480
+I just need to run make install.
+
+00:01:38.480 --> 00:01:40.635
+Next is there's a test directive.
+
+00:01:40.635 --> 00:01:45.890
+So if I wanted to test my application using the pytest framework or some other framework,
+
+00:01:45.890 --> 00:01:48.109
+I would just put in what the commands are there.
+
+00:01:48.109 --> 00:01:51.019
+Then finally, I have this lint directory here,
+
+00:01:51.019 --> 00:01:55.159
+and what this lint directory does is allows me to locally test
+
+00:01:55.159 --> 00:01:59.974
+different packages and make sure that they're syntactically correct.
+
+00:01:59.974 --> 00:02:03.349
+I also could go and I could add a Python black setup
+
+00:02:03.349 --> 00:02:06.500
+which would essentially rearranged my code
+
+00:02:06.500 --> 00:02:09.979
+so that's exactly the format that complies with
+
+00:02:09.979 --> 00:02:13.584
+the Python Standard for writing software which is PEP 8.
+
+00:02:13.585 --> 00:02:18.620
+So I'm going to go ahead and look at this requirement file.
+
+00:02:18.620 --> 00:02:22.625
+Let's make sure that the packages in here are what we would like.
+
+00:02:22.625 --> 00:02:25.539
+So we have pytest, pylint, jupyter,
+
+00:02:25.539 --> 00:02:30.739
+pytest-cov, pandas, nbval, click, flask, requests.
+
+00:02:30.740 --> 00:02:33.875
+So a bunch of different packages in my project, this looks about right.
+
+00:02:33.875 --> 00:02:37.120
+Now I'm going to go through and I'm going to run "make install."
+
+00:02:37.120 --> 00:02:39.795
+We see what happens here is that,
+
+00:02:39.794 --> 00:02:42.229
+it goes through and it runs that pip command for me,
+
+00:02:42.229 --> 00:02:46.354
+so I don't have to make sure I run exactly that.
+
+00:02:46.354 --> 00:02:48.454
+It's fairly tedious command.
+
+00:02:48.455 --> 00:02:50.180
+Every single time we want to do an update,
+
+00:02:50.180 --> 00:02:52.290
+I just run make install.
+
+00:02:52.360 --> 00:02:57.740
+Once that's running, that'll allow me to have access
+
+00:02:57.740 --> 00:03:01.670
+to the other packages and the other test routines that are set up in a Makefile.
+
+00:03:01.669 --> 00:03:08.239
+So the next step after this would be to do a makelint which will run the pylint command.
+
+00:03:08.240 --> 00:03:12.550
+So I go ahead and run that. Say makelint.
+
+00:03:12.550 --> 00:03:17.314
+It'll go through here and look at the packages that are set up in my repo.
+
+00:03:17.314 --> 00:03:18.740
+Everything is passed.
+
+00:03:18.740 --> 00:03:22.159
+Now to test out exactly how that lint works,
+
+00:03:22.159 --> 00:03:27.259
+one thing I can do is I can actually go to this command line tool here,
+
+00:03:27.259 --> 00:03:30.530
+and I can actually intentionally add some broken code.
+
+00:03:30.530 --> 00:03:33.349
+So if I go to let's say this first part here,
+
+00:03:33.349 --> 00:03:40.549
+and I add "this is broken" and I just make a syntactically incorrect line.
+
+00:03:40.550 --> 00:03:45.890
+Because that's not a correct Python statement, I can save this,
+
+00:03:45.889 --> 00:03:51.954
+run the lint command again and it will verify that in fact, there is a problem.
+
+00:03:51.955 --> 00:03:57.094
+You can see here it's this cli.py file has got a problem so we need to fix it.
+
+00:03:57.094 --> 00:04:00.514
+So if I now go back to that file, I can fix it.
+
+00:04:00.514 --> 00:04:07.919
+Go remove this broken line, save it, re-run the lint,
+
+00:04:07.919 --> 00:04:11.000
+and now I'm able to actually verify that the source code is correct.
+
+00:04:11.000 --> 00:04:12.139
+So this is perfect.
+
+00:04:12.139 --> 00:04:14.419
+Now we have working Python environment.
+
+00:04:14.419 --> 00:04:15.709
+We have Makefile setup.
+
+00:04:15.710 --> 00:04:18.180
+We can move on to our next step.
+

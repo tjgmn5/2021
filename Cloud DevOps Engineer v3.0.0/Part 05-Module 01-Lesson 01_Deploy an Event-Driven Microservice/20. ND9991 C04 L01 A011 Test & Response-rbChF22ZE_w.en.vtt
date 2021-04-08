@@ -1,0 +1,103 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.270
+So what I'm going to do next is I'm going to build another test function.
+
+00:00:03.270 --> 00:00:08.880
+But to test this out, I will call this again wikitest.
+
+00:00:08.880 --> 00:00:14.250
+Inside of here, we'll do an entity. So, "entity".
+
+00:00:14.250 --> 00:00:16.800
+Then, I'll pass in this time.
+
+00:00:16.800 --> 00:00:19.755
+As an example, we'll try "google".
+
+00:00:19.754 --> 00:00:22.964
+Let's go ahead and create this.
+
+00:00:22.964 --> 00:00:23.910
+There we go.
+
+00:00:23.910 --> 00:00:25.365
+Now, if I run this test,
+
+00:00:25.364 --> 00:00:28.004
+we should get some results for Google.
+
+00:00:28.004 --> 00:00:29.399
+Here we go.
+
+00:00:29.399 --> 00:00:32.250
+Google is an American multinational technology company
+
+00:00:32.250 --> 00:00:35.840
+that specializes in Internet-related services and products, etc.
+
+00:00:35.840 --> 00:00:39.260
+Great. So now we have this really multipurpose function.
+
+00:00:39.259 --> 00:00:41.405
+It does a lot of really powerful things.
+
+00:00:41.405 --> 00:00:43.700
+Now, I can make it respond to events.
+
+00:00:43.700 --> 00:00:46.220
+I can trigger it at a time-based interval.
+
+00:00:46.219 --> 00:00:48.944
+I can have it run potentially --
+
+00:00:48.944 --> 00:00:51.109
+and when somebody uploads a file,
+
+00:00:51.109 --> 00:00:53.030
+it could grab the name of that file.
+
+00:00:53.030 --> 00:00:57.635
+It's really this multi-purpose event that can do many different things.
+
+00:00:57.634 --> 00:01:01.640
+The final thing that I'll leave you with is if we go to Monitoring here,
+
+00:01:01.640 --> 00:01:06.305
+we can actually go ahead and look that these logs actually appear.
+
+00:01:06.305 --> 00:01:08.405
+Because in a real production environment,
+
+00:01:08.405 --> 00:01:11.644
+logging is maybe one of the most fundamental things you can do.
+
+00:01:11.644 --> 00:01:13.459
+So we go to this log stream
+
+00:01:13.459 --> 00:01:16.459
+and let's just make sure that Google string appears.
+
+00:01:16.459 --> 00:01:17.149
+Here we go.
+
+00:01:17.150 --> 00:01:18.950
+Here's a whole string that appears.
+
+00:01:18.950 --> 00:01:23.000
+So round trip, we've made a Lambda function that,
+
+00:01:23.000 --> 00:01:24.280
+not only uses our own code,
+
+00:01:24.280 --> 00:01:25.984
+but uses third-party libraries,
+
+00:01:25.984 --> 00:01:27.605
+deployed it to AWS,
+
+00:01:27.605 --> 00:01:33.120
+and then also found that it is logging correctly into AWS CloudWatch.
+

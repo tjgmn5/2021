@@ -1,0 +1,232 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.750
+Okay. Now that we've got our entire environment set up,
+
+00:00:03.750 --> 00:00:05.144
+the build server is running,
+
+00:00:05.144 --> 00:00:08.429
+we know we can configure a whole working app.
+
+00:00:08.429 --> 00:00:10.695
+Let's go ahead and break into docker itself.
+
+00:00:10.695 --> 00:00:13.169
+Look what the docker file looks like,
+
+00:00:13.169 --> 00:00:16.964
+and actually run these docker containers and build them locally.
+
+00:00:16.964 --> 00:00:20.085
+So let's go ahead and get into the shell, and get started.
+
+00:00:20.085 --> 00:00:26.260
+So let's look at a project here that it has a bunch of different interesting items,
+
+00:00:26.260 --> 00:00:28.650
+and inside of here we have a docker file.
+
+00:00:28.649 --> 00:00:33.000
+So let's go ahead and look at what this docker file looks like locally here.
+
+00:00:33.000 --> 00:00:37.174
+So in order to design your docker file,
+
+00:00:37.174 --> 00:00:39.794
+typically, you'll inherit from a base image.
+
+00:00:39.795 --> 00:00:44.914
+In this case, I'm going to inherit from Python 3.7.3-stretch.
+
+00:00:44.914 --> 00:00:47.689
+So this is an Bhutto version of
+
+00:00:47.689 --> 00:00:51.469
+a Docker base image and it has Python itself installed in it.
+
+00:00:51.469 --> 00:00:56.629
+So it's really a a very streamlined container that has almost nothing in it,
+
+00:00:56.630 --> 00:01:00.230
+other than Python, and a little bit of the Bhutto operating system.
+
+00:01:00.229 --> 00:01:04.849
+Next, I can go through and execute different directives in docker.
+
+00:01:04.849 --> 00:01:10.079
+So in this case, I tell it I want to set up a working directory that's called Slash app,
+
+00:01:10.079 --> 00:01:16.719
+and then I have a Flash gap that I actually copy locally into this working directory,
+
+00:01:16.719 --> 00:01:20.224
+so I copy it from my source code directory into this docker container.
+
+00:01:20.224 --> 00:01:26.863
+Then finally, what happens is I go through and I install Python locally,
+
+00:01:26.864 --> 00:01:29.469
+actually upgrade pip locally here,
+
+00:01:29.469 --> 00:01:32.780
+and actually use the requirements file that are in my source code directory.
+
+00:01:32.780 --> 00:01:37.280
+So basically, there's really two main things that are happening.
+
+00:01:37.280 --> 00:01:42.019
+First, I go through and I take my source code and put it into this docker container.
+
+00:01:42.019 --> 00:01:44.433
+Then next, I go through and I upgrade
+
+00:01:44.433 --> 00:01:47.239
+this particular container with all the third-party libraries.
+
+00:01:47.239 --> 00:01:51.530
+So it's basically ready to go as a application and
+
+00:01:51.530 --> 00:01:55.939
+also ready to go as a container which can run that application.
+
+00:01:55.939 --> 00:01:58.009
+So let's go ahead and run this.
+
+00:01:58.010 --> 00:01:59.835
+So in order to do that,
+
+00:01:59.834 --> 00:02:02.159
+what I'm going to do is I'm going to go through
+
+00:02:02.159 --> 00:02:05.375
+here and look at a run script that I've created.
+
+00:02:05.375 --> 00:02:08.830
+So I'm going to go ahead and cut that, run docker,
+
+00:02:08.830 --> 00:02:11.485
+and you can see the first step is,
+
+00:02:11.485 --> 00:02:14.645
+I'm going to actually build this image locally.
+
+00:02:14.645 --> 00:02:17.705
+So I'm going to call this tag demolocal.
+
+00:02:17.705 --> 00:02:19.890
+So let's go ahead and run that.
+
+00:02:20.740 --> 00:02:25.730
+So what happens here, is it goes through does all the steps are locally
+
+00:02:25.729 --> 00:02:30.199
+that are needed to package this app and create a local docker container.
+
+00:02:30.199 --> 00:02:32.854
+Later, if I want to upload that somewhere to,
+
+00:02:32.854 --> 00:02:34.564
+let's say Amazon ECR,
+
+00:02:34.564 --> 00:02:41.925
+or if I want to load that into another container registry like Docker Hub itself,
+
+00:02:41.925 --> 00:02:45.500
+I would be able to do that because I built it locally.
+
+00:02:51.860 --> 00:02:55.820
+Now that it's run a built locally,
+
+00:02:55.819 --> 00:02:59.079
+let's go back again and look at our build script here.
+
+00:02:59.080 --> 00:03:01.900
+The next step is, I'm going to verify,
+
+00:03:01.900 --> 00:03:04.390
+I'm going to do this docker image LS,
+
+00:03:04.389 --> 00:03:08.889
+I'm going to make sure that I can actually see that in my local built containers.
+
+00:03:08.889 --> 00:03:11.454
+Here we go. If I sort down here,
+
+00:03:11.455 --> 00:03:15.550
+we can see that demolocal was created 20 seconds ago, great.
+
+00:03:15.550 --> 00:03:20.665
+So now, I have access to that built container in my local operating system.
+
+00:03:20.664 --> 00:03:22.629
+Let's look at the final step.
+
+00:03:22.629 --> 00:03:24.340
+If we look at the final step,
+
+00:03:24.340 --> 00:03:29.555
+what I'm going to do is I'm going to run docker run-IT, demolocal.
+
+00:03:29.555 --> 00:03:31.560
+So that's the name of the container I built,
+
+00:03:31.560 --> 00:03:33.844
+and then I'm going to run the bash shell.
+
+00:03:33.844 --> 00:03:37.460
+So this is incredibly powerful step that allows me to have
+
+00:03:37.460 --> 00:03:41.099
+a completely isolated environment to test things out,
+
+00:03:41.099 --> 00:03:42.430
+including the source code,
+
+00:03:42.430 --> 00:03:44.569
+and the third-party packages that I've installed.
+
+00:03:44.569 --> 00:03:46.250
+Let's go ahead and run that command.
+
+00:03:46.250 --> 00:03:50.009
+Here we go. So I go here.
+
+00:03:50.900 --> 00:03:56.849
+Great. Now, you can see that I'm in my local environment if I do you name,
+
+00:03:57.819 --> 00:04:01.879
+you can see that it's not actually the Mac operating system anymore.
+
+00:04:01.879 --> 00:04:03.289
+This is running Linux.
+
+00:04:03.289 --> 00:04:05.074
+So we know what is inside that container.
+
+00:04:05.074 --> 00:04:06.534
+Then if I run Python,
+
+00:04:06.534 --> 00:04:09.185
+you can see there's a Python 3.7.3 here.
+
+00:04:09.185 --> 00:04:12.199
+I can actually verify that it installed one of these packages.
+
+00:04:12.199 --> 00:04:15.199
+So if I say import pandas as pd,
+
+00:04:15.199 --> 00:04:17.219
+this should work. There we go.
+
+00:04:17.220 --> 00:04:21.595
+So now, I know that my environment is working exactly the way I'd expect it to work,
+
+00:04:21.595 --> 00:04:24.485
+and I can go through, and I can test my application locally.
+
+00:04:24.485 --> 00:04:29.280
+This is really the power of building and running docker containers locally.
+

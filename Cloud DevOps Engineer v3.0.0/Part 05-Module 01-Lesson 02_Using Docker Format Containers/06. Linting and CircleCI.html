@@ -1,0 +1,331 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Linting and CircleCI</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Using Docker Format Containers</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Docker Containers.html">01. Docker Containers</a>
+    </li>
+    <li class="">
+      <a href="02. Exercise Setting Up a Local Environment.html">02. Exercise: Setting Up a Local Environment</a>
+    </li>
+    <li class="">
+      <a href="03. Makefiles.html">03. Makefiles</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Create A Basic Makefile.html">04. Exercise: Create A Basic Makefile</a>
+    </li>
+    <li class="">
+      <a href="05. Install Docker.html">05. Install Docker</a>
+    </li>
+    <li class="">
+      <a href="06. Linting and CircleCI.html">06. Linting and CircleCI</a>
+    </li>
+    <li class="">
+      <a href="07. Running Dockerfiles.html">07. Running Dockerfiles</a>
+    </li>
+    <li class="">
+      <a href="08. Exercise Deploying to Amazon ECR.html">08. Exercise: Deploying to Amazon ECR</a>
+    </li>
+    <li class="">
+      <a href="09. Summary.html">09. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">06. Linting and CircleCI</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h2 id="linting-and-circleci">Linting and CircleCI</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Extending a Makefile for use with Docker Containers and Build Systems</p></h3>
+  <div>
+  <h3 id="extending-a-makefile-for-use-with-docker-containers">Extending a Makefile for use with Docker Containers</h3>
+<p>Beyond the simple <code>Makefile</code>, it is also useful to extend it to do other things.  An example of this is as follows:</p>
+<h4 id="example-makefile-for-docker-and-circleci">Example Makefile for Docker and CircleCI</h4>
+<p>```bash <br />
+setup:<br />
+    python3 -m venv ~/.container-revolution-devops</p>
+<p>install:<br />
+    pip install --upgrade pip &amp;&amp;\<br />
+        pip install -r requirements.txt</p>
+<p>test:<br />
+    #python -m pytest -vv --cov=myrepolib tests/*.py<br />
+    #python -m pytest --nbval notebook.ipynb</p>
+<p>validate-circleci:<br />
+    # See <a href="https://circleci.com/docs/2.0/local-cli/#processing-a-config" rel="noopener noreferrer" target="_blank">https://circleci.com/docs/2.0/local-cli/#processing-a-config</a><br />
+    circleci config process .circleci/config.yml</p>
+<p>run-circleci-local:<br />
+    # See <a href="https://circleci.com/docs/2.0/local-cli/#running-a-job" rel="noopener noreferrer" target="_blank">https://circleci.com/docs/2.0/local-cli/#running-a-job</a><br />
+    circleci local execute</p>
+<p>lint:<br />
+    hadolint demos/flask-sklearn/Dockerfile<br />
+    pylint --disable=R,C,W1203,W1202 demos/<strong>/</strong>.py</p>
+<p>all: install lint test<br />
+```</p>
+<p>A <code>Dockerfile</code> linter is called <a href="https://github.com/hadolint/hadolint" rel="noopener noreferrer" target="_blank"><code>hadolint</code></a> checks for bugs in a <code>Dockerfile</code>.  A <a href="https://circleci.com/docs/2.0/local-cli/" rel="noopener noreferrer" target="_blank">local version of the CircleCI build system</a> allows for testing in the same environment as the SaaS offering.  The minimalist approach is still present.  A user only needs to remember to use the same commands:  <code>make install</code>, <code>make lint</code> and <code>make test</code>, but the <code>lint</code> step is more complete and powerful with the inclusion of <code>Dockerfile</code> as well as <code>Python</code> linting.</p>
+<p><em>Notes about installing <code>hadolint</code> and <code>circleci</code>:</em> <br />
+If you are on OS X you can <code>brew install hadolint</code>. If you are on another platform follow the instructions from <a href="https://github.com/hadolint/hadolint/" rel="noopener noreferrer" target="_blank">the <code>hadolint</code> GitHub repo</a>.  To install the local version of <code>circleci</code> on OS X or Linux you can run <code>curl -fLSs https://circle.ci/cli | bash</code> or follow the official instructions for <a href="https://circleci.com/docs/2.0/local-cli/" rel="noopener noreferrer" target="_blank">local version of the CircleCI build system</a>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Linting and Circle CI</p></h3>
+  <div>
+  <h3 id="circleci-lint-workflow">CircleCI lint workflow</h3>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C04 L02 A05 Linting And Circle CI</p></h3>
+  <video controls>
+  <source src="06. ND9991 C04 L02 A05 Linting And Circle CI-IyBwcaVl1f4.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="06. ND9991 C04 L02 A05 Linting And Circle CI-IyBwcaVl1f4.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>You can find Noah's code <a href="https://github.com/udacity/DevOps_Microservices/tree/master/Lesson-2-Docker-format-containers/class-demos" rel="noopener noreferrer" target="_blank">here</a>. Note that the <code>Makefile</code> used in the video is the one in the <code>class-demos</code> directory, while he changes into the subdirectory within <code>demos</code> after that.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="using-circleci">Using CircleCI</h3>
+<p>Here are the steps Noah took in the above video:</p>
+<ul>
+<li>Added to the Makefile:</li>
+</ul>
+<pre><code class="Makefile language-Makefile">  validate-circleci:
+      circleci config process .circleci/config.yml
+
+  run-circleci-local:
+      circleci local execute
+
+  lint: # This line should already be there with regular pylint
+      hadolint path/to/Dockerfile</code></pre>
+<ul>
+<li>Runs <code>hadolint Dockerfile</code></li>
+<li>Uses the <code>config.yml</code> file within a <code>.circleci</code> directory</li>
+<li>In the parent directory, runs <code>make run-circleci-local</code> to simulate what will happen in the remote CircleCI environment</li>
+<li>Uses the CircleCI website (a related blog post is linked below) to test remotely</li>
+</ul>
+<h3 id="notes-about-how-to-run-this-example">Notes about how to run this example</h3>
+<p>These instructions work the best on a Linux or OS X system or inside a Docker container itself.  One way to dramatically simplify installation and configuration in the Cloud is to use a Cloud based development environment like AWS Cloud9.  This was shown in the AWS Lambda examples in Lesson 1.  This allows you to eliminate a huge portion of the problems you can run into when installing software.  If you are expert at installing software on Linux, Windows or OS X, then this may not matter.  If you want the easiest path to running these commands, use AWS Cloud9.</p>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://circleci.com/blog/increase-reliability-in-data-science-and-machine-learning-projects-with-circleci/" rel="noopener noreferrer" target="_blank">Increase reliability in data science and machine learning projects with CircleCI</a></li>
+<li><a href="https://aws.amazon.com/cloud9/" rel="noopener noreferrer" target="_blank">AWS Cloud9</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="setup-aws-docker-project">Setup AWS Docker Project</h3>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Setup-Dockerproject</p></h3>
+  <video controls>
+  <source src="06. Setup-Dockerproject-v61ZF-UcvGo.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="06. Setup-Dockerproject-v61ZF-UcvGo.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Hadolint</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What does <code>hadolint</code> do? </p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="900410" id="rbk1">
+        <label for="rbk1"><p>Ports project to Kubernetes</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="900410" id="rbk2">
+        <label for="rbk2"><p>It is an IDE for Docker</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="900410" id="rbk3">
+        <label for="rbk3"><p>Lints a Dockerfile syntax</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk4" name="900410" id="rbk4">
+        <label for="rbk4"><p>Lints an entire project in Github</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk5" name="900410" id="rbk5">
+        <label for="rbk5"><p>All of the above</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Lints a Dockerfile syntax
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="07. Running Dockerfiles.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Linting and CircleCI')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

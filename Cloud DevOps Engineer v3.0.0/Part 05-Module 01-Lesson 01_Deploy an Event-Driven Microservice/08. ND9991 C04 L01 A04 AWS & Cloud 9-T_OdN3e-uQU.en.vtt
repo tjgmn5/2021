@@ -1,0 +1,247 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.170
+So now let's go in and look at AWS Lambda and
+
+00:00:04.170 --> 00:00:07.715
+actually run some of this Serverless application code,
+
+00:00:07.715 --> 00:00:10.185
+and actually see what it would look like in action.
+
+00:00:10.185 --> 00:00:14.250
+Okay, now that we've opened up the Amazon Management Console,
+
+00:00:14.250 --> 00:00:17.430
+the first thing to do to create a Serverless application
+
+00:00:17.430 --> 00:00:19.830
+is actually to go to Cloud9.
+
+00:00:19.830 --> 00:00:25.260
+So what I want to find a service that's available in the Amazon Console,
+
+00:00:25.260 --> 00:00:27.660
+I just type it in and do a partial keyword search.
+
+00:00:27.660 --> 00:00:31.260
+And here I can find this actual Cloud9 environment.
+
+00:00:31.260 --> 00:00:33.930
+Next, what I'm going to do is I'm actually going
+
+00:00:33.930 --> 00:00:36.990
+to create a brand new Cloud9 environment.
+
+00:00:36.990 --> 00:00:40.065
+So I go here and I say create environment,
+
+00:00:40.065 --> 00:00:42.200
+and what's really useful about
+
+00:00:42.200 --> 00:00:45.140
+the Cloud9 environment is that you can create
+
+00:00:45.140 --> 00:00:46.520
+many different environments and it'll
+
+00:00:46.520 --> 00:00:49.400
+automatically save for you and not
+
+00:00:49.400 --> 00:00:53.090
+run let's say at a constant interval and give you a big bill.
+
+00:00:53.090 --> 00:00:56.065
+So I'm going to call this one udacity,
+
+00:00:56.065 --> 00:01:00.494
+and inside of here I'm going to go ahead and make a small description,
+
+00:01:00.494 --> 00:01:06.120
+this is for writing Serverless code.
+
+00:01:06.120 --> 00:01:08.205
+Okay. Let's go to the next step.
+
+00:01:08.205 --> 00:01:13.610
+Then, by default really there are some great default set for you.
+
+00:01:13.610 --> 00:01:18.140
+You can go and create a new instance for EC2 or you could actually
+
+00:01:18.140 --> 00:01:20.300
+go in and do some more advanced things
+
+00:01:20.300 --> 00:01:23.060
+like you can actually run this on your own remote server,
+
+00:01:23.060 --> 00:01:25.430
+and also you have some instance types options.
+
+00:01:25.430 --> 00:01:28.635
+So in the case of this demo,
+
+00:01:28.635 --> 00:01:31.130
+I'm going to use the default free tier here which is
+
+00:01:31.130 --> 00:01:35.780
+one gig of RAM and virtual CPU which is really fine for what we're trying to do
+
+00:01:35.780 --> 00:01:41.685
+which is right very small JavaScript based IDE code.
+
+00:01:41.685 --> 00:01:46.640
+Finally you can choose between either Amazon Linux or Ubuntu server.
+
+00:01:46.640 --> 00:01:48.980
+When I develop on AWS,
+
+00:01:48.980 --> 00:01:52.385
+I typically like to use the operating system where my code would
+
+00:01:52.385 --> 00:01:55.910
+be developed because it reduces the amount of complexity, right?
+
+00:01:55.910 --> 00:01:59.975
+So if I have to translate from one Linux operating system to another,
+
+00:01:59.975 --> 00:02:03.410
+it could raise a little bit of a potential error.
+
+00:02:03.410 --> 00:02:05.420
+Finally as I mentioned,
+
+00:02:05.420 --> 00:02:09.110
+this is one of the most powerful features of the Cloud9 environment is
+
+00:02:09.110 --> 00:02:12.890
+that you don't have to actually constantly worry like did I turn it on,
+
+00:02:12.890 --> 00:02:16.210
+did I turn it off, it's basically like an auto timed light switch,
+
+00:02:16.210 --> 00:02:19.115
+it automatically turns off after 30 minutes.
+
+00:02:19.115 --> 00:02:21.845
+I've noticed that this works just fine for me.
+
+00:02:21.845 --> 00:02:24.275
+So I'm going to go ahead and say next step.
+
+00:02:24.275 --> 00:02:27.845
+Then I'm going to go through here and create the environment, and that's it.
+
+00:02:27.845 --> 00:02:31.820
+It's just a couple screens and then your environment will be created for you.
+
+00:02:31.820 --> 00:02:33.940
+Okay. Now we're in Cloud9.
+
+00:02:33.940 --> 00:02:37.850
+And what's really powerful about this Cloud9 environment is that you can
+
+00:02:37.850 --> 00:02:41.960
+see it's actually a real IDE with a real file system and location.
+
+00:02:41.960 --> 00:02:45.055
+So if I go at this bash prompt here,
+
+00:02:45.055 --> 00:02:49.935
+I type in ls, you can see the read me file here is the same read me file here.
+
+00:02:49.935 --> 00:02:53.375
+Also what's really powerful about it is that
+
+00:02:53.375 --> 00:02:56.615
+it's integrated into the AWS development environment.
+
+00:02:56.615 --> 00:03:00.050
+So for example, if I wanted to list what's in
+
+00:03:00.050 --> 00:03:05.765
+my S3 bucket and this is where you do this infinite storage in Amazon S3,
+
+00:03:05.765 --> 00:03:10.035
+I would type in AWS S3 LS,
+
+00:03:10.035 --> 00:03:13.850
+and that would actually show me along the pipe into the head operation.
+
+00:03:13.850 --> 00:03:15.190
+So I just see a few of them,
+
+00:03:15.190 --> 00:03:17.840
+and you can see it actually gives me
+
+00:03:17.840 --> 00:03:20.860
+the first few buckets that are available in my own account.
+
+00:03:20.860 --> 00:03:23.090
+So I have a complete hook into
+
+00:03:23.090 --> 00:03:26.855
+the AdaBoost ecosystem and a terminal to play around with the code.
+
+00:03:26.855 --> 00:03:31.039
+I would say the most powerful feature immediately though from Cloud nine,
+
+00:03:31.039 --> 00:03:34.685
+is that you can build lambda functions with just a few clicks.
+
+00:03:34.685 --> 00:03:37.220
+Okay what I'm going to do now is I'm going to go through and look
+
+00:03:37.220 --> 00:03:39.935
+at this window on the right here.
+
+00:03:39.935 --> 00:03:41.525
+One of them is collaborate,
+
+00:03:41.525 --> 00:03:44.930
+and one of the great features about Cloud9 is you can actually
+
+00:03:44.930 --> 00:03:48.425
+invite someone to your account and you can start pair programming together.
+
+00:03:48.425 --> 00:03:52.400
+I've used this in the past and it's a really powerful way to debug something
+
+00:03:52.400 --> 00:03:54.560
+that maybe you are stuck and you are going
+
+00:03:54.560 --> 00:03:56.720
+to be inefficient debugging it by yourself.
+
+00:03:56.720 --> 00:03:59.090
+Also one of the things you can do is you can look at
+
+00:03:59.090 --> 00:04:01.415
+this outline and you can search for things.
+
+00:04:01.415 --> 00:04:05.810
+And the AWS tab gives you access to what lambda functions
+
+00:04:05.810 --> 00:04:07.279
+you're currently developing,
+
+00:04:07.279 --> 00:04:10.160
+and there's also a full-fledged debugger as well.
+
+00:04:10.160 --> 00:04:13.745
+So let's go into the AWS resource tab. Here we go.
+
+00:04:13.745 --> 00:04:16.115
+I have AWS Lambda tab open.
+
+00:04:16.115 --> 00:04:17.750
+You can see there's remote function.
+
+00:04:17.750 --> 00:04:21.935
+So if I wanted to I can grab some lambda functions that live on AWS
+
+00:04:21.935 --> 00:04:27.650
+or I can go to these local functions here and I can just create one myself.
+

@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.549
+Now that we've been able to copy all the source code,
+
+00:00:02.549 --> 00:00:06.240
+let's make sure that the app is actually able to be set up properly.
+
+00:00:06.240 --> 00:00:08.890
+So let's go ahead and look at this Dockerfile.
+
+00:00:08.890 --> 00:00:14.714
+Now, one of the most important parts of the app being able to run effectively,
+
+00:00:14.714 --> 00:00:19.184
+is knowing which port is actually going to be exposed from the container.
+
+00:00:19.184 --> 00:00:23.924
+So in this case, because we want this to run on port 80,
+
+00:00:23.925 --> 00:00:27.525
+I'm going to need to make sure that I actually run this,
+
+00:00:27.524 --> 00:00:32.030
+expose the correct port externally so that my application can run.
+
+00:00:32.030 --> 00:00:34.200
+Really there's these two ports to think about.
+
+00:00:34.200 --> 00:00:37.230
+There's the port that the application itself would run
+
+00:00:37.229 --> 00:00:40.619
+and then there's the port that's exposed to me on my host.
+
+00:00:40.619 --> 00:00:45.219
+So this is actually exposing the host port, which is port 80.
+

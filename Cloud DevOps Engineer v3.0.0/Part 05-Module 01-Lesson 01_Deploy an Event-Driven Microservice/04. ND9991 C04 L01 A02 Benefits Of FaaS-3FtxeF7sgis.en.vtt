@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.750
+Let's talk about the benefits of function-as-a-service.
+
+00:00:03.750 --> 00:00:07.500
+Simplicity, that's one of the best benefits of function-as-a-service.
+
+00:00:07.500 --> 00:00:10.320
+You really have a function and you deploy it,
+
+00:00:10.320 --> 00:00:14.640
+and that's it, it's a great really intuitive model.
+
+00:00:14.640 --> 00:00:17.115
+Another thing is that, it's event-based,
+
+00:00:17.114 --> 00:00:21.794
+so you don't have to have something running all the time, servers to manage.
+
+00:00:21.795 --> 00:00:24.870
+In fact, there's a slogan that AWS mentions called,
+
+00:00:24.870 --> 00:00:29.655
+"No server is better than a server," or loosely paraphrased.
+
+00:00:29.655 --> 00:00:31.845
+This is because things are event-based,
+
+00:00:31.844 --> 00:00:34.019
+so you can have all this logic
+
+00:00:34.020 --> 00:00:37.095
+sitting in the Cloud but it doesn't run until you need it to run.
+
+00:00:37.094 --> 00:00:39.890
+It also can be much more cost-effective.
+
+00:00:39.890 --> 00:00:41.450
+So if you think about it,
+
+00:00:41.450 --> 00:00:42.980
+when you don't use something,
+
+00:00:42.979 --> 00:00:48.454
+like you have an automatic light timer or you have a temperature thermostat,
+
+00:00:48.454 --> 00:00:50.420
+it's the same type of a concept.
+
+00:00:50.420 --> 00:00:52.980
+You don't always have to have something running.
+
+00:00:52.979 --> 00:00:57.049
+It only runs when it's necessary or it's the right conditions,
+
+00:00:57.049 --> 00:00:58.265
+just like your thermostat.
+
+00:00:58.265 --> 00:01:01.670
+So, really, leveraging these cloud-native technologies,
+
+00:01:01.670 --> 00:01:06.769
+it really benefits you because you can combine all these things
+
+00:01:06.769 --> 00:01:08.420
+together and actually create
+
+00:01:08.420 --> 00:01:12.064
+a more sophisticated yet simple application that's event-based,
+
+00:01:12.063 --> 00:01:15.989
+is more cost-effective, and, ultimately, more powerful.
+

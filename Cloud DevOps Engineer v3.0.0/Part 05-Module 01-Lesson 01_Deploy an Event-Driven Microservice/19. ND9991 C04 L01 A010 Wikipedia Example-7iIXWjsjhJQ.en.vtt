@@ -1,0 +1,235 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.920
+Now that we've written a reasonably sophisticated Lambda function
+
+00:00:04.920 --> 00:00:07.770
+that does something interesting and returns back the result,
+
+00:00:07.770 --> 00:00:10.560
+let's go ahead and do something even more powerful and
+
+00:00:10.560 --> 00:00:14.055
+use a library that does a lot of the heavy lifting for us,
+
+00:00:14.055 --> 00:00:16.995
+and incorporate it inside of a Lambda function.
+
+00:00:16.995 --> 00:00:20.565
+So what we're going to do is we're going to call a library called Wikipedia,
+
+00:00:20.565 --> 00:00:23.810
+and what it does is pretty much what you'd expect,
+
+00:00:23.810 --> 00:00:27.975
+it goes to Wikipedia and grab some information, and returns it back.
+
+00:00:27.975 --> 00:00:30.300
+Fortunately in Python, that's just a line of code.
+
+00:00:30.300 --> 00:00:33.740
+So I'm going to go through and make another Lambda function locally.
+
+00:00:33.740 --> 00:00:37.550
+I'm going to select this Lambda icon here. Here we go.
+
+00:00:37.550 --> 00:00:38.645
+Create a new function.
+
+00:00:38.645 --> 00:00:43.845
+We'll call this udacitywikipedia or udacitywiki.
+
+00:00:43.845 --> 00:00:49.215
+Again, runtime in Python 3.6, go to hello-world-python3.
+
+00:00:49.215 --> 00:00:53.390
+Next, we'll leave the function trigger just to be a regular function,
+
+00:00:53.390 --> 00:00:56.620
+and then I'm going to go through and automatically generate the role,
+
+00:00:56.620 --> 00:00:59.040
+and go ahead and say, ''Finish.''
+
+00:00:59.040 --> 00:01:02.750
+Now from here, all I have to do is make sure
+
+00:01:02.750 --> 00:01:06.020
+that library is actually installed formally for me.
+
+00:01:06.020 --> 00:01:10.460
+So one of the ways to do that is I can look inside of this package here,
+
+00:01:10.460 --> 00:01:14.575
+and make sure that this requirements file is actually set,
+
+00:01:14.575 --> 00:01:17.290
+so that this Wikipedia library is installed.
+
+00:01:17.290 --> 00:01:21.455
+So in this case, I'm going to say Wikipedia,
+
+00:01:21.455 --> 00:01:23.915
+and I add that to the requirements file.
+
+00:01:23.915 --> 00:01:29.359
+Then what I can do is I can change into this Udacity project,
+
+00:01:29.359 --> 00:01:32.210
+this udacitywiki, a Lambda function,
+
+00:01:32.210 --> 00:01:36.425
+and then make sure that I source the virtual environment that was created for me.
+
+00:01:36.425 --> 00:01:42.820
+So I'm going to say source venv/bin activate.
+
+00:01:42.830 --> 00:01:51.645
+Then I can go through here and say pip install -r requirements,
+
+00:01:51.645 --> 00:01:54.635
+and this will actually install the requirements that are in that file,
+
+00:01:54.635 --> 00:01:57.080
+inside the virtual environment, there we go.
+
+00:01:57.080 --> 00:01:59.210
+We can see that Wikipedia was installed.
+
+00:01:59.210 --> 00:02:03.355
+Now, all I have to do is go to my Lambda function here,
+
+00:02:03.355 --> 00:02:04.910
+and actually put in my code.
+
+00:02:04.910 --> 00:02:07.205
+So let's go ahead and open that up.
+
+00:02:07.205 --> 00:02:09.290
+I already have the code written.
+
+00:02:09.290 --> 00:02:10.450
+Let's just see what it does.
+
+00:02:10.450 --> 00:02:11.930
+It's a really simple function.
+
+00:02:11.930 --> 00:02:14.665
+It uses this Wikipedia library,
+
+00:02:14.665 --> 00:02:18.935
+and it again has the same type of contract, there's an event.
+
+00:02:18.935 --> 00:02:21.710
+You can see here this event that gets passed in.
+
+00:02:21.710 --> 00:02:27.240
+I expect that whoever passes this function in will give me an entity,
+
+00:02:27.240 --> 00:02:31.580
+and then this entity gets passed into something called Wikipedia summary.
+
+00:02:31.580 --> 00:02:35.610
+From here, I can either grab one, two, three sentences.
+
+00:02:35.610 --> 00:02:37.910
+Well, let's go ahead and grab two sentences from
+
+00:02:37.910 --> 00:02:40.700
+Wikipedia and it'll summarize the entire page for me.
+
+00:02:40.700 --> 00:02:43.675
+Then the same contract that we talked about before,
+
+00:02:43.675 --> 00:02:47.275
+this is the important part, is it'll actually return back a 200.
+
+00:02:47.275 --> 00:02:51.710
+It'll make sure that the message is actually sent back as a JSON payload.
+
+00:02:51.710 --> 00:02:53.225
+So let's go ahead and try this out.
+
+00:02:53.225 --> 00:02:56.600
+So I'm going to go ahead and select, first save this,
+
+00:02:56.600 --> 00:03:00.065
+and then I'm going to select ''Run'' and I'm going to
+
+00:03:00.065 --> 00:03:04.520
+again select this Lambda local because I want to test it locally,
+
+00:03:04.520 --> 00:03:06.920
+and then I'm going to go ahead and use this function.
+
+00:03:06.920 --> 00:03:09.800
+So I'm going to say ''Entity'' and let's see
+
+00:03:09.800 --> 00:03:12.875
+who's an interesting one to do a webpage on,
+
+00:03:12.875 --> 00:03:15.105
+let's try Udacity. Here we go.
+
+00:03:15.105 --> 00:03:18.300
+Let's look at Udacity's webpage here.
+
+00:03:18.300 --> 00:03:24.480
+I'm going to go ahead and select ''Run'' and we have the result.
+
+00:03:24.480 --> 00:03:28.910
+It says ''Udacity is a for-profit educational organization founded by
+
+00:03:28.910 --> 00:03:33.155
+Sebastian Thrun, David Stevens, and Mike Sokolsky,
+
+00:03:33.155 --> 00:03:36.740
+offering massive open online courses, MOOCs.''
+
+00:03:36.740 --> 00:03:40.175
+According to Thrun, the origin of the name Udacity comes from
+
+00:03:40.175 --> 00:03:44.060
+company's desire to be audacious for you, the student.
+
+00:03:44.060 --> 00:03:47.120
+So pretty cool that we're able to actually use this,
+
+00:03:47.120 --> 00:03:50.675
+other library packages it up together in this Lambda function,
+
+00:03:50.675 --> 00:03:53.090
+and build something even more sophisticated.
+
+00:03:53.090 --> 00:03:56.810
+Like if you wanted to write this Wikipedia code ourselves, it would take a lot of work.
+
+00:03:56.810 --> 00:03:59.270
+Finally, let's do the same thing we did before.
+
+00:03:59.270 --> 00:04:04.700
+Let's go to the udacitywiki source code, and we'll deploy it.
+
+00:04:04.700 --> 00:04:10.490
+There we go. Now, this will actually get deployed back in our AWS ecosystem.
+
+00:04:10.490 --> 00:04:13.290
+So let's go back again to our Lambda console,
+
+00:04:13.290 --> 00:04:15.135
+and let's go find that function.
+
+00:04:15.135 --> 00:04:20.040
+I can see function tab here, again, look at the last modified.
+
+00:04:20.040 --> 00:04:23.860
+There we go. I see that it's already been deployed.
+
+00:04:23.860 --> 00:04:29.165
+What's great about this is that, that library is also deployed for us,
+
+00:04:29.165 --> 00:04:33.560
+and you can see actually it's all included automatically for us.
+

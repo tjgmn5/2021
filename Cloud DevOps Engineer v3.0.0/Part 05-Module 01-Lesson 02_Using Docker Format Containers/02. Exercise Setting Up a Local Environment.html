@@ -1,0 +1,263 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Setting Up a Local Environment</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Using Docker Format Containers</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Docker Containers.html">01. Docker Containers</a>
+    </li>
+    <li class="">
+      <a href="02. Exercise Setting Up a Local Environment.html">02. Exercise: Setting Up a Local Environment</a>
+    </li>
+    <li class="">
+      <a href="03. Makefiles.html">03. Makefiles</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Create A Basic Makefile.html">04. Exercise: Create A Basic Makefile</a>
+    </li>
+    <li class="">
+      <a href="05. Install Docker.html">05. Install Docker</a>
+    </li>
+    <li class="">
+      <a href="06. Linting and CircleCI.html">06. Linting and CircleCI</a>
+    </li>
+    <li class="">
+      <a href="07. Running Dockerfiles.html">07. Running Dockerfiles</a>
+    </li>
+    <li class="">
+      <a href="08. Exercise Deploying to Amazon ECR.html">08. Exercise: Deploying to Amazon ECR</a>
+    </li>
+    <li class="">
+      <a href="09. Summary.html">09. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">02. Exercise: Setting Up a Local Environment</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h2 id="setting-up-a-local-environment">Setting Up a Local Environment</h2>
+<p>Make sure to follow along with the below video to set up your own local environment!</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C04 L02 A02 Setting Up A Local Environment</p></h3>
+  <video controls>
+  <source src="02. ND9991 C04 L02 A02 Setting Up A Local Environment-sSuuD2WzAJw.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="02. ND9991 C04 L02 A02 Setting Up A Local Environment-sSuuD2WzAJw.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Setup Steps Recap</p></h3>
+  <div>
+  <p><em>Note</em>: You will need the <code>virtualenv</code> package installed to use <code>venv</code>. On a Mac, you may need to either <code>pip install</code> or <code>conda install</code> it depending on <code>which python3</code> path you use.</p>
+<p>Below are the steps again to refresh your memory!  In the steps below, <code>venv</code> is the name of the environment created, but you can name the environment anything you want.</p>
+<ul>
+<li>Create a Python3 virtual environment:  <code>python3 -m venv venv</code></li>
+<li>Activate the virtual environment:  <code>source venv/bin/activate</code></li>
+<li>Upgrade <code>pip</code> if you need to (optional):  <code>pip install --upgrade pip</code></li>
+<li>Install <code>pylint</code>:  <code>pip install pylint</code></li>
+<li>Install the code formatting tool <code>black</code>:  <code>pip install black</code></li>
+<li>Install the testing library <code>pytest</code>:  <code>pip install pytest</code></li>
+<li>Install the interactive interpreter <code>ipython</code>:  <code>pip install ipython</code></li>
+<li>Test it out by typing <code>ipython</code> and running some code </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Setting up the environment!</p></h3>
+  <div>
+  <div>
+    <h4>Task Description:</h4>
+    <p>Complete the steps below to set up your environment.</p>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="fdae0689-aba5-4c73-b060-fec6c32e27b9--0">
+        <label for="fdae0689-aba5-4c73-b060-fec6c32e27b9--0"><p>Create <code>venv</code></p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="fdae0689-aba5-4c73-b060-fec6c32e27b9--1">
+        <label for="fdae0689-aba5-4c73-b060-fec6c32e27b9--1"><p>Install <code>pylint</code></p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="fdae0689-aba5-4c73-b060-fec6c32e27b9--2">
+        <label for="fdae0689-aba5-4c73-b060-fec6c32e27b9--2"><p>Install <code>black</code></p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="fdae0689-aba5-4c73-b060-fec6c32e27b9--3">
+        <label for="fdae0689-aba5-4c73-b060-fec6c32e27b9--3"><p>Install <code>pytest</code></p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="fdae0689-aba5-4c73-b060-fec6c32e27b9--4">
+        <label for="fdae0689-aba5-4c73-b060-fec6c32e27b9--4"><p>Install <code>ipython</code></p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Nice! Let us move on to the next part.</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="03. Makefiles.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('02. Exercise: Setting Up a Local Environment')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

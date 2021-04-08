@@ -1,0 +1,181 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.100
+So let's talk about this concept of Cloud-Native.
+
+00:00:03.100 --> 00:00:07.380
+We've been discussing many of the features that Cloud-Native provides.
+
+00:00:07.380 --> 00:00:11.310
+But one of the things that you can do to really take advantage
+
+00:00:11.310 --> 00:00:14.580
+of a Cloud-Native system is you can design things for the Cloud.
+
+00:00:14.580 --> 00:00:17.175
+That's really one of the key differences.
+
+00:00:17.175 --> 00:00:19.950
+A good example is the relational database.
+
+00:00:19.950 --> 00:00:24.075
+The relational database was built in 1970, the first paper,
+
+00:00:24.075 --> 00:00:28.080
+and if we look at where we're at now, this is decades later,
+
+00:00:28.080 --> 00:00:32.445
+it's still in use in some companies that's not a Cloud-Native design.
+
+00:00:32.445 --> 00:00:35.060
+The relational database was designed in an era
+
+00:00:35.060 --> 00:00:38.390
+where the Internet was really not even a concept,
+
+00:00:38.390 --> 00:00:41.510
+and many of the things that relational database does,
+
+00:00:41.510 --> 00:00:43.820
+they're very powerful, but they're not really
+
+00:00:43.820 --> 00:00:46.820
+thinking about the concept of infinite compute,
+
+00:00:46.820 --> 00:00:51.420
+infinite scale, infinite disk I/O, events.
+
+00:00:51.420 --> 00:00:57.980
+So the Cloud-Native way of thinking is really not necessarily always
+
+00:00:57.980 --> 00:01:00.590
+taking advantage of something that was maybe a good idea
+
+00:01:00.590 --> 00:01:03.500
+decades ago but taking advantage of the new things
+
+00:01:03.500 --> 00:01:07.415
+that are available as a result of this infinite capacity.
+
+00:01:07.415 --> 00:01:11.630
+So let's break this down and look at this infinite capacity in action.
+
+00:01:11.630 --> 00:01:14.360
+So we have the concept of autoscaling.
+
+00:01:14.360 --> 00:01:16.715
+So let's take the relational database.
+
+00:01:16.715 --> 00:01:21.485
+By definition, it really has this idea of a transaction.
+
+00:01:21.485 --> 00:01:26.450
+A transaction is essentially not going to be automatically
+
+00:01:26.450 --> 00:01:29.465
+scalable because the transaction locks things
+
+00:01:29.465 --> 00:01:32.870
+and it actually has to guarantee that a write occurs.
+
+00:01:32.870 --> 00:01:39.220
+So this concept of autoscaling here is really a Cloud-Native type application.
+
+00:01:39.220 --> 00:01:42.290
+The persistence of data may have to change a little bit
+
+00:01:42.290 --> 00:01:46.400
+because maybe it don't want to have this lock situation
+
+00:01:46.400 --> 00:01:49.160
+where everything has to stop because you want to do a write.
+
+00:01:49.160 --> 00:01:53.470
+Maybe you want to do a distributed write or some other type of architecture.
+
+00:01:53.470 --> 00:02:01.175
+Also, infinite compute is a really interesting component of Cloud-Native operations.
+
+00:02:01.175 --> 00:02:04.595
+There was a long time where Moore's law was
+
+00:02:04.595 --> 00:02:10.640
+a really important concept and constantly, especially in the early 2000s,
+
+00:02:10.640 --> 00:02:12.605
+you'd think about buying a new computer,
+
+00:02:12.605 --> 00:02:15.140
+and you thought your computer would always get faster,
+
+00:02:15.140 --> 00:02:19.700
+but ultimately, it stopped, and Moore's law actually doesn't work anymore.
+
+00:02:19.700 --> 00:02:24.580
+As a result, other things have had to take up the capacity of Moore's law.
+
+00:02:24.580 --> 00:02:29.450
+One of the things that's taken over that capacity is this concept of infinite compute.
+
+00:02:29.450 --> 00:02:34.700
+A Cloud is now the supercomputer that is constantly getting bigger and bigger and
+
+00:02:34.700 --> 00:02:39.845
+it has the ability to run literally any workload that you wouldn't want to think about.
+
+00:02:39.845 --> 00:02:41.780
+So really, you should be thinking about
+
+00:02:41.780 --> 00:02:46.040
+Cloud-Native applications and not how fast your laptop or desktop is.
+
+00:02:46.040 --> 00:02:52.065
+Another thing about Cloud-Native applications is it has this concept of infinite storage.
+
+00:02:52.065 --> 00:02:55.070
+Machine learning and deep learning applications in particular
+
+00:02:55.070 --> 00:02:58.640
+really take advantage of this concept of infinite storage to actually get
+
+00:02:58.640 --> 00:03:02.060
+better training results and actually get more accurate predictions.
+
+00:03:02.060 --> 00:03:05.330
+But if you don't have a concept of infinite storage,
+
+00:03:05.330 --> 00:03:08.270
+it's really hard to use some of these deep learning algorithms
+
+00:03:08.270 --> 00:03:11.120
+because they really need very large amounts of data.
+
+00:03:11.120 --> 00:03:16.335
+Finally, a Cloud-Native application has the concept of advanced APIs.
+
+00:03:16.335 --> 00:03:21.650
+These advanced APIs can do many things that you probably cannot do in your own company.
+
+00:03:21.650 --> 00:03:25.970
+So an example would be translating things from Spanish to English,
+
+00:03:25.970 --> 00:03:32.220
+or doing natural language processing, or doing automatic machine learning.
+
+00:03:32.220 --> 00:03:36.170
+There's all these capabilities that these Cloud vendors are specialized in
+
+00:03:36.170 --> 00:03:41.000
+that your company or you as an individual really may not need to focus on.
+
+00:03:41.000 --> 00:03:43.775
+This is the concept of comparative advantage.
+
+00:03:43.775 --> 00:03:46.040
+You should focus on the thing you do best
+
+00:03:46.040 --> 00:03:49.650
+and let other people focus on the things they do best.
+
