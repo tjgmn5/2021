@@ -1,0 +1,490 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EC2 - Launch an Instance</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Foundational &amp; Compute Service</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need servers in the cloud.html">02. Why do we need servers in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Elastic Cloud Compute (EC2).html">03. Elastic Cloud Compute (EC2)</a>
+    </li>
+    <li class="">
+      <a href="04. EC2 - Launch an Instance.html">04. EC2 - Launch an Instance</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Dashboard.html">05. EC2 Dashboard</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Connect to Linux Instance.html">06. EC2 - Connect to Linux Instance</a>
+    </li>
+    <li class="">
+      <a href="07. Elastic Block Store (EBS).html">07. Elastic Block Store (EBS)</a>
+    </li>
+    <li class="">
+      <a href="08. EC2 - Create an EBS Volume.html">08. EC2 - Create an EBS Volume</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - EBS Dashboard.html">09. EC2 - EBS Dashboard</a>
+    </li>
+    <li class="">
+      <a href="10. Why do we need security in the cloud for our servers.html">10. Why do we need security in the cloud for our servers?</a>
+    </li>
+    <li class="">
+      <a href="11. Virtual Private Cloud (VPC).html">11. Virtual Private Cloud (VPC)</a>
+    </li>
+    <li class="">
+      <a href="12. VPC Dashboard.html">12. VPC Dashboard</a>
+    </li>
+    <li class="">
+      <a href="13. VPC - Create a VPC.html">13. VPC - Create a VPC</a>
+    </li>
+    <li class="">
+      <a href="14. VPC - Your VPCs.html">14. VPC - Your VPCs</a>
+    </li>
+    <li class="">
+      <a href="15. VPC - Network ACL.html">15. VPC - Network ACL</a>
+    </li>
+    <li class="">
+      <a href="16. Lab - Launch an EC2 Instance.html">16. Lab - Launch an EC2 Instance</a>
+    </li>
+    <li class="">
+      <a href="17. Why do we need compute power in the cloud.html">17. Why do we need compute power in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="18. Lambda.html">18. Lambda</a>
+    </li>
+    <li class="">
+      <a href="19. Lambda - Create a Function.html">19. Lambda - Create a Function</a>
+    </li>
+    <li class="">
+      <a href="20. Lab - Create and execute a Lambda.html">20. Lab - Create and execute a Lambda</a>
+    </li>
+    <li class="">
+      <a href="21. Elastic Beanstalk.html">21. Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="22. Lab - Deploy Sample App to Elastic Beanstalk.html">22. Lab - Deploy Sample App to Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="23. Lesson Recap.html">23. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. EC2 - Launch an Instance</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>In this tutorial, you will learn to launch an <a href="https://aws.amazon.com/ec2/" rel="noopener noreferrer" target="_blank">Amazon Elastic Compute Cloud</a> (EC2) instance. An EC2 instance is a Virtual Machine (VM) with user-defined configuration that runs on the cloud. There are a plethora of options to choose the instance-configuration of your choice. Let's learn the general steps to build an instance with any given configuration.</p>
+<h2 id="a-prerequisite">A. Prerequisite</h2>
+<ol>
+<li>You should have an AWS account. </li>
+</ol>
+<h2 id="b-go-to-the-ec2-dashboard">B. Go to the EC2 Dashboard</h2>
+<ol>
+<li>Log in to your AWS account, and go to the <a href="https://aws.amazon.com/console/" rel="noopener noreferrer" target="_blank">AWS Management Console</a>. Select the EC2 service.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-6.18.11-pm.png" alt="Snapshot: AWS Management Console. You can select any AWS service from here. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: AWS Management Console. You can select any AWS service from here. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li>Have a look at the <a href="https://console.aws.amazon.com/ec2/v2/home" rel="noopener noreferrer" target="_blank">EC2 Dashboard</a>. The EC2 Dashboard is home to a variety of related services, such as Amazon Machine Images, Elastic Block Store (EBS), Load Balancer, and Auto Scaling. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-6.46.25-pm.png" alt="Snapshot: EC2 Dashboard. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: EC2 Dashboard. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="c-start-the-launch-instance-wizard">C. Start the Launch Instance Wizard</h2>
+<p>Launching an instance is an eight-step process, as described below. At any stage, you can refer to the instruction given in the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-launch-instance" rel="noopener noreferrer" target="_blank">official documentation</a> for help. </p>
+<h3 id="step-1---choose-an-amazon-machine-image-ami">Step 1 - Choose an Amazon Machine Image (AMI)</h3>
+<p>An AMI is a template used to create a VM. AMI contains the pre-installed operating system, application server, and applications required to launch your instance.  There is a variety of Linux, Windows, and other OS servers available. <strong>Choose the one available under the free-tier option.</strong></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-6.50.13-pm.png" alt="Snapshot: Choose AMI. The **Quick Start** provides a list of basic AMIs. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Choose AMI. The <strong>Quick Start</strong> provides a list of basic AMIs. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2---choose-an-instance-type">Step 2 - Choose an Instance Type</h3>
+<p>Instance Type offers varying combinations of CPUs, memory (GB), storage (GB), types of network performance, and availability of IPv6 support. AWS offers a variety of instance types, based on the configuration you choose. <strong>Prefer to choose any one of those types supported by a free tier account</strong>. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-6.52.45-pm.png" alt="Snapshot: Choose an Instance Type. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Choose an Instance Type. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Select the hardware configuration of your instance. The <code>t2.micro</code> instance type, which is available under the <strong>free tier</strong>, is selected by default. It has 1 vCPU, 2.5 GHz, 1 GiB memory, the default root volume, and supports additional EBS storage.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3---configure-instance-details">Step 3 - Configure Instance Details</h3>
+<p>Provide the instance count and configuration details, such as network, subnet, behavior, monitoring, etc.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-6.57.24-pm.png" alt="Snapshot: Configure Instance Details. The wizard will populate the default values for all fields. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Configure Instance Details. The wizard will populate the default values for all fields. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-4---add-storage">Step 4 - Add Storage</h3>
+<p>You can choose to attach either SSD or Standard Magnetic drive to your instance.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-6.58.35-pm.png" alt="Snapshot: Add Storage. You can edit the setting of the default root volume or attach additional EBS volumes. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Add Storage. You can edit the setting of the default root volume or attach additional EBS volumes. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-5---add-tags">Step 5 - Add Tags</h3>
+<p>A tag serves as a label that you can attach to multiple AWS resources, such as volumes, instances, users, or roles. Tagging helps in easy search and grouping resources for various purposes.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-7.03.14-pm.png" alt="Snapshot: Add Tags. Tags help to categorize the resources across AWS services. It works as a label. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Add Tags. Tags help to categorize the resources across AWS services. It works as a label. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-6---configure-security-group">Step 6 - Configure Security Group</h3>
+<p>Attach a set of firewall rules to your instance(s) that controls the incoming traffic to your instance(s).</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-7.05.19-pm.png" alt="Snapshot: Security Groups. It defines the firewall rules, such as the protocol to open to network traffic and the set of valid IP addresses. By default, SSH protocol is used for a Linux instance, and RDP for a Windows instance. HTTP and HTTPS allow Internet traffic to reach your instance. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Security Groups. It defines the firewall rules, such as the protocol to open to network traffic and the set of valid IP addresses. By default, SSH protocol is used for a Linux instance, and RDP for a Windows instance. HTTP and HTTPS allow Internet traffic to reach your instance. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-7----review">Step 7 -  Review</h3>
+<p>Review your instance details before the launch.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-7.08.01-pm.png" alt="Snapshot: Review" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Review</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-8---download-key-pair">Step 8 - Download Key Pair</h3>
+<p>AWS generates a pair of public and private (encrypted) keys, that help in logging into the EC2 instance. Download the private key (.pem file) locally. The public key will be stored on the EC2 instance, while the private key will be available to download locally, <strong><em>just once</em></strong>. In case, if the private key file (.pem) is misplaced or lost, the AWS doesn't allow regenerating the private key. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-7.10.55-pm.png" alt="Snapshot: Download Private Key" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Download Private Key</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-9.18.12-pm.png" alt="Snapshot: EC2 dashboard &amp;#8594; Instances dashboard showing a running instance. You can select the checkbox against the instance you wish to connect/stop/terminate/view details. In this dashboard, you will see all your instances, their properties, and configuration details." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: EC2 dashboard &#8594; Instances dashboard showing a running instance. You can select the checkbox against the instance you wish to connect/stop/terminate/view details. In this dashboard, you will see all your instances, their properties, and configuration details.</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p><strong>Note</strong> - Do not forget to shut down/terminate every AWS resource after use. You can instantiate them again when you'd come back. </p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><em>Now, in one of your hands-on exercises next, you will have the chance to spin up your own EC2 Instance.</em>. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="recommended-read">Recommended Read</h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-best-practices.html" rel="noopener noreferrer" target="_blank">Best practices for Amazon EC2</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. EC2 Dashboard.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. EC2 - Launch an Instance')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

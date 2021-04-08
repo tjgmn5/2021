@@ -1,0 +1,106 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.265
+Welcome to Cloud Fundamentals,
+
+00:00:02.265 --> 00:00:04.259
+my name is Kesha Williams.
+
+00:00:04.259 --> 00:00:08.370
+I'm sure by now you've heard about the Cloud and its awesome benefits.
+
+00:00:08.369 --> 00:00:11.009
+The Cloud has become a key enabler for
+
+00:00:11.009 --> 00:00:15.390
+innovation with beneficial features like high availability,
+
+00:00:15.390 --> 00:00:19.274
+unlimited capacity, and on-demand scalability.
+
+00:00:19.274 --> 00:00:21.239
+If you're a big organization,
+
+00:00:21.239 --> 00:00:23.909
+you'll see cost savings when you no longer
+
+00:00:23.910 --> 00:00:27.149
+have to run and maintain your own internal data center.
+
+00:00:27.149 --> 00:00:29.278
+Not only will you save money,
+
+00:00:29.278 --> 00:00:31.679
+but your engineers can now focus on that
+
+00:00:31.679 --> 00:00:34.710
+which differentiates your business from the competition.
+
+00:00:34.710 --> 00:00:37.130
+Or maybe you are a software developer with
+
+00:00:37.130 --> 00:00:40.010
+the next big innovative idea and you need to
+
+00:00:40.009 --> 00:00:43.159
+quickly stand up your idea and just try it out.
+
+00:00:43.159 --> 00:00:45.409
+Well, the Cloud will benefit you.
+
+00:00:45.409 --> 00:00:49.584
+In this course, I will teach you the fundamentals of Cloud computing.
+
+00:00:49.585 --> 00:00:51.380
+While learning the fundamentals,
+
+00:00:51.380 --> 00:00:56.090
+you will explore the tools and services offered by Amazon Web Services,
+
+00:00:56.090 --> 00:01:00.140
+AWS, through interactive hands-on exercises.
+
+00:01:00.140 --> 00:01:02.600
+We will start with an overview of the Cloud and
+
+00:01:02.600 --> 00:01:05.420
+its benefits in the Cloud computing section.
+
+00:01:05.420 --> 00:01:10.835
+Next, servers in the Cloud and the foundational and compute services section.
+
+00:01:10.834 --> 00:01:14.390
+Then I will teach you about storage and databases in the Cloud,
+
+00:01:14.390 --> 00:01:17.394
+during the storage and content delivery section.
+
+00:01:17.394 --> 00:01:22.924
+Then we will discuss how to secure your Cloud applications in the security section.
+
+00:01:22.924 --> 00:01:26.099
+Then we discuss networking, auto-scaling,
+
+00:01:26.099 --> 00:01:30.204
+and load balancing in the networking and elasticity section.
+
+00:01:30.204 --> 00:01:32.864
+Next, I will teach you about messages,
+
+00:01:32.864 --> 00:01:36.659
+cues, and containers in the messaging and Containers section.
+
+00:01:36.659 --> 00:01:39.890
+Then we wrap up with services that help you manage
+
+00:01:39.890 --> 00:01:43.670
+your Cloud environment in the AWS management section.
+
+00:01:43.670 --> 00:01:45.500
+By the end of this course,
+
+00:01:45.500 --> 00:01:50.430
+you will have deployed your first application to AWS.
+

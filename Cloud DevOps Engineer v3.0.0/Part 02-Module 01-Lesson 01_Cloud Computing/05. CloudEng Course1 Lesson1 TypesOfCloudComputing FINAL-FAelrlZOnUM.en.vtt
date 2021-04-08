@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.260 --> 00:00:04.710
+There are three types of Cloud Computing.
+
+00:00:04.710 --> 00:00:07.740
+Infrastructure as a service,
+
+00:00:07.740 --> 00:00:09.960
+infrastructure as a service,
+
+00:00:09.960 --> 00:00:11.834
+platform as a service,
+
+00:00:11.833 --> 00:00:14.830
+and software as a service.
+
+00:00:15.410 --> 00:00:21.844
+Infrastructure as a service is when the provider supplies a Virtual Server instance,
+
+00:00:21.844 --> 00:00:26.129
+storage and mechanisms for you to manage the servers.
+
+00:00:26.129 --> 00:00:30.644
+Examples include Amazon Web Services or AWS,
+
+00:00:30.644 --> 00:00:36.759
+Rackspace, Digital Ocean and Iron Mountain etc.
+
+00:00:36.789 --> 00:00:39.500
+Platform as a service.
+
+00:00:39.500 --> 00:00:42.179
+This is when development tools are provided
+
+00:00:42.179 --> 00:00:45.079
+that are hosted on a provider's infrastructure.
+
+00:00:45.079 --> 00:00:48.769
+So they manage the hardware and operating system.
+
+00:00:48.770 --> 00:00:52.265
+You focus on managing and deploying applications.
+
+00:00:52.265 --> 00:00:58.855
+Examples of this are GoDaddy, salesforcesforce.com etc.
+
+00:00:58.854 --> 00:01:01.404
+Software as a service,
+
+00:01:01.405 --> 00:01:04.219
+this deliver software applications over
+
+00:01:04.219 --> 00:01:08.525
+the Internet that are run and managed by the service provider.
+
+00:01:08.525 --> 00:01:15.670
+Examples of this include Google's Gmail or Microsoft's Office 365.
+

@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.075
+The Cloud is the perfect place to host your travel blogging website, mytrips.com.
+
+00:00:06.075 --> 00:00:08.925
+The first thing you'll need though is a server,
+
+00:00:08.925 --> 00:00:13.620
+a powerful computer that can serve up your website when a user requests it.
+
+00:00:13.619 --> 00:00:18.939
+Next, you'll want to use security mechanisms to protect your website and data.
+
+00:00:18.940 --> 00:00:22.160
+Lastly, you'll want to use Cloud services to
+
+00:00:22.160 --> 00:00:25.690
+help you manage and maintain the lifecycle of your website.
+
+00:00:25.690 --> 00:00:30.020
+In this lesson, I will teach you about provisioning servers in the Cloud,
+
+00:00:30.019 --> 00:00:33.234
+and common security mechanisms to keep your data safe.
+
+00:00:33.234 --> 00:00:36.350
+Next, I will show you compute power in the Cloud,
+
+00:00:36.350 --> 00:00:39.410
+and orchestration services that help you manage
+
+00:00:39.409 --> 00:00:43.250
+the deployment and monitoring of your cloud-based applications.
+
+00:00:43.250 --> 00:00:45.750
+So let's get started.
+

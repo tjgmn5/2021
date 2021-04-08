@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.259
+When developing applications and providing services to our users or customers,
+
+00:00:05.259 --> 00:00:09.359
+we are in a shared responsibility model with AWS,
+
+00:00:09.359 --> 00:00:11.669
+and that is what this diagram shows.
+
+00:00:11.669 --> 00:00:15.719
+AWS is responsible for security of the Cloud.
+
+00:00:15.720 --> 00:00:19.740
+We are responsible for security in the Cloud.
+
+00:00:19.739 --> 00:00:22.259
+So for example, what that means,
+
+00:00:22.260 --> 00:00:27.675
+AWS provides us the security tools to protect our data but
+
+00:00:27.675 --> 00:00:34.020
+we retain control of what security tools we choose to implement to protect our systems.
+
+00:00:34.020 --> 00:00:39.395
+The orange portion of this diagram shows what AWS is responsible for,
+
+00:00:39.395 --> 00:00:43.460
+things like hardware, things like database,
+
+00:00:43.460 --> 00:00:47.000
+storage, regions, availability zones.
+
+00:00:47.000 --> 00:00:48.920
+In the blue portion,
+
+00:00:48.920 --> 00:00:52.969
+this shows what customers are responsible for.
+
+00:00:52.969 --> 00:00:56.329
+So things like our customer data,
+
+00:00:56.329 --> 00:01:01.969
+the firewall configuration, server-side encryption, etc.
+
+00:01:01.969 --> 00:01:05.704
+So when we think about who is responsible for what,
+
+00:01:05.704 --> 00:01:10.310
+we are responsible for security in the Cloud while AWS
+
+00:01:10.310 --> 00:01:16.170
+provides us the tools that we need in order to secure our systems.
+

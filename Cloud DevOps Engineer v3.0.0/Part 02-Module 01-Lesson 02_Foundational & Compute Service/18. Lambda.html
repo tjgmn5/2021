@@ -1,0 +1,363 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lambda</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Foundational &amp; Compute Service</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need servers in the cloud.html">02. Why do we need servers in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Elastic Cloud Compute (EC2).html">03. Elastic Cloud Compute (EC2)</a>
+    </li>
+    <li class="">
+      <a href="04. EC2 - Launch an Instance.html">04. EC2 - Launch an Instance</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Dashboard.html">05. EC2 Dashboard</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Connect to Linux Instance.html">06. EC2 - Connect to Linux Instance</a>
+    </li>
+    <li class="">
+      <a href="07. Elastic Block Store (EBS).html">07. Elastic Block Store (EBS)</a>
+    </li>
+    <li class="">
+      <a href="08. EC2 - Create an EBS Volume.html">08. EC2 - Create an EBS Volume</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - EBS Dashboard.html">09. EC2 - EBS Dashboard</a>
+    </li>
+    <li class="">
+      <a href="10. Why do we need security in the cloud for our servers.html">10. Why do we need security in the cloud for our servers?</a>
+    </li>
+    <li class="">
+      <a href="11. Virtual Private Cloud (VPC).html">11. Virtual Private Cloud (VPC)</a>
+    </li>
+    <li class="">
+      <a href="12. VPC Dashboard.html">12. VPC Dashboard</a>
+    </li>
+    <li class="">
+      <a href="13. VPC - Create a VPC.html">13. VPC - Create a VPC</a>
+    </li>
+    <li class="">
+      <a href="14. VPC - Your VPCs.html">14. VPC - Your VPCs</a>
+    </li>
+    <li class="">
+      <a href="15. VPC - Network ACL.html">15. VPC - Network ACL</a>
+    </li>
+    <li class="">
+      <a href="16. Lab - Launch an EC2 Instance.html">16. Lab - Launch an EC2 Instance</a>
+    </li>
+    <li class="">
+      <a href="17. Why do we need compute power in the cloud.html">17. Why do we need compute power in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="18. Lambda.html">18. Lambda</a>
+    </li>
+    <li class="">
+      <a href="19. Lambda - Create a Function.html">19. Lambda - Create a Function</a>
+    </li>
+    <li class="">
+      <a href="20. Lab - Create and execute a Lambda.html">20. Lab - Create and execute a Lambda</a>
+    </li>
+    <li class="">
+      <a href="21. Elastic Beanstalk.html">21. Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="22. Lab - Deploy Sample App to Elastic Beanstalk.html">22. Lab - Deploy Sample App to Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="23. Lesson Recap.html">23. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">18. Lambda</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>CloudEng Course1 Lesson2 Lambda(PART 1) V1</p></h3>
+  <video controls>
+  <source src="18. CloudEng Course1 Lesson2 Lambda(PART 1) V1-JVaYHLSH_oE.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="18. CloudEng Course1 Lesson2 Lambda(PART 1) V1-JVaYHLSH_oE.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1>Lambda</h1>
+<p>AWS Lambda provides you with computing power in the cloud by allowing you to execute code without standing up or managing servers. </p>
+<h1>Tips</h1>
+<ul>
+ <li>Lambda is found under the Compute section on the AWS Management Console.</li>
+<li>Lambdas have a time limit of 15 minutes.</li>
+<li>The code you run on AWS Lambda is called a “Lambda function.”</li>
+<li>Lambda code can be triggered by other AWS services.</li>
+<li>AWS Lambda supports Java, Go, PowerShell, Node.js, C#/.NET, Python, and Ruby. There is a Runtime API that allows you to use other programming languages to author your functions. </li>
+<li>Lambda code can be authored via the console.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which of the following is a serverless computing technology?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1558795552048" name="851080" id="a1558795552048">
+        <label for="a1558795552048"><p>Lambda</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558795574422" name="851080" id="a1558795574422">
+        <label for="a1558795574422"><p>EC2</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558795580541" name="851080" id="a1558795580541">
+        <label for="a1558795580541"><p>VPC</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558795584523" name="851080" id="a1558795584523">
+        <label for="a1558795584523"><p>EBS</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Lambda
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What is the easiest way to author a Lambda function?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1558795888040" name="851081" id="a1558795888040">
+        <label for="a1558795888040"><p>In a web-based cloud editor</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558795907732" name="851081" id="a1558795907732">
+        <label for="a1558795907732"><p>Locally in an IDE like Eclipse or Visual Studio</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558795908482" name="851081" id="a1558795908482">
+        <label for="a1558795908482"><p>Lambda console editor in the AWS Management Console</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558795909235" name="851081" id="a1558795909235">
+        <label for="a1558795909235"><p>A text-editor like Notepad</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+     Lambda console editor in the AWS Management Console
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What can trigger a Lambda? Select two.</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1558802905844" name="851082" id="a1558802905844">
+      <label for="a1558802905844"><p>Adding an EBS volume to EC2</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558802906652" name="851082" id="a1558802906652">
+      <label for="a1558802906652"><p>Receipt of an alert message from SNS</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558802907396" name="851082" id="a1558802907396">
+      <label for="a1558802907396"><p>A file upload to AWS S3</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558802908189" name="851082" id="a1558802908189">
+      <label for="a1558802908189"><p>A record insert to DynamoDB database</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>A file upload to AWS S3</li>
+      <li>A record insert to DynamoDB database</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-resources">#### Resources</h2>
+<ul>
+<li><a href="https://aws.amazon.com/lambda/" rel="noopener noreferrer" target="_blank">AWS Lambda</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="19. Lambda - Create a Function.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('18. Lambda')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

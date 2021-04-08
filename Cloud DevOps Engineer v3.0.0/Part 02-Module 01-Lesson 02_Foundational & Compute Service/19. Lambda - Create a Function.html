@@ -1,0 +1,462 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lambda - Create a Function</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Foundational &amp; Compute Service</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need servers in the cloud.html">02. Why do we need servers in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Elastic Cloud Compute (EC2).html">03. Elastic Cloud Compute (EC2)</a>
+    </li>
+    <li class="">
+      <a href="04. EC2 - Launch an Instance.html">04. EC2 - Launch an Instance</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Dashboard.html">05. EC2 Dashboard</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Connect to Linux Instance.html">06. EC2 - Connect to Linux Instance</a>
+    </li>
+    <li class="">
+      <a href="07. Elastic Block Store (EBS).html">07. Elastic Block Store (EBS)</a>
+    </li>
+    <li class="">
+      <a href="08. EC2 - Create an EBS Volume.html">08. EC2 - Create an EBS Volume</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - EBS Dashboard.html">09. EC2 - EBS Dashboard</a>
+    </li>
+    <li class="">
+      <a href="10. Why do we need security in the cloud for our servers.html">10. Why do we need security in the cloud for our servers?</a>
+    </li>
+    <li class="">
+      <a href="11. Virtual Private Cloud (VPC).html">11. Virtual Private Cloud (VPC)</a>
+    </li>
+    <li class="">
+      <a href="12. VPC Dashboard.html">12. VPC Dashboard</a>
+    </li>
+    <li class="">
+      <a href="13. VPC - Create a VPC.html">13. VPC - Create a VPC</a>
+    </li>
+    <li class="">
+      <a href="14. VPC - Your VPCs.html">14. VPC - Your VPCs</a>
+    </li>
+    <li class="">
+      <a href="15. VPC - Network ACL.html">15. VPC - Network ACL</a>
+    </li>
+    <li class="">
+      <a href="16. Lab - Launch an EC2 Instance.html">16. Lab - Launch an EC2 Instance</a>
+    </li>
+    <li class="">
+      <a href="17. Why do we need compute power in the cloud.html">17. Why do we need compute power in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="18. Lambda.html">18. Lambda</a>
+    </li>
+    <li class="">
+      <a href="19. Lambda - Create a Function.html">19. Lambda - Create a Function</a>
+    </li>
+    <li class="">
+      <a href="20. Lab - Create and execute a Lambda.html">20. Lab - Create and execute a Lambda</a>
+    </li>
+    <li class="">
+      <a href="21. Elastic Beanstalk.html">21. Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="22. Lab - Deploy Sample App to Elastic Beanstalk.html">22. Lab - Deploy Sample App to Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="23. Lesson Recap.html">23. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">19. Lambda - Create a Function</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>AWS Lambda service allows you to run your <strong>code</strong> without needing to provision or configure any Servers.  You get billed only for the compute time your code consumes. There is no charge when your code is not running. Currently, it supports Java, JavaScript, Python, Go, .Net, and Ruby. </p>
+<p>You can even set your code to automatically trigger from other AWS services or call it directly from any web or mobile application. To get a glimpse of a sample use case, watch the introductory video present on the <a href="https://aws.amazon.com/lambda/" rel="noopener noreferrer" target="_blank">AWS Lambda webpage</a>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-1-start-the-aws-lambda-service">Step 1. Start the AWS Lambda Service</h3>
+<p>Log in to your AWS account, and go to the <a href="https://console.aws.amazon.com/" rel="noopener noreferrer" target="_blank">AWS Management Console</a>. Navigate to the Lambda service.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-5.24.59-pm.png" alt="Snapshot: Start Lamda from the AWS homepage. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Start Lamda from the AWS homepage. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-launch-the-wizard">Step 2. Launch the Wizard</h3>
+<p>You will be taken to the AWS Lambda dashboard. Launch the <strong>Create function</strong> wizard. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-5.26.12-pm.png" alt="Snapshot: Lambda dashboard" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Lambda dashboard</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3-create-a-function">Step 3. Create a Function</h3>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol>
+<li>AWS provides three options to get the template code of your function:</li>
+</ol>
+<ul>
+<li><p><strong>Author from scratch</strong> - Start with a simple Hello World example.</p></li>
+<li><p><strong>Use a blueprint</strong> - Build a Lambda application from sample code and configuration presets for common use cases.</p></li>
+<li><p><strong>Browse serverless app repository</strong> - Deploy a sample Lambda application from the AWS Serverless Application Repository.</p>
+<p>In the snapshot below, we have chosen the <strong>Use a blueprint</strong> option. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-5.27.48-pm.png" alt="Snapshot: Choose the **Use a blueprint** option." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Choose the <strong>Use a blueprint</strong> option.</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li>Choose a Runtime and the name of the template.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-6.09.04-pm.png" alt="Snapshot: Filter &#x60;Runtime: nodejs 12.x&#x60; and &#x60;Blueprint name: hello-world&#x60;" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Filter <code>Runtime: nodejs 12.x</code> and <code>Blueprint name: hello-world</code></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li><p>Provide basic information about your function, such as the name, and permissions of your function. The permission decides which resources and actions your function has permission to access. </p>
+<p>In the snapshot below, we have chosen the default option <strong>Created a new role with basic Lambda permissions</strong>. In this case, the Lambda will create an execution role with permission to upload logs to Amazon CloudWatch Logs.</p></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-6.10.09-pm.png" alt="Snapshot: Choose a default role" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Choose a default role</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-6.10.55-pm.png" alt="Snapshot: The default code in the &quot;hello-world&quot; NodeJS application. Click on the &quot;Create function&quot;." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: The default code in the "hello-world" NodeJS application. Click on the "Create function".</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="4">
+<li><p>After the successful creation of the function, you see an acknowledgment. Remember, I mentioned that you can run your Lambda code in response to events. Now, you will have to create an <strong>Event</strong> that will <strong>trigger</strong> your code to run. </p>
+<p>Lambda provides a <strong>Designer</strong> user interface that allows choosing other AWS services, as event sources, to trigger your code, and use a destination (optional) of your choice to store the generated/processes output. </p>
+<p>In our example, let's click on the <strong>Test</strong> button to create an <strong>Event</strong> that will be manually passed to your code. </p></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-6.16.33-pm.png" alt="Snapshot: Create an **Event** by clicking on the **Test** button" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Create an <strong>Event</strong> by clicking on the <strong>Test</strong> button</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="5">
+<li>The Event is represented as a JSON file. Set three String values of your choice in the Event. A function can receive up to 10 test events.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-6.18.53-pm.png" alt="Snapshot: Event is a JSON file. We will pass this Event to your code." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Event is a JSON file. We will pass this Event to your code.</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-4-test-your-function">Step 4. Test Your Function</h3>
+<p>The snapshot below shows the Function code. Here, you can run the test, and see the output in the console below. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-6.19.58-pm.png" alt="Snapshot: Run the Test, and observe the console output below the code. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Run the Test, and observe the console output below the code. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Notice the <code>Response</code>, and the <code>Function Logs</code>. When you run the Test, the sample code accepts the event (JSON file) and processes the received information. In our case, we have printed all three JSON values on the console, and finally returned the first JSON value. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-5-delete-a-function">Step 5. Delete a Function</h3>
+<p>Even though you get billed only for the compute time your code consumes, we recommend you to delete your function if not in use. Deleting a function permanently removes the function code, however, the related IAM roles are retained in your account. You must delete the related IAM roles are well. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-6.26.52-pm.png" alt="Snapshot: Delete a function" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Delete a function</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="20. Lab - Create and execute a Lambda.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('19. Lambda - Create a Function')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

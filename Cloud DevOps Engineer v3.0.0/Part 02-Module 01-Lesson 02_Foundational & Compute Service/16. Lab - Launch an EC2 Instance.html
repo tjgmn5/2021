@@ -1,0 +1,421 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab - Launch an EC2 Instance</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Foundational &amp; Compute Service</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need servers in the cloud.html">02. Why do we need servers in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Elastic Cloud Compute (EC2).html">03. Elastic Cloud Compute (EC2)</a>
+    </li>
+    <li class="">
+      <a href="04. EC2 - Launch an Instance.html">04. EC2 - Launch an Instance</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Dashboard.html">05. EC2 Dashboard</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Connect to Linux Instance.html">06. EC2 - Connect to Linux Instance</a>
+    </li>
+    <li class="">
+      <a href="07. Elastic Block Store (EBS).html">07. Elastic Block Store (EBS)</a>
+    </li>
+    <li class="">
+      <a href="08. EC2 - Create an EBS Volume.html">08. EC2 - Create an EBS Volume</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - EBS Dashboard.html">09. EC2 - EBS Dashboard</a>
+    </li>
+    <li class="">
+      <a href="10. Why do we need security in the cloud for our servers.html">10. Why do we need security in the cloud for our servers?</a>
+    </li>
+    <li class="">
+      <a href="11. Virtual Private Cloud (VPC).html">11. Virtual Private Cloud (VPC)</a>
+    </li>
+    <li class="">
+      <a href="12. VPC Dashboard.html">12. VPC Dashboard</a>
+    </li>
+    <li class="">
+      <a href="13. VPC - Create a VPC.html">13. VPC - Create a VPC</a>
+    </li>
+    <li class="">
+      <a href="14. VPC - Your VPCs.html">14. VPC - Your VPCs</a>
+    </li>
+    <li class="">
+      <a href="15. VPC - Network ACL.html">15. VPC - Network ACL</a>
+    </li>
+    <li class="">
+      <a href="16. Lab - Launch an EC2 Instance.html">16. Lab - Launch an EC2 Instance</a>
+    </li>
+    <li class="">
+      <a href="17. Why do we need compute power in the cloud.html">17. Why do we need compute power in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="18. Lambda.html">18. Lambda</a>
+    </li>
+    <li class="">
+      <a href="19. Lambda - Create a Function.html">19. Lambda - Create a Function</a>
+    </li>
+    <li class="">
+      <a href="20. Lab - Create and execute a Lambda.html">20. Lab - Create and execute a Lambda</a>
+    </li>
+    <li class="">
+      <a href="21. Elastic Beanstalk.html">21. Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="22. Lab - Deploy Sample App to Elastic Beanstalk.html">22. Lab - Deploy Sample App to Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="23. Lesson Recap.html">23. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">16. Lab - Launch an EC2 Instance</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-virtual-servers-in-the-cloud"># Virtual Servers in the Cloud</h2>
+<p>In this hands-on exercise, you will launch a virtual server in the cloud within a secure network. You will also manage additional storage options for your server. </p>
+<ol>
+<li><p>Prerequisites: AWS Account</p></li>
+<li><p>By the end of this lab, you will be able to:</p></li>
+</ol>
+<ul>
+<li>Launch a secure EC2 (Elastic Cloud Compute) instance within a VPC (Virtual Private Cloud)</li>
+<li>Manage an EBS volume</li>
+</ul>
+<h2 id="instructions">Instructions:</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-1-create-a-vpc">Step 1. Create a VPC</h3>
+<ul>
+<li>From the <a href="https://console.aws.amazon.com/" target="_blank">AWS Management Console</a> page, select the VPC service.</li>
+<li>Use the <strong>Launch VPC Wizard</strong> to create a <strong>VPC with a Single Public Subnet</strong>. You can use the following field-values, and leave the remaining values as the defaults:</li>
+</ul>
+<p><center></p>
+<div class="index-module--table-responsive--1zG6k"><table class="index-module--table--8j68C index-module--table-striped--3HHC-">
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VPC name</code></td>
+<td>{Your choice}</td>
+</tr>
+<tr>
+<td><code>Availability Zone</code></td>
+<td>Select the first AZ from the dropdown</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p></p>
+<p></center></p>
+<ul>
+<li>Verify that you should see the newly created VPC in the <strong>Your VPCs</strong> service shown on the <a href="https://console.aws.amazon.com/vpc/home" target="_blank">VPC Dashboard</a>. Note the Name / VPC ID of the newly created VPC.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-launch-an-ec2-instance-and-attach-an-ebs-volume">Step 2. Launch an EC2 instance, and attach an EBS volume</h3>
+<ul>
+<li><p>Navigate to the EC2 console page: Click on <strong>Services</strong> in the upper left-hand menu, type <code>EC2</code> in the text box, and select the <code>EC2</code> service.</p></li>
+<li><p>On the EC2 Dashboard page, select the <strong>Instances</strong> services in the left-hand navigation pane.</p></li>
+<li><p>Use the <strong>Launch Instance</strong> wizard to launch an instance with the following configuration, and leave the remaining values as the defaults:</p></li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="stage" style="text-align:center;">Stage</th>
+<th id="configuration">Configuration</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">1.</td>
+<td>Amazon Machine Image (AMI)</td>
+<td><code>Amazon Linux 2 AMI (HVM), SSD Volume Type</code><br> Note: You have chosen a <strong>Free Tier Eligible</strong> AMI</td>
+</tr>
+<tr>
+<td style="text-align:center;">2.</td>
+<td>Instance Type</td>
+<td><code>t2.micro</code></td>
+</tr>
+<tr>
+<td style="text-align:center;">3.</td>
+<td>Configure Instance Details</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>a. Number of Instances</td>
+<td>1</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>b. Network</td>
+<td>Select the VPC that was created in the previous step</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>c. Subnet</td>
+<td>Default</td>
+</tr>
+<tr>
+<td style="text-align:center;">4.</td>
+<td>Storage</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>a. Root volume</td>
+<td>Default</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>a. Additional volume</td>
+<td>EBS volume <br>(8GiB, General purpose SSD-gp2, deletes on termination)</td>
+</tr>
+<tr>
+<td style="text-align:center;">5.</td>
+<td>Tags</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td style="text-align:center;">6.</td>
+<td>Security Group</td>
+<td>Default. Rule with <code>0.0.0.0/0</code> source will allow all IP <br> addresses to access your instance.</td>
+</tr>
+<tr>
+<td style="text-align:center;"></center></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Generate and download a new key pair, at the last stage of the <strong>Launch Instance</strong> wizard. <br><br />
+<strong><em>Important:</em></strong> This key-pair will allow you to log into your instance, using SSH, from your local machine. Save the key-pair carefully, because the same private key cannot be re-generated. </p></li>
+<li><p>Verify that you should see the newly created EC2 instance in the <strong>Instances</strong> services. Check the instance state, it should say <code>running</code>.<br></p></li>
+</ul>
+<blockquote>
+  <p><strong>Congratulations!</strong> You’ve launched your first virtual server in the cloud.</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3-cleanup--disable-ec2-instance">Step 3. Cleanup &amp; Disable EC2 Instance</h3>
+<p>To avoid recurring charges for leaving an instance running, let’s disable the EC2 instance and terminate the VPC</p>
+<ul>
+<li><p>From the EC2 Dashboard, select the instance just created, click on the <strong>Instance State</strong> button on top-right, and then select <strong>Terminate instance</strong>.</p></li>
+<li><p>From the EC2 Dashboard, select the <strong>Volumes</strong> services on the left navigation pane, and view the list of all existing EBS volumes in your account. You must delete the volumes created during the current exercise. </p></li>
+<li><p>From the VPC Dashboard, select the VPC just created, click on the <strong>Actions</strong> button on top-right, then select <strong>Delete VPC</strong>.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Launch an EC2 Instance</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="a0ad570b-3f51-4a25-8981-8d65d4c6f77b--0">
+        <label for="a0ad570b-3f51-4a25-8981-8d65d4c6f77b--0"><p>Access VPC service from AWS Management Console</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0ad570b-3f51-4a25-8981-8d65d4c6f77b--1">
+        <label for="a0ad570b-3f51-4a25-8981-8d65d4c6f77b--1"><p>Launch an EC2 instance</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0ad570b-3f51-4a25-8981-8d65d4c6f77b--2">
+        <label for="a0ad570b-3f51-4a25-8981-8d65d4c6f77b--2"><p>Attach an EBS volume</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0ad570b-3f51-4a25-8981-8d65d4c6f77b--3">
+        <label for="a0ad570b-3f51-4a25-8981-8d65d4c6f77b--3"><p>Cleanup &amp; Disable EC2 Instance</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Congratulations!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="17. Why do we need compute power in the cloud.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('16. Lab - Launch an EC2 Instance')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

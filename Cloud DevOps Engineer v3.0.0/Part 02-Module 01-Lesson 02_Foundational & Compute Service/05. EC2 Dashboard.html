@@ -1,0 +1,348 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EC2 Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Foundational &amp; Compute Service</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need servers in the cloud.html">02. Why do we need servers in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Elastic Cloud Compute (EC2).html">03. Elastic Cloud Compute (EC2)</a>
+    </li>
+    <li class="">
+      <a href="04. EC2 - Launch an Instance.html">04. EC2 - Launch an Instance</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Dashboard.html">05. EC2 Dashboard</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Connect to Linux Instance.html">06. EC2 - Connect to Linux Instance</a>
+    </li>
+    <li class="">
+      <a href="07. Elastic Block Store (EBS).html">07. Elastic Block Store (EBS)</a>
+    </li>
+    <li class="">
+      <a href="08. EC2 - Create an EBS Volume.html">08. EC2 - Create an EBS Volume</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - EBS Dashboard.html">09. EC2 - EBS Dashboard</a>
+    </li>
+    <li class="">
+      <a href="10. Why do we need security in the cloud for our servers.html">10. Why do we need security in the cloud for our servers?</a>
+    </li>
+    <li class="">
+      <a href="11. Virtual Private Cloud (VPC).html">11. Virtual Private Cloud (VPC)</a>
+    </li>
+    <li class="">
+      <a href="12. VPC Dashboard.html">12. VPC Dashboard</a>
+    </li>
+    <li class="">
+      <a href="13. VPC - Create a VPC.html">13. VPC - Create a VPC</a>
+    </li>
+    <li class="">
+      <a href="14. VPC - Your VPCs.html">14. VPC - Your VPCs</a>
+    </li>
+    <li class="">
+      <a href="15. VPC - Network ACL.html">15. VPC - Network ACL</a>
+    </li>
+    <li class="">
+      <a href="16. Lab - Launch an EC2 Instance.html">16. Lab - Launch an EC2 Instance</a>
+    </li>
+    <li class="">
+      <a href="17. Why do we need compute power in the cloud.html">17. Why do we need compute power in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="18. Lambda.html">18. Lambda</a>
+    </li>
+    <li class="">
+      <a href="19. Lambda - Create a Function.html">19. Lambda - Create a Function</a>
+    </li>
+    <li class="">
+      <a href="20. Lab - Create and execute a Lambda.html">20. Lab - Create and execute a Lambda</a>
+    </li>
+    <li class="">
+      <a href="21. Elastic Beanstalk.html">21. Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="22. Lab - Deploy Sample App to Elastic Beanstalk.html">22. Lab - Deploy Sample App to Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="23. Lesson Recap.html">23. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. EC2 Dashboard</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Let's have an overview of the information available on the EC2 dashboard. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-9.35.40-pm.png" alt="Snapshot: EC2 Dashboard" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: EC2 Dashboard</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>The details of the items highlighted in red above are:</p>
+<h3 id="1-resource-summary">1. Resource Summary</h3>
+<ul>
+<li>It presents the summary of all the EC2 resources running in a particular region. Currently, it is showing one instance (running state), one key pair, zero load balancers, two security groups, and one volume (storage). A few of these resources, such as key-pairs, security groups, and load balancers are modular in nature, meaning, they can be re-utilized to launch another EC2 instance. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="2-instances">2. Instances</h3>
+<p>The simplest form of the EC2 Instance is the pay as you go, the on-demand instance, and that's this type of instance created using the default Launch wizard available on the EC2 dashboard. It's just the normal one pay as you go.</p>
+<ul>
+<li><p><strong>Instances</strong> - It shows the list and details of the instances running in a given region. </p></li>
+<li><p><strong>Instance Types</strong> - It shows the list of instance types (different combinations of hardware - CPU, storage, memory, architecture) available to launch a new instance. </p></li>
+<li><p><strong>Launch Templates</strong> - These are the scripts that contain configuration information written either in JSON or YAML format to automate instance launches, simplify permission policies, and enforce best practices across your organization. </p></li>
+<li><p><strong>Spot Requests</strong> - Spot is where you actually bid on an instance. If the price falls below your bid, the instance is automatically spun up and if the price goes above your bid, the server is automatically terminated. So this is good if you have an application that has a flexible start and stop time. </p></li>
+<li><p><strong>Reserved Instances</strong> - This is where you sign a contract for your EC2 Instance in either one to three years and you get a huge discount. So, this is good when you know the steady-state for your applications and you want to pay upfront.</p></li>
+<li><p><strong>Dedicated Hosts</strong> - This is where you have your own dedicated hardware. You may have license requirements for certain software packages that say no multi-tenancy. Meaning that you cannot run that application on a shared server. So Dedicated Hosts would solve that problem.</p></li>
+<li><p><strong>Capacity Reservations</strong> - This allows you to reserve the desired capacity (count) of instances in a particular availability zone. The reserved capacity is charged at the selected instance type’s On-Demand rate whether an instance is running in it or not. </p></li>
+</ul>
+<p>See the detailed summary of all types and purchasing options <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html" rel="noopener noreferrer" target="_blank">here</a>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="3-images">3. Images</h3>
+<ul>
+<li>AWS provides an option to create custom <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html" rel="noopener noreferrer" target="_blank">AMIs</a>. Alternatively, you can use Images owned by Amazon and others. The AMI dashboard shows the Images owned by you. You can build a custom Image by using the <strong>EC2 Image Builder</strong> wizard available on this dashboard. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="4-elastic-block-store-ebs">4. Elastic Block Store (EBS)</h3>
+<blockquote>
+  <p>In simple words, you can think of EBS as an external hard drive that we attach to the server for additional storage.</p>
+</blockquote>
+<ul>
+<li><p><strong>Volumes</strong> - It shows the list and details of all the volumes currently available to use. You can re-purpose a volume, meaning, you can anytime attach or detach a volume to any instance. You can create new volumes by using the <strong>Create Volume</strong> wizard. AWS provides the option to have a variety of volumes, such as general-purpose solid-state drive (SSD), provisioned SSD, general hard-disk (HDD), throughput-optimized HDD, or magnetic drives. Each type of volume has a different serving capacity, such as the number of I/O operations per second. </p></li>
+<li><p><strong>Snapshots</strong> - A snapshot is the saved state of the data in the (existing) volume at a particular moment. Snapshots can be used to transfer volumes from one instance to another or saving the state for future use. </p></li>
+<li><p><strong>Lifecycle Manager</strong> - It helps to schedule and manage the creation and deletion of EBS snapshots.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-19-at-9.39.59-pm.png" alt="Snapshot: EC2 Dashboard (Scrolled down)" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: EC2 Dashboard (Scrolled down)</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="5-network--security">5. Network &amp; Security</h3>
+<ul>
+<li><p><strong>Security Groups</strong> - <br />
+A security group acts as firewall rules that control the traffic for EC2 instances or virtual private clouds (VPC). You can define multiple security groups. A given security group can be assigned to multiple EC2 instances. </p>
+<p>When you launch an instance, you can specify one or more security groups. You can modify the rules for a security group at any time; the new rules are automatically applied to all instances that are associated with the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html" rel="noopener noreferrer" target="_blank">security group</a>. </p></li>
+<li><p><strong>Elastic IP addresses</strong> - <br />
+An Elastic IP address is a <em>static</em> IPv4 address. Assume you have a server running on an EC2 instance, that has a specific IP address. In case, the instance fails, the back-up instance will spin up. The back-up instance will have a <em>different</em> IP address, which will require you to update the IP address used in your client application. This problem can be solved by using the elastic IP address. An <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html" rel="noopener noreferrer" target="_blank">Elastic IP address</a> can mask the failure of an instance by remapping the current IP address to another instance in your account. </p></li>
+<li><p><strong>Placement Group</strong> - You can imagine the EC2 instances as VMs running on the real servers in a data center. By default, the EC2 instances that you launch will be spread out across underlying hardware. But, sometimes there is a requirement to place the group of interdependent instances to meet the needs of your workload.  AWS allows to place the instances based on either of the following <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html" rel="noopener noreferrer" target="_blank">placement strategies</a> - cluster (tightly packed), partition (logically grouped), or spread evenly across the underlying hardware. </p></li>
+<li><p><strong>Key Pairs</strong> - A <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html" rel="noopener noreferrer" target="_blank">key-pair</a> is pair of (encrypted) public and (unencrypted PEM encoded) private keys. The public key is placed automatically on the instance, and the private key is made available to the user, just once. You can only log in to your running instance with the help of your private key. </p></li>
+<li><p><strong>Network Interfaces</strong> - A <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html" rel="noopener noreferrer" target="_blank">network interface</a> represents a virtual network card in a VPC, and it has a both private and public IP addresses. When you create an instance, a default network interface is attached to it. In this dashboard, you can create and attach additional network interfaces to any instance. An EC2 instance can have multiple network interfaces.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="6-load-balancing">6. Load Balancing</h3>
+<ul>
+<li><strong>Load Balancer</strong> - A load balancer distributes the incoming traffic across multiple <em>targets</em>, such as EC2 instances in one or more Availability Zones. AWS supports three types of load balancers: <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html" rel="noopener noreferrer" target="_blank">Application Load Balancers</a>, <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html" rel="noopener noreferrer" target="_blank">Network Load Balancers</a> (new), and <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/introduction.html" rel="noopener noreferrer" target="_blank">Classic Load Balancers</a> (might become deprecated soon). </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="7-ec2-auto-scaling">7. EC2 Auto Scaling</h3>
+<ul>
+<li>It is a <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html" rel="noopener noreferrer" target="_blank">service</a> that automatically launches/terminates EC2 instances based on user-defined scaling policies, scheduled actions, and health checks. It ensures that you have a specified number of instances always up and running. You can specify the minimum and maximum count of instances. This service uses <em>launch templates</em>, i.e., a script containing the configuration details of the instances that will be launched automatically. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. EC2 - Connect to Linux Instance.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. EC2 Dashboard')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.540 --> 00:00:07.770
+Elastic cloud compute or EC2 is a foundational piece of
+
+00:00:07.769 --> 00:00:10.619
+AWS's cloud computing platform and
+
+00:00:10.619 --> 00:00:13.829
+is a service that provides servers for rent in the cloud.
+
+00:00:13.830 --> 00:00:18.405
+Users are able to manage the servers and deploy applications to it.
+
+00:00:18.405 --> 00:00:21.179
+These servers are called instances.
+
+00:00:21.179 --> 00:00:25.335
+So you will hear developers refer to an EC2 instance.
+
+00:00:25.335 --> 00:00:29.955
+Instances are actual physical servers in an AZ or data center.
+
+00:00:29.954 --> 00:00:33.945
+So EC2 is not considered serverless.
+
+00:00:33.945 --> 00:00:39.689
+A nice feature of EC2 is that it is elastic like the name
+
+00:00:39.689 --> 00:00:45.354
+says and can grow or shrink based on the needs or load on the application.
+
+00:00:45.354 --> 00:00:48.619
+Essentially, additional servers can be automatically
+
+00:00:48.619 --> 00:00:52.864
+provisioned or servers that aren't needed anymore can be removed.
+
+00:00:52.865 --> 00:00:57.905
+You have re-sizable compute capacity in the Cloud which is pretty amazing.
+
+00:00:57.905 --> 00:01:02.929
+You even have the ability to manage the server and install applications on it.
+
+00:01:02.929 --> 00:01:08.849
+So let's log into the AWS console to review an EC2 instance.
+

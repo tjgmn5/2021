@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.290
+Let's talk about how AWS implement security for servers.
+
+00:00:06.200 --> 00:00:09.630
+Typically, when you create resources,
+
+00:00:09.630 --> 00:00:14.714
+they are on a flat network that is shared among various AWS users,
+
+00:00:14.714 --> 00:00:16.800
+such as EC2 classic.
+
+00:00:16.800 --> 00:00:23.039
+A flat network is a simple network design that reduces cost and overall administration.
+
+00:00:23.039 --> 00:00:27.089
+All devices and workstations are connected to a single switch.
+
+00:00:27.089 --> 00:00:29.100
+Meaning all devices are a part of
+
+00:00:29.100 --> 00:00:33.520
+the same broadcast network and communicate with each other.
+
+00:00:34.189 --> 00:00:39.019
+Virtual private cloud or VPC allows you to create
+
+00:00:39.020 --> 00:00:43.115
+your own private space or private network in the cloud.
+
+00:00:43.115 --> 00:00:47.975
+Then you launch your services like EC2 inside of that private network,
+
+00:00:47.975 --> 00:00:50.570
+and EC2 inherits security.
+
+00:00:50.570 --> 00:00:53.119
+This is done as a security measure.
+
+00:00:53.119 --> 00:00:57.934
+We control the network configuration and security and expose what we do
+
+00:00:57.935 --> 00:01:03.054
+or do not want exposed to the Internet using public or private subnets.
+
+00:01:03.054 --> 00:01:09.420
+VPC lives within a region and can span across multiple ECs.
+

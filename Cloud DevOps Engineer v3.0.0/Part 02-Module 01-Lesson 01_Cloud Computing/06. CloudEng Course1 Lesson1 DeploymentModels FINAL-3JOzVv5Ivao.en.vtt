@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.650 --> 00:00:05.565
+There are three Cloud computing deployment models.
+
+00:00:05.565 --> 00:00:10.720
+They are public, private, and hybrid.
+
+00:00:11.419 --> 00:00:16.844
+A Public Cloud makes resources available over the internet.
+
+00:00:16.844 --> 00:00:19.289
+Resources could include servers,
+
+00:00:19.289 --> 00:00:23.625
+databases, application development services, etc.
+
+00:00:23.625 --> 00:00:30.339
+Amazon Web Services or AWS is currently the largest Public Cloud provider.
+
+00:00:30.410 --> 00:00:35.469
+A Private Cloud called On-premises,
+
+00:00:35.750 --> 00:00:40.159
+is a proprietary network or an internal data center
+
+00:00:40.159 --> 00:00:43.789
+that supplies services to a limited number of people,
+
+00:00:43.789 --> 00:00:47.045
+and internal to a specific company.
+
+00:00:47.045 --> 00:00:52.925
+A hybrid model contains a combination of both a public and private Cloud.
+
+00:00:52.924 --> 00:00:57.819
+For example, PII or Personally Identifiable Information
+
+00:00:57.820 --> 00:01:03.228
+about customers may be stored in an On-premise database for security reasons,
+
+00:01:03.228 --> 00:01:06.935
+while a web application to manage that data may be served
+
+00:01:06.935 --> 00:01:11.689
+publicly with orchestration and communication between the two.
+

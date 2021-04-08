@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:03.529 --> 00:00:08.400
+EBS is a storage solution for EC2 instances.
+
+00:00:08.400 --> 00:00:13.515
+It is a physical hard drive that is connected to the server to increase storage.
+
+00:00:13.515 --> 00:00:19.094
+It has to be attached to your server and mounted before you start storing data on it.
+
+00:00:19.094 --> 00:00:24.789
+Some instance types come with EBS volumes already attached.
+
+00:00:25.699 --> 00:00:30.208
+There are two types of memory for an EC2 instance;
+
+00:00:30.208 --> 00:00:34.674
+in memory or instance store and on EBS.
+
+00:00:34.674 --> 00:00:39.589
+The benefit of using EBS over the instance store is that you're able
+
+00:00:39.590 --> 00:00:44.600
+to persist data after the EC2 instance is terminated or shut down.
+
+00:00:44.600 --> 00:00:48.185
+Any data stored on the volume are still accessible.
+
+00:00:48.185 --> 00:00:51.545
+A neat feature provided by AWS is that
+
+00:00:51.545 --> 00:00:57.605
+each Amazon EBS volume is automatically replicated within its availability zone.
+
+00:00:57.604 --> 00:01:00.244
+This protects you from component failure,
+
+00:01:00.244 --> 00:01:04.379
+offering high availability and durability.
+

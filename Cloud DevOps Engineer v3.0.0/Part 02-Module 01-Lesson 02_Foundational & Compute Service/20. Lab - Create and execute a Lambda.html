@@ -1,0 +1,654 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab - Create and execute a Lambda</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Foundational &amp; Compute Service</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need servers in the cloud.html">02. Why do we need servers in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Elastic Cloud Compute (EC2).html">03. Elastic Cloud Compute (EC2)</a>
+    </li>
+    <li class="">
+      <a href="04. EC2 - Launch an Instance.html">04. EC2 - Launch an Instance</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Dashboard.html">05. EC2 Dashboard</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Connect to Linux Instance.html">06. EC2 - Connect to Linux Instance</a>
+    </li>
+    <li class="">
+      <a href="07. Elastic Block Store (EBS).html">07. Elastic Block Store (EBS)</a>
+    </li>
+    <li class="">
+      <a href="08. EC2 - Create an EBS Volume.html">08. EC2 - Create an EBS Volume</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - EBS Dashboard.html">09. EC2 - EBS Dashboard</a>
+    </li>
+    <li class="">
+      <a href="10. Why do we need security in the cloud for our servers.html">10. Why do we need security in the cloud for our servers?</a>
+    </li>
+    <li class="">
+      <a href="11. Virtual Private Cloud (VPC).html">11. Virtual Private Cloud (VPC)</a>
+    </li>
+    <li class="">
+      <a href="12. VPC Dashboard.html">12. VPC Dashboard</a>
+    </li>
+    <li class="">
+      <a href="13. VPC - Create a VPC.html">13. VPC - Create a VPC</a>
+    </li>
+    <li class="">
+      <a href="14. VPC - Your VPCs.html">14. VPC - Your VPCs</a>
+    </li>
+    <li class="">
+      <a href="15. VPC - Network ACL.html">15. VPC - Network ACL</a>
+    </li>
+    <li class="">
+      <a href="16. Lab - Launch an EC2 Instance.html">16. Lab - Launch an EC2 Instance</a>
+    </li>
+    <li class="">
+      <a href="17. Why do we need compute power in the cloud.html">17. Why do we need compute power in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="18. Lambda.html">18. Lambda</a>
+    </li>
+    <li class="">
+      <a href="19. Lambda - Create a Function.html">19. Lambda - Create a Function</a>
+    </li>
+    <li class="">
+      <a href="20. Lab - Create and execute a Lambda.html">20. Lab - Create and execute a Lambda</a>
+    </li>
+    <li class="">
+      <a href="21. Elastic Beanstalk.html">21. Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="22. Lab - Deploy Sample App to Elastic Beanstalk.html">22. Lab - Deploy Sample App to Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="23. Lesson Recap.html">23. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">20. Lab - Create and execute a Lambda</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="compute-power-in-the-cloud">Compute Power in the Cloud</h1>
+<hr />
+<p>In this hands-on exercise, you will write your first Lambda function using Node.js.</p>
+<ol>
+<li>Prerequisites: </li>
+</ol>
+<ul>
+<li>AWS account</li>
+<li>An Amazon S3 bucket is required for this trigger to work</li>
+</ul>
+<ol>
+<li>By the end of this lab, you will be able to:</li>
+</ol>
+<ul>
+<li>Author a Lambda function using Node.js via the console</li>
+<li>Test a Lambda function via the console</li>
+</ul>
+<p>Follow the exercise instructions given below:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-0-prerequisite-create-an-s3-bucket">Step 0. Prerequisite: Create an S3 bucket</h3>
+<p>AWS S3 is a file storage service. Though, we will learn S3 in detail in the upcoming lesson, let's create an S3 bucket (folder) for this exercise. </p>
+<ul>
+<li>Go to the <a href="console.aws.amazon.com/s3/home" rel="noopener noreferrer" target="_blank">S3 dashboard</a>, and click on the <strong>Create bucket</strong>. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-25-at-4.06.17-pm.png" alt="Snapshot: S3 &amp;#8594; Buckets dashboard. View all of the S3 buckets in your account. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: S3 &#8594; Buckets dashboard. View all of the S3 buckets in your account. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Enter the bucket name, and make it visible to the public. The name should be unique worldwide, you can use the convention as <code>my-&lt;aws account id&gt;-bucket</code>.  Leave other fields as default, and create the bucket.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-3.14.38-pm.png" alt="Give a unique name to your bucket" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Give a unique name to your bucket</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-25-at-4.07.33-pm.png" alt="Make the bucket publicly accessible" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Make the bucket publicly accessible</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-1-create-a-lambda-function">Step 1. Create a Lambda Function</h3>
+<ul>
+<li>From the <a href="https://console.aws.amazon.com/" rel="noopener noreferrer" target="_blank">AWS Management Console</a> page, select the Lambda service.</li>
+<li>Use the <strong>Create function</strong> wizard, and select the <strong>Author from scratch</strong> option. </li>
+<li>Use the following basic information to create a function:</li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="field">Field</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function name</td>
+<td>Your choice</td>
+</tr>
+<tr>
+<td>Runtime</td>
+<td><code>Node.js 12.x</code></td>
+</tr>
+<tr>
+<td>Permissions</td>
+<td>Use default</td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+  <p>By default, Lambda will create an execution role with permissions to upload logs to Amazon CloudWatch Logs.</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-add-a-trigger">Step 2: Add a Trigger</h3>
+<p>Next, the wizard will automatically display the details of the newly created function. Add a trigger under the Designer section .</p>
+<ul>
+<li>Click Add Trigger </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-4.10.23-pm.png" alt="The Designer section" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>The Designer section</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>On the Add Trigger screen, select “S3” as the trigger </li>
+<li>Select the S3 bucket name for the Bucket </li>
+<li>For Event Type, select “All object create events”. </li>
+</ul>
+<blockquote>
+  <p><strong>This means that anytime a file is created (or uploaded) to the selected S3 bucket, the lambda function will be triggered .</strong></p>
+  <ul>
+  <li>Acknowledge the Recursive invocation message&nbsp; </li>
+  <li>Click the Add button . *Congratulations, you’ve added a trigger! *</li>
+  </ul>
+</blockquote>
+<p>In the Designer section, click on the name of the Lambda to have the Function Code section reappear </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3-configure-test-event">Step 3. Configure Test event</h3>
+<p>Next, the wizard will automatically display the details of the newly created function. </p>
+<ul>
+<li>Click on the <strong>Test</strong> button on the upper right-hand corner, to configure test event(s). </li>
+<li>Ensure the <strong>Event template</strong> is <code>Hello World</code>.</li>
+<li>For the <strong>Event name</strong> enter <code>TestEvent</code>. </li>
+<li>Update the JSON to the statement below, replacing the string value with your name.</li>
+</ul>
+<pre><code class="json language-json">   {
+   "key1": "Place your name here"
+   }</code></pre>
+<h3 id="step-4-modify-a-lambda-function">Step 4. Modify a Lambda Function</h3>
+<ul>
+<li>Go to the <strong>Function code</strong> section, where you can view the following default JS code:</li>
+</ul>
+<pre><code class="js language-js">exports.handler = async (event) =&gt; {
+    // TODO implement
+    const response = {
+        statusCode: 200,
+        body: JSON.stringify('Hello from Lambda!'),
+    };
+    return response;
+};</code></pre>
+<ul>
+<li>Replace the code on Line 5 with the statement below, and save your code:</li>
+</ul>
+<pre><code class="js language-js">body: JSON.stringify('Hello ' + event.key1 + ' from Lambda!'),</code></pre>
+<ul>
+<li><p>Deploy your saved function by clicking on the <strong>Deploy</strong> button at the top-right of the current section.</p></li>
+<li><p>Edit the <strong>Basic Settings</strong> section, and save the following values:</p></li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="field">Field</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td><code>Udacity Function</code></td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>10 minutes</td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Make sure the <strong>Execution role</strong> filed uses an existing role.</li>
+</ul>
+<h3 id="step-5-test-a-lambda-function">Step 5. Test a Lambda Function</h3>
+<ul>
+<li>Click the <strong>Test</strong> button in the upper right-hand corner again to test your function. </li>
+<li>The output will be displayed in the <code>Execution results</code> section at the top. Expand the <strong>Details</strong> to review the output.</li>
+</ul>
+<blockquote>
+  <p>Congratulations on writing your first Lambda function!</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-4.12.18-pm.png" alt="Test output " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Test output </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-6-add-files-to-the-bucket">Step 6. Add files to the bucket</h3>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>From the <a href="console.aws.amazon.com/s3/home" target="_blank">S3 dashboard</a>, click on the name of the bucket you have created in the first step above.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-3.17.34-pm.png" alt="Click on the bucket name to view its content" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Click on the bucket name to view its content</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Upload a few files to the bucket, from your local computer.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-3.18.00-pm.png" alt="Start the **Upload** wizard" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Start the <strong>Upload</strong> wizard</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-3.18.19-pm.png" alt="Add multiple files and folders, and finally, click on the **Upload** button below" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Add multiple files and folders, and finally, click on the <strong>Upload</strong> button below</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-7-check-if-the-lambda-function-is-triggered">Step 7. Check if the Lambda function is triggered</h3>
+<ul>
+<li><p>Go back to the Lambda console, and select your function to view its details. </p></li>
+<li><p>Click on the <strong>Monitoring</strong> tab to view the metrics that show the number of times the Lambda function is triggered as a response to file(s) upload in the S3 bucket. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-3.10.58-pm.png" alt="View the **Monitoring** tab in the Lambda console" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>View the <strong>Monitoring</strong> tab in the Lambda console</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>You can view the detailed <strong>Invocations</strong> chart in the CloudWatch console. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-3.11.44-pm.png" alt="View the metrics in the CloudWatch console" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>View the metrics in the CloudWatch console</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>The detailed graph in the CloudWatch console shows that the Lambda function was triggered thrice. See the snapshot below.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-3.09.20-pm.png" alt="CloudWatch metrics showing the number of invocations of the Lambda function. Recall that anytime a file is created (or uploaded) to the selected S3 bucket, the lambda will be triggered ." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>CloudWatch metrics showing the number of invocations of the Lambda function. Recall that anytime a file is created (or uploaded) to the selected S3 bucket, the lambda will be triggered .</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-8-delete-resources">Step 8. Delete resources</h3>
+<ul>
+<li><p>Do not forget to delete the Lambda function, and the S3 bucket after the exercise is over. </p></li>
+<li><p>To delete the Lambda function, go back to the Lambda console, select the checkbox against the function name, and choose the delete action. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-4.12.52-pm.png" alt="Delete a Lambda function" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Delete a Lambda function</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>To delete the S3 bucket, go back to the S3 console, select the bucket checkbox against the bucket name, and empty and then delete the bucket. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-3.18.51-pm.png" alt="Once the exercise is over, empty and delete the bucket" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Once the exercise is over, empty and delete the bucket</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="21. Elastic Beanstalk.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('20. Lab - Create and execute a Lambda')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

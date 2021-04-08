@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.995
+In this lesson, I introduced you to the basics of cloud computing,
+
+00:00:04.995 --> 00:00:08.144
+discussing characteristics like pay as you go and
+
+00:00:08.144 --> 00:00:12.359
+auto-scaling where resources grow and shrink on demand.
+
+00:00:12.359 --> 00:00:15.599
+I taught you about the serverless concept which simply
+
+00:00:15.599 --> 00:00:19.335
+means that the cloud provider manages servers for you.
+
+00:00:19.335 --> 00:00:24.530
+We discussed the AWS and its global infrastructure containing regions,
+
+00:00:24.530 --> 00:00:27.095
+AZs, and edge locations.
+
+00:00:27.094 --> 00:00:30.109
+I highlighted the shared responsibility model.
+
+00:00:30.109 --> 00:00:35.049
+Remember, AWS is responsible for security of the Cloud,
+
+00:00:35.049 --> 00:00:38.589
+we are responsible for security in the Cloud.
+
+00:00:38.590 --> 00:00:44.280
+Next, I will teach you about servers and compute power in the Cloud.
+

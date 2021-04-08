@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.884
+In this lesson, I introduced you to a foundational piece of
+
+00:00:03.884 --> 00:00:08.294
+AWS's Cloud computing platform, EC2 Instances.
+
+00:00:08.294 --> 00:00:12.285
+You learned that an Instance is a server that you rent in the Cloud.
+
+00:00:12.285 --> 00:00:15.240
+We also discussed how Elastic Block Store
+
+00:00:15.240 --> 00:00:18.644
+allows you to expand the capacity of your instance.
+
+00:00:18.644 --> 00:00:22.980
+I then showed you how to use VPC to secure your instances.
+
+00:00:22.980 --> 00:00:27.539
+We wrapped up by discussing how lambdas give you compute power in the Cloud,
+
+00:00:27.539 --> 00:00:31.199
+and how orchestration services like Elastic Beanstalk help you
+
+00:00:31.199 --> 00:00:35.619
+manage the lifecycle of your applications and the services behind them.
+
+00:00:35.619 --> 00:00:41.189
+Next, I will teach you about storage and content delivery in the Cloud.
+

@@ -1,0 +1,127 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.590 --> 00:00:07.410
+By this map, you can see that AWS has a global infrastructure.
+
+00:00:07.410 --> 00:00:10.530
+So all of the dots represent regions.
+
+00:00:10.529 --> 00:00:14.660
+The blue represents regions that are already here now up and running,
+
+00:00:14.660 --> 00:00:18.100
+and the orange represents regions that are coming soon.
+
+00:00:18.100 --> 00:00:22.070
+So there's a region here in Northern California that was
+
+00:00:22.070 --> 00:00:26.519
+launched in 2009 that has three availability zones,
+
+00:00:26.519 --> 00:00:29.044
+and I'll talk about what those are in a moment.
+
+00:00:29.045 --> 00:00:32.884
+There's a region here on the East Coast Northern Virginia
+
+00:00:32.884 --> 00:00:37.024
+launched in 2006, six availability zones.
+
+00:00:37.024 --> 00:00:42.670
+There's one here in London launched in 2016 with three availability zones,
+
+00:00:42.670 --> 00:00:48.600
+one down here in Sydney Australia launched in 2012 with three availability zone.
+
+00:00:48.600 --> 00:00:51.800
+So there really is a global infrastructure in
+
+00:00:51.799 --> 00:00:55.534
+place to support you as you build your applications.
+
+00:00:55.534 --> 00:00:57.254
+So a region.
+
+00:00:57.255 --> 00:01:04.165
+This is a geographic location that has availability zones or AZs.
+
+00:01:04.165 --> 00:01:08.405
+Typically, a minimum of two AZs exist in a region,
+
+00:01:08.405 --> 00:01:13.070
+and you typically select your region to reduce latency and cost.
+
+00:01:13.069 --> 00:01:15.634
+So for example, going back to that map.
+
+00:01:15.635 --> 00:01:18.320
+If all of your customers are in China,
+
+00:01:18.319 --> 00:01:23.179
+it doesn't make sense for you to deploy your application to the West Coast region,
+
+00:01:23.180 --> 00:01:25.535
+because that's high latency.
+
+00:01:25.534 --> 00:01:28.649
+Regions are isolated and independent,
+
+00:01:28.650 --> 00:01:32.390
+and resources aren't automatically replicated across them,
+
+00:01:32.390 --> 00:01:34.775
+you have to specifically set that up.
+
+00:01:34.775 --> 00:01:38.075
+I remember once when I started using AWS,
+
+00:01:38.075 --> 00:01:42.355
+I deploy my application in the Northern Virginia region.
+
+00:01:42.355 --> 00:01:45.950
+For some reason when I went back into the console,
+
+00:01:45.950 --> 00:01:47.719
+my region had defaulted to
+
+00:01:47.719 --> 00:01:51.560
+the Northern California region and I could not find my application.
+
+00:01:51.560 --> 00:01:57.984
+So that was a lesson learned that resources don't replicate across the regions.
+
+00:01:57.984 --> 00:02:04.760
+Now, an availability zone is an isolated location within a geographic region.
+
+00:02:04.760 --> 00:02:09.830
+You can think of it as a physical datacenter within a specific region.
+
+00:02:09.830 --> 00:02:13.670
+So there are multiple datacenters in a given region.
+
+00:02:13.669 --> 00:02:19.549
+So failure in one availability zone doesn't impact another availability zone.
+
+00:02:19.550 --> 00:02:22.170
+So failures are independent.
+
+00:02:22.169 --> 00:02:26.179
+There's also this concept called Edge Locations that
+
+00:02:26.180 --> 00:02:30.155
+we'll talk about more when we talk about a content delivery network,
+
+00:02:30.155 --> 00:02:35.270
+but an Edge Location is a mini datacenter and it's used solely
+
+00:02:35.270 --> 00:02:41.180
+to cache large data files closer to a user's location.
+
+00:02:41.180 --> 00:02:45.319
+Like I said, it's used in content delivery to serve up
+
+00:02:45.319 --> 00:02:50.189
+static content as quickly as possible to reduce latency.
+

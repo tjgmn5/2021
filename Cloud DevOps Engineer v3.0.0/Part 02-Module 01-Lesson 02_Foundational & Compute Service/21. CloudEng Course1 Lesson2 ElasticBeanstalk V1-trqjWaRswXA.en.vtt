@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.280 --> 00:00:05.310
+We've discussed the need for servers in the Cloud.
+
+00:00:05.309 --> 00:00:07.199
+In your EC2 lab,
+
+00:00:07.200 --> 00:00:09.105
+you stood up your own server.
+
+00:00:09.105 --> 00:00:13.080
+AWS provides services that make the process of standing up
+
+00:00:13.080 --> 00:00:17.969
+servers and deploying your applications to them even easier.
+
+00:00:17.969 --> 00:00:22.000
+Elastic Beanstalk is an orchestration service,
+
+00:00:22.000 --> 00:00:26.240
+that allows you to deploy a web application at the touch of a button,
+
+00:00:26.239 --> 00:00:31.969
+by spinning up or provisioning all of the services that you need to run your application.
+
+00:00:31.969 --> 00:00:36.049
+This service is essential because it automates the process of
+
+00:00:36.049 --> 00:00:41.074
+getting applications setup on the Amazon web services infrastructure.
+
+00:00:41.075 --> 00:00:43.390
+At the click of a button,
+
+00:00:43.390 --> 00:00:47.103
+Elastic Beanstalk can create an EC2 instance,
+
+00:00:47.103 --> 00:00:51.769
+setup auto-scaling, and an elastic load balancer for you.
+
+00:00:51.770 --> 00:00:55.820
+You still retain control of the services automatically spun up,
+
+00:00:55.820 --> 00:00:59.899
+and you can administer them separately if you so choose.
+
+00:00:59.899 --> 00:01:04.819
+Elastic Beanstalk supports Java, PHP,
+
+00:01:04.819 --> 00:01:10.394
+Python,.NET, Node.js, Ruby, and Docker,
+
+00:01:10.394 --> 00:01:13.194
+and several common cert rephrase,
+
+00:01:13.194 --> 00:01:16.729
+and several common servers like Apache, HTTP,
+
+00:01:16.730 --> 00:01:21.380
+Tomcat, Engine X, IIS, etc.
+
+00:01:21.379 --> 00:01:26.824
+Elastic Beanstalk can even spin up database instances for you,
+
+00:01:26.825 --> 00:01:32.730
+VPCs and security groups all while deploying your code.
+

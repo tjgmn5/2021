@@ -1,0 +1,103 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.690
+Let's navigate to the AWS product page.
+
+00:00:03.690 --> 00:00:07.230
+I've navigated to the AWS product page.
+
+00:00:07.230 --> 00:00:11.804
+AWS offers a broad set of global base products.
+
+00:00:11.804 --> 00:00:14.234
+Let's look at the different categories.
+
+00:00:14.234 --> 00:00:17.699
+First, there's analytics for big data.
+
+00:00:17.699 --> 00:00:22.424
+It also offers visualization tools like Amazon Quicksight,
+
+00:00:22.425 --> 00:00:26.385
+querying tools for objects or files like Athena,
+
+00:00:26.385 --> 00:00:29.075
+and redshift for data warehousing.
+
+00:00:29.074 --> 00:00:31.879
+There's also application integration.
+
+00:00:31.879 --> 00:00:35.149
+So there are services like the Simple Queue Service.
+
+00:00:35.149 --> 00:00:39.659
+Notification and alerting services like the Simple Notification Service.
+
+00:00:39.659 --> 00:00:44.944
+There's also AWS cost management tools, like AWS budgets.
+
+00:00:44.945 --> 00:00:51.145
+There's also compute services like EC2 that provides virtual servers.
+
+00:00:51.145 --> 00:00:55.460
+AWS Lambda for running code in a serverless fashion,
+
+00:00:55.460 --> 00:00:57.634
+and in response to events.
+
+00:00:57.634 --> 00:01:01.969
+Elastic Beanstalk for running web applications.
+
+00:01:01.969 --> 00:01:09.935
+There are also database management services for engines like MySQL, Oracle, SQL Server.
+
+00:01:09.935 --> 00:01:14.855
+There's even support for NoSQL databases like Dynamo DB,
+
+00:01:14.855 --> 00:01:19.225
+and even document-based databases like MongoDB.
+
+00:01:19.224 --> 00:01:23.204
+There are developer tools like AWS Cloud9,
+
+00:01:23.204 --> 00:01:25.230
+which is a cloud IDE.
+
+00:01:25.230 --> 00:01:29.510
+There's AWS Code Pipeline for continuous integration.
+
+00:01:29.510 --> 00:01:32.030
+There are also security services.
+
+00:01:32.030 --> 00:01:36.945
+So there's KMS, Key Management Service for data encryption.
+
+00:01:36.944 --> 00:01:40.424
+AWS Shield, for DDoS protection.
+
+00:01:40.424 --> 00:01:46.795
+Identity and Access Management or IAM for fine grain control over permissions.
+
+00:01:46.795 --> 00:01:52.805
+There are also additional services like Blockchain services, Machine Learning,
+
+00:01:52.805 --> 00:01:56.630
+Computer Vision, IoT, Internet of Things,
+
+00:01:56.629 --> 00:01:59.049
+and AR, and VR services.
+
+00:01:59.049 --> 00:02:02.375
+Now, we will not cover all of these services,
+
+00:02:02.375 --> 00:02:07.870
+just the more foundational services: popular storage and content delivery services,
+
+00:02:07.870 --> 00:02:11.750
+networking, security, and messaging services.
+
+00:02:11.750 --> 00:02:17.879
+All of the basic building blocks that you'll need for Cloud-based Applications.
+

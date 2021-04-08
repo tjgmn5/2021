@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.750 --> 00:00:09.330
+Cloud computing involves the delivery of IT resources such as databases,
+
+00:00:09.330 --> 00:00:12.824
+compute power, application, security,
+
+00:00:12.824 --> 00:00:15.344
+etc, over the Internet.
+
+00:00:15.345 --> 00:00:19.125
+There are three characteristics of Cloud computing.
+
+00:00:19.125 --> 00:00:24.795
+Pay-as-you-go, autoscaling, and serverless.
+
+00:00:24.795 --> 00:00:29.820
+Pay-as-you-go which means there are no long-term contracts,
+
+00:00:29.820 --> 00:00:32.100
+and you pay only for what you use.
+
+00:00:32.100 --> 00:00:34.079
+Sometimes you pay by the minute,
+
+00:00:34.079 --> 00:00:36.600
+hour, or even second.
+
+00:00:36.600 --> 00:00:41.000
+Autoscaling simply means resources that grow
+
+00:00:41.000 --> 00:00:44.899
+or shrink or automatically scale based on demand.
+
+00:00:44.899 --> 00:00:49.879
+Servers can be provisioned almost instantly so that you don't have to guess
+
+00:00:49.880 --> 00:00:55.054
+about capacity or make huge capital investments in servers upfront.
+
+00:00:55.054 --> 00:00:59.644
+I'm sure you've heard the term serverless in relation to the Cloud.
+
+00:00:59.645 --> 00:01:04.400
+This simply means that a Cloud provider manages the servers for you.
+
+00:01:04.400 --> 00:01:07.745
+You, as the developer, simply write code.
+
+00:01:07.745 --> 00:01:10.760
+The Cloud provider executes that code on
+
+00:01:10.760 --> 00:01:15.780
+some server somewhere and you're not concerned with that aspect.
+

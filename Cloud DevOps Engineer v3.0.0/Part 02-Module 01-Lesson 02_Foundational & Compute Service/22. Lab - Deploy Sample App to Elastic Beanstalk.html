@@ -1,0 +1,474 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab - Deploy Sample App to Elastic Beanstalk</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Foundational &amp; Compute Service</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need servers in the cloud.html">02. Why do we need servers in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Elastic Cloud Compute (EC2).html">03. Elastic Cloud Compute (EC2)</a>
+    </li>
+    <li class="">
+      <a href="04. EC2 - Launch an Instance.html">04. EC2 - Launch an Instance</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Dashboard.html">05. EC2 Dashboard</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Connect to Linux Instance.html">06. EC2 - Connect to Linux Instance</a>
+    </li>
+    <li class="">
+      <a href="07. Elastic Block Store (EBS).html">07. Elastic Block Store (EBS)</a>
+    </li>
+    <li class="">
+      <a href="08. EC2 - Create an EBS Volume.html">08. EC2 - Create an EBS Volume</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - EBS Dashboard.html">09. EC2 - EBS Dashboard</a>
+    </li>
+    <li class="">
+      <a href="10. Why do we need security in the cloud for our servers.html">10. Why do we need security in the cloud for our servers?</a>
+    </li>
+    <li class="">
+      <a href="11. Virtual Private Cloud (VPC).html">11. Virtual Private Cloud (VPC)</a>
+    </li>
+    <li class="">
+      <a href="12. VPC Dashboard.html">12. VPC Dashboard</a>
+    </li>
+    <li class="">
+      <a href="13. VPC - Create a VPC.html">13. VPC - Create a VPC</a>
+    </li>
+    <li class="">
+      <a href="14. VPC - Your VPCs.html">14. VPC - Your VPCs</a>
+    </li>
+    <li class="">
+      <a href="15. VPC - Network ACL.html">15. VPC - Network ACL</a>
+    </li>
+    <li class="">
+      <a href="16. Lab - Launch an EC2 Instance.html">16. Lab - Launch an EC2 Instance</a>
+    </li>
+    <li class="">
+      <a href="17. Why do we need compute power in the cloud.html">17. Why do we need compute power in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="18. Lambda.html">18. Lambda</a>
+    </li>
+    <li class="">
+      <a href="19. Lambda - Create a Function.html">19. Lambda - Create a Function</a>
+    </li>
+    <li class="">
+      <a href="20. Lab - Create and execute a Lambda.html">20. Lab - Create and execute a Lambda</a>
+    </li>
+    <li class="">
+      <a href="21. Elastic Beanstalk.html">21. Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="22. Lab - Deploy Sample App to Elastic Beanstalk.html">22. Lab - Deploy Sample App to Elastic Beanstalk</a>
+    </li>
+    <li class="">
+      <a href="23. Lesson Recap.html">23. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">22. Lab - Deploy Sample App to Elastic Beanstalk</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="elastic-beanstalk">Elastic Beanstalk</h1>
+<hr>
+<p>In this hands-on exercise, you will use Elastic Beanstalk to deploy a web application to the cloud. </p>
+<ul>
+<li>Pre-requisites: AWS Account</li>
+<li>By the end of this lab, you will be able to deploy a web application to the cloud using Elastic Beanstalk</li>
+</ul>
+<p>Follow the exercise instructions described below:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-1-access-elastic-beanstalk-service-from-aws-management-console">Step 1. Access Elastic Beanstalk service from AWS Management Console</h3>
+<ul>
+<li>From the <a href="https://console.aws.amazon.com/" target="_blank">AWS Management Console</a> page, select the <em>Elastic Beanstalk</em> service.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-8.24.40-pm.png" alt="Launch the default **Create application** wizard" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Launch the default <strong>Create application</strong> wizard</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Use the <strong>Create Application</strong> wizard to create an application with the following configuration details:</li>
+</ul>
+<p><center></p>
+<div class="index-module--table-responsive--1zG6k"><table class="index-module--table--8j68C index-module--table-striped--3HHC-">
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application name</td>
+<td>Your choice</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td><code>Tomcat</code><br> Use the default Platform branch and version</td>
+</tr>
+<tr>
+<td>Application code</td>
+<td>Sample application</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p></p>
+<p></center></p>
+<ul>
+<li>It will create an environment for a sample application to run. </li>
+</ul>
+<blockquote>
+  <p><strong>What is an environment?</strong> <br>An environment is the collection of AWS resources and permissions to allow your web application to run smoothly. The Elastic Beanstalk service manages the environment for us. </p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-8.27.34-pm.png" alt="Create a sample web application, that will run on the Tomcat webserver" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Create a sample web application, that will run on the Tomcat webserver</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Click the <strong>Create application</strong> button.</li>
+</ul>
+<blockquote>
+  <p><strong><em>Note:</em></strong> It will take about 10 minutes for your application, and its environment to be created. </p>
+</blockquote>
+<ul>
+<li><p><strong>Important</strong> - Observe the logs shown on your dashboard to understand the resources that are spun up to support your application.  While launching the environment and deploying EC2 instances to run your application, the following resources get created automatically:</p>
+<ul>
+<li>Amazon S3 storage bucket</li>
+<li>A target group in the default VPC</li>
+<li>Multiple security groups</li>
+<li>An autoscaling launch configuration and an autoscaling group</li>
+<li>Multiple EC2 instances </li>
+<li>Multiple CloudWatch alarms </li>
+<li>EC2 load balancer</li></ul>
+<p>You can even see the logs of each event (success and failure) after the creation of the environment. See the snapshots below.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-7.58.32-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-7.58.45-pm.png" alt="Events logs while creating the environment. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Events logs while creating the environment. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li><p>You can change the log-level to see more detailed information. The standard log-levels in any application are trace, debug, info, warn, error, and fatal.</p></li>
+<li><p>Your application is created once you see a green checkmark and the <em>Health</em> of your application as <strong>Ok</strong>. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-8.05.22-pm.png" alt="A successfully deployed application. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>A successfully deployed application. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>After the application is deployed successfully, copy the application’s URL that can be found against your application’s name, and paste it in a web browser like Chrome or Safari.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-8.09.46-pm.png" alt="**Congratulations!** You&#x27;ve deployed a sample application and learned about the resources that spun up automatically. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Congratulations!</strong> You've deployed a sample application and learned about the resources that spun up automatically. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-inspect-the-resources-created-for-you">Step 2. <strong>Inspect the resources created for you</strong></h3>
+<ul>
+<li><p>Navigate to the EC2 console and inspect the instance that was created for you. The instance has the same name as your application. You can administer and manage this EC2 as if you created it yourself.</p></li>
+<li><p>On the same EC2 dashboard, on the left-side menu pane, select the <strong>Security groups</strong> service to view the security groups (firewall rules) that got created automatically. </p></li>
+<li><p>You can also navigate to the Amazon S3 service (<a href="https://console.aws.amazon.com/s3/" rel="noopener noreferrer" target="_blank">https://console.aws.amazon.com/s3/</a> ) to view the S3 buckets created for the web application. All these resources are managed by the Elastic Beanstalk service. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3-cleanup-and-delete-resources">Step 3. <strong>Cleanup and delete resources</strong></h3>
+<p>To clean up the resources to avoid recurring charges, you must delete your AWS resources.</p>
+<ul>
+<li><p><strong>Delete application</strong>: Go to the Elastic Beankstalk's <strong>Applications</strong> dashboard. Click on the <strong>Actions</strong> button in the upper right-hand corner, and click on <strong>Delete application</strong> to delete your application components. </p></li>
+<li><p><strong>Delete environment</strong>:  Ideally, deleting the application will also delete the associated environment. However, you can navigate back to the Elastic Beankstalk's <strong>Environments</strong> dashboard. Select your environment, if any exists. Select the <strong>Actions</strong> button in the upper-right hand corner, and click on <strong>Terminate environment</strong> to terminate your environment.</p></li>
+<li><p><strong>Delete S3 buckets</strong>: Lastly, delete the S3 bucket that got automatically created for you. Go to the S3 console at <a href="https://console.aws.amazon.com/s3/" target="_blank">https://console.aws.amazon.com/s3/</a> and delete the bucket related to the Beanstalk. In case, you face an access denied error, refer to the <a href="https://forums.aws.amazon.com/thread.jspa?threadID=268063" target="_blank">troubleshooting steps here</a>.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Deploy Application to Elastic Beanstalk</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="3deb1191-0113-41cb-8926-c184297ad8c4--0">
+        <label for="3deb1191-0113-41cb-8926-c184297ad8c4--0"><p>Access Elastic Beanstalk service from AWS Management Console</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="3deb1191-0113-41cb-8926-c184297ad8c4--1">
+        <label for="3deb1191-0113-41cb-8926-c184297ad8c4--1"><p>Test the deployed web application in a browser</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="3deb1191-0113-41cb-8926-c184297ad8c4--2">
+        <label for="3deb1191-0113-41cb-8926-c184297ad8c4--2"><p>Inspect the AWS resources created for you</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="3deb1191-0113-41cb-8926-c184297ad8c4--3">
+        <label for="3deb1191-0113-41cb-8926-c184297ad8c4--3"><p>Cleanup and delete resources</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Amazing Work!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="23. Lesson Recap.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('22. Lab - Deploy Sample App to Elastic Beanstalk')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

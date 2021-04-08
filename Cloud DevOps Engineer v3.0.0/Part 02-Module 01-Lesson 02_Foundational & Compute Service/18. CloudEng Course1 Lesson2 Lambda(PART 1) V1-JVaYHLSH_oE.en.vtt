@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.639 --> 00:00:06.540
+AWS Lambda provide you compute power in the Cloud,
+
+00:00:06.540 --> 00:00:11.115
+by letting you execute code without standing up or managing servers.
+
+00:00:11.115 --> 00:00:15.269
+Just think of Lambda as a chunk of code that runs in the Cloud,
+
+00:00:15.269 --> 00:00:17.745
+and it's meant to do one specific task.
+
+00:00:17.745 --> 00:00:21.089
+Lambda should really focus on one specific task,
+
+00:00:21.088 --> 00:00:24.388
+because there's currently a time limit of 15 minutes,
+
+00:00:24.388 --> 00:00:27.855
+which was recently increased from five minutes.
+
+00:00:27.855 --> 00:00:32.100
+An application developed using Lambdas is considered to be
+
+00:00:32.100 --> 00:00:36.660
+serverless because you're not concerned with the server your code is running on.
+
+00:00:36.659 --> 00:00:39.349
+Lambda offers several benefits.
+
+00:00:39.350 --> 00:00:42.335
+You only pay for the compute time you consume.
+
+00:00:42.335 --> 00:00:45.350
+You are not charged when your code isn't running.
+
+00:00:45.350 --> 00:00:47.489
+You can author code locally,
+
+00:00:47.488 --> 00:00:52.269
+and upload it, or you can write code directly via the Lambda Console.
+
+00:00:52.270 --> 00:00:54.565
+Lambda is event driven,
+
+00:00:54.564 --> 00:00:58.129
+so you can run your code based on certain events happening,
+
+00:00:58.130 --> 00:00:59.824
+like a file upload,
+
+00:00:59.823 --> 00:01:02.689
+or a record being inserted in a database.
+
+00:01:02.689 --> 00:01:04.730
+Once the code is uploaded,
+
+00:01:04.730 --> 00:01:09.635
+the environment takes care of everything needed to run and scale your code.
+
+00:01:09.635 --> 00:01:14.945
+Lambda supports several run-time environments: Node.js ,
+
+00:01:14.944 --> 00:01:21.164
+Python, Ruby, Java, Go, and.NET.
+
+00:01:21.165 --> 00:01:23.865
+If you need a language that's not supported,
+
+00:01:23.864 --> 00:01:25.944
+you can use custom run-times.
+
+00:01:25.944 --> 00:01:29.459
+So the environment is very flexible.
+
