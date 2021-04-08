@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.070 --> 00:00:03.180
+In this management console,
+
+00:00:03.180 --> 00:00:08.740
+you'll be able to see several databases including the one that you created,
+
+00:00:08.740 --> 00:00:10.650
+and you will see that when you do
+
+00:00:10.650 --> 00:00:13.890
+an multi AC deployment like the one that we have right now,
+
+00:00:13.890 --> 00:00:16.425
+you will have multiple,
+
+00:00:16.425 --> 00:00:18.450
+one is called reader,
+
+00:00:18.450 --> 00:00:20.865
+another called writer and regional.
+
+00:00:20.865 --> 00:00:24.750
+So it really depends on your deployment.
+
+00:00:24.750 --> 00:00:28.890
+In this case obviously, we have more than one for the reason that we discussed.
+
+00:00:28.890 --> 00:00:31.200
+One of them is just a read replica for
+
+00:00:31.200 --> 00:00:34.230
+the time being but it would become your master database if
+
+00:00:34.230 --> 00:00:36.270
+something were to happen to
+
+00:00:36.270 --> 00:00:41.620
+your primary database that's running in a different availability zone.
+
+00:00:42.320 --> 00:00:48.350
+So the main thing that you need to know about your database is called the endpoint.
+
+00:00:48.350 --> 00:00:51.200
+Let's see if we can pull that information.
+
+00:00:51.200 --> 00:00:53.850
+As you can see this here,
+
+00:00:54.280 --> 00:00:59.720
+this will give you an Amazon DNS name for this endpoint.
+
+00:00:59.720 --> 00:01:01.880
+So if you have your username,
+
+00:01:01.880 --> 00:01:07.130
+password and this endpoint and you have access to port 3306,
+
+00:01:07.130 --> 00:01:12.645
+in this case which is the default for MySQL and Aurora, that's it.
+
+00:01:12.645 --> 00:01:15.425
+You just need to provide these values as
+
+00:01:15.425 --> 00:01:20.300
+environment variables or something similar to your application running in
+
+00:01:20.300 --> 00:01:24.290
+your server and you'll be able to connect to your database
+
+00:01:24.290 --> 00:01:29.400
+and start creating databases and tables and pushing data in there.
+
+00:01:33.070 --> 00:01:36.680
+Do you have access to performance metrics?
+
+00:01:36.680 --> 00:01:40.460
+Metrics will help you when it comes to deciding whether you have
+
+00:01:40.460 --> 00:01:44.855
+to vertically scale your database or horizontally scaling.
+
+00:01:44.855 --> 00:01:49.085
+The reasoning is obviously your application is going to grow over time.
+
+00:01:49.085 --> 00:01:53.450
+You start with 100 user then you go into 1,000 and 2,000 and so on.
+
+00:01:53.450 --> 00:01:57.545
+At some point the database is not going to be able to handle the workload.
+
+00:01:57.545 --> 00:02:02.435
+So keeping track of metrics will help you ensure that
+
+00:02:02.435 --> 00:02:08.910
+you can foresee when the Database might run out of resources and you need to upgrade.
+
+00:02:09.080 --> 00:02:14.255
+The Snapshots is what we discussed regarding backups.
+
+00:02:14.255 --> 00:02:21.480
+You will come here and see every 24 hours whether you have a new backup or not.
+
+00:02:21.800 --> 00:02:26.640
+Those snapshots are available on S3 stores.
+
+00:02:26.640 --> 00:02:29.225
+Now, you see the connection between services.
+
+00:02:29.225 --> 00:02:31.880
+You can access those snapshots whenever so if
+
+00:02:31.880 --> 00:02:34.490
+for some reason you need to go back in time,
+
+00:02:34.490 --> 00:02:37.430
+six months to a year depending on your retention policies you
+
+00:02:37.430 --> 00:02:41.730
+could bring the database that far back if necessary.
+
+00:02:42.100 --> 00:02:47.800
+We have subnets group that we discuss and some other options.
+
+00:02:47.800 --> 00:02:51.770
+The options groups are specific features for
+
+00:02:51.770 --> 00:02:55.655
+databases that you may need to change eventually.
+
+00:02:55.655 --> 00:02:59.270
+Like I said, if you have a background in database management,
+
+00:02:59.270 --> 00:03:02.360
+you'll see that sometimes you'll need to tweak certain parameters to get
+
+00:03:02.360 --> 00:03:06.510
+the maximum performance out of a particular database.
+

@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.250
+Thanks to the previous lesson,
+
+00:00:02.250 --> 00:00:06.120
+we now have a solid network that we can use to deploy application.
+
+00:00:06.120 --> 00:00:09.000
+So it's time for us to create a usable example,
+
+00:00:09.000 --> 00:00:10.830
+that we can test with CloudFormation.
+
+00:00:10.830 --> 00:00:13.005
+In other words, instead of networking,
+
+00:00:13.005 --> 00:00:16.410
+let's actually put some servers out there, and connect to them.
+
+00:00:16.410 --> 00:00:19.499
+Going back to our reference architecture,
+
+00:00:19.499 --> 00:00:23.385
+we have now NAT gateways,
+
+00:00:23.385 --> 00:00:27.810
+we have Internet gateways, we have subnets.
+
+00:00:27.810 --> 00:00:32.710
+What we need to do now is worry about actually deploying something.
+

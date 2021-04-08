@@ -1,0 +1,266 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RDS Databases (Part Two)</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Storage and Databases </h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. RDS Databases (Part One).html">02. RDS Databases (Part One)</a>
+    </li>
+    <li class="">
+      <a href="03. RDS Databases (Part Two).html">03. RDS Databases (Part Two)</a>
+    </li>
+    <li class="">
+      <a href="04. RDS - Create Aurora database.html">04. RDS - Create Aurora database</a>
+    </li>
+    <li class="">
+      <a href="05. RDS Database (Part Three).html">05. RDS Database (Part Three)</a>
+    </li>
+    <li class="">
+      <a href="06. RDS Database (Part Four).html">06. RDS Database (Part Four)</a>
+    </li>
+    <li class="">
+      <a href="07. S3 (Part One).html">07. S3 (Part One)</a>
+    </li>
+    <li class="">
+      <a href="08. S3 (Part Two).html">08. S3 (Part Two)</a>
+    </li>
+    <li class="">
+      <a href="09. Key Points.html">09. Key Points</a>
+    </li>
+    <li class="">
+      <a href="10. Exercises.html">10. Exercises</a>
+    </li>
+    <li class="">
+      <a href="11. Conclusion.html">11. Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">03. RDS Databases (Part Two)</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>32cba13c6fa84a35b865ca1883b92b73-1613673204354</p></h3>
+  <video controls>
+  <source src="03. 32cba13c6fa84a35b865ca1883b92b73-1613673204354-fQDNjalfzDA.mp4" type="video/mp4">
+
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="connectivity">Connectivity</h4>
+<ul>
+<li>Subnet groups are needed for deploying in multiple AZs.  </li>
+<li>We want to place our RDS in more than one Availability Zone (data center). We can place the RDS in two AZs  to eliminate single point of failure and to have high availability.  </li>
+<li>We created 4 subnets (2 private and 2 public), so the RDS can potentially be duplicated in all four subnets.  </li>
+<li>However, keep in mind that we usually prefer to put databases in a private subnet, for security.  There may be use cases where you put a database in a public subnet but generally put it in the private subnets.</li>
+</ul>
+<h4 id="database-accessibility">Database Accessibility</h4>
+<p>Usually, don't make a database public.</p>
+<ul>
+<li>We'll choose "No" for public accessibility" to keep a database private.  </li>
+<li>We'd normally use a private IP address to access a database.</li>
+</ul>
+<h4 id="vpc-security-groups">VPC Security Groups</h4>
+<ul>
+<li><strong>Default</strong> means every resource in the VPC can talk to any other resource that is within that same VPC.  We'll keep this default, to allow resources in the VPC to reach the database.</li>
+</ul>
+<h4 id="encryption">Encryption</h4>
+<ul>
+<li>We can use encryption for sensitive production workloads.  We can disable encryption for our database here.</li>
+</ul>
+<h4 id="rds-running-cost-notice">RDS Running cost notice</h4>
+<ul>
+<li>Be sure to <strong>delete any RDS databases</strong> that you don’t need once you are done practicing because it can be very expensive if you forget it and leave it running for a while!</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><center>
+<strong>See the detailed steps on the next page.</strong>
+</center></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>DB Access</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Your database can only be accessed from other resources that have the appropriate <em>__</em> assigned to them. </p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1558133320157" name="849753" id="a1558133320157">
+        <label for="a1558133320157"><p>Subnet</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558133373771" name="849753" id="a1558133373771">
+        <label for="a1558133373771"><p>Security Group</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558133378951" name="849753" id="a1558133378951">
+        <label for="a1558133378951"><p>Access port</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Security Group
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="04. RDS - Create Aurora database.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. RDS Databases (Part Two)')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

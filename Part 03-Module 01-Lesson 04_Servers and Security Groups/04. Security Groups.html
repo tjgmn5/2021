@@ -1,0 +1,399 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Security Groups</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Servers and Security Groups</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Setting Up Our Environment.html">02. Setting Up Our Environment</a>
+    </li>
+    <li class="">
+      <a href="03. Understanding Security Groups.html">03. Understanding Security Groups</a>
+    </li>
+    <li class="">
+      <a href="04. Security Groups.html">04. Security Groups</a>
+    </li>
+    <li class="">
+      <a href="05. Creating Autoscaling Group.html">05. Creating Autoscaling Group</a>
+    </li>
+    <li class="">
+      <a href="06. Launch Configuration .html">06. Launch Configuration </a>
+    </li>
+    <li class="">
+      <a href="07. Debugging Launch Configuration.html">07. Debugging Launch Configuration</a>
+    </li>
+    <li class="">
+      <a href="08. Launch Templates.html">08. Launch Templates</a>
+    </li>
+    <li class="">
+      <a href="09. Adding Target Groups and Listeners.html">09. Adding Target Groups and Listeners</a>
+    </li>
+    <li class="">
+      <a href="10. Updating the Stack with the Load Balancer.html">10. Updating the Stack with the Load Balancer</a>
+    </li>
+    <li class="">
+      <a href="11. Debugging Our Security Group.html">11. Debugging Our Security Group</a>
+    </li>
+    <li class="">
+      <a href="12. Connect to private servers via a Jumpbox.html">12. Connect to private servers via a Jumpbox</a>
+    </li>
+    <li class="">
+      <a href="13. Final Review.html">13. Final Review</a>
+    </li>
+    <li class="">
+      <a href="14. Conclusion.html">14. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="15. Challenge 3.html">15. Challenge 3</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. Security Groups</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND9991 C2 L04 A03.2  Security Groups</p></h3>
+  <video controls>
+  <source src="04. ND9991 C2 L04 A03.2  Security Groups-NyasAk9s3ys.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="04. ND9991 C2 L04 A03.2  Security Groups-NyasAk9s3ys.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="security-groups">Security Groups</h3>
+<p>Security groups are specific to individual resources (EC2 servers, databases) and not to subnets. There are few points that you must remember:</p>
+<ol>
+<li><p><strong>Traffic is blocked by default</strong><br><br />
+In the cloud, traffic is completely blocked, so you have to explicitly open ports to allow traffic in and out.  This is a general networking concept.</p></li>
+<li><p><strong>Limit inbound traffic for security</strong><br><br />
+For ingress rules, we want to limit inbound traffic, for security, to a single port or just a handful of ports required by the application we are running. For example, if it’s a public web server, it will require <code>port 80</code> open to the world ( World = <code>0.0.0.0/0</code> ). Should you need the SSH port open, restrict this port only to your specific IP address.</p></li>
+<li><p><strong>For outbound traffic, give full access</strong><br><br />
+For egress rules, we want to give the resource full access to the internet, so we give egress access to all ports, from <code>0</code> all the way to <code>65535</code>.</p></li>
+</ol>
+<hr />
+<h3 id="awsec2securitygroup">AWS::EC2::SecurityGroup</h3>
+<p>Create the following two Security groups, as shown in the video above. You can refer to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html" rel="noopener noreferrer" target="_blank">AWS::EC2::SecurityGroup</a> documentation if needed. </p>
+<ol>
+<li><code>WebServerSecGroup</code> for the webserver. The following code must fall under the Resources section in the template.</li>
+</ol>
+<pre><code>  WebServerSecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow http to our hosts and SSH from local only
+      VpcId:
+        Fn::ImportValue:
+          !Sub "${EnvironmentName}-VPCID"
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 8080
+        ToPort: 8080
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+      - IpProtocol: tcp
+        FromPort: 0
+        ToPort: 65535
+        CidrIp: 0.0.0.0/0</code></pre>
+<p>After creation, the firewall rules for this will look like:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-04-at-8.31.22-pm.png" alt="Inbound rules for the &#x60;WebServerSecGroup&#x60;" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Inbound rules for the <code>WebServerSecGroup</code></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-04-at-8.31.28-pm.png" alt="Outbound rules for the &#x60;WebServerSecGroup&#x60;" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Outbound rules for the <code>WebServerSecGroup</code></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li><code>LBSecGroup</code> for a load balancer. After creation, the firewall rules for this will look like:</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-04-at-8.31.04-pm.png" alt="Inbound rules for the &#x60;LBSecGroup&#x60;" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Inbound rules for the <code>LBSecGroup</code></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-04-at-8.31.11-pm.png" alt="Outbound rules for the &#x60;LBSecGroup&#x60;" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Outbound rules for the <code>LBSecGroup</code></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p>Did you notice the intrinsic function <code>!Sub</code> or <code>!Ref</code> in the code above? Let's learn about it.   </p>
+</blockquote>
+<h2 id="intrinsic-functions-in-the-cloudformation-template">Intrinsic functions in the CloudFormation template</h2>
+<p><strong>AWS provides a few predefined functions that you can use in your template. These functions can assign values to properties that are not available until runtime.</strong> Notice that there a few function-calls in the template (servers.yml) provided to you, such as:</p>
+<ol>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html" target="_blank">Fn::Sub</a>: This function substitutes value to a property at runtime. You can use this function as <code>!Sub "$Value"</code>.  For example, the <code>!Sub "${EnvironmentName}-VPCID"</code> will substitute the value of <strong>EnvironmentName</strong> parameter during runtime.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-04-at-10.04.44-pm.png" alt="Exporting a value of a VPC (&#x60;&quot;${EnvironmentName}-VPCID&quot;&#x60;) from the **ourdemoinfra** stack. Note that the value of **EnvironmentName** parameter will be substituted at runtime." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Exporting a value of a VPC (<code>"${EnvironmentName}-VPCID"</code>) from the <strong>ourdemoinfra</strong> stack. Note that the value of <strong>EnvironmentName</strong> parameter will be substituted at runtime.</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getavailabilityzones.html" rel="noopener noreferrer" target="_blank">Fn::GetAZs</a>: This function returns an array that lists Availability Zones for a specified region in alphabetical order. For example, we learned the following code in the last lesson where we are fetching the list of AZs.</li>
+</ol>
+<pre><code>    PublicSubnet1: 
+        Type: AWS::EC2::Subnet
+        Properties:
+            VpcId: !Ref VPC
+            AvailabilityZone: !Select [ 0, !GetAZs '' ]
+            CidrBlock: !Ref PublicSubnet1CIDR
+            MapPublicIpOnLaunch: true
+            Tags: 
+                - Key: Name 
+                  Value: !Sub ${EnvironmentName} Public Subnet (AZ1)</code></pre>
+<p>The example above shows the usage of three more intrinsic functions,  <code>!Sub</code>, <code>!Select</code> and <code>!Ref</code>.</p>
+<ol start="3">
+<li><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-select.html" rel="noopener noreferrer" target="_blank">Fn::Select</a>: This function returns a single object from a list of objects by index.</p></li>
+<li><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html" rel="noopener noreferrer" target="_blank">Ref</a>: It returns the value of the specified parameter or resource. You can specify a parameter or a resource by its logical name. </p></li>
+<li><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html" rel="noopener noreferrer" target="_blank">Fn::ImportValue</a>: This function returns the value of an output exported by another stack. </p></li>
+</ol>
+<ul>
+<li>For example, in the last lesson, we created <strong>ourdemoinfra</strong> stack having a VPC and declared its output value.</li>
+</ul>
+<blockquote>
+  <p>Recall that the <strong>Outputs</strong> section in a template declares output values that you can import into another stack. </p>
+  <ul>
+  <li>In this lesson, while creating another stack <strong>demoserverstack</strong>, we can refer to the VPC created earlier as:</li>
+  </ul>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-04-at-10.05.36-pm.png" alt="Importing the value of the VPC in the **demoserverstack**. Here also, the value of **EnvironmentName** parameter will be substituted at runtime." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Importing the value of the VPC in the <strong>demoserverstack</strong>. Here also, the value of <strong>EnvironmentName</strong> parameter will be substituted at runtime.</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-resources">#### Resources</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html" rel="noopener noreferrer" target="_blank">Security Group Rules Reference</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. Creating Autoscaling Group.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Security Groups')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

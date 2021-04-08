@@ -1,0 +1,322 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Creating Autoscaling Group</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Servers and Security Groups</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Setting Up Our Environment.html">02. Setting Up Our Environment</a>
+    </li>
+    <li class="">
+      <a href="03. Understanding Security Groups.html">03. Understanding Security Groups</a>
+    </li>
+    <li class="">
+      <a href="04. Security Groups.html">04. Security Groups</a>
+    </li>
+    <li class="">
+      <a href="05. Creating Autoscaling Group.html">05. Creating Autoscaling Group</a>
+    </li>
+    <li class="">
+      <a href="06. Launch Configuration .html">06. Launch Configuration </a>
+    </li>
+    <li class="">
+      <a href="07. Debugging Launch Configuration.html">07. Debugging Launch Configuration</a>
+    </li>
+    <li class="">
+      <a href="08. Launch Templates.html">08. Launch Templates</a>
+    </li>
+    <li class="">
+      <a href="09. Adding Target Groups and Listeners.html">09. Adding Target Groups and Listeners</a>
+    </li>
+    <li class="">
+      <a href="10. Updating the Stack with the Load Balancer.html">10. Updating the Stack with the Load Balancer</a>
+    </li>
+    <li class="">
+      <a href="11. Debugging Our Security Group.html">11. Debugging Our Security Group</a>
+    </li>
+    <li class="">
+      <a href="12. Connect to private servers via a Jumpbox.html">12. Connect to private servers via a Jumpbox</a>
+    </li>
+    <li class="">
+      <a href="13. Final Review.html">13. Final Review</a>
+    </li>
+    <li class="">
+      <a href="14. Conclusion.html">14. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="15. Challenge 3.html">15. Challenge 3</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Creating Autoscaling Group</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND9991 C2 L04 A03.3  Creating Autoscaling Group</p></h3>
+  <video controls>
+  <source src="05. ND9991 C2 L04 A03.3  Creating Autoscaling Group-B4kf8zv5q1I.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND9991 C2 L04 A03.3  Creating Autoscaling Group-B4kf8zv5q1I.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="what-is-an-autoscaling-group">What is an Autoscaling group?</h3>
+<p>An Autoscaling group is a logical group of EC2 instances that share a similar configuration.</p>
+<p>This AWS service monitors the  EC2 instances and automatically adjusts the running count by adding/removing EC2 instances, ensuring that a desired number of servers (EC2 instances) are always up and running. </p>
+<ul>
+<li><p><strong>Scaling policy</strong><br><br />
+A Scaling Policy is the criteria used to decide when to Add or Remove Servers from your Auto Scaling Group. Running the servers 24 hours a day costs money. So, It's best to have criteria/conditions, called Scaling policy, that will turn those servers off when they are not needed and then turn them back on demand.</p>
+<p>For example, you could create a CloudWatch Alarm with a custom metric that counts the number of web visitors in the last 2 hours; if the number is less than 100, perhaps a single server is enough. This will be a trigger to Scale Down if there is more than one server running at the time.</p>
+<p>A Scaling policy spins up/shuts down EC2 instances automatically based on certain conditions that we specify, such as:</p>
+<ul>
+<li>If an instance goes down due to any reason, such as bad health</li>
+<li>If an instance achieves a CPU utilization upper threshold, say 90%</li>
+<li>If the CPU utilization comes down below a certain lower threshold, then one of the instances will be shut down automatically<br />
+<br><br></li></ul></li>
+<li><p><strong>Launch configuration</strong><br><br />
+Note that all the EC2 instances running as a part of an autoscaling group share a common configuration, such as AMI, instance-type, security-group, key pair, etc. All these configurations are saved in a separate resource: Launch configuration. Think of a Launch Configuration as a template or a recipe. You are instructing the Auto Scaling service HOW to run your web application. </p>
+<p>For example: An application requires 2GB RAM , 4 vCPUs, 10GB of Disk Space, Java runtime version 8 or NodeJS 10.0. All this on top of a standard distribution of Linux or Windows. </p></li>
+</ul>
+<blockquote>
+  <p><strong>Note</strong>: AWS provides another option, <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html" rel="noopener noreferrer" target="_blank">Launch templates</a>, as an alternative to the <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html" rel="noopener noreferrer" target="_blank">Launch configuration</a>. They both serve a similar purpose. </p>
+</blockquote>
+<p>Writing YAML code for either of them is similar in syntax. We will learn to code Launch configuration in this lesson, though. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="awsautoscalingautoscalinggroup">AWS::AutoScaling::AutoScalingGroup</h2>
+<p>An autoscaling group in our example exercise will require the following:</p>
+<ul>
+<li>VPCZoneIdentifier</li>
+<li>LaunchConfigurationName</li>
+<li>Min and Max count of instances</li>
+<li>TargetGroupARNs</li>
+</ul>
+<p>See the code below having a reference to a Launch configuration,  <code>WebAppLaunchConfig</code>,  that we will create next:</p>
+<pre><code>WebAppGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      VPCZoneIdentifier:
+      - Fn::ImportValue: 
+          !Sub "${EnvironmentName}-PRIV-NETS"
+      LaunchConfigurationName:
+        Ref: WebAppLaunchConfig
+      MinSize: '3'
+      MaxSize: '5'
+      TargetGroupARNs:
+      - Ref: WebAppTargetGroup
+      HealthCheckGracePeriod: 60
+      HealthCheckType: ELB</code></pre>
+<p>In the code above:</p>
+<ul>
+<li><p>The <code>VPCZoneIdentifier</code> is a list of subnet IDs for a virtual private cloud (VPC) where instances in the Auto Scaling group can be created. We are using the private subnets.</p></li>
+<li><p>The <code>LaunchConfigurationName</code> represents the name of the launch configuration to use to launch instances. We will create a launch configuration in the next demo. </p></li>
+
+<li><p>The <code>MinSize</code> &amp; <code>MaxSize</code> lets us know the range of machines we will be running, which also alerts us to the min/max costs we can be expecting from these machines.</p></li>
+
+<li><p><strong>A target group is a group of registered instances, to whom the traffic will be routed.</strong> The ARN (Amazon Resource Names) serves as a unique ID for any resource. The <code>TargetGroupARNs</code> property refers to the ARNs of the load balancer target group that we will create in the upcoming demos. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>autoscaling group</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which of these are elements of an autoscaling group? (Pick two below.)</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1558134724145" name="849758" id="a1558134724145">
+      <label for="a1558134724145"><p>Scaling Policy</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558134772883" name="849758" id="a1558134772883">
+      <label for="a1558134772883"><p>Launch Configuration</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558134778756" name="849758" id="a1558134778756">
+      <label for="a1558134778756"><p>Security Policy</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558134787427" name="849758" id="a1558134787427">
+      <label for="a1558134787427"><p>Load Balancer</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Scaling Policy</li>
+      <li>Launch Configuration</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-resources">#### Resources</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html" rel="noopener noreferrer" target="_blank">AWS::AutoScaling::AutoScalingGroup</a></li>
+<li>The <a href="https://aws.amazon.com/autoscaling/faqs/" target="_blank">AWS Frequently Asked Questions</a> (FAQs) is a great resource to master the finer details of scaling servers</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. Launch Configuration .html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Creating Autoscaling Group')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

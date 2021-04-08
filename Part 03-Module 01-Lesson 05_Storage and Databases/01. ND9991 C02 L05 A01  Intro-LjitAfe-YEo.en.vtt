@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.134
+In a previous lesson, we have seen how to build,
+
+00:00:03.134 --> 00:00:06.359
+deploy, and automate the creation of infrastructure.
+
+00:00:06.360 --> 00:00:09.030
+However, we still have some missing pieces.
+
+00:00:09.029 --> 00:00:11.774
+Now there are full-stack architects are just complete,
+
+00:00:11.775 --> 00:00:15.210
+we need to consider additional services that will help
+
+00:00:15.210 --> 00:00:19.050
+us with automation of tasks and things that are application might need.
+
+00:00:19.050 --> 00:00:20.969
+Because of auto scaling,
+
+00:00:20.969 --> 00:00:23.744
+we know their obligation service will come and go.
+
+00:00:23.745 --> 00:00:28.844
+So how do we persist data or files such as images and video?
+
+00:00:28.844 --> 00:00:32.189
+Well, we do this by using Cloud Services that will
+
+00:00:32.189 --> 00:00:36.434
+not be running inside our servers. Let's take a look.
+
+00:00:36.435 --> 00:00:39.570
+In this lesson, we're going to discuss S3,
+
+00:00:39.570 --> 00:00:41.505
+or Simple Storage Service,
+
+00:00:41.505 --> 00:00:47.525
+which is a place outside of our BPC where we can persist images, video files,
+
+00:00:47.524 --> 00:00:54.199
+configuration files, and anything relevant to our application including log files.
+
+00:00:54.200 --> 00:00:59.450
+All their services worth mentioning are databases such as MySQL,
+
+00:00:59.450 --> 00:01:02.480
+Microsoft SQL Server, and DynamoDB,
+
+00:01:02.479 --> 00:01:05.094
+which is a very fast NoSQL database.
+
+00:01:05.094 --> 00:01:08.179
+Load balancing which we have deployed in our previous lesson,
+
+00:01:08.180 --> 00:01:12.050
+and one more services that you might come up is KMS,
+
+00:01:12.049 --> 00:01:13.939
+which is Key Management Services,
+
+00:01:13.939 --> 00:01:17.704
+which provides encryption services for your application.
+
+00:01:17.704 --> 00:01:21.969
+But for now, let's concentrate on S3.
+

@@ -1,0 +1,383 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Connect to private servers via a Jumpbox</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Servers and Security Groups</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Setting Up Our Environment.html">02. Setting Up Our Environment</a>
+    </li>
+    <li class="">
+      <a href="03. Understanding Security Groups.html">03. Understanding Security Groups</a>
+    </li>
+    <li class="">
+      <a href="04. Security Groups.html">04. Security Groups</a>
+    </li>
+    <li class="">
+      <a href="05. Creating Autoscaling Group.html">05. Creating Autoscaling Group</a>
+    </li>
+    <li class="">
+      <a href="06. Launch Configuration .html">06. Launch Configuration </a>
+    </li>
+    <li class="">
+      <a href="07. Debugging Launch Configuration.html">07. Debugging Launch Configuration</a>
+    </li>
+    <li class="">
+      <a href="08. Launch Templates.html">08. Launch Templates</a>
+    </li>
+    <li class="">
+      <a href="09. Adding Target Groups and Listeners.html">09. Adding Target Groups and Listeners</a>
+    </li>
+    <li class="">
+      <a href="10. Updating the Stack with the Load Balancer.html">10. Updating the Stack with the Load Balancer</a>
+    </li>
+    <li class="">
+      <a href="11. Debugging Our Security Group.html">11. Debugging Our Security Group</a>
+    </li>
+    <li class="">
+      <a href="12. Connect to private servers via a Jumpbox.html">12. Connect to private servers via a Jumpbox</a>
+    </li>
+    <li class="">
+      <a href="13. Final Review.html">13. Final Review</a>
+    </li>
+    <li class="">
+      <a href="14. Conclusion.html">14. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="15. Challenge 3.html">15. Challenge 3</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">12. Connect to private servers via a Jumpbox</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="demo---accessing-servers-in-a-private-subnet-via-jump-box">Demo - Accessing Servers in a Private Subnet via Jump Box</h1>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Lesson 4 - Concept 4</p></h3>
+  <video controls>
+  <source src="12. Lesson 4 - Concept 4-YexsqEexUnI.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="12. Lesson 4 - Concept 4-YexsqEexUnI.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="what-is-a-jumpbox">What is a Jumpbox?</h3>
+<p>These are the EC2 instances in the public subnet with required access to the private subnets' servers. Generally, we would not want our private servers to be discoverable by anyone outside the VPC. However, we want to access those private servers from the Internet. It is made possible by using a Jumpbox (also called as Bastion Host). It is important to note that the security group attached to the private servers must allow the IP address of the public Jumpbox to connect to it.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-05-at-4.49.16-pm.png" alt="Role of a Jumpbox" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Role of a Jumpbox</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="create-a-jumpbox">Create a Jumpbox</h3>
+<p>In the demo video above, the instructor shows creating a new key-pair, <strong>jumpbox-key.pem</strong>.  However, you can use an existing key-pair if available. Remember that key-pairs are specific to an AWS region. Also, the VPC you have to choose while launching the Jumpbox must be the same one in which you have been creating Cloudformation stacks. </p>
+<p>Here is the summary of the Jumpbox configuration: </p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="stage" style="text-align:center;">Stage</th>
+<th id="configuration">Configuration</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">1.</td>
+<td>Amazon Machine Image (AMI)</td>
+<td><code>Amazon Linux 2 AMI (HVM), SSD Volume Type</code><br> Note: You have chosen a <strong>Free Tier Eligible</strong> AMI</td>
+</tr>
+<tr>
+<td style="text-align:center;">2.</td>
+<td>Instance Type</td>
+<td><code>t2.micro</code></td>
+</tr>
+<tr>
+<td style="text-align:center;">3.</td>
+<td>Configure Instance Details</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>a. Number of Instances</td>
+<td>1</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>b. Network</td>
+<td>Select the VPC that you created in the previous step</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>c. Subnet</td>
+<td>Public</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>d. Auto-assign Public IP</td>
+<td>Enable</td>
+</tr>
+<tr>
+<td style="text-align:center;">4.</td>
+<td>Storage</td>
+<td>Default</td>
+</tr>
+<tr>
+<td style="text-align:center;">5.</td>
+<td>Tags</td>
+<td>Name:Jumpbox</td>
+</tr>
+<tr>
+<td style="text-align:center;">6.</td>
+<td>Security Group</td>
+<td>Create a <strong>new</strong> security group. <br>Add rule to allow SSH type connection on default port 22 from your IP as source</td>
+</tr>
+<tr>
+<td style="text-align:center;"></center></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center;">Once the Jumpbox is up and running, you can connect to it using SSH protocol.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="connect-to-the-jumpbox">Connect to the Jumpbox</h3>
+<p>Since the Jumpbox is a Linux machine, therefore you will have to use SSH protocol to connect to it. Remember that the flow of connection will be </p>
+<blockquote>
+  <p><strong>Your local computer (Mac/Windows/Linux) &#8594; Jumpbox(CentOS Linux) &#8594; Private servers (Ubuntu Linux).</strong></p>
+</blockquote>
+<p>If you are running a Windows computer locally, then you would have to convert the <strong>jumpbox-key.pem</strong> to <strong>jumpbox-key.ppk</strong> using the PuTTy utility and use the same PuTTy to connect to the Jumpbox.  </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="test-the-jumpbox">Test the Jumpbox</h3>
+<p>Recall that the instructor has the following two different login keys: 1). <strong>jumpbox-key.pem</strong> for the Jumpbox and  2). <strong>private-server-devops-key.pem</strong> for the private servers. Let's test if you are able to connect to the private servers via a Jumpbox:</p>
+<ol>
+<li><p>Copy the public IP address of the Jumpbox, say <strong>3.17.80.159</strong></p></li>
+<li><p>Copy and paste the <strong>private servers' login key file</strong> from your local computer to the Jumpbox. Run the following command from your local terminal (replace the file names and the IP address as applicable to you):</p></li>
+</ol>
+<pre><code class="bash language-bash">scp -i jumpbox-key.pem private-server-devops-key.pem ec2-user@3.17.80.159:/home/ec2-user/private-server-devops-key.pem</code></pre>
+<ol start="3">
+<li>SSH login to the Jumpbox:</li>
+</ol>
+<pre><code class="bash language-bash">ssh ec2-user@3.17.80.159 -i jumpbox-key.pem</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="4">
+<li><p>Copy the private IP address of any private server, say <strong>10.0.2.74</strong>. </p></li>
+
+<li><p>Once you are logged into the Jumpbox, confirm if you have the <strong>private-server-devops-key.pem</strong> key available in the home directory, and then change the access-mode of the key file. Later, try to <strong>SSH login to the private server</strong>:</p></li>
+</ol>
+<pre><code class="bash language-bash">ls
+# you must see the private-server-devops-key.pem file
+chmod 400 private-server-devops-key.pem
+ssh -i "private-server-devops-key.pem" ubuntu@10.0.2.74</code></pre>
+<blockquote>
+  <p>Recall that the default user name for a Linux system is <code>ec2-user</code> and for an Ubuntu system is <code>ubuntu</code>. </p>
+</blockquote>
+<ol start="6">
+<li>Lastly, check the status of the running web server in the private instance, as shown in the snapshot below:</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-08-at-10.04.57-pm.png" alt="Checking if the Apache server is running in the Ubuntu machine, using &#x60;service apache2 status&#x60; command. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Checking if the Apache server is running in the Ubuntu machine, using <code>service apache2 status</code> command. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Similarly, you can SSH login to the second private server from the Jumpbox. You have to replace the private IP address of the second server in the commands above. </p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="13. Final Review.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('12. Connect to private servers via a Jumpbox')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

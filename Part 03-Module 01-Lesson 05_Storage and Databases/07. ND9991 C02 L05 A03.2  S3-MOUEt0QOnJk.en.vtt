@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.209
+So let's take a moment now to talk about storage.
+
+00:00:03.209 --> 00:00:07.019
+Everything we've seen so far as SQL or
+
+00:00:07.019 --> 00:00:12.269
+SQL type of way of storing data which is probably needed by a lot of application.
+
+00:00:12.269 --> 00:00:16.769
+However, some application have much larger files or files that are
+
+00:00:16.769 --> 00:00:21.390
+binaries that are not conducive to be placed inside a database.
+
+00:00:21.390 --> 00:00:24.780
+So you will find yourself in a situation where you will be
+
+00:00:24.780 --> 00:00:29.914
+storing images or videos and you need a place to put those.
+
+00:00:29.914 --> 00:00:35.494
+In other case where you would need access to a storage outside your servers,
+
+00:00:35.494 --> 00:00:38.914
+is when you have configuration files or some settings or
+
+00:00:38.914 --> 00:00:42.740
+even sensitive encrypted data that you want to store somewhere
+
+00:00:42.740 --> 00:00:46.640
+that you want only accessible to the servers at runtime,
+
+00:00:46.640 --> 00:00:49.314
+you will need a specific storage for these.
+
+00:00:49.314 --> 00:00:54.155
+All this is happening, keep in mind because our application servers come and go.
+
+00:00:54.155 --> 00:00:56.090
+So putting something in there,
+
+00:00:56.090 --> 00:01:00.785
+you probably going to lose it based on the criteria of the auto-scaling.
+
+00:01:00.784 --> 00:01:03.949
+So you don't want anything that you want to persist to
+
+00:01:03.950 --> 00:01:08.400
+be stored in your auto scaling group servers, right?
+

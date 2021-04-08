@@ -1,0 +1,160 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.230 --> 00:00:03.089
+Even though we're automating,
+
+00:00:03.089 --> 00:00:06.299
+and creating everything through CloudFormation,
+
+00:00:06.299 --> 00:00:07.949
+when it comes to the database,
+
+00:00:07.950 --> 00:00:13.980
+I highly recommend that you use something like the console to create your resource simply
+
+00:00:13.980 --> 00:00:16.410
+because usually database is
+
+00:00:16.410 --> 00:00:21.570
+a one time situation where you would create the database and that said.
+
+00:00:21.570 --> 00:00:26.310
+You don't want to be updating your script constantly and having that database there.
+
+00:00:26.309 --> 00:00:27.974
+However, you do have the option,
+
+00:00:27.975 --> 00:00:30.190
+and I'm going to show you right now.
+
+00:00:30.710 --> 00:00:36.600
+We'll go to our browser. We'll do CloudFormation,
+
+00:00:36.600 --> 00:00:45.490
+RDS, I'll go to Syntax.
+
+00:00:46.729 --> 00:00:50.854
+Everything that we just did in the console to create a database,
+
+00:00:50.854 --> 00:00:52.429
+we can come here,
+
+00:00:52.429 --> 00:00:55.054
+pick up this template and do it exactly like that.
+
+00:00:55.054 --> 00:00:58.350
+Let's take a look at some of the parameters.
+
+00:00:59.320 --> 00:01:02.960
+Everything we discuss such as allocators storage
+
+00:01:02.960 --> 00:01:06.129
+which is part of the initial hardware specification,
+
+00:01:06.129 --> 00:01:09.149
+allow measure version upgrade,
+
+00:01:09.150 --> 00:01:10.980
+minor version upgrade,
+
+00:01:10.980 --> 00:01:14.240
+those features are the ones that were mentioned on their maintenance.
+
+00:01:14.239 --> 00:01:15.259
+If you allow maintenance,
+
+00:01:15.260 --> 00:01:17.900
+you have this options to allow these patches to
+
+00:01:17.900 --> 00:01:21.234
+go through without having to wait for your permission.
+
+00:01:21.234 --> 00:01:24.849
+The same thing regarding snapshots,
+
+00:01:24.849 --> 00:01:29.750
+the instance class which is the CPU and memory combination, and so on.
+
+00:01:29.750 --> 00:01:31.670
+You get to control all this.
+
+00:01:31.670 --> 00:01:34.460
+For example, you see here that KMS Key ID,
+
+00:01:34.459 --> 00:01:36.439
+if you choose to encrypt,
+
+00:01:36.439 --> 00:01:39.414
+you can manage everything from here.
+
+00:01:39.415 --> 00:01:42.980
+Now, when it comes to creating databases and confirmation,
+
+00:01:42.980 --> 00:01:45.020
+like I said is not something that you want to do
+
+00:01:45.019 --> 00:01:47.450
+all the time because if you have data there,
+
+00:01:47.450 --> 00:01:49.310
+you want that data to persist.
+
+00:01:49.310 --> 00:01:52.820
+So there's a small CloudFormation feature
+
+00:01:52.819 --> 00:01:55.669
+that you want to be aware of. Let's take a look.
+
+00:01:55.670 --> 00:02:02.280
+I'm going to go and Google Cloud Formation retention policy.
+
+00:02:08.449 --> 00:02:11.329
+As you see in this example,
+
+00:02:11.330 --> 00:02:14.080
+let's take a look at the YAML version here,
+
+00:02:14.080 --> 00:02:15.655
+the last line says,
+
+00:02:15.655 --> 00:02:18.594
+"Delation policy equals retain."
+
+00:02:18.594 --> 00:02:21.939
+What that means is it gives me the option for
+
+00:02:21.939 --> 00:02:26.030
+any resource whether it's a DBC and S3 Bucket or a database,
+
+00:02:26.030 --> 00:02:29.890
+I have the option of adding this line that says retain.
+
+00:02:29.889 --> 00:02:31.764
+So if I delete the stack,
+
+00:02:31.764 --> 00:02:33.069
+if I update the stack,
+
+00:02:33.069 --> 00:02:34.329
+this will be there.
+
+00:02:34.330 --> 00:02:37.495
+You don't have to worry that every time you run your platform ancient script,
+
+00:02:37.495 --> 00:02:40.825
+your data might be lost or your database might be wiped out.
+
+00:02:40.824 --> 00:02:42.789
+So just keep in mind that you have this option in
+
+00:02:42.789 --> 00:02:45.914
+the Cloud formation of retaining a resource.
+
+00:02:45.914 --> 00:02:48.328
+Even if the stack is completely destroyed,
+
+00:02:48.329 --> 00:02:54.719
+your script will not touch the database if it has this feature enabled.
+

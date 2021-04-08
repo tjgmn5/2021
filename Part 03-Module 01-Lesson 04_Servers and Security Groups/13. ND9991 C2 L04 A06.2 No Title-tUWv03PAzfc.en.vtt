@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.820
+Going back to our script,
+
+00:00:02.820 --> 00:00:06.435
+if we go to our reference architecture.
+
+00:00:06.435 --> 00:00:09.510
+Now, we have everything matching exactly.
+
+00:00:09.510 --> 00:00:11.370
+We have NAT gateways,
+
+00:00:11.370 --> 00:00:13.680
+we have web servers,
+
+00:00:13.680 --> 00:00:15.030
+we have everything, security groups.
+
+00:00:15.030 --> 00:00:17.650
+Everything is matching exactly.
+
+00:00:17.900 --> 00:00:25.785
+So now we're ready to actually deploy additional services that may be require.
+
+00:00:25.785 --> 00:00:28.440
+In this case by the way, we didn't mention,
+
+00:00:28.440 --> 00:00:33.395
+let's go back to our example here.
+
+00:00:33.395 --> 00:00:35.670
+I want to show you something.
+
+00:00:38.470 --> 00:00:43.745
+Let's go to the launch configuration where we started this script.
+
+00:00:43.745 --> 00:00:47.825
+We have security groups followed by the launch configuration,
+
+00:00:47.825 --> 00:00:50.860
+and something that you may have missed because I didn't mention it,
+
+00:00:50.860 --> 00:00:54.925
+is that we're using a natural docker container here.
+
+00:00:54.925 --> 00:00:59.060
+Docker as a platform within a platform.
+
+00:00:59.060 --> 00:01:03.940
+Imagine, we're running a virtual machine that has a container inside.
+
+00:01:03.940 --> 00:01:10.620
+So we're going to the extreme level of virtualization here and this is great you
+
+00:01:10.620 --> 00:01:13.820
+can have this so many layers of extra security and
+
+00:01:13.820 --> 00:01:18.425
+extra convenience on functionality for yourself so that you don't have to do much work.
+
+00:01:18.425 --> 00:01:23.305
+You can have this docker image created in the CICD pipeline,
+
+00:01:23.305 --> 00:01:25.470
+and just deploy the binary
+
+00:01:25.470 --> 00:01:28.880
+here and you don't have to worry about source code or anything like that.
+
+00:01:28.880 --> 00:01:33.500
+Your developers can actually give you a binary artifact that you can push here and
+
+00:01:33.500 --> 00:01:38.200
+you wouldn't need much in the way of knowing how to configure it,
+
+00:01:38.200 --> 00:01:41.220
+how to properly provide parameters or nothing like that.
+
+00:01:41.220 --> 00:01:42.950
+You just put it in a server and you
+
+00:01:42.950 --> 00:01:45.900
+send that out there and everything is running perfect.
+

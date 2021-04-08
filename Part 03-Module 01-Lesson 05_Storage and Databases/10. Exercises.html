@@ -1,0 +1,370 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercises</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Storage and Databases </h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. RDS Databases (Part One).html">02. RDS Databases (Part One)</a>
+    </li>
+    <li class="">
+      <a href="03. RDS Databases (Part Two).html">03. RDS Databases (Part Two)</a>
+    </li>
+    <li class="">
+      <a href="04. RDS - Create Aurora database.html">04. RDS - Create Aurora database</a>
+    </li>
+    <li class="">
+      <a href="05. RDS Database (Part Three).html">05. RDS Database (Part Three)</a>
+    </li>
+    <li class="">
+      <a href="06. RDS Database (Part Four).html">06. RDS Database (Part Four)</a>
+    </li>
+    <li class="">
+      <a href="07. S3 (Part One).html">07. S3 (Part One)</a>
+    </li>
+    <li class="">
+      <a href="08. S3 (Part Two).html">08. S3 (Part Two)</a>
+    </li>
+    <li class="">
+      <a href="09. Key Points.html">09. Key Points</a>
+    </li>
+    <li class="">
+      <a href="10. Exercises.html">10. Exercises</a>
+    </li>
+    <li class="">
+      <a href="11. Conclusion.html">11. Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">10. Exercises</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="prerequisite">Prerequisite</h3>
+<p>Use the existing stack's resources, such as VPC, Subnets, and Security groups, that you have already created in your previous lessons. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-18-at-2.23.43-pm.png" alt="Use the existing resources for the current exercises" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Use the existing resources for the current exercises</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="exercise-1">Exercise 1</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Deploy a MySQL database</p></h3>
+  <div>
+  <div>
+    <h4>Task Description:</h4>
+    <p>Create a CloudFormation script that deploys a MySQL DB with an associated security group.</p>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="d530429f-ae0f-4434-a44f-3e36efa5461e--0">
+        <label for="d530429f-ae0f-4434-a44f-3e36efa5461e--0"><p>On the EC2 Console, create a security group that you'll associate with EC2 instances and RDS</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="d530429f-ae0f-4434-a44f-3e36efa5461e--1">
+        <label for="d530429f-ae0f-4434-a44f-3e36efa5461e--1"><p>Using CloudFormation, create a script that uses your security group and creates an RDS MySQL DB</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Databases are key in today's infrastructure deployments. They are the cornerstone of most software applications, so knowing how to deploy and secure them in the cloud will set you apart from the crowd!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="hint">Hint</h3>
+<ul>
+<li>Use the starter code as shown in the snapshot below, and refer to the AWS documentation, <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-vpcsecuritygroups" target="_blank">AWS::RDS::DBInstance</a> and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbsubnet-group.html" target="_blank">AWS::RDS::DBSubnetGroup</a>, for choosing the right set of properties.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-18-at-1.55.43-pm.png" alt="Template starter code" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Template starter code</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="bonus-steps">Bonus Steps</h4>
+<ul>
+<li>Export a few resources, such as private Subnet IDs, from your previous stack. Then only you can cross-reference the resources from another stack, such as using:</li>
+</ul>
+<pre><code class="yml language-yml">Fn::ImportValue: &lt;Exported_value&gt;</code></pre>
+<ul>
+<li>Use parameters from a separate file to make your template script reusable. In your new template file, use the substitution function, <code>!Sub "${parameter}</code> to refer to any parameter variable. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="solution">Solution</h4>
+<div id="spoiler_1" style="display:none">
+We strongly recommend you solve the exercise on your own. However, to create a database in CloudFormation, you'll need 
+* A Subnet group created, a Security Group that will control access in and out of your database.
+* A user name and a password that will serve as the master for this db server. These should be the parameters in your script.
+* You'll also need subnets, ideally 2.
+
+#### Best Practice
+* Add DeletionPolicy and set it to Retain at the bottom of your DB Creation script. This way you don't lose your database if you accidentally delete your stack.
+*(Keep this in mind if you indeed intend to delete this DB when done practicing)*
+
+#### <font color="green">Download the solution files, and run the command below:</font><pre><code class="bash language-bash">aws cloudformation create-stack  --stack-name RDSstack --region us-west-2 --template-body file://RDSTemplate.yml --parameters file://RDSparameters.json --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" </code></pre>
+Don't forget to change the region, security groups, and subnet IDs as applicable to you. The solution files are available in this <a href="https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1-Exercises_Solution" target="_blank">GitHub repository</a>. Refer to the following files:
+* RDSparameters.json
+* RDSTemplate.yml
+</div>
+<p><button type="button" id="myButton1" onclick="if(document.getElementById('spoiler_1') .style.display=='none') {document.getElementById('spoiler_1') .style.display=''}else{document.getElementById('spoiler_1') .style.display='none'}if (document.getElementById('myButton1').innerHTML=='Show Solution') {document.getElementById('myButton1').innerHTML='Hide Solution';}else{document.getElementById('myButton1').innerHTML = 'Show Solution';}">Show Solution</button></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <hr />
+<h2 id="exercise-2">Exercise 2</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Get familiar with Bucket policies</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="83ff3307-01c0-4d21-a520-28ff7fd43b54--0">
+        <label for="83ff3307-01c0-4d21-a520-28ff7fd43b54--0"><p>In the S3 web console, create a bucket and enable static web hosting</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="83ff3307-01c0-4d21-a520-28ff7fd43b54--1">
+        <label for="83ff3307-01c0-4d21-a520-28ff7fd43b54--1"><p>Create an index.html (or use any sample file) and upload it to your bucket</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="83ff3307-01c0-4d21-a520-28ff7fd43b54--2">
+        <label for="83ff3307-01c0-4d21-a520-28ff7fd43b54--2"><p>Using the AWS CLI Tool and your text editor, create a bucket policy to enable public access to it (Hint: Use the AWS Documentation )</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="83ff3307-01c0-4d21-a520-28ff7fd43b54--3">
+        <label for="83ff3307-01c0-4d21-a520-28ff7fd43b54--3"><p>Update the policy to restrict access only to your own IP address</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>File Storage will help you manage config files, log files and other data related to your applications. <br />
+Getting familiar with bucket policies will help you secure this data!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="solution">Solution</h4>
+<div id="spoiler_2" style="display:none">
+Again, we strongly recommend you solve the exercise using AWS Documentation. If stuck, you may see the solution available in this <a href="https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1-Exercises_Solution" target="_blank">GitHub repository</a>
+* The **IP Restricted S3 Bucket Solution.txt** contains the description
+* The **ipbucket.json** is an example policy (JSON code)
+</div>
+<p><button type="button" id="myButton1" onclick="if(document.getElementById('spoiler_2') .style.display=='none') {document.getElementById('spoiler_2') .style.display=''}else{document.getElementById('spoiler_2') .style.display='none'}if (document.getElementById('myButton1').innerHTML=='Show Solution') {document.getElementById('myButton1').innerHTML='Hide Solution';}else{document.getElementById('myButton1').innerHTML = 'Show Solution';}">Show Solution</button></p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="11. Conclusion.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('10. Exercises')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

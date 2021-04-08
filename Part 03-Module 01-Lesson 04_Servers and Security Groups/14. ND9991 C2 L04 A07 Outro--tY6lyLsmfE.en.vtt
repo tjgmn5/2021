@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.734
+Okay, so we just exploy an application to our private cloud.
+
+00:00:03.734 --> 00:00:07.125
+We have a network, we have service running, and most important,
+
+00:00:07.125 --> 00:00:10.064
+we have a script that we can later update, modify,
+
+00:00:10.064 --> 00:00:13.574
+and deploy as many times as needed to achieve the same goal.
+
+00:00:13.574 --> 00:00:16.379
+So if your application stops working,
+
+00:00:16.379 --> 00:00:19.004
+instead of wasting time or resources troubleshooting,
+
+00:00:19.004 --> 00:00:20.879
+you can just redeploy everything,
+
+00:00:20.879 --> 00:00:24.765
+and you know is going to work in a predictable manner every single time.
+
+00:00:24.765 --> 00:00:26.219
+In the next lesson,
+
+00:00:26.219 --> 00:00:29.799
+let's discuss some additional services that you can deploy.
+

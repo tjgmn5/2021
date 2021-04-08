@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.945
+Here are the key points and takeaways that we're going to have from this lesson.
+
+00:00:03.945 --> 00:00:08.225
+Remember to use S3 to store your config files, media file,
+
+00:00:08.225 --> 00:00:13.035
+or log files because your servers may come and go because of auto scaling reasons.
+
+00:00:13.035 --> 00:00:16.260
+Also, remember that your servers don't really need credentials.
+
+00:00:16.260 --> 00:00:20.010
+You can assign an IAM role which is a set of temporary credentials,
+
+00:00:20.010 --> 00:00:23.670
+so they can access your S3 resources when needed.
+
+00:00:23.670 --> 00:00:29.870
+Always prefer to use RDS as opposed to install on your own database in
+
+00:00:29.870 --> 00:00:32.780
+an EC2 instance simply because RDS provides
+
+00:00:32.780 --> 00:00:36.469
+so much more value to use such as automatic maintenance,
+
+00:00:36.469 --> 00:00:38.570
+and patches, and backups.
+
+00:00:38.570 --> 00:00:40.370
+So you don't have to worry about those things,
+
+00:00:40.370 --> 00:00:43.310
+and doing it yourself if you install your own server.
+
+00:00:43.310 --> 00:00:46.950
+So always prefer RDS when possible.
+

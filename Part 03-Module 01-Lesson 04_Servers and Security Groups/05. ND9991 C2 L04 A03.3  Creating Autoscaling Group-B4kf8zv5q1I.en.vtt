@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.380 --> 00:00:04.899
+So we don't need anything else for our parameter file.
+
+00:00:05.030 --> 00:00:07.365
+We'll continue down.
+
+00:00:07.365 --> 00:00:10.269
+We have security groups established.
+
+00:00:10.429 --> 00:00:14.019
+Now, let's go back to our reference document.
+
+00:00:19.070 --> 00:00:23.315
+In this case, what we're going to do is we're going to be creating an auto scaling group.
+
+00:00:23.315 --> 00:00:27.220
+So when you're creating an auto scaling group,
+
+00:00:27.219 --> 00:00:29.649
+an auto scaling group what it does is,
+
+00:00:29.649 --> 00:00:33.920
+it will create servers based on a criteria.
+
+00:00:33.920 --> 00:00:36.380
+So you could want zero servers,
+
+00:00:36.380 --> 00:00:39.565
+that's an actual valid value, zero.
+
+00:00:39.564 --> 00:00:41.189
+You could have 100,
+
+00:00:41.189 --> 00:00:44.479
+you can have 200 based on whatever criteria you define.
+
+00:00:44.479 --> 00:00:46.250
+For example, if you have one server
+
+00:00:46.250 --> 00:00:50.159
+running and the CPU was being used too much like 80 percent,
+
+00:00:50.159 --> 00:00:51.893
+90 percent of the CPU,
+
+00:00:51.893 --> 00:00:54.534
+that means that machine probably need help.
+
+00:00:54.534 --> 00:00:58.744
+So that would meet their criteria to spin up another server.
+
+00:00:58.744 --> 00:01:01.894
+Once the CPU usage comes back down,
+
+00:01:01.895 --> 00:01:05.799
+that secondary machine is no longer needed and it would be discarded.
+
+00:01:05.799 --> 00:01:10.995
+Now, how does the auto scaling group know what to lunch?
+
+00:01:10.995 --> 00:01:15.645
+Yeah, it would need to understand what type of server are you trying to run,
+
+00:01:15.644 --> 00:01:17.774
+when to run it, and all those things.
+
+00:01:17.775 --> 00:01:19.020
+So in this case,
+
+00:01:19.019 --> 00:01:21.709
+what we're going to do is we're going to provide the auto scaling
+
+00:01:21.709 --> 00:01:25.649
+group what is known as the launch configuration.
+

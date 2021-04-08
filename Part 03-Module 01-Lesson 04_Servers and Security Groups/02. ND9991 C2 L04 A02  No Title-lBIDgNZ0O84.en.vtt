@@ -1,0 +1,133 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.820
+So if we have our architecture here,
+
+00:00:02.820 --> 00:00:07.770
+what we need to do is go ahead and now start creating a separate file since we
+
+00:00:07.770 --> 00:00:13.020
+now have access to the output parameters of the previous network that we created.
+
+00:00:13.020 --> 00:00:14.850
+So we're just going to start from scratch with
+
+00:00:14.850 --> 00:00:17.730
+a brand new YAML file and a matching parameter file.
+
+00:00:17.730 --> 00:00:20.505
+We're going to use that to create
+
+00:00:20.505 --> 00:00:22.590
+basically a brand new infrastructure that
+
+00:00:22.590 --> 00:00:24.510
+is just going to be for the servers and our software.
+
+00:00:24.510 --> 00:00:27.760
+This is the actual functional part.
+
+00:00:28.040 --> 00:00:31.005
+We're going to come here to our repo,
+
+00:00:31.005 --> 00:00:35.770
+we're going to create a new file.
+
+00:00:36.340 --> 00:00:39.490
+Make sure it's a YAML file.
+
+00:00:39.490 --> 00:00:43.230
+I'm going to save it blank for now,
+
+00:00:43.230 --> 00:00:45.880
+just to have something.
+
+00:00:46.060 --> 00:00:50.010
+I'm going to call it demoservers.yaml.
+
+00:00:50.480 --> 00:00:54.950
+I'm going to do the same for the JSON file that we're going to use for parameters.
+
+00:00:54.950 --> 00:00:58.530
+Again, we're just going to create a blank for now just to have a placeholder,
+
+00:00:58.790 --> 00:01:06.130
+make sure it is formatted as JSON, and we're going to hit "Save".
+
+00:01:06.290 --> 00:01:10.210
+We're going to call this demoservers.json.
+
+00:01:15.170 --> 00:01:21.370
+Now, I have a similar document that we can use just like we did for the network.
+
+00:01:21.370 --> 00:01:23.620
+I have a similar reference document that we're going to be using,
+
+00:01:23.620 --> 00:01:29.470
+and we're going to be building it step-by-step from the perspective of server this time,
+
+00:01:29.470 --> 00:01:31.850
+not the network. So let's get to that.
+
+00:01:34.310 --> 00:01:38.435
+This fall right here in the repository.
+
+00:01:38.435 --> 00:01:41.350
+You will see that we only have one parameter here,
+
+00:01:41.350 --> 00:01:44.075
+that's very interesting, just one parameter.
+
+00:01:44.075 --> 00:01:47.620
+That's because we're going to be using the environment name,
+
+00:01:47.620 --> 00:01:51.160
+which we call I belief Udacity project demo.
+
+00:01:51.160 --> 00:01:55.660
+We're going to be using that value to be referencing
+
+00:01:55.660 --> 00:02:00.475
+the output values of the previous networking script that we created.
+
+00:02:00.475 --> 00:02:02.840
+So we just need the part that changes.
+
+00:02:02.840 --> 00:02:07.460
+In this case, the name which we gave it Udacity project demo,
+
+00:02:07.460 --> 00:02:10.700
+and then we already know we standardize between
+
+00:02:10.700 --> 00:02:14.930
+ourselves and other Cloud formation developers in our team.
+
+00:02:14.930 --> 00:02:17.465
+We standardized the remainder part of the name.
+
+00:02:17.465 --> 00:02:19.400
+So we'll get to that pretty soon.
+
+00:02:19.400 --> 00:02:22.700
+For now, we'll just need to declare this one parameter.
+
+00:02:22.700 --> 00:02:25.770
+So I'll copy this portion,
+
+00:02:27.920 --> 00:02:30.865
+even the description of this time.
+
+00:02:30.865 --> 00:02:35.240
+Copy, get back to
+
+00:02:35.240 --> 00:02:43.080
+our file, and paste it here.
+
+00:02:44.110 --> 00:02:47.435
+We don't have anything at this time.
+
+00:02:47.435 --> 00:02:51.450
+So we'll just going to start adding resources right away.
+

@@ -1,0 +1,196 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.020 --> 00:00:03.089
+We'll save this. Lets us try to run it,
+
+00:00:03.089 --> 00:00:05.835
+let's see if we get some kind of error here.
+
+00:00:05.835 --> 00:00:07.919
+This is no longer create,
+
+00:00:07.919 --> 00:00:11.160
+now it's an update because it exists already.
+
+00:00:11.160 --> 00:00:17.295
+So we'll switch this to update and execute it.
+
+00:00:17.295 --> 00:00:23.860
+Let's see okay we have our first error that says YAML not well form.
+
+00:00:24.710 --> 00:00:30.450
+So we have a YAML not properly formatted document.
+
+00:00:30.449 --> 00:00:33.310
+Let's try to find out what the problem is here.
+
+00:00:43.280 --> 00:00:48.664
+The hint says that we need to look for around line 75.
+
+00:00:48.664 --> 00:00:51.079
+Sure enough yes, we have
+
+00:00:51.079 --> 00:00:55.429
+this web application Group that looks like it's not formatted properly.
+
+00:00:55.429 --> 00:00:59.880
+We need to push it one tab back, I believe.
+
+00:01:00.820 --> 00:01:04.340
+Let's try that and see if that resolves the problem.
+
+00:01:04.340 --> 00:01:06.260
+Push it back, shift up,
+
+00:01:06.260 --> 00:01:11.100
+save the file again and I'm going to try and see if that resolves the issue.
+
+00:01:11.560 --> 00:01:15.049
+Now we have the other error that we were expecting.
+
+00:01:15.049 --> 00:01:18.439
+It says unresolved resource dependencies.
+
+00:01:18.439 --> 00:01:22.379
+Thus referring to the Web Target group that I mentioned.
+
+00:01:24.739 --> 00:01:27.789
+I don't think that property is necessary,
+
+00:01:27.789 --> 00:01:33.359
+so let's try to eliminate that property and see if that solves the issue for right now.
+
+00:01:33.909 --> 00:01:36.875
+I'll hit save and delete that,
+
+00:01:36.875 --> 00:01:39.540
+and then I'll try to run it again.
+
+00:01:39.799 --> 00:01:42.879
+Also that worked.
+
+00:01:42.969 --> 00:01:47.579
+Let's go take a look in the console and see what it's doing now.
+
+00:01:51.620 --> 00:01:55.185
+On our EC2, if you go to the service EC2,
+
+00:01:55.185 --> 00:02:01.745
+this is where you're going to find your launch configuration on your auto scaling group.
+
+00:02:01.745 --> 00:02:04.295
+It should be down in the menu.
+
+00:02:04.295 --> 00:02:08.120
+Here we go, it says auto-scaling and you're going to have only two options here,
+
+00:02:08.120 --> 00:02:11.250
+launch configuration and auto scaling groups.
+
+00:02:13.000 --> 00:02:16.729
+Let's see there's, we haven't done anything.
+
+00:02:16.729 --> 00:02:19.939
+Let me see, launch configuration.
+
+00:02:19.939 --> 00:02:23.539
+Okay we have the T3 medium, demo server.
+
+00:02:23.539 --> 00:02:24.889
+Okay perfect.
+
+00:02:24.889 --> 00:02:28.679
+Let's go to Cloud Formation,
+
+00:02:28.680 --> 00:02:31.510
+it says updated progress perfect.
+
+00:02:31.729 --> 00:02:35.500
+I believe this one might take a while.
+
+00:02:42.169 --> 00:02:46.819
+If we create the auto scaling group and we send it to a minimum of three,
+
+00:02:46.819 --> 00:02:49.789
+as soon as the launch configuration is available,
+
+00:02:49.789 --> 00:02:52.069
+it's going to start running right away.
+
+00:02:52.069 --> 00:02:55.310
+Keep that in mind when it comes to costs.
+
+00:02:55.310 --> 00:02:58.819
+If your application does not need more than one server,
+
+00:02:58.819 --> 00:03:00.650
+you can keep it at one, that's fine.
+
+00:03:00.650 --> 00:03:05.780
+You could also use a security group or I should say an auto scaling group.
+
+00:03:05.780 --> 00:03:08.750
+Even if you have just one server because it
+
+00:03:08.750 --> 00:03:11.810
+keeps track of that server and if something ever happens to it,
+
+00:03:11.810 --> 00:03:13.949
+it will spin it back up.
+
+00:03:18.819 --> 00:03:22.319
+We have an update complete. That's good.
+
+00:03:23.900 --> 00:03:33.240
+Perfect. Let's go to EC2 and see if something has changed over here.
+
+00:03:37.069 --> 00:03:40.514
+Going down to auto scaling groups,
+
+00:03:40.514 --> 00:03:42.824
+we should have a group here.
+
+00:03:42.824 --> 00:03:46.629
+This group, let's see what it has.
+
+00:03:52.219 --> 00:03:55.199
+This auto-scaling group that we created,
+
+00:03:55.199 --> 00:03:59.284
+it has three instances and they're showing healthy and in-service.
+
+00:03:59.284 --> 00:04:02.479
+Now we haven't added any logic to the auto scaling group,
+
+00:04:02.479 --> 00:04:07.784
+so it can't really tell whether they're really healthy or not.
+
+00:04:07.784 --> 00:04:10.359
+That's more up to the load balancer,
+
+00:04:10.360 --> 00:04:12.830
+which we're probably going to add next.
+
+00:04:12.830 --> 00:04:15.649
+So the goal is to have an application
+
+00:04:15.649 --> 00:04:19.189
+listening on one specific port and providing service.
+
+00:04:19.189 --> 00:04:22.115
+So you can add logic to a load balancer
+
+00:04:22.115 --> 00:04:25.519
+to go check on that port and see if the application is actually running.
+
+00:04:25.519 --> 00:04:29.060
+If it's not running you will be reported as unhealthy and then
+
+00:04:29.060 --> 00:04:30.949
+the auto-scaling group will come and trigger and
+
+00:04:30.949 --> 00:04:34.439
+terminate that server. I'm bringing back a new one.
+

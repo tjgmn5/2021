@@ -1,0 +1,241 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.660
+We're going to see a problem that developed with the security group,
+
+00:00:03.660 --> 00:00:07.155
+and then we're going to explain why it happened.
+
+00:00:07.155 --> 00:00:10.035
+Now, if you remember, when we declare security groups,
+
+00:00:10.035 --> 00:00:14.235
+we have egress rules and ingress rules.
+
+00:00:14.235 --> 00:00:17.505
+Now, the web servers that we have,
+
+00:00:17.505 --> 00:00:18.990
+they're not running on a standard port.
+
+00:00:18.990 --> 00:00:22.830
+They are running on port 8080 as opposed to what will be
+
+00:00:22.830 --> 00:00:28.320
+the default port 80 where you would see most web applications.
+
+00:00:28.320 --> 00:00:32.640
+This is good. This is something that you can do for security reasons,
+
+00:00:32.640 --> 00:00:37.545
+or just to make it harder for hackers to try to break into your application.
+
+00:00:37.545 --> 00:00:41.305
+So what happened was,
+
+00:00:41.305 --> 00:00:46.760
+I'm going to show you the security groups that we have here in the EC2 Console.
+
+00:00:46.760 --> 00:00:50.975
+One of the security that we have defined in our stack,
+
+00:00:50.975 --> 00:00:53.660
+is the one that assigns to a load balancer,
+
+00:00:53.660 --> 00:00:56.065
+this one we're looking at right here.
+
+00:00:56.065 --> 00:00:58.320
+The way we have it in our script,
+
+00:00:58.320 --> 00:01:00.765
+is we have port 80.
+
+00:01:00.765 --> 00:01:04.350
+But we have it not only as inbound,
+
+00:01:04.350 --> 00:01:06.245
+but we also have it as outbound.
+
+00:01:06.245 --> 00:01:11.330
+That's a mistake. You're basically limiting the ability to the load balancer
+
+00:01:11.330 --> 00:01:16.550
+to talk to anything other than an HTTP port 80 to other resources.
+
+00:01:16.550 --> 00:01:18.110
+You don't want that. In this case,
+
+00:01:18.110 --> 00:01:19.820
+we have a custom port 8080,
+
+00:01:19.820 --> 00:01:24.920
+for our web application and it was not able to talk to those application.
+
+00:01:24.920 --> 00:01:26.705
+So I came here manually.
+
+00:01:26.705 --> 00:01:34.850
+I click edit, and I added a custom rule which we can use in order to add ports.
+
+00:01:34.850 --> 00:01:38.060
+However, I just created another situation that you need to be aware
+
+00:01:38.060 --> 00:01:41.585
+of when you are a CloudFormation developer.
+
+00:01:41.585 --> 00:01:44.930
+I just created what is known as configuration drift.
+
+00:01:44.930 --> 00:01:47.795
+What that means is, I made a change here in the console,
+
+00:01:47.795 --> 00:01:51.425
+but that change is not in our script.
+
+00:01:51.425 --> 00:01:56.050
+That is very risky because at the end of the day you go home,
+
+00:01:56.050 --> 00:01:59.120
+you come back the next day and you forget that you have this change
+
+00:01:59.120 --> 00:02:02.195
+and the change is only here in this console,
+
+00:02:02.195 --> 00:02:03.560
+and it's not in your script.
+
+00:02:03.560 --> 00:02:06.035
+So in the future, two months, three months later,
+
+00:02:06.035 --> 00:02:08.240
+you deploy that very same script into
+
+00:02:08.240 --> 00:02:10.785
+production or some other environment and it's going to
+
+00:02:10.785 --> 00:02:16.040
+have that bug introduced to the new environment outside of this account.
+
+00:02:16.040 --> 00:02:17.270
+So keep that in mind,
+
+00:02:17.270 --> 00:02:19.115
+keep drift in mind.
+
+00:02:19.115 --> 00:02:21.695
+Whenever you make a change directly here,
+
+00:02:21.695 --> 00:02:24.720
+go back to your script and correct.
+
+00:02:27.920 --> 00:02:32.300
+So if we go to the name that was provided to us.
+
+00:02:32.300 --> 00:02:34.910
+This is the name of the load balancer.
+
+00:02:36.230 --> 00:02:40.020
+This is the name that AWS provides us for the load balancer.
+
+00:02:40.020 --> 00:02:43.960
+Like I said, they have a DNS service which you can use to
+
+00:02:43.960 --> 00:02:48.440
+turn this into an alias that will point to your business.com,
+
+00:02:48.440 --> 00:02:50.135
+and then everything will be okay.
+
+00:02:50.135 --> 00:02:52.630
+You don't have to give your clients this
+
+00:02:52.630 --> 00:02:56.815
+horribly long DNS name to access your web application,
+
+00:02:56.815 --> 00:02:59.780
+which as you can see is running.
+
+00:03:00.050 --> 00:03:03.630
+I also move the application,
+
+00:03:03.630 --> 00:03:05.010
+and this is just for demo purposes.
+
+00:03:05.010 --> 00:03:08.700
+I would not do this with the real application.
+
+00:03:08.700 --> 00:03:11.839
+I put the application for now in our public subnets,
+
+00:03:11.839 --> 00:03:14.075
+so we can actually hit it directly.
+
+00:03:14.075 --> 00:03:19.300
+So our load balancer has three targets,
+
+00:03:19.300 --> 00:03:21.290
+which were created by the auto scaling group,
+
+00:03:21.290 --> 00:03:23.180
+and those are three targets.
+
+00:03:23.180 --> 00:03:27.725
+Now they have a public IP because I moved it to the public subnets,
+
+00:03:27.725 --> 00:03:29.710
+again, just for demo purposes.
+
+00:03:29.710 --> 00:03:33.224
+So if I hid this IP directly,
+
+00:03:33.224 --> 00:03:36.230
+I should be able to get the response from the server.
+
+00:03:36.230 --> 00:03:40.270
+However, not on port 80 because as you can see it's not responding.
+
+00:03:40.270 --> 00:03:42.690
+So if I change it to port 8080,
+
+00:03:42.690 --> 00:03:46.010
+which is the actual service port for this web server,
+
+00:03:46.010 --> 00:03:48.320
+we get a respond right away.
+
+00:03:48.320 --> 00:03:54.140
+As you can see, and it's the exact same response that you get from the load balancer.
+
+00:03:54.140 --> 00:03:58.840
+If you want to know what really the interesting part of the load balancer is,
+
+00:03:58.840 --> 00:04:02.285
+it's that you can refresh as many times as you need,
+
+00:04:02.285 --> 00:04:05.170
+it knows where to send traffic.
+
+00:04:05.170 --> 00:04:09.935
+Of course the most interesting option is eliminating single points of failure,
+
+00:04:09.935 --> 00:04:16.040
+where I can come here and terminate one of
+
+00:04:16.040 --> 00:04:23.525
+these servers and totally kill it and it will know that it's been removed.
+
+00:04:23.525 --> 00:04:26.270
+As you can see, I can still refresh
+
+00:04:26.270 --> 00:04:31.070
+and still get a response from my web application even though I killed one of the servers.
+
+00:04:31.070 --> 00:04:34.550
+That's the main goal of high availability and the reason why you
+
+00:04:34.550 --> 00:04:40.190
+use a load balancer in combination with auto scaling groups.
+
