@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.325
+Now that you have your server,
+
+00:00:02.325 --> 00:00:04.155
+you'll need a logical method for
+
+00:00:04.155 --> 00:00:07.440
+organizing and storing the files that make up your website.
+
+00:00:07.440 --> 00:00:11.820
+You may even want to pull data from a database for display on your site,
+
+00:00:11.820 --> 00:00:15.509
+and as you consider high availability and high performance,
+
+00:00:15.509 --> 00:00:17.789
+you may even want to speed up the delivery of
+
+00:00:17.789 --> 00:00:21.765
+your site by caching large image files or videos.
+
+00:00:21.765 --> 00:00:24.620
+In this lesson, I will teach you about storage in
+
+00:00:24.620 --> 00:00:28.490
+the cloud and show you how to organize and store your files.
+
+00:00:28.489 --> 00:00:33.364
+Next, I will show you how to process transactions in a relational database.
+
+00:00:33.365 --> 00:00:39.965
+I will also introduce you to the concept of a data warehouse and even in NoSQL database.
+
+00:00:39.965 --> 00:00:42.365
+We will wrap up with me showing you how to use
+
+00:00:42.365 --> 00:00:46.969
+a content delivery network to speed up the delivery of your website.
+
+00:00:46.969 --> 00:00:49.619
+So let's get started.
+

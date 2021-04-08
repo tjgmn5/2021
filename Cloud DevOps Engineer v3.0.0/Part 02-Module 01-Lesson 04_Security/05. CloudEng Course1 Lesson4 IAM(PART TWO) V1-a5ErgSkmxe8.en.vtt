@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.230 --> 00:00:03.855
+Now, let's see IAM in action.
+
+00:00:03.855 --> 00:00:07.599
+So let's navigate to the IAM service.
+
+00:00:08.720 --> 00:00:14.295
+This dashboard shows you how many users and how many groups you have.
+
+00:00:14.294 --> 00:00:16.199
+Let's click on "Groups".
+
+00:00:16.199 --> 00:00:21.000
+You can manage groups by creating new ones or deleting existing ones.
+
+00:00:21.000 --> 00:00:26.129
+There are several actions you can do with a group, like adding users,
+
+00:00:26.129 --> 00:00:31.500
+deleting the group, changing the group name, removing users, etc.
+
+00:00:31.500 --> 00:00:34.289
+Now, let's click on "Roles".
+
+00:00:34.289 --> 00:00:37.539
+This page shows all the roles in the system.
+
+00:00:37.539 --> 00:00:41.204
+Notice, some roles are related to services.
+
+00:00:41.204 --> 00:00:45.699
+For example, let's look at the api-gateway-role.
+
+00:00:45.700 --> 00:00:51.740
+So any user or application assuming this role has full access to
+
+00:00:51.740 --> 00:00:57.895
+Lambda, CloudWatchLogs, and DynamoDBFullAccess.
+
+00:00:57.895 --> 00:01:00.170
+Now, let's look at a few policies.
+
+00:01:00.170 --> 00:01:03.899
+Click on "Policies" here on the left-hand side,
+
+00:01:04.150 --> 00:01:08.215
+and let's look at the Administrator policy.
+
+00:01:08.215 --> 00:01:15.125
+Notice, a policy is defined as JSON and notice everything is wide open.
+
+00:01:15.125 --> 00:01:19.685
+It allows any action on any resource.
+
+00:01:19.685 --> 00:01:23.049
+Let's look at a more restrictive policy.
+
+00:01:23.049 --> 00:01:27.099
+Go back and search for S3,
+
+00:01:27.379 --> 00:01:32.435
+and click on "AmazonS3ReadOnlyAccess".
+
+00:01:32.435 --> 00:01:40.090
+Notice, read-only allows you to get or list objects in a bucket.
+
+00:01:40.400 --> 00:01:46.109
+Let's go back and now let's look at AmazonS3FullAccess.
+
+00:01:46.109 --> 00:01:52.260
+Again, this allows any action on any resource.
+
+00:01:53.480 --> 00:01:57.920
+Now, let's review the security policy on a bucket.
+
+00:01:57.920 --> 00:02:00.754
+Policies can be attached to buckets.
+
+00:02:00.754 --> 00:02:10.229
+Let's navigate to S3 and look at our code VR Bucket.
+
+00:02:10.229 --> 00:02:15.269
+Click on "Permissions" and click on "Bucket Policy".
+
+00:02:15.270 --> 00:02:17.189
+Notice on line eight,
+
+00:02:17.189 --> 00:02:23.210
+it allows GetObject on everything here in the code VR bucket.
+
+00:02:23.210 --> 00:02:27.034
+You can of course make this more restrictive as we've seen.
+
+00:02:27.034 --> 00:02:31.199
+That's a look at Identity and Access Management.
+

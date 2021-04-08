@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.990 --> 00:00:07.410
+Companies today need to collect, store,
+
+00:00:07.410 --> 00:00:12.539
+and analyze the data they've collected over the years at a massive scale.
+
+00:00:12.539 --> 00:00:18.210
+Storage services in the cloud provide a place for companies to store data providing
+
+00:00:18.210 --> 00:00:24.615
+several benefits like durability, availability, and scalability.
+
+00:00:24.614 --> 00:00:30.379
+Durability guarantees that you will not lose the data that you upload to the cloud.
+
+00:00:30.379 --> 00:00:36.004
+High durability gives you the peace of mind that your data will be there in the future.
+
+00:00:36.005 --> 00:00:40.355
+Availability addresses how quickly you can access your data.
+
+00:00:40.354 --> 00:00:46.444
+High availability provides fast and reliable access to the data you stored in the cloud.
+
+00:00:46.445 --> 00:00:49.670
+Scalability allows applications running in
+
+00:00:49.670 --> 00:00:52.910
+your environment to always meet demand seamlessly.
+
+00:00:52.909 --> 00:00:55.849
+By adding or removing the resources
+
+00:00:55.850 --> 00:01:00.155
+necessary to maintain steady-state and fast response times.
+
+00:01:00.155 --> 00:01:02.520
+There are three types of scaling.
+
+00:01:02.520 --> 00:01:07.840
+Vertical scaling, horizontal scaling, and diagonal scaling.
+
+00:01:08.060 --> 00:01:14.210
+Vertical scaling or scaling up is where you modify your server to meet demands.
+
+00:01:14.209 --> 00:01:19.819
+An example of this would be adding more memory or capacity to a single server.
+
+00:01:19.819 --> 00:01:26.269
+Horizontal scaling or scaling out is where you add or remove servers to meet demands.
+
+00:01:26.269 --> 00:01:31.849
+You may start out with two servers and end up with six servers to support demand.
+
+00:01:31.849 --> 00:01:35.149
+Diagonals scaling is a combination of
+
+00:01:35.150 --> 00:01:40.800
+horizontal and vertical scaling and offers maximum flexibility.
+

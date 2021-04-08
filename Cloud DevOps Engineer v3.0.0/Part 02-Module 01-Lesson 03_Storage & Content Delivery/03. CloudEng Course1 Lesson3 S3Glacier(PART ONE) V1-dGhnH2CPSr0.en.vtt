@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.669 --> 00:00:08.039
+Amazon Simple Storage Service or S3 is an object storage system in the Cloud.
+
+00:00:08.039 --> 00:00:13.814
+Think of it like a file system in the Cloud where you load files such as text documents,
+
+00:00:13.814 --> 00:00:16.320
+image files, HTML files,
+
+00:00:16.320 --> 00:00:18.750
+whatever you need to store.
+
+00:00:18.750 --> 00:00:21.449
+When you upload a file to S3,
+
+00:00:21.449 --> 00:00:26.294
+it gets a unique URL that can then be used to access it.
+
+00:00:26.295 --> 00:00:31.250
+All objects or files are stored in what's called a bucket,
+
+00:00:31.250 --> 00:00:34.640
+and one bucket can hold millions of objects.
+
+00:00:34.640 --> 00:00:37.369
+S3 buckets live in a region,
+
+00:00:37.369 --> 00:00:40.324
+but bucket names must be globally unique.
+
+00:00:40.325 --> 00:00:46.700
+S3 is designed for durability of 99.99s of objects across
+
+00:00:46.700 --> 00:00:53.395
+multiple availability zones and 99.99 availability over a given year.
+
+00:00:53.395 --> 00:00:58.640
+Wow, that is excellent durability and availability.
+
+00:00:58.640 --> 00:01:02.389
+There are several use cases for S3,
+
+00:01:02.389 --> 00:01:06.895
+hosting static websites, content delivery,
+
+00:01:06.894 --> 00:01:11.564
+backup and recovery, archiving and big data,
+
+00:01:11.564 --> 00:01:16.030
+application data, and hybrid cloud storage.
+
+00:01:16.030 --> 00:01:19.700
+There are several S3 storage classes.
+
+00:01:19.700 --> 00:01:23.495
+Storage classes are essentially different data access levels
+
+00:01:23.495 --> 00:01:26.195
+for your data at certain price points.
+
+00:01:26.194 --> 00:01:31.759
+One storage class called S3 Glacier is more for data archiving purposes,
+
+00:01:31.760 --> 00:01:36.094
+and you should place data there that you don't intend to access frequently.
+
+00:01:36.094 --> 00:01:39.590
+Glacier is cheaper than the S3 standard class,
+
+00:01:39.590 --> 00:01:43.765
+but data retrieval can be a few minutes up to hours.
+
+00:01:43.765 --> 00:01:48.500
+So when would you want to use Glacier over the S3 standard class?
+
+00:01:48.500 --> 00:01:53.420
+Suppose you have an application that generates a lot of log files every month,
+
+00:01:53.420 --> 00:01:55.219
+and for audit purposes,
+
+00:01:55.219 --> 00:01:57.439
+you need to keep those files around.
+
+00:01:57.439 --> 00:02:00.469
+You don't intend to access those files often,
+
+00:02:00.469 --> 00:02:04.670
+but they do need to be made available once a year to the auditors.
+
+00:02:04.670 --> 00:02:07.430
+Glacier would be the perfect place to preserve
+
+00:02:07.430 --> 00:02:11.909
+those files since they would be infrequently accessed.
+

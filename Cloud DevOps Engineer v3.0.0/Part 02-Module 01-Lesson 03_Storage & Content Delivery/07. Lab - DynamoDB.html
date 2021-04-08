@@ -1,0 +1,354 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab - DynamoDB</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Storage &amp; Content Delivery</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need storage in the cloud.html">02. Why do we need storage in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. S3 &amp; Glacier.html">03. S3 &amp; Glacier</a>
+    </li>
+    <li class="">
+      <a href="04. S3 - Create a Bucket.html">04. S3 - Create a Bucket</a>
+    </li>
+    <li class="">
+      <a href="05. DynamoDB.html">05. DynamoDB</a>
+    </li>
+    <li class="">
+      <a href="06. DynamoDB - Create a table.html">06. DynamoDB - Create a table</a>
+    </li>
+    <li class="">
+      <a href="07. Lab - DynamoDB.html">07. Lab - DynamoDB</a>
+    </li>
+    <li class="">
+      <a href="08. Relational Database Service (RDS).html">08. Relational Database Service (RDS)</a>
+    </li>
+    <li class="">
+      <a href="09. RDS - Create MySQL Database.html">09. RDS - Create MySQL Database</a>
+    </li>
+    <li class="">
+      <a href="10. RedShift.html">10. RedShift</a>
+    </li>
+    <li class="">
+      <a href="11. Lab - RDS.html">11. Lab - RDS</a>
+    </li>
+    <li class="">
+      <a href="12. Why do we need content delivery in the cloud.html">12. Why do we need content delivery in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="13. Cloud Front.html">13. Cloud Front</a>
+    </li>
+    <li class="">
+      <a href="14. Demo - Cloud Front.html">14. Demo - Cloud Front</a>
+    </li>
+    <li class="">
+      <a href="15. Lab - S3 &amp; Cloud Front.html">15. Lab - S3 &amp; Cloud Front</a>
+    </li>
+    <li class="">
+      <a href="16. Lesson Recap.html">16. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">07. Lab - DynamoDB</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-dynamodb"># DynamoDB</h2>
+<p>In this hands-on exercise, you will create a NoSQL database in the cloud. </p>
+<ol>
+<li>Prerequisites: AWS Account</li>
+<li>By the end of this lab, you will be able to:</li>
+</ol>
+<ul>
+<li>Create a table</li>
+<li>Add data to a table</li>
+<li>Query data in a table</li>
+</ul>
+<p>Follow the exercise instructions described below: </p>
+<h3 id="step-1-access-the-dynamodb-service">Step 1. Access the DynamoDB service</h3>
+<ul>
+<li>From the <a href="https://console.aws.amazon.com/" rel="noopener noreferrer" target="_blank">AWS Management Console</a> page, select the DynamoDB service.</li>
+<li>Use the <strong>Create table</strong> wizard to create a table, with the following details:</li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="field">Field</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Table name</td>
+<td><code>Course</code></td>
+</tr>
+<tr>
+<td>Partition key</td>
+<td><code>Name</code>, with <code>String</code> datatype</td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Note:</strong> The partition key spreads data against partitions for scalability. </li>
+<li>Keep the remaining fields with the default values</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-add-data-to-the-table">Step 2. Add Data to the Table</h3>
+<ul>
+<li>Go back to the <strong>DynamoDB → Tables</strong> dashboard. Select the table in which you want to add data.</li>
+<li>Once the table is selected, click on the <strong>Items</strong> tab.</li>
+<li>Start the <strong>Create item</strong> wizard to store the following item. </li>
+</ul>
+<p><center></p>
+<p></p>
+<div class="index-module--table-responsive--1zG6k"><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><table class="index-module--table--8j68C index-module--table-striped--3HHC-">
+<thead>
+<tr>
+<th>Field</th>
+<th>Data type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Name</code></td>
+<td>String</td>
+<td><code>Course1</code></td>
+</tr>
+<tr>
+<td colspan="3"><strong>Add the following new field</strong></td>
+</tr>
+<tr>
+<td><code>Teacher</code></td>
+<td>String</td>
+<td><code>Udacity Instructor</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p></p>
+<p></center></p>
+<ul>
+<li>Follow the same process to add 5 more items.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3-query-data-in-a-table">Step 3. Query Data in a Table</h3>
+<ul>
+<li>Stay on the <strong>Items</strong> tab in <strong>DynamoDB → Tables</strong> dashboard. Change the <code>Scan</code> dropdown to <code>Query</code>.</li>
+<li>Where it says <code>Enter value</code>, in the row next to the <code>name</code> Partition key, enter <code>Course 1</code> and click <strong>Start Search</strong>.</li>
+<li>You should see your search results appear in the window.</li>
+</ul>
+<h3 id="step-4-cleanup-and-delete-resources">Step 4. Cleanup and delete resources</h3>
+<ul>
+<li>To clean up the resources to avoid recurring charges, ensure the table name is selected.</li>
+<li>Click on the <strong>Delete table</strong> button.</li>
+<li>Ensure to select the <em>Delete all CloudWatch alarms for this table</em> option, and click <strong>Delete</strong>.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Create a NoSQL database in the cloud using DynamoDB</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="402d7898-3c44-42da-9dbb-ad789160604f--0">
+        <label for="402d7898-3c44-42da-9dbb-ad789160604f--0"><p>Access the DynamoDB service from AWS Management Console</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="402d7898-3c44-42da-9dbb-ad789160604f--1">
+        <label for="402d7898-3c44-42da-9dbb-ad789160604f--1"><p>Add Data to the Table</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="402d7898-3c44-42da-9dbb-ad789160604f--2">
+        <label for="402d7898-3c44-42da-9dbb-ad789160604f--2"><p>Query Data in a Table</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="402d7898-3c44-42da-9dbb-ad789160604f--3">
+        <label for="402d7898-3c44-42da-9dbb-ad789160604f--3"><p>Cleanup and delete resources</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Excellent!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="08. Relational Database Service (RDS).html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. Lab - DynamoDB')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

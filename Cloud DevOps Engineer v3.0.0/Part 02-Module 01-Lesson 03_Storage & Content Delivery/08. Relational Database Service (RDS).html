@@ -1,0 +1,326 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Relational Database Service (RDS)</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Storage &amp; Content Delivery</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need storage in the cloud.html">02. Why do we need storage in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. S3 &amp; Glacier.html">03. S3 &amp; Glacier</a>
+    </li>
+    <li class="">
+      <a href="04. S3 - Create a Bucket.html">04. S3 - Create a Bucket</a>
+    </li>
+    <li class="">
+      <a href="05. DynamoDB.html">05. DynamoDB</a>
+    </li>
+    <li class="">
+      <a href="06. DynamoDB - Create a table.html">06. DynamoDB - Create a table</a>
+    </li>
+    <li class="">
+      <a href="07. Lab - DynamoDB.html">07. Lab - DynamoDB</a>
+    </li>
+    <li class="">
+      <a href="08. Relational Database Service (RDS).html">08. Relational Database Service (RDS)</a>
+    </li>
+    <li class="">
+      <a href="09. RDS - Create MySQL Database.html">09. RDS - Create MySQL Database</a>
+    </li>
+    <li class="">
+      <a href="10. RedShift.html">10. RedShift</a>
+    </li>
+    <li class="">
+      <a href="11. Lab - RDS.html">11. Lab - RDS</a>
+    </li>
+    <li class="">
+      <a href="12. Why do we need content delivery in the cloud.html">12. Why do we need content delivery in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="13. Cloud Front.html">13. Cloud Front</a>
+    </li>
+    <li class="">
+      <a href="14. Demo - Cloud Front.html">14. Demo - Cloud Front</a>
+    </li>
+    <li class="">
+      <a href="15. Lab - S3 &amp; Cloud Front.html">15. Lab - S3 &amp; Cloud Front</a>
+    </li>
+    <li class="">
+      <a href="16. Lesson Recap.html">16. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">08. Relational Database Service (RDS)</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>CloudEng Course1 Lesson3 RDS(PART ONE) V1</p></h3>
+  <video controls>
+  <source src="08. CloudEng Course1 Lesson3 RDS(PART ONE) V1-fQjCOHCUw5I.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="08. CloudEng Course1 Lesson3 RDS(PART ONE) V1-fQjCOHCUw5I.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1>Relational Database Service (RDS)</h1>
+<p>RDS (or Relational Database Service) is a service that aids in the administration and management of databases. RDS assists with database administrative tasks that include upgrades, patching, installs, backups, monitoring, performance checks, security, etc. </p>
+<h1>Database Engine Support</h1>
+<ul>
+<li>Oracle</li>
+<li>PostgreSQL</li>
+<li>MySQL</li>
+<li>MariaDB</li>
+<li>SQL Server</li>
+</ul>
+<h1>Features</h1>
+<ul>
+<li>failover</li>
+<li>backups</li>
+<li>restore</li>
+<li>encryption</li>
+<li>security</li>
+<li>monitoring</li>
+<li>data replication</li>
+<li>scalability</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which database engines are supported by RDS? Pick three.</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1558809710482" name="851093" id="a1558809710482">
+      <label for="a1558809710482"><p>MySQL</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558809730438" name="851093" id="a1558809730438">
+      <label for="a1558809730438"><p>MongoDB</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558809731620" name="851093" id="a1558809731620">
+      <label for="a1558809731620"><p>Aurora</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558809732500" name="851093" id="a1558809732500">
+      <label for="a1558809732500"><p>Oracle</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558809742317" name="851093" id="a1558809742317">
+      <label for="a1558809742317"><p>IBM DB2</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>MySQL</li>
+      <li>Aurora</li>
+      <li>Oracle</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What doesn't RDS help with?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1558810303349" name="851094" id="a1558810303349">
+        <label for="a1558810303349"><p>Accessing your database via secure shell (SSH)</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558810347543" name="851094" id="a1558810347543">
+        <label for="a1558810347543"><p>Upgrading your database</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558810348506" name="851094" id="a1558810348506">
+        <label for="a1558810348506"><p>Applying patches to your database</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1558810349241" name="851094" id="a1558810349241">
+        <label for="a1558810349241"><p>Taking database backups</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Accessing your database via secure shell (SSH)
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-resources">#### Resources</h2>
+<ul>
+<li><a href="https://aws.amazon.com/relational-database/" rel="noopener noreferrer" target="_blank">What Is A Relational Database</a></li>
+<li><a href="https://aws.amazon.com/rds/" rel="noopener noreferrer" target="_blank">Amazon Relational Database Service</a></li>
+<li><a href="https://aws.amazon.com/products/databases/" rel="noopener noreferrer" target="_blank">AWS Product Databases using Relational Databases</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="09. RDS - Create MySQL Database.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. Relational Database Service (RDS)')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

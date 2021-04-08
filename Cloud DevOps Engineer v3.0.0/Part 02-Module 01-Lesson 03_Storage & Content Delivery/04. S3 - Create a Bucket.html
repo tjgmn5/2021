@@ -1,0 +1,397 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>S3 - Create a Bucket</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Storage &amp; Content Delivery</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need storage in the cloud.html">02. Why do we need storage in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. S3 &amp; Glacier.html">03. S3 &amp; Glacier</a>
+    </li>
+    <li class="">
+      <a href="04. S3 - Create a Bucket.html">04. S3 - Create a Bucket</a>
+    </li>
+    <li class="">
+      <a href="05. DynamoDB.html">05. DynamoDB</a>
+    </li>
+    <li class="">
+      <a href="06. DynamoDB - Create a table.html">06. DynamoDB - Create a table</a>
+    </li>
+    <li class="">
+      <a href="07. Lab - DynamoDB.html">07. Lab - DynamoDB</a>
+    </li>
+    <li class="">
+      <a href="08. Relational Database Service (RDS).html">08. Relational Database Service (RDS)</a>
+    </li>
+    <li class="">
+      <a href="09. RDS - Create MySQL Database.html">09. RDS - Create MySQL Database</a>
+    </li>
+    <li class="">
+      <a href="10. RedShift.html">10. RedShift</a>
+    </li>
+    <li class="">
+      <a href="11. Lab - RDS.html">11. Lab - RDS</a>
+    </li>
+    <li class="">
+      <a href="12. Why do we need content delivery in the cloud.html">12. Why do we need content delivery in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="13. Cloud Front.html">13. Cloud Front</a>
+    </li>
+    <li class="">
+      <a href="14. Demo - Cloud Front.html">14. Demo - Cloud Front</a>
+    </li>
+    <li class="">
+      <a href="15. Lab - S3 &amp; Cloud Front.html">15. Lab - S3 &amp; Cloud Front</a>
+    </li>
+    <li class="">
+      <a href="16. Lesson Recap.html">16. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. S3 - Create a Bucket</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Let's learn how to create a bucket in <a href="https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html" target="_blank">Amazon S3</a>, and view a few properties of an existing bucket. </p>
+<h2 id="create-a-bucket">Create a Bucket</h2>
+<ol>
+<li>Navigate to the <a href="console.aws.amazon.com/s3/home" target="_blank">S3 dashboard</a>, and click on the <strong>Create bucket</strong> button. It will launch a new wizard.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-25-at-4.06.17-pm.png" alt="S3 service &amp;#8594; Buckets dashboard. &lt;br&gt;View all of the S3 buckets in your account &lt;br&gt;*(S3 is a global service, not a region-specific). *" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>S3 service &#8594; Buckets dashboard. <br>View all of the S3 buckets in your account <br>*(S3 is a global service, not a region-specific). *</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>We create a bucket first, and later we upload files and folders to it. </p>
+<ol start="2">
+<li><strong>General configuration</strong><br> Provide the bucket-name and the region where you want to locate the bucket. The bucket name must be unique worldwide, and must not contain spaces or uppercase letters.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-25-at-4.07.11-pm.png" alt="Create a bucket - Provide general details" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Create a bucket - Provide general details</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li><strong>Public Access settings</strong><br><br />
+You can choose public visibility. Let's uncheck the <em>Block all public access</em> option. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-25-at-4.07.33-pm.png" alt="Create a bucket - Make it public" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Create a bucket - Make it public</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="4">
+<li><strong>Bucket Versioning and Encryption</strong><br></li>
+</ol>
+<ul>
+<li>Bucket Versioning - Keep it disabled.</li>
+<li>Encryption -  If enabled, it will encrypt the files being stored in the bucket.</li>
+<li>Object Lock - If enables, it will prevent the files in the bucket from being deleted or modified.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-25-at-4.07.54-pm.png" alt="Create a bucket - Provide additional details" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Create a bucket - Provide additional details</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>In the snapshots above, we have created a public bucket. Let's see <strong>how to upload files and folders to the bucket</strong>, and configure additional settings.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="upload-filefolders-to-the-bucket">Upload File/Folders to the Bucket</h2>
+<p>From the <a href="console.aws.amazon.com/s3/home" rel="noopener noreferrer" target="_blank">S3 dashboard</a>, click on the name of the bucket you have created in the step above. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-25-at-4.12.35-pm.png" alt="Details of an existing bucket. Upload files/folders to this bucket." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Details of an existing bucket. Upload files/folders to this bucket.</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>In the snapshot above, it shows that the bucket is in the Region: <code>US East (Ohio) us-east-2</code>, and it has a unique Amazon resource name (ARN): <code>arn:aws:s3:::mtvbucket</code>. You can view more details of the bucket, in the tabs next to the bucket overview: <strong>Objects, Properties, Permissions, Metrics, 
+Management,</strong> and <strong>Access points</strong>.  Leet's upload a sample file to the bucket:</p>
+<ol>
+<li>Click on the <strong>Upload</strong> button to upload files and folders into the current bucket. In the snapshot below, we have uploaded a <strong>Sample.txt</strong> file. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-25-at-4.52.03-pm.png" alt="A sample file in the bucket" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>A sample file in the bucket</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li>Click on the file name to view the file-specific details, as shown below.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-25-at-4.53.35-pm.png" alt="Details of an individual file (object)" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Details of an individual file (object)</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="details-of-an-existing-bucket">Details of an Existing Bucket</h2>
+<h3 id="1-properties">1. Properties</h3>
+<p>There are several properties that you can set for S3 buckets, such as:</p>
+<ul>
+<li>Bucket Versioning - Allows you to keep multiple versions of an object in the same bucket. </li>
+<li>Static website hosting - Mark if the bucket is used to host a website. S3 is a very cost-effective and cheap solution for serving up static web content.</li>
+<li>Requester pays - Make the requester pays for requests and data transfer costs. </li>
+<li>Server access logging - Log requests for access to your bucket.</li>
+<li><strong>Permissions</strong></li>
+</ul>
+<p>It shows who has access to the S3 bucket, and who has access to the data within the bucket. In the example snapshots above, the bucket is public, meaning anyone can access it. Here, we can write an access policy (in JSON format) to provides access to the objects stored in the bucket.</p>
+<h3 id="2-metrics">2. Metrics</h3>
+<p>View the metrics for usage, request, and data transfer activity within your bucket, such as, total bucket size, total number of objects, and storage class analysis. </p>
+<h3 id="3-management">3. Management</h3>
+<p>It allows you to create life cycle rules to help manage your objects. It includes rules such as transitioning objects to another storage class, archiving them, or deleting them after a specified period of time.</p>
+<h3 id="4-access-points">4. Access points</h3>
+<p>Here, you can create access endpoints for sharing the bucket at scale. Using an endpoint, you can perform all regular operations on the bucket.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. DynamoDB.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. S3 - Create a Bucket')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

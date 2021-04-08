@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.909 --> 00:00:07.020
+AWS WAF or AWS Web Application Firewall
+
+00:00:07.019 --> 00:00:10.799
+provides a firewall that protects your web applications.
+
+00:00:10.800 --> 00:00:14.910
+A firewall is a network security mechanism that monitors and
+
+00:00:14.910 --> 00:00:20.384
+controls incoming and outgoing network traffic based on preset security rules.
+
+00:00:20.385 --> 00:00:25.929
+A firewall stands in front of your application as a way to guard who can access it.
+
+00:00:25.929 --> 00:00:31.350
+The rules that you set up inside of your firewall allows certain traffic or block it.
+
+00:00:31.350 --> 00:00:37.335
+Firewalls are largely used to protect your web applications from unintended access.
+
+00:00:37.335 --> 00:00:43.710
+WAF can stop common web attacks such as SQL injection, cross-site scripting,
+
+00:00:43.710 --> 00:00:50.820
+etc by reviewing the data being sent to your application and stopping well-known attacks.
+

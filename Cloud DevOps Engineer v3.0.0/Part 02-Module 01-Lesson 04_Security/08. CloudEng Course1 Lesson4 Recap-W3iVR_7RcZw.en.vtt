@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.679
+In this lesson, I introduced you to security in the cloud.
+
+00:00:04.679 --> 00:00:10.169
+I showed you how to safeguard your web applications running on AWS using Shield.
+
+00:00:10.169 --> 00:00:13.785
+Shield is the perfect service to stop a DDoS attack.
+
+00:00:13.785 --> 00:00:19.850
+Next, I taught you about a firewall service to protect your web applications called WAF.
+
+00:00:19.850 --> 00:00:22.700
+Don't forget that a firewall stands in front of
+
+00:00:22.699 --> 00:00:26.210
+your application as a way to guard who can access it.
+
+00:00:26.210 --> 00:00:28.275
+We wrapped up with IAM,
+
+00:00:28.274 --> 00:00:30.299
+identity and access management;
+
+00:00:30.300 --> 00:00:35.960
+an AWS service that allows you to configure who can access your AWS account,
+
+00:00:35.960 --> 00:00:39.530
+services, and applications running in your account.
+
+00:00:39.530 --> 00:00:44.340
+Next, I will teach you about networking and elasticity.
+

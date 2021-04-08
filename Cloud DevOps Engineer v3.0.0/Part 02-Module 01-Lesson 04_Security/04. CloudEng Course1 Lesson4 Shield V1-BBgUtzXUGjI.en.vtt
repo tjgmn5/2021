@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.029 --> 00:00:08.039
+AWS Shield is a managed DDoS or distributed denial of service,
+
+00:00:08.039 --> 00:00:13.169
+protection service, that safeguards web applications running on AWS.
+
+00:00:13.169 --> 00:00:18.030
+A distributed denial of service attack is an attempt to make a website or
+
+00:00:18.030 --> 00:00:23.970
+an application unavailable by overwhelming it with traffic from multiple sources.
+
+00:00:23.969 --> 00:00:26.039
+When a server is overwhelmed,
+
+00:00:26.039 --> 00:00:30.000
+it typically crashes and can no longer serve requests.
+
+00:00:30.000 --> 00:00:32.670
+An attack like this would leave your website or
+
+00:00:32.670 --> 00:00:37.525
+web application unavailable which could result in a loss of revenue.
+
+00:00:37.524 --> 00:00:42.074
+I mentioned that some Cloud security options depend on the vendor.
+
+00:00:42.075 --> 00:00:46.520
+Well, AWS Shield is a service that you get out of the box.
+
+00:00:46.520 --> 00:00:51.680
+It is always running automatically and as a part of the free standard tier.
+
+00:00:51.679 --> 00:00:54.890
+If you want to use more of the advanced features,
+
+00:00:54.890 --> 00:00:58.079
+you'll need to utilize the paid tier.
+

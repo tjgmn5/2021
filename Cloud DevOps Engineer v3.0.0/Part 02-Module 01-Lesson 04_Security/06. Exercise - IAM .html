@@ -1,0 +1,344 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise - IAM </title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Security</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need security for applications.html">02. Why do we need security for applications?</a>
+    </li>
+    <li class="">
+      <a href="03. AWS Web Application Firewall.html">03. AWS Web Application Firewall</a>
+    </li>
+    <li class="">
+      <a href="04. AWS Shield.html">04. AWS Shield</a>
+    </li>
+    <li class="">
+      <a href="05. Identity and Access Management (IAM) .html">05. Identity and Access Management (IAM) </a>
+    </li>
+    <li class="">
+      <a href="06. Exercise - IAM .html">06. Exercise - IAM </a>
+    </li>
+    <li class="">
+      <a href="07. Exercise 2 - IAM .html">07. Exercise 2 - IAM </a>
+    </li>
+    <li class="">
+      <a href="08. Lesson Recap.html">08. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">06. Exercise - IAM </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p>An IAM policy is a JSON file that defines the level of permissions (authorization) a user (or a service) can have while accessing AWS services in your account. </p>
+</blockquote>
+<p>In this hands-on exercise, you will create an IAM policy and review the generated JSON. </p>
+<h4 id="prerequisites">Prerequisites:</h4>
+<ul>
+<li>AWS account</li>
+</ul>
+<h4 id="topics-covered">Topics Covered:</h4>
+<p>By the end of this lab, you will be able to:</p>
+<ul>
+<li>Create an IAM policy using the visual editor.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-1-create-a-policy">Step 1. Create a Policy</h3>
+<ol>
+<li>Navigate to the IAM service, and select the <a href="https://console.aws.amazon.com/iam/home#/policies" rel="noopener noreferrer" target="_blank">IAM Policies</a> dashboard.</li>
+<li>Click the <strong>Create policy</strong> button to launch the wizard.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-6.04.47-pm.png" alt="Create a new policy" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Create a new policy</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li>In the <em>Service</em> section, click <em>Choose a service</em> and select S3.</li>
+<li>In the <em>Actions</em> section, under the <em>Access level</em> </li>
+</ol>
+<ul>
+<li>Select the checkbox to allow all <strong>List</strong> operations. </li>
+<li>Expand the <strong>Read</strong>  action, and then select <code>GetObject</code>.</li>
+</ul>
+<ol start="3">
+<li>Next in the <em>Resources</em> section, ensure that <em>Specific</em> is selected, and select the <em>Any</em> checkboxes next to the <em>bucket</em>.</li>
+<li>Click on the <em>Review policy</em> button on the bottom right.</li>
+</ol>
+<ul>
+<li>Provide a name of your choice to your policy, and review the policy.</li>
+<li>Complete the process by clicking on the <em>Create policy</em>.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-6.12.58-pm.png" alt="Provide a name and description of your new policy" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Provide a name and description of your new policy</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-review-policy">Step 2. Review Policy</h3>
+<ol>
+<li>After your policy is created, go back to the <strong>IAM Policies</strong> dashboard. Enter the name of the policy you just created in the <em>Filter policies</em> text box.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-6.14.36-pm.png" alt="Filter the newly created policy" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Filter the newly created policy</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li>Click on the name of your policy.</li>
+<li>Review the JSON for the policy you just created on the <code>Permissions</code> tab.</li>
+<li>Click on the <code>Policy usage</code> tab to see if this policy is in use. Notice that this policy is not attached to any resources yet.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-6.18.26-pm.png" alt="A sample JSON file constituting the policy. Now, you can **attach** this policy to any user or other AWS service. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>A sample JSON file constituting the policy. Now, you can <strong>attach</strong> this policy to any user or other AWS service. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="5">
+<li>Each resource in the AWS gets a unique identifier, ARN. The newly created policy will also get its ARN, such as, <code>arn:aws:iam::014421265158:policy/myFirstPolicy</code> shown in the snapshot above. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Create an IAM policy and review the generated JSON</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="3a6aa2c2-04bf-4543-88af-9fbcba771d20--0">
+        <label for="3a6aa2c2-04bf-4543-88af-9fbcba771d20--0"><p>Create a Policy</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="3a6aa2c2-04bf-4543-88af-9fbcba771d20--1">
+        <label for="3a6aa2c2-04bf-4543-88af-9fbcba771d20--1"><p>Review Policy</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Excellent Work!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="07. Exercise 2 - IAM .html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Exercise - IAM ')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.879 --> 00:00:06.764
+CloudFront is Amazon service for content delivery.
+
+00:00:06.764 --> 00:00:10.230
+CloudFront speeds up the delivery of your content through
+
+00:00:10.230 --> 00:00:15.990
+Amazon's worldwide network of many data centers called edge locations.
+
+00:00:15.990 --> 00:00:19.695
+As in a typical content delivery network,
+
+00:00:19.695 --> 00:00:23.310
+your content is cached or stored for a certain period of
+
+00:00:23.309 --> 00:00:27.824
+time at an edge location that is close to the user.
+
+00:00:27.824 --> 00:00:32.429
+When a user requests your website or other web content,
+
+00:00:32.429 --> 00:00:35.144
+the edge location is consulted first.
+
+00:00:35.145 --> 00:00:37.120
+If the content is not there,
+
+00:00:37.119 --> 00:00:41.359
+then your content is pulled from the origin or the original source,
+
+00:00:41.359 --> 00:00:44.494
+which may be far away from the user's location,
+
+00:00:44.494 --> 00:00:49.804
+then it's stored at the edge location and then delivered to your users.
+
+00:00:49.804 --> 00:00:53.299
+All subsequent requests should now be faster because
+
+00:00:53.299 --> 00:00:57.244
+the content is now stored at the edge location.
+
+00:00:57.244 --> 00:01:02.704
+You can configure how long an item remains cached before a refresh,
+
+00:01:02.704 --> 00:01:06.829
+or you can manually expire or remove content from the cache,
+
+00:01:06.829 --> 00:01:09.420
+should it need to be changed.
+

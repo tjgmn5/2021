@@ -1,0 +1,281 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AWS Web Application Firewall</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Security</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need security for applications.html">02. Why do we need security for applications?</a>
+    </li>
+    <li class="">
+      <a href="03. AWS Web Application Firewall.html">03. AWS Web Application Firewall</a>
+    </li>
+    <li class="">
+      <a href="04. AWS Shield.html">04. AWS Shield</a>
+    </li>
+    <li class="">
+      <a href="05. Identity and Access Management (IAM) .html">05. Identity and Access Management (IAM) </a>
+    </li>
+    <li class="">
+      <a href="06. Exercise - IAM .html">06. Exercise - IAM </a>
+    </li>
+    <li class="">
+      <a href="07. Exercise 2 - IAM .html">07. Exercise 2 - IAM </a>
+    </li>
+    <li class="">
+      <a href="08. Lesson Recap.html">08. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">03. AWS Web Application Firewall</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>CloudEng Course1 Lesson4 WAF V1</p></h3>
+  <video controls>
+  <source src="03. CloudEng Course1 Lesson4 WAF V1-79_HJIwT-fE.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="03. CloudEng Course1 Lesson4 WAF V1-79_HJIwT-fE.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2>AWS WAF</h2>
+<p>AWS WAF (or AWS Web Application Firewall) provides a firewall that protects your web applications. WAF can stop common web attacks by reviewing the data being sent to your application and stopping well-known attacks.</p>
+<h3>Tips</h3>
+<ul>
+<li>WAF is found under the Security, Identity, & Compliance section on the AWS Management Console.</li>
+<li>WAF can protect web sites not hosted in AWS through Cloud Front.</li>
+<li>You can configure CloudFront to present a custom error page when requests are blocked.</li>
+</ul>
+<p>AWS WAF is available under a composite dashboard, <a href="https://console.aws.amazon.com/wafv2/shieldv2" rel="noopener noreferrer" target="_blank">WAF & Shield</a>,  that combines the following three services:</p>
+<ol>
+<li><p><strong>AWS WAF</strong>: It allows you to protect your web applications from common web exploits by monitoring and controlling the web requests coming to an Amazon API Gateway API, an Amazon CloudFront distribution, or an Application Load Balancer. </p></li>
+<li><p><strong>AWS Shield</strong>: It provides continuous DDoS attack detection and automatic mitigations. AWS Shield offers two tiers of protection - Standard and Advanced.</p></li>
+<li><p><strong>AWS Firewall Manager</strong>: It allows you to configure and manage firewall rules across accounts and applications centrally.</p></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Within AWS WAF service, you can create <em>Web access control lists (web ACLs)</em> to monitor HTTP(S) requests for AWS resources. You can protect the following types of resources:</p>
+<ul>
+<li>CloudFront distributions</li>
+<li>Regional resources (Application Load Balancer, API Gateway, AWS AppSync)</li>
+</ul>
+<p>While creating a web ACL, you add rules, such as conditions like originating IP addresses, that determines whether to allow/block each request. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-06-at-7.24.44-pm.png" alt="Five-step process to create a web ACL" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Five-step process to create a web ACL</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Identify the type of web attacks that AWS WAF prevents. Choose two.</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1558837126587" name="851109" id="a1558837126587">
+      <label for="a1558837126587"><p>Password attacks</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558837174315" name="851109" id="a1558837174315">
+      <label for="a1558837174315"><p>SQL injection</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558837175261" name="851109" id="a1558837175261">
+      <label for="a1558837175261"><p>Phishing attacks</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558837176131" name="851109" id="a1558837176131">
+      <label for="a1558837176131"><p>Cross-site scripting</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>SQL injection</li>
+      <li>Cross-site scripting</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-resources">#### Resources</h2>
+<ul>
+<li><a href="https://aws.amazon.com/waf/faqs/" rel="noopener noreferrer" target="_blank">AWS Web Application Firewall FAQs</a></li>
+<li><a href="https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works.html" rel="noopener noreferrer" target="_blank">How AWS WAF works?</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="04. AWS Shield.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. AWS Web Application Firewall')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

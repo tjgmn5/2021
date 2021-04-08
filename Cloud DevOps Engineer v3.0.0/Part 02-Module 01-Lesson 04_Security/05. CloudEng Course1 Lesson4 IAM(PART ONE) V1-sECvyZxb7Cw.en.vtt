@@ -1,0 +1,139 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.669 --> 00:00:04.980
+Along with protecting data and systems,
+
+00:00:04.980 --> 00:00:08.470
+we also need to ensure that users are who they say they are,
+
+00:00:08.470 --> 00:00:13.695
+and that they only have access to the specific data they need to and not to everything.
+
+00:00:13.695 --> 00:00:17.414
+This concept is called least privileged access.
+
+00:00:17.414 --> 00:00:22.724
+This is where the Identity and Access Management or IAM service helps out.
+
+00:00:22.725 --> 00:00:29.490
+IAM is an AWS service that allows us to configure who can access our AWS account,
+
+00:00:29.489 --> 00:00:33.780
+services, or even applications running in our account.
+
+00:00:33.780 --> 00:00:39.630
+IAM is a global service and is automatically available across all regions.
+
+00:00:39.630 --> 00:00:43.359
+When you initially sign up for a free tier AWS account,
+
+00:00:43.359 --> 00:00:47.950
+the e-mail address you used to sign up with becomes your root level account,
+
+00:00:47.950 --> 00:00:53.420
+and has full access and permissions to any and everything within your account.
+
+00:00:53.420 --> 00:00:57.340
+I cannot stress enough that you must secure your root account,
+
+00:00:57.340 --> 00:01:02.359
+and that you shouldn't use the root user credentials for everyday access.
+
+00:01:02.359 --> 00:01:08.329
+One way to secure your root account is by using Multi Factor Authentication or MFA.
+
+00:01:08.329 --> 00:01:11.030
+Which will always require an additional form of
+
+00:01:11.030 --> 00:01:13.820
+authentication along with your password like,
+
+00:01:13.819 --> 00:01:15.709
+a code sent to your cell phone,
+
+00:01:15.709 --> 00:01:20.949
+or a code from a multi authentication app on your cell phone before logging you in.
+
+00:01:20.950 --> 00:01:23.959
+If you haven't secured your account in this manner,
+
+00:01:23.959 --> 00:01:27.335
+stop this video right now and do it.
+
+00:01:27.334 --> 00:01:31.929
+There are several security concepts within IAM.
+
+00:01:31.930 --> 00:01:37.550
+An IAM user is an entity that you create an AWS to represent
+
+00:01:37.549 --> 00:01:40.189
+the person or service that interacts with
+
+00:01:40.189 --> 00:01:44.000
+services or applications running in your AWS account.
+
+00:01:44.000 --> 00:01:50.060
+A user in AWS consists of a username and access credentials like,
+
+00:01:50.060 --> 00:01:52.715
+a console password on access key,
+
+00:01:52.715 --> 00:01:56.950
+which includes an access key ID and a secret access key.
+
+00:01:56.950 --> 00:02:00.575
+An IAM group is a collection of users.
+
+00:02:00.575 --> 00:02:06.784
+You can specify permissions for a collection which makes permissions easier to manage.
+
+00:02:06.784 --> 00:02:11.120
+A role is an identity with permissions or a set of
+
+00:02:11.120 --> 00:02:17.134
+privileges that are not associated with a specific IAM user or IAM group.
+
+00:02:17.134 --> 00:02:19.569
+Roles can be attached to a user,
+
+00:02:19.569 --> 00:02:25.864
+and a user can assume a single role temporarily to perform a specific task.
+
+00:02:25.865 --> 00:02:29.090
+A policy is a way to define
+
+00:02:29.090 --> 00:02:35.295
+granular level permissions and can be attached to users, groups and roles.
+
+00:02:35.294 --> 00:02:39.559
+AWS provides a pre-defined list of policies.
+
+00:02:39.560 --> 00:02:44.854
+Additionally, you can create your own custom policies using JSON.
+
+00:02:44.854 --> 00:02:48.969
+This is an example of a custom policy that states,
+
+00:02:48.969 --> 00:02:54.199
+"Everyone has access to an S3 bucket called mybucket".
+
+00:02:54.199 --> 00:02:59.304
+EC2 security groups aren't technically a part of IAM.
+
+00:02:59.305 --> 00:03:02.810
+New AWS users often confuse it with
+
+00:03:02.810 --> 00:03:07.224
+an IAM security group but they are two totally different things.
+
+00:03:07.224 --> 00:03:12.439
+EC2 security groups are associated with an EC2 instance and act
+
+00:03:12.439 --> 00:03:18.050
+as a built-in firewall for your virtual servers to either allow or deny access.
+
+00:03:18.050 --> 00:03:23.670
+We discussed EC2 security groups when we discussed security and EC2.
+

@@ -1,0 +1,525 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise 2 - IAM </title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Security</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need security for applications.html">02. Why do we need security for applications?</a>
+    </li>
+    <li class="">
+      <a href="03. AWS Web Application Firewall.html">03. AWS Web Application Firewall</a>
+    </li>
+    <li class="">
+      <a href="04. AWS Shield.html">04. AWS Shield</a>
+    </li>
+    <li class="">
+      <a href="05. Identity and Access Management (IAM) .html">05. Identity and Access Management (IAM) </a>
+    </li>
+    <li class="">
+      <a href="06. Exercise - IAM .html">06. Exercise - IAM </a>
+    </li>
+    <li class="">
+      <a href="07. Exercise 2 - IAM .html">07. Exercise 2 - IAM </a>
+    </li>
+    <li class="">
+      <a href="08. Lesson Recap.html">08. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">07. Exercise 2 - IAM </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>In the previous lab, you learned to create a <em>custom policy</em> that can allow users to access a specific set of services with defined permissions. Let's learn to attach the <em>custom policy</em> to a new user.</p>
+<h3 id="prerequisites">Prerequisites:</h3>
+<ol>
+<li>An AWS account</li>
+<li>A sample IAM policy should be present in your account</li>
+</ol>
+<h3 id="topics-covered">Topics Covered:</h3>
+<ol>
+<li>Using the AWS console, create a new IAM user with custom permissions</li>
+<li>Change the mode of access and attach another policy to an existing user</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-1-create-a-new-iam-user">Step 1. Create a new IAM user</h3>
+<p>Let's create a new IAM user who would be allowed to interact with services in your AWS account as an administrator. The AWS allows us to choose if the new user should be granted a <em>Programmatic access</em>, or <em>AWS web console access</em>. The permissions to a user are granted in form of <strong>Policies</strong>, which are JSON documents. The AWS web console provides a pre-created list of policies to choose from. </p>
+<ol>
+<li>Navigate to the IAM console, and access the <a href="https://console.aws.amazon.com/iam/home#/users" target="_blank">IAM Users</a> service. Start the <strong>Add user</strong> wizard, as shown below.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-12.46.50-pm.png" alt="Launch the *Add user* wizard" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Launch the <em>Add user</em> wizard</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li>Set the user details, such as the name, and access type as <em>Programmatic access</em> only.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-12.47.55-pm.png" alt="Set the user name, and type (mode) of access. For this exercise, select the programmatic access. However, you can experiment with the console access as well.  " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Set the user name, and type (mode) of access. For this exercise, select the programmatic access. However, you can experiment with the console access as well.  </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li>Set the permissions to the new user by <em>attaching the newly created</em> policy. Though, the AWS provides three ways to grant permissions:</li>
+</ol>
+<ul>
+<li>Add the user to an existing group that has a defined set of permissions</li>
+<li>Copy the permissions from an existing user</li>
+<li>Attach any existing policies to the new user. AWS provides and manages a set of pre-defined standard policies. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-7.14.46-pm.png" alt="Attach the newly custom policy to the new user" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Attach the newly custom policy to the new user</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="4">
+<li>Provide tags [optional], review the details of the new user, and finally create the new user.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="5">
+<li>Download the Access key file (.csv) that contains two items: an access key ID, and a secret. We need this file while trying to access the AWS services from the command-line tool<strong>.</strong></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-12.51.31-pm.png" alt="After a user is created successfully, download the access key file (.csv) containing the access key ID and a secret. In the upcoming lesson, we will learn to configure the command-line tool (AWS CLI) with these credentials. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>After a user is created successfully, download the access key file (.csv) containing the access key ID and a secret. In the upcoming lesson, we will learn to configure the command-line tool (AWS CLI) with these credentials. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-review-the-new-user">Step 2. Review the new user</h3>
+<ol>
+<li>Navigate back to the IAM Users dashboard, select the newly created user to view its details. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-7.31.17-pm.png" alt="Select the new user to view its details" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Select the new user to view its details</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li>View the details of the newly created user. Particularly, check the <em>Permissions</em>, <em>Security credentials</em>, and <em>Access Advisor</em> tabs to see the list of services that this user can access. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-8.13.30-pm.png" alt="Summary of the newly created user" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Summary of the newly created user</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3-change-the-mode-of-access-and-attach-another-policy">Step 3. Change the mode of access and attach another policy</h3>
+<p>In the previous steps, we attached a policy while creating a new user. However, you can attach/detach a policy even after a user is created. Let's try to do the following to the current user:</p>
+<ol>
+<li><strong>Enable the AWS web console access</strong></li>
+</ol>
+<ul>
+<li>Go to the <em>Security credentials</em> tab, and click on <em>Manage</em> the console password.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-8.28.12-pm.png" alt="Manage the console access" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Manage the console access</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Enable the console access, and save the login credentials.  </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-8.28.34-pm.png" alt="Enable the console access" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Enable the console access</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-8.29.03-pm.png" alt="Save the new user&#x27;s login credentials. The .csv file will contain three items: User name, Password, and Console login link" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Save the new user's login credentials. The .csv file will contain three items: User name, Password, and Console login link</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li><strong>Attach the <em>AmazonRDSFullAccess</em> AWS managed policy</strong></li>
+</ol>
+<ul>
+<li>Go back to the <em>Permissions</em> tab, and select <em>Add permissions</em>. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-8.22.31-pm.png" alt="Add new permissions to an existing user" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Add new permissions to an existing user</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Attach the * AmazonRDSFullAccess* AWS managed policy that will provide full access to AWS RDS service via the  AWS web console.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-8.30.39-pm.png" alt="Attach *AmazonRDSFullAccess* policy to the current user" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Attach <em>AmazonRDSFullAccess</em> policy to the current user</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li><p>Review and add the permissions</p></li>
+<li><p>Check the <em>Access Advisor</em> tab again to review the new policies attached to the current user. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-4-log-in-to-aws-management-console-as-an-iam-user">Step 4. Log in to AWS management console as an IAM user</h3>
+<p>Recall that you have saved the new user's login credentials (.csv file) containing three items: User name, Password, and Console login link. </p>
+<ol>
+<li>Using an incognito browser, go to the console login link provided to you, or go to the standard <a href="https://aws.amazon.com/console/" rel="noopener noreferrer" target="_blank">AWS console sign-in page</a>.  </li>
+<li>Provide the Account ID, IAN user name, and password. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-8.55.20-pm.png" alt="Log in as an IAM user" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Log in as an IAM user</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li>Verify that you are logged in as a new IAM user.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-8.57.17-pm.png" alt="Logged in as an IAM user" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Logged in as an IAM user</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="4">
+<li>Once the exercise is complete, do not forget to <strong>delete the custom policy and the new user</strong> you created in the steps above. You would have to logout as an IAM user and then log back into the AWS web console as a root user to do so. Once you are in the IAM service dashboard, the ideal order of deletion would be:</li>
+</ol>
+<ul>
+<li>Detach the policy from the IAM user</li>
+<li>Delete the IAM user</li>
+<li>Delete the IAM policy</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="08. Lesson Recap.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. Exercise 2 - IAM ')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

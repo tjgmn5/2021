@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.700
+Let's see CloudFront in action.
+
+00:00:02.700 --> 00:00:04.304
+In a previous lesson,
+
+00:00:04.304 --> 00:00:07.514
+I reviewed the code for this VR static website,
+
+00:00:07.514 --> 00:00:10.259
+and it's hosted from an S3 bucket.
+
+00:00:10.259 --> 00:00:12.869
+Image files, and other static content for
+
+00:00:12.869 --> 00:00:17.759
+that website can be stored at an edge location using CloudFront.
+
+00:00:17.760 --> 00:00:21.730
+Let's navigate to the CloudFront Console.
+
+00:00:25.010 --> 00:00:27.875
+It is very simple to set up
+
+00:00:27.875 --> 00:00:32.990
+a CloudFront distribution for the files found in that S3 bucket.
+
+00:00:32.990 --> 00:00:34.855
+So to do that,
+
+00:00:34.854 --> 00:00:37.304
+you simply click "Create distribution".
+
+00:00:37.304 --> 00:00:40.969
+Let me walk you through a distribution that I've already created.
+
+00:00:40.969 --> 00:00:44.164
+Click on it, and click on "Distribution settings."
+
+00:00:44.164 --> 00:00:49.250
+This general tab provides very high level information about the distribution.
+
+00:00:49.250 --> 00:00:52.250
+Here we see the status that it's deployed.
+
+00:00:52.250 --> 00:00:54.740
+We see the state that it's enabled.
+
+00:00:54.740 --> 00:00:58.685
+Let's look more closely at some of the more important tabs.
+
+00:00:58.685 --> 00:01:01.690
+Click on "Origins and Origin groups".
+
+00:01:01.689 --> 00:01:07.689
+This shows the origin or the source for the files stored at the edge location.
+
+00:01:07.689 --> 00:01:11.230
+Notice here the origin type is S3.
+
+00:01:11.230 --> 00:01:16.060
+Another neat feature of CloudFront can be found on the restrictions tab.
+
+00:01:16.060 --> 00:01:21.019
+You can prevent IP addresses from certain countries from accessing the website.
+
+00:01:21.019 --> 00:01:26.224
+This means that CloudFront can also be used as a security mechanism.
+
+00:01:26.224 --> 00:01:30.004
+The invalidations tab is also important.
+
+00:01:30.004 --> 00:01:32.329
+If you ever need to explore content from
+
+00:01:32.329 --> 00:01:35.450
+the cache outside of the normal schedule you've set,
+
+00:01:35.450 --> 00:01:38.920
+you would click on the "Create invalidation" button.
+
+00:01:38.920 --> 00:01:41.250
+In your hands-on exercise,
+
+00:01:41.250 --> 00:01:46.620
+you'll have the opportunity to create your very own CloudFront distribution.
+

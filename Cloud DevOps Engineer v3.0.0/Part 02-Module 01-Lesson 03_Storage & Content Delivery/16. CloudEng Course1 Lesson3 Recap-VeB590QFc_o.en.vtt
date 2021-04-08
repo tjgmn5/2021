@@ -1,0 +1,28 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.285
+In this lesson, I introduced you to storing files or objects in the Cloud using S3.
+
+00:00:06.285 --> 00:00:10.890
+Remember that S3 Glacier is good for data archiving purposes,
+
+00:00:10.890 --> 00:00:14.565
+and is intended for data you plan to access less frequently.
+
+00:00:14.564 --> 00:00:18.285
+You learnt about a NoSQL database called DynamoDB.
+
+00:00:18.285 --> 00:00:21.780
+We talked about red shift which holds large volumes
+
+00:00:21.780 --> 00:00:25.455
+of data that need to be analyzed or reported against.
+
+00:00:25.454 --> 00:00:30.195
+We also discussed using CloudFront as a way to speed up content delivery.
+
+00:00:30.195 --> 00:00:33.850
+Next I will teach you about Security.
+

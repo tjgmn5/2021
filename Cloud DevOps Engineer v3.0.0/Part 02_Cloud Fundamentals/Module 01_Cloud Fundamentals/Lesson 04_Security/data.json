@@ -1,0 +1,1181 @@
+{
+  "data": {
+    "lesson": {
+      "id": 850149,
+      "key": "fe3c9602-cb55-4724-8330-76ede9ef80f2",
+      "title": "Security",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn the importance of security in the cloud.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/fe3c9602-cb55-4724-8330-76ede9ef80f2/850149/1561694984988/Security+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/fe3c9602-cb55-4724-8330-76ede9ef80f2/850149/1561694982606/Security+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 850150,
+          "key": "b5299424-27e5-4644-96c0-85ce071e1b2b",
+          "title": "Lesson Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b5299424-27e5-4644-96c0-85ce071e1b2b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850532,
+              "key": "10e3c9c5-9ac8-4eca-9cfd-8f7118e7fb0d",
+              "title": "CloudEng Course1 Lesson4 Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Sig-X6acI08",
+                "china_cdn_id": "Sig-X6acI08.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 850151,
+          "key": "b1a84613-5af2-4ec3-943d-22fe28c9e75e",
+          "title": "Why do we need security for applications?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b1a84613-5af2-4ec3-943d-22fe28c9e75e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850164,
+              "key": "8ed238a3-32b6-4081-b819-1272c9822da5",
+              "title": "CloudEng Course1 Lesson4 WhyWeNeedSecurity V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tTDVF_GtAyw",
+                "china_cdn_id": "tTDVF_GtAyw.mp4"
+              }
+            },
+            {
+              "id": 851101,
+              "key": "a3284ffe-f26c-475d-b573-d6790ebb25b2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h1>Security in the Cloud</h1>\n\nAs adoption of cloud services has increased, so has the need for increased security in the cloud.  The great thing about cloud security is that it not only protects data, it also protects applications that access the data. Cloud security even protects the infrastructure (like servers) that applications run on.\n\nThe way security is delivered depends on the cloud provider you're using and the cloud security options they offer. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850153,
+          "key": "b771e0a1-0532-482f-8a57-8e3e08595c7b",
+          "title": "AWS Web Application Firewall",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b771e0a1-0532-482f-8a57-8e3e08595c7b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850163,
+              "key": "9d297f72-97df-4fc5-b162-45d79744f5dc",
+              "title": "CloudEng Course1 Lesson4 WAF V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "79_HJIwT-fE",
+                "china_cdn_id": "79_HJIwT-fE.mp4"
+              }
+            },
+            {
+              "id": 851108,
+              "key": "9f613a72-4508-48b4-8b0d-1f599c433b38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h2>AWS WAF</h2>\n\nAWS WAF (or AWS Web Application Firewall) provides a firewall that protects your web applications. WAF can stop common web attacks by reviewing the data being sent to your application and stopping well-known attacks.\n\n<h3>Tips</h3>\n<ul>\n<li>WAF is found under the Security, Identity, & Compliance section on the AWS Management Console.</li>\n<li>WAF can protect web sites not hosted in AWS through Cloud Front.</li>\n<li>You can configure CloudFront to present a custom error page when requests are blocked.</li>\n</ul>\n\nAWS WAF is available under a composite dashboard, [WAF & Shield](https://console.aws.amazon.com/wafv2/shieldv2),  that combines the following three services:\n1. **AWS WAF**: It allows you to protect your web applications from common web exploits by monitoring and controlling the web requests coming to an Amazon API Gateway API, an Amazon CloudFront distribution, or an Application Load Balancer. \n\n\n2. **AWS Shield**: It provides continuous DDoS attack detection and automatic mitigations. AWS Shield offers two tiers of protection - Standard and Advanced.\n\n\n3. **AWS Firewall Manager**: It allows you to configure and manage firewall rules across accounts and applications centrally.\n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123802,
+              "key": "c66ec702-4a51-426c-a628-4241971c1b59",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nWithin AWS WAF service, you can create *Web access control lists (web ACLs)* to monitor HTTP(S) requests for AWS resources. You can protect the following types of resources:\n* CloudFront distributions\n* Regional resources (Application Load Balancer, API Gateway, AWS AppSync)\n\nWhile creating a web ACL, you add rules, such as conditions like originating IP addresses, that determines whether to allow/block each request. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123803,
+              "key": "67ed9eb5-b6f1-480f-8346-4fd8a991e0c6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/5ff5c365_screenshot-2021-01-06-at-7.24.44-pm/screenshot-2021-01-06-at-7.24.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/67ed9eb5-b6f1-480f-8346-4fd8a991e0c6",
+              "caption": "Five-step process to create a web ACL",
+              "alt": "",
+              "width": 700,
+              "height": 1402,
+              "instructor_notes": null
+            },
+            {
+              "id": 851109,
+              "key": "e3918d88-a619-4506-8192-e4a4aa777d75",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e3918d88-a619-4506-8192-e4a4aa777d75",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Identify the type of web attacks that AWS WAF prevents. Choose two.",
+                "answers": [
+                  {
+                    "id": "a1558837126587",
+                    "text": "Password attacks",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558837174315",
+                    "text": "SQL injection",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558837175261",
+                    "text": "Phishing attacks",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558837176131",
+                    "text": "Cross-site scripting",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 859391,
+              "key": "4029634b-1c24-40af-8f67-09b2652a2fe5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [AWS Web Application Firewall FAQs](https://aws.amazon.com/waf/faqs/)\n* [How AWS WAF works?](https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850152,
+          "key": "12516c5d-7ffa-4457-b5de-f2a562bf4bb1",
+          "title": "AWS Shield",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "12516c5d-7ffa-4457-b5de-f2a562bf4bb1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850160,
+              "key": "479e8af0-dacf-42aa-a691-9139592fb976",
+              "title": "CloudEng Course1 Lesson4 Shield V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BBgUtzXUGjI",
+                "china_cdn_id": "BBgUtzXUGjI.mp4"
+              }
+            },
+            {
+              "id": 851102,
+              "key": "11f29fa1-b8f5-4d8a-bbd3-0d207126e825",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h2>AWS Shield</h2>\n\nAWS Shield is a managed DDoS (or Distributed Denial of Service) protection service that safeguards web applications running on AWS.  AWS Shield offers two tiers of protection - Standard and Advanced.\n\n* Standard tier: Standard AWS Shield is a service that you get \"out of the box\", it is always running (automatically) and is a part of the free standard tier. \n\n\n* Advanced tier: If you want to use some of the more advanced features, you'll have to utilize the paid tier. \n\n>The standard AWS Shield Standard is always-on, using techniques to detect malicious traffic.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123805,
+              "key": "ce61856c-9182-4437-b75a-04a89f458a3a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/5ff5c446_screenshot-2021-01-06-at-7.37.40-pm/screenshot-2021-01-06-at-7.37.40-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ce61856c-9182-4437-b75a-04a89f458a3a",
+              "caption": "A sample summary of events detected by AWS Shield globally for two weeks. ",
+              "alt": "",
+              "width": 600,
+              "height": 1466,
+              "instructor_notes": null
+            },
+            {
+              "id": 1123807,
+              "key": "d812e999-f6bd-49d8-9401-3457ab2a15e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you want to view the threat-event summary for resources in your account, you will have to subscribe to the Shield Advanced. The summary will include statistics, such as total events, largest bit rate, largest packet rate, and the largest request rate. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123806,
+              "key": "1a634353-af64-44e0-9b44-9848a83ca659",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/5ff5c4a9_screenshot-2021-01-06-at-7.36.13-pm/screenshot-2021-01-06-at-7.36.13-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1a634353-af64-44e0-9b44-9848a83ca659",
+              "caption": "A three-step process to subscribe to Sheild Advanced. ",
+              "alt": "",
+              "width": 700,
+              "height": 792,
+              "instructor_notes": null
+            },
+            {
+              "id": 851103,
+              "key": "96388c4f-ee25-483e-a3c8-b85fa3070573",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "96388c4f-ee25-483e-a3c8-b85fa3070573",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What does a Distributed Denial of Service (DDoS) attack do?",
+                "answers": [
+                  {
+                    "id": "a1558833956518",
+                    "text": "Prevent common web attacks",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558833957480",
+                    "text": "Allow certain network traffic in and deny others",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558833958286",
+                    "text": " Identify the source of a web attack",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558833959072",
+                    "text": "Overwhelm a website with requests to make it crash",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 859390,
+              "key": "4a845f32-d0c0-4014-bb23-2be8efb904bb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [AWS Shield FAQs](https://aws.amazon.com/shield/faqs/)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850154,
+          "key": "8a0e80c4-49fc-4ff3-a878-e6b5d986da42",
+          "title": "Identity and Access Management (IAM) ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8a0e80c4-49fc-4ff3-a878-e6b5d986da42",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850157,
+              "key": "73ba8785-aafe-495a-bf74-0a6f10c4155f",
+              "title": "CloudEng Course1 Lesson4 IAM(PART ONE) V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sECvyZxb7Cw",
+                "china_cdn_id": "sECvyZxb7Cw.mp4"
+              }
+            },
+            {
+              "id": 1123792,
+              "key": "a1d6e13d-fca0-4ba6-aa28-f7e8013681ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h2>Identity & Access Management</h2>\n\nIdentity & Access Management (IAM) is an AWS service that allows us to configure who can access our AWS account, services, or even applications running in our account.  IAM is a global service and is automatically available across ALL regions.\n\nAWS IAM service securely controls access to AWS resources by authenticating and authorizing (giving granular permissions) the individual users, applications, or services. Let's watch a demo next. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123793,
+              "key": "b3ee060d-94ac-476b-a08b-961f3eb63de3",
+              "title": "CloudEng Course1 Lesson4 IAM(PART TWO) V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "a5ErgSkmxe8",
+                "china_cdn_id": "a5ErgSkmxe8.mp4"
+              }
+            },
+            {
+              "id": 851110,
+              "key": "ad158975-e2a9-4471-9d45-34031e250778",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's learn about key IAM terms.\n\n#### 1. IAM User\nA user is a unique identifier generated by the IAM service and recognized by all AWS services to grant access to AWS resources. A user can be a person, system, or application that requires access to AWS services. You can generate login credentials and access keys for any user in your account. Roles and policies control the scope (permissions) of a user's access to AWS resources in your account.  \n\n\n#### 2. IAM Group\nA group collects IAM users with the same level of permissions to access AWS resources. You can attach or detach permissions to a group using access control policies. A group makes it easier to manage IAM users with the same level of permissions. \n\n#### 3. IAM Role\nA role is simply a set of policies (permissions) to access AWS services. You can assign a role either to an IAM user or an AWS service such as EC2. Creating and storing roles helps to delegate access with defined permissions without sharing long-term access keys. \n\n#### Difference between an IAM role and an IAM user\nAn IAM user has permanent credentials that can be used to interact with AWS services directly. In contrast, an IAM role does not have any credentials; hence it cannot make direct requests to AWS services. IAM roles are assumed by authorized entities, such as IAM users, applications, or other AWS services.\n\n\n#### 4. IAM Policy\nAn access control policy is a JSON file that defines the resource to grant access, level of access, and allowed actions. You can attach a policy to multiple users, groups, or roles to assign permissions to AWS resources.\n\nAWS offers predefined policies that are managed by AWS. You can even create, save, and attach custom policies, as shown below\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123787,
+              "key": "6e3d25a7-e14c-41a3-ae74-0a3802561080",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/5ff5b2d0_screenshot-2021-01-06-at-6.08.07-pm/screenshot-2021-01-06-at-6.08.07-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6e3d25a7-e14c-41a3-ae74-0a3802561080",
+              "caption": "Create a custom policy using either a visual or a JSON editor",
+              "alt": "",
+              "width": 600,
+              "height": 1092,
+              "instructor_notes": null
+            },
+            {
+              "id": 1123796,
+              "key": "18711f1d-a2f3-43b2-91f5-4d714c0493bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "See a sample IAM policy that allows full EC2 access within a specific AWS region:\n```json\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Action\": \"ec2:*\",\n            \"Resource\": \"*\",\n            \"Effect\": \"Allow\",\n            \"Condition\": {\n                \"StringEquals\": {\n                    \"ec2:Region\": \"us-east-2\"\n                }\n            }\n        }\n    ]\n}\n```\n You can have a look at many more managed policies here: [Example IAM identity-based policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html)\n\n#### How do I know if my custom policy is having the desired access permissions?\nAWS offers a utility, [IAM policy simulator](https://policysim.aws.amazon.com), where you can evaluate, and validate the effects of your access control policies.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123791,
+              "key": "0fb53b32-79d6-419b-99c1-4a01cfdfe89e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n#### Recommended Read\n1. StackOverflow discussion - [Difference between IAM role and IAM user in AWS](https://stackoverflow.com/questions/46199680/difference-between-iam-role-and-iam-user-in-aws)\n\n\n2. In addition to IAM policies, AWS offers other types of policies, such as an S3 Bucket Policy, an SNS Topic Policy, a VPC Endpoint Policy, and an SQS Queue Policy. There is a helpful utility, [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html), that can generate either of the policies mentioned above. \n\n\n3. [AWS IAM FAQs](https://aws.amazon.com/iam/faqs/?nc=sn&loc=5) - must read. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851113,
+              "key": "17e3892d-3087-4809-9d4c-cac6170c83da",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "17e3892d-3087-4809-9d4c-cac6170c83da",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the security concept to its definition."
+                },
+                "concepts_label": "Concept",
+                "answers_label": "Definition",
+                "concepts": [
+                  {
+                    "text": "User",
+                    "correct_answer": {
+                      "id": "a1558872462639",
+                      "text": "A person or service that interacts with services or applications running in your AWS account."
+                    }
+                  },
+                  {
+                    "text": "IAM Group",
+                    "correct_answer": {
+                      "id": "a1558872495776",
+                      "text": "A collection of users."
+                    }
+                  },
+                  {
+                    "text": "IAM Role",
+                    "correct_answer": {
+                      "id": "a1558872497659",
+                      "text": "Identity with permissions or a set of privileges."
+                    }
+                  },
+                  {
+                    "text": "Policy",
+                    "correct_answer": {
+                      "id": "a1558872498570",
+                      "text": "Defines granular level permissions. "
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1558872498570",
+                    "text": "Defines granular level permissions. "
+                  },
+                  {
+                    "id": "a1558872462639",
+                    "text": "A person or service that interacts with services or applications running in your AWS account."
+                  },
+                  {
+                    "id": "a1558872495776",
+                    "text": "A collection of users."
+                  },
+                  {
+                    "id": "a1558872497659",
+                    "text": "Identity with permissions or a set of privileges."
+                  }
+                ]
+              }
+            },
+            {
+              "id": 851111,
+              "key": "f1c9c820-ff40-47d8-9f7c-b3486c4ad541",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f1c9c820-ff40-47d8-9f7c-b3486c4ad541",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are  IAM Policies written in?",
+                "answers": [
+                  {
+                    "id": "a1558872025053",
+                    "text": "YAML",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558872035826",
+                    "text": "XML",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558872036639",
+                    "text": "JSON",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558872037392",
+                    "text": "Simple text",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 851112,
+              "key": "44814a4e-c9f7-4680-a003-ab6d8027dbc2",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "44814a4e-c9f7-4680-a003-ab6d8027dbc2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the best way to protect your root account?",
+                "answers": [
+                  {
+                    "id": "a1558872112678",
+                    "text": "User name and password",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558872128701",
+                    "text": "Multi Factor Authentication (MFA)",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558872130744",
+                    "text": "AWS access key",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558872131565",
+                    "text": "Temporary security credentials ",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 859392,
+              "key": "7a2b34c8-2532-48f5-8f7c-269c1017684e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [AWS IAM Overview](https://aws.amazon.com/iam/)\n* [What is IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850155,
+          "key": "0905a56d-e25b-4c73-9183-03740e7fef93",
+          "title": "Exercise - IAM ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0905a56d-e25b-4c73-9183-03740e7fef93",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 851485,
+              "key": "3ba82890-4769-440d-9d84-247b8eda21b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": ">An IAM policy is a JSON file that defines the level of permissions (authorization) a user (or a service) can have while accessing AWS services in your account. \n\nIn this hands-on exercise, you will create an IAM policy and review the generated JSON. \n\n#### Prerequisites:\n* AWS account\n\n#### Topics Covered:\nBy the end of this lab, you will be able to:\n* Create an IAM policy using the visual editor.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121808,
+              "key": "34a5adc7-42a6-4254-83a1-67c53a99c7b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 1. Create a Policy\n1. Navigate to the IAM service, and select the [IAM Policies](https://console.aws.amazon.com/iam/home#/policies) dashboard.\n2. Click the **Create policy** button to launch the wizard.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121812,
+              "key": "551fc8a1-2ce5-4e88-a1e2-13c3381a423f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe34180_screenshot-2020-12-23-at-6.04.47-pm/screenshot-2020-12-23-at-6.04.47-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/551fc8a1-2ce5-4e88-a1e2-13c3381a423f",
+              "caption": "Create a new policy",
+              "alt": "",
+              "width": 600,
+              "height": 832,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121810,
+              "key": "7469d665-ae8c-4de7-84df-42d2607f0b66",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. In the *Service* section, click *Choose a service* and select S3.\n4. In the *Actions* section, under the *Access level* \n * Select the checkbox to allow all **List** operations. \n * Expand the **Read**  action, and then select `GetObject`.\n5. Next in the *Resources* section, ensure that *Specific* is selected, and select the *Any* checkboxes next to the *bucket*.\n6. Click on the *Review policy* button on the bottom right.\n * Provide a name of your choice to your policy, and review the policy.\n * Complete the process by clicking on the *Create policy*.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121814,
+              "key": "12808071-a7ee-4bf1-97b1-861a9f65ad7b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe34202_screenshot-2020-12-23-at-6.12.58-pm/screenshot-2020-12-23-at-6.12.58-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/12808071-a7ee-4bf1-97b1-861a9f65ad7b",
+              "caption": "Provide a name and description of your new policy",
+              "alt": "",
+              "width": 600,
+              "height": 1022,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121807,
+              "key": "0c6891f1-8285-40d5-b67b-1c10c9e3317f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 2. Review Policy\n1. After your policy is created, go back to the **IAM Policies** dashboard. Enter the name of the policy you just created in the *Filter policies* text box.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121816,
+              "key": "d8a69956-a710-4ad7-8987-872d145f9157",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe3427e_screenshot-2020-12-23-at-6.14.36-pm/screenshot-2020-12-23-at-6.14.36-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d8a69956-a710-4ad7-8987-872d145f9157",
+              "caption": "Filter the newly created policy",
+              "alt": "",
+              "width": 600,
+              "height": 482,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121815,
+              "key": "7afe5fa3-fec3-4d1e-bee0-c05e00730e92",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Click on the name of your policy.\n3. Review the JSON for the policy you just created on the `Permissions` tab.\n4. Click on the `Policy usage` tab to see if this policy is in use. Notice that this policy is not attached to any resources yet.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121818,
+              "key": "518e37ba-d029-40c7-86b3-d626ba270491",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe342d8_screenshot-2020-12-23-at-6.18.26-pm/screenshot-2020-12-23-at-6.18.26-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/518e37ba-d029-40c7-86b3-d626ba270491",
+              "caption": "A sample JSON file constituting the policy. Now, you can **attach** this policy to any user or other AWS service. ",
+              "alt": "",
+              "width": 600,
+              "height": 1538,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121820,
+              "key": "e66219b2-34e5-4bfa-b5e5-355d4bccbbaf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "5. Each resource in the AWS gets a unique identifier, ARN. The newly created policy will also get its ARN, such as, `arn:aws:iam::014421265158:policy/myFirstPolicy` shown in the snapshot above. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859393,
+              "key": "3a6aa2c2-04bf-4543-88af-9fbcba771d20",
+              "title": "Create an IAM policy and review the generated JSON",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3a6aa2c2-04bf-4543-88af-9fbcba771d20",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a Policy",
+                "Review Policy"
+              ],
+              "positive_feedback": "Excellent Work!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1121806,
+          "key": "da59ec58-0c63-4093-81ee-de2e7e046223",
+          "title": "Exercise 2 - IAM ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "da59ec58-0c63-4093-81ee-de2e7e046223",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1121831,
+              "key": "c2aeba1b-e437-41a8-8dd5-3f2e80126866",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the previous lab, you learned to create a *custom policy* that can allow users to access a specific set of services with defined permissions. Let's learn to attach the *custom policy* to a new user.\n\n### Prerequisites:\n1. An AWS account\n2. A sample IAM policy should be present in your account\n\n### Topics Covered:\n1. Using the AWS console, create a new IAM user with custom permissions\n2. Change the mode of access and attach another policy to an existing user",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121822,
+              "key": "e1a0f7df-caac-4de8-93c0-3593b00cdf07",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 1. Create a new IAM user\n\nLet's create a new IAM user who would be allowed to interact with services in your AWS account as an administrator. The AWS allows us to choose if the new user should be granted a *Programmatic access*, or *AWS web console access*. The permissions to a user are granted in form of **Policies**, which are JSON documents. The AWS web console provides a pre-created list of policies to choose from. \n\n1. Navigate to the IAM console, and access the <a href=\"https://console.aws.amazon.com/iam/home#/users\" target=\"_blank\">IAM Users</a> service. Start the **Add user** wizard, as shown below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121823,
+              "key": "4bf82611-dbad-47e3-af8e-cc0548b1359d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe30e71_screenshot-2020-12-23-at-12.46.50-pm/screenshot-2020-12-23-at-12.46.50-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4bf82611-dbad-47e3-af8e-cc0548b1359d",
+              "caption": "Launch the *Add user* wizard",
+              "alt": "",
+              "width": 700,
+              "height": 654,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121824,
+              "key": "efa3aea8-09ee-4576-b421-7ac6f59f7cf7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Set the user details, such as the name, and access type as *Programmatic access* only.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121825,
+              "key": "f69ce041-802b-43e1-bba0-646539135e59",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe30e92_screenshot-2020-12-23-at-12.47.55-pm/screenshot-2020-12-23-at-12.47.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f69ce041-802b-43e1-bba0-646539135e59",
+              "caption": "Set the user name, and type (mode) of access. For this exercise, select the programmatic access. However, you can experiment with the console access as well.  ",
+              "alt": "",
+              "width": 700,
+              "height": 984,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121826,
+              "key": "c70db915-ddeb-42b5-b8d9-f4173f7295b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Set the permissions to the new user by *attaching the newly created* policy. Though, the AWS provides three ways to grant permissions:\n * Add the user to an existing group that has a defined set of permissions\n * Copy the permissions from an existing user\n * Attach any existing policies to the new user. AWS provides and manages a set of pre-defined standard policies. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121827,
+              "key": "0760779d-670b-4b5b-b544-adc11439b594",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe34a35_screenshot-2020-12-23-at-7.14.46-pm/screenshot-2020-12-23-at-7.14.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0760779d-670b-4b5b-b544-adc11439b594",
+              "caption": "Attach the newly custom policy to the new user",
+              "alt": "",
+              "width": 700,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121828,
+              "key": "a39bf4ed-ea53-4b85-861d-3f376c941fda",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Provide tags [optional], review the details of the new user, and finally create the new user.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121829,
+              "key": "2598eee6-524d-4462-8b6d-f843831dc5da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "5. Download the Access key file (.csv) that contains two items: an access key ID, and a secret. We need this file while trying to access the AWS services from the command-line tool**.**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121830,
+              "key": "15d60418-db1c-4610-8986-87f4b55e46ae",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe30f2e_screenshot-2020-12-23-at-12.51.31-pm/screenshot-2020-12-23-at-12.51.31-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/15d60418-db1c-4610-8986-87f4b55e46ae",
+              "caption": "After a user is created successfully, download the access key file (.csv) containing the access key ID and a secret. In the upcoming lesson, we will learn to configure the command-line tool (AWS CLI) with these credentials. ",
+              "alt": "",
+              "width": 700,
+              "height": 884,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121832,
+              "key": "2f8bc538-acee-450e-abab-57df81cea054",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 2. Review the new user\n1. Navigate back to the IAM Users dashboard, select the newly created user to view its details. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121833,
+              "key": "d4c430bf-ae91-489d-b5f7-66168fd20431",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe34dd9_screenshot-2020-12-23-at-7.31.17-pm/screenshot-2020-12-23-at-7.31.17-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d4c430bf-ae91-489d-b5f7-66168fd20431",
+              "caption": "Select the new user to view its details",
+              "alt": "",
+              "width": 700,
+              "height": 436,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121834,
+              "key": "b9913e0a-72ed-49b8-bbea-17884c97362a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. View the details of the newly created user. Particularly, check the *Permissions*, *Security credentials*, and *Access Advisor* tabs to see the list of services that this user can access. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121835,
+              "key": "9dd24534-08bb-4dfd-9bf5-7c8ea82efcfa",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe35810_screenshot-2020-12-23-at-8.13.30-pm/screenshot-2020-12-23-at-8.13.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9dd24534-08bb-4dfd-9bf5-7c8ea82efcfa",
+              "caption": "Summary of the newly created user",
+              "alt": "",
+              "width": 700,
+              "height": 1260,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121836,
+              "key": "bcbfe77a-4ce8-4c94-afac-b04634451a83",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 3. Change the mode of access and attach another policy\nIn the previous steps, we attached a policy while creating a new user. However, you can attach/detach a policy even after a user is created. Let's try to do the following to the current user:\n1. **Enable the AWS web console access**\n * Go to the *Security credentials* tab, and click on *Manage* the console password.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121840,
+              "key": "e322d7ae-f870-4dab-a61a-94a9af5c181c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe35d17_screenshot-2020-12-23-at-8.28.12-pm/screenshot-2020-12-23-at-8.28.12-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e322d7ae-f870-4dab-a61a-94a9af5c181c",
+              "caption": "Manage the console access",
+              "alt": "",
+              "width": 600,
+              "height": 842,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121841,
+              "key": "4a06fa94-64a3-43ad-8431-d388d0b7c7fa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " * Enable the console access, and save the login credentials.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121842,
+              "key": "4e9ccce7-ed17-4ad0-9a76-71f2a94e0446",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe35d97_screenshot-2020-12-23-at-8.28.34-pm/screenshot-2020-12-23-at-8.28.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4e9ccce7-ed17-4ad0-9a76-71f2a94e0446",
+              "caption": "Enable the console access",
+              "alt": "",
+              "width": 500,
+              "height": 886,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121843,
+              "key": "7eb99b71-8246-4d98-98fb-7be03e87642d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe35dba_screenshot-2020-12-23-at-8.29.03-pm/screenshot-2020-12-23-at-8.29.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7eb99b71-8246-4d98-98fb-7be03e87642d",
+              "caption": "Save the new user's login credentials. The .csv file will contain three items: User name, Password, and Console login link",
+              "alt": "",
+              "width": 500,
+              "height": 570,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121839,
+              "key": "affbbbf8-0989-4e7a-b257-67ece6cffc89",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n2. **Attach the *AmazonRDSFullAccess* AWS managed policy**\n\n * Go back to the *Permissions* tab, and select *Add permissions*. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121844,
+              "key": "4906b1ab-f4ba-4350-9a5f-7f927f33e2f6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe35e02_screenshot-2020-12-23-at-8.22.31-pm/screenshot-2020-12-23-at-8.22.31-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4906b1ab-f4ba-4350-9a5f-7f927f33e2f6",
+              "caption": "Add new permissions to an existing user",
+              "alt": "",
+              "width": 600,
+              "height": 1038,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121845,
+              "key": "e8d00cc9-15d8-49ba-81d5-4d9aa448b88f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Attach the * AmazonRDSFullAccess* AWS managed policy that will provide full access to AWS RDS service via the  AWS web console.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121838,
+              "key": "5d6585c5-0e32-4926-9427-b5ff8883530c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe35bea_screenshot-2020-12-23-at-8.30.39-pm/screenshot-2020-12-23-at-8.30.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5d6585c5-0e32-4926-9427-b5ff8883530c",
+              "caption": "Attach *AmazonRDSFullAccess* policy to the current user",
+              "alt": "",
+              "width": 700,
+              "height": 1204,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121837,
+              "key": "91bc11d9-fdea-4302-a29f-36b610dfc26d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " * Review and add the permissions\n\n\n * Check the *Access Advisor* tab again to review the new policies attached to the current user. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121847,
+              "key": "8cbc2eab-68dd-4f9a-aaee-e72b005f9689",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 4. Log in to AWS management console as an IAM user\nRecall that you have saved the new user's login credentials (.csv file) containing three items: User name, Password, and Console login link. \n1. Using an incognito browser, go to the console login link provided to you, or go to the standard [AWS console sign-in page](https://aws.amazon.com/console/).  \n2. Provide the Account ID, IAN user name, and password. \n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121848,
+              "key": "000f6401-d4f1-401b-b505-39f4b24c844b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe3625f_screenshot-2020-12-23-at-8.55.20-pm/screenshot-2020-12-23-at-8.55.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/000f6401-d4f1-401b-b505-39f4b24c844b",
+              "caption": "Log in as an IAM user",
+              "alt": "",
+              "width": 600,
+              "height": 990,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121850,
+              "key": "edf38a05-c955-4442-bf6f-6b6f15195218",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Verify that you are logged in as a new IAM user.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121849,
+              "key": "578ae2db-fc95-414b-961e-b1ab7f94a3d7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe36284_screenshot-2020-12-23-at-8.57.17-pm/screenshot-2020-12-23-at-8.57.17-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/578ae2db-fc95-414b-961e-b1ab7f94a3d7",
+              "caption": "Logged in as an IAM user",
+              "alt": "",
+              "width": 600,
+              "height": 1034,
+              "instructor_notes": null
+            },
+            {
+              "id": 1122095,
+              "key": "4c3e956a-f5d1-476b-bc34-778aa34713d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Once the exercise is complete, do not forget to **delete the custom policy and the new user** you created in the steps above. You would have to logout as an IAM user and then log back into the AWS web console as a root user to do so. Once you are in the IAM service dashboard, the ideal order of deletion would be:\n * Detach the policy from the IAM user\n * Delete the IAM user\n * Delete the IAM policy",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850156,
+          "key": "0f6efa85-bb89-45cc-87ef-3d2ef4fb6244",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0f6efa85-bb89-45cc-87ef-3d2ef4fb6244",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850533,
+              "key": "7df94787-bf50-4f1d-b4bd-03c56d85d93f",
+              "title": "CloudEng Course1 Lesson4 Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "W3iVR_7RcZw",
+                "china_cdn_id": "W3iVR_7RcZw.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

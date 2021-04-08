@@ -1,0 +1,1496 @@
+{
+  "data": {
+    "lesson": {
+      "id": 850184,
+      "key": "5f5a2dec-335c-4b52-af1e-8cbfe93b4182",
+      "title": "AWS Management",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn why we need logging, auditing, and resource management in the cloud.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/5f5a2dec-335c-4b52-af1e-8cbfe93b4182/850184/1561703613333/AWS+Management+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/5f5a2dec-335c-4b52-af1e-8cbfe93b4182/850184/1561703610437/AWS+Management+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 850185,
+          "key": "ae9119ff-107b-4109-a40c-3728f6572d93",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ae9119ff-107b-4109-a40c-3728f6572d93",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850538,
+              "key": "1b5b2a2a-536d-44d0-9c80-59e50af2aa59",
+              "title": "CloudEng Course1 Lesson7 Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "51B9ycfTnfM",
+                "china_cdn_id": "51B9ycfTnfM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 850186,
+          "key": "aa56dcfd-70c1-4041-be07-94fd81346327",
+          "title": "Why do we need logging and auditing in the cloud?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aa56dcfd-70c1-4041-be07-94fd81346327",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850521,
+              "key": "d52bf25a-305a-4c19-8575-c1358d4c2041",
+              "title": "CloudEng Course1 Lesson7 WhyWeNeedLogging V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EkGOy_ZMA0A",
+                "china_cdn_id": "EkGOy_ZMA0A.mp4"
+              }
+            },
+            {
+              "id": 851142,
+              "key": "5c022935-9596-4cea-bd33-40b5f4f75e77",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h1>Logging in the Cloud</h1>\n\nLogging provides visibility into your cloud resources and applications. For applications that run in the cloud, you will need access to logging and auditing services to help you proactively monitor your resources and applications.\n\nLogging allows you to answer important questions like:\n<ul>\n<li>How is this server performing? </li>\n<li>What is the current load on the server? </li>\n<li>What is the root cause of an application error that a user is seeing? </li>\n<li>What is the path that leads to this error? </li>\n</ul>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850187,
+          "key": "c8e489fd-f22d-41df-8ecf-709f5374359a",
+          "title": "Cloud Trail",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c8e489fd-f22d-41df-8ecf-709f5374359a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850514,
+              "key": "0499b418-e96a-4af3-a8ad-36c5169c769a",
+              "title": "CloudEng Course1 Lesson7 CloudTrail(PART ONE) V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6DRW-SRpB7Q",
+                "china_cdn_id": "6DRW-SRpB7Q.mp4"
+              }
+            },
+            {
+              "id": 851143,
+              "key": "a2b8b19d-1e69-49ce-b558-24de8951c32f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h1>Cloud Trail</h1>\nCloud Trail allows you to audit (or review) everything that occurs in your AWS account. Cloud Trail does this by recording all the AWS API calls occurring in your account and delivering a log file to you. \n\n<h1>Features</h1>\n\nCloudTrail provides event history of your AWS account activity, including:\n\n<ul>\n<li>who has logged in</li>\n<li>services that were accessed</li>\n<li>actions performed</li>\n<li>parameters for the actions</li>\n<li>responses returned </li>\n</ul>\n\nThis includes actions taken through the AWS Management Console, AWS SDKs, command line tools, and other AWS services.\n\n<h1>Tips</h1>\n<ul>\n<li>Cloud Trail is found under the Management & Governance section on the AWS Management Console.</li>\n<li>CloudTrail shows results for the last 90 days.</li>\n<li>You can create up to five trails in an AWS region.</li>\n</ul>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851144,
+              "key": "62107dcb-5a95-4fd9-afac-1932d4ddd9ab",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "62107dcb-5a95-4fd9-afac-1932d4ddd9ab",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Identify features provided by Cloud Trail. Pick three.",
+                "answers": [
+                  {
+                    "id": "a1558894156586",
+                    "text": "Set up alerts and alarms for certain activities",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558894179880",
+                    "text": "Log responses from AWS services",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558894181005",
+                    "text": "Track calls made using the SDK ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558894182656",
+                    "text": "Track when a user opens a notification from SNS",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 859403,
+              "key": "050641f3-f750-4dc4-aa10-4b96d39f9b3a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [AWS CloudTrail Overview](https://aws.amazon.com/cloudtrail/)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1104094,
+          "key": "e17f6e9b-5be3-47e6-8b71-64329196ac8e",
+          "title": "CloudTrail - Create a Trail",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e17f6e9b-5be3-47e6-8b71-64329196ac8e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1104096,
+              "key": "8c2e1331-7f14-4605-bff4-1749fca8df44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": ">[AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html) is a service that captures *every* event occurred in your account, in the form of logs, for review and analysis. These logs can be stored in Amazon S3 buckets or delivered to Amazon CloudWatch logs, which helps you to set alarms and take appropriate actions. \n\nLet's see how to create a trail, and view the details of an existing trail.\n\n## A. CloudTrail Dashboard\nNavigate to the [CloudTrail dashboard](https://console.aws.amazon.com/cloudtrail/home), and launch the wizard to create a trail. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1104097,
+              "key": "ea06e894-f830-4fd6-b1d1-82c7817334ed",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbf9e1c_screenshot-2020-11-26-at-5.52.25-pm/screenshot-2020-11-26-at-5.52.25-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ea06e894-f830-4fd6-b1d1-82c7817334ed",
+              "caption": "Snapshot: CloudTrail homepage - Launch the wizard to *quickly* create a trail ",
+              "alt": "",
+              "width": 500,
+              "height": 642,
+              "instructor_notes": null
+            },
+            {
+              "id": 1104101,
+              "key": "12357dce-8d0f-4c10-8d45-9336a6f565f8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbfa285_screenshot-2020-11-26-at-6.09.31-pm/screenshot-2020-11-26-at-6.09.31-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/12357dce-8d0f-4c10-8d45-9336a6f565f8",
+              "caption": "Snapshot: CloudTrail dashboard - Launch the wizard to create a trail ",
+              "alt": "",
+              "width": 500,
+              "height": 624,
+              "instructor_notes": null
+            },
+            {
+              "id": 1104099,
+              "key": "04368bba-a489-499d-b1a4-de656a9e155e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## B. Create a Trail\nAWS provides a quick trail create process, where you just have to specify the display name for your trail, and an S3 bucket to store logs. \n\n1. **Quick process** <br>The *Quick trail create* wizard will automatically create an S3 bucket and folder on your behalf to store the logs. The folder in the newly created S3 bucket is `aws-cloud trail-logs-014421265158-1acfb819`, and the folder is `AWSLogs/014421265158/CloudTrail/`. It will create further sub-folders based on your region name, year, month, and date. An example (auto-generated) file created at the above mention path in the S3 bucket is:\n```\n014421265158_CloudTrail_us-east-1_20201126T1225Z_AumNC3WbMzJTBiSR.json.gz\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1104098,
+              "key": "85b93563-3024-4f9b-834f-4a74155a0128",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbf9f8f_screenshot-2020-11-26-at-5.54.59-pm/screenshot-2020-11-26-at-5.54.59-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/85b93563-3024-4f9b-834f-4a74155a0128",
+              "caption": "Snapshot: *Quick trail create* wizard",
+              "alt": "",
+              "width": 700,
+              "height": 1304,
+              "instructor_notes": null
+            },
+            {
+              "id": 1104100,
+              "key": "50768c7a-9650-49ca-8104-379de4f5cbd8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n2. **Regular process**<br>\nIf you wish to use an existing S3 bucket, you will have to navigate to the detailed **Create trail** process. You can launch one from the CloudTrail dashboard. The regular **Create trail** is a three-step process:\n\n 1. *Step 1 - General details* - Provide the trail name, choose the new/existing S3 bucket, and enable/disable the encryption. \n\n    If the encryption is enabled, CloudTrail will encrypt log files by using the AWS Key Management Service (SSE-KMS). In addition, you can choose to be notified each time a log is delivered to your bucket. There is another feature, log digest, to verify that your log files did not change after CloudTrail delivered them. <br><br>\n\n  2. *Step 2 - Events and Management details* - Choose the types of events you want to log. There are three categories of events - Management events, Data events (operations performed within a resource), and Insights events (unusual activity, errors, or user behavior).\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1104103,
+              "key": "ed268b58-ae33-4400-9313-a1aadb72dcd0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbfa3ef_screenshot-2020-11-26-at-6.13.47-pm/screenshot-2020-11-26-at-6.13.47-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ed268b58-ae33-4400-9313-a1aadb72dcd0",
+              "caption": "Snapshot: The three-step **Create trail** process - Step 1",
+              "alt": "",
+              "width": 700,
+              "height": 1584,
+              "instructor_notes": null
+            },
+            {
+              "id": 1104104,
+              "key": "9ea56547-bd7d-4873-83d3-1dd8adf37579",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbfa43d_screenshot-2020-11-26-at-6.16.15-pm/screenshot-2020-11-26-at-6.16.15-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9ea56547-bd7d-4873-83d3-1dd8adf37579",
+              "caption": "Snapshot: The three-step **Create trail** process - Step 2",
+              "alt": "",
+              "width": 700,
+              "height": 1332,
+              "instructor_notes": null
+            },
+            {
+              "id": 1104105,
+              "key": "cd5b88e0-b444-46ba-ba1a-d66ff72d275d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## C. Dashboard\n\nThe CloudTrail dashboard displays an overview of all your trails, insights, and event history. \n>Consider a **Trail** as a log of all the events/actions that occurred in your AWS account. Of course, events have to be processed to convert them into a particular log-format. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1104109,
+              "key": "6d7da4b4-70cd-41a7-b01e-88732e65923d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbfaf35_screenshot-2020-11-26-at-6.56.45-pm/screenshot-2020-11-26-at-6.56.45-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6d7da4b4-70cd-41a7-b01e-88732e65923d",
+              "caption": "Snapshot: CloudTrail dashboard - Look at the types of events that are captured",
+              "alt": "",
+              "width": 700,
+              "height": 1700,
+              "instructor_notes": null
+            },
+            {
+              "id": 1104108,
+              "key": "0c1ada1d-5eee-4f7f-94ae-04d7c3d85a33",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* In the snapshot above, notice the separate table for Trails, Insights, and Event history. The Event history section shows all the recent events. It shows every action that occurred in your AWS account. Click on **View full Event history** to see additional details and more events that have occurred. \n\n\n* Remember, that the first trail does not attract billing charges. However, you incur charges for the S3 bucket that will store your logs. You can create additional trails on a charge-basis.\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1104095,
+              "key": "855720fb-1e86-4051-a2ba-eecdfffda9cf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": ">Recently AWS has launched a new feature - *Event comparison* to compare up to five events from the Event history. You can download the full or filtered event history. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850188,
+          "key": "7b660f83-fa0a-49fa-9f10-d523b0416d19",
+          "title": "Cloud Watch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7b660f83-fa0a-49fa-9f10-d523b0416d19",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850517,
+              "key": "7332f5ba-2178-4956-a274-4b946ef96d6d",
+              "title": "CloudEng Course1 Lesson7 CloudWatch(PART ONE) V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "duVHCfGHI2k",
+                "china_cdn_id": "duVHCfGHI2k.mp4"
+              }
+            },
+            {
+              "id": 851145,
+              "key": "6a3d37ed-0829-4148-901b-f20e01cc7037",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h1>Cloud Watch</h1>\n\nCloud Watch is a service that monitors resources and applications that run on AWS by collecting data in the form of logs, metrics, and events.  \n\n<h1>Features</h1>\nThere are several useful features:\n\n<ul>\n<li>Collect and track metrics</li>\n<li>Collect and monitor log files</li>\n<li>Set alarms and create triggers to run your AWS resources</li>\n<li>React to changes in your AWS resources</li>\n</ul>\n\n<h1>Tips</h1>\n<ul>\n<li>CloudWatch is found under the Management & Governance section on the AWS Management Console.</li>\n<li>Metrics are provided automatically for a number of AWS products and services.</li>\n</ul>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851146,
+              "key": "bd50714f-c47f-4f6f-a22f-0cb90994a414",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bd50714f-c47f-4f6f-a22f-0cb90994a414",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some uses of Cloud Watch? Pick three.",
+                "answers": [
+                  {
+                    "id": "a1558896559839",
+                    "text": "Trigger a Lambda",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558896579796",
+                    "text": "Give users access via IAM",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558896580613",
+                    "text": "Capture log files from services",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558896581364",
+                    "text": "Add an EBS volume to an instance",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558896582071",
+                    "text": "Track metrics",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 859404,
+              "key": "2e7b559a-76da-4343-ab1d-613eb19f3052",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [AWS CloudWatch Overview](https://aws.amazon.com/cloudwatch/)\n* [What is Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850518,
+          "key": "11d9ac97-cae4-4cf0-acc9-38cef4460d29",
+          "title": "Demo - Cloud Watch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "11d9ac97-cae4-4cf0-acc9-38cef4460d29",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850519,
+              "key": "19a7e6d7-7768-4530-8714-fcc7b30b25db",
+              "title": " CloudEng Course1 Lesson7 CloudWatch(PART TWO) V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nvqyem5IW2c",
+                "china_cdn_id": "nvqyem5IW2c.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 850189,
+          "key": "a7ef8adb-dbd0-47ad-897c-744a8ccff5a5",
+          "title": "Lab - Cloud Watch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a7ef8adb-dbd0-47ad-897c-744a8ccff5a5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 851488,
+              "key": "3ec83aef-0497-472e-bd7d-af0e9b75c272",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Cloud Watch\n---\nIn this hands-on exercise, you will create a Cloud Watch event to notify via an SNS topic when an EC2 instance is created.\n\n1. Prerequisites:\n * AWS account\n * SNS Topic created in the previous lab\n\n2. By the end of this lab, you will be able to:\n * Create Cloud Watch event to react to the creation of an Amazon EC2 instance\n * Send SNS notification via Cloud Watch when an event occurs\n\nFollow the exercise instructions described below:\n\n\n## Steps:\n1. **Create CloudWatch Rule**\n    * Navigate to the CloudWatch service.\n    * On the left-hand menu, under `Events`, select `Rules`.\n    * Click on the `Create rule` button.\n    * For `Service Name`, select `EC2`.\n    * For the `Event Type`, select `EC2 Instance State-change Notification`.\n    * Select the `Specific state(s)` radio button. Select `running` from the drop-down box.\n>**Note:** This configures the rule to trigger whenever an Amazon EC2 instance changes to the running state, which happens when an instance is launched or started.\n    * On the right-hand side of the screen, in the `Target` section, add a target by clicking on `Add target`.\n    * In the drop-down, change `Lambda function` to `SNS topic`.\n    * For the `Topic`, select the topic you created in the SNS hands-on exercise.\n>**Important:** If the Topic doesn’t appear, the `Access policy – optional` section doesn’t have the correct permissions to allow other services to access the Topic.\n    * Scroll down and click the `Configure details`.\n    * Enter a name in the `Name` field. Ensure the state is `Enabled`. Click `Create rule`.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123492,
+              "key": "e51b4fe5-1981-4c03-ad92-81db5cfa897a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. **Test CloudWatch Rule**\n    * Navigate to the EC2 console page, by clicking on `Services` in the upper left-hand menu. Type `EC2` in the text box and click on `EC2` found in the search results.\n    * On the EC2 Dashboard page, click on `Instances` in the left-hand navigation.\n    * Click `Launch Instance`.\n    * Select the `Amazon Linux 2 AMI (HVM), SSD Volume Type` Amazon Machine Image (AMI).\n***Important:*** You are free to choose a different AMI, but to avoid excessive charges, pick one that says, `Free Tier Eligible`.\n    * For the `Instance Type`, select the free-tier instance type of `t2.micro`.\n    * Click `Review and Launch`.\n    * Click `Launch`.\n    * Generate and download a new key pair and then launch the instance.\n    * Click `Launch Instances`.\n    * Click on `View Instances`.\n    * Once the Instance state changes to `Running`, check your email client for an email alert from the SNS Topic.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123493,
+              "key": "5b5c89ab-07ff-434d-afbd-1e3445122143",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. **Cleanup & Disable EC2 Instance and Cloud Watch Rule**\n    * To avoid recurring charges for leaving an instance running, let’s disable the EC2 instance.\n    * From the EC2 Dashboard, select the instance just created, click `Actions`, then `Instance State`, and then select `Terminate`.\n    * To avoid recurring charges for leaving the Cloud Watch rule running, let’s disable it.\n    * From the CloudWatch Dashboard, select `Rules` from under the `Events` section.\n    * Select the Rule you just created, by clicking the radio button next to the Rule.\n    * Click on the `Actions` button, and select `Delete`.\n \n \n\n<br/>\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859408,
+              "key": "67eee084-7456-4698-9423-79e9b8ec9fec",
+              "title": "Create a Cloud Watch event to notify via an SNS topic",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "67eee084-7456-4698-9423-79e9b8ec9fec",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create CloudWatch Rule",
+                "Test CloudWatch Rule",
+                "Cleanup & Disable EC2 Instance and Cloud Watch Rule"
+              ],
+              "positive_feedback": "Excellent Job!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 850190,
+          "key": "f0038737-0bfe-4010-8e6c-0c854593aba8",
+          "title": "What is Infrastructure as Code and why do we need it?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f0038737-0bfe-4010-8e6c-0c854593aba8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850520,
+              "key": "6368dd4b-f93b-40f7-b4a3-1f2fcf8dc7ef",
+              "title": "CloudEng Course1 Lesson7 InfrastructureAsCode V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aD0xos0IcGo",
+                "china_cdn_id": "aD0xos0IcGo.mp4"
+              }
+            },
+            {
+              "id": 851147,
+              "key": "64196cb2-c94b-4908-a327-21fe61f05da1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h1>Infrastructure as Code</h1>\n\nInfrastructure as Code allows you to describe and provision all the infrastructure resources in your cloud environment. You can stand up servers, databases, runtime parameters, resources, etc. based on scripts that you write.   Infrastructure as Code is a time-saving feature because it allows you to provision (or stand up) resources in a reproducible way.\n\n\n\n<br/>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859405,
+              "key": "8dc536d7-6143-4d9f-afa5-57ec6bd69a94",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850191,
+          "key": "b03d31ea-1bfb-4a4f-ae82-438e145d0425",
+          "title": "Cloud Formation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b03d31ea-1bfb-4a4f-ae82-438e145d0425",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850511,
+              "key": "097a944d-e5fc-43a3-893c-bc3640730f97",
+              "title": "CloudEng Course1 Lesson7 CloudFormation(PART ONE) V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZeqZefQurmE",
+                "china_cdn_id": "ZeqZefQurmE.mp4"
+              }
+            },
+            {
+              "id": 851148,
+              "key": "be5c1a1b-7caf-4d18-9aec-2eb574dcb7ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h1>Cloud Formation</h1>\n\nAWS Cloud Formation allows you to model your entire infrastructure in a text file template allowing you to provision AWS resources based on the scripts you write. \n\n<h1>Tips</h1>\n<ul>\n<li>Cloud Formation is found under the Management & Governance section on the AWS Management Console.</li>\n<li>Cloud Formation templates are written using JSON or YAML. </li>\n<li>You can still individually manage AWS resources that are part of a CloudFormation stack.</li>\n</ul>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851149,
+              "key": "74c5e71b-41f9-4474-9063-c032b60a4087",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "74c5e71b-41f9-4474-9063-c032b60a4087",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the best way to manage your Cloud Formation script?",
+                "answers": [
+                  {
+                    "id": "a1558899167632",
+                    "text": "Save a copy locally",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558899186535",
+                    "text": "Email yourself a copy",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558899187534",
+                    "text": "Save a copy on S3",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558899188415",
+                    "text": "Check into version control",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 859406,
+              "key": "a99fcfdf-b54b-4ba6-a23f-19fdf9c19763",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [AWS CloudFormation Overview](https://aws.amazon.com/cloudformation/)\n* [What is AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850512,
+          "key": "5a6ac775-498b-4d85-bad4-d6cb46b5b213",
+          "title": "Demo - Cloud Formation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5a6ac775-498b-4d85-bad4-d6cb46b5b213",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850513,
+              "key": "5fc953b4-bbea-4d99-b88e-07d121b3d401",
+              "title": "CloudEng Course1 Lesson7 CloudFormation(PART TWO) V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-_y54MMp-rM",
+                "china_cdn_id": "-_y54MMp-rM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 850192,
+          "key": "305c7919-f7e1-4d61-b22c-5087579b510e",
+          "title": "Lab - Cloud Formation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "305c7919-f7e1-4d61-b22c-5087579b510e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 851489,
+              "key": "2ba2ad53-99a9-4ec9-be9b-a1824c22d514",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# CloudFormation\n---\nIn this hands-on exercise, you will create an S3 bucket with AWS CloudFormation. \n\n1. Prerequisites: AWS account\n\n2. By the end of this lab, you will be able to:\n * Create a CloudFormation stack using the CloudFormation Designer\n * Launch S3 bucket using Infrastructure as Code\n * Save and deploy a CloudFormation stack\n * View resources created through CloudFormation\n\nFollow the exercise instructions described below:\n\n\n## Steps:\n1. **Create CloudFormation Stack**\n    * On the AWS Management Console page, type `cloud formation` in the `Find Services` box and then select `CloudFormation`.\n>***Important:*** The redesigned AWS CloudFormation console is available now. This tutorial covers the new designer. To access the new designer, click on the `Try it out now and provide us feedback.` message that displays in a message similar to what’s shown below. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123495,
+              "key": "80aa569b-1257-4fd6-887a-8340eed508c3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/5ff43b36_screenshot-2021-01-05-at-3.39.19-pm/screenshot-2021-01-05-at-3.39.19-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/80aa569b-1257-4fd6-887a-8340eed508c3",
+              "caption": "CloudFormation dashboard",
+              "alt": "",
+              "width": 700,
+              "height": 968,
+              "instructor_notes": null
+            },
+            {
+              "id": 1123494,
+              "key": "a86703f5-0ce8-4f3b-b3c0-48b95ef0e182",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n   * If the left-hand menu options do not appear, expand the options by clicking on `` in the top left-hand corner.\n   * Select `Designer` from the left-hand menu.\n   * Locate `S3` in the `Resource Type` section and expand it.\n   * Select Bucket and drag it to the designer window on the right-hand side.\n   * Copy the JSON below and replace entirely the JSON found in the `Properties` tab.\n```\n{\n  \"AWSTemplateFormatVersion\": \"2010-09-09\",\n  \"Description\": \"Basic S3 Bucket CloudFormation template\",\n  \"Resources\": {\n    \"S3BucketCreatedByCloudFormation\": {\n      \"Type\": \"AWS::S3::Bucket\",\n      \"DeletionPolicy\": \"Delete\",\n      \"Properties\": {\n        \"AccessControl\": \"PublicRead\"\n      }\n    }\n  },\n  \"Outputs\": {\n    \"BucketName\": {\n      \"Value\": {\n        \"Ref\": \"S3BucketCreatedByCloudFormation\"\n      },\n      \"Description\": \"Name of the newly created Amazon S3 Bucket\"\n    }\n  }\n}\n```\n Hit the Refresh button in the upper right-hand corner so that the Designer is not out of date.\n\n2. **Save CloudFormation Stack**\n    * In the CloudFormation Designer Toolbar, click the Document icon , and click Save.\n    * Click `Local File` and click `Save`. The JSON file will download.\n    * In the AWS CloudFormation Designer toolbar, click to validate your template. You will see a message that states, `Template is valid`.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1123497,
+              "key": "56b76531-1f8a-47a6-8cf6-a307c030207d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/5ff43e7a_screenshot-2021-01-05-at-3.53.00-pm/screenshot-2021-01-05-at-3.53.00-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/56b76531-1f8a-47a6-8cf6-a307c030207d",
+              "caption": "Designer toolbar - save, verify, and then deploy the stack. ",
+              "alt": "",
+              "width": 600,
+              "height": 820,
+              "instructor_notes": null
+            },
+            {
+              "id": 1123496,
+              "key": "2492c8a1-6d23-4273-a8b4-fbe6ed7f6ed9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. **Deploy CloudFormation Stack**\n    * In the CloudFormation Designer Toolbar, click to deploy the stack. The `Create stack` screen appears.\n    * Accept the defaults and click `Next`.\n    * Enter a `Stack name`. Leave `Parameters` empty. Click `Next`.\n    * Leave the defaults and click `Next`.\n    * Review the stack details and click `Create Stack`. The stack status will be `CREATE_IN_PROGRESS`. To the current status of the stack, select the Refresh button in the upper right-hand corner. Once the stack reaches the `CREATE_COMPLETE` status, the stack has been deployed.\n4. **View S3 Bucket created by CloudFormation Stack**\n    * From the `Services` menu option at the top, type in `S3` and select `S3`.\n    * To quickly find the bucket created by the CloudFormation Stack, click on `Date Created` in the column heading to sort by the most recent buckets created.\n    * The newly created bucket appears at the top, `cfs3stack-s3bucketcreatedbycloudformation-1at0fv1v9ndc1`.\n5. **Delete CloudFormation Stack**\n    * To avoid on-going charges, delete the stack by navigating to the stack, and click the `Delete` button in the upper right-hand corner.\n>**Note:** When the stack is deleted, all resources created by the stack template will also be deleted.\n<br/>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859409,
+              "key": "24ac80d7-c6c7-4c7a-9c42-6f70981d35c2",
+              "title": "Create an S3 bucket with AWS CloudFormation",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "24ac80d7-c6c7-4c7a-9c42-6f70981d35c2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create CloudFormation Stack",
+                "Save CloudFormation Stack",
+                "Deploy CloudFormation Stack",
+                "View S3 Bucket created by CloudFormation Stack",
+                "Delete CloudFormation Stack"
+              ],
+              "positive_feedback": "You're Doing Great!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 850193,
+          "key": "ba403849-17f9-4a25-a611-2b66d85b8eab",
+          "title": "AWS Command Line Interface (CLI)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ba403849-17f9-4a25-a611-2b66d85b8eab",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850508,
+              "key": "ba64bf55-5463-418f-927b-11a092d07276",
+              "title": "CloudEng Course1 Lesson7 CLI(PART ONE) V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aeRjJ_Ky0lI",
+                "china_cdn_id": "aeRjJ_Ky0lI.mp4"
+              }
+            },
+            {
+              "id": 851150,
+              "key": "d0d1014d-519e-4c53-b070-f17a3060db23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h1>AWS Command Line Interface (CLI)</h1>\n\nThe AWS CLI (or Command Line Interface) allows you to access and control services running in your AWS account from the command line. To use the CLI, simply download, install, and configure it. \n\n<h1>Tips</h1>\n<ul>\n<li>The AWS CLI allows you to work with AWS services in a programmatic manner</li>\n</ul>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850509,
+          "key": "ab65fbe1-9c8e-465a-8093-866c383bf6c2",
+          "title": "Demo - AWS Command Line Interface (CLI)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ab65fbe1-9c8e-465a-8093-866c383bf6c2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850510,
+              "key": "cccca5cf-0181-4bb0-ae27-4ec2dfdf9792",
+              "title": "CloudEng Course1 Lesson7 CLI(PART TWO) V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vce4JMA7toI",
+                "china_cdn_id": "vce4JMA7toI.mp4"
+              }
+            },
+            {
+              "id": 859407,
+              "key": "176583c1-40ba-4434-aeae-411363f25914",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [AWS Command Line Interface](https://aws.amazon.com/cli/)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1121306,
+          "key": "c68b7e2f-3731-45eb-a5f6-8f7b3068cc8f",
+          "title": "AWS - Install and Configure CLI v2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c68b7e2f-3731-45eb-a5f6-8f7b3068cc8f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1121307,
+              "key": "1730c732-b4d8-4f94-adc8-e01baa8a4497",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> The AWS Command Line Interface (AWS CLI) is a command-line tool that allows you to interact with AWS services using commands in your terminal/command prompt.  \n>\n\n\nAWS CLI enables you to run commands to provision, configure, list, delete resources in the AWS cloud. Before you run any of the  <a href=\"https://docs.aws.amazon.com/cli/latest/reference/\" target=\"_blank\">aws commands</a>, you need to follow three steps:\n\n1. Install AWS CLI\n1. Create an IAM user with Administrator permissions\n1. Configure the AWS CLI",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121308,
+              "key": "a0e86019-9d39-4ded-b444-7bb801d6a850",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 1. Install AWS CLI v2\n\nRefer to the official <a href=\"https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html\" target=\"_blank\">AWS instructions to install/update AWS CLI</a> (version 2) based on your underlying OS. You can verify the installation using the following command in your terminal (macOS)/cmd (Windows). \n\n```\n# Display the folder that contains the symlink to the aws cli tool\nwhich aws\n# See the current version\naws --version\n```\n\nSee the sample output below. Note that the exact version of AWS CLI and Python may vary in your system.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121309,
+              "key": "3493a822-256a-4ec6-b811-4d51ed979ca5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fd9dc30_screenshot-2020-12-16-at-3.35.41-pm/screenshot-2020-12-16-at-3.35.41-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3493a822-256a-4ec6-b811-4d51ed979ca5",
+              "caption": "Mac/Linux/Windows: Verify the successful installation of AWS CLI 2",
+              "alt": "",
+              "width": 500,
+              "height": 410,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121325,
+              "key": "dfb2ac21-1b16-4436-bb0a-e96e25bc5cb3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 2. Create an IAM user \n\nIn this step, you will create an IAM user with Administrator permissions who is allowed to perform *any* action in your AWS account, only through CLI. After creating such an IAM user, we will use its **Access key **(long-term credentials)** **to configure the AWS CLI locally. \n\n\n\nLet’s create an  <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html\" target=\"_blank\">AWS IAM</a> user, and copy its Access key.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121310,
+              "key": "cd6e2787-3f3f-458c-a127-dd5faaa89288",
+              "title": "IAM setup",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> AWS Identity and Access Management (IAM) service allows you to authorize users / applications (such as AWS CLI) to access AWS resources.   \n>\n\n\nThe Access key is a combination of an  **Access Key ID** and a **Secret Access Key. ** Let's see the steps to create an IAM user, and generate its Access key.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121311,
+              "key": "15f6dc15-58c7-441e-9e4a-5504f0d7b131",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n * Navigate to the <a href=\"https://console.aws.amazon.com/iam/home#/home\" target=\"_blank\">IAM Dashboard</a>, and create an IAM user.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1130816,
+              "key": "65a14514-e9fb-48d7-8750-d4b37c09a4eb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/6012c726_screenshot-2021-01-28-at-7.12.20-pm/screenshot-2021-01-28-at-7.12.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/65a14514-e9fb-48d7-8750-d4b37c09a4eb",
+              "caption": "Add a new IAM user ",
+              "alt": "",
+              "width": 600,
+              "height": 628,
+              "instructor_notes": null
+            },
+            {
+              "id": 1130817,
+              "key": "83c0c701-3d2f-4c09-85b3-b83fe581d6bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Set the user details, such as the name, and access type as *Programmatic access* only.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1130818,
+              "key": "f839fcc1-c7b1-4699-b30b-af4f0c650c15",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/6012cbf9_screenshot-2021-01-28-at-7.13.05-pm/screenshot-2021-01-28-at-7.13.05-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f839fcc1-c7b1-4699-b30b-af4f0c650c15",
+              "caption": "Set the user name, and type (mode) of access ",
+              "alt": "",
+              "width": 600,
+              "height": 1064,
+              "instructor_notes": null
+            },
+            {
+              "id": 1130819,
+              "key": "4d139068-6b9d-487b-956a-5651dd8e10ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Set the permissions to the new user by attaching the AWS Managed **AdministratorAccess** policy from the list of existing policies.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1130820,
+              "key": "d6b72658-970d-4749-b4fe-3566982323de",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe30edb_screenshot-2020-12-23-at-12.48.57-pm/screenshot-2020-12-23-at-12.48.57-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d6b72658-970d-4749-b4fe-3566982323de",
+              "caption": "Attach the *AdministratorAccess* policy from the list of pre-created policies",
+              "alt": "",
+              "width": 600,
+              "height": 1296,
+              "instructor_notes": null
+            },
+            {
+              "id": 1130821,
+              "key": "86b13680-e702-46ad-b44a-db609c0718c8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Provide tags [optional], review the details of the new user, and finally create the new user.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1130822,
+              "key": "a4184ef1-996d-4ef4-b917-c7d227e0c789",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* After a user is created successfully, download the access key file (.csv) containing the *Access Key ID* and a *Secret Access Key*. You can even copy the keys and stay on the same page. **Don’t skip this step as this will be your only opportunity to download the secret access key file.**\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1130823,
+              "key": "ae1b47b6-ef49-4600-92d6-67bc79b68d10",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/6012cc3d_screenshot-2021-01-28-at-7.14.44-pm/screenshot-2021-01-28-at-7.14.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ae1b47b6-ef49-4600-92d6-67bc79b68d10",
+              "caption": "Copy the Access key of the new user OR download the .csv file containing the Access key",
+              "alt": "",
+              "width": 600,
+              "height": 910,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121317,
+              "key": "be38a6cd-9fe6-4e94-96b3-1f43d2302a55",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 3. Configure the AWS CLI\n\nYou will need to configure the following four items on your local machine before you can interact with any of the AWS services:\n\n1. **Access key** - It is a combination of an* Access Key ID* and a *Secret Access Key*. Together, they are referred to as *Access key*. You can generate an Access key from the AWS IAM service, and specify the level of permissions (authorization) with the help of *IAM Roles*. \n1. **Default AWS Region** - It specifies the AWS Region where you want to send your requests by default.\n1. **Default output format** - It specifies how the results are formatted. It can either be a json, yaml, text, or a table. \n1. **Profile** - A collection of settings is called a profile. The default profile name is `default`, however, you can create a new profile using the `aws configure --profile new_name` command. A sample command is given below.  \n\n<hr>\n\nIf you have closed the web console that showed the access key, you can open the downloaded access key file (.csv) to copy the keys later. It should be something similar to:\n\n```\nAWSAccessKeyId=WANI9WATIG63GKCXA89VC74A\nAWSSecretKey=kMT2Jn5NPkq1GxtoUqwUbgHtPbsf1ODm/Pbsf1OD\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121318,
+              "key": "ba58c1ba-49d7-4f55-8d1c-4350cc3111ab",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fda200a_screenshot-2020-12-16-at-8.14.06-pm/screenshot-2020-12-16-at-8.14.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ba58c1ba-49d7-4f55-8d1c-4350cc3111ab",
+              "caption": "Mac/Linux: List your present configuration, and then configure your default aws profile",
+              "alt": "",
+              "width": 600,
+              "height": 670,
+              "instructor_notes": null
+            },
+            {
+              "id": 1154933,
+              "key": "bb125184-2558-4ebb-8b46-79b7e0615374",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Navigate to the home directory and check the current configuration:\n```bash\n# Navigate to the home directory\ncd\n# View the current configuration\naws configure list\n```\n* Set the default profile credentials\n```bash\naws configure --profile default\n```\nThe command above will store the access key in a default file `~/.aws/credentials` and store the profile in the `~/.aws/config` file. Upon prompt, paste the copied access key (access key id and secret access key). Enter the default region as `us-east-1` and output format as `json`. \n\n\n* Let the system know that your sensitive information is residing in the .aws folder\n```bash\nexport AWS_CONFIG_FILE=~/.aws/config\nexport AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121319,
+              "key": "b4adce94-2ccb-46e0-b438-b7e3a666af1d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fda2052_screenshot-2020-12-16-at-8.16.36-pm/screenshot-2020-12-16-at-8.16.36-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b4adce94-2ccb-46e0-b438-b7e3a666af1d",
+              "caption": "Mac/Linux: A successful configuration",
+              "alt": "",
+              "width": 600,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 1154951,
+              "key": "752786f5-3c35-48db-93af-e5ebbd9c5351",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* After a successful credential set-up, your \"credentials\" file will look like:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121321,
+              "key": "c08cfa40-cf2e-4b51-a7a3-f5dd9cfde0ab",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fda1fe8_screenshot-2020-12-16-at-8.22.29-pm/screenshot-2020-12-16-at-8.22.29-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c08cfa40-cf2e-4b51-a7a3-f5dd9cfde0ab",
+              "caption": "Mac/Linux: View the credentials file using `cat ~/.aws/credentials` command",
+              "alt": "",
+              "width": 600,
+              "height": 448,
+              "instructor_notes": null
+            },
+            {
+              "id": 1154949,
+              "key": "94b9bd5c-a536-4b2a-b36b-0a533de47fae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* **Windows users with GitBash only**<br> You will have to set the environment variables. Run the following commands in your GitBash terminal:\n```bash\nsetx AWS_ACCESS_KEY_ID AKIAIOSFODNN7EXAMPLE\nsetx AWS_SECRET_ACCESS_KEY wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\nsetx AWS_DEFAULT_REGION us-west-2\n```\nReplace the access key ID and secret, as applicable to you. Windows users using WSL do not need this step, they will follow all steps as if they are Linux users.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1154954,
+              "key": "7a8ae863-6a98-462c-b8c9-6885f59fec1b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/March/60476f37_snap201/snap201.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7a8ae863-6a98-462c-b8c9-6885f59fec1b",
+              "caption": "Windows: Successful configuration using the GitBash terminal",
+              "alt": "",
+              "width": 600,
+              "height": 877,
+              "instructor_notes": null
+            },
+            {
+              "id": 1130824,
+              "key": "71acc845-e0a5-435b-9f9f-2b063f07676a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 4. Run your first AWS CLI command\n\n* Check the successful configuration of the AWS CLI, by running an AWS command:\n```bash\naws iam list-users\n```\nThe output will display the details of the recently created user:\n```json\n{\n  \"Users\": [\n      {\n          \"Path\": \"/\",\n          \"UserName\": \"Admin\",\n          \"UserId\": \"AIDAZMXYZ3LY2BNC5ZM5E\",\n          \"Arn\": \"arn:aws:iam::388752792305:user/Admin\",\n          \"CreateDate\": \"2021-01-28T13:44:15+00:00\"\n      }\n  ]\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121320,
+              "key": "46fcdb8a-2b56-4a36-9ef2-48065d7259cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Troubleshoot\nIf you are facing issues while following the commands above, refer to the detailed instructions here - \n\n1. [Configuration basics](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)\n2. <a href=\"https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html\" target=\"_blank\">Configuration and credential file settings</a>\n3. [Environment variables to configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1159256,
+              "key": "defa570e-85fc-4260-b1a1-1bb585dbdc54",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Updating the specific variable in the configuration\nIn the future, you can set a single value, by using the command, such as:\n```bash\n# Syntax\n# aws configure set <varname> <value> [--profile profile-name]\n aws configure set default.region us-east-2\n```\nIt will update only the region variable in the existing default profile.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1121709,
+          "key": "8973e55d-e2f5-4cba-837b-815436fe0380",
+          "title": "Lab - Interacting with S3 Buckets via the CLI",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8973e55d-e2f5-4cba-837b-815436fe0380",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1121710,
+              "key": "fcd3c8ac-4413-4a37-91d6-7557ca0dab85",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Prerequisites:\n1. An AWS account\n3. AWS CLI installed on your client. If not, refer to the official [AWS instructions to install/update AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) (version 2) based on your underlying OS. \n4. [Optional] AWS root user's access keys configured in your CLI tool\n\n### Topics Covered:\n1. Using the AWS console, create a new IAM user with Programmatic administrator access. **We will delete this user programmatically at the end of the exercise. **\n2. Using the CLI tool, create a bucket, upload a file to it, and then delete the bucket\n3. Using the CLI tool, delete an IAM user",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121786,
+              "key": "9fa5e749-4d23-4562-bd58-f45214ac65ae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 1. Create a new IAM user \nLet's create a new IAM user who would be allowed to interact with services in your AWS account as an administrator. The AWS allows us to choose if the new user should be granted a *Programmatic access*, or *AWS web console access*. The permissions to a user are granted in form of **Policies**, which are JSON documents. The AWS web console provides a pre-created list of policies to choose from. \n\n1. Navigate to the IAM console, and access the [IAM Users](https://console.aws.amazon.com/iam/home#/users) service. Start the **Add user** wizard, as shown below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121792,
+              "key": "bb8863c2-dc28-42dd-ac00-484b1f44f258",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe30e71_screenshot-2020-12-23-at-12.46.50-pm/screenshot-2020-12-23-at-12.46.50-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bb8863c2-dc28-42dd-ac00-484b1f44f258",
+              "caption": "Launch the *Add user* wizard",
+              "alt": "",
+              "width": 700,
+              "height": 654,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121787,
+              "key": "7ca906ed-7e06-45a8-b540-0abbe0cf544a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Set the user details, such as the name, and access type as *Programmatic access* only. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121793,
+              "key": "60f5bc30-b356-423c-bdbf-b53c401231bc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe30e92_screenshot-2020-12-23-at-12.47.55-pm/screenshot-2020-12-23-at-12.47.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/60f5bc30-b356-423c-bdbf-b53c401231bc",
+              "caption": "Set the user name, and type (mode) of access ",
+              "alt": "",
+              "width": 700,
+              "height": 984,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121788,
+              "key": "9a7635a2-c22e-4e11-aa15-b65f012f3303",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Set the permissions to the new user by attaching the AWS Managed **AdministratorAccess** policy from the list of existing policies. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121794,
+              "key": "40b8a64b-5de2-42f7-8674-c8b2ba033030",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe30edb_screenshot-2020-12-23-at-12.48.57-pm/screenshot-2020-12-23-at-12.48.57-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/40b8a64b-5de2-42f7-8674-c8b2ba033030",
+              "caption": "Attach the *AdministratorAccess* policy from the list of pre-created policies",
+              "alt": "",
+              "width": 700,
+              "height": 1296,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121789,
+              "key": "15c92e9b-6631-4e41-8e89-2f0f1f8a845d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Provide tags [optional], review the details of the new user, and finally create the new user.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121790,
+              "key": "e49b78e9-e304-405b-a275-d4ef5f4d8bfa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "5. Download the Access key file (.csv) that contains two items: an access key ID, and a secret. **Don’t skip this step as this will be your only opportunity to download the Access key file.**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121795,
+              "key": "f2cc2432-90d2-4d14-9e04-28e691c761aa",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe30f2e_screenshot-2020-12-23-at-12.51.31-pm/screenshot-2020-12-23-at-12.51.31-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f2cc2432-90d2-4d14-9e04-28e691c761aa",
+              "caption": "After a user is created successfully, download the access key file (.csv) containing the access key ID and a secret",
+              "alt": "",
+              "width": 700,
+              "height": 884,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121791,
+              "key": "e0bec11a-91e3-449b-8183-5fb8fa410804",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 2. Configure a new profile in the AWS CLI\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121796,
+              "key": "a97d193b-ee8b-41d2-ac31-a9ef3cf78234",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1. Now, to allow the newly created user to interact with the AWS services via CLI, configure the access key in your CLI tool. Let's create a new profile `UdacityLab`, and associate the newly created access key to it. You can use the following commands:\n```bash\n# Navigate back to your home folder \ncd\n# Set the UdacityLab profile credentials in the \"credentials\"  and \"config\" file\naws configure --profile UdacityLab\n```\nIt will prompt you to enter the following four values:\n * AWS Access Key ID - Paste the value from the downloaded access key file\n * AWS Secret Access Key - Paste the value from the downloaded access key file\n * Default region name - Enter your preferred region name, such as us-east-2\n * Default output format - It can accept either a json, yaml, text, or a table. Enter json for this exercise. \n\n2. You can review the current configuration as:\n```\n# Check the configuration\naws configure list\n#View the content of the credentials and configuration file\ncat ~/.aws/credentials\ncat ~/.aws/config\n```\nIf you haven't configured any profile ever, you can set the environment variables as well.\n```\n# Let the system know that your sensitive information is residing in the .aws folder\nexport AWS_CONFIG_FILE=~/.aws/config\nexport AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials\n```\n>**Note** - You can create multiple profiles, and use a specific one in any aws command using the `--profile <profile-name>` option.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121797,
+              "key": "163b530d-b0f8-4725-8742-b0c91c51070e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 3. Interact with S3 service\n1. Create a public bucket with name `my-033212455158-bucket` in the us-east-1 region, using the newly created `UdacityLab` profile. \n```\naws s3api  create-bucket --bucket my-033212455158-bucket --acl public-read-write --region us-east-1 --profile UdacityLab\n```\nIn the command above, \n * `--bucket` option specifies the bucket name of your choice. It must be unique across all AWS accounts. \n * `--profile` option specifies the profile whose credentials will be verified for authorization before accessing the S3 service. This option is OPTIONAL. If skipped, the aws CLI will use the default profile stored in your system.\n * `--acl` option specifies the accessibility level\n * `--region` specifies the AWS region where you want to create this bucket\n\n Reference - [aws s3api create-bucket command](https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121798,
+              "key": "d8e76fc5-877e-4443-bcfe-85e9ce2f6290",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Upload a file to your bucket. The command below uploads a file names `Sample.html`, however, you can choose any file from your local system.\n```bash\naws s3api put-object --bucket my-033212455158-bucket --key Sample.html --body Sample.html --profile UdacityLab\n```\nIn the command above, \n * `--key` option specifies the name you want to assign to your object in the bucket\n *  `--body` option specifies the file name (complete path) to upload from your local system\n\n Reference [aws s3api put-object](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object.html)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121799,
+              "key": "c708e235-0ae0-4936-a6a4-236e8bc16e46",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Verify the S3 bucket by going to the AWS web console. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121800,
+              "key": "5dba3cc1-2fee-4fe9-b5f8-d1118fb00379",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fe31786_screenshot-2020-12-23-at-1.40.20-pm/screenshot-2020-12-23-at-1.40.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5dba3cc1-2fee-4fe9-b5f8-d1118fb00379",
+              "caption": "A public bucket created using the CLI",
+              "alt": "",
+              "width": 700,
+              "height": 298,
+              "instructor_notes": null
+            },
+            {
+              "id": 1121801,
+              "key": "3c793e71-5cfe-4ebb-bdee-1affc128ebf2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Delete the bucket and its content. A bucket can only be deleted if it is empty. Therefore, first delete the `Sample.html`, and then delete the bucket, as follows:\n```bash\naws s3api delete-object --bucket my-033212455158-bucket --key Sample.html\naws s3api delete-bucket --bucket my-033212455158-bucket --profile UdacityLab\n ```\n**Reference** - [aws s3api commands](https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html#available-commands)\n\n\n5. Navigate back to the S3 dashboard (AWS web console), and verify if the bucket has been deleted successfully.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121802,
+              "key": "d262d703-f0d8-4570-991a-d78cfc23fa52",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 4. [Optional] Delete the newly created `UdacityLab` IAM user\nRemember, you created the `UdacityLab` IAM user using the AWS web console. However, you can delete the newly created `UdacityLab` IAM user from your CLI tool as well. \n>**Note** - We are assuming that your AWS **root user access key** is set in the `default` profile using the command `aws configure --profile default`. Use the `cat ~/.aws/credentials` command to list all the credentials set locally. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1121804,
+              "key": "816caa94-7dc5-4462-9b4f-d435d7f36347",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1. View the list of all users (other than the root user) in your AWS account.\n```bash\naws iam list-users\n```\n\n\n2. A user can only be deleted only after deleting the attached user policies, and access key. The commands below are executed using the `default` profile, therefore we have not used the `--profile` option. \n```bash\n# List the policies attached to the UdacityLab user\naws iam list-attached-user-policies --user-name UdacityLab\n# A policy can be detached using its ARN, a unique identifier\naws iam detach-user-policy --user-name UdacityLab --policy-arn arn:aws:iam::aws:policy/AdministratorAccess\n# List the access key for UdacityLab user\naws iam list-access-keys --user-name UdacityLab\n# An access key can be deleted using its access key id\naws iam delete-access-key  --user-name UdacityLab --access-key-id AKIAQGW4TBMDIZQP564S\n# Delete the user\naws iam delete-user --user-name UdacityLab\n```\n\n **Reference** - [aws iam commands](https://docs.aws.amazon.com/cli/latest/reference/iam/index.html#available-commands)\n\n\n3. Navigate back to the IAM console, and access the [IAM Users](https://console.aws.amazon.com/iam/home#/users) service to verify if the user has been successfully deleted.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850194,
+          "key": "0152aa91-f607-4afa-9e0d-924829a3f0a8",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0152aa91-f607-4afa-9e0d-924829a3f0a8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850540,
+              "key": "912c8b5d-47b8-4ab6-a0b8-89a210427ea6",
+              "title": "CloudEng Course1 Lesson7 Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-1nO-a9gt4o",
+                "china_cdn_id": "-1nO-a9gt4o.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 850195,
+          "key": "350658be-6aa1-448e-b336-3bb72eb90b50",
+          "title": "Course Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "350658be-6aa1-448e-b336-3bb72eb90b50",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850539,
+              "key": "a59cde58-77cf-4893-9a33-2502bd0f57fe",
+              "title": "CloudEng Course1 Lesson7 CourseRecap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TdWEGJuZggA",
+                "china_cdn_id": "TdWEGJuZggA.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

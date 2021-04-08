@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.590 --> 00:00:07.799
+Redshift is a Cloud Data Warehousing Service to help companies manage big Data or
+
+00:00:07.799 --> 00:00:11.039
+an extremely large volume of Data that needs to be
+
+00:00:11.039 --> 00:00:15.329
+analyzed or reported against and quickly scale.
+
+00:00:15.330 --> 00:00:19.469
+Redshift is a managed service that allows you to run
+
+00:00:19.469 --> 00:00:24.824
+fast Queries against your data using SQL or Standard Query Language.
+
+00:00:24.824 --> 00:00:28.574
+ETL or extract transform load tools,
+
+00:00:28.574 --> 00:00:32.070
+and BI or Business Intelligence tools.
+
+00:00:32.070 --> 00:00:37.200
+Redshift also automates administrative and maintenance task.
+
+00:00:37.200 --> 00:00:44.365
+A Data Warehouse is designed for fast Query and Analysis not transaction processing,
+
+00:00:44.365 --> 00:00:49.145
+and usually contains historical Data from transactional systems.
+
+00:00:49.145 --> 00:00:51.720
+For example, let's say you manage
+
+00:00:51.719 --> 00:00:55.609
+your website that allows users to order products online.
+
+00:00:55.609 --> 00:00:57.835
+The more recent transactions,
+
+00:00:57.835 --> 00:00:59.855
+like the orders for the current year,
+
+00:00:59.854 --> 00:01:03.094
+may live in a Relational Database like Oracle,
+
+00:01:03.094 --> 00:01:07.314
+because you may need to access them during day-to-day operations.
+
+00:01:07.314 --> 00:01:14.134
+But orders from, let say 10 years ago maybe archived to a Data Warehouse like Redshift.
+
+00:01:14.135 --> 00:01:17.525
+Redshift stores data in a column format
+
+00:01:17.525 --> 00:01:21.250
+as opposed to a row store like a relational database.
+
+00:01:21.250 --> 00:01:25.930
+This aids in fast query and analysis.
+
