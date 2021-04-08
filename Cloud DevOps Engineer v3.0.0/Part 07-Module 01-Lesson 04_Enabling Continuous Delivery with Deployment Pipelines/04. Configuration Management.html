@@ -1,0 +1,360 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Configuration Management</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Enabling Continuous Delivery with Deployment Pipelines</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Configuration Management.html">04. Configuration Management</a>
+    </li>
+    <li class="">
+      <a href="05. Design an Ansible Playbook.html">05. Design an Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Define Ansible Playbook.html">06. Exercise: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Define Ansible Playbook.html">07. Solution: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="08. Build an Inventory File.html">08. Build an Inventory File</a>
+    </li>
+    <li class="">
+      <a href="09. Exercise Inventory File.html">09. Exercise: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="10. Solution Inventory File.html">10. Solution: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="11. Remote Control Using Ansible.html">11. Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Remote Control Using Ansible.html">12. Exercise: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Remote Control Using Ansible.html">13. Solution: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="14. Deployment Jobs.html">14. Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="15. Infrastructure Creation Jobs.html">15. Infrastructure Creation Jobs</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise Infrastructure Creation.html">16. Exercise: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="17. Solution Infrastructure Creation.html">17. Solution: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="18. Configuration and Deployment Jobs.html">18. Configuration and Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="19. Exercise Config and Deployment.html">19. Exercise: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="20. Solution Config and Deployment.html">20. Solution: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="21. Smoke Testing Jobs.html">21. Smoke Testing Jobs</a>
+    </li>
+    <li class="">
+      <a href="22. Exercise Smoke Testing.html">22. Exercise: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="23. Solution Smoke Testing.html">23. Solution: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="24. Rollback Jobs.html">24. Rollback Jobs</a>
+    </li>
+    <li class="">
+      <a href="25. Exercise Rollback.html">25. Exercise: Rollback</a>
+    </li>
+    <li class="">
+      <a href="26. Solution Rollback.html">26. Solution: Rollback</a>
+    </li>
+    <li class="">
+      <a href="27. Production Candidate Promotion Jobs.html">27. Production Candidate Promotion Jobs</a>
+    </li>
+    <li class="">
+      <a href="28. Exercise Promote to Production.html">28. Exercise: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="29. Solution Promote to Production.html">29. Solution: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="30. Lesson Conclusion.html">30. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. Configuration Management</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="configuration-management-tools">Configuration Management Tools</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L03 Configuration Management Tools</p></h3>
+  <video controls>
+  <source src="04. ND9991 C03 L03 Configuration Management Tools-xEE2PLu3LvY.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="04. ND9991 C03 L03 Configuration Management Tools-xEE2PLu3LvY.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="configuration-management-and-automation-tools">Configuration Management and Automation Tools</h3>
+<table>
+<thead>
+<tr>
+<th id="**tool**" style="text-align:left;"><strong>Tool</strong></th>
+<th id="**website**" style="text-align:left;"><strong>Website</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">Chef</td>
+<td style="text-align:left;"><a href="https://www.chef.io/" rel="noopener noreferrer" target="_blank">chef.io</a></td>
+<td style="text-align:left;">Depends on agent to be installed. Very mature.</td>
+</tr>
+<tr>
+<td style="text-align:left;">Puppet</td>
+<td style="text-align:left;"><a href="https://puppet.com/" rel="noopener noreferrer" target="_blank">ouppet.com</a></td>
+<td style="text-align:left;">Requires master "puppet master" server. Performance issues.</td>
+</tr>
+<tr>
+<td style="text-align:left;">Salt</td>
+<td style="text-align:left;"><a href="https://www.saltstack.com/" rel="noopener noreferrer" target="_blank">saltstack.com</a></td>
+<td style="text-align:left;">Keeps inventory on a central server.</td>
+</tr>
+<tr>
+<td style="text-align:left;">Ansible</td>
+<td style="text-align:left;"><a href="https://www.ansible.com/" rel="noopener noreferrer" target="_blank">ansible.com</a></td>
+<td style="text-align:left;">Most popular. Very fast. Agentless.</td>
+</tr>
+</tbody>
+</table>
+<p>Tools like these are great for everything that happens <em>AFTER</em> the server instances are running. </p>
+<h2 id="ansible">Ansible</h2>
+<p>We're going to focus on <strong>Ansible</strong> since it is currently the most popular!</p>
+<h3 id="installation">Installation</h3>
+<p>Installation is easy as long as you already have Python installed.</p>
+<pre><code class="bash language-bash">pip install --user ansible</code></pre>
+<p>For more information about installation, check <a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html" rel="noopener noreferrer" target="_blank">the docs</a>.</p>
+<h3 id="ansible-uses-ssh">Ansible uses SSH</h3>
+<p>Ansible connects to a remote machine using ssh and executes commands and scripts remotely. If you already have scripts written to set up an instance, you can reuse those scripts easily with Ansible. After all, it's all about ssh and bash!</p>
+<p>Ansible uses yaml files called Playbooks to manage all the configurations to be made. As always, we should check this file into source control so that it is versioned and available to the entire team.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Quiz</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Mark the things that a configuration management tool should do.</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1594394646065" name="1044364" id="a1594394646065">
+      <label for="a1594394646065"><p>Configure Environment Variables</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1594394664309" name="1044364" id="a1594394664309">
+      <label for="a1594394664309"><p>Create EC2 Instances</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1594394665055" name="1044364" id="a1594394665055">
+      <label for="a1594394665055"><p>Install Dependencies</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1594394665568" name="1044364" id="a1594394665568">
+      <label for="a1594394665568"><p>Wash Dishes</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1594394666064" name="1044364" id="a1594394666064">
+      <label for="a1594394666064"><p>Start/Stop Services</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1594394666598" name="1044364" id="a1594394666598">
+      <label for="a1594394666598"><p>Deploy Applications</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1594394667144" name="1044364" id="a1594394667144">
+      <label for="a1594394667144"><p>Run CloudFormation Templates</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Configure Environment Variables</li>
+      <li>Install Dependencies</li>
+      <li>Start/Stop Services</li>
+      <li>Deploy Applications</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. Design an Ansible Playbook.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Configuration Management')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

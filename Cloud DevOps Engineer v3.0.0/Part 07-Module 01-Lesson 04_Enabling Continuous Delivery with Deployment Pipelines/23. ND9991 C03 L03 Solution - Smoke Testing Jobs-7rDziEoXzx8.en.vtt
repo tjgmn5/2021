@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.170 --> 00:00:06.430
+One of the main things that stands in the way of continuous delivery is fear.
+
+00:00:06.430 --> 00:00:09.485
+Fear that the new code might break production.
+
+00:00:09.485 --> 00:00:12.280
+Out of fear, we impose manual pauses in
+
+00:00:12.280 --> 00:00:16.045
+our pipeline to do humans smoke tests all the time,
+
+00:00:16.045 --> 00:00:18.710
+poking around to make sure that things still work.
+
+00:00:18.710 --> 00:00:20.230
+Well, as you know,
+
+00:00:20.230 --> 00:00:22.360
+trust is earned and it takes time.
+
+00:00:22.360 --> 00:00:24.760
+A job like an automated smoke test that
+
+00:00:24.760 --> 00:00:28.420
+spot-checks and make sure that the deployment is okay,
+
+00:00:28.420 --> 00:00:30.190
+helps to build trust.
+
+00:00:30.190 --> 00:00:33.700
+Hopefully, as trust and confidence rise,
+
+00:00:33.700 --> 00:00:39.655
+we can start relaxing the manual pauses and shift our trust to the CI/CD pipeline.
+
+00:00:39.655 --> 00:00:44.390
+That brings us another step closer to true continuous delivery.
+
+00:00:44.390 --> 00:00:46.275
+Let's take a look at my code.
+
+00:00:46.275 --> 00:00:50.900
+As promised, I really just wrapped that if structure in a job.
+
+00:00:50.900 --> 00:00:55.595
+I did add an environment variable here just to keep things a little bit cleaner.
+
+00:00:55.595 --> 00:00:58.990
+I'm using blog.udacity.com.
+
+00:00:58.990 --> 00:01:01.175
+Just as in the example,
+
+00:01:01.175 --> 00:01:03.440
+I'm curling that URL.
+
+00:01:03.440 --> 00:01:07.660
+If it passes, I'm returning a zero.
+
+00:01:07.660 --> 00:01:09.290
+If it doesn't exist,
+
+00:01:09.290 --> 00:01:11.345
+or if it's not responding to requests,
+
+00:01:11.345 --> 00:01:12.905
+it should return a one.
+
+00:01:12.905 --> 00:01:19.900
+Of course, any non-zero return code is going to cause the step and the job to fail.
+
+00:01:19.900 --> 00:01:24.240
+The full configuration file is below this video.
+

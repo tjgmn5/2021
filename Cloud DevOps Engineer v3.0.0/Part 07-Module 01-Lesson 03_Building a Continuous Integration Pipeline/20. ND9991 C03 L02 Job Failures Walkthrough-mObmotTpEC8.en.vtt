@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.130 --> 00:00:04.305
+A job can fail for many reasons,
+
+00:00:04.305 --> 00:00:09.270
+but they all boil down to one thing, non-zero exit codes.
+
+00:00:09.270 --> 00:00:13.500
+If anything in a job exits with something other than a zero,
+
+00:00:13.500 --> 00:00:17.805
+the job will be marked as a failure and the pipeline will stop.
+
+00:00:17.805 --> 00:00:22.050
+What about when we want to run some code when a job fails?
+
+00:00:22.050 --> 00:00:25.815
+One very valid scenario for this is when you want to perform
+
+00:00:25.815 --> 00:00:30.610
+a rollback of system changes after something didn't deploy correctly.
+
+00:00:30.610 --> 00:00:33.815
+Another time this could be useful is when you want to send
+
+00:00:33.815 --> 00:00:37.990
+a special message to a chat tool after a failure in a certain job.
+
+00:00:37.990 --> 00:00:44.375
+We can do this by using a when condition and specify on fail as the value.
+
+00:00:44.375 --> 00:00:45.955
+Let's see how that works.
+
+00:00:45.955 --> 00:00:48.765
+Here in the CircleCI documentation,
+
+00:00:48.765 --> 00:00:51.890
+we've got the step section of a job just to
+
+00:00:51.890 --> 00:00:55.460
+give us an example of how to use the when condition.
+
+00:00:55.460 --> 00:00:59.300
+Here in our steps, we've got four different steps.
+
+00:00:59.300 --> 00:01:01.354
+We've got four runs.
+
+00:01:01.354 --> 00:01:03.545
+Each one has a different purpose.
+
+00:01:03.545 --> 00:01:07.280
+The first one, by its name is going to be testing the application.
+
+00:01:07.280 --> 00:01:12.940
+Then later on, we're going to do something with the host's file.
+
+00:01:12.940 --> 00:01:17.055
+Later on, we're going to looks like create a database user.
+
+00:01:17.055 --> 00:01:19.320
+Then we've got this fourth step.
+
+00:01:19.320 --> 00:01:22.175
+We can see here at the very bottom of the step,
+
+00:01:22.175 --> 00:01:24.625
+we can see when: on_fail.
+
+00:01:24.625 --> 00:01:28.910
+That triggers this step only in the event of
+
+00:01:28.910 --> 00:01:33.825
+another previous step returning a non-zero at the end.
+
+00:01:33.825 --> 00:01:39.570
+The only reason any of these other things will return a non-zero is if there is an error.
+

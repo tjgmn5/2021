@@ -1,0 +1,106 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.760 --> 00:00:04.770
+Here's my code for the rollback.
+
+00:00:04.770 --> 00:00:08.325
+I'll start at the very top and work my way down.
+
+00:00:08.325 --> 00:00:11.760
+In my configuration, I'm using a command because I want
+
+00:00:11.760 --> 00:00:15.240
+to reuse this to destroy environment over and over.
+
+00:00:15.240 --> 00:00:17.880
+There may be several jobs that need to be able to
+
+00:00:17.880 --> 00:00:21.450
+destroy an environment as a result of some failure somewhere.
+
+00:00:21.450 --> 00:00:25.440
+I'm defining my command here by using this destroy environment name.
+
+00:00:25.440 --> 00:00:27.510
+I could have chosen any name at all,
+
+00:00:27.510 --> 00:00:31.605
+but I decided destroy environment was most descriptive in this case.
+
+00:00:31.605 --> 00:00:33.210
+It has its own steps,
+
+00:00:33.210 --> 00:00:34.845
+which only has one,
+
+00:00:34.845 --> 00:00:38.180
+where we run the CloudFormation delete
+
+00:00:38.180 --> 00:00:42.050
+stack command to delete a stack that we have already created.
+
+00:00:42.050 --> 00:00:44.335
+This is just going to keep the cost down.
+
+00:00:44.335 --> 00:00:46.445
+Then in my job section,
+
+00:00:46.445 --> 00:00:49.280
+I have a smoke test job.
+
+00:00:49.280 --> 00:00:54.785
+This is one example of a job that might fail and then cause me to want to revert,
+
+00:00:54.785 --> 00:00:57.175
+or roll something back, or delete a stack.
+
+00:00:57.175 --> 00:01:01.460
+So my smoke test has just a regular Docker image.
+
+00:01:01.460 --> 00:01:05.039
+It could have been almost anything because in this case,
+
+00:01:05.039 --> 00:01:06.050
+after I check out,
+
+00:01:06.050 --> 00:01:09.530
+I'm actually going to run a simulate error step.
+
+00:01:09.530 --> 00:01:12.365
+So when I return one non-zero,
+
+00:01:12.365 --> 00:01:15.650
+I'm simulating the error to cause the job to fail.
+
+00:01:15.650 --> 00:01:18.200
+When this step right here fails,
+
+00:01:18.200 --> 00:01:20.910
+then it will actually notice this one.
+
+00:01:20.910 --> 00:01:22.580
+Now, you see when I highlight this,
+
+00:01:22.580 --> 00:01:24.100
+it highlights this up here.
+
+00:01:24.100 --> 00:01:27.895
+It's because this is referencing the command that's up here.
+
+00:01:27.895 --> 00:01:31.530
+I'm using when on fail right here,
+
+00:01:31.530 --> 00:01:33.465
+so that this step,
+
+00:01:33.465 --> 00:01:39.845
+this command, only executes when some step in the job has failed before this one.
+
+00:01:39.845 --> 00:01:43.280
+This is something that I can use over and over again in all of
+
+00:01:43.280 --> 00:01:49.650
+my deployment jobs where I may need to destroy the environment or rollback.
+

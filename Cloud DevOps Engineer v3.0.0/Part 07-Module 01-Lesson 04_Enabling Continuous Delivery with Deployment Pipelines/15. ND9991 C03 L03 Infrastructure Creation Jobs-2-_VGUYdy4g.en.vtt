@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.490 --> 00:00:06.090
+Imagine we are running a build in CircleCI right now.
+
+00:00:06.090 --> 00:00:09.390
+All the previous code related jobs have completed and
+
+00:00:09.390 --> 00:00:13.510
+the job runner is headed our way with artifact in hand.
+
+00:00:13.510 --> 00:00:16.260
+For blue-green deployment, we want to build up
+
+00:00:16.260 --> 00:00:19.860
+a second version of production and later switch from old to new,
+
+00:00:19.860 --> 00:00:21.615
+from blue to green,
+
+00:00:21.615 --> 00:00:24.585
+using a switching mechanism called a router.
+
+00:00:24.585 --> 00:00:26.400
+The goal is production,
+
+00:00:26.400 --> 00:00:28.830
+so what do we need to do next?
+
+00:00:28.830 --> 00:00:30.840
+We don't have our infrastructure yet,
+
+00:00:30.840 --> 00:00:33.030
+so it looks like that's next up.
+
+00:00:33.030 --> 00:00:38.260
+Infrastructure creation jobs are meant to spin up new resources in AWS,
+
+00:00:38.260 --> 00:00:40.025
+that will later get configured,
+
+00:00:40.025 --> 00:00:43.225
+deployed to, tested and promoted to production.
+
+00:00:43.225 --> 00:00:46.940
+We don't need a lot in this job because we should already have the cloud
+
+00:00:46.940 --> 00:00:51.235
+formation templates to build up the necessary AWS resources.
+
+00:00:51.235 --> 00:00:54.170
+Really, all this job needs are things like,
+
+00:00:54.170 --> 00:00:57.230
+AWS credentials saved in your project environment
+
+00:00:57.230 --> 00:01:00.820
+variables so that they're available for the AWS CLI.
+
+00:01:00.820 --> 00:01:04.965
+An image that has the AWS CLI pre-installed.
+
+00:01:04.965 --> 00:01:09.385
+A filter to only run this job on master branch.
+
+00:01:09.385 --> 00:01:13.100
+To check out the code and we need a step to
+
+00:01:13.100 --> 00:01:16.640
+actually execute that cloud formation with our template.
+
+00:01:16.640 --> 00:01:19.290
+Let's take a look at some code.
+

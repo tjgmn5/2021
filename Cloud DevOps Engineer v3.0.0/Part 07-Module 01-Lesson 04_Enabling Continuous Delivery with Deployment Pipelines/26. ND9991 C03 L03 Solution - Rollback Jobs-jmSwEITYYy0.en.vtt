@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.160 --> 00:00:04.770
+This one's different from normal jobs.
+
+00:00:04.770 --> 00:00:06.180
+We use to command here,
+
+00:00:06.180 --> 00:00:09.330
+which is just like a reusable job in CircleCI.
+
+00:00:09.330 --> 00:00:13.245
+Take a look at my code, see how different yours was from mine.
+
+00:00:13.245 --> 00:00:16.210
+Notice my command is just like a job,
+
+00:00:16.210 --> 00:00:18.890
+but we can call it just like a function.
+
+00:00:18.890 --> 00:00:21.200
+We're using the qualifier when
+
+00:00:21.200 --> 00:00:25.255
+on_fail to run our command only when something has gone wrong.
+
+00:00:25.255 --> 00:00:28.955
+This contingency is another piece in the trust-building puzzle.
+
+00:00:28.955 --> 00:00:32.270
+Issues will arise, builds will fail.
+
+00:00:32.270 --> 00:00:35.750
+You're not going to be judged necessarily on how often you fail,
+
+00:00:35.750 --> 00:00:39.950
+but on how quickly and gracefully you react when failures happen,
+
+00:00:39.950 --> 00:00:46.190
+make sure you always set up your CI/CD pipelines to fail and recover with grace.
+
+00:00:46.190 --> 00:00:48.545
+If you struggled with this exercise,
+
+00:00:48.545 --> 00:00:50.720
+the infrastructure creation section and
+
+00:00:50.720 --> 00:00:54.390
+the rollback jobs sections will be useful to review.
+

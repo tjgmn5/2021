@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.310 --> 00:00:06.075
+Once you have a steady stream of data flowing into your monitoring system,
+
+00:00:06.075 --> 00:00:07.635
+you have a new task.
+
+00:00:07.635 --> 00:00:09.300
+Make sense of it all.
+
+00:00:09.300 --> 00:00:13.815
+But reading monitoring data can feel a bit like drinking from a fire hose.
+
+00:00:13.815 --> 00:00:17.969
+We need something to help us not only see the current state of our systems,
+
+00:00:17.969 --> 00:00:21.570
+but also see the trends and the patterns that can
+
+00:00:21.570 --> 00:00:25.440
+help us make better decisions about tweaks in infrastructure.
+
+00:00:25.440 --> 00:00:29.325
+This is a job for data visualization tools.
+
+00:00:29.325 --> 00:00:34.190
+Grafana is a multi-platform open source solution for running data analytics,
+
+00:00:34.190 --> 00:00:37.770
+pulling up metrics that makes sense of the massive amount of data,
+
+00:00:37.770 --> 00:00:40.840
+and monitoring apps through customizable dashboards.
+
+00:00:40.840 --> 00:00:43.040
+Grafana works with many systems,
+
+00:00:43.040 --> 00:00:45.595
+namely Graphite and Prometheus.
+
+00:00:45.595 --> 00:00:49.235
+Kibana is an open-source data visualization dashboard
+
+00:00:49.235 --> 00:00:52.865
+that's part of the ELK Stack or Elastic Stack.
+
+00:00:52.865 --> 00:00:55.460
+It provides visualization capabilities on
+
+00:00:55.460 --> 00:00:58.600
+top of the content in an elastic search cluster.
+
+00:00:58.600 --> 00:01:01.730
+Datadog is a popular cloud-based monitoring service
+
+00:01:01.730 --> 00:01:04.505
+that not only collects and aggregates server data,
+
+00:01:04.505 --> 00:01:10.180
+but it also provides many easy-to-configure data visualizations and templates.
+
+00:01:10.180 --> 00:01:14.000
+Prometheus. Prometheus doesn't attempt to implement
+
+00:01:14.000 --> 00:01:18.365
+robust feature field data visualizations as part of its core offering.
+
+00:01:18.365 --> 00:01:20.495
+In fact, in the documentation,
+
+00:01:20.495 --> 00:01:22.745
+they encourage us to use Grafana.
+
+00:01:22.745 --> 00:01:25.520
+But they do offer the expression browser,
+
+00:01:25.520 --> 00:01:29.345
+which allows us to experiment with formulas called expressions,
+
+00:01:29.345 --> 00:01:33.485
+and produce simple line graphs for things like CPU usage,
+
+00:01:33.485 --> 00:01:36.450
+available memory, and disk space.
+

@@ -1,0 +1,169 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.520 --> 00:00:05.430
+Let's walk through actually adding alert manager to
+
+00:00:05.430 --> 00:00:08.625
+Prometheus so that we can start sending out alerts.
+
+00:00:08.625 --> 00:00:13.980
+Before going too far we need to make sure that our Prometheus instance or wherever we're
+
+00:00:13.980 --> 00:00:19.980
+going to install alert manager has port 9093 open and ready for traffic.
+
+00:00:19.980 --> 00:00:23.475
+Let's go in and take a look at that in the AWS console.
+
+00:00:23.475 --> 00:00:25.620
+Now here at the console, I'm going to select the
+
+00:00:25.620 --> 00:00:28.260
+"Prometheus Instance" and then I'm going to scroll
+
+00:00:28.260 --> 00:00:29.820
+this down here at the bottom in
+
+00:00:29.820 --> 00:00:33.450
+the bottom panel and look into the Security Groups section.
+
+00:00:33.450 --> 00:00:37.250
+I see that I've got my Prometheus security group and I'm just going
+
+00:00:37.250 --> 00:00:40.970
+to click on "View" to see the inbound rules here.
+
+00:00:40.970 --> 00:00:47.570
+I've got several ports one of them is 9093 which is the port that alert manager uses.
+
+00:00:47.570 --> 00:00:48.960
+So we're good there.
+
+00:00:48.960 --> 00:00:53.120
+Now if you need to log back in to your instance,
+
+00:00:53.120 --> 00:00:54.680
+then you should go ahead and copy
+
+00:00:54.680 --> 00:00:58.265
+that host name once more and head on back to your terminal.
+
+00:00:58.265 --> 00:01:00.230
+I happened to have my terminal still open,
+
+00:01:00.230 --> 00:01:05.730
+so I'm just going to stop Prometheus and right here in the Prometheus folder.
+
+00:01:05.730 --> 00:01:06.945
+I'm going to add a new file,
+
+00:01:06.945 --> 00:01:10.330
+I'm going to call this rules.yml.
+
+00:01:14.590 --> 00:01:19.910
+This is the file that will hold all the rules that will trigger my alerts later on.
+
+00:01:19.910 --> 00:01:21.110
+So from the tutorial,
+
+00:01:21.110 --> 00:01:25.640
+I'm just going to paste in the code that will be my rules.
+
+00:01:25.640 --> 00:01:33.945
+Now unfortunately, and as always we need to double check our yml indentation.
+
+00:01:33.945 --> 00:01:38.340
+Two spaces here, three spaces there,
+
+00:01:38.340 --> 00:01:42.490
+two spaces there, comments don't really matter.
+
+00:01:46.460 --> 00:01:51.250
+That looks about right. Now, let's take a look at this file real quick.
+
+00:01:51.250 --> 00:01:53.610
+This is creating a set of groups.
+
+00:01:53.610 --> 00:01:55.095
+Each group has a name,
+
+00:01:55.095 --> 00:01:58.440
+so in this case we have all instances.
+
+00:01:58.440 --> 00:02:01.275
+We're going to say the alert should
+
+00:02:01.275 --> 00:02:11.295
+be using too much memory.
+
+00:02:11.295 --> 00:02:20.650
+Now let's define our expression Let's say that we only want an alert when the free memory
+
+00:02:20.650 --> 00:02:30.375
+is less than one million bytes and this is for one minute.
+
+00:02:30.375 --> 00:02:35.890
+So if for some reason a machine just takes a momentary dip down or something like that,
+
+00:02:35.890 --> 00:02:40.585
+it won't actually throw an alert unless it has been in this state for a whole minute.
+
+00:02:40.585 --> 00:02:43.105
+The annotation is what is going to be in
+
+00:02:43.105 --> 00:02:45.680
+the alert message that we are able to see later on.
+
+00:02:45.680 --> 00:02:47.850
+So this is going to say instance,
+
+00:02:47.850 --> 00:02:57.255
+and we'll change this to "Is almost out of memory" and of course this is critical.
+
+00:02:57.255 --> 00:03:00.135
+Save the file and exit.
+
+00:03:00.135 --> 00:03:03.320
+Now we need to go into the Prometheus configuration file
+
+00:03:03.320 --> 00:03:07.500
+and let it know that we have a new rules file.
+
+00:03:09.260 --> 00:03:15.200
+We'll just go down here to the rule files section and
+
+00:03:15.200 --> 00:03:21.415
+simply make a small modification so that it knows about our rules yml file,
+
+00:03:21.415 --> 00:03:23.985
+save the changes and exit.
+
+00:03:23.985 --> 00:03:31.140
+Now you should be able to start Prometheus backup with no errors.
+
+00:03:31.140 --> 00:03:34.640
+If there is an error here Prometheus will tell you,
+
+00:03:34.640 --> 00:03:38.630
+and it's probably going to be something to do with indentation of that yml file.
+
+00:03:38.630 --> 00:03:42.070
+But if you see the wall of text, it's all good.
+
+00:03:42.070 --> 00:03:49.490
+So we're back in Prometheus and now we should be able to see some alerts that are here.
+
+00:03:49.490 --> 00:03:51.185
+They're not active right now,
+
+00:03:51.185 --> 00:03:54.220
+but we do see the alert showing up in Prometheus.
+
+00:03:54.220 --> 00:03:57.275
+You can actually click on this and see some of the details,
+
+00:03:57.275 --> 00:04:03.090
+too much memory, almost out of memory. We're good here.
+

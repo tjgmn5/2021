@@ -1,0 +1,371 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Remote Control Using Ansible</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Enabling Continuous Delivery with Deployment Pipelines</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Configuration Management.html">04. Configuration Management</a>
+    </li>
+    <li class="">
+      <a href="05. Design an Ansible Playbook.html">05. Design an Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Define Ansible Playbook.html">06. Exercise: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Define Ansible Playbook.html">07. Solution: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="08. Build an Inventory File.html">08. Build an Inventory File</a>
+    </li>
+    <li class="">
+      <a href="09. Exercise Inventory File.html">09. Exercise: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="10. Solution Inventory File.html">10. Solution: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="11. Remote Control Using Ansible.html">11. Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Remote Control Using Ansible.html">12. Exercise: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Remote Control Using Ansible.html">13. Solution: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="14. Deployment Jobs.html">14. Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="15. Infrastructure Creation Jobs.html">15. Infrastructure Creation Jobs</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise Infrastructure Creation.html">16. Exercise: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="17. Solution Infrastructure Creation.html">17. Solution: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="18. Configuration and Deployment Jobs.html">18. Configuration and Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="19. Exercise Config and Deployment.html">19. Exercise: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="20. Solution Config and Deployment.html">20. Solution: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="21. Smoke Testing Jobs.html">21. Smoke Testing Jobs</a>
+    </li>
+    <li class="">
+      <a href="22. Exercise Smoke Testing.html">22. Exercise: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="23. Solution Smoke Testing.html">23. Solution: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="24. Rollback Jobs.html">24. Rollback Jobs</a>
+    </li>
+    <li class="">
+      <a href="25. Exercise Rollback.html">25. Exercise: Rollback</a>
+    </li>
+    <li class="">
+      <a href="26. Solution Rollback.html">26. Solution: Rollback</a>
+    </li>
+    <li class="">
+      <a href="27. Production Candidate Promotion Jobs.html">27. Production Candidate Promotion Jobs</a>
+    </li>
+    <li class="">
+      <a href="28. Exercise Promote to Production.html">28. Exercise: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="29. Solution Promote to Production.html">29. Solution: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="30. Lesson Conclusion.html">30. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">12. Exercise: Remote Control Using Ansible</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="exercise-remote-control-using-ansible">Exercise: Remote Control Using Ansible</h2>
+<p>Build a playbook that automates configuration of an EC2 instance by adapting <a href="https://www.howtoforge.com/tutorial/nodejs-ubuntu-getting-started/" rel="noopener noreferrer" target="_blank">manual instructions</a> to Ansible Playbook tasks.</p>
+<h3 id="instructions">Instructions:</h3>
+<ol>
+<li>If you don't have a key pair already created in your AWS Console, you should do that now! Follow <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair" rel="noopener noreferrer" target="_blank">these instructions</a> to create the key pair and save a copy to your computer in a file named <code>udacity.pem</code>. We suggest using "udacity" as the key pair name so that it's easier to follow future instructions.</li>
+<li>Create a new EC2 instance with a tag like "udacity". As you are creating the instance, be sure to assign the "udacity" key pair. Also, be sure to open up port <code>3000</code> for incoming traffic since that's what our web server will use. </li>
+<li>Generate an inventory file using the method you learned from the previous exercise. The public IP of our test EC2 instance should be in the file under the line <code>[all]</code>.</li>
+<li>Create a new Playbook file named <code>main-remote.yml</code> with the following contents:</li>
+</ol>
+<pre><code>   ---
+   - name: Exercise for setting up a web server in an EC2
+     hosts: all
+     user: ubuntu
+     roles:
+     - setup</code></pre>
+<p>Notice the reference to <code>all</code> here. That refers to the <code>[all]</code> we added to the top of the inventory file in the previous exercise.</p>
+<ol>
+<li>Create a role for <code>setup</code>. Remember how to do that? Your folder structure should be named after the role and should contain a <code>tasks</code> folder and a <code>files</code> folder. Just in case you need a reminder, your folder structure should look like this:</li>
+</ol>
+<pre><code>     /main-remote.yml
+     /roles
+     /roles/setup
+     /roles/setup/tasks
+     /roles/setup/files</code></pre>
+<ol>
+<li>Create a simple web server in NodeJS named <code>index.js</code>. Add it to the <code>files</code> folder so that we can copy it later. That file should have the following code:</li>
+</ol>
+<pre><code class="javascript language-javascript">var http = require("http");
+var server = http.createServer(function (req, res) {
+  res.writeHead(200);
+  res.end("Hello world!");
+});
+server.listen(3000);</code></pre>
+<ol>
+<li>Add a new task file to your <code>setup</code> role called <code>main.yml</code>. Can you guess where to put that?</li>
+<li>This task file should contain instructions to handle each one of the manual steps from the <a href="https://www.howtoforge.com/tutorial/nodejs-ubuntu-getting-started/" rel="noopener noreferrer" target="_blank">manual instructions</a> we provided (Hello World on NodeJS). As a hint, the file should start by updating and upgrading the packages in the Ubuntu server like this:</li>
+</ol>
+<pre><code>   ---
+   - name: "update apt packages."
+     become: yes
+     apt:
+       update_cache: yes
+
+   - name: "upgrade packages"
+     become: tyes
+     apt:
+       upgrade: yes</code></pre>
+<p>You'll need several other tasks to fully configure the instance. Some will need <code>become: yes</code> and others will not depending on if you need privilege escalation.</p>
+<ol>
+<li>Now let's run the Playbook using your inventory file and <code>udacity.pem</code> file:</li>
+</ol>
+<pre><code class="bash language-bash">   ansible-playbook main-remote.yml -i inventory --private-key udacity.pem</code></pre>
+<ol>
+<li>After running all the plays, Ansible should give you a successful message.</li>
+<li>You should be able to navigate to the hostname:port (e.g. <code>3000</code>) of the instance and view your Hello World message.</li>
+<li>Terminate any test EC2 instances you created for this exercise to clean up.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Remote Control Using Ansible</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--0">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--0"><p>Create/Select Key Pair (save PEM file).</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--1">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--1"><p>Create Test EC2 Instance with a Tag.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--2">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--2"><p>Create an Inventory File.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--3">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--3"><p>Create a Playbook.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--4">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--4"><p>Create Setup Role Folder Structure.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--5">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--5"><p>Create Web Server Code (<code>index.js</code>).</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--6">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--6"><p>Create Setup Task File.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--7">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--7"><p>Run Playbook and Verify Success.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--8">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--8"><p>Navigate to Hello World on Public IP of EC2 Instance.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--9">
+        <label for="81d36be3-fbd5-4887-89a8-bc0bd7b14c4b--9"><p>Terminate the EC2 Instance to Clean Up.</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Wow, you did it!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="13. Solution Remote Control Using Ansible.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('12. Exercise: Remote Control Using Ansible')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

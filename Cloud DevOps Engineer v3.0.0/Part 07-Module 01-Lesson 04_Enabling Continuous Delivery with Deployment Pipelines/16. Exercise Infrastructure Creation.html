@@ -1,0 +1,343 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Infrastructure Creation</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Enabling Continuous Delivery with Deployment Pipelines</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Configuration Management.html">04. Configuration Management</a>
+    </li>
+    <li class="">
+      <a href="05. Design an Ansible Playbook.html">05. Design an Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Define Ansible Playbook.html">06. Exercise: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Define Ansible Playbook.html">07. Solution: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="08. Build an Inventory File.html">08. Build an Inventory File</a>
+    </li>
+    <li class="">
+      <a href="09. Exercise Inventory File.html">09. Exercise: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="10. Solution Inventory File.html">10. Solution: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="11. Remote Control Using Ansible.html">11. Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Remote Control Using Ansible.html">12. Exercise: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Remote Control Using Ansible.html">13. Solution: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="14. Deployment Jobs.html">14. Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="15. Infrastructure Creation Jobs.html">15. Infrastructure Creation Jobs</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise Infrastructure Creation.html">16. Exercise: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="17. Solution Infrastructure Creation.html">17. Solution: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="18. Configuration and Deployment Jobs.html">18. Configuration and Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="19. Exercise Config and Deployment.html">19. Exercise: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="20. Solution Config and Deployment.html">20. Solution: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="21. Smoke Testing Jobs.html">21. Smoke Testing Jobs</a>
+    </li>
+    <li class="">
+      <a href="22. Exercise Smoke Testing.html">22. Exercise: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="23. Solution Smoke Testing.html">23. Solution: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="24. Rollback Jobs.html">24. Rollback Jobs</a>
+    </li>
+    <li class="">
+      <a href="25. Exercise Rollback.html">25. Exercise: Rollback</a>
+    </li>
+    <li class="">
+      <a href="26. Solution Rollback.html">26. Solution: Rollback</a>
+    </li>
+    <li class="">
+      <a href="27. Production Candidate Promotion Jobs.html">27. Production Candidate Promotion Jobs</a>
+    </li>
+    <li class="">
+      <a href="28. Exercise Promote to Production.html">28. Exercise: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="29. Solution Promote to Production.html">29. Solution: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="30. Lesson Conclusion.html">30. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">16. Exercise: Infrastructure Creation</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="exercise-infrastructure-creation">Exercise: Infrastructure Creation</h2>
+<p>Write a job that creates your infrastructure.</p>
+<h3 id="instructions">Instructions:</h3>
+<ol>
+<li><p>If you don't have a key pair created already in your AWS Console, you should do that now. Folllow <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair" rel="noopener noreferrer" target="_blank">these instructions</a> to create the key pair and save a copy to your computer in a file named <code>udacity.pem</code>. We suggest using "udacity" as the key pair name so that it's easier to follow future instructions.</p></li>
+<li><p>To use the AWS CLI in your jobs you'll need to add some environment variables to the Project Settings in Circle CI. You should already have an IAM account with programmatic access from previous exercises. Let's add those credentials as environment variables with these name:</p>
+<ul>
+<li><code>AWS_ACCESS_KEY_ID</code></li>
+<li><code>AWS_SECRET_ACCESS_KEY</code></li>
+<li><code>AWS_DEFAULT_REGION</code> (ex: us-west-1)</li></ul></li>
+<li><p>Create a simple CloudFormation template named <code>template.yml</code> that will create some infrastructure. This should be checked into your git repo. You can use your own from previous lessons or you can try this example:</p></li>
+</ol>
+<pre><code>Resources:
+  Ec2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      SecurityGroups:
+        - !Ref InstanceSecurityGroup
+      KeyName: udacity
+      ImageId: 'ami-068663a3c619dd892' # you may need to find out what instance types are available in your region - use https://cloud-images.ubuntu.com/locator/ec2/
+  InstanceSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 0.0.0.0/0</code></pre>
+<p>Notice we are using the <code>udacity</code> as the <code>KeyName</code>. That refers to the key pair we created before.</p>
+<ol start="3">
+<li>Create a job in your Circle CI config file named <code>create_infrastructure</code>. It should use a docker image that has AWS CLI installed already. This one is perfect: <code>amazon/aws-cli</code>. The job should execute your CloudFormation template to create the infrastructure.</li>
+<li>Define a workflow that uses the job.</li>
+<li>Run the job in Circle CI by committing your changes.</li>
+<li>Once the job has run successfully, check for your new stack in <a href="https://console.aws.amazon.com/cloudformation/home" rel="noopener noreferrer" target="_blank">CloudFormation</a> in the AWS Console to see if it was created.</li>
+<li>Remove the stack manually from Cloudformation in the AWS Console to clean up.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Infrastructure Creation</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--0">
+        <label for="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--0"><p>Ensure You Have a Usable Key Pair.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--1">
+        <label for="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--1"><p>Ensure You Have an IAM Account with Programmatic Access and You Have the Access Key ID and the Secret Access Key In-Hand.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--2">
+        <label for="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--2"><p>Add AWS Credentials in Environment Variables to Project Settings.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--3">
+        <label for="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--3"><p>Create/Select a CloudFormation Template.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--4">
+        <label for="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--4"><p>Define a Job to Build the Infrastructure.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--5">
+        <label for="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--5"><p>Define a Workflow that Uses the Job.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--6">
+        <label for="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--6"><p>Confirm the Stack was Created Successfully.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--7">
+        <label for="4cf2beae-56a7-4afe-95be-e0ff5bf268e9--7"><p>Delete the Stack to Clean Up.</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Great job!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="17. Solution Infrastructure Creation.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('16. Exercise: Infrastructure Creation')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.550 --> 00:00:05.415
+This is it. We've got our green production version humming,
+
+00:00:05.415 --> 00:00:07.035
+smoke tests have passed,
+
+00:00:07.035 --> 00:00:10.500
+confidence is high, it's time to make the switch.
+
+00:00:10.500 --> 00:00:12.900
+Let's think about what this job needs.
+
+00:00:12.900 --> 00:00:15.209
+I'm pretty sure it has the usual suspects,
+
+00:00:15.209 --> 00:00:17.880
+a docker image and some steps.
+
+00:00:17.880 --> 00:00:21.270
+But there's something more that we need to pay attention to.
+
+00:00:21.270 --> 00:00:25.350
+This is actually a common problem that we have to solve from time to time.
+
+00:00:25.350 --> 00:00:29.890
+Remember, the jobs are all isolated and they're not aware of each other.
+
+00:00:29.890 --> 00:00:33.455
+We want the infrastructure as code to make the switch.
+
+00:00:33.455 --> 00:00:36.590
+But to do that, we have to have a way to communicate with
+
+00:00:36.590 --> 00:00:40.115
+our router and reference the new green version.
+
+00:00:40.115 --> 00:00:43.760
+The way I typically do this is by tagging or naming
+
+00:00:43.760 --> 00:00:48.185
+the green infrastructure with some ID that is unique to the pipeline,
+
+00:00:48.185 --> 00:00:51.635
+but that the isolated jobs can all access.
+
+00:00:51.635 --> 00:00:53.090
+In the case of CircleCI,
+
+00:00:53.090 --> 00:00:56.810
+we have the CIRCLE_WORKFLOW_ ID environment variable.
+
+00:00:56.810 --> 00:00:59.810
+But we have to do this much earlier in the process
+
+00:00:59.810 --> 00:01:02.510
+when we create the infrastructure in the first place.
+
+00:01:02.510 --> 00:01:05.000
+That way we can use cloud formation to tell
+
+00:01:05.000 --> 00:01:08.090
+the router to direct to our traffic to the new version,
+
+00:01:08.090 --> 00:01:12.150
+whose name includes CIRCLE_WORKFLOW_ ID.
+

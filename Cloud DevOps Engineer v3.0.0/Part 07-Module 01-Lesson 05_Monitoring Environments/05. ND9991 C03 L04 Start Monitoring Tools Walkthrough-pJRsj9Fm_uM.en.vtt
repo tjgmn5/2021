@@ -1,0 +1,127 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.310 --> 00:00:05.270
+Since this tool is pretty useless without all three legs,
+
+00:00:05.270 --> 00:00:08.200
+most monitoring systems come with all three
+
+00:00:08.200 --> 00:00:12.790
+built-in or at least they provide us a path to handle all three things.
+
+00:00:12.790 --> 00:00:15.175
+There are plenty of monitoring tools available.
+
+00:00:15.175 --> 00:00:19.390
+Some are installable on-premises and others are Cloud-based services.
+
+00:00:19.390 --> 00:00:21.805
+Likewise, some are easier to use,
+
+00:00:21.805 --> 00:00:24.490
+while others are more robust or powerful.
+
+00:00:24.490 --> 00:00:28.645
+The pros and cons are the same as with your CI/CD tools.
+
+00:00:28.645 --> 00:00:30.055
+For the rest of this lesson,
+
+00:00:30.055 --> 00:00:34.145
+we'll focus on Prometheus as our monitoring tool of choice.
+
+00:00:34.145 --> 00:00:36.010
+I left a list of these tools in
+
+00:00:36.010 --> 00:00:39.040
+the lesson text below in case you want to learn more about them.
+
+00:00:39.040 --> 00:00:42.040
+I also listed which visualizer they use
+
+00:00:42.040 --> 00:00:45.935
+since a few are built-in and others are a separate product.
+
+00:00:45.935 --> 00:00:48.620
+For example, Prometheus uses Grafana,
+
+00:00:48.620 --> 00:00:52.084
+which is a really slick and powerful data visualizer.
+
+00:00:52.084 --> 00:00:54.990
+We're going to be focusing on Prometheus for this lesson,
+
+00:00:54.990 --> 00:00:57.620
+so I wanted to show you a little bit of what Prometheus
+
+00:00:57.620 --> 00:01:00.640
+can do with its visualization tool, Grafana.
+
+00:01:00.640 --> 00:01:05.945
+We can keep an eye on our server in different aspects; server requests, memory,
+
+00:01:05.945 --> 00:01:09.200
+CPU usage, logins, client-side,
+
+00:01:09.200 --> 00:01:12.220
+full-page loads, and network traffic.
+
+00:01:12.220 --> 00:01:15.545
+We can see how it's been doing over the past several minutes
+
+00:01:15.545 --> 00:01:18.890
+and even zoom in on places that are strange.
+
+00:01:18.890 --> 00:01:20.645
+For instance, this right here,
+
+00:01:20.645 --> 00:01:22.280
+just in the past few minutes,
+
+00:01:22.280 --> 00:01:26.235
+we've had a serious drop in server requests.
+
+00:01:26.235 --> 00:01:28.890
+Is it possible that something is starting to go down?
+
+00:01:28.890 --> 00:01:34.490
+I can actually zoom in on this section and get a closer look.
+
+00:01:34.490 --> 00:01:41.690
+I can see that server requests have definitely dropped right here around 10:30.
+
+00:01:41.690 --> 00:01:43.370
+Around the same time,
+
+00:01:43.370 --> 00:01:48.960
+memory dropped as well and CPU,
+
+00:01:48.960 --> 00:01:51.440
+actually there's a peak in CPU.
+
+00:01:51.440 --> 00:01:53.900
+So we're able to see that that's actually going up.
+
+00:01:53.900 --> 00:01:56.130
+Logins went down.
+
+00:01:56.420 --> 00:02:01.610
+Here, client full-page load during this period right here, for a whole minute,
+
+00:02:01.610 --> 00:02:06.170
+it looks like there's no reporting at all from client-side full-page loads.
+
+00:02:06.170 --> 00:02:11.030
+So I'll bet the server actually went down for this period of time.
+
+00:02:11.030 --> 00:02:12.425
+There was a hiccup here.
+
+00:02:12.425 --> 00:02:14.780
+If we drill into this data even more,
+
+00:02:14.780 --> 00:02:19.650
+we might be able to find the culprit of the problem just by looking at the data.
+

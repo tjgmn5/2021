@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.160 --> 00:00:04.230
+What you just did in a few minutes,
+
+00:00:04.230 --> 00:00:08.325
+used to take us days and a lot more code. A great job.
+
+00:00:08.325 --> 00:00:10.845
+You now have a complete CI pipeline,
+
+00:00:10.845 --> 00:00:13.350
+one that checks the code at several levels and
+
+00:00:13.350 --> 00:00:16.200
+finds any problems before they become bigger.
+
+00:00:16.200 --> 00:00:17.740
+Take a look at my code,
+
+00:00:17.740 --> 00:00:21.765
+can you see how you could implement this in your own code?
+
+00:00:21.765 --> 00:00:23.520
+What would you have done differently?
+
+00:00:23.520 --> 00:00:25.875
+Here's my solution code again.
+
+00:00:25.875 --> 00:00:27.465
+Like yours probably does,
+
+00:00:27.465 --> 00:00:29.160
+mine has three jobs;
+
+00:00:29.160 --> 00:00:31.620
+build, test, and analyze.
+
+00:00:31.620 --> 00:00:35.315
+Of course, each job has very common elements.
+
+00:00:35.315 --> 00:00:39.700
+They're really only wrapping commands that you could do from your own terminal.
+
+00:00:39.700 --> 00:00:43.040
+As you can see, we've been able to put together all the different building blocks
+
+00:00:43.040 --> 00:00:47.425
+and create a complete CI pipeline with very little code.
+
+00:00:47.425 --> 00:00:50.890
+Isn't that exciting? Way to go.
+

@@ -1,0 +1,229 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.730 --> 00:00:05.850
+Builds in the continuous integration can't start on their own,
+
+00:00:05.850 --> 00:00:09.285
+they need something to trigger them to start running pipelines.
+
+00:00:09.285 --> 00:00:13.260
+Here are a few common ways to trigger a CI pipeline.
+
+00:00:13.260 --> 00:00:17.895
+The most common triggers are from Git commits on a branch or a pull request,
+
+00:00:17.895 --> 00:00:21.495
+which really makes continuous integration continuous.
+
+00:00:21.495 --> 00:00:24.270
+Some teams like to run a build every night,
+
+00:00:24.270 --> 00:00:26.730
+which would be more of a schedule trigger,
+
+00:00:26.730 --> 00:00:31.680
+and there are a few other ways to manually trigger a build that might be interesting.
+
+00:00:31.680 --> 00:00:35.305
+We'll be using Git based triggers throughout this course.
+
+00:00:35.305 --> 00:00:40.050
+By now you've connected at least one CI pipeline to a Git repository.
+
+00:00:40.050 --> 00:00:42.880
+Did you ever wonder what happened in the background?
+
+00:00:42.880 --> 00:00:46.370
+It might be helpful for you to understand what's happening between
+
+00:00:46.370 --> 00:00:50.860
+these two completely separate systems to make that automatic connection.
+
+00:00:50.860 --> 00:00:53.780
+To show you what happens in the background when CircleCI makes
+
+00:00:53.780 --> 00:00:56.735
+a connection to a repository in GitHub,
+
+00:00:56.735 --> 00:00:58.805
+I'm going to start in GitHub.
+
+00:00:58.805 --> 00:01:01.805
+So I've got a repository that I'm about to create,
+
+00:01:01.805 --> 00:01:06.285
+I'm going to call it circle-ci-connection just for a temporary repository.
+
+00:01:06.285 --> 00:01:08.595
+I'll click "Create Repository",
+
+00:01:08.595 --> 00:01:13.475
+and now I'm going to just add a README file because we actually need
+
+00:01:13.475 --> 00:01:16.010
+some file or branch in
+
+00:01:16.010 --> 00:01:20.370
+our repository or our CircleCI won't be able to do anything with it.
+
+00:01:22.430 --> 00:01:26.030
+So now we've got our repository,
+
+00:01:26.030 --> 00:01:28.490
+we've got a file, we've got a branch,
+
+00:01:28.490 --> 00:01:30.410
+so now let's go over to Settings,
+
+00:01:30.410 --> 00:01:35.400
+I'm going to show you something that is pretty cool.
+
+00:01:35.400 --> 00:01:39.040
+Let's take a look at webhooks in the settings.
+
+00:01:39.200 --> 00:01:44.690
+Webhooks are a way for GitHub or services like
+
+00:01:44.690 --> 00:01:50.300
+GitHub to notify the rest of the world when certain events happen.
+
+00:01:50.300 --> 00:01:53.510
+You can imagine some of the events that are happening in GitHub,
+
+00:01:53.510 --> 00:01:56.105
+like pushes, commits, pull requests,
+
+00:01:56.105 --> 00:01:57.895
+issues, things like that.
+
+00:01:57.895 --> 00:02:01.570
+So let's add a webhook right now.
+
+00:02:04.520 --> 00:02:12.115
+The payload URL is going to be a URL that is of a backend server,
+
+00:02:12.115 --> 00:02:17.045
+that is able to receive some post HTTP request.
+
+00:02:17.045 --> 00:02:20.470
+So we're going to send this to Google,
+
+00:02:20.470 --> 00:02:23.940
+and you can change the content type to application JSON,
+
+00:02:23.940 --> 00:02:27.695
+you can type in a secret if you want to or you can leave it blank,
+
+00:02:27.695 --> 00:02:32.840
+and then you can choose what type of event will trigger this webhook.
+
+00:02:32.840 --> 00:02:38.060
+So you could just set up the push event or you could have it send you everything,
+
+00:02:38.060 --> 00:02:41.340
+or you can select certain events.
+
+00:02:41.340 --> 00:02:44.720
+So here you can actually see what the events are;
+
+00:02:44.720 --> 00:02:50.375
+check runs, check suites, deployments, wiki, forks,
+
+00:02:50.375 --> 00:02:55.955
+issues, project columns, project cards,
+
+00:02:55.955 --> 00:03:01.225
+there's a lot in here, pushes, statuses.
+
+00:03:01.225 --> 00:03:04.275
+We don't really need most of these events,
+
+00:03:04.275 --> 00:03:07.530
+so a lot of times you can just say the push event.
+
+00:03:07.530 --> 00:03:10.550
+There may be some things that you really do need the specific event,
+
+00:03:10.550 --> 00:03:14.515
+in which you can just select it or you can just have them send you everything.
+
+00:03:14.515 --> 00:03:18.930
+When you're finished, you can just add the webhook.
+
+00:03:19.900 --> 00:03:27.780
+Now Google is going to receive a push every time my repository gets a commit.
+
+00:03:28.040 --> 00:03:30.530
+Since we don't really want that to happen,
+
+00:03:30.530 --> 00:03:33.240
+we're just going to delete this.
+
+00:03:35.080 --> 00:03:38.750
+So as you can see here, we don't have any webhooks.
+
+00:03:38.750 --> 00:03:42.480
+Let's go over to CircleCI and make a connection.
+
+00:03:42.860 --> 00:03:47.030
+You remember, I named my repository circle-ci-connection,
+
+00:03:47.030 --> 00:03:50.840
+so I'm over here in CircleCI and it
+
+00:03:50.840 --> 00:03:56.820
+has found my project and so I can just click "Set Up Project".
+
+00:03:57.260 --> 00:04:01.800
+I'm going to set things up manually so I can just say,
+
+00:04:01.800 --> 00:04:04.830
+Add Manually and Start Building,
+
+00:04:04.830 --> 00:04:10.590
+and in the background what's happening is CircleCI is going over to
+
+00:04:10.590 --> 00:04:13.010
+GitHub using the credentials that I've provided
+
+00:04:13.010 --> 00:04:17.410
+already and is adding something, let's see what it added.
+
+00:04:17.410 --> 00:04:20.445
+If I refresh my GitHub page,
+
+00:04:20.445 --> 00:04:23.300
+now I'll be able to see that there is a new webhook
+
+00:04:23.300 --> 00:04:26.485
+that's been created by CircleCI on my behalf.
+
+00:04:26.485 --> 00:04:31.595
+If I edit it, I can see that this is the payload that is being selected,
+
+00:04:31.595 --> 00:04:33.185
+and here's the content type,
+
+00:04:33.185 --> 00:04:36.880
+here's a secret which is masked away from us from viewing,
+
+00:04:36.880 --> 00:04:42.540
+and we can see the different types of events that they are keying off of.
+
+00:04:45.500 --> 00:04:51.095
+If I ever want to sever the connection between my repository and CircleCI,
+
+00:04:51.095 --> 00:04:57.085
+really all I've got to do is delete the webhook from GitHub and mission accomplished.
+
+00:04:57.085 --> 00:04:58.490
+But in most cases,
+
+00:04:58.490 --> 00:05:01.760
+we're going to leave it where it is and we can now enjoy automated
+
+00:05:01.760 --> 00:05:06.690
+builds between GitHub pushes and CircleCI.
+

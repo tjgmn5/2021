@@ -1,0 +1,178 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.140 --> 00:00:06.310
+You may have noticed in my explanations of cash and workspace that
+
+00:00:06.310 --> 00:00:11.635
+Circle CI only gives us the ability to save and share files and folders.
+
+00:00:11.635 --> 00:00:14.440
+But what about just bits of information?
+
+00:00:14.440 --> 00:00:17.560
+If you use Circle CI's built-in options you'll
+
+00:00:17.560 --> 00:00:20.665
+have to write a bit of information to a file,
+
+00:00:20.665 --> 00:00:22.825
+cache or persist the file,
+
+00:00:22.825 --> 00:00:25.255
+retrieve the file on the other job,
+
+00:00:25.255 --> 00:00:28.975
+and then parse the information back into a variable.
+
+00:00:28.975 --> 00:00:32.080
+There are a couple of options that might be interesting
+
+00:00:32.080 --> 00:00:35.300
+if you find that built-in process cumbersome.
+
+00:00:35.300 --> 00:00:38.410
+That is to use a secret keeper which is
+
+00:00:38.410 --> 00:00:43.665
+a third-party service that will receive and provide your secret on command.
+
+00:00:43.665 --> 00:00:49.700
+Two great options are HashiCorp's Vault which is a web service and a command line tool
+
+00:00:49.700 --> 00:00:52.640
+that work together to give you the ability to save
+
+00:00:52.640 --> 00:00:56.095
+bits of information securely and then retrieve them later.
+
+00:00:56.095 --> 00:00:59.884
+Since the service is not dependent on the job or pipeline
+
+00:00:59.884 --> 00:01:04.255
+your jobs can reliably save and retrieve information at will.
+
+00:01:04.255 --> 00:01:09.080
+There's also Memstash which is an ultra-lightweight web service that
+
+00:01:09.080 --> 00:01:14.080
+takes your key value pairs and stores them securely for a short period of time.
+
+00:01:14.080 --> 00:01:17.000
+Is a great low ceremony way to store
+
+00:01:17.000 --> 00:01:20.915
+quick values and get them back out no matter which job you're running.
+
+00:01:20.915 --> 00:01:27.970
+For Memstash just use curl to save and retrieve your information no sign-up necessary.
+
+00:01:27.970 --> 00:01:31.065
+So let's take a quick look at Memstash.
+
+00:01:31.065 --> 00:01:34.595
+Memstash has three basic inputs a token,
+
+00:01:34.595 --> 00:01:36.590
+a key, and a value.
+
+00:01:36.590 --> 00:01:41.320
+So this token we can generate a new one as we wish.
+
+00:01:41.320 --> 00:01:45.495
+We can enter a key and I'll say Mickey,
+
+00:01:45.495 --> 00:01:48.030
+and we'll say Mouse as the value.
+
+00:01:48.030 --> 00:01:51.710
+So I'll just use the web tool here to try it out,
+
+00:01:51.710 --> 00:01:55.505
+and I can see down here there's a curl statement that has
+
+00:01:55.505 --> 00:01:59.540
+put the key as here in the URL and then it's got the value as the data.
+
+00:01:59.540 --> 00:02:01.040
+So I'm going to test the put.
+
+00:02:01.040 --> 00:02:04.625
+So I'm just going to put that says the value has been saved.
+
+00:02:04.625 --> 00:02:06.910
+So I've still got my key up here I'm just going to
+
+00:02:06.910 --> 00:02:09.160
+test the get and see if I get that value back.
+
+00:02:09.160 --> 00:02:12.570
+Yeah there it is. So it got the value back.
+
+00:02:12.570 --> 00:02:17.719
+Now the nice thing about this tool is I can put my key up here and my value,
+
+00:02:17.719 --> 00:02:22.285
+and it actually generates a nice little curl statement for me. Very convenient.
+
+00:02:22.285 --> 00:02:26.020
+Then if I want to get the same value out with the key then I could actually
+
+00:02:26.020 --> 00:02:29.770
+use this get curl right here which will get the value back out.
+
+00:02:29.770 --> 00:02:32.620
+So we can actually do that in the terminal.
+
+00:02:32.620 --> 00:02:35.150
+So let's try that copy,
+
+00:02:35.150 --> 00:02:39.150
+paste, and this is going to put the value.
+
+00:02:39.150 --> 00:02:47.295
+I'm going to change it though to something else Mickey Mouse2.
+
+00:02:47.295 --> 00:02:49.920
+So we'll Save that item has been created.
+
+00:02:49.920 --> 00:02:54.255
+Great. So let's go back over here to Memstash and Copy our curl out.
+
+00:02:54.255 --> 00:02:56.985
+So our key hasn't changed that changes the value.
+
+00:02:56.985 --> 00:02:59.145
+So now I should be able to copy that,
+
+00:02:59.145 --> 00:03:01.755
+go back over here, paste it again,
+
+00:03:01.755 --> 00:03:03.870
+and we should get our Mouse2 value back.
+
+00:03:03.870 --> 00:03:07.290
+Let's try it. There it is Mouse2.
+
+00:03:07.290 --> 00:03:11.920
+So if you know how to use Shell very well you know that any value like this you
+
+00:03:11.920 --> 00:03:13.870
+can just pipe right into an environment
+
+00:03:13.870 --> 00:03:16.660
+variable or into a text file or whatever you want to do,
+
+00:03:16.660 --> 00:03:20.920
+and this is just light years ahead of trying to
+
+00:03:20.920 --> 00:03:25.750
+save information to a little file and then retrieve the file later and parsing the file.
+
+00:03:25.750 --> 00:03:27.190
+This is just a very easy,
+
+00:03:27.190 --> 00:03:30.350
+simple lightweight way to do it.
+

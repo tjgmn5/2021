@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.580 --> 00:00:04.155
+Great job. You made it.
+
+00:00:04.155 --> 00:00:05.760
+How exciting is that?
+
+00:00:05.760 --> 00:00:08.040
+You added a line to a text file?
+
+00:00:08.040 --> 00:00:11.055
+Yeah, this might seem like over-engineering right now,
+
+00:00:11.055 --> 00:00:14.780
+but trust me, we're shooting for full automation here.
+
+00:00:14.780 --> 00:00:16.125
+It's just the beginning,
+
+00:00:16.125 --> 00:00:19.780
+but it's a beginning that won't need much attention later on.
+
+00:00:19.780 --> 00:00:23.870
+This kind of automation is essential when you're dealing with unknowns like
+
+00:00:23.870 --> 00:00:28.560
+host names and IP addresses of instances that haven't even been created yet.
+
+00:00:28.560 --> 00:00:31.855
+This small step will help you gather that missing information.
+
+00:00:31.855 --> 00:00:35.899
+Thank goodness we have tools like Bash and AWS CLI,
+
+00:00:35.899 --> 00:00:39.025
+and EC2 tags to help surface that information.
+
+00:00:39.025 --> 00:00:41.855
+If you're a little confused about how we reached my solution,
+
+00:00:41.855 --> 00:00:44.525
+it would be helpful to re-watch the previous video,
+
+00:00:44.525 --> 00:00:48.720
+where we learned about how to build an Ansible inventory file.
+

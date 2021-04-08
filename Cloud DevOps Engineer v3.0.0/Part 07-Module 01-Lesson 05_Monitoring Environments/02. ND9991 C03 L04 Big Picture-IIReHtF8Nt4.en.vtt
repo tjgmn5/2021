@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.160 --> 00:00:03.615
+Let's be real for moment.
+
+00:00:03.615 --> 00:00:06.750
+Monitoring isn't the most exciting topic, is it?
+
+00:00:06.750 --> 00:00:10.995
+It's something that only feels like it's needed every now and then, and for many,
+
+00:00:10.995 --> 00:00:13.620
+the volume of data feels like a scene from
+
+00:00:13.620 --> 00:00:16.710
+the matrix where all the lines of code are blurring together.
+
+00:00:16.710 --> 00:00:19.850
+For others, there's not enough data being collected,
+
+00:00:19.850 --> 00:00:24.380
+so it never feels that useful or when it does have something to say,
+
+00:00:24.380 --> 00:00:26.485
+it's usually bad news.
+
+00:00:26.485 --> 00:00:33.110
+Because of this, monitoring is often the most neglected or underestimated tools we have.
+
+00:00:33.110 --> 00:00:38.120
+But monitoring may be one of the most necessary evils of all the evils.
+
+00:00:38.120 --> 00:00:41.800
+In fact, maybe it's not so evil after all.
+
+00:00:41.800 --> 00:00:45.170
+Monitoring though often forgotten and neglected,
+
+00:00:45.170 --> 00:00:48.710
+will happily help us out of the pit of despair when we have
+
+00:00:48.710 --> 00:00:52.570
+a server down or some mysterious application or database issue.
+
+00:00:52.570 --> 00:00:55.245
+Think for a moment about the possibilities.
+
+00:00:55.245 --> 00:00:59.975
+In the heat of battle, monitoring data might help you get to the problem faster.
+
+00:00:59.975 --> 00:01:05.750
+Network logs might help you find out when something goes down or degrades.
+
+00:01:05.750 --> 00:01:11.285
+Application logs can help you wake up the right people in the case of an incident.
+
+00:01:11.285 --> 00:01:18.575
+CPU, memory and disk metrics will help you see an outage brewing even an hour before.
+
+00:01:18.575 --> 00:01:21.290
+With machine learning and data science,
+
+00:01:21.290 --> 00:01:25.550
+you could predict the next outage that could potentially happen in two weeks.
+
+00:01:25.550 --> 00:01:29.015
+Monitoring might not be the conversation piece of the century,
+
+00:01:29.015 --> 00:01:33.785
+but you and your project might be if you don't have monitoring in place.
+
+00:01:33.785 --> 00:01:38.400
+So let's make sure that you have the knowledge that it takes to get that moving.
+

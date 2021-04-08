@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.250 --> 00:00:06.930
+The last few pages and exercises of the lesson have been all about Ansible.
+
+00:00:06.930 --> 00:00:11.520
+By now you should have enough of a foundation to put it to use and combine
+
+00:00:11.520 --> 00:00:16.350
+that knowledge with what we know about CI/CD and CircleCI jobs.
+
+00:00:16.350 --> 00:00:18.990
+The next few sections we're going to go over some of
+
+00:00:18.990 --> 00:00:23.205
+the different types of jobs that you might need to run in a CD pipeline,
+
+00:00:23.205 --> 00:00:25.515
+we'll look at each type in detail.
+
+00:00:25.515 --> 00:00:29.490
+When we're done, you'll be able to build your own CI/CD servers
+
+00:00:29.490 --> 00:00:34.230
+that can turn code into cash from first commit to production.
+
+00:00:34.230 --> 00:00:37.670
+To get the most out of these next sections I
+
+00:00:37.670 --> 00:00:41.605
+suggest you code along with me and try things out for yourself.
+
+00:00:41.605 --> 00:00:47.240
+If you don't already have a playground repository and corresponding project in CircleCI,
+
+00:00:47.240 --> 00:00:50.435
+I suggest you get that set up before you continue.
+
+00:00:50.435 --> 00:00:55.020
+Ready? Let's start deploying.
+

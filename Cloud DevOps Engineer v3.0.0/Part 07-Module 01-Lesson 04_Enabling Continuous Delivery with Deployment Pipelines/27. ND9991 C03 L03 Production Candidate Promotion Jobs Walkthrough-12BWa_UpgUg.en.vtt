@@ -1,0 +1,22 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.580 --> 00:00:03.810
+Let's actually go back to
+
+00:00:03.810 --> 00:00:09.375
+our infrastructure creation job and make it apply a more reusable name to our stack.
+
+00:00:09.375 --> 00:00:15.280
+We'll use the circle workflow ID to make the stack name unique to the pipeline.
+
+00:00:17.000 --> 00:00:19.260
+That's all there is to it.
+
+00:00:19.260 --> 00:00:21.555
+Now when this job actually runs,
+
+00:00:21.555 --> 00:00:26.950
+it will paste that workflow ID right on the end of our stack name.
+

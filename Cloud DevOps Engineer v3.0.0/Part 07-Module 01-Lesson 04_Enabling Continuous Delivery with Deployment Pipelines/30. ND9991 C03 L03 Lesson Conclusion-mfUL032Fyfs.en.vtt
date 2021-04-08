@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.640 --> 00:00:04.545
+That was quite a journey.
+
+00:00:04.545 --> 00:00:07.695
+We've covered a lot of ground in a short amount of time,
+
+00:00:07.695 --> 00:00:11.865
+but I hope the practice that we did help to solidify the new knowledge.
+
+00:00:11.865 --> 00:00:13.240
+To recap, by now,
+
+00:00:13.240 --> 00:00:17.175
+you know what configuration management tools are and how to use them.
+
+00:00:17.175 --> 00:00:19.815
+You can design an Ansible Playbook.
+
+00:00:19.815 --> 00:00:23.075
+You can control remote machines using Ansible.
+
+00:00:23.075 --> 00:00:25.165
+You can build an inventory file,
+
+00:00:25.165 --> 00:00:29.705
+and you can make various types of CD jobs in our CI/CD pipeline,
+
+00:00:29.705 --> 00:00:33.790
+like creating infrastructure, deploying, smoke testing, rollbacks.
+
+00:00:33.790 --> 00:00:35.830
+We had a lot of fun in this lesson,
+
+00:00:35.830 --> 00:00:41.150
+turning our manual commands and scripts into automated code that runs on every commit.
+
+00:00:41.150 --> 00:00:44.300
+Now that we have production environments tested and running,
+
+00:00:44.300 --> 00:00:48.690
+it's time to start monitoring. Let's roll.
+

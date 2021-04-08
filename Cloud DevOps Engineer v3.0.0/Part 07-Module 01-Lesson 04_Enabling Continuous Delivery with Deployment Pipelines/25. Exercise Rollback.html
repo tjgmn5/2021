@@ -1,0 +1,338 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Rollback</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Enabling Continuous Delivery with Deployment Pipelines</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Configuration Management.html">04. Configuration Management</a>
+    </li>
+    <li class="">
+      <a href="05. Design an Ansible Playbook.html">05. Design an Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Define Ansible Playbook.html">06. Exercise: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Define Ansible Playbook.html">07. Solution: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="08. Build an Inventory File.html">08. Build an Inventory File</a>
+    </li>
+    <li class="">
+      <a href="09. Exercise Inventory File.html">09. Exercise: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="10. Solution Inventory File.html">10. Solution: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="11. Remote Control Using Ansible.html">11. Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Remote Control Using Ansible.html">12. Exercise: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Remote Control Using Ansible.html">13. Solution: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="14. Deployment Jobs.html">14. Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="15. Infrastructure Creation Jobs.html">15. Infrastructure Creation Jobs</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise Infrastructure Creation.html">16. Exercise: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="17. Solution Infrastructure Creation.html">17. Solution: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="18. Configuration and Deployment Jobs.html">18. Configuration and Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="19. Exercise Config and Deployment.html">19. Exercise: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="20. Solution Config and Deployment.html">20. Solution: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="21. Smoke Testing Jobs.html">21. Smoke Testing Jobs</a>
+    </li>
+    <li class="">
+      <a href="22. Exercise Smoke Testing.html">22. Exercise: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="23. Solution Smoke Testing.html">23. Solution: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="24. Rollback Jobs.html">24. Rollback Jobs</a>
+    </li>
+    <li class="">
+      <a href="25. Exercise Rollback.html">25. Exercise: Rollback</a>
+    </li>
+    <li class="">
+      <a href="26. Solution Rollback.html">26. Solution: Rollback</a>
+    </li>
+    <li class="">
+      <a href="27. Production Candidate Promotion Jobs.html">27. Production Candidate Promotion Jobs</a>
+    </li>
+    <li class="">
+      <a href="28. Exercise Promote to Production.html">28. Exercise: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="29. Solution Promote to Production.html">29. Solution: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="30. Lesson Conclusion.html">30. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">25. Exercise: Rollback</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="exercise-rollback">Exercise: Rollback</h2>
+<p>Write a reusable command that rolls back changes.</p>
+<h3 id="instructions">Instructions:</h3>
+<ol>
+<li>Create a simple CloudFormation template named <code>template.yml</code> that will create some infrastructure. This should be checked into your git repo. You can use your own from previous lessons or you can try this example:</li>
+</ol>
+<pre><code>   Resources:
+     Ec2Instance:
+       Type: 'AWS::EC2::Instance'
+       Properties:
+         SecurityGroups:
+           - !Ref InstanceSecurityGroup
+         KeyName: udacity
+         ImageId: 'ami-068663a3c619dd892'
+     InstanceSecurityGroup:
+       Type: 'AWS::EC2::SecurityGroup'
+       Properties:
+         GroupDescription: Enable SSH access via port 22
+         SecurityGroupIngress:
+           - IpProtocol: tcp
+             FromPort: '22'
+             ToPort: '22'
+             CidrIp: 0.0.0.0/0</code></pre>
+<p>Notice we are using the <code>udacity</code> as the <code>KeyName</code>. That refers to the key pair we created before.</p>
+<ol start="2">
+<li><p>Write a job that creates a new stack using the template you just created. Feel free to copy/paste any job from a previous exercise where you did this already. Name this job <code>create_infrastructure</code>.</p></li>
+<li><p>There may be many places where we want to rollback your changes. That means we need a command so that we can reuse the code. Add a command to your Circle CI config file called <code>destroy_environments</code>. This command should use <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/delete-stack.html" rel="noopener noreferrer" target="_blank">cloudformation delete-stack</a> to delete the stack that the job previously created.</p></li>
+<li><p>Make your job fail (intentionally) after CloudFormation creates the stack. You can simply add a step that says <code>return 1</code> to simulate an error.</p></li>
+<li><p>Add a step to the job that only executes if the job fails. Call your <code>destroy_environments</code> command.</p></li>
+<li><p>Define a workflow that uses the <code>create_infrastructure</code> job.</p></li>
+<li><p>After your pipeline executes successfully, you should be able to verify the stack was created and then deleted. In the end, you should have no additional stacks in your AWS CloudFormation console.</p></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Rollback</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="a0880b33-377b-49d1-9593-896dc6ac8d99--0">
+        <label for="a0880b33-377b-49d1-9593-896dc6ac8d99--0"><p>Create/Select a CloudFormation Template to Build a Stack.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0880b33-377b-49d1-9593-896dc6ac8d99--1">
+        <label for="a0880b33-377b-49d1-9593-896dc6ac8d99--1"><p>Write a Job That Executes CloudFormation With the Template.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0880b33-377b-49d1-9593-896dc6ac8d99--2">
+        <label for="a0880b33-377b-49d1-9593-896dc6ac8d99--2"><p>Write a Reusable Command to Delete the Stack.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0880b33-377b-49d1-9593-896dc6ac8d99--3">
+        <label for="a0880b33-377b-49d1-9593-896dc6ac8d99--3"><p>Add a Step to the Job to Execute the Command When There is a Failure.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0880b33-377b-49d1-9593-896dc6ac8d99--4">
+        <label for="a0880b33-377b-49d1-9593-896dc6ac8d99--4"><p>Add a Step That Causes a Failure.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0880b33-377b-49d1-9593-896dc6ac8d99--5">
+        <label for="a0880b33-377b-49d1-9593-896dc6ac8d99--5"><p>Add Job to the Workflow.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0880b33-377b-49d1-9593-896dc6ac8d99--6">
+        <label for="a0880b33-377b-49d1-9593-896dc6ac8d99--6"><p>Run the Pipeline Successfully.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="a0880b33-377b-49d1-9593-896dc6ac8d99--7">
+        <label for="a0880b33-377b-49d1-9593-896dc6ac8d99--7"><p>Verify The Stack Was Indeed Created and Deleted.</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>You're really getting the hang of this!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="26. Solution Rollback.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('25. Exercise: Rollback')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

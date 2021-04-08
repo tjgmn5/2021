@@ -1,0 +1,178 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.520 --> 00:00:07.305
+Another way to get system data in CircleCI is to use environment variables.
+
+00:00:07.305 --> 00:00:12.780
+Those environment variables can be defined by us or built into CircleCI.
+
+00:00:12.780 --> 00:00:16.560
+All environment variables are bound to a scope.
+
+00:00:16.560 --> 00:00:20.100
+Let's take a look at some scopes in CircleCI.
+
+00:00:20.100 --> 00:00:24.270
+Organizations contain projects, so environment variables
+
+00:00:24.270 --> 00:00:28.155
+set at this level will be available to all child projects.
+
+00:00:28.155 --> 00:00:32.640
+This is great for organization-wide secrets like API keys.
+
+00:00:32.640 --> 00:00:35.445
+Projects contain pipeline jobs,
+
+00:00:35.445 --> 00:00:41.110
+so environment variables at the project level are available to all jobs in the project,
+
+00:00:41.110 --> 00:00:44.975
+but are not to jobs that belong to other projects.
+
+00:00:44.975 --> 00:00:47.240
+An example of a project level,
+
+00:00:47.240 --> 00:00:50.210
+environment variable might be the base URL for
+
+00:00:50.210 --> 00:00:55.295
+a back-end API that is needed by any front-end related jobs.
+
+00:00:55.295 --> 00:01:00.290
+There are several built-in environment variables at the pipeline scope,
+
+00:01:00.290 --> 00:01:03.980
+and are available to all the jobs contained in the pipeline.
+
+00:01:03.980 --> 00:01:06.465
+We'll take a look at a few of those in a moment.
+
+00:01:06.465 --> 00:01:11.975
+Environment variables that are set inside the job are only available to that job.
+
+00:01:11.975 --> 00:01:15.170
+You can either set environment variables using
+
+00:01:15.170 --> 00:01:19.610
+the environment map or by just exporting them using the shell commands.
+
+00:01:19.610 --> 00:01:25.760
+This is useful when you're using a tool that expects a certain value in the environment,
+
+00:01:25.760 --> 00:01:28.205
+but it doesn't apply anywhere else.
+
+00:01:28.205 --> 00:01:32.795
+You can even define environment variables in a step using export,
+
+00:01:32.795 --> 00:01:36.605
+but really those variables are still available at the job level.
+
+00:01:36.605 --> 00:01:40.070
+There are a handful of others that might come in handy someday,
+
+00:01:40.070 --> 00:01:42.625
+but I'll let you discover those in the docs.
+
+00:01:42.625 --> 00:01:45.350
+As promised, let's take a look at a few of
+
+00:01:45.350 --> 00:01:49.510
+the built-in environment variables that are available in our pipeline jobs.
+
+00:01:49.510 --> 00:01:53.750
+These can be used almost anywhere in the context of our pipeline.
+
+00:01:53.750 --> 00:01:57.379
+For example, docker images, shell scripts,
+
+00:01:57.379 --> 00:02:01.310
+job definitions, commands, aliases, and the list goes on.
+
+00:02:01.310 --> 00:02:04.690
+CircleCI offers quite a few variables.
+
+00:02:04.690 --> 00:02:08.390
+Again, here's the documentation for CircleCI.
+
+00:02:08.390 --> 00:02:11.465
+We're looking at the built-in environment variable section.
+
+00:02:11.465 --> 00:02:12.680
+It's a very long list.
+
+00:02:12.680 --> 00:02:15.170
+I don't want to go through every single one and bore you to death.
+
+00:02:15.170 --> 00:02:19.435
+But I do want to highlight a few of these variables that we can use.
+
+00:02:19.435 --> 00:02:22.460
+I mentioned to you before with the pipeline values
+
+00:02:22.460 --> 00:02:25.650
+that we can get the Git branch information, well,
+
+00:02:25.650 --> 00:02:28.220
+we can also get it with environment variables,
+
+00:02:28.220 --> 00:02:30.890
+and these are even a little bit more flexible because we can
+
+00:02:30.890 --> 00:02:34.705
+use these outside of the context of a job.
+
+00:02:34.705 --> 00:02:40.360
+Circle_Branch is going to give us the actual name of the branch that we're working in,
+
+00:02:40.360 --> 00:02:44.630
+so you can use that in pretty much anything inside of the job,
+
+00:02:44.630 --> 00:02:47.290
+in shell scripts or even in your application.
+
+00:02:47.290 --> 00:02:50.155
+Also, we have the circle_build_number,
+
+00:02:50.155 --> 00:02:55.540
+which is just an auto-incrementing integer that goes up every time we run another built.
+
+00:02:55.540 --> 00:02:58.290
+We also have the Circle_PR_Number,
+
+00:02:58.290 --> 00:03:02.670
+which references the pull request for GitHub or Bitbucket.
+
+00:03:02.670 --> 00:03:07.655
+We've got the Circle_Workflow_ID down here,
+
+00:03:07.655 --> 00:03:10.970
+which is a unique ID that is generated
+
+00:03:10.970 --> 00:03:14.630
+every time we start a new workflow or a new pipeline,
+
+00:03:14.630 --> 00:03:18.470
+and that's very useful when we want to name
+
+00:03:18.470 --> 00:03:20.450
+things in a certain way that somehow links
+
+00:03:20.450 --> 00:03:23.180
+them or makes them referenceable by other jobs.
+
+00:03:23.180 --> 00:03:25.520
+As you can see, this list is very
+
+00:03:25.520 --> 00:03:29.650
+comprehensive and it has great descriptions for each one of these things.
+
+00:03:29.650 --> 00:03:34.505
+You may find some of these that I haven't mentioned still useful and that's great.
+
+00:03:34.505 --> 00:03:39.000
+All of these are at your disposal and they're right here in the documentation.
+

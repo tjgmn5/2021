@@ -1,0 +1,154 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.670 --> 00:00:03.990
+Let's start with a question,
+
+00:00:03.990 --> 00:00:06.135
+What is CI anyway?
+
+00:00:06.135 --> 00:00:09.510
+Well, CI stands for continuous integration.
+
+00:00:09.510 --> 00:00:12.090
+As you can imagine, it has something to do with integrating
+
+00:00:12.090 --> 00:00:14.985
+something and doing it continuously.
+
+00:00:14.985 --> 00:00:18.930
+I think Atlassian has one of the best definitions out there.
+
+00:00:18.930 --> 00:00:22.125
+Continuous integration is the practice of automating
+
+00:00:22.125 --> 00:00:25.020
+the integration of code changes from
+
+00:00:25.020 --> 00:00:28.905
+multiple contributors into a single software project.
+
+00:00:28.905 --> 00:00:33.800
+You can think of CI as something that repeatedly facilitates
+
+00:00:33.800 --> 00:00:39.145
+the combining of work of multiple developers into one product.
+
+00:00:39.145 --> 00:00:44.435
+Once your team has continuous integration set up and running on every commit,
+
+00:00:44.435 --> 00:00:47.435
+you'll notice some new doors opening up.
+
+00:00:47.435 --> 00:00:49.050
+You'll have a singular,
+
+00:00:49.050 --> 00:00:52.875
+unified, consistent build process.
+
+00:00:52.875 --> 00:00:58.735
+You'll have automatically packaged downloadable "binaries".
+
+00:00:58.735 --> 00:01:02.945
+You'll notice faster recovery from botched integrations.
+
+00:01:02.945 --> 00:01:05.090
+My team has a saying, if you broke it,
+
+00:01:05.090 --> 00:01:12.010
+you fix it, and your unit test suite is going to get some renewed respect.
+
+00:01:12.010 --> 00:01:17.425
+You'll have greater transparency and communication amongst your teammates,
+
+00:01:17.425 --> 00:01:22.370
+and you'll get to spend more time developing software and adding value.
+
+00:01:22.370 --> 00:01:24.599
+Even though continuous integration,
+
+00:01:24.599 --> 00:01:27.060
+CI and continuous deployment,
+
+00:01:27.060 --> 00:01:29.995
+CD are often mentioned together,
+
+00:01:29.995 --> 00:01:33.625
+they are different processes with very different goals.
+
+00:01:33.625 --> 00:01:38.395
+The difference is mostly important when deciding triggers and timing.
+
+00:01:38.395 --> 00:01:42.850
+There are times when you should run CI related jobs in pipelines,
+
+00:01:42.850 --> 00:01:45.565
+but not anything related to CD.
+
+00:01:45.565 --> 00:01:50.605
+There are even times when you might run CD and leave CI to rest,
+
+00:01:50.605 --> 00:01:53.680
+and of course, there are perfectly valid scenarios when you
+
+00:01:53.680 --> 00:01:57.200
+would want to run them both one after the other.
+
+00:01:57.200 --> 00:02:00.995
+Continuous integration is all about the source code.
+
+00:02:00.995 --> 00:02:04.940
+New changes to the code need to be validated, verified,
+
+00:02:04.940 --> 00:02:07.370
+exercised, worked over, massaged,
+
+00:02:07.370 --> 00:02:10.175
+and squeezed to see if there are any leaks.
+
+00:02:10.175 --> 00:02:13.850
+We do this by compiling and transpiling, linting,
+
+00:02:13.850 --> 00:02:17.660
+running unit tests, performing static analysis, things like that.
+
+00:02:17.660 --> 00:02:20.270
+If the task has to do with source code,
+
+00:02:20.270 --> 00:02:22.705
+it's part of CI.
+
+00:02:22.705 --> 00:02:27.125
+On the other hand, continuous deployment is all about,
+
+00:02:27.125 --> 00:02:29.155
+you guessed it, deployment.
+
+00:02:29.155 --> 00:02:31.715
+Once a source code has been built in CI,
+
+00:02:31.715 --> 00:02:36.800
+we're ready to ship it to servers and devices either in the same network or elsewhere.
+
+00:02:36.800 --> 00:02:41.000
+Depending on your team's delivery process and deployment strategy,
+
+00:02:41.000 --> 00:02:45.680
+you might deploy to a staging or pre-production server for final testing,
+
+00:02:45.680 --> 00:02:48.860
+or you might deploy to production right away.
+
+00:02:48.860 --> 00:02:53.300
+Before doing so, CD can run scripts to prepare the infrastructure,
+
+00:02:53.300 --> 00:02:58.955
+run smoke tests, and handle roll back in reverse if something doesn't go as planned.
+
+00:02:58.955 --> 00:03:03.020
+Understanding the difference between CI and CD will help
+
+00:03:03.020 --> 00:03:07.680
+you be a better steward of the resources used by each.
+

@@ -1,0 +1,322 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.460 --> 00:00:06.795
+Now let's actually install Alertmanager so that it knows what to do with these alerts.
+
+00:00:06.795 --> 00:00:09.885
+Now we need to go into our AWS console and get
+
+00:00:09.885 --> 00:00:13.545
+that host name again for our Prometheus server.
+
+00:00:13.545 --> 00:00:15.270
+Here in the AWS console,
+
+00:00:15.270 --> 00:00:18.240
+we will just copy our host name once again,
+
+00:00:18.240 --> 00:00:20.025
+and head over to the terminal and login.
+
+00:00:20.025 --> 00:00:21.825
+We're going to use another terminal window,
+
+00:00:21.825 --> 00:00:23.955
+so that we have two running at the same time.
+
+00:00:23.955 --> 00:00:27.405
+Now we'll just SSH into our server,
+
+00:00:27.405 --> 00:00:32.800
+using our PEM file and our username.
+
+00:00:35.750 --> 00:00:40.420
+Now let's create a new directory called Alertmanager.
+
+00:00:43.040 --> 00:00:47.895
+Now we need to download the Alertmanager from the Prometheus website.
+
+00:00:47.895 --> 00:00:50.115
+We're going to do that using Wget.
+
+00:00:50.115 --> 00:00:54.575
+Before we do that, let's go and get the URL for that downloadable.
+
+00:00:54.575 --> 00:00:56.360
+Here on the Prometheus website,
+
+00:00:56.360 --> 00:00:59.090
+we're just going to find the download that corresponds
+
+00:00:59.090 --> 00:01:02.570
+with Alertmanager for our version of Linux,
+
+00:01:02.570 --> 00:01:06.040
+copy link address, and then head back over to the terminal.
+
+00:01:06.040 --> 00:01:10.620
+Now let's Wget our URL.
+
+00:01:12.980 --> 00:01:18.780
+Now we're going to extract the file xvfz
+
+00:01:18.780 --> 00:01:25.090
+and Alertmanager and go into that folder.
+
+00:01:26.450 --> 00:01:30.250
+Now without any configuration changes at all,
+
+00:01:30.250 --> 00:01:32.845
+we can actually start running our Alertmanager.
+
+00:01:32.845 --> 00:01:36.220
+We see here that it's listening on port 9093.
+
+00:01:36.220 --> 00:01:39.875
+Let's go take a look at that port in our web browser.
+
+00:01:39.875 --> 00:01:45.140
+We'll just paste our URL, our host name,
+
+00:01:45.140 --> 00:01:51.940
+to our Prometheus server with port 9093 and now we see our Alertmanager.
+
+00:01:51.940 --> 00:01:54.550
+It's not really doing anything yet because it's not been configured,
+
+00:01:54.550 --> 00:01:56.770
+but it is at least accepting requests.
+
+00:01:56.770 --> 00:01:58.870
+The next step is to tell Prometheus
+
+00:01:58.870 --> 00:02:01.655
+about our Alertmanager so they can start communicating.
+
+00:02:01.655 --> 00:02:06.355
+For that I'm going to go into the Prometheus configuration and make a small modification.
+
+00:02:06.355 --> 00:02:12.080
+Here I'll stop Prometheus and in my favorite text editor,
+
+00:02:12.080 --> 00:02:16.570
+I'm going to make a change to the Prometheus.yml file.
+
+00:02:16.570 --> 00:02:19.520
+You've seen this before and you've been waiting for this moment,
+
+00:02:19.520 --> 00:02:21.770
+just uncomment that line,
+
+00:02:21.770 --> 00:02:27.985
+and change Alertmanager with localhost, still port 9093.
+
+00:02:27.985 --> 00:02:30.575
+Why localhost? Well, because
+
+00:02:30.575 --> 00:02:35.525
+our Prometheus instance is actually the same as the Alertmanager instance,
+
+00:02:35.525 --> 00:02:36.950
+and so they're on the same machine,
+
+00:02:36.950 --> 00:02:40.345
+they can both communicate just using localhost.
+
+00:02:40.345 --> 00:02:43.695
+Save and exit.
+
+00:02:43.695 --> 00:02:47.205
+Now you can start Prometheus back up.
+
+00:02:47.205 --> 00:02:51.190
+If you want to take a look again at the Alertmanager,
+
+00:02:51.190 --> 00:02:52.760
+you're not going to see much,
+
+00:02:52.760 --> 00:02:56.570
+because there isn't really an alert yet to manage.
+
+00:02:56.570 --> 00:03:02.620
+Now we're going to give Alertmanager something to send out, we'll use Slack.
+
+00:03:02.620 --> 00:03:05.010
+We'll go back to Alertmanager,
+
+00:03:05.010 --> 00:03:09.530
+the terminal that we had opened for Alertmanager and we'll stop that, just for a moment.
+
+00:03:09.530 --> 00:03:13.830
+Now we're going to modify the configuration for Alertmanager.
+
+00:03:14.840 --> 00:03:17.130
+As you could guess,
+
+00:03:17.130 --> 00:03:20.835
+there's an Alertmanager.yml that we can modify.
+
+00:03:20.835 --> 00:03:23.510
+Now this file actually comes with some
+
+00:03:23.510 --> 00:03:27.230
+built-in or some default settings and we don't really need any of these,
+
+00:03:27.230 --> 00:03:30.720
+so we're just going to remove all of this.
+
+00:03:32.810 --> 00:03:38.555
+Instead, we're going to paste in the configuration that's suggested by the tutorial.
+
+00:03:38.555 --> 00:03:41.330
+Now this time, I'm not going to try to fix
+
+00:03:41.330 --> 00:03:44.725
+the indentation because I want to show you what happens.
+
+00:03:44.725 --> 00:03:47.925
+We'll just exit here and save,
+
+00:03:47.925 --> 00:03:51.270
+and we'll try to run the Alertmanager once again.
+
+00:03:51.270 --> 00:03:53.065
+All right, so we got an error.
+
+00:03:53.065 --> 00:03:55.400
+This is a lot of text,
+
+00:03:55.400 --> 00:03:56.810
+but what you can do,
+
+00:03:56.810 --> 00:03:59.720
+is find the place where it gives you a line number.
+
+00:03:59.720 --> 00:04:02.090
+I know it's hard to see in this wall of text,
+
+00:04:02.090 --> 00:04:04.910
+but it basically, it fails all the way down to here,
+
+00:04:04.910 --> 00:04:08.480
+loading configuration file failed and then it shows you over here,
+
+00:04:08.480 --> 00:04:13.260
+yaml line nine did not find expected key.
+
+00:04:13.260 --> 00:04:15.750
+When you see did not find expected key,
+
+00:04:15.750 --> 00:04:17.590
+probably what it means is,
+
+00:04:17.590 --> 00:04:19.940
+there was an indentation missing,
+
+00:04:19.940 --> 00:04:24.065
+a space missing and so we've got to make sure that the indentation is right on.
+
+00:04:24.065 --> 00:04:26.665
+Let's get back in and fix that problem.
+
+00:04:26.665 --> 00:04:33.000
+Fixing the indentation is usually about two spaces,
+
+00:04:34.480 --> 00:04:37.535
+there, that's probably much better.
+
+00:04:37.535 --> 00:04:39.290
+Let's go over this file real quick.
+
+00:04:39.290 --> 00:04:42.470
+Again, the global variables are going to be
+
+00:04:42.470 --> 00:04:45.530
+something that affects the rest of this configuration file.
+
+00:04:45.530 --> 00:04:52.070
+Here I have a Slack API URL because I want this alert to go to Slack,
+
+00:04:52.070 --> 00:04:58.775
+and so I had to go through the instructions to go and get this web hook URL from Slack.
+
+00:04:58.775 --> 00:05:00.600
+I've got a route,
+
+00:05:00.600 --> 00:05:04.110
+which shows my receiver is Slack notifications.
+
+00:05:04.110 --> 00:05:06.690
+You could have multiple routes.
+
+00:05:06.690 --> 00:05:11.465
+Then we're going to have here a list of receivers where the name is Slack notifications.
+
+00:05:11.465 --> 00:05:14.105
+I could change this to another name,
+
+00:05:14.105 --> 00:05:16.130
+but it would be a different type of receiver,
+
+00:05:16.130 --> 00:05:18.025
+a different type of route.
+
+00:05:18.025 --> 00:05:20.315
+I'm going to stick with Slack notifications.
+
+00:05:20.315 --> 00:05:23.060
+It is actually built in so that you can send
+
+00:05:23.060 --> 00:05:27.895
+Slack notifications without adding any new software, any new files.
+
+00:05:27.895 --> 00:05:32.010
+Now I'm going to give Slack configs a channel.
+
+00:05:32.010 --> 00:05:33.960
+So if I have in my Slack channel,
+
+00:05:33.960 --> 00:05:36.830
+in my Slack team I've got a monitoring instances channel,
+
+00:05:36.830 --> 00:05:39.880
+so that means all of these notifications are going to go to that channel.
+
+00:05:39.880 --> 00:05:42.570
+Then send a resolve to just a callback that comes back
+
+00:05:42.570 --> 00:05:46.325
+to Alertmanager to make sure that it knows that everything was fine.
+
+00:05:46.325 --> 00:05:53.370
+I'm going to save this configuration and rerun Alertmanager.
+
+00:05:53.390 --> 00:05:58.200
+Listening on port 9093, all is well.
+
+00:05:58.200 --> 00:06:01.590
+Here we are again in Alertmanager and you're not going to see,
+
+00:06:01.590 --> 00:06:03.300
+again, really anything going on.
+
+00:06:03.300 --> 00:06:09.455
+Because right now we don't have any of our instances that are really suffering for RAM.
+
+00:06:09.455 --> 00:06:13.040
+In order to get a good test of the Alertmanager with a Slack message,
+
+00:06:13.040 --> 00:06:15.650
+we need to give it something a little bit more controllable,
+
+00:06:15.650 --> 00:06:16.970
+like an up-time or
+
+00:06:16.970 --> 00:06:23.125
+a instance app status that we can control by just turning off an instance in EC2.
+
+00:06:23.125 --> 00:06:27.600
+We'll go over that just a little bit more after you finish the exercise.
+

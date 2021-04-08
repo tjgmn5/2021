@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.970 --> 00:00:04.860
+The job runner just finished spinning up
+
+00:00:04.860 --> 00:00:08.760
+some new infrastructure for us and the job exited with a zero,
+
+00:00:08.760 --> 00:00:12.210
+which means it's moving on to the next job in the workflow.
+
+00:00:12.210 --> 00:00:14.865
+That's where we're standing right now.
+
+00:00:14.865 --> 00:00:17.940
+The next thing that needs to happen is to apply
+
+00:00:17.940 --> 00:00:22.755
+our newfound ansible skills and configure the instance using a playbook.
+
+00:00:22.755 --> 00:00:26.835
+Let's take a look at one of my jobs to see what all goes into it.
+
+00:00:26.835 --> 00:00:30.210
+Here's my job that configures the infrastructure.
+
+00:00:30.210 --> 00:00:32.985
+A lot of this should have seem very similar to you.
+
+00:00:32.985 --> 00:00:38.025
+In this case, I'm using a docker image that has alpine as its base,
+
+00:00:38.025 --> 00:00:42.565
+and has Python already installed since that's what ansible needs.
+
+00:00:42.565 --> 00:00:48.485
+I'm going to check out my code and I'm going to add my SSH keys using a fingerprint.
+
+00:00:48.485 --> 00:00:49.990
+Now, where did I get that?
+
+00:00:49.990 --> 00:00:53.390
+There's a link to instructions about this in the text below the video.
+
+00:00:53.390 --> 00:00:55.910
+Let's take a look where I got mine real quick.
+
+00:00:55.910 --> 00:01:05.040
+Here in CircleCI, I have my project settings and I have SSH keys.
+
+00:01:05.040 --> 00:01:09.290
+Here, I'm able to see the deploy key that I've already added.
+
+00:01:09.290 --> 00:01:11.575
+Here's the fingerprint right here.
+
+00:01:11.575 --> 00:01:13.880
+To add this deploy key,
+
+00:01:13.880 --> 00:01:16.415
+I had to go down here to
+
+00:01:16.415 --> 00:01:23.730
+additional SSH keys and add a new SSH key using my host name and the private key.
+
+00:01:26.120 --> 00:01:35.520
+So we're going to copy this fingerprint and paste it in my job file,
+
+00:01:35.740 --> 00:01:41.230
+so that ansible has access to the SSH keys that are appropriate.
+
+00:01:41.230 --> 00:01:46.640
+Then I'm actually going to install ansible in the agent that's running this job,
+
+00:01:46.640 --> 00:01:53.130
+and then I'm just going to execute my playbook using ansible playbook. That's it.
+

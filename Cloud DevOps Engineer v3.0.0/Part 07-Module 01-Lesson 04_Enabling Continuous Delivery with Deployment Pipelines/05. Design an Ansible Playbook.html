@@ -1,0 +1,520 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Design an Ansible Playbook</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Enabling Continuous Delivery with Deployment Pipelines</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Configuration Management.html">04. Configuration Management</a>
+    </li>
+    <li class="">
+      <a href="05. Design an Ansible Playbook.html">05. Design an Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Define Ansible Playbook.html">06. Exercise: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Define Ansible Playbook.html">07. Solution: Define Ansible Playbook</a>
+    </li>
+    <li class="">
+      <a href="08. Build an Inventory File.html">08. Build an Inventory File</a>
+    </li>
+    <li class="">
+      <a href="09. Exercise Inventory File.html">09. Exercise: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="10. Solution Inventory File.html">10. Solution: Inventory File</a>
+    </li>
+    <li class="">
+      <a href="11. Remote Control Using Ansible.html">11. Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Remote Control Using Ansible.html">12. Exercise: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Remote Control Using Ansible.html">13. Solution: Remote Control Using Ansible</a>
+    </li>
+    <li class="">
+      <a href="14. Deployment Jobs.html">14. Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="15. Infrastructure Creation Jobs.html">15. Infrastructure Creation Jobs</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise Infrastructure Creation.html">16. Exercise: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="17. Solution Infrastructure Creation.html">17. Solution: Infrastructure Creation</a>
+    </li>
+    <li class="">
+      <a href="18. Configuration and Deployment Jobs.html">18. Configuration and Deployment Jobs</a>
+    </li>
+    <li class="">
+      <a href="19. Exercise Config and Deployment.html">19. Exercise: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="20. Solution Config and Deployment.html">20. Solution: Config and Deployment</a>
+    </li>
+    <li class="">
+      <a href="21. Smoke Testing Jobs.html">21. Smoke Testing Jobs</a>
+    </li>
+    <li class="">
+      <a href="22. Exercise Smoke Testing.html">22. Exercise: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="23. Solution Smoke Testing.html">23. Solution: Smoke Testing</a>
+    </li>
+    <li class="">
+      <a href="24. Rollback Jobs.html">24. Rollback Jobs</a>
+    </li>
+    <li class="">
+      <a href="25. Exercise Rollback.html">25. Exercise: Rollback</a>
+    </li>
+    <li class="">
+      <a href="26. Solution Rollback.html">26. Solution: Rollback</a>
+    </li>
+    <li class="">
+      <a href="27. Production Candidate Promotion Jobs.html">27. Production Candidate Promotion Jobs</a>
+    </li>
+    <li class="">
+      <a href="28. Exercise Promote to Production.html">28. Exercise: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="29. Solution Promote to Production.html">29. Solution: Promote to Production</a>
+    </li>
+    <li class="">
+      <a href="30. Lesson Conclusion.html">30. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Design an Ansible Playbook</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="design-an-ansible-playbook">Design an Ansible Playbook</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L03 Design An Ansible Playbook</p></h3>
+  <video controls>
+  <source src="05. ND9991 C03 L03 Design An Ansible Playbook-BB5aKlsYfo0.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND9991 C03 L03 Design An Ansible Playbook-BB5aKlsYfo0.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="whats-the-play-coach">What's the Play, Coach?</h3>
+<p>You'll be creating lots of Playbooks from here on out! They're a large part of using Ansible to implement Continuous Delivery.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L03 Ansible Playbook Code Demo</p></h3>
+  <video controls>
+  <source src="05. ND9991 C03 L03 Ansible Playbook Code Demo-fDZ6d9L1ECQ.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND9991 C03 L03 Ansible Playbook Code Demo-fDZ6d9L1ECQ.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Our <code>main.yml</code>File:</p>
+<pre><code>---
+- name: "configuration play."
+  hosts: web
+  user: ubuntu
+  gather_facts: false
+  vars:
+    - ansible_python_interpreter: /usr/bin/python3
+    - ansible_host_key_checking: false
+    - ansible_stdout_callback: yaml
+
+  pre_tasks:
+    - name: "wait 600 seconds for target connection to become reachable/usable."
+      wait_for_connection:
+
+    - name: "install python for Ansible."
+      become: true
+      raw: test -e /usr/bin/python3 || (apt -y update &amp;&amp; apt install -y python3)
+      changed_when: false
+
+    - setup:
+  roles:
+    - configure-prometheus-node-exporter
+    - configure-server1</code></pre>
+<h3 id="authentication">Authentication</h3>
+<p>Remember that Ansible is just executing bash commands over SSH, so whatever you need to log in to your instance manually, you will also need for Ansible. </p>
+<p>There are two things we need to authenticate: </p>
+<ol>
+<li>username </li>
+<li>ssh key</li>
+</ol>
+<p>The first component of authentication is the "username" of the user we will log in as. In most cases, you will use the default user for the EC2 instance. For example, if your instance was created using the Ubuntu AMI, then your default username is "ubuntu" according to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html" rel="noopener noreferrer" target="_blank">this page</a>.</p>
+<pre><code>  user: ubuntu</code></pre>
+<p>The second component of authentication is the SSH key, also known as the key pair or the PEM file. The SSH key would have been associated with our default user already. We need a copy of the SSH key in the form of a PEM file. We will refer to this PEM file when executing the playbook.</p>
+<h3 id="targets">Targets</h3>
+<p>You can target one or more machines with just one Ansible playlist. Each play in a Playbook should have a <code>hosts</code> section where you can select machines that you want to configure. You can specify one hostname, a group name, or use a pattern to select multiple hosts from an inventory list.</p>
+<pre><code>  hosts: web</code></pre>
+<p>An inventory file can be very powerful and complex, but it can also be extremely simple. On the easy extreme, the inventory file is just a list of DNS hostnames or IP addresses in a group labeled by a <code>["group_name"]</code> in typical INI style. This is what it looks like.</p>
+<pre><code>[web]
+ec2-50-16-166-50.compute-1.amazonaws.com</code></pre>
+<p>Note that the <code>web</code> group name is being referred to in the Playbook <code>host</code> line.</p>
+<h3 id="roles">Roles</h3>
+<p>In Ansible, roles are a great way to clean up your Ansible code and make it more maintainable. We can build roles by using Ansible's expected folder/file structure.</p>
+<pre><code>main.yml
+roles/
+    configure-prometheus-node-exporter/
+        tasks/
+            main.yml
+        files/
+            main.yml
+    configure-server/
+        tasks/
+            main.yml</code></pre>
+<p>Here we have two roles, <code>configure-prometheus-node-exporter</code> and <code>configure-server</code>.</p>
+<p>The sub-folders in each role folder represent a different function in the role:</p>
+<table>
+<thead>
+<tr>
+<th id="**role_component**" style="text-align:left;"><strong>Role Component</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">tasks</td>
+<td style="text-align:left;">Main list of tasks that the role executes</td>
+</tr>
+<tr>
+<td style="text-align:left;">files</td>
+<td style="text-align:left;">Files that the role deploys</td>
+</tr>
+<tr>
+<td style="text-align:left;">handlers</td>
+<td style="text-align:left;">Handlers, which may be used within or outside this role</td>
+</tr>
+<tr>
+<td style="text-align:left;">library</td>
+<td style="text-align:left;">Modules, which may be used within this role</td>
+</tr>
+<tr>
+<td style="text-align:left;">defaults</td>
+<td style="text-align:left;">Default variables for the role</td>
+</tr>
+<tr>
+<td style="text-align:left;">vars</td>
+<td style="text-align:left;">Other variables for the role</td>
+</tr>
+<tr>
+<td style="text-align:left;">templates</td>
+<td style="text-align:left;">Templates that the role deploys</td>
+</tr>
+<tr>
+<td style="text-align:left;">meta</td>
+<td style="text-align:left;">Metadata for the role, including role dependencies</td>
+</tr>
+</tbody>
+</table>
+<p>According to Ansible's rules, each sub-folder of each role must have a <code>main.yml</code> file in it, which is how it is able to discover and incorporate the role functionality.</p>
+<p>We're going to mostly use <code>tasks</code> and <code>files</code>. If you want to know more about how to use the other components of Ansible roles, you should check out the docs.</p>
+<p>Let's take a look at my task code.</p>
+<p>Our <code>main.yml</code> File <em>(Playbook)</em>:</p>
+<pre><code>---
+- name: "configuration play."
+  hosts: web
+  user: ubuntu
+  gather_facts: false
+  vars:
+    - ansible_python_interpreter: /usr/bin/python3
+    - ansible_host_key_checking: false
+    - ansible_stdout_callback: yaml
+
+  pre_tasks:
+    - name: "wait 600 seconds for target connection to become reachable/usable."
+      wait_for_connection:
+
+    - name: "install python for Ansible."
+      become: true
+      raw: test -e /usr/bin/python3 || (apt -y update &amp;&amp; apt install -y python3)
+      changed_when: false
+
+    - setup:
+  roles:
+    - configure-prometheus-node-exporter
+    - configure-server1</code></pre>
+<p>Our <code>roles/configure-server/tasks/main.yml</code> File <em>(Roles)</em>:</p>
+<pre><code>---
+- name: "upgrade packages."
+  become: true
+  apt:
+    upgrade: "yes"
+
+- name: "install dependencies."
+  become: true
+  apt:
+    name: ["nodejs", "npm"]
+    state: latest
+    update_cache: yes
+
+- name: "install pm2"
+  become: true
+  npm:
+    name: pm2
+    global: yes
+    production: yes
+    state: present</code></pre>
+<p>In my code, you'll notice a few things:</p>
+<ul>
+<li>The playbook is the entry point</li>
+<li>The playbook delegates to roles by name</li>
+<li>The role does the actual work. You can probably guess what it's doing without much explanation.</li>
+<li>Each task is using <code>become: yes</code> to escalate to <code>root</code> user (like adding <code>sudo</code> before bash commands).</li>
+</ul>
+<p>Read more about Ansible roles in <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html" rel="noopener noreferrer" target="_blank">the docs</a>.</p>
+<h3 id="modules">Modules</h3>
+<table>
+<thead>
+<tr>
+<th id="**module**" style="text-align:left;"><strong>Module</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>shell</code></td>
+<td style="text-align:left;">How you execute shell commands and scripts</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>apt</code></td>
+<td style="text-align:left;">Manage apt packages</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>npm</code></td>
+<td style="text-align:left;">Manage <code>nodejs</code> packages</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>file</code></td>
+<td style="text-align:left;">Set attributes of files and directories as well as remove</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>git</code></td>
+<td style="text-align:left;">Push and pull code and files from git</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>script</code></td>
+<td style="text-align:left;">Execute a shell script</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>copy</code></td>
+<td style="text-align:left;">Copy files</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>unarchive</code></td>
+<td style="text-align:left;">Unpack an archive file</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>systemd</code></td>
+<td style="text-align:left;">Manage services</td>
+</tr>
+</tbody>
+</table>
+<h4 id="further-reading">Further Reading:</h4>
+<ul>
+<li>Read more about how to target different hosts in <a href="https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html" rel="noopener noreferrer" target="_blank">the docs</a>.</li>
+<li>Read more about how to build an inventory file in <a href="https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html" rel="noopener noreferrer" target="_blank">the docs</a>.</li>
+<li>You can see a list of all the modules in <a href="https://docs.ansible.com/ansible/latest/modules/list_of_all_modules.html" rel="noopener noreferrer" target="_blank">the Ansible docs</a>.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Reflect 1</p></h3>
+  <div>
+  <p><strong>QUESTION: </strong></p>
+  <p>Think outside the box. What are some non-deployment-related things you could do with a tool like Ansible? (washing dishes is already taken)</p>
+
+  <details>
+    <summary><strong>ANSWER:</strong></summary>
+    <p><p>Right, the sky is the limit. Configuration Management Tools can do just about anything. On the other hand, it's really useful to know where tools like this should begin and end their jobs. Now that you have that "out of the box" stuff out of your system, it's time to get back in the box and be sensible. </p></p>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Reflect 2</p></h3>
+  <div>
+  <p><strong>QUESTION: </strong></p>
+  <p>Tell about the difference between a Playbook and an inventory file.</p>
+
+  <details>
+    <summary><strong>ANSWER:</strong></summary>
+    <p><p>A Playbook is a set of instructions that Ansible uses to configure a machine. An inventory file is the list of machines on which to perform those instructions.</p></p>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. Exercise Define Ansible Playbook.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Design an Ansible Playbook')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

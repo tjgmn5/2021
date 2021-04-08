@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.040 --> 00:00:05.085
+Congratulations on creating your first CI job.
+
+00:00:05.085 --> 00:00:10.365
+As you can see, the job was only a conduit through which you can carry out commands.
+
+00:00:10.365 --> 00:00:14.205
+Can you already see how you can begin to automate tasks?
+
+00:00:14.205 --> 00:00:18.555
+Let's take a look at my code and see how yours differs from mine.
+
+00:00:18.555 --> 00:00:23.190
+Hey, you caught me still modifying my configuration file.
+
+00:00:23.190 --> 00:00:24.390
+You've probably already done this.
+
+00:00:24.390 --> 00:00:28.635
+But since I started with the boilerplate code from CircleCI,
+
+00:00:28.635 --> 00:00:32.640
+it had this orbs section in it and it was doing
+
+00:00:32.640 --> 00:00:36.720
+the work of the hello world and the exercise was to add our own hello world.
+
+00:00:36.720 --> 00:00:42.450
+So I'm actually going to remove this orbs section and also this CircleCI added for us.
+
+00:00:42.450 --> 00:00:45.475
+Now we have basically what you should already have.
+
+00:00:45.475 --> 00:00:49.760
+We've got a jobs section where we have print hello.
+
+00:00:49.760 --> 00:00:53.030
+We've got a docker image for each of our steps,
+
+00:00:53.030 --> 00:00:58.030
+we're using CircleCI node 13 for both of our jobs.
+
+00:00:58.030 --> 00:01:02.120
+We have one step and each job where it's just echoing something,
+
+00:01:02.120 --> 00:01:04.460
+either hello or world.
+
+00:01:04.460 --> 00:01:06.680
+Down here in our workflow section,
+
+00:01:06.680 --> 00:01:09.985
+we have a very simple workflow it's called welcome.
+
+00:01:09.985 --> 00:01:12.045
+It has two jobs.
+
+00:01:12.045 --> 00:01:13.160
+We've got print hello,
+
+00:01:13.160 --> 00:01:14.795
+which is going to run first,
+
+00:01:14.795 --> 00:01:18.080
+and then we're going to run print world after
+
+00:01:18.080 --> 00:01:22.150
+print hello finishes because here we have our requires.
+
+00:01:22.150 --> 00:01:26.790
+I'll let the copy of the code below the video if you'd like to check it out some more.
+

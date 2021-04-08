@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.340 --> 00:00:06.030
+We've got one more step in the process of building confidence.
+
+00:00:06.030 --> 00:00:10.965
+When, not if, but when you have a bad deployment,
+
+00:00:10.965 --> 00:00:14.310
+you need to be able to restore production quickly.
+
+00:00:14.310 --> 00:00:18.600
+The speed at which you can respond to an incident will have more impact
+
+00:00:18.600 --> 00:00:22.995
+on the confidence than whether or not the incident happened in the first place.
+
+00:00:22.995 --> 00:00:25.365
+For normal blue-green deployments,
+
+00:00:25.365 --> 00:00:30.705
+the rollback is simply switching the traffic back to the old production version.
+
+00:00:30.705 --> 00:00:33.450
+This might be the route you take in this job,
+
+00:00:33.450 --> 00:00:37.110
+or maybe you haven't promoted the green version at all and
+
+00:00:37.110 --> 00:00:40.825
+all you have to do is destroy the green instances and infrastructure.
+
+00:00:40.825 --> 00:00:43.880
+In this case, production had no downtime at all and
+
+00:00:43.880 --> 00:00:47.155
+rollback is more about keeping costs low,
+
+00:00:47.155 --> 00:00:50.060
+or maybe you're using another deployment strategy and
+
+00:00:50.060 --> 00:00:53.075
+rollback is a bit more complicated or time consuming.
+
+00:00:53.075 --> 00:00:55.910
+In this case, every second counts.
+
+00:00:55.910 --> 00:00:59.890
+So it's critical that the rollback is automated and optimized.
+
+00:00:59.890 --> 00:01:02.865
+Let's take a look at the second scenario,
+
+00:01:02.865 --> 00:01:07.700
+where our smoke test failed and now we want to destroy our green version,
+
+00:01:07.700 --> 00:01:12.180
+the one that almost became the new production version.
+

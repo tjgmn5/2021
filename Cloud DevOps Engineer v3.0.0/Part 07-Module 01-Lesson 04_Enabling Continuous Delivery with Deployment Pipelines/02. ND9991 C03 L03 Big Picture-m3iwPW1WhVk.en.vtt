@@ -1,0 +1,136 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.170 --> 00:00:06.540
+Continuous deployment can be an incredible tool in your arsenal.
+
+00:00:06.540 --> 00:00:08.725
+Not only does CD save time,
+
+00:00:08.725 --> 00:00:14.785
+but it opened some unexpected doors that have a ripple effect in the entire organization.
+
+00:00:14.785 --> 00:00:19.770
+Let's take a look at where CD fits into the overall software development lifecycle.
+
+00:00:19.770 --> 00:00:22.750
+Remember, continuous integration is all about code,
+
+00:00:22.750 --> 00:00:24.515
+and building an artifact.
+
+00:00:24.515 --> 00:00:26.770
+That artifact might be a zip file,
+
+00:00:26.770 --> 00:00:29.215
+a docker image, or an executable.
+
+00:00:29.215 --> 00:00:33.670
+But an artifact by itself can't really generate value.
+
+00:00:33.670 --> 00:00:36.050
+It needs to be deployed first.
+
+00:00:36.050 --> 00:00:39.940
+So that's where continuous deployment or CD comes in.
+
+00:00:39.940 --> 00:00:46.660
+CD is all about deploying that artifact so that it can be used and can generate value.
+
+00:00:46.660 --> 00:00:49.155
+The goal is to reach production.
+
+00:00:49.155 --> 00:00:50.750
+On the road to production,
+
+00:00:50.750 --> 00:00:55.675
+CD can do many things to enhance and protect the value of the artifact.
+
+00:00:55.675 --> 00:00:59.615
+CD can build up the infrastructure needed to host the artifact.
+
+00:00:59.615 --> 00:01:05.165
+It can provision servers to make sure they have what they need to support the artifact.
+
+00:01:05.165 --> 00:01:08.960
+It can copy files around to where they need to go and contest
+
+00:01:08.960 --> 00:01:13.015
+various aspects of the deployment in case anything went wrong.
+
+00:01:13.015 --> 00:01:15.130
+When CD is finally finished,
+
+00:01:15.130 --> 00:01:18.095
+and the artifact is available to the world to use,
+
+00:01:18.095 --> 00:01:23.740
+we can truly say that CD has helped us turn code into cash.
+
+00:01:23.740 --> 00:01:29.255
+As you can imagine, all this can potentially take just a few minutes,
+
+00:01:29.255 --> 00:01:33.280
+something that would have taken an ops team a few hours to accomplish.
+
+00:01:33.280 --> 00:01:36.650
+Because of that speed and the low effort required,
+
+00:01:36.650 --> 00:01:40.505
+it opens up new doors to more frequent deployments.
+
+00:01:40.505 --> 00:01:43.115
+More frequent deployments has a way of affecting
+
+00:01:43.115 --> 00:01:46.910
+other processes like story slicing, feature grooming.
+
+00:01:46.910 --> 00:01:50.780
+Just the mere presence of a well-designed CD system in
+
+00:01:50.780 --> 00:01:56.305
+your deployment process can have transformative effects on the entire company.
+
+00:01:56.305 --> 00:02:00.290
+Now that I've built up CD and put it on such a high pedestal,
+
+00:02:00.290 --> 00:02:01.835
+it's good to step back,
+
+00:02:01.835 --> 00:02:03.575
+consider the big picture,
+
+00:02:03.575 --> 00:02:10.090
+and ask yourself some healthy questions like what will I lose when I add CD?
+
+00:02:10.090 --> 00:02:13.460
+The ability to tinker with servers manually.
+
+00:02:13.460 --> 00:02:17.210
+The opaque wall of secrecy around one devs way of
+
+00:02:17.210 --> 00:02:22.150
+deploying or free pizza from the deployment all-nighters.
+
+00:02:22.150 --> 00:02:26.285
+Another question is, what will I gain when I have CD?
+
+00:02:26.285 --> 00:02:30.590
+Well automated deployments to QA, staging, and prod,
+
+00:02:30.590 --> 00:02:33.214
+more time to develop features,
+
+00:02:33.214 --> 00:02:36.365
+generate more confidence among stakeholders.
+
+00:02:36.365 --> 00:02:39.410
+Ha, it looks like the list of things we're losing with
+
+00:02:39.410 --> 00:02:42.770
+CD are things I might not mind losing after all.
+
+00:02:42.770 --> 00:02:47.429
+The things I'm gaining would really enhance my life as a developer.
+

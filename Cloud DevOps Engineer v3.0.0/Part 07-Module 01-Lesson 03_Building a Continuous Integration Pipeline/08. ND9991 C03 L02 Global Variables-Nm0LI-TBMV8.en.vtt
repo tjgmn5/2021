@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.100 --> 00:00:06.840
+It's useful to have access to a global values from time to time for using your jobs.
+
+00:00:06.840 --> 00:00:10.710
+Sometimes these global values are set by you or your organization,
+
+00:00:10.710 --> 00:00:13.860
+other times they're built into the CI/CD tool.
+
+00:00:13.860 --> 00:00:19.635
+CircleCI has a handful of values called pipeline values that might come in handy.
+
+00:00:19.635 --> 00:00:23.835
+You can use them almost anywhere in your jobs with a simple syntax.
+
+00:00:23.835 --> 00:00:25.395
+Let's take a quick look.
+
+00:00:25.395 --> 00:00:27.315
+What I'm showing you here is
+
+00:00:27.315 --> 00:00:32.555
+CircleCI's wonderful documentation and the section on pipeline values.
+
+00:00:32.555 --> 00:00:34.670
+Now you could get to this documentation very easily.
+
+00:00:34.670 --> 00:00:36.920
+I left you a link down below the video,
+
+00:00:36.920 --> 00:00:40.175
+but let's take a look at a few of the values.
+
+00:00:40.175 --> 00:00:42.210
+Here, we've got a pipeline.id.
+
+00:00:42.210 --> 00:00:47.795
+This is extremely useful when we want to name things uniquely,
+
+00:00:47.795 --> 00:00:49.745
+but based on the pipeline.
+
+00:00:49.745 --> 00:00:53.080
+So that we can share them sometimes between jobs.
+
+00:00:53.080 --> 00:00:55.985
+Each job may not be able to communicate with one another,
+
+00:00:55.985 --> 00:01:00.710
+but we can at least have some common ground with the pipeline.id.
+
+00:01:00.710 --> 00:01:03.305
+We also have a pipeline.number,
+
+00:01:03.305 --> 00:01:06.290
+which is just an auto incremented number that
+
+00:01:06.290 --> 00:01:10.830
+is getting bigger and bigger for every build that we run.
+
+00:01:11.110 --> 00:01:15.950
+We also are able to key off of different things like the git URL,
+
+00:01:15.950 --> 00:01:19.294
+the project type, the git tag, and the branch.
+
+00:01:19.294 --> 00:01:23.210
+We're able to include these values in our code,
+
+00:01:23.210 --> 00:01:25.990
+in our shell scripts, for instance.
+
+00:01:25.990 --> 00:01:30.920
+Here's an example job where we have an environment variable.
+
+00:01:30.920 --> 00:01:35.735
+We're trying to build up an environment variable called CIRCLE_COMPARE_URL.
+
+00:01:35.735 --> 00:01:41.450
+We reference a pipeline value by wrapping it in these double brackets,
+
+00:01:41.450 --> 00:01:45.940
+and then we just say pipeline.project.git_url.
+
+00:01:45.940 --> 00:01:50.090
+This is building up a URL so that we can actually do maybe
+
+00:01:50.090 --> 00:01:54.925
+a diff on some files on a git revision.
+
+00:01:54.925 --> 00:01:59.600
+It's pulling in the different git revision, the SHA tags.
+
+00:01:59.600 --> 00:02:02.840
+Here's the base revision and here's the revision.
+
+00:02:02.840 --> 00:02:06.680
+Also, we can echo things out to the console,
+
+00:02:06.680 --> 00:02:08.075
+this is a pipeline ID.
+
+00:02:08.075 --> 00:02:11.675
+Then we can use the pipeline value,
+
+00:02:11.675 --> 00:02:13.610
+which is just pipeline.id.
+
+00:02:13.610 --> 00:02:15.620
+So incredibly useful stuff.
+
+00:02:15.620 --> 00:02:20.449
+Now, pipeline values cannot be used outside of the job context.
+
+00:02:20.449 --> 00:02:25.590
+For example, you cannot use these in a shell script.
+

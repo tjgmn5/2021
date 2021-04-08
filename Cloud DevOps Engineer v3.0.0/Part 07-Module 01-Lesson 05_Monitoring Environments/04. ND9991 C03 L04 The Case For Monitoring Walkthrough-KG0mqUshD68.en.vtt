@@ -1,0 +1,148 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.430 --> 00:00:04.620
+Budgeting is important to any business,
+
+00:00:04.620 --> 00:00:09.585
+but it can be difficult with the black box of infrastructure costs.
+
+00:00:09.585 --> 00:00:12.780
+If you've ever had to prepare a budget for IT costs,
+
+00:00:12.780 --> 00:00:14.910
+you know how difficult it can be.
+
+00:00:14.910 --> 00:00:20.625
+Being honest, most of us secretly just add 20 percent to last year's budget and move on.
+
+00:00:20.625 --> 00:00:24.030
+But imagine you're putting your monitoring data to work for you.
+
+00:00:24.030 --> 00:00:26.240
+Using machine learning, you could train
+
+00:00:26.240 --> 00:00:29.600
+a model with your infrastructure usage and cost data.
+
+00:00:29.600 --> 00:00:32.840
+That model could provide you with some educated scenarios
+
+00:00:32.840 --> 00:00:36.319
+on your upcoming infrastructure costs based off of data,
+
+00:00:36.319 --> 00:00:38.630
+not just an arbitrary percentage.
+
+00:00:38.630 --> 00:00:42.500
+With this accuracy, IT budgeting can become
+
+00:00:42.500 --> 00:00:47.765
+a competitive advantage for your company instead of just an anchor that holds it back.
+
+00:00:47.765 --> 00:00:51.710
+We humans are intelligent and creative beings,
+
+00:00:51.710 --> 00:00:54.800
+and we use that intelligence and creativity to select
+
+00:00:54.800 --> 00:00:58.880
+the matrix to watch and alert on when there's an impending issue.
+
+00:00:58.880 --> 00:01:02.765
+By default, even the most experienced Cloud developer
+
+00:01:02.765 --> 00:01:06.900
+will keep an eye only on the matrix that he or she understands.
+
+00:01:06.900 --> 00:01:11.765
+However, there's quite a lot of other data that might be important.
+
+00:01:11.765 --> 00:01:16.840
+Who watches the data that we don't fully understand or view as worthy of our time?
+
+00:01:16.840 --> 00:01:21.040
+With machine learning, a model can be trained with the breadth of
+
+00:01:21.040 --> 00:01:23.470
+your monitoring data in order to surface
+
+00:01:23.470 --> 00:01:26.345
+new information that might have been overlooked otherwise.
+
+00:01:26.345 --> 00:01:28.630
+That information could lead to
+
+00:01:28.630 --> 00:01:33.910
+faster incident resolution or prevention of incidence altogether.
+
+00:01:33.910 --> 00:01:38.290
+Of course, it doesn't take an AI to tell us that e-commerce infrastructure
+
+00:01:38.290 --> 00:01:42.565
+needs an extra boost at the end of the year to cover holiday demands.
+
+00:01:42.565 --> 00:01:47.410
+But what about other temporary spikes that might happen throughout the year,
+
+00:01:47.410 --> 00:01:49.845
+month, week, or day.
+
+00:01:49.845 --> 00:01:53.360
+Truth be told, even the most experienced Cloud developers
+
+00:01:53.360 --> 00:01:55.385
+can't stay on top of all of that.
+
+00:01:55.385 --> 00:01:57.410
+On the other hand, with machine learning,
+
+00:01:57.410 --> 00:02:02.060
+a model could be trained with the last year or two of monitoring data that would
+
+00:02:02.060 --> 00:02:07.285
+result in predictions of many upcoming spikes with uncanny accuracy.
+
+00:02:07.285 --> 00:02:11.375
+This new data, coupled with automated infrastructure scaling,
+
+00:02:11.375 --> 00:02:14.450
+would result in extremely high availability
+
+00:02:14.450 --> 00:02:18.115
+and give your company a formidable advantage over the competition.
+
+00:02:18.115 --> 00:02:21.090
+There are so many possibilities.
+
+00:02:21.090 --> 00:02:22.670
+Are you convinced yet?
+
+00:02:22.670 --> 00:02:25.310
+Well, if you're interested in learning more about
+
+00:02:25.310 --> 00:02:30.145
+data science and gaining new capabilities to utilize your monitoring data,
+
+00:02:30.145 --> 00:02:32.530
+I highly recommend the data scientist,
+
+00:02:32.530 --> 00:02:34.835
+Nanodegree here at Udacity.
+
+00:02:34.835 --> 00:02:38.980
+I left a link for you below this video in case you want to check it out.
+
+00:02:38.980 --> 00:02:42.605
+Monitoring isn't important until it is.
+
+00:02:42.605 --> 00:02:45.935
+It's not interesting until it is.
+
+00:02:45.935 --> 00:02:50.180
+If you're still not convinced that you need to set up monitoring for your project,
+
+00:02:50.180 --> 00:02:53.340
+you'll just have to trust me, just do it.
+

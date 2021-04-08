@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.430 --> 00:00:07.365
+Before getting into some of the more practical building blocks of CI pipelines,
+
+00:00:07.365 --> 00:00:09.825
+I'd like to give you a tip that will help you
+
+00:00:09.825 --> 00:00:13.185
+design more maintainable and effective configurations.
+
+00:00:13.185 --> 00:00:15.630
+There's a principle in software engineering called
+
+00:00:15.630 --> 00:00:19.050
+single responsibility principle. You may have heard of it.
+
+00:00:19.050 --> 00:00:22.200
+The basic idea of single responsibility principle or
+
+00:00:22.200 --> 00:00:28.065
+SRP is that structure should have only one responsibility,
+
+00:00:28.065 --> 00:00:32.640
+and that that structure should be encapsulated or self-contained.
+
+00:00:32.640 --> 00:00:35.330
+CI may not have classes, modules,
+
+00:00:35.330 --> 00:00:37.640
+and functions like we do while programming,
+
+00:00:37.640 --> 00:00:40.895
+but we can still apply the spirit of the principle here.
+
+00:00:40.895 --> 00:00:45.070
+I've seen some pipelines that needed some SRP love for sure.
+
+00:00:45.070 --> 00:00:50.150
+How about a job named build that compiles, but also zips,
+
+00:00:50.150 --> 00:00:51.710
+creates a Docker container,
+
+00:00:51.710 --> 00:00:52.880
+uploads it to registry,
+
+00:00:52.880 --> 00:00:54.005
+kicks off a deployment,
+
+00:00:54.005 --> 00:00:57.185
+and has a rollback mixed in there somewhere?
+
+00:00:57.185 --> 00:01:01.745
+Trying to unpack and understand a job like that is really hard work.
+
+00:01:01.745 --> 00:01:05.420
+It's not impossible, it's just definitely harder than it should be.
+
+00:01:05.420 --> 00:01:09.485
+Now, if the same job were to be split up into smaller jobs,
+
+00:01:09.485 --> 00:01:11.465
+each adhering to SRP,
+
+00:01:11.465 --> 00:01:15.520
+then it's a much easier situation to understand and maintain.
+
+00:01:15.520 --> 00:01:18.620
+In summary, the principle tries to help engineers develop
+
+00:01:18.620 --> 00:01:21.650
+systems that are smaller, less tangled,
+
+00:01:21.650 --> 00:01:24.800
+easier to comprehend, and easier to maintain by limiting
+
+00:01:24.800 --> 00:01:29.155
+the responsibilities of each individual piece to just one.
+
+00:01:29.155 --> 00:01:34.850
+One way to move in this direction is by naming our jobs specifically and expressively.
+
+00:01:34.850 --> 00:01:37.470
+I'd like to state the goal somehow in the name.
+
+00:01:37.470 --> 00:01:39.905
+If the goal is to compile code,
+
+00:01:39.905 --> 00:01:42.885
+I might, for example, call the job compile.
+
+00:01:42.885 --> 00:01:45.880
+By giving specific goal oriented names,
+
+00:01:45.880 --> 00:01:50.130
+we're more likely to limit the responsibilities of our jobs.
+

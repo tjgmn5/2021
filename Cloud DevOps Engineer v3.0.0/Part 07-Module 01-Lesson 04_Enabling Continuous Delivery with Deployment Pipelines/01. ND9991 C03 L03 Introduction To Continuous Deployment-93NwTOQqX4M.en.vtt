@@ -1,0 +1,145 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.190 --> 00:00:05.264
+A few years ago, I was working on a large project
+
+00:00:05.264 --> 00:00:08.890
+for an international company making software for smart cars.
+
+00:00:08.890 --> 00:00:14.219
+The development team was doing amazing work and making really great progress.
+
+00:00:14.219 --> 00:00:17.250
+Very few bugs and rework items.
+
+00:00:17.250 --> 00:00:19.560
+From the development team's perspective,
+
+00:00:19.560 --> 00:00:23.085
+we thought the client was loving what we were doing, and why not?
+
+00:00:23.085 --> 00:00:25.755
+We were cranking this application out.
+
+00:00:25.755 --> 00:00:29.490
+But in meetings, we found that the client was not happy at all.
+
+00:00:29.490 --> 00:00:31.110
+The client said we were doing
+
+00:00:31.110 --> 00:00:34.770
+shoddy work and that his deadlines were constantly slipping.
+
+00:00:34.770 --> 00:00:39.585
+After some research, we found out that the deployments were getting messed up,
+
+00:00:39.585 --> 00:00:41.535
+which caused a lot of bugs.
+
+00:00:41.535 --> 00:00:45.710
+To be fair, the deployment process was really hairy.
+
+00:00:45.710 --> 00:00:50.290
+It took a team of OPS Engineers around four hours to deploy completely.
+
+00:00:50.290 --> 00:00:53.540
+They followed a very detailed deployment checklist
+
+00:00:53.540 --> 00:00:55.745
+and it really seemed on top of their game,
+
+00:00:55.745 --> 00:00:57.920
+very knowledgeable and skilled.
+
+00:00:57.920 --> 00:00:59.810
+But even with all of that,
+
+00:00:59.810 --> 00:01:03.190
+they didn't have what it took to deploy flawlessly.
+
+00:01:03.190 --> 00:01:06.180
+There was always something not quite right.
+
+00:01:06.180 --> 00:01:09.320
+We decided to all work together and add
+
+00:01:09.320 --> 00:01:13.430
+some deployment jobs to our already Stellar CI pipeline.
+
+00:01:13.430 --> 00:01:17.495
+We used Infrastructure as Code to create and control instances.
+
+00:01:17.495 --> 00:01:21.874
+We used configuration management tools to provision our virtual machines.
+
+00:01:21.874 --> 00:01:24.860
+We baked the entire deployment checklist into
+
+00:01:24.860 --> 00:01:29.375
+code and automated everything down to the Slack message at the end.
+
+00:01:29.375 --> 00:01:31.610
+After two or three deployments,
+
+00:01:31.610 --> 00:01:34.775
+we started noticing the client's demeanor change.
+
+00:01:34.775 --> 00:01:38.135
+He started showing more and more confidence in our team.
+
+00:01:38.135 --> 00:01:41.140
+In a short time, everybody was happy.
+
+00:01:41.140 --> 00:01:44.495
+We felt like we were a well oiled machine again.
+
+00:01:44.495 --> 00:01:50.605
+It doesn't matter how great your code is or how perfectly you pull off a daily stand up.
+
+00:01:50.605 --> 00:01:54.290
+If the client can't get value out of what you delivered,
+
+00:01:54.290 --> 00:01:57.155
+is as if you never delivered it in the first place.
+
+00:01:57.155 --> 00:02:00.700
+In this lesson, we're going to talk about continuous deployment,
+
+00:02:00.700 --> 00:02:04.720
+and how to whip your delivery system into shape with automation.
+
+00:02:04.720 --> 00:02:07.760
+We're going to get some understanding around
+
+00:02:07.760 --> 00:02:12.305
+configuration management tools so that you can be more tool agnostic.
+
+00:02:12.305 --> 00:02:14.990
+We're going to design an Ansible Playbook
+
+00:02:14.990 --> 00:02:18.110
+together so that you can do that more effectively on your own.
+
+00:02:18.110 --> 00:02:22.145
+We're going to learn to control remote machines with Play Books.
+
+00:02:22.145 --> 00:02:25.400
+We're going to build an ansible inventory file so that we can
+
+00:02:25.400 --> 00:02:28.600
+support our automation in CI/CD.
+
+00:02:28.600 --> 00:02:33.500
+We're going to build various deployment related jobs including infrastructure creation,
+
+00:02:33.500 --> 00:02:36.440
+provisioning, artifact delivery, smoke testing,
+
+00:02:36.440 --> 00:02:39.440
+rollbacks, and production promotion.
+
+00:02:39.440 --> 00:02:42.930
+Are you ready? Let's get moving.
+

@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.280 --> 00:00:03.480
+When a problem arises,
+
+00:00:03.480 --> 00:00:06.995
+we want to know about it so we can jump in and fix the problem.
+
+00:00:06.995 --> 00:00:10.350
+Our monitoring system should send out alerts with
+
+00:00:10.350 --> 00:00:14.025
+hints on what's going on with the server or device.
+
+00:00:14.025 --> 00:00:16.455
+With systems like Prometheus,
+
+00:00:16.455 --> 00:00:19.995
+we have a lot of channels of communication that we can use.
+
+00:00:19.995 --> 00:00:23.370
+We can send out alerts via e-mail, chat tool,
+
+00:00:23.370 --> 00:00:25.620
+desktop notifications, phone calls,
+
+00:00:25.620 --> 00:00:27.540
+and the list goes on.
+
+00:00:27.540 --> 00:00:30.465
+Before we get into how to set up alerts,
+
+00:00:30.465 --> 00:00:34.045
+let's talk briefly about how alerts can be misused.
+
+00:00:34.045 --> 00:00:38.740
+What happens when you've heard a constant beeping noise for several hours?
+
+00:00:38.740 --> 00:00:40.850
+You stop noticing it of course.
+
+00:00:40.850 --> 00:00:44.205
+This describes the process of desensitization.
+
+00:00:44.205 --> 00:00:48.125
+Did you know that that can happen with alerts from monitoring systems?
+
+00:00:48.125 --> 00:00:53.540
+It's such a common thing that there's even a term for it, alert fatigue.
+
+00:00:53.540 --> 00:00:57.770
+If a team is constantly bombarded with alerts that they don't need,
+
+00:00:57.770 --> 00:01:00.275
+they begin to ignore them.
+
+00:01:00.275 --> 00:01:03.580
+They've become desensitized to the alerts.
+
+00:01:03.580 --> 00:01:06.315
+They're suffering from alert fatigue.
+
+00:01:06.315 --> 00:01:08.114
+When an alert sounds,
+
+00:01:08.114 --> 00:01:10.065
+that actually is important,
+
+00:01:10.065 --> 00:01:14.355
+the team doesn't even notice it and their response time is delayed.
+
+00:01:14.355 --> 00:01:17.120
+What's the solution? Either send out
+
+00:01:17.120 --> 00:01:19.610
+only important alerts or give the team
+
+00:01:19.610 --> 00:01:22.735
+a way to filter out alerts that are not relevant to them.
+
+00:01:22.735 --> 00:01:24.990
+Whatever the solution you choose,
+
+00:01:24.990 --> 00:01:27.275
+if you want your alerts to mean something,
+
+00:01:27.275 --> 00:01:30.990
+make sure you avoid alert fatigue.
+

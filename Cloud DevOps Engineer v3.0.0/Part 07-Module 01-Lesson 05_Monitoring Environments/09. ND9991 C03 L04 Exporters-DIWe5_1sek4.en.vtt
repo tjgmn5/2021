@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.130 --> 00:00:06.450
+Prometheus is known as a pull system rather than a push system.
+
+00:00:06.450 --> 00:00:12.420
+That means, that it knows about the data sources and pulls in their time-series data.
+
+00:00:12.420 --> 00:00:14.325
+A push system, on the other hand,
+
+00:00:14.325 --> 00:00:18.570
+does not know anything about its data sources until they send something.
+
+00:00:18.570 --> 00:00:21.390
+I prefer push systems for the simple reason that
+
+00:00:21.390 --> 00:00:24.285
+it's easier to know when a data source goes down.
+
+00:00:24.285 --> 00:00:26.490
+However, most of the differences between
+
+00:00:26.490 --> 00:00:30.780
+push and pull systems are not really significant enough to worry about.
+
+00:00:30.780 --> 00:00:35.240
+Data is pulled from various data sources using light-weight agents called
+
+00:00:35.240 --> 00:00:40.375
+exporters that are installed on or attached to data sources themselves.
+
+00:00:40.375 --> 00:00:42.800
+Data is pulled or scraped,
+
+00:00:42.800 --> 00:00:46.174
+as they say, from exporters every few seconds.
+
+00:00:46.174 --> 00:00:48.035
+Exporters are not hard to build,
+
+00:00:48.035 --> 00:00:53.490
+but there are a lot of pre-build exporters available for most of the popular systems.
+

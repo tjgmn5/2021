@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.030 --> 00:00:06.000
+You made it. Let's take a look at my solution together to see
+
+00:00:06.000 --> 00:00:09.270
+if there are any differences between yours and mine.
+
+00:00:09.270 --> 00:00:11.340
+Here I have my main YAML,
+
+00:00:11.340 --> 00:00:15.060
+the playbook file, super short, super clean.
+
+00:00:15.060 --> 00:00:16.815
+I named it exercise.
+
+00:00:16.815 --> 00:00:20.000
+I want it to actually run on my local host,
+
+00:00:20.000 --> 00:00:26.730
+so I'm naming that directly without using an inventory file and I have a print role.
+
+00:00:26.730 --> 00:00:30.975
+If I go down into this print role tasks,
+
+00:00:30.975 --> 00:00:33.060
+I'll be able to see our role code,
+
+00:00:33.060 --> 00:00:36.335
+which only has two of these plays in it.
+
+00:00:36.335 --> 00:00:39.770
+One is to print the environment variable and the other is to
+
+00:00:39.770 --> 00:00:43.610
+actually expose it from the Ansible command line,
+
+00:00:43.610 --> 00:00:45.185
+which is usually invisible to us,
+
+00:00:45.185 --> 00:00:46.940
+to our standard out.
+
+00:00:46.940 --> 00:00:49.840
+That's pretty much it. How did you do?
+
+00:00:49.840 --> 00:00:54.230
+Using the same skills you just learned and put to use in this exercise,
+
+00:00:54.230 --> 00:00:59.510
+you can now control and configure countless machines reliably and consistently.
+
+00:00:59.510 --> 00:01:04.510
+You've now got an army of remote control SSH robots at your command
+
+00:01:04.510 --> 00:01:09.980
+and you know how to keep your playbook code clean and maintainable using roles.
+
+00:01:09.980 --> 00:01:11.525
+This is a big step.
+
+00:01:11.525 --> 00:01:14.129
+Let's move on to the next.
+

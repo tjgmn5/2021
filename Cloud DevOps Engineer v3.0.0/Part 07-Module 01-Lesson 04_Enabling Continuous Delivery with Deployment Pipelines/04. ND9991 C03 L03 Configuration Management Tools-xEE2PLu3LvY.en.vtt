@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.460 --> 00:00:05.980
+So far, we've talked a lot about automating builds and deployments.
+
+00:00:05.980 --> 00:00:09.580
+You've already learned about how to use infrastructure as code to stand
+
+00:00:09.580 --> 00:00:13.555
+up Cloud-based resources with tools like Cloud formation.
+
+00:00:13.555 --> 00:00:15.640
+So putting all these things together,
+
+00:00:15.640 --> 00:00:20.170
+you could potentially spin up 1,000 web servers in a few minutes and
+
+00:00:20.170 --> 00:00:25.310
+deploying new code to each with relative ease, that's pretty exciting.
+
+00:00:25.310 --> 00:00:28.210
+But what happens when the web servers you're setting up
+
+00:00:28.210 --> 00:00:30.565
+needs some specific internal configuration,
+
+00:00:30.565 --> 00:00:32.845
+like an operating system patch,
+
+00:00:32.845 --> 00:00:36.505
+an environment variable, or files in a specific folder.
+
+00:00:36.505 --> 00:00:39.970
+Are you going to SSH into each of the 1,000 web
+
+00:00:39.970 --> 00:00:43.555
+servers and perform the commands needed to solve those issues?
+
+00:00:43.555 --> 00:00:46.135
+You've gotten this far with automating all the things,
+
+00:00:46.135 --> 00:00:47.945
+why go manual now?
+
+00:00:47.945 --> 00:00:51.850
+There should be a tool that lets you send in 1,000 remote
+
+00:00:51.850 --> 00:00:55.915
+control robots through an SSH tunnel and configure things for you.
+
+00:00:55.915 --> 00:00:57.780
+Well, we're all in luck,
+
+00:00:57.780 --> 00:00:59.890
+there are actually a few choices out there.
+
+00:00:59.890 --> 00:01:02.635
+Actually, there are more than I have time to talk about,
+
+00:01:02.635 --> 00:01:06.200
+but I'll point out just the top three most popular.
+
+00:01:06.200 --> 00:01:10.260
+Chef has been around for several years and is still pretty popular,
+
+00:01:10.260 --> 00:01:13.510
+it depends on an agent to be installed on the instance though,
+
+00:01:13.510 --> 00:01:16.610
+which makes it harder to work with in my opinion.
+
+00:01:16.610 --> 00:01:21.355
+SaltStack is a pretty lightweight tool that helps provision servers.
+
+00:01:21.355 --> 00:01:23.680
+It keeps inventory on a central server,
+
+00:01:23.680 --> 00:01:26.825
+but it's easier to work with than Chef.
+
+00:01:26.825 --> 00:01:30.020
+There's Ansible. Ansible can do everything
+
+00:01:30.020 --> 00:01:33.455
+the other tools can do but without a central server or agents.
+
+00:01:33.455 --> 00:01:36.160
+It's also very fast and lightweight.
+
+00:01:36.160 --> 00:01:38.570
+Tools like these are great for everything that
+
+00:01:38.570 --> 00:01:42.140
+happens after the server instances are running.
+
+00:01:42.140 --> 00:01:46.175
+We're going to focus on Ansible since it's currently the most popular
+
+00:01:46.175 --> 00:01:50.440
+and because it doesn't require an agent to be running on the instance beforehand.
+
+00:01:50.440 --> 00:01:53.195
+Ansible connects to a remote machine using
+
+00:01:53.195 --> 00:01:57.340
+SSH and executes commands and scripts remotely.
+
+00:01:57.340 --> 00:02:00.590
+If you already have some scripts written to set up an instance,
+
+00:02:00.590 --> 00:02:03.800
+you can reuse those scripts easily with Ansible.
+
+00:02:03.800 --> 00:02:07.500
+After all, it's just about SSH and bash.
+

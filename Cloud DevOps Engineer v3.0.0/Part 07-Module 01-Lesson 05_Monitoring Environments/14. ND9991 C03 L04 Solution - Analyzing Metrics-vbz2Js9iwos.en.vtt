@@ -1,0 +1,187 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.160 --> 00:00:06.435
+Let's take a look at how we can use expression browser to experiment with
+
+00:00:06.435 --> 00:00:14.235
+the PromQL Query Language and form some expressions here in Prometheus,
+
+00:00:14.235 --> 00:00:17.235
+This is where my expression would go.
+
+00:00:17.235 --> 00:00:21.660
+I can actually insert different metrics that I have access to.
+
+00:00:21.660 --> 00:00:24.180
+As you add more and more exporters,
+
+00:00:24.180 --> 00:00:26.430
+this list will get larger and larger.
+
+00:00:26.430 --> 00:00:29.715
+Since Prometheus was written on top of the Go language,
+
+00:00:29.715 --> 00:00:33.330
+you're going to find a lot of Go-related metrics.
+
+00:00:33.330 --> 00:00:34.470
+But if you scroll down,
+
+00:00:34.470 --> 00:00:37.350
+you'll start to see some other things like network activity,
+
+00:00:37.350 --> 00:00:39.075
+anything that starts with node.
+
+00:00:39.075 --> 00:00:43.690
+Prefix is going to be something that comes from one of the node exporters.
+
+00:00:43.690 --> 00:00:46.165
+So you can see here there's disk_io,
+
+00:00:46.165 --> 00:00:48.580
+there is reads and writes.
+
+00:00:48.580 --> 00:00:51.600
+There are all things in here.
+
+00:00:51.600 --> 00:00:56.105
+What we're mostly interested in though is the node memory,
+
+00:00:56.105 --> 00:00:57.470
+so let's find that.
+
+00:00:57.470 --> 00:00:59.615
+Here's a whole section of memory.
+
+00:00:59.615 --> 00:01:04.975
+I want to show the available memory or the free memory on the machine.
+
+00:01:04.975 --> 00:01:10.265
+Let's find node memory and then maybe MemFree,
+
+00:01:10.265 --> 00:01:12.440
+There we go, MemFree and bytes.
+
+00:01:12.440 --> 00:01:15.275
+Let's use that and we'll execute that.
+
+00:01:15.275 --> 00:01:17.660
+It's showing us the console output,
+
+00:01:17.660 --> 00:01:21.810
+which is the current at this very moment.
+
+00:01:21.810 --> 00:01:23.670
+Output, and this is in bytes;
+
+00:01:23.670 --> 00:01:25.930
+the amount of memory that this instance has.
+
+00:01:25.930 --> 00:01:28.570
+But it's a lot more interesting to show this on a graph.
+
+00:01:28.570 --> 00:01:30.760
+When you show it on a graph, it shows it over time.
+
+00:01:30.760 --> 00:01:34.475
+So this is the last hour of memory usage.
+
+00:01:34.475 --> 00:01:39.180
+You can see here that we're looking at 600 megs.
+
+00:01:40.000 --> 00:01:44.430
+This instance right here just happens to be using a lot more than the others.
+
+00:01:44.430 --> 00:01:47.035
+It might be interesting to try to find out why.
+
+00:01:47.035 --> 00:01:50.610
+This instance is using half of that nearly,
+
+00:01:50.610 --> 00:01:52.730
+and then we've got several instances that are all
+
+00:01:52.730 --> 00:01:55.690
+using very little memory, which is good.
+
+00:01:55.690 --> 00:01:59.975
+So let's try to modify our expression just a little bit.
+
+00:01:59.975 --> 00:02:01.820
+This is a lot like algebra,
+
+00:02:01.820 --> 00:02:08.045
+so you can actually just type in a mathematical equation if you want to,
+
+00:02:08.045 --> 00:02:12.620
+you can insert other metrics and add them together,
+
+00:02:12.620 --> 00:02:15.485
+multiply them, divide them, all things.
+
+00:02:15.485 --> 00:02:18.785
+We're actually just going to divide by 1024,
+
+00:02:18.785 --> 00:02:20.540
+basically one million or one meg.
+
+00:02:20.540 --> 00:02:23.890
+We can see this number instead of 600M,
+
+00:02:23.890 --> 00:02:25.440
+we're going to get just 600,
+
+00:02:25.440 --> 00:02:28.245
+so 600 megs now instead of bytes.
+
+00:02:28.245 --> 00:02:31.100
+So just a very simple way to modify this number,
+
+00:02:31.100 --> 00:02:33.805
+but you can do all things with that.
+
+00:02:33.805 --> 00:02:38.420
+Remember that this Prometheus expression browser is not really meant to give
+
+00:02:38.420 --> 00:02:43.205
+you your primary way to monitor or to visualize your data,
+
+00:02:43.205 --> 00:02:45.410
+it's really just a way to experiment.
+
+00:02:45.410 --> 00:02:50.925
+So take this knowledge and this information into Grafana,
+
+00:02:50.925 --> 00:02:53.350
+and you'll have a lot more to play with.
+
+00:02:53.350 --> 00:02:58.175
+The metrics gathered from Prometheus don't mean a lot in their raw form, do they?
+
+00:02:58.175 --> 00:03:02.825
+They need visualizations to help us understand what we're looking at.
+
+00:03:02.825 --> 00:03:04.955
+It may not look like much now,
+
+00:03:04.955 --> 00:03:09.980
+but with Prometheus's robust query language and a nice stream of data coming in,
+
+00:03:09.980 --> 00:03:14.825
+you and all your data science buddies can geek out for hours.
+
+00:03:14.825 --> 00:03:18.665
+When we understand the metrics in our systems and
+
+00:03:18.665 --> 00:03:22.340
+how they relate to a server or application health,
+
+00:03:22.340 --> 00:03:25.820
+we can start predicting issues before they even arise,
+
+00:03:25.820 --> 00:03:28.560
+instead of just reacting to them.
+

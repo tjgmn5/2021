@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.400 --> 00:00:05.100
+Job failures are not only inevitable,
+
+00:00:05.100 --> 00:00:08.565
+they're good, it's the whole point of CI.
+
+00:00:08.565 --> 00:00:14.325
+Find that bad code as fast as possible and stop it from ruining all the good code.
+
+00:00:14.325 --> 00:00:19.155
+Sometimes it's enough for the bill to just fail and for the pipeline to stop.
+
+00:00:19.155 --> 00:00:22.290
+Other times, you want to do something as a result,
+
+00:00:22.290 --> 00:00:24.855
+maybe send a message or delete a file,
+
+00:00:24.855 --> 00:00:26.985
+maybe update an API, who knows.
+
+00:00:26.985 --> 00:00:28.650
+For whatever comes your way,
+
+00:00:28.650 --> 00:00:33.540
+now you have the ability to handle errors any way you see fit.
+
+00:00:33.540 --> 00:00:39.475
+Take a look here at the code that I have to test out this when on_fail condition.
+
+00:00:39.475 --> 00:00:43.500
+You can see here that I have a step that is returning a one,
+
+00:00:43.500 --> 00:00:48.770
+that is simulating an error message, anything non-zero.
+
+00:00:48.770 --> 00:00:52.910
+So then that means that this step is going to trigger and it's going
+
+00:00:52.910 --> 00:00:57.265
+to print out Hello Error to my console.
+
+00:00:57.265 --> 00:01:01.860
+It's happening all because of when on_fail.
+

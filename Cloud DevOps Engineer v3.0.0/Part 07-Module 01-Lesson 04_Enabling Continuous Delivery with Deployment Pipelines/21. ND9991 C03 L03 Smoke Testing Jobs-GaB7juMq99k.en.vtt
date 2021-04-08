@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.100 --> 00:00:06.480
+Now our new version or our green version is running and configured,
+
+00:00:06.480 --> 00:00:07.935
+and ready for action.
+
+00:00:07.935 --> 00:00:10.845
+But we're not quite ready to make the big switch yet.
+
+00:00:10.845 --> 00:00:13.860
+Remember, one of the things I said we need to pull off for
+
+00:00:13.860 --> 00:00:16.995
+true continuous delivery is confidence.
+
+00:00:16.995 --> 00:00:20.220
+Confidence on the part of the decision-makers in your company.
+
+00:00:20.220 --> 00:00:24.030
+Earlier, we said that one way to build confidence is to perform
+
+00:00:24.030 --> 00:00:29.035
+smoke tests or spot checks to make sure that things are still working in general.
+
+00:00:29.035 --> 00:00:32.990
+This might be hitting a couple of endpoints that query a database or
+
+00:00:32.990 --> 00:00:35.060
+a third party service just to make sure that things are
+
+00:00:35.060 --> 00:00:37.340
+still wired up, just as an example.
+
+00:00:37.340 --> 00:00:42.910
+A lot of smoke tests can be automated and still build a lot of confidence.
+
+00:00:42.910 --> 00:00:44.554
+Another word about confidence,
+
+00:00:44.554 --> 00:00:46.415
+this doesn't happen overnight.
+
+00:00:46.415 --> 00:00:48.785
+You got to build trust over time.
+
+00:00:48.785 --> 00:00:51.335
+As they say, trust is earned.
+
+00:00:51.335 --> 00:00:55.190
+One way to earn trust is to make sure that you're tracking metrics,
+
+00:00:55.190 --> 00:00:56.765
+like I mentioned before.
+
+00:00:56.765 --> 00:00:59.615
+With a history of success and data in hand,
+
+00:00:59.615 --> 00:01:04.765
+you'll be able to convince decision-makers to allow less and less manual steps.
+
+00:01:04.765 --> 00:01:09.760
+I hope you're starting to see a pattern unfold here with our CI/CD jobs.
+
+00:01:09.760 --> 00:01:11.900
+They all have something in common.
+
+00:01:11.900 --> 00:01:14.940
+A Docker image where the job will run,
+
+00:01:14.940 --> 00:01:16.875
+SSH keys if needed,
+
+00:01:16.875 --> 00:01:18.765
+some lines of shell script,
+
+00:01:18.765 --> 00:01:21.430
+and a place in the order of the workflow.
+
+00:01:21.430 --> 00:01:24.845
+If you were to build a job that runs some smoke tests,
+
+00:01:24.845 --> 00:01:28.140
+what would you need to include in that job code?
+

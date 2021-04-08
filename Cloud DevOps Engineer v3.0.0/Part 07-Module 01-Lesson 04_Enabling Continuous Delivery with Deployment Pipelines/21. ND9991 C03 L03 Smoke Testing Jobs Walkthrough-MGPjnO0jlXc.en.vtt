@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.410 --> 00:00:05.485
+One very common task when smoke testing is
+
+00:00:05.485 --> 00:00:08.760
+detecting if a website is responding to requests or not.
+
+00:00:08.760 --> 00:00:12.145
+If the production candidate is not responding to requests,
+
+00:00:12.145 --> 00:00:14.320
+we want that pipeline to stop.
+
+00:00:14.320 --> 00:00:17.740
+Remember, we want to fail as soon as possible.
+
+00:00:17.740 --> 00:00:23.570
+You can use a simple command like this one to see if a website is responding to requests.
+
+00:00:23.570 --> 00:00:26.730
+Here we're just curling Google.
+
+00:00:26.730 --> 00:00:29.530
+This command will fail if the website doesn't respond,
+
+00:00:29.530 --> 00:00:32.450
+but will show the contents if it does respond.
+
+00:00:32.450 --> 00:00:35.170
+You can put that command in a bash conditional
+
+00:00:35.170 --> 00:00:38.710
+structure to return or do something like this.
+
+00:00:38.710 --> 00:00:41.815
+If curl works on Google,
+
+00:00:41.815 --> 00:00:44.225
+then echo it worked.
+
+00:00:44.225 --> 00:00:47.945
+If Google's down for some reason, it failed.
+
+00:00:47.945 --> 00:00:50.405
+Let's actually try this in a terminal.
+
+00:00:50.405 --> 00:00:55.450
+I'm going to paste in our if structure and run it,
+
+00:00:55.450 --> 00:01:00.105
+and it returns our contents and it even says it worked at the end.
+
+00:01:00.105 --> 00:01:05.810
+But let's try it where we mess up that URL for a site that doesn't respond.
+
+00:01:05.810 --> 00:01:10.325
+You can see here I'm using google333.com.
+
+00:01:10.325 --> 00:01:18.915
+Let's see what happens. It failed because there is no google333.com.
+
+00:01:18.915 --> 00:01:25.560
+Of course, all you need to do to automate this smoke test is just to wrap it in a CD job.
+

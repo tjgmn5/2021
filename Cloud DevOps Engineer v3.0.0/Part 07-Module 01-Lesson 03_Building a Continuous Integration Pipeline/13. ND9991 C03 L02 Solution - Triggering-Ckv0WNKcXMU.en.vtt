@@ -1,0 +1,124 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.130 --> 00:00:04.800
+You've just taken the first step into CI.
+
+00:00:04.800 --> 00:00:08.490
+Nothing would have been possible without that first Git commit.
+
+00:00:08.490 --> 00:00:12.735
+Thanks to that seemingly insignificant act of committing new code,
+
+00:00:12.735 --> 00:00:16.410
+your CI server is now aware of new changes.
+
+00:00:16.410 --> 00:00:19.830
+New changes means new possibilities to break.
+
+00:00:19.830 --> 00:00:23.100
+Now, we are ready to build, test, analyze,
+
+00:00:23.100 --> 00:00:25.470
+and anything else we want to do to the code,
+
+00:00:25.470 --> 00:00:28.650
+to see if those changes are friend or foe.
+
+00:00:28.650 --> 00:00:32.940
+By triggering CI so close to the introduction of these changes,
+
+00:00:32.940 --> 00:00:35.270
+we are shortening the feedback loop and
+
+00:00:35.270 --> 00:00:38.315
+reducing the time between introduction and repair,
+
+00:00:38.315 --> 00:00:41.630
+which translates to reduced costs for businesses bottom-line.
+
+00:00:41.630 --> 00:00:43.105
+You see what I did there?
+
+00:00:43.105 --> 00:00:45.585
+Git triggers reduce costs.
+
+00:00:45.585 --> 00:00:50.760
+Now, let's walk through how to complete this exercise. All right.
+
+00:00:50.760 --> 00:00:56.900
+So I have forked the example repository and now I have it in my own account.
+
+00:00:56.900 --> 00:01:03.135
+So now, I'm able to go over to CircleCI and actually set it up.
+
+00:01:03.135 --> 00:01:05.130
+I can see that it's, found it already,
+
+00:01:05.130 --> 00:01:09.355
+it's right here in the third position so I'm going to set this project up.
+
+00:01:09.355 --> 00:01:12.425
+It recognizes this as a node project,
+
+00:01:12.425 --> 00:01:14.120
+but I'm not too concerned about that
+
+00:01:14.120 --> 00:01:17.185
+because I'm going to be able to take this much farther than they're built-in.
+
+00:01:17.185 --> 00:01:19.850
+Besides, this project already has a configuration.
+
+00:01:19.850 --> 00:01:23.900
+So I'm just going to start building there and add manually,
+
+00:01:23.900 --> 00:01:27.575
+because I don't want CircleCI to add the configuration for me.
+
+00:01:27.575 --> 00:01:29.935
+Now I'll start building.
+
+00:01:29.935 --> 00:01:33.575
+So we should be able to see that
+
+00:01:33.575 --> 00:01:38.030
+the project is now here and I've been running this in the past of course,
+
+00:01:38.030 --> 00:01:40.645
+so you can see that these have failed in the past.
+
+00:01:40.645 --> 00:01:42.210
+But, we've just added it,
+
+00:01:42.210 --> 00:01:43.860
+we haven't actually run a build yet.
+
+00:01:43.860 --> 00:01:48.900
+I want to show how we can trigger this from a commit in Git.
+
+00:01:48.900 --> 00:01:52.560
+So let's go over here and actually make a change to our file here and
+
+00:01:52.560 --> 00:01:57.360
+I'm just going to add a hello world to the top of the ReadMe.
+
+00:01:59.620 --> 00:02:02.525
+This is going to say,
+
+00:02:02.525 --> 00:02:07.935
+adding hello world, and we'll commit that. All right.
+
+00:02:07.935 --> 00:02:10.430
+That has been committed, so we should be able to go over here and, yeah,
+
+00:02:10.430 --> 00:02:14.990
+we can see that CircleCI is running the build for us automatically.
+
+00:02:14.990 --> 00:02:18.800
+The contents of the build we're not too concerned with at this moment,
+
+00:02:18.800 --> 00:02:26.500
+but just the fact that Git was able to trigger a build in CircleCI is more than enough.
+

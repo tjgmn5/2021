@@ -1,0 +1,217 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.820 --> 00:00:07.660
+So now let's take a look at the anatomy of a job in our config file.
+
+00:00:07.660 --> 00:00:12.180
+Remember that a job is where we define the work that needs to be done.
+
+00:00:12.180 --> 00:00:16.515
+So let's take a look at the top level of our job definition.
+
+00:00:16.515 --> 00:00:21.060
+First of all, we're going to notice that we have a job name.
+
+00:00:21.060 --> 00:00:25.905
+So I can't stress this too much,
+
+00:00:25.905 --> 00:00:32.130
+that the names that we choose need to be expressive and helpful for future developers.
+
+00:00:32.130 --> 00:00:35.460
+Needs to describe the goal of what's going to happen here.
+
+00:00:35.460 --> 00:00:36.570
+So in this case,
+
+00:00:36.570 --> 00:00:41.675
+we know that this job is all about linting the front end.
+
+00:00:41.675 --> 00:00:44.630
+If you look at the actual script that's being run,
+
+00:00:44.630 --> 00:00:47.140
+you can see that's basically what's happening now,
+
+00:00:47.140 --> 00:00:51.485
+we can probably assume that build means linting as well,
+
+00:00:51.485 --> 00:00:54.695
+but it's changing into the directory of the front end.
+
+00:00:54.695 --> 00:00:58.855
+It's installing the MPM packages and it's running the build.
+
+00:00:58.855 --> 00:01:02.060
+We also have an environment section,
+
+00:01:02.060 --> 00:01:06.125
+where we can actually define environment variables from the job level.
+
+00:01:06.125 --> 00:01:10.700
+This is important if the script or the code that's running
+
+00:01:10.700 --> 00:01:15.585
+inside of your job actually needs some environment variable.
+
+00:01:15.585 --> 00:01:19.615
+So you can see here I've defined an environment variable called code,
+
+00:01:19.615 --> 00:01:22.600
+it's got a 123 as a value.
+
+00:01:22.600 --> 00:01:27.950
+So then here I've got an echo that's just referencing that environment variable.
+
+00:01:27.950 --> 00:01:30.545
+Now, when you're designing your jobs,
+
+00:01:30.545 --> 00:01:34.940
+you need to think about what Docker image you want to use each time.
+
+00:01:34.940 --> 00:01:38.105
+If you're like me, you've got a handful of favorites.
+
+00:01:38.105 --> 00:01:41.540
+Each Docker image comes preloaded with utilities
+
+00:01:41.540 --> 00:01:45.620
+and packages you might need for different situations.
+
+00:01:45.620 --> 00:01:52.505
+This Docker image on this job is using node version 13 as you can see.
+
+00:01:52.505 --> 00:01:56.450
+CircleCI has several Docker images that
+
+00:01:56.450 --> 00:02:00.375
+are prepackaged that work really well with their system.
+
+00:02:00.375 --> 00:02:07.450
+You can also use pretty much any Docker image that is available on the web, Docker Hub.
+
+00:02:07.450 --> 00:02:11.625
+So I'm going to select this,
+
+00:02:11.625 --> 00:02:15.060
+we should highlight the same occurrence and other places in my code,
+
+00:02:15.060 --> 00:02:19.610
+and let's just scroll down a little bit and see if we can see what
+
+00:02:19.610 --> 00:02:25.070
+other jobs are using the same image or what jobs use something different.
+
+00:02:25.070 --> 00:02:28.520
+So there's the same node 13.
+
+00:02:28.520 --> 00:02:33.635
+Node 13, this is a very popular image in this configuration.
+
+00:02:33.635 --> 00:02:36.590
+We get down here to the deploy infrastructure,
+
+00:02:36.590 --> 00:02:41.450
+and we can actually see that we're using Amazon AWS CLI,
+
+00:02:41.450 --> 00:02:42.575
+this is another image.
+
+00:02:42.575 --> 00:02:45.200
+This image just happens to come preloaded with
+
+00:02:45.200 --> 00:02:49.800
+the CLI tool and the different things that it needs like Python and PIP.
+
+00:02:49.800 --> 00:02:56.100
+We can also see in this job that we're using the branches configuration option.
+
+00:02:56.100 --> 00:03:03.050
+This allows us to say that this job should only be run on certain branches.
+
+00:03:03.050 --> 00:03:06.575
+So we can either include or exclude branches,
+
+00:03:06.575 --> 00:03:08.720
+we can use wildcards.
+
+00:03:08.720 --> 00:03:14.774
+So you can see here that this should only be run on master or by regular expression,
+
+00:03:14.774 --> 00:03:18.930
+any branch that starts with RC dash.
+
+00:03:18.930 --> 00:03:25.785
+Think of the steps in your job as a task list.
+
+00:03:25.785 --> 00:03:29.150
+Each step will perform some instructions and
+
+00:03:29.150 --> 00:03:32.720
+then move on to the next step until they've all been executed.
+
+00:03:32.720 --> 00:03:35.125
+Each step has a type.
+
+00:03:35.125 --> 00:03:37.040
+So we can see a few types here.
+
+00:03:37.040 --> 00:03:39.500
+This is a checkout step type.
+
+00:03:39.500 --> 00:03:41.240
+It's really just an alias.
+
+00:03:41.240 --> 00:03:43.670
+Behind the scenes, it's going to get and it's doing
+
+00:03:43.670 --> 00:03:47.605
+a checkout on the branch that we're using right now.
+
+00:03:47.605 --> 00:03:49.220
+Run, as you can imagine,
+
+00:03:49.220 --> 00:03:53.350
+is just going to run whatever I've got here as a shell script.
+
+00:03:53.350 --> 00:03:58.100
+We can see a persist to workspace step type that allows us
+
+00:03:58.100 --> 00:04:03.910
+to send a certain file or folder to a shared area.
+
+00:04:03.910 --> 00:04:09.259
+Here we can see another step type that's actually a command.
+
+00:04:09.259 --> 00:04:11.120
+If you remember, we have
+
+00:04:11.120 --> 00:04:16.475
+a destroy environment command at the top of our configuration file here,
+
+00:04:16.475 --> 00:04:20.510
+destroy environment, that takes in two parameters,
+
+00:04:20.510 --> 00:04:23.580
+workflow ID and event.
+
+00:04:31.880 --> 00:04:35.300
+As you go through this configuration file,
+
+00:04:35.300 --> 00:04:41.090
+you'll notice that all of the jobs pretty much have the same configuration,
+
+00:04:41.090 --> 00:04:43.805
+the same layout, the same design.
+
+00:04:43.805 --> 00:04:47.575
+It's pretty much every time a name,
+
+00:04:47.575 --> 00:04:51.255
+a Docker image, and some steps.
+
+00:04:51.255 --> 00:04:54.970
+Everything else is just extra.
+

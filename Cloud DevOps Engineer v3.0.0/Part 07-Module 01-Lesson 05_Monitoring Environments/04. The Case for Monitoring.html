@@ -1,0 +1,500 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The Case for Monitoring</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Monitoring Environments</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition About Monitoring.html">03. Intuition About Monitoring</a>
+    </li>
+    <li class="">
+      <a href="04. The Case for Monitoring.html">04. The Case for Monitoring</a>
+    </li>
+    <li class="">
+      <a href="05. Monitoring Tools.html">05. Monitoring Tools</a>
+    </li>
+    <li class="">
+      <a href="06. Set Up Prometheus.html">06. Set Up Prometheus</a>
+    </li>
+    <li class="">
+      <a href="07. Exercise Prometheus.html">07. Exercise: Prometheus</a>
+    </li>
+    <li class="">
+      <a href="08. Solution Prometheus.html">08. Solution: Prometheus</a>
+    </li>
+    <li class="">
+      <a href="09. Exporters.html">09. Exporters</a>
+    </li>
+    <li class="">
+      <a href="10. Exercise Exporters.html">10. Exercise: Exporters</a>
+    </li>
+    <li class="">
+      <a href="11. Solution Exporters.html">11. Solution: Exporters</a>
+    </li>
+    <li class="">
+      <a href="12. Analyzing Metrics.html">12. Analyzing Metrics</a>
+    </li>
+    <li class="">
+      <a href="13. Exercise Usage.html">13. Exercise: Usage</a>
+    </li>
+    <li class="">
+      <a href="14. Solution Usage.html">14. Solution: Usage</a>
+    </li>
+    <li class="">
+      <a href="15. Sending Alert Messages.html">15. Sending Alert Messages</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise Alerts.html">16. Exercise: Alerts</a>
+    </li>
+    <li class="">
+      <a href="17. Solution Alerts.html">17. Solution: Alerts</a>
+    </li>
+    <li class="">
+      <a href="18. Lesson Conclusion.html">18. Lesson Conclusion</a>
+    </li>
+    <li class="">
+      <a href="19. Course Recap.html">19. Course Recap</a>
+    </li>
+    <li class="">
+      <a href="20. Congratulations!.html">20. Congratulations!</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. The Case for Monitoring</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="the-case-for-monitoring">The Case for Monitoring</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L04 The Case For Monitoring</p></h3>
+  <video controls>
+  <source src="04. ND9991 C03 L04 The Case For Monitoring-rr3k9o_csuM.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="04. ND9991 C03 L04 The Case For Monitoring-rr3k9o_csuM.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="but-monitoring-isnt-exciting">"But Monitoring Isn't Exciting!"</h3>
+<p>In case you need convincing, I'm going to give you a few reasons why monitoring is not an optional piece of your cloud development strategy.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/001.png" alt="**It Helps To Find the Needle When You Have a (Metaphorical) Metal Detector**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>It Helps To Find the Needle When You Have a (Metaphorical) Metal Detector</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="availability">Availability</h3>
+<blockquote>
+  <p>Uptime or downtime often translates to dollars, one way or the other. Downtime will increase drastically without monitoring since you won't be watching the system manually, round the clock. This downtime will negatively affect revenue or could increase legal costs.</p>
+</blockquote>
+<h3 id="performance">Performance</h3>
+<blockquote>
+  <p>Company performance and image often hangs the reliability of its technology. If systems degrade when users are trying to consume it, their confidence in the system will also degrade, which might result in employee turn-over or loss of clients.</p>
+</blockquote>
+<h3 id="capacity">Capacity</h3>
+<blockquote>
+  <p>Company or product growth is (generally) a good thing, especially if technology can rise to the demands of its users. But, when infrastructure is not ready meet the needs of business on time, it can result in lost revenue or increased costs.</p>
+</blockquote>
+<h3 id="productivity">Productivity</h3>
+<blockquote>
+  <p>Development teams who spend time less troubleshooting tend to spend more time developing. However, without proper monitoring,  development team members will have no choice but to dive into time-consuming troubleshooting, affecting feature release plans and incurring opportunity costs.</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L04 The Case For Monitoring Walkthrough</p></h3>
+  <video controls>
+  <source src="04. ND9991 C03 L04 The Case For Monitoring Walkthrough-KG0mqUshD68.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="04. ND9991 C03 L04 The Case For Monitoring Walkthrough-KG0mqUshD68.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="reactive-vs-proactive">Reactive vs Proactive</h2>
+<p>Reactive monitoring is common practice because of its usefulness during a crisis. But, monitoring can have even more power when used proactively.</p>
+<h3 id="reactive-monitoring">Reactive Monitoring</h3>
+<ul>
+<li>Real time CPU, memory or disk space meters</li>
+<li>Current health status of any server or resource</li>
+<li>Application logs</li>
+<li>Operating System logs</li>
+</ul>
+<h3 id="proactive-monitoring">Proactive Monitoring</h3>
+<ul>
+<li>Forecast Infrastructure Costs</li>
+<li>Monitor the Unknowns</li>
+<li>Track Bugs to Their True Source</li>
+<li>Predict Seasonal Spikes and Trends</li>
+</ul>
+<h3 id="convinced-yet">Convinced yet?</h3>
+<p>If you're interested in learning more about Data Science and gain new capabilities to utilize your monitoring data, I highly recommend the <a href="https://www.udacity.com/course/data-scientist-nanodegree--nd025" rel="noopener noreferrer" target="_blank">Data Scientist Nanodegree</a>. </p>
+<p>Monitoring isn't important until it is. It's not interesting or exciting until it is. If you're still not convinced, you have to trust me. Just do it.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Easy Quiz</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>We can use  _________  combined with  _________  to predict things like <em>problems</em> and <em>costs</em>.</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1589638425983" name="1021681" id="a1589638425983">
+        <label for="a1589638425983"><p>metrics, dice</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1589638454626" name="1021681" id="a1589638454626">
+        <label for="a1589638454626"><p>alerts, outage dates</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1589638455218" name="1021681" id="a1589638455218">
+        <label for="a1589638455218"><p>metrics, machine learning</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1589638455798" name="1021681" id="a1589638455798">
+        <label for="a1589638455798"><p>alerts, calendars </p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    metrics, machine learning
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Hard Quiz</p></h3>
+  <div>
+  <p><strong>QUIZ QUESTION:</strong>: <p>Which scenarios are proactive or reactive?</p></p>
+  <p><strong>ANSWER CHOICES:</strong></p>
+  <button class="btn btn-primary"><p>Reactive</p></button>
+  <button class="btn btn-primary"><p>Reactive</p></button>
+  <button class="btn btn-primary"><p>Proactive</p></button>
+  <button class="btn btn-primary"><p>Proactive</p></button>
+  <button class="btn btn-primary"><p>Proactive</p></button>
+  <button class="btn btn-primary"><p>Reactive</p></button>
+
+  <br><br>
+
+  <table class="table">
+    <tr class="thead-dark table-hover">
+      <th>
+        <p>Scenario</p>
+      </th>
+      <th>
+        <p>Proactive/Reactive</p>
+      </th>
+    </tr>
+
+    <tr>
+      <td><p>Based on past metrics from database monitoring, adjust connection settings to reduce memory usage.</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>Watch real-time CPU usage and kill off some processes to reduce load.</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>Use prediction of server costs based on usage metrics to decide to start a new costly project or not. </p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>Get an alert of a network resource that just went to an unhealthy state. </p></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+
+    <table class="table">
+      <tr class="thead-dark table-hover">
+        <th>
+          <p>Scenario</p>
+        </th>
+        <th>
+          <p>Proactive/Reactive</p>
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Watch real-time CPU usage and kill off some processes to reduce load.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Reactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Get an alert of a network resource that just went to an unhealthy state. </p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Reactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Watch real-time CPU usage and kill off some processes to reduce load.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Reactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Get an alert of a network resource that just went to an unhealthy state. </p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Reactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Based on past metrics from database monitoring, adjust connection settings to reduce memory usage.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Proactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Use prediction of server costs based on usage metrics to decide to start a new costly project or not. </p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Proactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Based on past metrics from database monitoring, adjust connection settings to reduce memory usage.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Proactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Use prediction of server costs based on usage metrics to decide to start a new costly project or not. </p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Proactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Based on past metrics from database monitoring, adjust connection settings to reduce memory usage.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Proactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Use prediction of server costs based on usage metrics to decide to start a new costly project or not. </p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Proactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Watch real-time CPU usage and kill off some processes to reduce load.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Reactive</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Get an alert of a network resource that just went to an unhealthy state. </p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Reactive</p></button>
+        </td>
+      </tr>
+    </table>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. Monitoring Tools.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. The Case for Monitoring')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

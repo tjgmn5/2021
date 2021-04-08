@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.160 --> 00:00:04.320
+Sharing files between jobs is something we might
+
+00:00:04.320 --> 00:00:06.960
+take for granted as normal computer users.
+
+00:00:06.960 --> 00:00:09.510
+You save a file and a program and you expect to be
+
+00:00:09.510 --> 00:00:12.300
+able to open that same file in another program.
+
+00:00:12.300 --> 00:00:17.025
+But we have to think about these pipeline jobs as completely separate computers.
+
+00:00:17.025 --> 00:00:21.800
+We can think of cache or our workspace as a USB memory stick.
+
+00:00:21.800 --> 00:00:26.070
+Take a look at my code and see how close your solution was to mine.
+
+00:00:26.070 --> 00:00:28.920
+So here you can see that my job looks very similar
+
+00:00:28.920 --> 00:00:32.325
+to the previous jobs that we've had in these exercises.
+
+00:00:32.325 --> 00:00:37.065
+We have here the usual suspects like a Docker image and some steps.
+
+00:00:37.065 --> 00:00:41.045
+The main difference here is that we are
+
+00:00:41.045 --> 00:00:44.510
+here persisting something to the workspace, our output file,
+
+00:00:44.510 --> 00:00:46.435
+which was generated here,
+
+00:00:46.435 --> 00:00:49.220
+and we have attached to workspace,
+
+00:00:49.220 --> 00:00:50.750
+which is getting that file back out,
+
+00:00:50.750 --> 00:00:55.255
+which then we can just cat and display that output text.
+
+00:00:55.255 --> 00:01:00.275
+The main thing here that we need to make sure that we do is that we use the same route
+
+00:01:00.275 --> 00:01:05.545
+in this place and the at directive here.
+
+00:01:05.545 --> 00:01:11.435
+Once we do that, we should be able to assume that the file is there for us,
+
+00:01:11.435 --> 00:01:14.610
+just as if it had always been there.
+

@@ -1,0 +1,124 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.100 --> 00:00:06.750
+Several years ago, I had the pleasure of co-founding myneighborhood.com,
+
+00:00:06.750 --> 00:00:09.690
+which was a social network for neighborhoods.
+
+00:00:09.690 --> 00:00:11.580
+I was also the principal engineer.
+
+00:00:11.580 --> 00:00:15.180
+So you can imagine the embarrassment when I saw a random post on
+
+00:00:15.180 --> 00:00:19.965
+Facebook complaining that the site had been down for the entire weekend.
+
+00:00:19.965 --> 00:00:22.890
+We were a fast-pace startup in those days with lots of
+
+00:00:22.890 --> 00:00:25.785
+pressure to compete and push out new features.
+
+00:00:25.785 --> 00:00:27.180
+But we left out one of
+
+00:00:27.180 --> 00:00:31.650
+the most important components a production system could have, monitoring.
+
+00:00:31.650 --> 00:00:33.105
+If we had done it right,
+
+00:00:33.105 --> 00:00:36.430
+my team would have gotten an alert at the moment the site was down,
+
+00:00:36.430 --> 00:00:39.030
+or even better, we would have gotten some alerts with
+
+00:00:39.030 --> 00:00:42.145
+warning signs before it even went down in the first place.
+
+00:00:42.145 --> 00:00:44.560
+In the case of myneighborhood.com,
+
+00:00:44.560 --> 00:00:47.960
+it took months to regain confidence of our users.
+
+00:00:47.960 --> 00:00:51.670
+It was a lesson that I learned deeply and completely.
+
+00:00:51.670 --> 00:00:56.030
+My current company had a client a few years ago who was developing a tool to help
+
+00:00:56.030 --> 00:01:00.580
+facilitate an important process that only happened once a year.
+
+00:01:00.580 --> 00:01:04.025
+The application seemed to work from the user's perspective,
+
+00:01:04.025 --> 00:01:08.255
+but when the administrators viewed their very important data in Salesforce,
+
+00:01:08.255 --> 00:01:11.485
+they couldn't see certain extremely important fields.
+
+00:01:11.485 --> 00:01:16.205
+The developers looked around for the issue and code for way too long.
+
+00:01:16.205 --> 00:01:20.405
+The client got impatient and looked at the application logs himself.
+
+00:01:20.405 --> 00:01:23.675
+My client, a non-technical businessman,
+
+00:01:23.675 --> 00:01:28.785
+found the issue in five minutes. Lesson learned.
+
+00:01:28.785 --> 00:01:33.520
+Having plenty of log data does you no good if you don't use it.
+
+00:01:33.520 --> 00:01:37.670
+My goal for you in this lesson is to help you avoid situations like
+
+00:01:37.670 --> 00:01:42.095
+this and be a better Cloud developer than I was in those days.
+
+00:01:42.095 --> 00:01:44.510
+In this lesson, we will talk about
+
+00:01:44.510 --> 00:01:48.185
+the new capabilities monitoring gives us as Cloud developers,
+
+00:01:48.185 --> 00:01:51.640
+discuss some monitoring tools that are available on the market.
+
+00:01:51.640 --> 00:01:53.840
+We're going to talk about one of the monitoring tools,
+
+00:01:53.840 --> 00:01:55.150
+which is called Prometheus.
+
+00:01:55.150 --> 00:01:57.410
+That's the tool we're going to be focusing on.
+
+00:01:57.410 --> 00:02:01.780
+We're going to take some time and install and configure Prometheus,
+
+00:02:01.780 --> 00:02:06.790
+we'll talk about various data sources that you can add to Prometheus.
+
+00:02:06.790 --> 00:02:09.200
+We're going to discuss how to get started
+
+00:02:09.200 --> 00:02:11.810
+analyzing and monitoring the data that you have,
+
+00:02:11.810 --> 00:02:14.720
+and we'll learn about alerts and how to set them up.
+
+00:02:14.720 --> 00:02:18.150
+It's time to get started, so let's roll.
+

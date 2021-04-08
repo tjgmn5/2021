@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.370 --> 00:00:05.340
+Monitoring systems are like a three-legged stool.
+
+00:00:05.340 --> 00:00:08.250
+It's not very useful if you take one of the legs away.
+
+00:00:08.250 --> 00:00:13.185
+Each leg plays an important part in realizing the system's full value.
+
+00:00:13.185 --> 00:00:16.425
+The three legs are a data aggregator,
+
+00:00:16.425 --> 00:00:20.470
+a data visualizer, and some time series data.
+
+00:00:20.470 --> 00:00:26.810
+A data aggregator is a system that collects and group's data by type or data source.
+
+00:00:26.810 --> 00:00:30.350
+One way to think about a data aggregator is like a database
+
+00:00:30.350 --> 00:00:34.000
+with extra tooling to aid in data collection.
+
+00:00:34.000 --> 00:00:36.770
+Data visualizer takes copious amounts of
+
+00:00:36.770 --> 00:00:40.260
+seemingly unintelligible data from the data aggregator,
+
+00:00:40.260 --> 00:00:42.830
+and produces useful charts and graphs that help
+
+00:00:42.830 --> 00:00:46.015
+us understand what the data is trying to say.
+
+00:00:46.015 --> 00:00:52.070
+Time series data is made up of historical data points indexed in time order.
+
+00:00:52.070 --> 00:00:56.600
+Some examples include: blood-sugar levels checked at the top of every hour,
+
+00:00:56.600 --> 00:00:59.690
+daily closing value of Microsoft stock,
+
+00:00:59.690 --> 00:01:02.165
+monthly rainfall by city,
+
+00:01:02.165 --> 00:01:05.150
+available disk space by the minute.
+
+00:01:05.150 --> 00:01:08.555
+Another way I like to describe time series data is
+
+00:01:08.555 --> 00:01:12.260
+anything with a timestamp and at least 10 data points.
+
+00:01:12.260 --> 00:01:16.025
+Therefore, data collected from your monitoring system qualifies,
+
+00:01:16.025 --> 00:01:20.230
+as long as you're saving new data with a timestamp at regular intervals.
+
+00:01:20.230 --> 00:01:23.555
+Which time series data you collect is up to you.
+
+00:01:23.555 --> 00:01:28.410
+How you collect it will have something to do with the aggregator you choose.
+

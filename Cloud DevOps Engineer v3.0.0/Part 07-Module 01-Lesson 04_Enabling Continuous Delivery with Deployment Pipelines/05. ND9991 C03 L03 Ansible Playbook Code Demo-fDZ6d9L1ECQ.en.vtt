@@ -1,0 +1,187 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.400 --> 00:00:04.005
+Welcome to my code editor.
+
+00:00:04.005 --> 00:00:06.290
+This is our playbook that we're seeing right here.
+
+00:00:06.290 --> 00:00:07.710
+We can see in the folder structure,
+
+00:00:07.710 --> 00:00:11.325
+it's at the root, it's called main.yml.
+
+00:00:11.325 --> 00:00:14.730
+It's really simple, it only has a few lines of code.
+
+00:00:14.730 --> 00:00:17.174
+At the very top, we have hosts.
+
+00:00:17.174 --> 00:00:20.110
+I'll tell you in just a moment what that web refers to,
+
+00:00:20.110 --> 00:00:21.660
+but we're basically saying,
+
+00:00:21.660 --> 00:00:28.140
+perform this Ansible playbook on all machines that are designated web.
+
+00:00:28.140 --> 00:00:32.970
+Also, our user is root user of the machine that we want to use.
+
+00:00:32.970 --> 00:00:38.650
+So ec2-user is what we're using for our Amazon Linux instance.
+
+00:00:38.650 --> 00:00:43.525
+Become actually helps us to escalate privileges like pseudo.
+
+00:00:43.525 --> 00:00:47.750
+Then roles is a list of these encapsulated,
+
+00:00:47.750 --> 00:00:51.340
+more maintainable chunks of code that are in another place.
+
+00:00:51.340 --> 00:00:53.420
+So pay attention, here I've got web.
+
+00:00:53.420 --> 00:00:55.220
+Let's take a look at inventory.
+
+00:00:55.220 --> 00:00:57.980
+You remember before I created
+
+00:00:57.980 --> 00:01:01.870
+an inventory file or I added my host name to an inventory file.
+
+00:01:01.870 --> 00:01:06.065
+We have here, this is typical INI format.
+
+00:01:06.065 --> 00:01:08.240
+We have here a heading for web.
+
+00:01:08.240 --> 00:01:12.110
+That means that every host name or IP address that comes
+
+00:01:12.110 --> 00:01:16.150
+below this heading is going to be grouped into the web groups.
+
+00:01:16.150 --> 00:01:19.250
+If I have multiple host names or IP addresses here,
+
+00:01:19.250 --> 00:01:25.665
+it will actually run this Ansible playbook against all of them simultaneously.
+
+00:01:25.665 --> 00:01:27.845
+Also back in the playbook,
+
+00:01:27.845 --> 00:01:31.855
+you remember that I have a role here, it's called Prometheus.
+
+00:01:31.855 --> 00:01:35.690
+This word corresponds with a name of a folder.
+
+00:01:35.690 --> 00:01:38.300
+This is convention over configuration.
+
+00:01:38.300 --> 00:01:42.375
+We have a name of a folder that corresponds with the name of the role.
+
+00:01:42.375 --> 00:01:43.940
+If I go into that folder,
+
+00:01:43.940 --> 00:01:46.595
+I have two folders inside of that,
+
+00:01:46.595 --> 00:01:49.315
+I've got files and I've got tasks.
+
+00:01:49.315 --> 00:01:54.755
+My files has a Prometheus service and a Prometheus configuration yml file,
+
+00:01:54.755 --> 00:01:57.920
+which will get copied in to the server later on.
+
+00:01:57.920 --> 00:02:01.520
+Here's the actual guts of this role.
+
+00:02:01.520 --> 00:02:03.305
+Everything that's inside of the tasks,
+
+00:02:03.305 --> 00:02:07.370
+main.yml is the role of Prometheus.
+
+00:02:07.370 --> 00:02:11.120
+We can see here that it's updating the yum repository.
+
+00:02:11.120 --> 00:02:16.870
+It is adding a user or downloading a file, or extracting something.
+
+00:02:16.870 --> 00:02:19.350
+We're moving files around,
+
+00:02:19.350 --> 00:02:21.380
+we are going to move some more files around.
+
+00:02:21.380 --> 00:02:23.945
+We're preparing a database directory.
+
+00:02:23.945 --> 00:02:25.745
+The list goes on and on.
+
+00:02:25.745 --> 00:02:28.490
+All of these things are things that you would have to do manually,
+
+00:02:28.490 --> 00:02:32.030
+but the Ansible playbook is going to run them for us.
+
+00:02:32.030 --> 00:02:33.395
+At the very end,
+
+00:02:33.395 --> 00:02:36.410
+it's going to restart the Prometheus service so that
+
+00:02:36.410 --> 00:02:39.835
+it actually will run when the system is rebooted.
+
+00:02:39.835 --> 00:02:44.290
+That's the basic anatomy of a playbook with roles.
+
+00:02:44.290 --> 00:02:47.615
+You're also probably noticing in my code that we're not
+
+00:02:47.615 --> 00:02:51.050
+just calling shell scripts and executing bash commands.
+
+00:02:51.050 --> 00:02:56.060
+While it is possible just to use a bunch of shell commands to get the job done,
+
+00:02:56.060 --> 00:02:57.965
+Ansible offers these things called
+
+00:02:57.965 --> 00:03:02.060
+modules that provide more maintainable, cleaner shortcuts.
+
+00:03:02.060 --> 00:03:05.645
+Things like apt and mpm for installing packages,
+
+00:03:05.645 --> 00:03:07.790
+git for pushing and pulling,
+
+00:03:07.790 --> 00:03:10.640
+copy and unarchive to deal with files,
+
+00:03:10.640 --> 00:03:13.855
+and systemd for stopping and starting services.
+
+00:03:13.855 --> 00:03:17.000
+I included a list of several that I think are useful,
+
+00:03:17.000 --> 00:03:18.290
+down below the video.
+
+00:03:18.290 --> 00:03:21.810
+There's also a link to see the complete list.
+

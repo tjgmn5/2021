@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.280 --> 00:00:03.750
+Looking back in this lesson,
+
+00:00:03.750 --> 00:00:08.220
+we talked about the new capabilities monitoring gives us as cloud developers.
+
+00:00:08.220 --> 00:00:11.270
+We discussed some monitoring tools that are available.
+
+00:00:11.270 --> 00:00:12.930
+We talked about Prometheus,
+
+00:00:12.930 --> 00:00:15.555
+and we even installed and configured Prometheus.
+
+00:00:15.555 --> 00:00:20.880
+We talked about the various data source options and how to get that data into Prometheus.
+
+00:00:20.880 --> 00:00:25.575
+We discussed how to start analyzing and monitoring the data you have.
+
+00:00:25.575 --> 00:00:29.145
+Then we learned about alerts and how to set them up.
+
+00:00:29.145 --> 00:00:33.240
+I hope I was able to convince you of the necessity of the power of
+
+00:00:33.240 --> 00:00:35.550
+monitoring and that you feel the burden
+
+00:00:35.550 --> 00:00:38.185
+to implement monitoring and your next Cloud Project.
+
+00:00:38.185 --> 00:00:42.675
+Like I said before, it's not important until it is.
+
+00:00:42.675 --> 00:00:46.220
+Give your future self the gift of information,
+
+00:00:46.220 --> 00:00:49.320
+get that data stream flowing.
+

@@ -1,0 +1,290 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Reusable Job Code</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Building a Continuous Integration Pipeline</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Creating Pipelines.html">04. Creating Pipelines</a>
+    </li>
+    <li class="">
+      <a href="05. Creating Jobs.html">05. Creating Jobs</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Creating a Simple Workflow.html">06. Exercise: Creating a Simple Workflow</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Creating a Simple Workflow.html">07. Solution: Creating a Simple Workflow</a>
+    </li>
+    <li class="">
+      <a href="08. Environment Variables.html">08. Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="09. Exercise Environment Variables.html">09. Exercise: Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="10. Solution Environment Variables.html">10. Solution: Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="11. Triggering.html">11. Triggering</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Trigger Existing Workflow.html">12. Exercise: Trigger Existing Workflow</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Trigger Existing Workflow.html">13. Solution: Trigger Existing Workflow</a>
+    </li>
+    <li class="">
+      <a href="14. Sharing Information.html">14. Sharing Information</a>
+    </li>
+    <li class="">
+      <a href="15. Exercise Sharing Files.html">15. Exercise: Sharing Files</a>
+    </li>
+    <li class="">
+      <a href="16. Solution Sharing Files.html">16. Solution: Sharing Files</a>
+    </li>
+    <li class="">
+      <a href="17. Reusable Job Code.html">17. Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="18. Exercise Reusable Job Code.html">18. Exercise: Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="19. Solution Reusable Job Code.html">19. Solution: Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="20. Job Failures.html">20. Job Failures</a>
+    </li>
+    <li class="">
+      <a href="21. Exercise Job Failures.html">21. Exercise: Job Failures</a>
+    </li>
+    <li class="">
+      <a href="22. Solution Job Failures.html">22. Solution: Job Failures</a>
+    </li>
+    <li class="">
+      <a href="23. Create a CI Pipeline.html">23. Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="24. Exercise Create a CI Pipeline.html">24. Exercise: Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="25. Solution Create a CI Pipeline.html">25. Solution: Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="26. Lesson Conclusion.html">26. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">18. Exercise: Reusable Job Code</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="exercise-reusable-commands">Exercise: Reusable Commands</h2>
+<p>Create a job that uses a "command" that prints the pipelineId to the console.</p>
+<h3 id="instructions">Instructions:</h3>
+<ol>
+<li>Use the repository and Circle CI config file from previous exercises or create a new one.</li>
+<li>If you'd like, you can remove the jobs we added from previous exercises.</li>
+<li>Add a <a href="https://circleci.com/docs/2.0/configuration-reference/#commands-requires-version-21" rel="noopener noreferrer" target="_blank">command</a> section below the version number.</li>
+<li>Create a command named <code>print_pipeline_id</code> with a step that prints the Circle CI Workflow ID from its environment variable named <code>$CIRCLE_WORKFLOW_ID</code> to the console.</li>
+<li>Use the command in a job.</li>
+<li>Add the job to a workflow.</li>
+<li>Run the pipeline and verify the workflow ID is being printed to the console.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Create a Reusable Command</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="68177c13-5475-42f7-bd54-5a5209d639ec--0">
+        <label for="68177c13-5475-42f7-bd54-5a5209d639ec--0"><p>Create a Command.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="68177c13-5475-42f7-bd54-5a5209d639ec--1">
+        <label for="68177c13-5475-42f7-bd54-5a5209d639ec--1"><p>Call the Command From a Job.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="68177c13-5475-42f7-bd54-5a5209d639ec--2">
+        <label for="68177c13-5475-42f7-bd54-5a5209d639ec--2"><p>Define a Workflow.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="68177c13-5475-42f7-bd54-5a5209d639ec--3">
+        <label for="68177c13-5475-42f7-bd54-5a5209d639ec--3"><p>Verify It Works!</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Wow, now you can keep your pipeline configuration DRY and maintainable!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="19. Solution Reusable Job Code.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('18. Exercise: Reusable Job Code')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

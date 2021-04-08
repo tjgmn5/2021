@@ -1,0 +1,292 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.130 --> 00:00:03.660
+Knowing how to set up and operate
+
+00:00:03.660 --> 00:00:08.505
+a Continuous Integration server is a useful skill and we will practice those things.
+
+00:00:08.505 --> 00:00:11.040
+But I would do you a great injustice,
+
+00:00:11.040 --> 00:00:15.735
+if I made you think CI servers will automatically solve all of your problems.
+
+00:00:15.735 --> 00:00:18.165
+It's true that Continuous Integration has
+
+00:00:18.165 --> 00:00:22.095
+huge potential to help a development team work better together.
+
+00:00:22.095 --> 00:00:25.125
+But there are some nuances of Continuous Integration
+
+00:00:25.125 --> 00:00:28.440
+that an inexperienced Cloud developer might miss,
+
+00:00:28.440 --> 00:00:32.530
+but have huge ramifications if they are mishandled.
+
+00:00:32.530 --> 00:00:35.060
+So let's talk about some of the characteristics of
+
+00:00:35.060 --> 00:00:37.865
+a healthy continuous integration pipeline.
+
+00:00:37.865 --> 00:00:42.995
+Healthy CI Pipelines are the highest priority when the build is broken.
+
+00:00:42.995 --> 00:00:44.900
+For continuous integration to work,
+
+00:00:44.900 --> 00:00:50.500
+there has to be a small but significant cultural shift in the team that adopts it.
+
+00:00:50.500 --> 00:00:52.815
+When the build breaks in CI,
+
+00:00:52.815 --> 00:00:54.695
+getting the build to pass again,
+
+00:00:54.695 --> 00:00:57.605
+needs to be the team's top priority.
+
+00:00:57.605 --> 00:01:01.490
+This is because no new builds will be allowed to run
+
+00:01:01.490 --> 00:01:05.450
+until the failing build goes green or passes.
+
+00:01:05.450 --> 00:01:10.460
+In a factory, this is the equivalent of taking the entire production line down.
+
+00:01:10.460 --> 00:01:12.800
+Many teams adopt the mantra,
+
+00:01:12.800 --> 00:01:14.915
+if you broke it, you fix it.
+
+00:01:14.915 --> 00:01:17.870
+But if one person can't fix it quickly,
+
+00:01:17.870 --> 00:01:21.950
+it's worth it for the entire team to stop what they're doing,
+
+00:01:21.950 --> 00:01:26.605
+involve more minds and get the production line running again.
+
+00:01:26.605 --> 00:01:31.050
+Healthy CI Pipelines are trusted members of the team.
+
+00:01:31.050 --> 00:01:34.910
+I'd like to consider CI as a member of the development team,
+
+00:01:34.910 --> 00:01:38.980
+because it works hard on our source code just like the rest of the team does.
+
+00:01:38.980 --> 00:01:45.425
+But imagine if CI reported every unit test failure and botched merge to management.
+
+00:01:45.425 --> 00:01:48.230
+Imagine if CI went out of its way to
+
+00:01:48.230 --> 00:01:51.685
+embarrass the engineer who introduced the build error.
+
+00:01:51.685 --> 00:01:56.855
+Situations like this build an environment of blame and if we're not careful,
+
+00:01:56.855 --> 00:02:01.555
+CI can be ground zero for some really unhealthy attitudes.
+
+00:02:01.555 --> 00:02:03.225
+As a team member,
+
+00:02:03.225 --> 00:02:08.300
+CI should be held to the same cultural standards as everyone else on the team,
+
+00:02:08.300 --> 00:02:10.430
+including snitching and blame.
+
+00:02:10.430 --> 00:02:12.560
+If it were a human member of the team,
+
+00:02:12.560 --> 00:02:17.625
+those things would be dealt with or communicated with respect and professionalism.
+
+00:02:17.625 --> 00:02:20.565
+We should expect the same from CI.
+
+00:02:20.565 --> 00:02:26.255
+Healthy CI Pipelines have the same abilities as any other member of the team.
+
+00:02:26.255 --> 00:02:30.245
+Sometimes I work with teams who tell me they can't build locally.
+
+00:02:30.245 --> 00:02:32.750
+That it can only be built in CI,
+
+00:02:32.750 --> 00:02:38.510
+because it has some special key or configuration or superpower that no one else has.
+
+00:02:38.510 --> 00:02:45.490
+As a result, developers end up using CI as their local compiler and test runner.
+
+00:02:45.490 --> 00:02:47.210
+They make small changes,
+
+00:02:47.210 --> 00:02:51.935
+check them into code and wait for CI to say if the build broke or not.
+
+00:02:51.935 --> 00:02:56.650
+Can you imagine the time wasted on this incredibly long feedback loop?
+
+00:02:56.650 --> 00:03:02.290
+Can you imagine the expense from CI server resources needed to run each build?
+
+00:03:02.290 --> 00:03:08.480
+A healthy build is one that passes and fails equally on CI and locally.
+
+00:03:08.480 --> 00:03:10.730
+This requires that the CI server have
+
+00:03:10.730 --> 00:03:14.110
+exactly the same abilities as a development team member.
+
+00:03:14.110 --> 00:03:18.120
+No special access, hardware or magic.
+
+00:03:18.120 --> 00:03:22.215
+Healthy CI Pipelines enforce team quality rules.
+
+00:03:22.215 --> 00:03:25.400
+It is a beautiful thing when a team can come together
+
+00:03:25.400 --> 00:03:28.534
+and agree upon rules around code quality,
+
+00:03:28.534 --> 00:03:31.159
+code style, unit test coverage,
+
+00:03:31.159 --> 00:03:34.570
+static analysis, and acceptable levels of security.
+
+00:03:34.570 --> 00:03:40.145
+Introducing CI to a team can actually prompt those kinds of conversations.
+
+00:03:40.145 --> 00:03:42.335
+Once a team comes to agreement,
+
+00:03:42.335 --> 00:03:46.390
+the CI server should enforce those rules on every build.
+
+00:03:46.390 --> 00:03:49.379
+The healthiest teams and CI Pipelines
+
+00:03:49.379 --> 00:03:53.549
+actually allow the build to break when any rule is violated,
+
+00:03:53.549 --> 00:03:56.720
+just as if the code had failed to compile.
+
+00:03:56.720 --> 00:04:01.105
+Healthy CI Pipelines communicate useful information.
+
+00:04:01.105 --> 00:04:04.140
+Unhealthy CI Pipelines, on the other hand,
+
+00:04:04.140 --> 00:04:07.580
+fill up the teams email boxes and chat channels with useless,
+
+00:04:07.580 --> 00:04:12.305
+repetitive or irrelevant information about builds and actions.
+
+00:04:12.305 --> 00:04:16.280
+Too much chatter results in a lot fatigue and causes
+
+00:04:16.280 --> 00:04:21.185
+a situation where the team no longer cares about messages from the CI server.
+
+00:04:21.185 --> 00:04:23.180
+What if the build breaks?
+
+00:04:23.180 --> 00:04:25.870
+We need the team to see that message.
+
+00:04:25.870 --> 00:04:29.990
+The healthiest CI Pipelines communicate sparingly,
+
+00:04:29.990 --> 00:04:34.820
+only the information that is timely, relevant, and actionable.
+
+00:04:34.820 --> 00:04:39.365
+Healthy CI Pipelines are quick on their feet, so to speak.
+
+00:04:39.365 --> 00:04:43.970
+They provide feedback to the development team as quickly as possible,
+
+00:04:43.970 --> 00:04:48.235
+when there's a problem or they quickly move on to the next stage.
+
+00:04:48.235 --> 00:04:54.295
+These pipelines are designed to run the quickest and least expensive stages first.
+
+00:04:54.295 --> 00:05:01.700
+Shorter feedback loops, translate to lower-cost fixes and features faster to market.
+
+00:05:01.700 --> 00:05:05.980
+Healthy CI Pipelines don't require stacks of documentation.
+
+00:05:05.980 --> 00:05:09.865
+Have you ever had to troubleshoot a complex build system?
+
+00:05:09.865 --> 00:05:13.025
+Then you know how valuable documentation can be.
+
+00:05:13.025 --> 00:05:16.855
+On the other hand, the healthiest CI Pipelines I've seen,
+
+00:05:16.855 --> 00:05:19.550
+have barely needed any documentation at all.
+
+00:05:19.550 --> 00:05:22.715
+This is possible by following industry standards,
+
+00:05:22.715 --> 00:05:25.940
+instead of clever tricks, naming things,
+
+00:05:25.940 --> 00:05:29.660
+and expressive ways to give understanding at a glance and
+
+00:05:29.660 --> 00:05:33.820
+keeping jobs and stages small, clean and predictable.
+
+00:05:33.820 --> 00:05:37.865
+Healthy CI Pipelines are automated all the way to the end.
+
+00:05:37.865 --> 00:05:41.000
+There are many times when it's nearly impossible to automate
+
+00:05:41.000 --> 00:05:47.065
+the entire pipeline because of required stops along the way to a production delivery.
+
+00:05:47.065 --> 00:05:49.820
+But the more of your pipeline that you can automate,
+
+00:05:49.820 --> 00:05:52.235
+the healthier your pipeline will be.
+
+00:05:52.235 --> 00:05:57.785
+Automated steps are healthier than manual steps because they are better documented,
+
+00:05:57.785 --> 00:06:01.255
+more consistent, and more transparent.
+
+00:06:01.255 --> 00:06:05.000
+Even if it's an unattainable goal to be fully automated,
+
+00:06:05.000 --> 00:06:10.560
+it's still a good idea to shoot for the highest level of automation you can achieve.
+

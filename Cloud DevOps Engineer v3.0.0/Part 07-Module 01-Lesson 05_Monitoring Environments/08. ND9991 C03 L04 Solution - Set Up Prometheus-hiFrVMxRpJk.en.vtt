@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.160 --> 00:00:05.310
+You're now the proud owner of a Prometheus server.
+
+00:00:05.310 --> 00:00:07.950
+It may not look like much now, but just wait.
+
+00:00:07.950 --> 00:00:12.180
+Get some exporters installed and start flowing some metrics into Prometheus,
+
+00:00:12.180 --> 00:00:13.275
+and before you know it,
+
+00:00:13.275 --> 00:00:17.100
+you'll have access to a lot of really interesting data.
+
+00:00:17.100 --> 00:00:21.400
+This little powerhouse will shine away out of the darkest holes,
+
+00:00:21.400 --> 00:00:26.145
+but until then, it will happily gather data and wait for the day that it's needed.
+
+00:00:26.145 --> 00:00:28.770
+Now that you have a Prometheus server running,
+
+00:00:28.770 --> 00:00:31.780
+you're ready to take it to the next level.
+

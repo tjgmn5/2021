@@ -1,0 +1,208 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.700 --> 00:00:04.575
+When it's each jobs turn to execute,
+
+00:00:04.575 --> 00:00:10.230
+a fresh instance is booted up using the docker image that's defined in the job.
+
+00:00:10.230 --> 00:00:14.250
+This means by default that files in memory that are used
+
+00:00:14.250 --> 00:00:18.615
+during the job are completely gone after the job completes.
+
+00:00:18.615 --> 00:00:22.595
+Jobs cannot communicate directly with each other,
+
+00:00:22.595 --> 00:00:25.800
+they are not even aware that the other job exists,
+
+00:00:25.800 --> 00:00:29.310
+what came before or what is coming next.
+
+00:00:29.310 --> 00:00:35.225
+In this way, every job is isolated from the other jobs and their parent workflows.
+
+00:00:35.225 --> 00:00:40.105
+But sometimes we need jobs to have information from other jobs.
+
+00:00:40.105 --> 00:00:41.715
+To solve this problem,
+
+00:00:41.715 --> 00:00:44.085
+we have a few tools at our disposal.
+
+00:00:44.085 --> 00:00:46.825
+We can use cache, workspace,
+
+00:00:46.825 --> 00:00:49.550
+or third-party secret keeper tools
+
+00:00:49.550 --> 00:00:52.855
+to accomplish some inter-job communication and file-sharing.
+
+00:00:52.855 --> 00:00:56.090
+Let's talk about each one in a little bit more detail.
+
+00:00:56.090 --> 00:00:59.420
+CircleCI gives us an option to share folders and
+
+00:00:59.420 --> 00:01:03.040
+files between jobs using something they call cache.
+
+00:01:03.040 --> 00:01:07.040
+You can think of CircleCI's cache like a USB memory stick that you can
+
+00:01:07.040 --> 00:01:10.970
+plug in temporarily during a job and then remove it when you're done.
+
+00:01:10.970 --> 00:01:16.450
+The files stay on the USB even though the machine running the job was destroyed.
+
+00:01:16.450 --> 00:01:19.700
+In CircleCI, the cache option only remembers
+
+00:01:19.700 --> 00:01:22.675
+your files during the execution of the pipeline.
+
+00:01:22.675 --> 00:01:24.425
+After that, they're gone.
+
+00:01:24.425 --> 00:01:29.585
+Cache is great for saving files that might take time to download or process in each job,
+
+00:01:29.585 --> 00:01:33.050
+like npm packages in a NodeJS project.
+
+00:01:33.050 --> 00:01:35.645
+With cache, the key names are important
+
+00:01:35.645 --> 00:01:39.010
+because you need to be able to retrieve the files later on.
+
+00:01:39.010 --> 00:01:45.530
+CircleCI gives us a few ways to ensure cache keys are unique and easy to reference.
+
+00:01:45.530 --> 00:01:49.450
+I'll leave a table with some of these variables in the text below the video.
+
+00:01:49.450 --> 00:01:53.170
+You can also read more about them in the CircleCI documentation.
+
+00:01:53.170 --> 00:01:58.550
+Here we're looking at an example of how to save the contents of a folder to cache.
+
+00:01:58.550 --> 00:02:01.130
+It's forming the name of the key using
+
+00:02:01.130 --> 00:02:06.260
+a built-in function that inserts the checksum value of a file after the prefix,
+
+00:02:06.260 --> 00:02:09.440
+then we just specify the path to save.
+
+00:02:09.440 --> 00:02:13.555
+Next, imagine another job that needs that cached folder.
+
+00:02:13.555 --> 00:02:18.400
+We provide the key with the checksum and CircleCI provides the cached folder,
+
+00:02:18.400 --> 00:02:24.440
+it restores the files or folders we cached to the same location from whence they came.
+
+00:02:24.440 --> 00:02:27.800
+It's important to note that cache is immutable,
+
+00:02:27.800 --> 00:02:32.750
+so you won't be able to modify the value of a cache key after it's created.
+
+00:02:32.750 --> 00:02:38.770
+For example, you could save a folder of zip files with the key zips,
+
+00:02:38.770 --> 00:02:44.359
+but if you want to add a zip file to the cache using the same key zips,
+
+00:02:44.359 --> 00:02:46.540
+sorry, it won't work.
+
+00:02:46.540 --> 00:02:49.070
+CircleCI will not throw an error,
+
+00:02:49.070 --> 00:02:51.905
+but it also will not update the cache.
+
+00:02:51.905 --> 00:02:56.660
+I repeat, it will not throw an error and it will not update the cache,
+
+00:02:56.660 --> 00:02:59.815
+this can cause confusion, so be careful.
+
+00:02:59.815 --> 00:03:02.310
+How about the workspace?
+
+00:03:02.310 --> 00:03:05.060
+CircleCI's workspace is similar to
+
+00:03:05.060 --> 00:03:09.110
+the cache in that you can store files and folders from job to job.
+
+00:03:09.110 --> 00:03:13.025
+However, workspaces differ in that there's no key,
+
+00:03:13.025 --> 00:03:15.495
+only the folder or the filename.
+
+00:03:15.495 --> 00:03:17.800
+When you restore the workspace,
+
+00:03:17.800 --> 00:03:20.500
+you have equal access to all the files in
+
+00:03:20.500 --> 00:03:23.465
+the workspace without the need for a key to retrieve them.
+
+00:03:23.465 --> 00:03:27.925
+While cache lasts only until the end of a pipeline execution,
+
+00:03:27.925 --> 00:03:31.955
+workspace files stick around for 15 days.
+
+00:03:31.955 --> 00:03:35.020
+The workspace is mutable,
+
+00:03:35.020 --> 00:03:40.690
+meaning you can override a file or folder and the change will be persisted,
+
+00:03:40.690 --> 00:03:43.450
+and you can use globs.
+
+00:03:43.450 --> 00:03:46.630
+Take a look at the code for workspaces.
+
+00:03:46.630 --> 00:03:48.310
+We provide a root,
+
+00:03:48.310 --> 00:03:51.880
+which is somewhat of a virtual folder where we store the files,
+
+00:03:51.880 --> 00:03:55.450
+then we provide a list of files or folders we want to store.
+
+00:03:55.450 --> 00:03:57.765
+It's nice that we can use globs here,
+
+00:03:57.765 --> 00:04:00.580
+which makes it easy to select files recursively.
+
+00:04:00.580 --> 00:04:02.450
+When it's time to retrieve the files,
+
+00:04:02.450 --> 00:04:06.365
+we just attach the workspace and tell it which route to use,
+
+00:04:06.365 --> 00:04:10.710
+then we're able to use the files as if they were always there.
+

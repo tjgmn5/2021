@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.160 --> 00:00:03.510
+When you started this exercise,
+
+00:00:03.510 --> 00:00:06.305
+maybe you thought you would be doing more with Ansible,
+
+00:00:06.305 --> 00:00:08.465
+but the Ansible file is already written.
+
+00:00:08.465 --> 00:00:13.920
+Remember, jobs in CI/CD are just wrappers around the execution of tools.
+
+00:00:13.920 --> 00:00:17.670
+Take a look at my code here and see how close yours was to mine.
+
+00:00:17.670 --> 00:00:22.260
+It may look familiar because it's the same code from the demo before.
+
+00:00:22.260 --> 00:00:25.560
+We had to deal with a few things like Docker image,
+
+00:00:25.560 --> 00:00:28.335
+configuring the job to execute Ansible,
+
+00:00:28.335 --> 00:00:32.010
+adding SSH keys using that fingerprint that we had to go and get,
+
+00:00:32.010 --> 00:00:35.680
+all to make it possible for Ansible to do its job.
+
+00:00:35.680 --> 00:00:40.540
+That's a pattern you'll notice over and over when we build jobs.
+

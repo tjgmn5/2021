@@ -1,0 +1,368 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Big Picture</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Building a Continuous Integration Pipeline</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Creating Pipelines.html">04. Creating Pipelines</a>
+    </li>
+    <li class="">
+      <a href="05. Creating Jobs.html">05. Creating Jobs</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Creating a Simple Workflow.html">06. Exercise: Creating a Simple Workflow</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Creating a Simple Workflow.html">07. Solution: Creating a Simple Workflow</a>
+    </li>
+    <li class="">
+      <a href="08. Environment Variables.html">08. Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="09. Exercise Environment Variables.html">09. Exercise: Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="10. Solution Environment Variables.html">10. Solution: Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="11. Triggering.html">11. Triggering</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Trigger Existing Workflow.html">12. Exercise: Trigger Existing Workflow</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Trigger Existing Workflow.html">13. Solution: Trigger Existing Workflow</a>
+    </li>
+    <li class="">
+      <a href="14. Sharing Information.html">14. Sharing Information</a>
+    </li>
+    <li class="">
+      <a href="15. Exercise Sharing Files.html">15. Exercise: Sharing Files</a>
+    </li>
+    <li class="">
+      <a href="16. Solution Sharing Files.html">16. Solution: Sharing Files</a>
+    </li>
+    <li class="">
+      <a href="17. Reusable Job Code.html">17. Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="18. Exercise Reusable Job Code.html">18. Exercise: Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="19. Solution Reusable Job Code.html">19. Solution: Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="20. Job Failures.html">20. Job Failures</a>
+    </li>
+    <li class="">
+      <a href="21. Exercise Job Failures.html">21. Exercise: Job Failures</a>
+    </li>
+    <li class="">
+      <a href="22. Solution Job Failures.html">22. Solution: Job Failures</a>
+    </li>
+    <li class="">
+      <a href="23. Create a CI Pipeline.html">23. Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="24. Exercise Create a CI Pipeline.html">24. Exercise: Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="25. Solution Create a CI Pipeline.html">25. Solution: Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="26. Lesson Conclusion.html">26. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">02. Big Picture</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="big-picture">Big Picture</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L02 Big Picture</p></h3>
+  <video controls>
+  <source src="02. ND9991 C03 L02 Big Picture-_UPj64uP82s.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="02. ND9991 C03 L02 Big Picture-_UPj64uP82s.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="big-picture">Big Picture</h3>
+<h4 id="what-is-ci">What is CI?</h4>
+<p><strong>Continuous Integration</strong> is the practice of automating the integration of code changes from multiple contributors into a single software project <em>(<a href="https://www.atlassian.com/continuous-delivery/continuous-integration" rel="noopener noreferrer" target="_blank">definition from Atlassian</a>)</em>.</p>
+<h4 id="ci-opens-doors">CI Opens Doors</h4>
+<ul>
+<li>Singular, Unified, Consistent Build Process</li>
+<li>Automatically Packaged and Downloadable "Binaries"</li>
+<li>Faster Recovery from botched Integration (If You Break It, You Fix It!)</li>
+<li>Unit Test Suite Gets Some Respect</li>
+<li>Greater Transparency and Communication</li>
+<li>More Time Adding Value (aka Developing Software)</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/003.png" alt="**Many Contributors, One Goal**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Many Contributors, One Goal</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="differentiating-between-ci-and-cd">Differentiating between CI and CD</h3>
+<p><em><strong>Continuous integration</strong> is all about the source code.</em> </p>
+<p>New changes to the code need to be validated, verified, exercised, worked over, massaged and squeezed to see if there are leaks. We do this by compiling, transpiling, linting, running unit tests, performing static analysis, checking dependencies for security vulnerabilities and other things.</p>
+<p><em><strong>Continuous deployment</strong> is all about built code and deployment.</em></p>
+<p>Once the source code has been built in CI, we're ready to ship it to servers and devices either in the same network or elsewhere. Depending on your team's delivery process and deployment strategy, you might deploy to a staging or pre-production server for final testing or you might deploy to production right away. Before doing so, CD can run scripts to prepare the infrastructure, run smoke tests, and handle rollbacks and reverts if something doesn't go as planned.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/005-i.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Big Picture Quiz</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Mark the concepts that are part of Continuous <em>Integration</em> but <strong>not</strong> Continuous <em>Deployment</em>.</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1589921017266" name="1026362" id="a1589921017266">
+      <label for="a1589921017266"><p>Run unit/integration tests</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1589921018021" name="1026362" id="a1589921018021">
+      <label for="a1589921018021"><p>Compile/lint code</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1589921018552" name="1026362" id="a1589921018552">
+      <label for="a1589921018552"><p>Run smoke tests</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1589921019096" name="1026362" id="a1589921019096">
+      <label for="a1589921019096"><p>Static Code Analysis</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1590636546665" name="1026362" id="a1590636546665">
+      <label for="a1590636546665"><p>Merge code from all sources (branches and or commits)</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1590636548088" name="1026362" id="a1590636548088">
+      <label for="a1590636548088"><p>Perform a roll back if necessary</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1590636559988" name="1026362" id="a1590636559988">
+      <label for="a1590636559988"><p>Create Infrastructure</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1590636590420" name="1026362" id="a1590636590420">
+      <label for="a1590636590420"><p>Deliver packaged code to environments</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1590636601273" name="1026362" id="a1590636601273">
+      <label for="a1590636601273"><p>Promote Versions to Production</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1590636613361" name="1026362" id="a1590636613361">
+      <label for="a1590636613361"><p>Check libraries and dependencies versions</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Run unit/integration tests</li>
+      <li>Compile/lint code</li>
+      <li>Static Code Analysis</li>
+      <li>Merge code from all sources (branches and or commits)</li>
+      <li>Check libraries and dependencies versions</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="03. Intuition.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('02. Big Picture')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

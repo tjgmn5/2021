@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.430 --> 00:00:04.275
+We've come to the end of this course.
+
+00:00:04.275 --> 00:00:08.070
+It's been a wild ride and I'm glad you stuck with it to the end.
+
+00:00:08.070 --> 00:00:13.695
+By now, you should have a very full toolbox of new and useful skills.
+
+00:00:13.695 --> 00:00:18.360
+I hope you're already seeing ways to start using those skills even tomorrow.
+
+00:00:18.360 --> 00:00:21.060
+Hey, maybe you're already way ahead of me and you're using
+
+00:00:21.060 --> 00:00:24.900
+those skills in your current project.
+
+00:00:24.900 --> 00:00:28.200
+In this course, we talked a lot about the theory
+
+00:00:28.200 --> 00:00:30.960
+and principles behind continuous delivery,
+
+00:00:30.960 --> 00:00:34.510
+continuous integration, and continuous deployment.
+
+00:00:34.510 --> 00:00:38.040
+Then we put that theory to work as we talked about,
+
+00:00:38.040 --> 00:00:41.610
+and even built a complete CI pipeline from commit,
+
+00:00:41.610 --> 00:00:44.235
+to build, to artifact.
+
+00:00:44.235 --> 00:00:46.685
+Once we had CI humming,
+
+00:00:46.685 --> 00:00:49.280
+we built out the entire CD pipeline,
+
+00:00:49.280 --> 00:00:52.145
+putting out more of that theory to test,
+
+00:00:52.145 --> 00:00:55.915
+and then raising the tide of confidence of your Dev Team.
+
+00:00:55.915 --> 00:01:01.130
+Then once we had CI and CD running, building, testing,
+
+00:01:01.130 --> 00:01:03.680
+analyzing, and deploying, we built up
+
+00:01:03.680 --> 00:01:06.865
+a monitoring system that alerted us when something failed.
+
+00:01:06.865 --> 00:01:09.950
+We also set ourselves up for some machine learning and
+
+00:01:09.950 --> 00:01:13.580
+data science to help us predict future failures.
+
+00:01:13.580 --> 00:01:15.965
+Wow, with all of these capabilities,
+
+00:01:15.965 --> 00:01:17.930
+the world had better watch out.
+
+00:01:17.930 --> 00:01:21.420
+You're ready to take on any problem.
+

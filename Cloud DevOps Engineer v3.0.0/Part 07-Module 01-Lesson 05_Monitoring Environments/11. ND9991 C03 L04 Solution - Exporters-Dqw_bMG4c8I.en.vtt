@@ -1,0 +1,346 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.130 --> 00:00:05.985
+You now know how to manually configure an instance with node exporter.
+
+00:00:05.985 --> 00:00:09.390
+It's a similar process to get almost any exporter running,
+
+00:00:09.390 --> 00:00:13.185
+which should be really encouraging since this one was pretty simple.
+
+00:00:13.185 --> 00:00:15.345
+You also got Prometheus setup with
+
+00:00:15.345 --> 00:00:20.610
+automatic service discovery so that it will automatically monitor EC2 instances.
+
+00:00:20.610 --> 00:00:23.940
+Nice. In this exercise you did quite a lot.
+
+00:00:23.940 --> 00:00:28.005
+Let's actually walk through it one more time and see how you did.
+
+00:00:28.005 --> 00:00:30.345
+We're going to create a new instance.
+
+00:00:30.345 --> 00:00:35.800
+Again I'm going to choose an Ubuntu instance,
+
+00:00:36.050 --> 00:00:39.990
+because that's what the instructions are using.
+
+00:00:39.990 --> 00:00:46.235
+Again, I'll select a free instance with t2.micro.
+
+00:00:46.235 --> 00:00:51.470
+Again I want to make sure that the VPC is the default.
+
+00:00:51.470 --> 00:00:54.500
+I'm checking to make sure that I have the right amount of
+
+00:00:54.500 --> 00:00:58.340
+storage space which in this case is still great to have eight gigabytes.
+
+00:00:58.340 --> 00:00:59.855
+I'm going to add a name,
+
+00:00:59.855 --> 00:01:06.250
+which this time is going to be a Prometheus Node Exporter.
+
+00:01:06.250 --> 00:01:07.980
+I put that in the wrong place,
+
+00:01:07.980 --> 00:01:10.180
+let's put that here.
+
+00:01:10.700 --> 00:01:17.160
+I'm going to create another tag just to help me categorize things a little bit better.
+
+00:01:19.970 --> 00:01:22.170
+I'm going to choose
+
+00:01:22.170 --> 00:01:28.250
+the security group that I chose before because it has all the right ports that I want,
+
+00:01:28.250 --> 00:01:35.655
+Review and Launch, and looks like everything's pretty good.
+
+00:01:35.655 --> 00:01:41.040
+We'll launch and we'll choose my Prometheus key pair.
+
+00:01:43.880 --> 00:01:52.195
+Now we'll be able to access our new instance, Prometheus Node Exporter.
+
+00:01:52.195 --> 00:01:59.205
+Here is my host name right here below that I can copy,
+
+00:01:59.205 --> 00:02:04.205
+and even though it says it's pending out but I can still access this instance.
+
+00:02:04.205 --> 00:02:11.135
+So now let's SSH into this instance using the Prometheus pem file.
+
+00:02:11.135 --> 00:02:14.900
+As before we will use the Ubuntu username,
+
+00:02:14.900 --> 00:02:18.750
+and we'll paste our host name right there in line.
+
+00:02:19.700 --> 00:02:22.950
+Now, we're in.
+
+00:02:22.950 --> 00:02:25.010
+The next thing we want to do is go to
+
+00:02:25.010 --> 00:02:30.250
+the Prometheus downloads page and scroll to the node exporter section.
+
+00:02:30.250 --> 00:02:37.970
+We want to get the link address for the Linux version of our node exporter.
+
+00:02:37.970 --> 00:02:40.640
+We want to come back to our terminal,
+
+00:02:40.640 --> 00:02:47.640
+where we're logged into our node exporter EC2 instance and we want to download that file.
+
+00:02:49.090 --> 00:02:52.830
+Now we need to extract the files.
+
+00:02:54.440 --> 00:02:57.775
+Now we can go into the directory,
+
+00:02:57.775 --> 00:03:01.325
+and we can actually start up our node exporter.
+
+00:03:01.325 --> 00:03:03.635
+Again, once you see this wall of text,
+
+00:03:03.635 --> 00:03:05.980
+that means something good is happening.
+
+00:03:05.980 --> 00:03:09.230
+Now we need to go in and configure
+
+00:03:09.230 --> 00:03:13.610
+our Prometheus instance to notify it that we have a new exporter.
+
+00:03:13.610 --> 00:03:15.830
+We need to SSH into that server.
+
+00:03:15.830 --> 00:03:18.605
+When I come back to the AWS console,
+
+00:03:18.605 --> 00:03:22.350
+and we're going to copy the host name once more.
+
+00:03:22.350 --> 00:03:24.485
+Now from another terminal window,
+
+00:03:24.485 --> 00:03:26.585
+we can SSH again into
+
+00:03:26.585 --> 00:03:33.660
+our Prometheus server using the Ubuntu username and pasting the host name.
+
+00:03:36.650 --> 00:03:42.100
+Now we're going to go into the directory for our Prometheus instance,
+
+00:03:42.100 --> 00:03:47.970
+and we're going to use our text editor to modify the Prometheus YML file.
+
+00:03:48.500 --> 00:03:52.010
+Once we're inside the Prometheus config file,
+
+00:03:52.010 --> 00:03:55.520
+we're going to scroll all the way to the bottom to add another scrape_config.
+
+00:03:55.520 --> 00:03:57.665
+Now I can either remove the one that's there,
+
+00:03:57.665 --> 00:03:59.120
+because it's just the default,
+
+00:03:59.120 --> 00:04:01.490
+or I can add mine to the end.
+
+00:04:01.490 --> 00:04:05.260
+I'm going to actually add mine to the end,
+
+00:04:05.260 --> 00:04:08.215
+which means I'm going to have two scrape_configs,
+
+00:04:08.215 --> 00:04:12.310
+and I'm going to fix the indentation because when I pasted it,
+
+00:04:12.310 --> 00:04:14.070
+it didn't quite look right.
+
+00:04:14.070 --> 00:04:17.585
+If you don't fix the indentation, Prometheus will complain.
+
+00:04:17.585 --> 00:04:22.465
+Make sure that the indentation is correct according to YML guidelines.
+
+00:04:22.465 --> 00:04:26.360
+Here we have localhost which came from the documentation.
+
+00:04:26.360 --> 00:04:28.130
+But we don't want localhost,
+
+00:04:28.130 --> 00:04:34.460
+we actually want the host name of the EC2 instance where we have the exporter running.
+
+00:04:34.460 --> 00:04:39.830
+For that we're going to go back to AWS console and copy another host name.
+
+00:04:39.830 --> 00:04:43.860
+We're going to select our node exporter EC2 instance,
+
+00:04:43.860 --> 00:04:46.160
+and we're going to once again copy
+
+00:04:46.160 --> 00:04:50.670
+this host name so that we can paste it back into our config file.
+
+00:04:51.080 --> 00:04:55.955
+There we have it. Now, we save and we exit,
+
+00:04:55.955 --> 00:04:58.745
+and Prometheus is now poised and ready.
+
+00:04:58.745 --> 00:05:02.220
+All we have to do is start running it again.
+
+00:05:03.850 --> 00:05:08.165
+As usual the wall of text means everything's good.
+
+00:05:08.165 --> 00:05:10.580
+Now let's take a look at Prometheus in
+
+00:05:10.580 --> 00:05:14.900
+our web browser to see our new node exporter at work.
+
+00:05:14.900 --> 00:05:17.225
+Back here in Prometheus,
+
+00:05:17.225 --> 00:05:22.700
+all I've got to do is refresh and head over to Status and Service Discovery.
+
+00:05:22.700 --> 00:05:26.175
+This is going to show me my new node exporter.
+
+00:05:26.175 --> 00:05:30.140
+Now you can see that I have a new type of exporter called node here,
+
+00:05:30.140 --> 00:05:34.595
+and I can click here to show more and actually see the details of my node exporter.
+
+00:05:34.595 --> 00:05:37.460
+This is how we know that that node exporter is
+
+00:05:37.460 --> 00:05:40.820
+communicating with the central Prometheus server.
+
+00:05:40.820 --> 00:05:42.395
+Now this is nice,
+
+00:05:42.395 --> 00:05:46.790
+but what if we are spinning up new servers and new instances and putting
+
+00:05:46.790 --> 00:05:51.320
+on new node exporters all day or in an automated fashion?
+
+00:05:51.320 --> 00:05:53.510
+Having to modify that configuration file
+
+00:05:53.510 --> 00:05:57.035
+every single time manually is just not acceptable.
+
+00:05:57.035 --> 00:05:59.815
+Let's set up automatic discovery.
+
+00:05:59.815 --> 00:06:03.320
+Let's go back to our Prometheus server and actually stop
+
+00:06:03.320 --> 00:06:07.535
+it and modify the configuration file once again.
+
+00:06:07.535 --> 00:06:13.040
+Again, let's scroll all the way to the bottom so that we can make a modification here.
+
+00:06:13.040 --> 00:06:16.190
+This last job that we just created was nice for
+
+00:06:16.190 --> 00:06:20.285
+testing but is not awesome for a real production system,
+
+00:06:20.285 --> 00:06:23.495
+so let's paste in a better option.
+
+00:06:23.495 --> 00:06:27.560
+Now we have still a node job,
+
+00:06:27.560 --> 00:06:30.940
+but now it's going to be using this right here,
+
+00:06:30.940 --> 00:06:38.390
+ec2_sd_configs so that it can automatically find those EC2 instances and pull them in.
+
+00:06:38.390 --> 00:06:42.425
+This is EC2 service discovery configs.
+
+00:06:42.425 --> 00:06:45.520
+It's a special part of Prometheus.
+
+00:06:45.520 --> 00:06:49.745
+We're going to have a region, we're going to have our access key, secret key,
+
+00:06:49.745 --> 00:06:54.560
+and the port that we should be watching for on those exporters.
+
+00:06:54.560 --> 00:06:57.755
+If you remember, we get the access key and the secret key
+
+00:06:57.755 --> 00:07:01.525
+from when we create users in IAM in AWS.
+
+00:07:01.525 --> 00:07:05.795
+Make sure that the region is correct because if it's not,
+
+00:07:05.795 --> 00:07:10.410
+then service discovery will not be able to find any of your instances.
+
+00:07:11.110 --> 00:07:14.359
+Once that's done, save,
+
+00:07:14.359 --> 00:07:17.885
+exit and restart Prometheus.
+
+00:07:17.885 --> 00:07:21.515
+Now when you go to service discovery and refresh,
+
+00:07:21.515 --> 00:07:26.370
+you'll find many more node exporters reporting in.
+
+00:07:31.190 --> 00:07:36.755
+Now you've got outside systems that can communicate with your Prometheus service.
+
+00:07:36.755 --> 00:07:39.740
+As you add more and more exporters you'll often need to
+
+00:07:39.740 --> 00:07:42.935
+look at tutorials to set things up the way you want.
+
+00:07:42.935 --> 00:07:46.100
+This exercise was practice in using
+
+00:07:46.100 --> 00:07:49.580
+outside sources to configure your Prometheus instance.
+
+00:07:49.580 --> 00:07:54.840
+Using tutorials to set things up isn't cheating in fact it's normal.
+

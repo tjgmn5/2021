@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.460 --> 00:00:05.670
+Just like your production code should be clean and maintainable,
+
+00:00:05.670 --> 00:00:09.060
+so should your CI/CD configuration code.
+
+00:00:09.060 --> 00:00:12.675
+One way to keep your code clean is to reduce duplication.
+
+00:00:12.675 --> 00:00:15.770
+CircleCI gives us a couple of ways to reuse code.
+
+00:00:15.770 --> 00:00:18.315
+This is really useful in scenarios like
+
+00:00:18.315 --> 00:00:22.830
+having a set of common defaults to reuse in various jobs,
+
+00:00:22.830 --> 00:00:26.369
+rollbacks that may happen when a job fails,
+
+00:00:26.369 --> 00:00:29.820
+compiling code and other repeated boilerplate code,
+
+00:00:29.820 --> 00:00:34.695
+deployments especially when you've got the same deployment plan for all environments.
+
+00:00:34.695 --> 00:00:39.640
+Let's take a look at a couple of ways to dry up your config code.
+

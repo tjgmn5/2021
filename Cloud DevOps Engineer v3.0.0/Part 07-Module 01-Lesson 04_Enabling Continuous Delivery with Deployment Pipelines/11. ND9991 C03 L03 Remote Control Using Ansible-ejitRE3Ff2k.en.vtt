@@ -1,0 +1,211 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.100 --> 00:00:03.945
+I've mentioned it a few times already,
+
+00:00:03.945 --> 00:00:06.315
+but it's worth mentioning one more time.
+
+00:00:06.315 --> 00:00:08.280
+Ansible, in the background,
+
+00:00:08.280 --> 00:00:12.195
+is only executing shell commands over SSH.
+
+00:00:12.195 --> 00:00:15.870
+In other words, Ansible is doing exactly what you or
+
+00:00:15.870 --> 00:00:19.590
+I would have done to install and configure or move things around,
+
+00:00:19.590 --> 00:00:23.775
+but it's doing it in a way that's blazing fast and repeatable.
+
+00:00:23.775 --> 00:00:26.820
+If you think about it, Ansible could be used to
+
+00:00:26.820 --> 00:00:30.585
+implement anything that a tutorial on the web can do.
+
+00:00:30.585 --> 00:00:32.760
+Let's try one and see.
+
+00:00:32.760 --> 00:00:38.305
+For instance, here's a tutorial that I have that sets up Apache and shows a Hello World.
+
+00:00:38.305 --> 00:00:43.930
+We should be able to automate these instructions using Ansible.
+
+00:00:43.930 --> 00:00:49.990
+We want to install the Apache2 package from apt-get.
+
+00:00:49.990 --> 00:00:56.125
+We want to copy this HTML file into the right place,
+
+00:00:56.125 --> 00:01:00.170
+and then when we're done, we should be able to go to our localhost,
+
+00:01:00.170 --> 00:01:02.600
+and actually see Hello World.
+
+00:01:02.600 --> 00:01:06.665
+Let's give it a try. Here I've got my HTML,
+
+00:01:06.665 --> 00:01:10.915
+which will show us Hello World on the screen with an h1 tag,
+
+00:01:10.915 --> 00:01:16.160
+and I've got some roles to help me accomplish this task.
+
+00:01:16.160 --> 00:01:20.560
+I've got a prepare role and an Apache role.
+
+00:01:20.560 --> 00:01:24.745
+These roles are stored in the folder called roles,
+
+00:01:24.745 --> 00:01:29.870
+and of course, the name Apache matches the name of the role Apache.
+
+00:01:29.870 --> 00:01:31.729
+Inside of that folder,
+
+00:01:31.729 --> 00:01:35.745
+I've got a files folder and a tasks folder.
+
+00:01:35.745 --> 00:01:40.355
+Of course, the index.html is the file that needs to be copied at the end of the tutorial,
+
+00:01:40.355 --> 00:01:47.825
+and my main.yml inside of the tasks folder is actually the guts of my Apache role.
+
+00:01:47.825 --> 00:01:49.390
+It's got two plays in it.
+
+00:01:49.390 --> 00:01:51.885
+One is to install the Apache Web Server.
+
+00:01:51.885 --> 00:01:54.575
+Notice here it is becoming true,
+
+00:01:54.575 --> 00:01:58.355
+which means it's elevating the privileges for this command.
+
+00:01:58.355 --> 00:02:03.120
+Basically it's going to say sudo apt-get in the background.
+
+00:02:03.120 --> 00:02:05.695
+Here it's using the apt module,
+
+00:02:05.695 --> 00:02:09.320
+just a little bit more maintainable and clean than using shell scripts.
+
+00:02:09.320 --> 00:02:11.885
+I'm able to call out the Apache2 name,
+
+00:02:11.885 --> 00:02:14.600
+and of course say that I want the latest and I do
+
+00:02:14.600 --> 00:02:17.420
+want to go ahead and update the cache just in case it's changed,
+
+00:02:17.420 --> 00:02:19.925
+especially since I've used the latest.
+
+00:02:19.925 --> 00:02:23.410
+Another play here is installing the index page.
+
+00:02:23.410 --> 00:02:25.610
+Here I'm using a module called copy.
+
+00:02:25.610 --> 00:02:29.240
+I'm saying the source file is index.
+
+00:02:29.240 --> 00:02:33.470
+Now you see here I don't have any absolute path or relative path,
+
+00:02:33.470 --> 00:02:35.495
+I'm just saying index.html.
+
+00:02:35.495 --> 00:02:38.945
+Ansible knows that since you're using a role,
+
+00:02:38.945 --> 00:02:42.590
+it should look for files in the files folder.
+
+00:02:42.590 --> 00:02:45.140
+We don't have to designate where these came from.
+
+00:02:45.140 --> 00:02:51.410
+Then the destination is always going to be on the machine that Ansible is modifying,
+
+00:02:51.410 --> 00:02:54.290
+so this is the folder in the remote machine,
+
+00:02:54.290 --> 00:02:56.620
+if we were using a remote machine.
+
+00:02:56.620 --> 00:02:59.270
+Let's take a look at the prepare role.
+
+00:02:59.270 --> 00:03:01.430
+We've got two plays in here.
+
+00:03:01.430 --> 00:03:04.175
+We've got one to update the apt packages,
+
+00:03:04.175 --> 00:03:07.175
+and we also want to remove dependencies that are no longer needed.
+
+00:03:07.175 --> 00:03:09.775
+We're going to auto-remove those with apt.
+
+00:03:09.775 --> 00:03:13.790
+Of course, we just put all those together like glue,
+
+00:03:13.790 --> 00:03:15.200
+right here in our playbook.
+
+00:03:15.200 --> 00:03:20.400
+I'll have the ability to run the playbook from my command line.
+
+00:03:21.500 --> 00:03:23.974
+When I run my playbook,
+
+00:03:23.974 --> 00:03:26.750
+it's going to fail horribly.
+
+00:03:26.750 --> 00:03:31.805
+Now I decided to actually run my playbook on my local machine.
+
+00:03:31.805 --> 00:03:33.920
+Therefore, in order to run it,
+
+00:03:33.920 --> 00:03:39.030
+I actually need to use sudo because I need elevated privileges.
+
+00:03:42.800 --> 00:03:47.900
+This is running and installing Apache on my machine.
+
+00:03:47.900 --> 00:03:50.790
+Then it's going to copy the HTML file to its right place,
+
+00:03:50.790 --> 00:03:55.380
+and we should be able to see our Hello World in a web browser.
+
+00:03:58.820 --> 00:04:03.520
+Let's take a look at our Hello World.
+
+00:04:05.270 --> 00:04:08.490
+Hey, there's our Hello World.
+
+00:04:08.490 --> 00:04:12.230
+We've essentially taken the instructions from this web tutorial,
+
+00:04:12.230 --> 00:04:15.110
+and turn them into an Ansible playbook that can be
+
+00:04:15.110 --> 00:04:19.320
+run thousands of times, reliably, and consistently.
+

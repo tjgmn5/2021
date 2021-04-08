@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.400 --> 00:00:05.130
+Great job. As you may already know,
+
+00:00:05.130 --> 00:00:09.480
+environment variables are a very important piece of the CI/CD puzzle.
+
+00:00:09.480 --> 00:00:12.270
+Sending your name down from a project level
+
+00:00:12.270 --> 00:00:15.345
+to a job through an environment variable is pretty cool,
+
+00:00:15.345 --> 00:00:17.520
+but there are plenty of other applications.
+
+00:00:17.520 --> 00:00:19.125
+Take secrets, for example.
+
+00:00:19.125 --> 00:00:24.690
+Environment variables are a great way to store those secrets that are needed by any job.
+
+00:00:24.690 --> 00:00:29.085
+Let's take a look together at my code below and see how you did.
+
+00:00:29.085 --> 00:00:32.820
+Here's my very simple job code that takes
+
+00:00:32.820 --> 00:00:35.130
+my environment variable from
+
+00:00:35.130 --> 00:00:38.365
+the project environment variables and just prints it out on the screen.
+
+00:00:38.365 --> 00:00:41.810
+I just want to point out that you are able to choose pretty much
+
+00:00:41.810 --> 00:00:47.225
+any image as long as it supports the code that's going to be running in the steps.
+
+00:00:47.225 --> 00:00:51.740
+So in this case it could have been a super lightweight alpine based image,
+
+00:00:51.740 --> 00:00:53.990
+or it could have been a node image.
+
+00:00:53.990 --> 00:00:57.110
+Here, I just chose c image base 2020.01,
+
+00:00:57.110 --> 00:01:01.290
+but it could really be almost any image at all and right here,
+
+00:01:01.290 --> 00:01:03.945
+this is my code that I'm actually going to run.
+
+00:01:03.945 --> 00:01:06.120
+I've named it to be a
+
+00:01:06.120 --> 00:01:10.060
+descriptive that we're going to echo an environment variable as part of our project.
+
+00:01:10.060 --> 00:01:12.815
+Then just have the shell command that I want to run,
+
+00:01:12.815 --> 00:01:18.510
+where it just echoes out this environment variable referenced with a dollar sign.
+

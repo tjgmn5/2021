@@ -1,0 +1,517 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Creating Jobs</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Building a Continuous Integration Pipeline</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Creating Pipelines.html">04. Creating Pipelines</a>
+    </li>
+    <li class="">
+      <a href="05. Creating Jobs.html">05. Creating Jobs</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Creating a Simple Workflow.html">06. Exercise: Creating a Simple Workflow</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Creating a Simple Workflow.html">07. Solution: Creating a Simple Workflow</a>
+    </li>
+    <li class="">
+      <a href="08. Environment Variables.html">08. Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="09. Exercise Environment Variables.html">09. Exercise: Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="10. Solution Environment Variables.html">10. Solution: Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="11. Triggering.html">11. Triggering</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Trigger Existing Workflow.html">12. Exercise: Trigger Existing Workflow</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Trigger Existing Workflow.html">13. Solution: Trigger Existing Workflow</a>
+    </li>
+    <li class="">
+      <a href="14. Sharing Information.html">14. Sharing Information</a>
+    </li>
+    <li class="">
+      <a href="15. Exercise Sharing Files.html">15. Exercise: Sharing Files</a>
+    </li>
+    <li class="">
+      <a href="16. Solution Sharing Files.html">16. Solution: Sharing Files</a>
+    </li>
+    <li class="">
+      <a href="17. Reusable Job Code.html">17. Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="18. Exercise Reusable Job Code.html">18. Exercise: Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="19. Solution Reusable Job Code.html">19. Solution: Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="20. Job Failures.html">20. Job Failures</a>
+    </li>
+    <li class="">
+      <a href="21. Exercise Job Failures.html">21. Exercise: Job Failures</a>
+    </li>
+    <li class="">
+      <a href="22. Solution Job Failures.html">22. Solution: Job Failures</a>
+    </li>
+    <li class="">
+      <a href="23. Create a CI Pipeline.html">23. Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="24. Exercise Create a CI Pipeline.html">24. Exercise: Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="25. Solution Create a CI Pipeline.html">25. Solution: Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="26. Lesson Conclusion.html">26. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Creating Jobs</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="creating-jobs">Creating Jobs</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L02 Creating Jobs Walkthrough</p></h3>
+  <video controls>
+  <source src="05. ND9991 C03 L02 Creating Jobs Walkthrough-sp8Nd1glog0.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND9991 C03 L02 Creating Jobs Walkthrough-sp8Nd1glog0.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="anatomy-of-a-job">Anatomy of a Job</h4>
+<p>Remember that a job is where we define the work that needs to get done.</p>
+<table>
+<thead>
+<tr>
+<th id="**job_option**" style="text-align:left;"><strong>Job Option</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>&lt;job_name&gt;</code></td>
+<td style="text-align:left;">The name of the job which shows up in the Circle CI web app.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>environment</code></td>
+<td style="text-align:left;">Map of environment variables.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>docker</code></td>
+<td style="text-align:left;">Docker image in which to run the job.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>branches</code></td>
+<td style="text-align:left;">Rules to decide when to run this job by branch exclusions or inclusions.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>steps</code></td>
+<td style="text-align:left;">Instructions to execute in the job.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="docker-images">Docker Images</h4>
+<p>When you are designing your jobs, you'll need to think about what docker image you want to use each time. If you're like me, you will have a handful of favorites. Each docker image comes pre-loaded with utilities and packages you need for different situations. </p>
+<table>
+<thead>
+<tr>
+<th id="**image**"><strong>Image</strong></th>
+<th id="**use**"><strong>Use</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>circleci/node</code></td>
+<td>For Node.JS server-side and networking applications.</td>
+</tr>
+<tr>
+<td><code>circleci/postgres</code></td>
+<td>For tasks that require PostgreSQL database functions.</td>
+</tr>
+<tr>
+<td><code>circleci/python</code></td>
+<td>For job that need to run Python or pip.</td>
+</tr>
+<tr>
+<td><code>alpine:latest</code></td>
+<td>A lightweight container for simple tasks.</td>
+</tr>
+<tr>
+<td><code>amazon/aws-cli</code></td>
+<td>For tasks that require the AWS CLI and related tools.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="types-of-steps">Types of Steps</h4>
+<p>Think of the steps in a job as a task list. Each step will perform some instructions and then we move on to the next step until they've all been executed. Each step has a type that defines how it will be run or represents an alias that points to another set of steps. </p>
+<table>
+<thead>
+<tr>
+<th id="**step_type**" style="text-align:left;"><strong>Step Type</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>checkout</code></td>
+<td style="text-align:left;">Checks out the source code. Common to have this in all jobs in CI.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>run</code></td>
+<td style="text-align:left;">Runs a shell command. Can name the step or simply execute a script.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>when</code></td>
+<td style="text-align:left;">A conditional step that has its own steps that are run if the condition is true.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>save_cache</code> and <code>restore_cache</code></td>
+<td style="text-align:left;">Save and restore files or folders. Cleaned up after pipeline finishes.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>persist_to_workspace</code> and <code>attach_workspace</code></td>
+<td style="text-align:left;">Like a cache, but files are available for 15 days after pipeline.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>add_ssh_keys</code></td>
+<td style="text-align:left;">Adding some additional ssh keys to the job for a tool that needs them (i.e. Ansible).</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>store_artifacts</code></td>
+<td style="text-align:left;">Makes an artifact, or file, available for download via CircleCI web app or API.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>store_test_results</code></td>
+<td style="text-align:left;">Stores test results from test runner so that results are visible in Circle CI web app in the Test Summary section.</td>
+</tr>
+<tr>
+<td style="text-align:left;">"Orbs"</td>
+<td style="text-align:left;">Orbs, which we talked about already, are used like step types.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Job Image Matching</p></h3>
+  <div>
+  <p><strong>QUIZ QUESTION:</strong>: <p>Match each use to its corresponding job image.</p></p>
+  <p><strong>ANSWER CHOICES:</strong></p>
+  <button class="btn btn-primary"><p>alpine:latest</p></button>
+  <button class="btn btn-primary"><p>amazon/aws-cli</p></button>
+  <button class="btn btn-primary"><p>circleci/postgres</p></button>
+  <button class="btn btn-primary"><p>circleci/python</p></button>
+  <button class="btn btn-primary"><p>circleci/node</p></button>
+
+  <br><br>
+
+  <table class="table">
+    <tr class="thead-dark table-hover">
+      <th>
+        <p>Use</p>
+      </th>
+      <th>
+        <p>Image</p>
+      </th>
+    </tr>
+
+    <tr>
+      <td><p>For Node.JS server-side and networking applications.</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>For tasks that require PostgreSQL database functions.</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>For job that need to run Python or pip.</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>A lightweight container for simple tasks.</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>For tasks that require the AWS CLI and related tools.</p></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+
+    <table class="table">
+      <tr class="thead-dark table-hover">
+        <th>
+          <p>Use</p>
+        </th>
+        <th>
+          <p>Image</p>
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          <p>A lightweight container for simple tasks.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>alpine:latest</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>For tasks that require the AWS CLI and related tools.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>amazon/aws-cli</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>For tasks that require PostgreSQL database functions.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>circleci/postgres</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>For job that need to run Python or pip.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>circleci/python</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>For Node.JS server-side and networking applications.</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>circleci/node</p></button>
+        </td>
+      </tr>
+    </table>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Job Elements</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Mark the terms that appear as yaml nodes in a Circle CI job definition.</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1589922219412" name="1026369" id="a1589922219412">
+      <label for="a1589922219412"><p>vars</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1589922245241" name="1026369" id="a1589922245241">
+      <label for="a1589922245241"><p>steps</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1589922245849" name="1026369" id="a1589922245849">
+      <label for="a1589922245849"><p>config</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1589922246906" name="1026369" id="a1589922246906">
+      <label for="a1589922246906"><p>docker</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1589922313216" name="1026369" id="a1589922313216">
+      <label for="a1589922313216"><p>trigger</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1589922313862" name="1026369" id="a1589922313862">
+      <label for="a1589922313862"><p>environment</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>steps</li>
+      <li>docker</li>
+      <li>environment</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. Exercise Creating a Simple Workflow.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Creating Jobs')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

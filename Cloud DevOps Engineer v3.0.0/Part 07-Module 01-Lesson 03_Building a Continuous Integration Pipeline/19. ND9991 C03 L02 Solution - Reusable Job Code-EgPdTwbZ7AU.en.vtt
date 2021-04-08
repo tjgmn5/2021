@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.100 --> 00:00:07.230
+Congratulations. You now have a powerful tool at your disposal to keep your jobs dry.
+
+00:00:07.230 --> 00:00:08.905
+Don't repeat yourself.
+
+00:00:08.905 --> 00:00:12.105
+Repeating code causes extra maintenance burden.
+
+00:00:12.105 --> 00:00:15.950
+When possible, you should try to avoid repeating code.
+
+00:00:15.950 --> 00:00:21.445
+When it makes sense, try to put this newfound skill to work by utilizing commands,
+
+00:00:21.445 --> 00:00:25.775
+anchors, and aliases to keep your pipeline code maintainable.
+
+00:00:25.775 --> 00:00:28.150
+Let's take a quick look at my code
+
+00:00:28.150 --> 00:00:32.185
+and let you compare your code to mine and see how you did.
+
+00:00:32.185 --> 00:00:35.830
+You may have actually done your solution a couple of different ways.
+
+00:00:35.830 --> 00:00:37.180
+So I'm going to show you both.
+
+00:00:37.180 --> 00:00:39.010
+In this first case,
+
+00:00:39.010 --> 00:00:45.325
+I've got a job that is referencing a command right here by stamp print pipeline ID.
+
+00:00:45.325 --> 00:00:48.820
+You can see here very simply print pipeline ID.
+
+00:00:48.820 --> 00:00:52.790
+It has steps and it's going to simply
+
+00:00:52.790 --> 00:00:58.780
+echo or print this circle workflow ID to my console.
+
+00:00:58.780 --> 00:01:04.895
+So let's say I would rather pass that workflow ID into my command as a parameter.
+
+00:01:04.895 --> 00:01:11.820
+So let's make a quick change to my command so that we can accomplish this goal.
+
+00:01:21.280 --> 00:01:24.300
+We don't need a default.
+
+00:01:30.350 --> 00:01:34.420
+So there's my perimeter being used.
+
+00:01:34.420 --> 00:01:40.550
+Now I need to pass the circle workflow ID into my step in my job.
+
+00:01:40.550 --> 00:01:47.100
+For that all I need to do is add a colon here and my ID parameter here,
+
+00:01:47.100 --> 00:01:49.570
+and for that I need to use pipeline variables.
+
+00:01:49.570 --> 00:01:56.090
+Again, I'm going to use this double bracket and I'm going to say pipeline ID.
+
+00:01:56.090 --> 00:02:01.840
+Now my job uses a parameterized command,
+
+00:02:01.840 --> 00:02:05.065
+which puts the pipeline ID using
+
+00:02:05.065 --> 00:02:07.615
+pipeline variables instead of
+
+00:02:07.615 --> 00:02:12.410
+environment variables into the command so that it can be used there.
+

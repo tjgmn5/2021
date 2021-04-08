@@ -1,0 +1,262 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.520 --> 00:00:05.325
+As you get to know CD pipelines in general,
+
+00:00:05.325 --> 00:00:11.340
+you'll eventually develop some intuition about how healthy your CD pipeline is or is not.
+
+00:00:11.340 --> 00:00:14.085
+You'll also be able to easily spot
+
+00:00:14.085 --> 00:00:18.810
+problem areas and be able to explain how they impact the whole process.
+
+00:00:18.810 --> 00:00:21.180
+Whether you're still waiting on that intuition to
+
+00:00:21.180 --> 00:00:24.000
+form or if you've had it for a long time,
+
+00:00:24.000 --> 00:00:29.975
+it's helpful to have metrics to guide decisions and demonstrate impact empirically.
+
+00:00:29.975 --> 00:00:33.800
+Let's take a look at a few metrics I use when I want to demonstrate
+
+00:00:33.800 --> 00:00:38.345
+the level of health or impact of a CD pipeline.
+
+00:00:38.345 --> 00:00:42.800
+Lead time to production shows the time that it takes for a feature to go from
+
+00:00:42.800 --> 00:00:47.480
+introduction to the development team to final delivery and producing value.
+
+00:00:47.480 --> 00:00:50.300
+This one is an easy metric to collect if you're using
+
+00:00:50.300 --> 00:00:54.575
+a task management system to track feature grooming and deployments.
+
+00:00:54.575 --> 00:00:57.980
+You just need to know the date and time for when
+
+00:00:57.980 --> 00:01:02.060
+a feature was finished grooming or was declared ready for development.
+
+00:01:02.060 --> 00:01:09.905
+For example, my team was authorized to work on a feature at 10 A.M. on January 5th.
+
+00:01:09.905 --> 00:01:12.410
+You also need the date and time for when
+
+00:01:12.410 --> 00:01:16.445
+that same feature was deployed successfully to production.
+
+00:01:16.445 --> 00:01:21.920
+In my example, we just finished the same feature on January 20th at 11
+
+00:01:21.920 --> 00:01:27.305
+A.M. Then just do some subtraction and you've got the lead time for that feature.
+
+00:01:27.305 --> 00:01:30.665
+In my case, 15 days and one hour.
+
+00:01:30.665 --> 00:01:35.660
+Do that a few times and average them together or show them on a line graph.
+
+00:01:35.660 --> 00:01:42.085
+That's a great metric to demonstrate how CI/CD is impacting overall delivery time.
+
+00:01:42.085 --> 00:01:46.145
+The rollback rate shows the quality of our deployments.
+
+00:01:46.145 --> 00:01:49.100
+Of course, the rate should be low because
+
+00:01:49.100 --> 00:01:52.720
+previous stages should filter out defected builds.
+
+00:01:52.720 --> 00:01:56.120
+This metric shows the effectiveness of our pipeline since we
+
+00:01:56.120 --> 00:01:59.620
+hope problems are caught before a rollback is needed.
+
+00:01:59.620 --> 00:02:02.780
+The metric is calculated dividing the total number
+
+00:02:02.780 --> 00:02:05.840
+of rollbacks by the total number of deployments.
+
+00:02:05.840 --> 00:02:12.740
+For example, my team had 26 rollbacks out of 150 deployments last month.
+
+00:02:12.740 --> 00:02:15.020
+That's a 17 percent rollback rate,
+
+00:02:15.020 --> 00:02:17.285
+which we definitely need to work on.
+
+00:02:17.285 --> 00:02:19.820
+This metric is a leading indicator for
+
+00:02:19.820 --> 00:02:23.780
+the confidence of the business in the Dev team's ability to deliver.
+
+00:02:23.780 --> 00:02:26.795
+For example, if rollbacks increase one week,
+
+00:02:26.795 --> 00:02:30.650
+you can expect confidence to go down in the weeks following.
+
+00:02:30.650 --> 00:02:33.905
+The same applies if rollbacks go down one week,
+
+00:02:33.905 --> 00:02:38.335
+you should expect to see confidence to rise in the next weeks.
+
+00:02:38.335 --> 00:02:40.130
+As the name suggests,
+
+00:02:40.130 --> 00:02:44.135
+time to failure shows us how quickly we find failures.
+
+00:02:44.135 --> 00:02:46.415
+The earlier, the better of course.
+
+00:02:46.415 --> 00:02:51.290
+Here we just subtract build start time from the time at the point of failure.
+
+00:02:51.290 --> 00:02:54.360
+For example, we had a build that started at
+
+00:02:54.360 --> 00:02:59.465
+10.05 and finished with a failure at 10.13 A.M.
+
+00:02:59.465 --> 00:03:03.440
+If we do our subtraction to discover the time to failure,
+
+00:03:03.440 --> 00:03:06.190
+we see that it was eight minutes.
+
+00:03:06.190 --> 00:03:10.610
+We should do that for every failure so that we can get an average to
+
+00:03:10.610 --> 00:03:15.340
+improve on or graph the numbers to show upward or downward trends.
+
+00:03:15.340 --> 00:03:19.085
+Production uptime is a classic metric with good reason.
+
+00:03:19.085 --> 00:03:24.605
+Every point down from 100 percent shows the amount of time we're taking production down
+
+00:03:24.605 --> 00:03:27.200
+because of a batch deployment or due to
+
+00:03:27.200 --> 00:03:30.320
+complications from our chosen deployment strategy.
+
+00:03:30.320 --> 00:03:34.940
+To calculate, just take the number of minutes in a day or a week or a month
+
+00:03:34.940 --> 00:03:40.040
+that production has been up and divide that by the total number of minutes.
+
+00:03:40.040 --> 00:03:43.925
+For example, there are 10,080 minutes in a week,
+
+00:03:43.925 --> 00:03:46.820
+so we can use a seven-day sample.
+
+00:03:46.820 --> 00:03:48.755
+In the last seven days,
+
+00:03:48.755 --> 00:03:53.599
+my production instance has been down for a total of 35 minutes.
+
+00:03:53.599 --> 00:03:59.240
+So my uptime is 99.7 percent over the last seven days.
+
+00:03:59.240 --> 00:04:04.580
+Not bad, but I could definitely shoot for 99.8 next time.
+
+00:04:04.580 --> 00:04:10.639
+Failed pipeline costs show the estimated amount of money spent on failed builds.
+
+00:04:10.639 --> 00:04:13.730
+This metric encourages us to put cheaper jobs
+
+00:04:13.730 --> 00:04:17.405
+earlier in the pipeline and to fail as quickly as possible.
+
+00:04:17.405 --> 00:04:19.429
+It's a little harder to calculate,
+
+00:04:19.429 --> 00:04:22.810
+but it can be really helpful in reducing costs.
+
+00:04:22.810 --> 00:04:24.685
+To get this metric rolling,
+
+00:04:24.685 --> 00:04:27.670
+you just need to estimate the cost for each job.
+
+00:04:27.670 --> 00:04:31.675
+For example, a unit test job might run for three minutes.
+
+00:04:31.675 --> 00:04:36.100
+The instance that runs the unit tests might cost you $0.10 a minute.
+
+00:04:36.100 --> 00:04:41.320
+So you would say that the unit test job has an average cost of $0.30.
+
+00:04:41.320 --> 00:04:45.900
+Other jobs might spin up new instances and incur other costs.
+
+00:04:45.900 --> 00:04:50.935
+Add all those costs together and you'll know how much it costs to run your pipeline.
+
+00:04:50.935 --> 00:04:53.710
+Pipelines that complete successfully are worth
+
+00:04:53.710 --> 00:04:57.200
+every penny because they've delivered value.
+
+00:04:57.200 --> 00:05:00.995
+But failed pipelines represent sunk costs.
+
+00:05:00.995 --> 00:05:05.230
+You can average those amounts together or graph them to see trends.
+
+00:05:05.230 --> 00:05:07.250
+The idea would be, of course,
+
+00:05:07.250 --> 00:05:10.850
+to reduce the cost of failed builds by improving
+
+00:05:10.850 --> 00:05:15.565
+your checks and validation so that the build can fail as early as possible.
+
+00:05:15.565 --> 00:05:18.710
+Collecting and tracking metrics like these will help you keep
+
+00:05:18.710 --> 00:05:23.610
+a big picture view of your CI/CD pipeline and the impact that it's making.
+
+00:05:23.610 --> 00:05:30.080
+My advice is to collect as many of these metrics as you can before implementing CI/CD.
+
+00:05:30.080 --> 00:05:35.105
+This will give you a snapshot of how things were before CI/CD was rolling.
+
+00:05:35.105 --> 00:05:37.535
+Then when you're going full steam,
+
+00:05:37.535 --> 00:05:43.020
+you'll have a great baseline to show how much better things have become.
+

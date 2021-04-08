@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.160 --> 00:00:07.470
+Promoting to production can be one of the easiest but scariest things we do in CI/CD.
+
+00:00:07.470 --> 00:00:11.535
+Well, it's scary if we haven't done enough testing and confidence building.
+
+00:00:11.535 --> 00:00:16.520
+But if you build your CI/CD pipeline to fail fast and build confidence along the way,
+
+00:00:16.520 --> 00:00:22.300
+then promoting to production should become so commonplace that it gets taken for granted.
+
+00:00:22.300 --> 00:00:24.330
+Take a look at my code here.
+
+00:00:24.330 --> 00:00:27.135
+What was the difference between mine and yours?
+
+00:00:27.135 --> 00:00:29.445
+Probably not a lot by now, I mean,
+
+00:00:29.445 --> 00:00:33.420
+this job is not much different from the others that we've seen.
+
+00:00:33.420 --> 00:00:36.180
+You probably starting to notice a common thread,
+
+00:00:36.180 --> 00:00:42.335
+CI/CD jobs basically provide an environment and then wrap some statements.
+
+00:00:42.335 --> 00:00:46.180
+Then it's the job of the other tools to actually do the hard work.
+
+00:00:46.180 --> 00:00:49.040
+Here in my code, I'm showing a job that is
+
+00:00:49.040 --> 00:00:52.085
+creating and deploying a frontend instead of a backend.
+
+00:00:52.085 --> 00:00:54.650
+The process is still pretty similar.
+
+00:00:54.650 --> 00:00:59.915
+I'm naming things using the circle workflow ID because it's just extremely convenient.
+
+00:00:59.915 --> 00:01:03.325
+I've got two steps in this job.
+
+00:01:03.325 --> 00:01:07.515
+One is going to use cloudformation to deploy an s3 bucket,
+
+00:01:07.515 --> 00:01:11.630
+and the other is going to actually interface directly with s3 to
+
+00:01:11.630 --> 00:01:16.340
+synchronize the files between local and my bucket.
+
+00:01:16.340 --> 00:01:21.260
+The second job is going to actually promote the version to
+
+00:01:21.260 --> 00:01:24.515
+production by running another cloudformation template
+
+00:01:24.515 --> 00:01:26.600
+that is going to interact with cloudfront,
+
+00:01:26.600 --> 00:01:30.920
+my CDN, and change its target from the old bucket to the new bucket.
+
+00:01:30.920 --> 00:01:34.895
+Again, I'm using this circle workflow ID environment variable
+
+00:01:34.895 --> 00:01:40.020
+to keep things referenceable and unique for this pipeline.
+

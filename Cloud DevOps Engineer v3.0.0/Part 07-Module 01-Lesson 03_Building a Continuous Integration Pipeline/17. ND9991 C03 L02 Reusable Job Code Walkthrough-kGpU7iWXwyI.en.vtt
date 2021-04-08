@@ -1,0 +1,229 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.550 --> 00:00:06.690
+Anchors define a set of reusable YAML statements.
+
+00:00:06.690 --> 00:00:09.960
+Aliases refer to those reusable YAML statements.
+
+00:00:09.960 --> 00:00:14.745
+That's why you almost always hear anchors and aliases together.
+
+00:00:14.745 --> 00:00:17.670
+This is actually not a CircleCI feature,
+
+00:00:17.670 --> 00:00:20.185
+but a normal feature of YAML.
+
+00:00:20.185 --> 00:00:22.635
+First you define the code as an anchor,
+
+00:00:22.635 --> 00:00:24.810
+then refer to it using an alias.
+
+00:00:24.810 --> 00:00:27.060
+Let's take a look at how that looks.
+
+00:00:27.060 --> 00:00:30.390
+Here, we're taking a look at the CircleCI blog,
+
+00:00:30.390 --> 00:00:34.575
+where they describe how to use YAML anchors and aliases.
+
+00:00:34.575 --> 00:00:37.710
+Imagine a scenario in your code where you're having
+
+00:00:37.710 --> 00:00:41.240
+to repeat the Docker container and the working directory,
+
+00:00:41.240 --> 00:00:43.955
+every single time you have a job.
+
+00:00:43.955 --> 00:00:46.430
+Then let's say you want to make a change one day
+
+00:00:46.430 --> 00:00:49.295
+to either the working directory or the Docker image,
+
+00:00:49.295 --> 00:00:51.500
+you're going to have to go to every single place in
+
+00:00:51.500 --> 00:00:54.365
+your job and you're going to have to make that modification.
+
+00:00:54.365 --> 00:00:56.315
+It's just not a good situation.
+
+00:00:56.315 --> 00:01:01.515
+Duplication anytime in your code is less maintainable.
+
+00:01:01.515 --> 00:01:06.175
+Let's see how we can use anchors and aliases to dry up our code.
+
+00:01:06.175 --> 00:01:12.370
+You can see down here below we have a section of code that is labeled with defaults.
+
+00:01:12.370 --> 00:01:17.320
+If we see that there's an ampersand that is defining our anchor,
+
+00:01:17.320 --> 00:01:19.520
+so anytime we have an ampersand in YAML,
+
+00:01:19.520 --> 00:01:21.095
+it's defining an anchor,
+
+00:01:21.095 --> 00:01:22.925
+and this is the name of the anchor.
+
+00:01:22.925 --> 00:01:26.370
+We're going to be able to reference this anchor in just a moment.
+
+00:01:26.370 --> 00:01:29.710
+But let's take a look at the guts of this anchor.
+
+00:01:29.710 --> 00:01:31.400
+We have a Docker image,
+
+00:01:31.400 --> 00:01:35.480
+which is our Docker image that we want to reuse in all of our jobs.
+
+00:01:35.480 --> 00:01:38.975
+Here's our working directory that we want to use in all of our jobs.
+
+00:01:38.975 --> 00:01:41.990
+Both of those things are being encapsulated in
+
+00:01:41.990 --> 00:01:45.020
+this anchor that's going to be referenced here in just a moment.
+
+00:01:45.020 --> 00:01:48.320
+We'll scroll down and we'll see more example code here.
+
+00:01:48.320 --> 00:01:52.700
+Here's a construct to be able to actually reference that anchor.
+
+00:01:52.700 --> 00:01:54.040
+We're using an alias.
+
+00:01:54.040 --> 00:01:59.395
+The asterisk here, is actually the alias side of anchors and aliases.
+
+00:01:59.395 --> 00:02:02.135
+You can see here this double bracket colon.
+
+00:02:02.135 --> 00:02:05.090
+Then that asterisk defaults,
+
+00:02:05.090 --> 00:02:09.649
+is going to suck in all of that code from
+
+00:02:09.649 --> 00:02:13.010
+our anchor up above and it's going
+
+00:02:13.010 --> 00:02:16.490
+to virtually insert it right there below the word build.
+
+00:02:16.490 --> 00:02:19.670
+That's how anchors and aliases works.
+
+00:02:19.670 --> 00:02:22.610
+If you want to read more about how they work and their limitations,
+
+00:02:22.610 --> 00:02:26.000
+then just take a look at the CircleCI documentation.
+
+00:02:26.000 --> 00:02:30.170
+Anchors and aliases don't allow you to reuse multiple steps in
+
+00:02:30.170 --> 00:02:34.450
+one reusable line, but commands do.
+
+00:02:34.450 --> 00:02:38.440
+You can think of a command as a predefined sub job.
+
+00:02:38.440 --> 00:02:42.365
+A command is a lot like a function in JavaScript or Python.
+
+00:02:42.365 --> 00:02:46.240
+It can take in parameters and it operates in its own scope.
+
+00:02:46.240 --> 00:02:49.160
+Here back in CircleCI's documentation,
+
+00:02:49.160 --> 00:02:51.530
+we can see an example of a command.
+
+00:02:51.530 --> 00:02:53.270
+This command is named,
+
+00:02:53.270 --> 00:02:57.500
+sayhello, and it has a few properties.
+
+00:02:57.500 --> 00:02:58.565
+One is a description.
+
+00:02:58.565 --> 00:03:01.580
+It's just something that's helpful to provide a little bit
+
+00:03:01.580 --> 00:03:05.105
+of extra context to viewers as they're watching the pipeline.
+
+00:03:05.105 --> 00:03:08.330
+We also have a parameter section, which is,
+
+00:03:08.330 --> 00:03:11.885
+how we pass information into the command.
+
+00:03:11.885 --> 00:03:16.045
+Here we can see that it's a string type and the default is Hello World.
+
+00:03:16.045 --> 00:03:18.275
+Then just like a job,
+
+00:03:18.275 --> 00:03:20.630
+our command has a list of steps.
+
+00:03:20.630 --> 00:03:24.770
+Here we're going to echo the perimeters.to,
+
+00:03:24.770 --> 00:03:29.585
+which references this to parameter and if nothing is passed in,
+
+00:03:29.585 --> 00:03:31.895
+it's going to basically echo, hello world.
+
+00:03:31.895 --> 00:03:35.880
+Let's take a look at how this command is put to use.
+
+00:03:39.770 --> 00:03:43.315
+Here we can see a job called my job,
+
+00:03:43.315 --> 00:03:48.410
+that has a Docker image using node version 9 and a list of steps.
+
+00:03:48.410 --> 00:03:49.849
+In that list of steps,
+
+00:03:49.849 --> 00:03:51.205
+we see something familiar.
+
+00:03:51.205 --> 00:03:54.795
+We see, sayhello, which is the name of our command.
+
+00:03:54.795 --> 00:03:58.020
+We also see a parameter with value, Lev.
+
+00:03:58.020 --> 00:03:59.600
+When this job executes,
+
+00:03:59.600 --> 00:04:01.175
+we'll be able to see the string,
+
+00:04:01.175 --> 00:04:04.450
+Lev, printed to the console output.
+
+00:04:04.450 --> 00:04:10.710
+As you can see, commands are an excellent and powerful way to reuse code.
+

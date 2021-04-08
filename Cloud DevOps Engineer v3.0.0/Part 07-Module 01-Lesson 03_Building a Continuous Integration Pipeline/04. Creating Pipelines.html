@@ -1,0 +1,441 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Creating Pipelines</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Building a Continuous Integration Pipeline</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Creating Pipelines.html">04. Creating Pipelines</a>
+    </li>
+    <li class="">
+      <a href="05. Creating Jobs.html">05. Creating Jobs</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Creating a Simple Workflow.html">06. Exercise: Creating a Simple Workflow</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Creating a Simple Workflow.html">07. Solution: Creating a Simple Workflow</a>
+    </li>
+    <li class="">
+      <a href="08. Environment Variables.html">08. Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="09. Exercise Environment Variables.html">09. Exercise: Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="10. Solution Environment Variables.html">10. Solution: Environment Variables</a>
+    </li>
+    <li class="">
+      <a href="11. Triggering.html">11. Triggering</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Trigger Existing Workflow.html">12. Exercise: Trigger Existing Workflow</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Trigger Existing Workflow.html">13. Solution: Trigger Existing Workflow</a>
+    </li>
+    <li class="">
+      <a href="14. Sharing Information.html">14. Sharing Information</a>
+    </li>
+    <li class="">
+      <a href="15. Exercise Sharing Files.html">15. Exercise: Sharing Files</a>
+    </li>
+    <li class="">
+      <a href="16. Solution Sharing Files.html">16. Solution: Sharing Files</a>
+    </li>
+    <li class="">
+      <a href="17. Reusable Job Code.html">17. Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="18. Exercise Reusable Job Code.html">18. Exercise: Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="19. Solution Reusable Job Code.html">19. Solution: Reusable Job Code</a>
+    </li>
+    <li class="">
+      <a href="20. Job Failures.html">20. Job Failures</a>
+    </li>
+    <li class="">
+      <a href="21. Exercise Job Failures.html">21. Exercise: Job Failures</a>
+    </li>
+    <li class="">
+      <a href="22. Solution Job Failures.html">22. Solution: Job Failures</a>
+    </li>
+    <li class="">
+      <a href="23. Create a CI Pipeline.html">23. Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="24. Exercise Create a CI Pipeline.html">24. Exercise: Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="25. Solution Create a CI Pipeline.html">25. Solution: Create a CI Pipeline</a>
+    </li>
+    <li class="">
+      <a href="26. Lesson Conclusion.html">26. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. Creating Pipelines</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="creating-pipelines">Creating Pipelines</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L02 Creating Pipelines</p></h3>
+  <video controls>
+  <source src="04. ND9991 C03 L02 Creating Pipelines-CnKUe647g20.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="04. ND9991 C03 L02 Creating Pipelines-CnKUe647g20.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="single-responsibility-principle">Single Responsibility Principle</h3>
+<blockquote>
+  <p>The single-responsibility principle (SRP) is a computer-programming principle that states that every module or class should have responsibility over a single part of the functionality provided by the software, and that responsibility should be entirely encapsulated by the class, module or function.</p>
+</blockquote>
+<p>From <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle" rel="noopener noreferrer" target="_blank">Wikipedia</a></p>
+<p>When we limit the responsibilities of our jobs, we get some nice side-effects:</p>
+<ul>
+<li>Jobs tend to be smaller and quicker</li>
+<li>We get better and more focused feedback when there's a job failure</li>
+<li>The pipeline is more visually expressive, so non-technical people can better understand the pipeline</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="anatomy-of-a-configyml-file">Anatomy of a <code>config.yml</code> File</h3>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L02 Creating Pipelines - Anatomy Of Config.Yml Walkthrough</p></h3>
+  <video controls>
+  <source src="04. ND9991 C03 L02 Creating Pipelines - Anatomy Of Config.Yml Walkthrough-MPsm3AVjbn8.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="04. ND9991 C03 L02 Creating Pipelines - Anatomy Of Config.Yml Walkthrough-MPsm3AVjbn8.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="remember">Remember:</h3>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/pipeline-structure.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Circle CI uses a yaml file to handle the configuration of pipelines and jobs. </p>
+<table>
+<thead>
+<tr>
+<th id="**section**" style="text-align:left;"><strong>Section</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>version</code></td>
+<td style="text-align:left;">Specifies the version of CircleCI's runner you want to use. Most of the time, use the latest.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>jobs</code></td>
+<td style="text-align:left;">List of jobs.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>commands</code></td>
+<td style="text-align:left;">List of reusable commands that can be used as steps in jobs.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>orbs</code></td>
+<td style="text-align:left;">Makes available some pre-written functionality that you can include in your jobs. Orbs become step types which we will see later when we talk more about jobs.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>workflows</code></td>
+<td style="text-align:left;">Puts the jobs in execution order, sets up dependencies.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="workflows">Workflows</h4>
+<p>In Circle CI, a pipeline is made up of one or more workflows. Workflows contain jobs.</p>
+<table>
+<thead>
+<tr>
+<th id="**workflow_option**" style="text-align:left;"><strong>Workflow Option</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>&lt;workflow_name&gt;</code></td>
+<td style="text-align:left;">The name of the workflow that appears in the Circle CI web app. You can have multiple workflows for different scenarios, so it's helpful to give them future-proof names.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>jobs</code></td>
+<td style="text-align:left;">A list of jobs, already defined elsewhere in the config file, and some instructions on when to run them.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="workflow-job-options">Workflow Job Options</h4>
+<p>A workflow defines the order in which we will run jobs.</p>
+<table>
+<thead>
+<tr>
+<th id="**workflow_job_option**" style="text-align:left;"><strong>Workflow Job Option</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>&lt;job_name&gt;</code></td>
+<td style="text-align:left;">The name of the corresponding job.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>requires</code></td>
+<td style="text-align:left;">Jobs are run in parallel by default, so if your job doesn't require any other jobs, they will all just run at the same time, or in random order.</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>filters</code></td>
+<td style="text-align:left;">Excludes jobs based on current branch or tag.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Pipeline Scenario 1</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Does the following scenario follow the Single Responsibility Principle?</p>
+<blockquote>
+  <p>To take advantage of a compile step, we also run unit and integration tests in the same job. If we break this into smaller jobs, we will be wasting resources when compiling again and again.</p>
+</blockquote></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1589921614043" name="1026366" id="a1589921614043">
+        <label for="a1589921614043"><p>Yes, it does.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1589921666400" name="1026366" id="a1589921666400">
+        <label for="a1589921666400"><p>No, it doesn't.</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Yes, it does.
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Pipeline Scenario 2</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Does the following scenario follow the Single Responsibility Principle?</p>
+<blockquote>
+  <p>Our pipeline has a job that deploys the production files to our production server. Then, there's a job that runs some simple smoke tests. The separation helps us zero in on the problem if one of these jobs fails.</p>
+</blockquote></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1589921858721" name="1026367" id="a1589921858721">
+        <label for="a1589921858721"><p>Yes, it does.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1589921887783" name="1026367" id="a1589921887783">
+        <label for="a1589921887783"><p>No, it does not.</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Yes, it does.
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. Creating Jobs.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Creating Pipelines')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

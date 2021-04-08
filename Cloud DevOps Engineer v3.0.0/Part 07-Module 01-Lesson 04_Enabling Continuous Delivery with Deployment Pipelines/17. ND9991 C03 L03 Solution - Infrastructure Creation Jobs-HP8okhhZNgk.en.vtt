@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.520 --> 00:00:05.160
+The things you've been learning in past courses and lessons are
+
+00:00:05.160 --> 00:00:08.055
+really starting to come together in an exercise like this one,
+
+00:00:08.055 --> 00:00:10.770
+you can now automate the creation of infrastructure.
+
+00:00:10.770 --> 00:00:16.560
+That's exciting, take a look at my code below and see how close yours was to mine.
+
+00:00:16.560 --> 00:00:20.395
+Notice what things you did and I did differently.
+
+00:00:20.395 --> 00:00:21.900
+Did you miss anything?
+
+00:00:21.900 --> 00:00:24.210
+Maybe go back and try a few things.
+
+00:00:24.210 --> 00:00:29.665
+Oh, and don't forget to clean up your EC2 instances to avoid those charges from AWS.
+
+00:00:29.665 --> 00:00:33.860
+Some things that might be interesting to point out are that we're using
+
+00:00:33.860 --> 00:00:40.840
+this docker instance that has AWS CLI already installed for us.
+
+00:00:40.840 --> 00:00:43.880
+Then of course we're just checking out the code and running
+
+00:00:43.880 --> 00:00:47.510
+our CloudFormation command to lift up that stack.
+
+00:00:47.510 --> 00:00:49.475
+There's really not much to it,
+
+00:00:49.475 --> 00:00:55.020
+we're really just wrapping our CloudFormation command in a job.
+

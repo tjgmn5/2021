@@ -1,0 +1,112 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:03.860 --> 00:00:10.050
+The inventory file in Ansible is a powerful way to manage and query server instances,
+
+00:00:10.050 --> 00:00:11.805
+especially if you have a lot.
+
+00:00:11.805 --> 00:00:15.420
+After all, one of the really cool things about Ansible is
+
+00:00:15.420 --> 00:00:19.005
+that you can make changes to 1,000 servers at a time,
+
+00:00:19.005 --> 00:00:20.875
+like my previous example.
+
+00:00:20.875 --> 00:00:24.225
+But let's bring it back down to CICD.
+
+00:00:24.225 --> 00:00:29.385
+When we're deploying, we're not typically configuring 1,000 servers at once,
+
+00:00:29.385 --> 00:00:32.075
+it might be only one or a handful.
+
+00:00:32.075 --> 00:00:35.440
+Why do we need an inventory file for so few?
+
+00:00:35.440 --> 00:00:38.720
+Well, it just so happens that the inventory file is
+
+00:00:38.720 --> 00:00:43.790
+a really easy way to target instances even if they're unknown until now,
+
+00:00:43.790 --> 00:00:47.365
+as is the case when you're provisioning new servers on the fly.
+
+00:00:47.365 --> 00:00:51.320
+Since the inventory file is only a simple text file,
+
+00:00:51.320 --> 00:00:55.160
+we can do some clever scripting and get a list of instances from
+
+00:00:55.160 --> 00:00:58.870
+AWS and append them to the end of our inventory file.
+
+00:00:58.870 --> 00:01:02.760
+Then when we execute our playbook against our inventory file,
+
+00:01:02.760 --> 00:01:07.060
+our dynamic instances get configured as they should.
+
+00:01:07.060 --> 00:01:11.555
+I'm going to run a simple AWS command that queries
+
+00:01:11.555 --> 00:01:16.450
+the public IP addresses of my instances in AWS,
+
+00:01:16.450 --> 00:01:20.730
+aws ec2 describe-instances, that's going to get
+
+00:01:20.730 --> 00:01:25.570
+all of the instances and we're specifically querying the public IP address.
+
+00:01:25.570 --> 00:01:29.930
+As you can see here, I only have one instance, and that's true.
+
+00:01:29.930 --> 00:01:33.595
+How did we get that instance into an inventory file?
+
+00:01:33.595 --> 00:01:37.865
+Well, we could just pipe that into a file like an inventory file,
+
+00:01:37.865 --> 00:01:43.585
+but we need to have our header above the IP address so that it works for our playbook.
+
+00:01:43.585 --> 00:01:47.285
+Let's add an inventory file first and then allow
+
+00:01:47.285 --> 00:01:52.110
+AWS to append to the IP address to our inventory file.
+
+00:01:54.260 --> 00:01:57.080
+So there I've got an inventory file,
+
+00:01:57.080 --> 00:01:58.685
+it has all at the top,
+
+00:01:58.685 --> 00:02:02.630
+and so now let's rerun our AWS command
+
+00:02:02.630 --> 00:02:07.410
+and actually pipe that out to our inventory file as well.
+
+00:02:07.760 --> 00:02:10.830
+Done. Let's take a look.
+
+00:02:10.830 --> 00:02:14.300
+Excellent. So now we have an inventory file with
+
+00:02:14.300 --> 00:02:19.795
+our all header and it includes our IP address for our instance in AWS.
+
+00:02:19.795 --> 00:02:23.480
+So now your task is to wrap this process up in
+
+00:02:23.480 --> 00:02:29.070
+a CICD job so that it's available to us at time of deployment.
+
