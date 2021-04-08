@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.714
+Just for the sake of completeness,
+
+00:00:02.714 --> 00:00:07.979
+it's necessary that we discuss a couple of topics that we're not going to go in depth on,
+
+00:00:07.980 --> 00:00:10.950
+but you should be fully aware of their implications.
+
+00:00:10.949 --> 00:00:13.814
+The first is performance testing.
+
+00:00:13.814 --> 00:00:22.289
+That is because this is a much more complex subjects that can take a long time.
+
+00:00:22.289 --> 00:00:26.730
+Then we are going to be able to cover in this lesson here.
+
+00:00:26.730 --> 00:00:31.260
+With performance testing, you're basically bringing up an environment,
+
+00:00:31.260 --> 00:00:34.844
+to usually a scale down level of an environment,
+
+00:00:34.844 --> 00:00:41.600
+and then using agents which will test that environment to see what kind of load handling,
+
+00:00:41.600 --> 00:00:45.200
+how many users connected or transactions per second,
+
+00:00:45.200 --> 00:00:49.505
+or whatever it is you're measuring that environment is capable of.
+
+00:00:49.505 --> 00:00:53.554
+Then, another thing that we're not doing but it's
+
+00:00:53.554 --> 00:00:58.820
+definitely something that you will encounter in your workplace is integration testing.
+
+00:00:58.820 --> 00:01:03.125
+This is where you are adding your code to
+
+00:01:03.125 --> 00:01:06.379
+a larger project and you're testing to see
+
+00:01:06.379 --> 00:01:09.920
+when you make a change here and you deploy everything,
+
+00:01:09.920 --> 00:01:13.534
+does that break the application as a whole?
+
+00:01:13.534 --> 00:01:19.200
+But I think that being able to cover
+
+00:01:19.200 --> 00:01:25.064
+the component parts of testing the functionality with lynching,
+
+00:01:25.064 --> 00:01:28.120
+you will understand how this stuff works,
+
+00:01:28.120 --> 00:01:32.510
+and you'll be able to scale this to what it is that you're trying to accomplish.
+
+00:01:32.510 --> 00:01:35.088
+So we've covered lynching,
+
+00:01:35.088 --> 00:01:38.825
+we've covered security testing, performance testing.
+
+00:01:38.825 --> 00:01:40.505
+You can go find out on yourself,
+
+00:01:40.504 --> 00:01:42.159
+as well as integration testing.
+
+00:01:42.159 --> 00:01:44.950
+Already, let's move on.
+

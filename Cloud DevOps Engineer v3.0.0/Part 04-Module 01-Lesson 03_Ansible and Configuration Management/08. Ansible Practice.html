@@ -1,0 +1,340 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ansible Practice</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Ansible and Configuration Management</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Ansible Intro.html">01. Ansible Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Templates.html">02. Templates</a>
+    </li>
+    <li class="">
+      <a href="03. Services.html">03. Services</a>
+    </li>
+    <li class="">
+      <a href="04. Conditionals.html">04. Conditionals</a>
+    </li>
+    <li class="">
+      <a href="05. Roles.html">05. Roles</a>
+    </li>
+    <li class="">
+      <a href="06. Running Ansible.html">06. Running Ansible</a>
+    </li>
+    <li class="">
+      <a href="07. Ansible Review &amp; Quiz.html">07. Ansible Review &amp; Quiz</a>
+    </li>
+    <li class="">
+      <a href="08. Ansible Practice.html">08. Ansible Practice</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">08. Ansible Practice</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Practice Exercise 1</p></h3>
+  <div>
+  <h3 id="practice-exercise-1">Practice Exercise 1</h3>
+<p>Get some valuable practice with the skills in this lesson by working through these exercises!</p>
+<ul>
+<li>Install Ansible using <br />
+<code>sudo apt install -y ansible</code></li>
+<li>Create a new directory structure using the command .<br />
+<code>mkdir -p  nginx_ansible/roles/nginx/tasks</code></li>
+<li>Create an Ansible role to install Nginx. </li>
+<li>Run the job.</li>
+<li>Take a screenshot of your Ansible run, and compare it with the Instructor’s screenshot of Ansible run, as shown below.</li>
+</ul>
+<p>Some things to get you started:</p>
+<h5 id="mainyaml">main.yaml:</h5>
+<pre><code># Install Nginx
+- hosts: localhost
+  connection: local
+  become: True
+  become_user: root
+  roles:
+    - nginx</code></pre>
+<h5 id="rolesnginxtasksmainyaml">roles/nginx/tasks/main.yaml:</h5>
+<pre><code>- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+  when: ansible_facts['os_family'] == 'Debian'</code></pre>
+<h5 id="inventory">Inventory:</h5>
+<p><code>localhost ansible_connection=local</code></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Practice Exercise 1 Screenshot</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-07-31-at-7.03.37-pm.png" alt="My Ansible Run to Compare to Yours" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>My Ansible Run to Compare to Yours</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Practice Exercise 2</p></h3>
+  <div>
+  <h3 id="practice-exercise-2">Practice Exercise 2</h3>
+<ul>
+<li>Create a template to generate your configuration file. </li>
+<li>Extend your existing role as follows:</li>
+</ul>
+<h5 id="rolesnginxtasksmainyaml">roles/nginx/tasks/main.yaml:</h5>
+<pre><code>- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+  when: ansible_facts['os_family'] == 'Debian'</code></pre>
+<pre><code>- name: generate Nginx site config
+  template:
+      src: site.conf.j2
+      dest: /etc/nginx/sites-enabled/site.conf
+      owner: root
+      group: root
+      mode: 0744</code></pre>
+<h5 id="rolesnginxtemplatessiteconfj2">roles/nginx/templates/site.conf.j2:</h5>
+<pre><code>server {
+        listen   80;
+        server_name  {{ SERVER_NAME }};
+        root   {{ FILE_PATH }};
+        location / {
+                index  index.php index.html index.htm;
+                autoindex off;    #enable listing of directory index
+        }
+}</code></pre>
+<h5 id="rolesnginxvarsmainyaml----use-your-public-ip-address-of-the-ec2-instance">roles/nginx/vars/main.yaml:    (use your public IP address of the EC2 instance)</h5>
+<pre><code>SERVER_NAME: http://3.19.66.42
+FILE_PATH: /var/www/html</code></pre>
+<ul>
+<li>Take a screenshot of your Ansible role again, and compare it with the Instructor’s screenshot of Ansible role, as shown below.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Exercise 2</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-07-31-at-7.04.23-pm.png" alt="My Results After Running Ansible Role" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>My Results After Running Ansible Role</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Practice Exercise 3</p></h3>
+  <div>
+  <h3 id="practice-exercise-3">Practice Exercise 3</h3>
+<p>Adding to your existing Ansible</p>
+<h5 id="rolesnginxtemplatesindexhtml">roles/nginx/templates/index.html:</h5>
+<pre><code>&lt;!doctype html&gt;
+   &lt;html&gt;
+     &lt;head&gt;
+         &lt;title&gt;Welcome {{ STUDENT_NAME }} to Ansible&lt;/title&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+       &lt;p&gt;&lt;strong&gt;Configure your world your way &amp;#153;&lt;/strong&gt;&lt;/p&gt;
+     &lt;/body&gt;
+   &lt;/html&gt;</code></pre>
+<h5 id="rolesnginxvarsmainyaml-use-your-name-and-ip-address">roles/nginx/vars/main.yaml: (use your name and IP address)</h5>
+<pre><code>SERVER_NAME: 3.19.66.42
+FILE_PATH: /var/www/html
+STUDENT_NAME: Olin Wread</code></pre>
+<h5 id="rolesnginxtasksmainyaml">roles/nginx/tasks/main.yaml:</h5>
+<pre><code>- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+  when: ansible_facts['os_family'] == 'Debian'</code></pre>
+<pre><code>- name: Generate Nginx site config
+  template:
+      src: site.conf.j2
+      dest: /etc/nginx/sites-enabled/site.conf
+      owner: root
+      group: root
+      mode: 0744</code></pre>
+<pre><code>- name: Generate index.html
+  template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 0744</code></pre>
+<pre><code>- name: Enable Nginx service
+  systemd:
+    name: nginx
+    daemon_reload: yes
+    enabled: yes
+    state: started</code></pre>
+<p>Take a screenshot after you visit the webpage to verify it works and compare it to the Instructor’s below:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Practice Exercise 3</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-07-31-at-7.05.26-pm.png" alt="Nginx" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Nginx</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. Ansible Practice')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

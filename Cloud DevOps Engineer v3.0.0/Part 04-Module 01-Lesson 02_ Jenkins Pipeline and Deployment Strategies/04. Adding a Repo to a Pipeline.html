@@ -1,0 +1,245 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Adding a Repo to a Pipeline</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3> Jenkins Pipeline and Deployment Strategies</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Install AWS Plugin into Jenkins.html">02. Install AWS Plugin into Jenkins</a>
+    </li>
+    <li class="">
+      <a href="03. Intro to Blue Ocean.html">03. Intro to Blue Ocean</a>
+    </li>
+    <li class="">
+      <a href="04. Adding a Repo to a Pipeline.html">04. Adding a Repo to a Pipeline</a>
+    </li>
+    <li class="">
+      <a href="05. Multiple Pipelines.html">05. Multiple Pipelines</a>
+    </li>
+    <li class="">
+      <a href="06. Pipeline Triggers.html">06. Pipeline Triggers</a>
+    </li>
+    <li class="">
+      <a href="07. Pipeline Testing.html">07. Pipeline Testing</a>
+    </li>
+    <li class="">
+      <a href="08. Security Testing with Aqua.html">08. Security Testing with Aqua</a>
+    </li>
+    <li class="">
+      <a href="09. Deployment Strategies.html">09. Deployment Strategies</a>
+    </li>
+    <li class="">
+      <a href="10. Deployment Big Picture.html">10. Deployment Big Picture</a>
+    </li>
+    <li class="">
+      <a href="11. Deployment Practice.html">11. Deployment Practice</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. Adding a Repo to a Pipeline</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND#9991 C03 L02 A04 Adding A Github Repo To A Pipeline V2</p></h3>
+  <video controls>
+  <source src="04. ND#9991 C03 L02 A04 Adding A Github Repo To A Pipeline V2-Au49ZnAnWe0.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="04. ND#9991 C03 L02 A04 Adding A Github Repo To A Pipeline V2-Au49ZnAnWe0.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="prerequisite---a-github-repo">Prerequisite - A Github repo</h2>
+<ul>
+<li>Create a Github account.<ul>
+<li>"Sign in" to Github, if you already have a Github account.</li>
+<li>Else, go to <a href="https://github.com" rel="noopener noreferrer" target="_blank">https://github.com</a> and “Sign up” button in the upper right-hand corner.</li></ul></li>
+<li>Create a new Github repository in <strong>your account</strong>.</li>
+<li>Download and install <strong><a href="https://desktop.github.com/" rel="noopener noreferrer" target="_blank">GitHub Desktop</a></strong> utility to work seamlessly. </li>
+<li>Open up your terminal/GitHub Desktop console and change to the directory of your choice (say Documents).</li>
+<li>Run the following command to clone the <strong>Course’s Github repo</strong> - <code>git clone https://github.com/udacity/nd9991-c3-Build-CI-CD-Pipelines-Monitoring-and-Logging-v1</code>. This command will create a clone, locally in your machine. </li>
+<li>Run <code>cd &lt;name of the downloaded repo&gt;</code> to enter into the downloaded repo. Notice that the <code>origin</code> repo has three branches - master, blue, and green. Stay on the <strong>master</strong> branch.</li>
+<li>Change the <code>origin</code> - By default, <code>origin</code> would point to the <strong>Course’s Github repo</strong>. Change the <code>origin</code> using</li>
+</ul>
+<pre><code class="bash language-bash"> git remote -v 
+ git remote remove origin 
+ git remote add origin &lt;link to Github repository in **your account**&gt;</code></pre>
+<ul>
+<li>Edit the file <code>Jenkinsfile</code> using any editor, such as VI, Visual Studio Code, or any other.  </li>
+<li>Commit the file <code>Jenkinsfile</code> in the master branch into your own local repository, using the command </li>
+</ul>
+<pre><code class="bash language-bash">git add . --all
+git commit -m “my comment“ </code></pre>
+<ul>
+<li>Push your local changes to your Github account, using <code>git push origin</code>, that will push changes from all local branches to matching branches the origin remote. </li>
+</ul>
+<h3 id="steps-to-use-blue-ocean-demonstrated-in-the-video">Steps to use Blue Ocean demonstrated in the video</h3>
+<p>Special note: you must be logged into your Github account before beginning </p>
+<ul>
+<li>Click “Open Blue Ocean”</li>
+<li>Click “Create a new Pipeline”</li>
+<li>Select “Github”</li>
+<li>Click “Create Access Token”</li>
+<li>Type a name at the top</li>
+<li>Click “Generate Token”</li>
+<li>Paste the access token into Jenkins “Connect to Github” box</li>
+<li>Select the Github repository you want to use</li>
+<li>Click “Create Pipeline”</li>
+<li>Select a Github branch</li>
+<li>Execute the build</li>
+</ul>
+<h2 id="recommended-tutorial">Recommended Tutorial</h2>
+<p>This Jenkins <a href="https://jenkins.io/doc/tutorials/create-a-pipeline-in-blue-ocean/#fork-sample-repository" rel="noopener noreferrer" target="_blank">Tutorial to Create a Pipeline in Blue Ocean</a> explains the steps mentioned above.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. Multiple Pipelines.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Adding a Repo to a Pipeline')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

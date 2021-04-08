@@ -1,0 +1,309 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Deployment Strategies</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3> Jenkins Pipeline and Deployment Strategies</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Install AWS Plugin into Jenkins.html">02. Install AWS Plugin into Jenkins</a>
+    </li>
+    <li class="">
+      <a href="03. Intro to Blue Ocean.html">03. Intro to Blue Ocean</a>
+    </li>
+    <li class="">
+      <a href="04. Adding a Repo to a Pipeline.html">04. Adding a Repo to a Pipeline</a>
+    </li>
+    <li class="">
+      <a href="05. Multiple Pipelines.html">05. Multiple Pipelines</a>
+    </li>
+    <li class="">
+      <a href="06. Pipeline Triggers.html">06. Pipeline Triggers</a>
+    </li>
+    <li class="">
+      <a href="07. Pipeline Testing.html">07. Pipeline Testing</a>
+    </li>
+    <li class="">
+      <a href="08. Security Testing with Aqua.html">08. Security Testing with Aqua</a>
+    </li>
+    <li class="">
+      <a href="09. Deployment Strategies.html">09. Deployment Strategies</a>
+    </li>
+    <li class="">
+      <a href="10. Deployment Big Picture.html">10. Deployment Big Picture</a>
+    </li>
+    <li class="">
+      <a href="11. Deployment Practice.html">11. Deployment Practice</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">09. Deployment Strategies</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>DS 1</p></h3>
+  <div>
+  <h2 id="deployment-strategies">Deployment Strategies</h2>
+<p>Deployment strategy is an approach to roll out the updates/changes made in the "live" application. The idea is that the application must not be brought down to introduce the updates. There are a variety of strategies available. Let's assume that there are two versions of the software applications - version A and B. Version B is the updated version. </p>
+<ul>
+<li><strong>Rolling</strong> - Version B is gradually rolled out succeeding version A. This is suitable when the updates are very small, such as bug fixes. </li>
+<li><strong>Blue/Green</strong> - Version B is released alongside version A, then the traffic is switched to version B. This is the preferred model when there are major updates or releasing new features.</li>
+<li><strong>Canary</strong> - Version B is released to a specific subset of users for early feedback and testing, then proceed to a complete rollout. </li>
+<li><strong>A/B testing</strong> - Version B is released to a subset of users under particular conditions.</li>
+<li><strong>Recreate</strong> - Version A is terminated first, and then the version B is rolled out.</li>
+<li><strong>Shadow</strong> - Version B receives real-world traffic alongside version A and doesn’t impact the response.</li>
+</ul>
+<p><strong>We will follow Blue-Green deployment strategy in this concept.</strong></p>
+<h3 id="blue-green-deployment-explained">Blue Green Deployment Explained</h3>
+<p>Blue green deployment enables deploying new code to environments while keeping the existing environment up until the new environment is ready. This is important for providing a consistently working environment to the end users of the code/website. In addition, it allows us to independently test the new environment before putting it in front of the end user. To accomplish blue green deployment it requires setting up this identical environment, switching the load balancer, and verifying that the code base has changed through the website.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Deployment Strategies Graphic</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-07-30-at-10.28.33-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Rolling Deployment</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-07-30-at-10.13.50-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>DS 2</p></h3>
+  <div>
+  <p>In order to follow Blue-Green deployment strategy, we need to have the following tools/plugins available in our Jenkins host - Ansible, Boto - a Python interface to AWS, and CloudBees AWS plugin. Ansible is a tool for automated provisioning, configuration management, and application deployment in target infrastructure using code. In the overarching diagram, we saw the role of Ansible in the deployment. Let's install the tools/plugins mentioned above, to get started with Blue-Green deployment. We will learn more about Ansible in the next lesson. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND#9991 C03 L02 A0 Blue Green</p></h3>
+  <video controls>
+  <source src="09. ND#9991 C03 L02 A0 Blue Green-3DYFdgXsa74.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="09. ND#9991 C03 L02 A0 Blue Green-3DYFdgXsa74.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Blue/Green Deployment Strategy</p></h3>
+  <div>
+  <h3 id="bluegreen-deployment-strategy">Blue/Green Deployment Strategy</h3>
+<ul>
+<li><code>apt install ansible</code></li>
+<li><code>pip install boto</code></li>
+<li>Jenkins plugin CloudBees AWS Credentials Plugin</li>
+<li>Configure AWS Credentials in Jenkins</li>
+<li>Map credentials from Jenkins to Pipeline application</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Blue/Green Deployment IAM Policy</p></h3>
+  <div>
+  <h3 id="bluegreen-deployment-iam-policy">Blue/Green Deployment IAM Policy</h3>
+<pre><code>{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*",
+                "cloudwatch:*",
+                "route53:*",
+                "ec2:*",
+                "ec2:DescribeAccountAttributes",
+                "elasticloadbalancing:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "iam:CreateServiceLinkedRole",
+            "Resource": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+    ]
+}</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Blue/Green Deployment Strategy (cont.)</p></h3>
+  <div>
+  <h3 id="bluegreen-deployment-strategy-cont">Blue/Green Deployment Strategy (cont.)</h3>
+<ul>
+<li>Set up Private Route53 Zone</li>
+<li>Configure Healthcheck</li>
+<li>Run Blue Deployment</li>
+<li>Run Green Deployment</li>
+<li>Check Route53 entries</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="10. Deployment Big Picture.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('09. Deployment Strategies')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

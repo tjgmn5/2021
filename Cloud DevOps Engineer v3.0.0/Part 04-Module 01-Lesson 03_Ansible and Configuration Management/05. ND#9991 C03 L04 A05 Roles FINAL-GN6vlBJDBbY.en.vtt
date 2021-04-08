@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.629
+So next subject, we have the topic of roles.
+
+00:00:06.629 --> 00:00:12.495
+A role is merely a collection of tasks that are designed to perform
+
+00:00:12.494 --> 00:00:18.780
+some common activity and this may seem misleading,
+
+00:00:18.780 --> 00:00:20.429
+but when we say tasks,
+
+00:00:20.429 --> 00:00:25.439
+that also includes templates, vars and files.
+
+00:00:25.440 --> 00:00:30.900
+Ansible is very smart in the way that it lays out its directory structure.
+
+00:00:30.899 --> 00:00:34.125
+You have at the lowest level,
+
+00:00:34.125 --> 00:00:41.774
+your root level configurations and then you have a sub-directory roles,
+
+00:00:41.774 --> 00:00:46.250
+and roles contains all of your differently named roles.
+
+00:00:46.250 --> 00:00:50.975
+They ought to be unique and each role contains its own tasks,
+
+00:00:50.975 --> 00:00:52.625
+templates, vars, and files,
+
+00:00:52.625 --> 00:00:56.270
+and so it makes organizationally things work pretty well.
+
+00:00:56.270 --> 00:01:02.585
+When you are in the process of working on a root level playbook,
+
+00:01:02.585 --> 00:01:07.519
+you need to include roles and one of the means of doing
+
+00:01:07.519 --> 00:01:13.864
+so is with a task and with the include role module.
+
+00:01:13.864 --> 00:01:21.004
+So we have this here for a role that is creating the Vault Service,
+
+00:01:21.004 --> 00:01:23.750
+which is a HashiCorp product.
+

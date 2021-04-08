@@ -1,0 +1,130 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.990
+Now we want to move on to how we control
+
+00:00:03.990 --> 00:00:10.350
+these changes in the abstraction of our Cloud of systems.
+
+00:00:10.350 --> 00:00:14.550
+To do that, we need to use conditionals.
+
+00:00:14.550 --> 00:00:21.960
+A conditional is something where we have a variety of means of doing this,
+
+00:00:21.960 --> 00:00:26.130
+we need to first register the output of another command,
+
+00:00:26.130 --> 00:00:28.365
+and then place that into a variable,
+
+00:00:28.365 --> 00:00:36.750
+and then being able to take that output and bring that into a usable form.
+
+00:00:36.750 --> 00:00:39.525
+So for the example that we have here,
+
+00:00:39.525 --> 00:00:42.805
+we are looking at installing Apache.
+
+00:00:42.805 --> 00:00:45.950
+Apache is one of those things where you'd expect,
+
+00:00:45.950 --> 00:00:47.650
+it's just a package.
+
+00:00:47.650 --> 00:00:51.425
+It should be named about the same everywhere, but it's not.
+
+00:00:51.425 --> 00:00:53.225
+Under a Debian system,
+
+00:00:53.225 --> 00:00:57.530
+you call it apache2, stereotypically.
+
+00:00:57.530 --> 00:01:00.755
+Under and Red Hat based system,
+
+00:01:00.755 --> 00:01:05.505
+you call HTTPD and when we're talking about you call HTTPD,
+
+00:01:05.505 --> 00:01:08.720
+this is the way it's called in the package repository.
+
+00:01:08.720 --> 00:01:12.680
+So this is an important distinction when you go about using
+
+00:01:12.680 --> 00:01:17.390
+your configuration management system to bring your systems into a desired state.
+
+00:01:17.390 --> 00:01:26.810
+So here, we are using as a control a when-state, the ansible_facts['os_family'].
+
+00:01:26.810 --> 00:01:31.225
+Then we're setting it to present.
+
+00:01:31.225 --> 00:01:33.480
+Note that with the state,
+
+00:01:33.480 --> 00:01:38.130
+we have a number of other options such as absent.
+
+00:01:38.210 --> 00:01:43.025
+So now we've just finished up with our conditional when-condition,
+
+00:01:43.025 --> 00:01:46.820
+and we're going to move into a little bit more depth on
+
+00:01:46.820 --> 00:01:52.220
+these ansible facts because we need to understand what we have available to work with.
+
+00:01:52.220 --> 00:01:56.035
+Next up, we have conditional classification.
+
+00:01:56.035 --> 00:02:06.315
+This is getting into what you have available natively in any given environment.
+
+00:02:06.315 --> 00:02:11.970
+It doesn't matter whether this is a Cloud system or a physical system,
+
+00:02:11.970 --> 00:02:20.060
+any like size of the system be it a cell phone or be it some big supercomputer.
+
+00:02:20.060 --> 00:02:22.385
+Every system is going to have
+
+00:02:22.385 --> 00:02:29.540
+a different number of variables that you will have available to you,
+
+00:02:29.540 --> 00:02:32.150
+and these are the built-in ansible variables.
+
+00:02:32.150 --> 00:02:35.425
+So let's take a look at some of the most common ones,
+
+00:02:35.425 --> 00:02:38.305
+which are obviously like hostname,
+
+00:02:38.305 --> 00:02:42.615
+IPv4 address, architecture, kernel.
+
+00:02:42.615 --> 00:02:45.569
+So these are going to be pretty much universal,
+
+00:02:45.569 --> 00:02:48.120
+but there's a huge number of them.
+
+00:02:48.120 --> 00:02:53.120
+The important thing is to evaluate these on your given system.
+
+00:02:53.120 --> 00:02:55.760
+In addition as we addressed earlier,
+
+00:02:55.760 --> 00:03:00.410
+you can set any variable as you need to that is outside of this namespace of
+
+00:03:00.410 --> 00:03:07.020
+built-in variables to do whatever task that you're trying to control or automate.
+

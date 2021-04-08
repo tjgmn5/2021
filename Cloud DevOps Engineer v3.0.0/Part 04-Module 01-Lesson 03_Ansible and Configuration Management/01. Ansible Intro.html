@@ -1,0 +1,265 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ansible Intro</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Ansible and Configuration Management</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Ansible Intro.html">01. Ansible Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Templates.html">02. Templates</a>
+    </li>
+    <li class="">
+      <a href="03. Services.html">03. Services</a>
+    </li>
+    <li class="">
+      <a href="04. Conditionals.html">04. Conditionals</a>
+    </li>
+    <li class="">
+      <a href="05. Roles.html">05. Roles</a>
+    </li>
+    <li class="">
+      <a href="06. Running Ansible.html">06. Running Ansible</a>
+    </li>
+    <li class="">
+      <a href="07. Ansible Review &amp; Quiz.html">07. Ansible Review &amp; Quiz</a>
+    </li>
+    <li class="">
+      <a href="08. Ansible Practice.html">08. Ansible Practice</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">01. Ansible Intro</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>What you're going to learn in this lesson</p></h3>
+  <div>
+  <h2 id="here’s-what-you’re-going-to-learn-in-this-ansible-lesson">Here’s what you’re going to learn in this Ansible lesson:</h2>
+<ul>
+<li>Ansible overview</li>
+<li>Configuration management philosophy</li>
+<li>How to install/update software with Ansible</li>
+<li>What are templates and how to use them</li>
+<li>Managing services with Systemd</li>
+<li>Controlling when actions are taken conditionally</li>
+<li>Classification of machines for conditionals</li>
+<li>How to create and manage roles</li>
+<li>What is an inventory file</li>
+<li>Ansible file structure</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND#6991 C03 L03 (Formerly L4) A01  Configuration Management For Ansible V3</p></h3>
+  <video controls>
+  <source src="01. ND#6991 C03 L03 (Formerly L4) A01  Configuration Management For Ansible V3-3C0yEM6GPls.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="01. ND#6991 C03 L03 (Formerly L4) A01  Configuration Management For Ansible V3-3C0yEM6GPls.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Correction about Lesson Number</p></h3>
+  <div>
+  <h5 id="note">Note:</h5>
+<p>The instructor says in the video above that we are in lesson 4, but this is now lesson 3.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Ansible Overview</p></h3>
+  <div>
+  <h3 id="ansible---introduction">Ansible - Introduction</h3>
+<p>Ansible is an IT automation tool that can automate the system configuration, software deployment, and infrastructure orchestration for continuous deployments or zero downtime rolling updates. It is an open-source community project sponsored by Red Hat - </p>
+<p>Ansible uses YAML to write <strong>Ansible Playbooks</strong>. Playbook files describe the automation tasks. The following are the benefits of using this automation tool:</p>
+<ul>
+<li><p>Well-Suited Architecture - Ansible connects to the <em>nodes</em> (processing entities) and launches tiny programs, called <strong>Ansible modules</strong>.  Modules are removed when they finish executing. </p></li>
+<li><p>Secure - Ansible uses SSH keys with ssh-agent. It supports Kerberos and other identity management systems.</p></li>
+<li><p>Simple, Scalable, and Manageable - Ansible uses INI file that contains the grouped information of all the nodes and machines that it is managing. This file makes it easy to deal with large scale infrastructure. A plain text inventory file looks like the following:</p></li>
+</ul>
+<pre><code>[webservers]
+www1.example.com
+www2.example.com
+
+[dbservers]
+db0.example.com
+db1.example.com</code></pre>
+<p>Easy orchestration - Ansible uses Playbooks, written in YAML, to describe the automation tasks with fine details. An example Playbook is:</p>
+<pre><code>- hosts: webservers
+serial: 5 # update 5 machines at a time
+roles:
+- common
+- webapp</code></pre>
+<ul>
+<li>Extendable - We can write Ansible modules in any language that returns JSON (Ruby, Python, bash, etc). It supports a wide variety of plugins as well. </li>
+</ul>
+<h3 id="ansible-overview">Ansible Overview</h3>
+<ul>
+<li>Ansible is a configuration management language</li>
+<li>Leverages YAML (yet another modeling language) and JSON (Javascript object notation)</li>
+<li>Agent-less language which uses SSH (secure shell) to connect to servers</li>
+<li>Light-weight, but managing large clusters is slow</li>
+<li>Written in Python, Ruby and Powershell</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Configuration Management Desired State</p></h3>
+  <div>
+  <h3 id="configuration-management-desired-state">Configuration Management Desired State</h3>
+<p>Idempotency: “The property of certain operations in mathematics and computer science whereby they can be applied multiple times without changing the result beyond the initial application.”<br />
+Source: <a href="https://en.wikipedia.org/wiki/Idempotence" rel="noopener noreferrer" target="_blank">https://en.wikipedia.org/wiki/Idempotence</a></p>
+<h3 id="recommended-read">Recommended Read</h3>
+<p>Before proceeding further, you can bookmark <a href="https://docs.ansible.com/ansible/latest/index.html" rel="noopener noreferrer" target="_blank">Ansible Documentation</a> for quick reference. </p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="02. Templates.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('01. Ansible Intro')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

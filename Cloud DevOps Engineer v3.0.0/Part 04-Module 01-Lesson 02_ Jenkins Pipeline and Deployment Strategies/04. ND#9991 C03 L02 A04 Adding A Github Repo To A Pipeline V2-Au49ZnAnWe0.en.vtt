@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.840
+Wonderful, so now we have our S3 plugin installed and configured,
+
+00:00:06.840 --> 00:00:12.615
+and we're ready to go about setting up Blue Ocean with GitHub.
+
+00:00:12.615 --> 00:00:16.270
+So let's click on Open Blue Ocean.
+
+00:00:18.920 --> 00:00:22.785
+It's going to prompt us that this is the first time.
+
+00:00:22.785 --> 00:00:25.785
+So go ahead and create a new pipeline,
+
+00:00:25.785 --> 00:00:28.730
+and it gives us five options by default.
+
+00:00:28.730 --> 00:00:31.340
+Let's choose GitHub.
+
+00:00:31.340 --> 00:00:36.320
+Very helpfully says create an access token here and this
+
+00:00:36.320 --> 00:00:40.840
+is wonderful,because as long as you are still logged in to GitHub,
+
+00:00:40.840 --> 00:00:43.020
+it will recognize that,
+
+00:00:43.020 --> 00:00:46.875
+and we can do that auto-magically.
+
+00:00:46.875 --> 00:00:49.750
+Click on "Generate token".
+
+00:00:50.240 --> 00:00:53.155
+Wonderful.
+
+00:00:53.155 --> 00:00:57.840
+Let's put that information into Jenkins,
+
+00:00:58.310 --> 00:01:05.140
+and connect, and it sees my GitHub repositories.
+
+00:01:06.350 --> 00:01:11.980
+We're going to select it. Create pipeline.
+
+00:01:18.620 --> 00:01:25.320
+Great. So now we have configured to talk to GitHub,
+
+00:01:25.320 --> 00:01:30.210
+and we can go about working with a branch.
+
+00:01:31.160 --> 00:01:37.720
+Let's go into master and let's see what is giving us.
+
+00:01:42.200 --> 00:01:45.910
+So we're going to kick off a build here.
+
+00:01:48.770 --> 00:01:54.305
+Great. So we have successfully built our pipeline
+
+00:01:54.305 --> 00:01:59.795
+and what was incorporated in this was uploading into S3.
+
+00:01:59.795 --> 00:02:02.800
+So we did a deployment,
+
+00:02:02.800 --> 00:02:04.960
+and it wasn't a continuous deployment,
+
+00:02:04.960 --> 00:02:08.435
+but it was a successful deployment into S3.
+
+00:02:08.435 --> 00:02:16.145
+Now we're going to go ahead and take a look at the other half of CI/CD nomenclature.
+
+00:02:16.145 --> 00:02:17.630
+We're going to start looking into
+
+00:02:17.630 --> 00:02:19.880
+continuous integration and some of
+
+00:02:19.880 --> 00:02:23.070
+the components that are involved in that in the next lesson.
+

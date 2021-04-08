@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.165
+Now that we've understood the broad parameters of how
+
+00:00:06.165 --> 00:00:11.580
+to create the tasks templates system,
+
+00:00:11.580 --> 00:00:15.749
+the services control of ansible,
+
+00:00:15.749 --> 00:00:18.180
+let's look at how we actually run it.
+
+00:00:18.180 --> 00:00:21.195
+This is the execution of a playbook.
+
+00:00:21.195 --> 00:00:25.440
+Let's look at this in practice with an ansible inventory file.
+
+00:00:25.440 --> 00:00:31.065
+Here we are denoting different collections of servers.
+
+00:00:31.065 --> 00:00:33.360
+So first, we have web server,
+
+00:00:33.360 --> 00:00:35.340
+and we have a single host,
+
+00:00:35.340 --> 00:00:38.895
+IP addresses, ansible user,
+
+00:00:38.895 --> 00:00:42.090
+and then the protocol which is used for connecting,
+
+00:00:42.090 --> 00:00:44.790
+and next we have a second group,
+
+00:00:44.790 --> 00:00:48.430
+db-server with two instances in it,
+
+00:00:48.430 --> 00:00:52.295
+and we notice that we have a different IP addresses here, so that's good.
+
+00:00:52.295 --> 00:00:55.205
+Everything else remains the same.
+
+00:00:55.205 --> 00:00:59.770
+So now, for actually going about applying this,
+
+00:00:59.770 --> 00:01:03.635
+we are looking at a root level playbook,
+
+00:01:03.635 --> 00:01:09.605
+and this is not actually gathering the facts which is
+
+00:01:09.605 --> 00:01:15.655
+what we looked at earlier when you are able to display all of the Linux,
+
+00:01:15.655 --> 00:01:19.295
+or Unix, or Windows facts that are available on the system.
+
+00:01:19.295 --> 00:01:23.180
+But if you're in a security enhanced environment,
+
+00:01:23.180 --> 00:01:24.935
+you may not want to do that.
+
+00:01:24.935 --> 00:01:35.205
+So it is including the role here to do the init for postgres task.
+
+00:01:35.205 --> 00:01:39.340
+Let's look at this a little deeper.
+
+00:01:39.350 --> 00:01:45.320
+Now, if we actually are going about running a playbook,
+
+00:01:45.320 --> 00:01:49.190
+we use the ansible playbook command,
+
+00:01:49.190 --> 00:01:52.835
+and here we are including an inventory with dash i,
+
+00:01:52.835 --> 00:01:55.730
+and this inventory is called my_hosts,
+
+00:01:55.730 --> 00:01:57.870
+and we're setting a variable.
+
+00:01:57.870 --> 00:02:03.335
+So we do dash a and then the variable, SE-Linux equals true,
+
+00:02:03.335 --> 00:02:11.490
+and the root level playbook where we're running a init_servers.yamal will be executed.
+
