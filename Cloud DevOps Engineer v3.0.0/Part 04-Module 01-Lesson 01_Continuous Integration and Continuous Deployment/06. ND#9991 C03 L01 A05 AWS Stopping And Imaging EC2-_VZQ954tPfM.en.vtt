@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.280 --> 00:00:08.220
+Let's take a short stop here because this is an area of common concern, which is,
+
+00:00:08.220 --> 00:00:13.260
+well, I need to take a break from whatever work I'm doing in AWS,
+
+00:00:13.259 --> 00:00:15.824
+and I don't want to be running up a high bill.
+
+00:00:15.824 --> 00:00:23.289
+So the way we do this is we stop and image our instance.
+
+00:00:24.199 --> 00:00:26.474
+Under the Action menu,
+
+00:00:26.475 --> 00:00:29.790
+we have Instance State, Stop.
+
+00:00:29.789 --> 00:00:33.450
+Now, it's preferable to be logged
+
+00:00:33.450 --> 00:00:37.304
+in to your instance and do a shutdown but this will work as well.
+
+00:00:37.304 --> 00:00:41.789
+Then we also have, Image, Create image.
+
+00:00:41.789 --> 00:00:47.094
+So you can, if you have it imaged,
+
+00:00:47.094 --> 00:00:49.719
+you'll be able to completely delete it.
+
+00:00:49.719 --> 00:00:54.710
+Both of these states, either be in a sub-state or having an image of it,
+
+00:00:54.710 --> 00:00:59.630
+and having an instance not in existence will be of the same cost.
+
+00:00:59.630 --> 00:01:03.935
+I'm just expanding the options that you have available to you.
+
+00:01:03.935 --> 00:01:08.670
+So this is just another way to save money in AWS.
+

@@ -1,0 +1,392 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Installing Jenkins</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Continuous Integration and Continuous Deployment</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Course Overview.html">02. Course Overview</a>
+    </li>
+    <li class="">
+      <a href="03. Interview Career Skills.html">03. Interview: Career Skills</a>
+    </li>
+    <li class="">
+      <a href="04. What is CICD and a Pipeline.html">04. What is CI/CD and a Pipeline?</a>
+    </li>
+    <li class="">
+      <a href="05. AWS Setup.html">05. AWS Setup</a>
+    </li>
+    <li class="">
+      <a href="06. IAM and EC2 Setup.html">06. IAM and EC2 Setup</a>
+    </li>
+    <li class="">
+      <a href="07. AWS Setup Quiz.html">07. AWS Setup Quiz</a>
+    </li>
+    <li class="">
+      <a href="08. Jenkins Intro.html">08. Jenkins Intro</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - Connect to Linux Instance.html">09. EC2 - Connect to Linux Instance</a>
+    </li>
+    <li class="">
+      <a href="10. Installing Jenkins.html">10. Installing Jenkins</a>
+    </li>
+    <li class="">
+      <a href="11. Install Blue Ocean Plugin into Jenkins.html">11. Install Blue Ocean Plugin into Jenkins</a>
+    </li>
+    <li class="">
+      <a href="12. Jenkins Quiz.html">12. Jenkins Quiz</a>
+    </li>
+    <li class="">
+      <a href="13. Review and Practice Exercises.html">13. Review and Practice Exercises</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">10. Installing Jenkins</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Jenkins image</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-08-02-at-8.11.42-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Prerequisite</p></h3>
+  <div>
+  <h2 id="prerequisite-to-install-jenkins">Prerequisite to Install Jenkins</h2>
+<p>You can install Jenkins using native system packages, Docker, or run on any machine having a Java Runtime Environment (JRE) available on it. We will install Jenkins on an AWS EC2 instance (a Virtual Machine) running the 64-bit (x86) Ubuntu OS. Later, we will log-in to that EC2 instance as an IAM user to configure the <em>Jenkins Pipeline</em>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND#9991 C03 L01 A06 Installing Jenkins</p></h3>
+  <video controls>
+  <source src="10. ND#9991 C03 L01 A06 Installing Jenkins-iVxigCxK5Q8.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="10. ND#9991 C03 L01 A06 Installing Jenkins-iVxigCxK5Q8.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Commands for Installing Jenkins</p></h3>
+  <div>
+  <h2 id="commands-for-installing-jenkins-on-an-ec2-instance">Commands for Installing Jenkins on an EC2 instance</h2>
+<p>(Note: You can scroll to the right to see all the content in the box below.)<br />
+We assume that your EC2 instance is running the 64-bit (x86) Ubuntu OS.</p>
+<pre><code class="bash language-bash"># Step 1 - Update existing packages
+sudo apt-get update
+
+# Step 2 - Install Java
+sudo apt install -y default-jdk
+
+# Step 3 - Download Jenkins package. 
+# You can go to http://pkg.jenkins.io/debian/ to see the available commands
+# First, add a key to your system
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+
+# # Step 4 - Add the following entry in your /etc/apt/sources.list:
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; /etc/apt/sources.list.d/jenkins.list'
+
+# # Step 5 -Update your local package index
+sudo apt-get update
+
+# Step 6 - Install Jenkins
+sudo apt-get install -y jenkins
+
+# Step 7 - Start the Jenkins server
+sudo systemctl start jenkins
+
+# Step 8 - Enable the service to load during boot
+sudo systemctl enable jenkins
+sudo systemctl status jenkins</code></pre>
+<p>The sudo command allows us to run a command as root. The apt utility is for installing software. It is a package manager and performs dependency resolution to install the supporting libraries for the end user. A package manager facilitates easy installation, upgrading, and management of software on a computer. The -y option for apt enables it to automatically select the “yes” option to install the software and prevents prompting of the end user. You will observe in the step which adds “jenkins.list” that we are adding an additional software repository source for which our Linux computer will be able to install software from. This is referred to as an Apt Package Repo.</p>
+<h2 id="logging-into-jenkins-using-gui">Logging into Jenkins using GUI</h2>
+<ul>
+<li>Go to AWS dashboard to copy the public IP address of your Ubuntu EC2 instance. </li>
+<li>Paste the public IP address into your browser, appended with <code>:8080</code> port. For the first time, it will open up the Jenkins GUI as shown in the snapshot below:</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 1</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-03-14-at-6.04.20-pm.png" alt="Jenkins GUI saves the administrator password in a file on server" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Jenkins GUI saves the administrator password in a file on server</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 2</p></h3>
+  <div>
+  <ul>
+<li><p>On the terminal, where you have connected to the Ubuntu EC2 instance, view the content of the file using the command <code>sudo cat &lt;path copied in the previous step&gt;</code>. It will show the default administrator password. You can copy and use this password in the GUI (browser) to log in first time.</p></li>
+<li><p>After successful login, you may choose to install default plugins. Though, we will learn to use specific plugins for our needs in the next lesson. See the snapshot below. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 3</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-03-14-at-6.26.15-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 4</p></h3>
+  <div>
+  <ul>
+<li>If you choose to install suggested plugins, the following plugins would get installed. See the snapshot below:</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 5</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-03-14-at-6.29.34-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 6</p></h3>
+  <div>
+  <ul>
+<li>Set up the user credentials. See the snapshot below:</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 7</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-03-14-at-6.47.42-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 8</p></h3>
+  <div>
+  <ul>
+<li>Next, it will show you a success message and take you to the Jenkins dashboard.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 9</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-03-14-at-6.49.34-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 10</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-03-14-at-6.53.29-pm.png" alt="Jenkins dashboard" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Jenkins dashboard</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>GUI 11</p></h3>
+  <div>
+  <h2 id="recommended-read">Recommended Read</h2>
+<ul>
+<li>Read the official <a href="https://jenkins.io/doc/pipeline/tour/getting-started/" rel="noopener noreferrer" target="_blank">guided <strong>tour</strong> to install Jenkins and create your first Pipeline</a></li>
+<li>There are a few tutorials available on the Jenkins website to help you get started with a variety of applications - Maven, Node.js, Python, and Blue Ocean. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="11. Install Blue Ocean Plugin into Jenkins.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('10. Installing Jenkins')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

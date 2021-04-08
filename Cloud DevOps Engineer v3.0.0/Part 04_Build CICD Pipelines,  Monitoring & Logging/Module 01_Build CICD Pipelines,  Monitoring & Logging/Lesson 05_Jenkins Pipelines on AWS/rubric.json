@@ -1,0 +1,185 @@
+{
+  "id": 2575,
+  "project_id": 620,
+  "upload_types": [
+    "zip"
+  ],
+  "file_filter_regex": "\\A(?!(((.*/)?(__MACOSX|\\.git|node_modules|bower_components|jspm_packages|\\.idea|build|.ipynb_checkpoints|\\.Trash-0|logs)(\\Z|/))))((.*\\.(js|css|py|html|htm|txt|md|markdown|sql|swift|java|gradle|ts|xml|rst|yml|yaml|rmd|pdf|docx)\\Z)|((.*/)?(README|Readme|readme|Makefile)\\Z))",
+  "nomination_eligible": false,
+  "stand_out": "1. The Jenkinsfile can be extended easily, we added a linting stage, other steps can be added like ensuring content is up with a curl command.\r\n2. “Steps” have useful features like a ‘retry’, anything that can be added to make it a robust deployment is great. See the reference guide.\r\n3.The project was created with a “poll” to check for Github changes. A webhook can be added instead that makes Github tell Jenkins to start building automatically. Github has a good guide on how to do this.\r\n4. Another option that can be done is using Canary Deployments. A Canary deployment is a more involved setup, and would require to progressively route users to the new version deployed, and fully transitioning over when confidence is high, otherwise reverting the release to the older version.\r\nMore info about canary deployments at: https://martinfowler.com/bliki/CanaryRelease.html\r\n5. A blue/green deployment, is similar to the canary deployment where two deployments exist and when the new version is available and passes certain conditions, it can be ‘swapped’ for the new one, and otherwise reverting to the older version. Amazon has a guide for CodePipeline that can be used as a reference: https://aws.amazon.com/quickstart/architecture/blue-green-deployment/",
+  "hide_criteria": false,
+  "created_at": "2019-05-08T14:33:36.305Z",
+  "updated_at": "2020-01-25T01:33:14.177Z",
+  "hashtag": "",
+  "max_upload_size_mb": 500,
+  "estimated_sla": null,
+  "project_assistant_enabled": false,
+  "available_for_cert_project": false,
+  "language": "en-us",
+  "ndkeys": [
+    "nd9991",
+    "nd9991-beta",
+    "nd9991-cn",
+    "nd9991-ent",
+    "nd9990-ent-telenor",
+    "nd009-ent-shell"
+  ],
+  "coursekeys": [],
+  "is_career": false,
+  "sections": [
+    {
+      "id": 5614,
+      "name": "AWS Setup",
+      "created_at": "2019-06-20T20:53:45.048Z",
+      "updated_at": "2019-08-05T18:01:26.045Z",
+      "deleted_at": null,
+      "position": 0,
+      "rubric_id": 2575,
+      "rubric_items": [
+        {
+          "id": 16097,
+          "section_id": 5614,
+          "passed_description": "A new user with EC2 and S3 access is created that is *not* the root/admin user in AWS. A screenshot with the unique AWS URL showing should be provided.",
+          "exceeded_description": "",
+          "created_at": "2019-06-20T20:56:50.347Z",
+          "updated_at": "2019-08-15T15:30:16.572Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Set up IAM credentials properly.",
+          "exceedable": false
+        },
+        {
+          "id": 16098,
+          "section_id": 5614,
+          "passed_description": "An Ubuntu 18.04 t2.micro is launched and can be accessed via SSH using the PEM file.  A screenshot with the unique AWS URL showing should be provided.",
+          "exceeded_description": "",
+          "created_at": "2019-06-20T20:57:20.456Z",
+          "updated_at": "2019-08-15T15:30:16.578Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Launch EC2 instance.",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5615,
+      "name": "Running Jenkins",
+      "created_at": "2019-06-20T20:54:26.170Z",
+      "updated_at": "2019-06-20T20:56:14.207Z",
+      "deleted_at": null,
+      "position": 1,
+      "rubric_id": 2575,
+      "rubric_items": [
+        {
+          "id": 16099,
+          "section_id": 5615,
+          "passed_description": "The Jenkins instance can be reached over HTTP publicly, a login screen should show if not logged in. A screenshot with unique AWS url should be provided.",
+          "exceeded_description": "",
+          "created_at": "2019-06-20T20:57:59.636Z",
+          "updated_at": "2019-08-15T15:30:16.582Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Jenkins is installed and running",
+          "exceedable": false
+        },
+        {
+          "id": 16100,
+          "section_id": 5615,
+          "passed_description": "The ‘Blue Ocean’ link should show in the sidebar and should load its interface, which is completely different from the standard Jenkins. A screenshot with unique AWS url should be provided.",
+          "exceeded_description": "",
+          "created_at": "2019-06-20T20:58:14.820Z",
+          "updated_at": "2019-08-15T15:30:16.585Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "‘Blue Ocean’ is enabled",
+          "exceedable": false
+        },
+        {
+          "id": 16102,
+          "section_id": 5615,
+          "passed_description": "The GitHub repository is added and shows in the BlueOcean dashboard, automatically recognizing the Jenkinsfile and setting up the initial pipeline that has 1 stage.  A screenshot with unique AWS url should be provided.",
+          "exceeded_description": "",
+          "created_at": "2019-06-20T20:59:20.950Z",
+          "updated_at": "2019-08-15T15:30:16.589Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 2,
+          "criteria": "Barebones Pipeline is added",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5616,
+      "name": "Working Pipeline",
+      "created_at": "2019-06-20T20:56:14.349Z",
+      "updated_at": "2019-06-20T20:56:29.996Z",
+      "deleted_at": null,
+      "position": 2,
+      "rubric_id": 2575,
+      "rubric_items": [
+        {
+          "id": 16101,
+          "section_id": 5616,
+          "passed_description": "The index.html file is published to the correct bucket in the right region, and the url is accessible via HTTP from anywhere. A screenshot with unique AWS url should be provided.",
+          "exceeded_description": "",
+          "created_at": "2019-06-20T20:58:37.696Z",
+          "updated_at": "2019-08-15T15:30:16.593Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Publishes the static site to S3\r\n",
+          "exceedable": false
+        },
+        {
+          "id": 16103,
+          "section_id": 5616,
+          "passed_description": "After adding a linter, it catches HTML problems with the sample index.html, after addressing the problems with the html, the job passes and publishes the contents once again - build is passing. A screenshot with unique AWS url should be provided.",
+          "exceeded_description": "",
+          "created_at": "2019-06-20T21:00:18.907Z",
+          "updated_at": "2019-08-15T15:30:16.597Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Linter catches issues with HTML",
+          "exceedable": false
+        },
+        {
+          "id": 16104,
+          "section_id": 5616,
+          "passed_description": "A Jenkinsfile exists, that has the stages and steps defined that match how the pipeline looks in the Jenkins dashboard. For example ‘stage(‘Lint HTML’)’ should show as ‘Lint HTML’ in the pipeline. The AWS credentials and bucket name should all map to an existing S3 bucket that is publicly accessible and that it displays the contents of the index.html file. A screenshot with the S3 URL should be provided.",
+          "exceeded_description": "",
+          "created_at": "2019-06-20T21:00:34.116Z",
+          "updated_at": "2019-08-15T15:30:16.600Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 2,
+          "criteria": "Jenkinsfile is demonstrated",
+          "exceedable": false
+        }
+      ]
+    }
+  ],
+  "project": {
+    "id": 620,
+    "name": "Jenkins Pipelines on AWS",
+    "nanodegree_key": "nd9991",
+    "is_cert_project": false,
+    "audit_project_id": null,
+    "hashtag": null,
+    "audit_rubric_id": 2899,
+    "entitlement_required": false,
+    "is_career": false,
+    "recruitment_family_id": 13,
+    "created_at": "2019-06-21T22:41:27.273Z",
+    "updated_at": "2021-03-23T16:41:00.578Z",
+    "price": "5.5",
+    "ungradeable_price": "3.0",
+    "audit_price": "0.0"
+  }
+}

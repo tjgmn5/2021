@@ -1,0 +1,342 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>What is CI/CD and a Pipeline?</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Continuous Integration and Continuous Deployment</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Course Overview.html">02. Course Overview</a>
+    </li>
+    <li class="">
+      <a href="03. Interview Career Skills.html">03. Interview: Career Skills</a>
+    </li>
+    <li class="">
+      <a href="04. What is CICD and a Pipeline.html">04. What is CI/CD and a Pipeline?</a>
+    </li>
+    <li class="">
+      <a href="05. AWS Setup.html">05. AWS Setup</a>
+    </li>
+    <li class="">
+      <a href="06. IAM and EC2 Setup.html">06. IAM and EC2 Setup</a>
+    </li>
+    <li class="">
+      <a href="07. AWS Setup Quiz.html">07. AWS Setup Quiz</a>
+    </li>
+    <li class="">
+      <a href="08. Jenkins Intro.html">08. Jenkins Intro</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - Connect to Linux Instance.html">09. EC2 - Connect to Linux Instance</a>
+    </li>
+    <li class="">
+      <a href="10. Installing Jenkins.html">10. Installing Jenkins</a>
+    </li>
+    <li class="">
+      <a href="11. Install Blue Ocean Plugin into Jenkins.html">11. Install Blue Ocean Plugin into Jenkins</a>
+    </li>
+    <li class="">
+      <a href="12. Jenkins Quiz.html">12. Jenkins Quiz</a>
+    </li>
+    <li class="">
+      <a href="13. Review and Practice Exercises.html">13. Review and Practice Exercises</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. What is CI/CD and a Pipeline?</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>CI / CD Definitions</p></h3>
+  <div>
+  <h2 id="background---what-is-devops">Background - What is DevOps?</h2>
+<p>We have learned in the <a href="https://classroom.udacity.com/nanodegrees/nd9991/parts/78ebd463-628c-4f6e-8802-f7a344f9cf55/modules/9711d330-0d6c-4dc5-9738-cf23c237a779/lessons/7d63a04c-5f53-4091-b87c-0ed3071c71c2/concepts/1075c920-b539-4330-ab6f-adea87f16c05" rel="noopener noreferrer" target="_blank">previous course</a> that DevOps is the combination of industry best practices, and set of tools that improve an organization’s ability to:<br />
+*Increase the speed of software delivery</p>
+<ul>
+<li>Increases the speed of software evolution</li>
+<li>Have better reliability of the software</li>
+<li>Have scalability using automation,</li>
+<li>Improved collaboration among teams.<br />
+The two most important practices are - <strong>Continuous Integration / Continuous Delivery or Deployment (CI/CD)</strong> and Infrastructure as Code (IaaC). </li>
+</ul>
+<h2 id="what-is-cicd">What is CI/CD?</h2>
+<p>CI/CD is a consistent and automated way for a DevOps team to build, package, test, and deploy applications</p>
+<ul>
+<li><p><strong>Continuous Integration</strong> means newly developed code changes of a project are periodically built, tested, and integrated into a shared repository like Git. Then, the integrated code is verified and tested using automated tools.</p></li>
+<li><p><strong>Continuous Delivery</strong> is the process of automating the release of the merged and validated code to a repository and finally release a production-ready build to the production environment.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L01 A09 Continuous Integration &amp; Continuous Deployment FINAL</p></h3>
+  <video controls>
+  <source src="04. ND9991 C03 L01 A09 Continuous Integration &amp; Continuous Deployment FINAL-66j2hTy4G68.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="04. ND9991 C03 L01 A09 Continuous Integration &amp; Continuous Deployment FINAL-66j2hTy4G68.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>CI / CD Diagram</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-07-30-at-7.05.20-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>CI/CD Q1</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What are the primary purposes of CI/CD? (may be more than one answer)</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="rbk1" name="906734" id="rbk1">
+      <label for="rbk1"><p>To create repeatable actions</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk2" name="906734" id="rbk2">
+      <label for="rbk2"><p>To test software</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk3" name="906734" id="rbk3">
+      <label for="rbk3"><p>To deploy software</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk4" name="906734" id="rbk4">
+      <label for="rbk4"><p>Automate AWS actions</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>To create repeatable actions</li>
+      <li>To test software</li>
+      <li>To deploy software</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>CI/CD Q2</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which of these actions is performed in continuous integration? (may be more than one answer)</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="rbk1" name="906740" id="rbk1">
+      <label for="rbk1"><p>Linting</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk2" name="906740" id="rbk2">
+      <label for="rbk2"><p>Security testing</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk3" name="906740" id="rbk3">
+      <label for="rbk3"><p>Deployment</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk4" name="906740" id="rbk4">
+      <label for="rbk4"><p>Authentication</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Linting</li>
+      <li>Security testing</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Pipelines Overview</p></h3>
+  <div>
+  <h2 id="pipelines-overview">Pipelines Overview</h2>
+<p>One of the key best practices of DevOps is to be able to do “Infrastructure as Code”. A Pipeline enables us to store our Jenkins project configuration as code in a Git repository.  <strong><em>A Pipeline is a set of tools and processes to automate the CI/CD.</em></strong> </p>
+<p>The previous way of doing this was to store the configurations as text on the Jenkins server. However, it is far superior to store this in a Git repository, because that way we version it, review it, perform pull requests, and integrate it just like the rest of our code. </p>
+<p>A pipeline contains steps that have different actions performed as part of those steps. Pipelines are written in Groovy code and designed to be reusable. Pipelines can be used similarly to how programming languages use “Modules” in a pluggable manner. The value in a Pipeline is it enables advanced functionality above and beyond simple Bash scripting. There are additional programmatic controls such as try and catch. A try/catch block creates a means of responding to errors in code or data for Jenkins functions. Pipelines assist with performing code testing and verification due to their modular nature and try/catch routines. This enables advanced error handling which lends itself to complex functionality.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>CI CD Pipeline</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/images-1.png" alt="A simple view of CI/CD Pipeline" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>A simple view of CI/CD Pipeline</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Pipeline 2</p></h3>
+  <div>
+  <p>As shown in the figure above, CI/CD pipeline implementation is the backbone of the modern DevOps environment. With pipelines we are able to use code checked into a Git repository to control the execution, linting, security testing, and performance testing of code. We use different environments to perform different functions, such as - development environment for building the code, staging environment for testing, and production environment for deployment. </p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. AWS Setup.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. What is CI/CD and a Pipeline?')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

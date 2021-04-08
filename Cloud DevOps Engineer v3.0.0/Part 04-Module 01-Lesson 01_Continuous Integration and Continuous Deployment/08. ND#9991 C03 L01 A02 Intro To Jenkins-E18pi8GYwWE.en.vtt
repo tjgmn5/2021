@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.669
+So now we're going to talk about one
+
+00:00:02.669 --> 00:00:05.219
+of the core technologies that we're using in this course,
+
+00:00:05.219 --> 00:00:06.809
+which is the Jenkins.
+
+00:00:06.809 --> 00:00:12.539
+Jenkins is the Swiss army knife of build tools,
+
+00:00:12.539 --> 00:00:16.230
+and it gives you a huge amount of extendability,
+
+00:00:16.230 --> 00:00:22.890
+flexibility, with a lot of plugins and can use and support a lot of different languages.
+
+00:00:22.890 --> 00:00:27.705
+So we're first going to just take a look at the history of Jenkins,
+
+00:00:27.704 --> 00:00:30.794
+which it is brought to us in 2011.
+
+00:00:30.795 --> 00:00:37.145
+It was an offshoot from some microsystems Hudson which the open-source community
+
+00:00:37.145 --> 00:00:43.609
+was concerned about having a CI/CD platform which was under control of some microsystems.
+
+00:00:43.609 --> 00:00:47.509
+So that was the source of the creation of Jenkins,
+
+00:00:47.509 --> 00:00:51.409
+because they wanted to have this open-source product to
+
+00:00:51.409 --> 00:00:56.379
+do all of these magical things that we use inside this the CI/ CD space.
+
+00:00:56.380 --> 00:01:03.353
+So this is just fun these are some of the Jenkins icons,
+
+00:01:03.353 --> 00:01:10.144
+and this is relevant because for instance Jenkins configuration as code.
+
+00:01:10.144 --> 00:01:13.519
+One of the most important concepts that we're
+
+00:01:13.519 --> 00:01:17.494
+going to talk about today is Infrastructure as Code.
+
+00:01:17.495 --> 00:01:22.939
+Jenkins configuration as code is also very relevant to that as well.
+
+00:01:22.939 --> 00:01:26.840
+So what that means is your configurations are checked
+
+00:01:26.840 --> 00:01:31.870
+into a source control repository such as Git.
+
+00:01:31.870 --> 00:01:35.420
+We also have some other fun icons here,
+
+00:01:35.420 --> 00:01:38.719
+but they're less relevant to the course that we're sitting today.
+
+00:01:38.719 --> 00:01:41.870
+The evolution of Jenkins,
+
+00:01:41.870 --> 00:01:45.620
+the current cutting edge is Jenkins-X,
+
+00:01:45.620 --> 00:01:50.530
+which really brings in Docker microservices and Kubernetes.
+
+00:01:50.530 --> 00:01:53.239
+This is the next generation of Jenkins,
+
+00:01:53.239 --> 00:01:56.750
+but we're not going to cover that in this specific course
+
+00:01:56.750 --> 00:02:01.265
+because we're more concerned with pipelines.
+
+00:02:01.265 --> 00:02:07.290
+Next we're going to dive right in with configuring our AWS account.
+

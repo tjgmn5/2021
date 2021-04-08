@@ -1,0 +1,840 @@
+{
+  "data": {
+    "lesson": {
+      "id": 906838,
+      "key": "0063a11f-f96f-4c74-bc43-b05d865579f4",
+      "title": " Jenkins Pipeline and Deployment Strategies",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Managing the complexity of CI/CD and choosing the correct deployment strategy",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/0063a11f-f96f-4c74-bc43-b05d865579f4/906838/1564803944669/Continuous+Integration+and+Continuous+Deployment+Strategies+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/0063a11f-f96f-4c74-bc43-b05d865579f4/906838/1564803941293/Continuous+Integration+and+Continuous+Deployment+Strategies+Subtitles.zip"
+          },
+          {
+            "name": "CI/CD Strategies Lesson Slides",
+            "uri": "https://video.udacity-data.com/topher/2019/August/5d439817_l2-ci-cd-deployment-strategies/l2-ci-cd-deployment-strategies.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1006919,
+          "key": "c21aef35-3629-46bf-97fd-973342405869",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c21aef35-3629-46bf-97fd-973342405869",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006912,
+              "key": "d6c7900d-6bae-4310-a65b-2c656bbc3cd7",
+              "title": "Introduction",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the previous lesson, we learned about the fundamentals of CI/CD and set up the Jenkins environment to automate the building, testing, and delivering an application. Also, we read earlier that plugins extend Jenkins with additional features to support various requirements. In the current lesson, we will learn to use a few more plugins into Jenkins and discuss deployment strategies.\n\n ## Lesson Objectives\nAfter completing this lesson, you will be able to: \n* Install and utilize AWS Plugin into Jenkins\n* Demonstrate the usage of Blue Ocean Plugin \n* Setup a Jenkins Pipeline and add a repository to the Pipeline\n* Explain the concept of multiple pipelines for different environments\n* Explain Pipeline triggers\n* Discuss different types of Pipeline testing\n* Install Aqua MicroScanner Plugin into Jenkins for testing Pipeline security\n* Introduce the Ansible as a tool for provisioning the target infrastructure using code (infrastructure as code) \n* Discuss deployment strategies and best practices - specifically Blue-Green deployment. \n\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906834,
+          "key": "db5cb922-67e0-486a-a8b5-16c1af015513",
+          "title": "Install AWS Plugin into Jenkins",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db5cb922-67e0-486a-a8b5-16c1af015513",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907058,
+              "key": "dbff3e35-36a8-47b3-a7a0-2ff64c96a4c3",
+              "title": "S3 Jenkins Setup",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### AWS Plugin\n Let us install AWS plugin into Jenkins that will enable us to use AWS services, particularly S3 service. **We need this plugin because we intend to store some data from Jenkins Pipeline into S3 buckets.**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906791,
+              "key": "982c86a0-82c1-4ae5-84fb-5b899c37b7ac",
+              "title": "ND#9991 C03 L02 A02 Blueocean Setup Install S3 Plugin",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fy8qkh7uI54",
+                "china_cdn_id": "fy8qkh7uI54.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 951668,
+          "key": "692bb9e2-4a56-4616-8064-a9327eb9715a",
+          "title": "Intro to Blue Ocean",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "692bb9e2-4a56-4616-8064-a9327eb9715a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951667,
+              "key": "028c032c-a040-48a1-8b13-a200a7905d87",
+              "title": "Intro to Blue Ocean",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Intro to Blue Ocean\nWe installed the Blue Ocean plugin into Jenkins in the last lesson, now let’s begin discussing and using it more.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906794,
+              "key": "31609302-be95-4b8c-8a95-c4f2e2df8a4c",
+              "title": "ND#9991 C03 L02 A01 Intro To Blueocean",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "L1p9eUIKIAw",
+                "china_cdn_id": "L1p9eUIKIAw.mp4"
+              }
+            },
+            {
+              "id": 951666,
+              "key": "02d0b855-7772-4a84-9b78-fe12b2c3cb18",
+              "title": "Blueocean view",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5da4e9e9_screen-shot-2019-10-14-at-2.28.36-pm/screen-shot-2019-10-14-at-2.28.36-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/02d0b855-7772-4a84-9b78-fe12b2c3cb18",
+              "caption": "**New View of Jenkins using Blue Ocean**",
+              "alt": "New View of Jenkins using Blue Ocean",
+              "width": 1739,
+              "height": 437,
+              "instructor_notes": null
+            },
+            {
+              "id": 906814,
+              "key": "46e76e5f-bb58-4213-976b-d150c36c9200",
+              "title": "Triggers Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "46e76e5f-bb58-4213-976b-d150c36c9200",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is Blue Ocean? (multiple correct answers)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Plugin for Jenkins",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Re-skinning of Jenkins",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Optimized for pipelines",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Large body of water",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 951665,
+              "key": "1f5ee196-5bdb-41e9-90bd-ec498279db44",
+              "title": "Blue Ocean Setup Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n\n## Steps to Create a Pipeline in Blue Ocean\nAs we have installed AWS and Blue Ocean plugins into Jenkins on our Ubuntu EC2 instance, next, we will follow the steps below to create a Pipeline in Blue Ocean. \n\n1. Fork/Clone the course's Github repository. We will add one Github repository per project. A single Github repository can be re-used in multiple Pipelines.\n2. Create your Pipeline project in Blue Ocean. \n3. Create your initial Pipeline\n4. Use Jenkins to add multiple stages (environments) using Jenkinsfile. Generally, a Pipeline should have three stages (environments) defined in a Jenkinsfile: Development (build), Staging (test), and Deployment. See a declarative Pipeline example [here](https://jenkins.io/doc/book/pipeline/#pipeline-example).\n5. Create multiple pipelines, each for Development (build), Staging (test), and Deployment, by creating branches in your Git repository.\n\n\n## Recommended Read\nWe recommend you to read the handbook [documentation for setting up a Pipeline using Blue Ocean](https://jenkins.io/doc/book/blueocean/creating-pipelines/) before proceeding to the next set of steps. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906831,
+          "key": "4f16cbd9-98b2-432a-8aa3-9433de051c15",
+          "title": "Adding a Repo to a Pipeline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4f16cbd9-98b2-432a-8aa3-9433de051c15",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906793,
+              "key": "56803321-7eaf-4b50-a6fb-7195a3b67d76",
+              "title": "ND#9991 C03 L02 A04 Adding A Github Repo To A Pipeline V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Au49ZnAnWe0",
+                "china_cdn_id": "Au49ZnAnWe0.mp4"
+              }
+            },
+            {
+              "id": 1006920,
+              "key": "1e90aa19-1571-40c2-a97c-c7a391c61b8c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Prerequisite - A Github repo\n- Create a Github account.\n - \"Sign in\" to Github, if you already have a Github account.\n - Else, go to https://github.com and “Sign up” button in the upper right-hand corner.\n- Create a new Github repository in **your account**.\n- Download and install **[GitHub Desktop](https://desktop.github.com/)** utility to work seamlessly. \n- Open up your terminal/GitHub Desktop console and change to the directory of your choice (say Documents).\n- Run the following command to clone the **Course’s Github repo** - `git clone https://github.com/udacity/nd9991-c3-Build-CI-CD-Pipelines-Monitoring-and-Logging-v1`. This command will create a clone, locally in your machine. \n- Run `cd <name of the downloaded repo>` to enter into the downloaded repo. Notice that the `origin` repo has three branches - master, blue, and green. Stay on the **master** branch.\n- Change the `origin` - By default, `origin` would point to the **Course’s Github repo**. Change the `origin` using\n```bash\n git remote -v \n git remote remove origin \n git remote add origin <link to Github repository in **your account**>\n```\n- Edit the file `Jenkinsfile` using any editor, such as VI, Visual Studio Code, or any other.  \n- Commit the file `Jenkinsfile` in the master branch into your own local repository, using the command \n```bash\ngit add . --all\ngit commit -m “my comment“ \n```\n- Push your local changes to your Github account, using `git push origin`, that will push changes from all local branches to matching branches the origin remote. \n\n\n### Steps to use Blue Ocean demonstrated in the video\nSpecial note: you must be logged into your Github account before beginning \n- Click “Open Blue Ocean”\n- Click “Create a new Pipeline”\n- Select “Github”\n- Click “Create Access Token”\n- Type a name at the top\n- Click “Generate Token”\n- Paste the access token into Jenkins “Connect to Github” box\n- Select the Github repository you want to use\n- Click “Create Pipeline”\n- Select a Github branch\n- Execute the build\n\n\n\n## Recommended Tutorial \nThis Jenkins [Tutorial to Create a Pipeline in Blue Ocean](https://jenkins.io/doc/tutorials/create-a-pipeline-in-blue-ocean/#fork-sample-repository) explains the steps mentioned above.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906837,
+          "key": "5b0c2511-8a55-479d-adde-9cdd0c7bd3ad",
+          "title": "Multiple Pipelines",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5b0c2511-8a55-479d-adde-9cdd0c7bd3ad",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906816,
+              "key": "893a63ae-efcb-42b2-88a2-dd26d1264698",
+              "title": "ND#9991 C03 L02 A10 Development & Staging Pipelines",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yUlIlnvljDI",
+                "china_cdn_id": "yUlIlnvljDI.mp4"
+              }
+            },
+            {
+              "id": 907059,
+              "key": "89a5467e-83c0-4660-9576-ba761d9711b9",
+              "title": "Development and Staging Pipelines Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n \n\n\n\n## Steps to Create Multiple Pipelines in Blue Ocean\n1. Fork/Clone the course's Github repository. - **We have already done this step.**\n2. Create \"Development\", \"Staging\", and \"Deployment\" branches in your Github repository. \n * Development pipelines are kicked off very frequently and with the continuous deployment will automatically update servers\n * Staging is where QA will test the environment, so this needs to be kept more static to prevent interruptions\n3. Create your Pipeline project in Blue Ocean. - **We have already done this step as well.**\n4. Create your Pipeline with multiple stages (environments) using a Jenkinsfile for each branch. \n5. Pull your updated Jenkinsfile into the other repository branches\n6. Run your Pipeline on each branch individually. \n\n\n## Recommended Tutorial \nThis Jenkins [Tutorial to Create a **Multibranch** Pipeline Project in Blue Ocean](https://jenkins.io/doc/tutorials/build-a-multibranch-pipeline-project/#create-your-pipeline-project-in-blue-ocean) explains the steps mentioned above.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006913,
+              "key": "ea1f192d-f11b-4819-907d-8e007b1482e3",
+              "title": "Multi 1",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## Multiple Pipelines\nIn the previous concept, we read that we can add multiple stages (environments) using a Jenkinsfile. Generally, a Pipeline should have three stages (environments) defined in a Jenkinsfile: Development (build), Staging (test), and Deployment. See a declarative Pipeline example [here](https://jenkins.io/doc/book/pipeline/#pipeline-example).\n\n**Additional Pipelines can be created by creating new branches in your Github repo**. You can create more branches, with names such as \"Development\", \"Staging\", and \"Deployment\", in your Git repository. The diagram below shows the comprehensive steps to create a  multibranch Pipeline project on cloud infrastructure. \n.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006916,
+              "key": "8ce0da25-ab0e-4a88-8ba2-40c1cbe82482",
+              "title": "Multi 2",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7281a7_ci-cd-pipeline-1/ci-cd-pipeline-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8ce0da25-ab0e-4a88-8ba2-40c1cbe82482",
+              "caption": "An overarching diagram to show steps to create a multibranch Pipeline project on cloud infrastructure. \n",
+              "alt": "",
+              "width": 1090,
+              "height": 349,
+              "instructor_notes": null
+            },
+            {
+              "id": 907060,
+              "key": "822a450a-1d03-42e3-9fdb-d0e89b8b8d0a",
+              "title": "ND#9991 C03 L02 A12 Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ezpg716RC7E",
+                "china_cdn_id": "Ezpg716RC7E.mp4"
+              }
+            },
+            {
+              "id": 1006921,
+              "key": "eaab07be-dc24-4860-9333-10be5f6d15dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n## Steps to Create Multiple Pipelines in Blue Ocean\n1. Fork/Clone the course's Github repository. - **We have already done this step.**\n2. Create \"Development\", \"Staging\", and \"Deployment\" branches in your Github repository. \n * Development pipelines are kicked off very frequently and with the continuous deployment will automatically update servers\n * Staging is where QA will test the environment, so this needs to be kept more static to prevent interruptions\n3. Create your Pipeline project in Blue Ocean. - **We have already done this step as well.**\n4. Create your Pipeline with multiple stages (environments) using a Jenkinsfile for each branch. \n5. Pull your updated Jenkinsfile into the other repository branches\n6. Run your Pipeline on each branch individually. \n\n\n## Recommended Tutorial \nThis Jenkins [Tutorial to Create a **Multibranch** Pipeline Project in Blue Ocean](https://jenkins.io/doc/tutorials/build-a-multibranch-pipeline-project/#create-your-pipeline-project-in-blue-ocean) explains the steps mentioned above.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906810,
+              "key": "a6fb98cb-b129-475d-88de-cbf3046f52c8",
+              "title": "Multiple Pipelines Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Multi-Pipeline Summary\n- There is no limit on the number of pipelines you can have.\n- Optimize for your environment - every setup is different.\n- Be careful with continuous deployment because you may overwrite the wrong thing.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906835,
+          "key": "6ae54970-dfe7-4a12-bcf1-4bc17f347e48",
+          "title": "Pipeline Triggers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6ae54970-dfe7-4a12-bcf1-4bc17f347e48",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907061,
+              "key": "f2f47509-9c10-4cf4-8838-0ec30f414af3",
+              "title": "Triggers Demo",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Triggers Demo\nNow let’s take a look at setting up a trigger, so we will continuously, “automagically,” check if our GitHub software has been updated, triggering the pipeline processes. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906822,
+              "key": "f51437b4-2495-486a-b9c3-f40e10a6bc04",
+              "title": "ND#9991 C03 L02 A05 Pipeline Triggers",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dJubkXoQgbI",
+                "china_cdn_id": "dJubkXoQgbI.mp4"
+              }
+            },
+            {
+              "id": 906804,
+              "key": "5af33a93-94fe-4994-a8c6-8522a112560d",
+              "title": "Pipeline Triggers Walkthrough",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Pipeline Triggers Walkthrough\n- When code is pushed to the Git repository after a pull request, build automatically, i.e. continuously integrate\n- If the tests in a pipeline pass, deploy the code, i.e. continuously deploy",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906800,
+              "key": "6f04b8e2-c9fc-4666-b532-5c39511762f4",
+              "title": "ND#9991 C03 L02 A0- Triggers Demo",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9-YjFsph6iY",
+                "china_cdn_id": "9-YjFsph6iY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 906832,
+          "key": "655e98b5-9494-4fc9-a24a-361eaed30a47",
+          "title": "Pipeline Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "655e98b5-9494-4fc9-a24a-361eaed30a47",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006918,
+              "key": "7c484f3c-256f-4146-b92c-2e46c45a9233",
+              "title": "Repo",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Please refer to the following Git repository to see these code samples used in video demonstrations - https://github.com/udacity/nd9991-c3-Build-CI-CD-Pipelines-Monitoring-and-Logging-v1\n\nThere are three branches of code within this repository; master, blue, and green. However, you can create more branches to experiment with your learnings. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906809,
+              "key": "4cf91e11-4b05-43db-abda-2ecf7964707a",
+              "title": "ND#9991 C03 L02 A12 Pipeline Testing Using Linting FINAL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4WNvTUWZJLw",
+                "china_cdn_id": "4WNvTUWZJLw.mp4"
+              }
+            },
+            {
+              "id": 932177,
+              "key": "92c2f5fb-515c-4ce6-b3b5-08d7155256e3",
+              "title": "Code for Uploading to S3",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pipeline Code for Uploading to S3\nHere is the Jenkinsfile Pipeline code that the Instructor used to upload to S3, behind the scenes in the video:\n```\npipeline {\n    agent any\n    stages {\n       stage('Upload to AWS') {\n             steps {\n                 withAWS(region:'us-east-2',credentials:'aws-static') {\n                 sh 'echo \"Uploading content with AWS creds\"'\n                     s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'static-jenkins-pipeline')\n                 }\n             }\n        }\n    }\n}\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906830,
+          "key": "735e849b-928a-461b-beff-fc3bcd90c472",
+          "title": "Security Testing with Aqua",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "735e849b-928a-461b-beff-fc3bcd90c472",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907172,
+              "key": "79aeb6cd-c8e2-4812-956c-343f4d36b90b",
+              "title": "Security Testing with Aqua",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Security Testing with Aqua\nAqua is a Jenkins plugin designed for testing Docker containers. It is one of many security vulnerability scanners available, testing against CVE (Common Vulnerabilities and Exposures).\n\nWe’ll install and show how to use Aqua next.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906820,
+              "key": "b963b282-2cbf-4e5b-a405-af5d417f4964",
+              "title": "ND#9991 C03 L02 A08 Security Testing With Aqua",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "euZxiuHmrjI",
+                "china_cdn_id": "euZxiuHmrjI.mp4"
+              }
+            },
+            {
+              "id": 907174,
+              "key": "ad3b97a1-fd7f-478c-aa92-b69a1bf9baec",
+              "title": "Aqua Testing Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Aqua Testing Summary\n- Aqua is used for scanning Docker containers for CVE\n- Aqua depends on Docker\n- Aqua can be integrated into a testing pipeline in the Continuous Integration stage",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906817,
+              "key": "4fac998d-78ba-4d9a-9d11-50fb8fdc9d7f",
+              "title": "ND9991 C03 L02 A07 Pipeline Testing - Further Topics FINAL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-KFuPHaV3gg",
+                "china_cdn_id": "-KFuPHaV3gg.mp4"
+              }
+            },
+            {
+              "id": 1006922,
+              "key": "63989dd4-a355-485f-ac36-5129c6471151",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Pipeline Testing - Key ideas\n\n* **Linting** - It is the process of running a program that checks the Pipeline code for potential syntax errors.\n\n* **Security Testing** - It is performed with a variety of software to test for Common Vulnerabilities and Exposures (CVE). There are a variety of [security testing plugins available for Jenkins](https://plugins.jenkins.io/ui/search?sort=relevance&categories=buildManagement&labels=&view=Tiles&page=1&query=security%20testing). In the next concept, we will demonstrate to use Aqua MicroScanner, which enables scanning of Docker builds for OS package vulnerabilities. \n\n* **Performance Testing** - It is done by setting up a smaller scale environment as compared to *production*, with Jenkins and running simulated host calls into that environment to determine how the new environment performs under a particular workload. It is a two-stage process - \n * **Stage 1 - Run Apache JMeter** - JMeter is a testing tool used for estimating the performance of the newly created Jenkins environment. Here is a [Tutorial to run JMeter with Jenkins](https://wiki.jenkins.io/display/JENKINS/How+to+run+JMeter+with+Jenkins) \n * **Stage 2 - Capture Reports** - Jenkins provides [Performance plugin](https://plugins.jenkins.io/performance/) to capture reports from popular testing tools, such as JMeter, Selenium, and many others in the XML and CSV format. **We recommend you to follow along with the documentation available at the link mentioned-above about running tests and building reports with Performance plugin.** \n\n* **Integration Testing** - It is testing the Pipeline code from different modules to make sure it all works together. It occurs after unit testing. Jenkins provides [JUnit plugin](https://plugins.jenkins.io/junit/) as *unit-testing framework to write repeatable tests*. Refer [here](https://jenkins.io/doc/pipeline/steps/junit/) for reading the functionality of JUnit plugin using **steps**. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906833,
+          "key": "4d8a9221-82b4-4d28-bf1e-6c1a8751072b",
+          "title": "Deployment Strategies",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4d8a9221-82b4-4d28-bf1e-6c1a8751072b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006915,
+              "key": "3275c4f9-bbc9-4c3e-8893-903c9ce454a2",
+              "title": "DS 1",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deployment Strategies\nDeployment strategy is an approach to roll out the updates/changes made in the \"live\" application. The idea is that the application must not be brought down to introduce the updates. There are a variety of strategies available. Let's assume that there are two versions of the software applications - version A and B. Version B is the updated version. \n* **Rolling** - Version B is gradually rolled out succeeding version A. This is suitable when the updates are very small, such as bug fixes. \n* **Blue/Green** - Version B is released alongside version A, then the traffic is switched to version B. This is the preferred model when there are major updates or releasing new features.\n* **Canary** - Version B is released to a specific subset of users for early feedback and testing, then proceed to a complete rollout. \n* **A/B testing** - Version B is released to a subset of users under particular conditions.\n* **Recreate** - Version A is terminated first, and then the version B is rolled out.\n* **Shadow** - Version B receives real-world traffic alongside version A and doesn’t impact the response.\n\n**We will follow Blue-Green deployment strategy in this concept.**\n\n\n### Blue Green Deployment Explained\nBlue green deployment enables deploying new code to environments while keeping the existing environment up until the new environment is ready. This is important for providing a consistently working environment to the end users of the code/website. In addition, it allows us to independently test the new environment before putting it in front of the end user. To accomplish blue green deployment it requires setting up this identical environment, switching the load balancer, and verifying that the code base has changed through the website.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906803,
+              "key": "03ed34de-df0b-4c27-9c47-a3126afdc2c4",
+              "title": "Deployment Strategies Graphic",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d41270b_screen-shot-2019-07-30-at-10.28.33-pm/screen-shot-2019-07-30-at-10.28.33-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/03ed34de-df0b-4c27-9c47-a3126afdc2c4",
+              "caption": "",
+              "alt": "",
+              "width": 682,
+              "height": 390,
+              "instructor_notes": null
+            },
+            {
+              "id": 906797,
+              "key": "d2526b5d-a67b-406b-8933-162bf735dbac",
+              "title": "Rolling Deployment",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d41239d_screen-shot-2019-07-30-at-10.13.50-pm/screen-shot-2019-07-30-at-10.13.50-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d2526b5d-a67b-406b-8933-162bf735dbac",
+              "caption": "",
+              "alt": "",
+              "width": 692,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006914,
+              "key": "39033399-ca24-43bf-8fbd-2b5c3a53af08",
+              "title": "DS 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In order to follow Blue-Green deployment strategy, we need to have the following tools/plugins available in our Jenkins host - Ansible, Boto - a Python interface to AWS, and CloudBees AWS plugin. Ansible is a tool for automated provisioning, configuration management, and application deployment in target infrastructure using code. In the overarching diagram, we saw the role of Ansible in the deployment. Let's install the tools/plugins mentioned above, to get started with Blue-Green deployment. We will learn more about Ansible in the next lesson. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906812,
+              "key": "eb059370-6d64-47ce-8502-73a775deb64a",
+              "title": "ND#9991 C03 L02 A0 Blue Green",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3DYFdgXsa74",
+                "china_cdn_id": "3DYFdgXsa74.mp4"
+              }
+            },
+            {
+              "id": 906823,
+              "key": "5bcb30ed-9309-4fef-b3d2-76fae2d035e4",
+              "title": "Blue/Green Deployment Strategy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Blue/Green Deployment Strategy\n- `apt install ansible`\n- `pip install boto`\n- Jenkins plugin CloudBees AWS Credentials Plugin\n- Configure AWS Credentials in Jenkins\n- Map credentials from Jenkins to Pipeline application",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906824,
+              "key": "d3821dfc-89ae-4cf1-b01d-3e1ee031feff",
+              "title": "Blue/Green Deployment IAM Policy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Blue/Green Deployment IAM Policy\n```\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"VisualEditor0\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"s3:*\",\n                \"cloudwatch:*\",\n                \"route53:*\",\n                \"ec2:*\",\n                \"ec2:DescribeAccountAttributes\",\n                \"elasticloadbalancing:*\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"VisualEditor1\",\n            \"Effect\": \"Allow\",\n            \"Action\": \"iam:CreateServiceLinkedRole\",\n            \"Resource\": \"arn:aws:iam::*:role/aws-service-role/*\"\n        }\n    ]\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906818,
+              "key": "6d72225d-f196-4c69-8583-2954912b25ac",
+              "title": "Blue/Green Deployment Strategy (cont.)",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Blue/Green Deployment Strategy (cont.)\n- Set up Private Route53 Zone\n- Configure Healthcheck\n- Run Blue Deployment\n- Run Green Deployment\n- Check Route53 entries",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906836,
+          "key": "cbeeb7bb-ce84-46da-b96e-da5d775ebb09",
+          "title": "Deployment Big Picture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cbeeb7bb-ce84-46da-b96e-da5d775ebb09",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906827,
+              "key": "51a57fe7-9268-45a8-9c90-64149cce16c3",
+              "title": "ND#9991 C03 L02 A0 Deployment Strategies Story V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2K9fnIkNWyQ",
+                "china_cdn_id": "2K9fnIkNWyQ.mp4"
+              }
+            },
+            {
+              "id": 906799,
+              "key": "8b398ec0-43a8-4a02-8549-7a99d4f8f83a",
+              "title": "Deployment Strategies Guidelines",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Deployment Strategies Guide\n- Manual changes will get you in trouble sooner or later.\n- New feature code releases often require blue/green deployment due to scheme changes and/or to keep consistency.\n- To perform a bug fix of an existing product, a rolling deployment will be your most frequent choice.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906813,
+              "key": "9008b2dd-b01e-4058-bb33-510d39699227",
+              "title": "Deployment Strategies Q1",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9008b2dd-b01e-4058-bb33-510d39699227",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "To deploy a bug fix, what type of deployment is most appropriate?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Blue/green",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Rolling deployment",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Change by hand",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Tear down everything and re-deploy",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 906805,
+              "key": "962f95e6-970b-47d3-8ea7-de92f46248b8",
+              "title": "Deployment Strategies and Big Picture",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "962f95e6-970b-47d3-8ea7-de92f46248b8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When releasing a new feature, what type of deployment is safest?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Blue/green",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Rolling deployment",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Change by hand",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Tear down everything and re-deploy",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 906829,
+          "key": "09cc404a-c5f0-4a31-8072-34f60dc97d53",
+          "title": "Deployment Practice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "09cc404a-c5f0-4a31-8072-34f60dc97d53",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006917,
+              "key": "00142305-c243-4580-abcd-b18ba08f46ce",
+              "title": "LO",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Summary\nWe have learned to set up Jenkins Pipeline, discussed the related fundamentals, and installed various plugins. Particularly, you have learned to do the following: \n* Install and utilize AWS Plugin into Jenkins\n* Demonstrate the usage of Blue Ocean Plugin \n* Setup a Jenkins Pipeline and add a repository to the Pipeline\n* Explain the concept of multiple pipelines for different environments\n* Explain Pipeline triggers\n* Discuss different types of Pipeline testing\n* Install Aqua MicroScanner Plugin into Jenkins for testing Pipeline security\n* Introduce the Ansible as a tool for provisioning the target infrastructure using code (infrastructure as code) \n* Discuss deployment strategies and best practices - specifically Blue-Green deployment. \n\n### Recommended Read\n[Jenkins best practices](https://wiki.jenkins.io/display/JENKINS/Jenkins+Best+Practices)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906825,
+              "key": "e5f47e11-9f3b-495a-b0fc-abce323ee58d",
+              "title": "Practice Exercise 1",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Practice Exercise 1\n**Working through these exercises will give you valuable practice for your project work!**\n\nTo practice your skills with deployment and pipelines, please do the following:\n\n- Set up a “Hello World” pipeline in Blue Ocean. \n- Screenshot a successful run and compare it to my screenshot below.\n\nThe code for a “Hello World” pipeline is shown here:\n```\npipeline {\n  agent any \n  stages {\n    stage(‘Build’) {\n      steps {\n        sh ‘echo “Hello World”’\n        sh ‘“\n                  echo “Multiline shell steps works too”\n                  ls -lah\n               “‘\n      }\n    }\n  }\n}\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906798,
+              "key": "148397d8-1177-4d56-bb50-28945a0be84c",
+              "title": "Practice Exercise 1",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d4129c4_screen-shot-2019-07-30-at-10.40.06-pm/screen-shot-2019-07-30-at-10.40.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/148397d8-1177-4d56-bb50-28945a0be84c",
+              "caption": "Blueocean view of 'Hello World' pipeline run",
+              "alt": "Blueocean Pipeline Run",
+              "width": 1424,
+              "height": 660,
+              "instructor_notes": null
+            },
+            {
+              "id": 906806,
+              "key": "5929703f-eb96-46d7-99a1-f05251410a45",
+              "title": "Practice Exercise 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Practice Exercise 2\n\n- Install “lint” onto your Jenkins Master. This is to check the HTML code for malformed tags.\n`sudo apt install tidy`\n- Set up a Lint job. \n- Capture a screenshot after a successful Lint check of your html code, and compare it to the screenshot below.\n```\npipeline {\n    agent any\n    stages {\n      stage(‘Lint HTML’) {\n        steps {\n          sh ‘tidy -q -e *.html’\n        }\n      }\n    }\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906815,
+              "key": "6b9f4ce7-1232-4e39-b5a4-3b744331b134",
+              "title": "Practice Exercise 2",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d4129ff_screen-shot-2019-07-30-at-10.41.08-pm/screen-shot-2019-07-30-at-10.41.08-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6b9f4ce7-1232-4e39-b5a4-3b744331b134",
+              "caption": "My screen after running my Lint checker successfully",
+              "alt": "Neat ‘n Tidy",
+              "width": 1428,
+              "height": 482,
+              "instructor_notes": null
+            },
+            {
+              "id": 906811,
+              "key": "d52a1f88-7621-4507-9423-e3b71bd08ee9",
+              "title": "Practice Exercise 3",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Practice Exercise 3\n\n- Install Jenkins plugin AWS CodePipeline.\n- Set up your AWS credentials with your access key and secret access key in Credentials.\n- Create your S3 bucket (must be unique).\n- Set up your pipeline. Note: your bucket name can’t be the same as mine. \n- Screenshot a successful run and compare it to mine below.\n\nHere is the Pipeline code for performing the Tidy check:\n```\npipeline {\n    agent any\n    stages {\n      stage(‘Lint HTML’) {\n        steps {\n          sh ‘tidy -q -e *.html’\n        }\n      stage(‘Upload to AWS’) {\n        steps {\n          withAWS(region:’us-east-1’,credentials:’blueocean’) {\n            s3Upload(pathStyleAccessEnabled:true, payloadSigningEnabled: true, file:’index.html’, bucket:’c3pipelines’)\n          }\n        }\n      }\n    }\n}\n```\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906819,
+              "key": "0835eab0-29c4-421d-858f-6ebe1861fb0f",
+              "title": "Practice Exercise 3",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d412a2b_screen-shot-2019-07-30-at-10.41.51-pm/screen-shot-2019-07-30-at-10.41.51-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0835eab0-29c4-421d-858f-6ebe1861fb0f",
+              "caption": "Jenkins Pipeline Demonstrating Continuous Deployment",
+              "alt": "Jenkins Deploy",
+              "width": 1428,
+              "height": 468,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

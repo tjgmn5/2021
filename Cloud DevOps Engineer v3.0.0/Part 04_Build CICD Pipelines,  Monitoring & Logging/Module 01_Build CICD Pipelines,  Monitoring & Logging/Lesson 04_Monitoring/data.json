@@ -1,0 +1,620 @@
+{
+  "data": {
+    "lesson": {
+      "id": 907010,
+      "key": "b7203d86-e6d6-4fb8-b947-e9b3b3ad27ff",
+      "title": "Monitoring",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Configuring Monitoring with Prometheus and ELK Stack",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/b7203d86-e6d6-4fb8-b947-e9b3b3ad27ff/907010/1581970705472/Monitoring+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/b7203d86-e6d6-4fb8-b947-e9b3b3ad27ff/907010/1581970700896/Monitoring+Subtitles.zip"
+          },
+          {
+            "name": "Monitoring Lesson Slides",
+            "uri": "https://video.udacity-data.com/topher/2019/August/5d439917_l4-monitoring-slides/l4-monitoring-slides.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 907007,
+          "key": "0bbedf4a-37c0-4ad5-accd-2a9f7d429bf2",
+          "title": "Monitoring Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0bbedf4a-37c0-4ad5-accd-2a9f7d429bf2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907005,
+              "key": "59152847-3728-4464-8dc5-01d1a4812909",
+              "title": "ND#9991 C03 L04 A01 Monitoring Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ee9PLDrF06M",
+                "china_cdn_id": "Ee9PLDrF06M.mp4"
+              }
+            },
+            {
+              "id": 906993,
+              "key": "68ab2796-729a-42d0-8fb2-7fff2fac23ca",
+              "title": "Monitoring Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Here’s what you’ll learn in this lesson on monitoring:\n- Monitoring software\n- Push vs pull monitoring\n- Prometheus quick setup\n- Adding a server to Prometheus\n- Adding an attribute to Prometheus\n- Prometheus dashboards\n- Log monitoring with ELK stack\n- Alerts",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906984,
+              "key": "88c4bdd0-4e8c-46b5-8619-946e48b673d9",
+              "title": "Common Monitoring Packages",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d424fa6_screen-shot-2019-07-31-at-7.34.02-pm/screen-shot-2019-07-31-at-7.34.02-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/88c4bdd0-4e8c-46b5-8619-946e48b673d9",
+              "caption": "",
+              "alt": "",
+              "width": 800,
+              "height": 405,
+              "instructor_notes": null
+            },
+            {
+              "id": 906979,
+              "key": "acc7c2d9-f159-4a24-b631-c8b2dc08daa8",
+              "title": "Push vs. Pull",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d425056_screen-shot-2019-07-31-at-7.36.40-pm/screen-shot-2019-07-31-at-7.36.40-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/acc7c2d9-f159-4a24-b631-c8b2dc08daa8",
+              "caption": "",
+              "alt": "",
+              "width": 700,
+              "height": 330,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 906999,
+          "key": "a43c4048-6005-4a16-8aac-7265e521e84a",
+          "title": "Monitoring Using Prometheus",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a43c4048-6005-4a16-8aac-7265e521e84a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906980,
+              "key": "f61f5f40-931a-4865-9acb-462bded4e9f8",
+              "title": "Prometheus",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Prometheus\n“In Greek mythology, Prometheus (/prəˈmiːθiːəs/; Greek: Προμηθεύς, pronounced [promɛːtʰéu̯s], possibly meaning \"forethought\")[1] is a Titan, culture hero, and trickster figure who is credited with the creation of man from clay, and who defies the gods by stealing fire and giving it to humanity….” https://en.wikipedia.org/wiki/Prometheus\n\nIn the world of Cloud DevOps, Prometheus is a very useful, flexible tool for our monitoring.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906986,
+              "key": "81cc1c04-5b3a-4f47-82c2-664fecca78b1",
+              "title": "ND#9991 C03 L04 A02 Monitoring Using Prometheus FINAL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fThV6by52yc",
+                "china_cdn_id": "fThV6by52yc.mp4"
+              }
+            },
+            {
+              "id": 907179,
+              "key": "3ae41e18-6ce4-42a6-8f6e-24cdba081993",
+              "title": "Configure Node Exporter",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Install and Configure Node Exporter\nNext we want to install a node exporter as a new user, and configure it to send data into Promotheus. A detailed [tutorial to install a node_exporter](https://prometheus.io/docs/guides/node-exporter/) is available here. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906988,
+              "key": "a0a7a83e-c9cb-49a1-b469-8721b39a7d37",
+              "title": "ND#9991 C03 L04 A03 Configuring Node Exporter FINAL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oOocpSNAQA0",
+                "china_cdn_id": "oOocpSNAQA0.mp4"
+              }
+            },
+            {
+              "id": 906985,
+              "key": "7bbb13b6-8f7f-4080-89e4-20e0c1383140",
+              "title": "Prometheus Quickstart",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "***Note*** - You can directly download the node_exporter package from https://prometheus.io/download/#node_exporter as well. \n\n### Prometheus Quickstart\nhttps://github.com/cloudalchemy/ansible-prometheus\n- Install Ansible\n- Git clone Ansible-prometheus\n- Install pip and tox\n- Setup role\n- Create inventory file\n- Create main.yaml playbook\n- Run playbook\n- Install node exporter and configure\n- Check web interface",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906990,
+              "key": "e8f9d4e7-0f2f-4846-a3fb-0024b8ef4c51",
+              "title": "Prometheus Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e8f9d4e7-0f2f-4846-a3fb-0024b8ef4c51",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What protocol does Prometheus use for monitoring?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "SSH",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Proprietary Agent",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "HTTP",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "FTP",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 907001,
+          "key": "b4c2105a-ebfa-4834-b7f6-397c539ef19e",
+          "title": "Prometheus Quiz",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b4c2105a-ebfa-4834-b7f6-397c539ef19e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906990,
+              "key": "e8f9d4e7-0f2f-4846-a3fb-0024b8ef4c51",
+              "title": "Prometheus Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e8f9d4e7-0f2f-4846-a3fb-0024b8ef4c51",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What protocol does Prometheus use for monitoring?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "SSH",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Proprietary Agent",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "HTTP",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "FTP",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 907002,
+          "key": "9440dda9-97ce-47ae-828f-153f1c354624",
+          "title": "Grafana",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9440dda9-97ce-47ae-828f-153f1c354624",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907011,
+              "key": "5d579d25-b1db-411b-935e-0e2a0ef84ec5",
+              "title": "Install and configure Grafana for Prometheus",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Install and Configure Grafana for Prometheus\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906983,
+              "key": "6d82a653-9138-4599-b89c-9991b3377e98",
+              "title": "ND#9991 C03 L04 A04 Graphana",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XqLg4nWX_7g",
+                "china_cdn_id": "XqLg4nWX_7g.mp4"
+              }
+            },
+            {
+              "id": 906982,
+              "key": "047c415b-0a80-49cc-b680-eba89422ff06",
+              "title": "Grafana Code",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Prometheus Grafana\n(Note: You can scroll to the right to see all the code in the box below.)\n```\ncurl -LO https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.1.4_amd64.deb ;\rsudo apt-get install -y adduser libfontconfig ;\rsudo dpkg -i grafana_5.1.4_amd64.deb ;\rsudo systemctl start grafana-server ;\rsudo systemctl enable grafana-server\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 907006,
+          "key": "8a39a970-1984-4287-83b4-e6335df41f2e",
+          "title": "Monitoring and ELK",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8a39a970-1984-4287-83b4-e6335df41f2e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906981,
+              "key": "612899b6-e944-4a14-b243-7f9f83cbc94e",
+              "title": "ND#9991 C03 L04 A05 Monitoring With ELK",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QQOgYoAF8qk",
+                "china_cdn_id": "QQOgYoAF8qk.mp4"
+              }
+            },
+            {
+              "id": 906998,
+              "key": "edda631b-27c8-4f67-bced-84c229c524ae",
+              "title": "ELK Intro",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### ELK Represents:\n- **Elasticsearch**: Log aggregator \n- **Logstash**: Agent to send logs into Elasticsearch\n- **Kibana**: GUI web interface to search logs\n\n(No, ELK has nothing to do with this fellow below!)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906994,
+              "key": "3427ddb5-fd21-45f2-80ac-5f39c740bf6b",
+              "title": "Lawrence Elk",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d4254db_screen-shot-2019-07-31-at-7.56.17-pm/screen-shot-2019-07-31-at-7.56.17-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3427ddb5-fd21-45f2-80ac-5f39c740bf6b",
+              "caption": "",
+              "alt": "",
+              "width": 192,
+              "height": 128,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 907009,
+          "key": "7712e755-67f7-4e49-a77b-4b4e1259acae",
+          "title": "Installing ELK Services",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7712e755-67f7-4e49-a77b-4b4e1259acae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906989,
+              "key": "9318befc-5c3a-496b-8c0c-f28620538ba4",
+              "title": "Installing ELK Services",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### ELK Stack Quickstart\n- Clone this Github repo: https://github.com/elastic/ansible-elasticsearch\n- Create inventory file\n- Create main.yaml playbook\n- Run the playbook\n- Configure Elasticsearch password for user “elastic” (default):\n  - /usr/share/elasticsearch/bin/elasticsearch-keystore add \"bootstrap.password\"",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907014,
+              "key": "ab6b3603-df75-4d2d-8cc0-7fb1cd9b2298",
+              "title": "Elasticsearch Installation",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Elasticsearch Installation",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906997,
+              "key": "764986ca-c469-414d-b329-c1efdae0bece",
+              "title": "ND#9991 C03 L04 A06 Install Elasticsearch Using Ansible",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xY1EFNthC04",
+                "china_cdn_id": "xY1EFNthC04.mp4"
+              }
+            },
+            {
+              "id": 907013,
+              "key": "b6a823ed-aafc-4f8a-b672-94ef2d24e170",
+              "title": "Install and Configure Kibana",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Install and Configure Kibana\nYou can refer the [official tutorial to install and setup Kibana](https://www.elastic.co/guide/en/kibana/current/install.html)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907004,
+              "key": "8adc4c78-3699-45bb-b4fd-bd0cd236bb57",
+              "title": "ND#9991 C03 L04 A07 Install And Configure Kibana",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5CaciBLvtJ0",
+                "china_cdn_id": "5CaciBLvtJ0.mp4"
+              }
+            },
+            {
+              "id": 906991,
+              "key": "047f0eed-5cef-4039-99fa-f92bb98d95c1",
+              "title": "Configure Kibana",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d425955_screen-shot-2019-07-31-at-8.15.22-pm/screen-shot-2019-07-31-at-8.15.22-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/047f0eed-5cef-4039-99fa-f92bb98d95c1",
+              "caption": "",
+              "alt": "",
+              "width": 689,
+              "height": 312,
+              "instructor_notes": null
+            },
+            {
+              "id": 907012,
+              "key": "673e62ee-cfbe-4389-8564-cfdafde40ab9",
+              "title": "Install and Configure Logstash",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Install and Configure Logstash",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906996,
+              "key": "8b9071b7-f76e-4d4f-b30e-f3070c3f45e0",
+              "title": "ND#9991 C03 L04 A08 Configure Logstash",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "U0un-m-8Wk4",
+                "china_cdn_id": "U0un-m-8Wk4.mp4"
+              }
+            },
+            {
+              "id": 906987,
+              "key": "ba7979aa-c2a4-4c71-9959-f665f230f5a3",
+              "title": "Configure Logstash",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Configure Logstash\nSending logs to Elasticsearch\n- Login to Kibana\n- Install Logstash\n- Configure connection string to Elasticsearch\n- Check Kibana for logs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 907008,
+          "key": "878c0e3d-1445-437b-b452-03bb3c690cd5",
+          "title": "Monitoring Review & Practice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "878c0e3d-1445-437b-b452-03bb3c690cd5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906995,
+              "key": "74fb4982-9e51-4f88-8189-0449989328a7",
+              "title": "Pro Tips on Using the ELK Stack",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Pro Tips on Using the ELK Stack\n**The ELK stack requires more memory than everything else in this course.**\n- The standard config recommends 2GB. This is why we migrate to a larger instance. \n- It may also be necessary to stop anything else that you have set up in this course (i.e. Jenkins, Prometheus, and Grafana). \n- If the Ansible installation script for Elasticsearch takes too long (more than 5 minutes for a single item) you may have run out of memory.\n- Do not be alarmed, just restart the EC2 instance either through the command line, or if necessary in the AWS web console.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907000,
+              "key": "00be59ca-1a2f-41cf-a496-c512c9189b21",
+              "title": "Monitoring Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Reading on Monitoring\nTo learn how to set up alerts and notifications with ELK stack, please refer to the following:\n- https://www.elastic.co/what-is/elasticsearch-alerting",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907003,
+              "key": "aa8aaaf7-8792-4706-bf87-3ccafce77906",
+              "title": "Monitoring Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "aa8aaaf7-8792-4706-bf87-3ccafce77906",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What does ELK stand for?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Elastic Search, Log stitch, Kitter",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Edward, Loggy, Ketter",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Elastic Search, Logstash, Kibana",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Elastic Search, Logger, Kabby",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 906992,
+              "key": "cd493ac6-be15-48f7-9a92-090385e58fd0",
+              "title": "Practice Exercise 1",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Practice your Skills with Monitoring! -  Practice Exercise 1\n- Migrate your AWS instance to a T2.medium\n- [Get started with Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/) and [Deploy Prometheus monitoring system](https://github.com/cloudalchemy/ansible-prometheus)\n- [Download](https://prometheus.io/download/#node_exporter) and [configure a node exporter](https://prometheus.io/docs/guides/node-exporter/)\n- [Download and install Grafana](https://grafana.com/grafana/download) and configure it to [connect to your Prometheus backend](https://prometheus.io/docs/visualization/grafana/)\n- Take a screenshot of your Grafana graph, and compare it to the Instructor’s screenshot below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907177,
+              "key": "ce16f8ad-e353-40b3-8af9-5a5276bc96ad",
+              "title": "Practice Exercise 1 Screenshot",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d450156_screen-shot-2019-08-02-at-8.36.41-pm/screen-shot-2019-08-02-at-8.36.41-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ce16f8ad-e353-40b3-8af9-5a5276bc96ad",
+              "caption": "Screenshot of my Grafana Graph",
+              "alt": "",
+              "width": 1000,
+              "height": 525,
+              "instructor_notes": null
+            },
+            {
+              "id": 907175,
+              "key": "f98326fe-c00a-40f2-a5f4-2858138a1135",
+              "title": "Practice Exercise 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Practice Exercise 2\n- Set up ELK stack and all of its components (note: upgrade the version of Elasticsearch in Ansible, or do an apt install logstash to match those for Logstash and Kibana)\nhttps://github.com/elastic/ansible-elasticsearch\n- Now compare your screen of Kibana showing logs from your system to mine below. They should be similar.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907176,
+              "key": "cdacaf7b-1bae-4d31-9617-ea009b3a61a3",
+              "title": "Exercise 2 Screenshot",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d450195_screen-shot-2019-08-02-at-8.37.46-pm/screen-shot-2019-08-02-at-8.37.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cdacaf7b-1bae-4d31-9617-ea009b3a61a3",
+              "caption": "My Kibana screen showing logs from my system",
+              "alt": "",
+              "width": 900,
+              "height": 500,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

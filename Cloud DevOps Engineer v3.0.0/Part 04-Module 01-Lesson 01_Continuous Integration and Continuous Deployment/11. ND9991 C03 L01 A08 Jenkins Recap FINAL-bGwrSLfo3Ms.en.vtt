@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.339
+Good job. Okay. So at this point,
+
+00:00:02.339 --> 00:00:05.429
+we've covered how to add an Apt repo,
+
+00:00:05.429 --> 00:00:10.710
+which is to give us access to the Jenkins software onto our Ubuntu instance.
+
+00:00:10.710 --> 00:00:17.054
+We've also covered how to add additional users and groups
+
+00:00:17.054 --> 00:00:23.820
+via L-Dapper Active Directory incorporated into your Jenkins management interface.
+
+00:00:23.820 --> 00:00:27.810
+There is now Blueocean present in the environment that we
+
+00:00:27.809 --> 00:00:32.619
+can leverage to create our pipelines. Moving up.
+

@@ -1,0 +1,193 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.180
+So, this is something that it's got
+
+00:00:03.180 --> 00:00:08.114
+its roots in technology that comes out of the early 90s,
+
+00:00:08.114 --> 00:00:10.035
+which is Continuous Integration.
+
+00:00:10.035 --> 00:00:16.740
+However, the tools to really be able to effectively do this really came about with
+
+00:00:16.739 --> 00:00:24.644
+the rise of Jenkins and other platforms to perform these actions.
+
+00:00:24.644 --> 00:00:27.300
+We are going to be covering
+
+00:00:27.300 --> 00:00:33.989
+the core components of this and the techniques of how to do it,
+
+00:00:33.988 --> 00:00:42.359
+and some of the best practices of how we do CI and CD in the DevOps space.
+
+00:00:42.359 --> 00:00:49.524
+So first up, let's talk a little bit about what came before CI and CD.
+
+00:00:49.524 --> 00:00:53.679
+Before we had tools to automate this process,
+
+00:00:53.679 --> 00:00:59.905
+a lot of this was just done of deploying binaries to servers or to desktops.
+
+00:00:59.905 --> 00:01:04.060
+This came with a lot of brittleness of,
+
+00:01:04.060 --> 00:01:05.275
+if you deploy it,
+
+00:01:05.275 --> 00:01:07.900
+it would take a lot of work to put it there,
+
+00:01:07.900 --> 00:01:12.650
+and then to deploy a new release would take substantially more work.
+
+00:01:12.650 --> 00:01:16.045
+So you get into this cycle where
+
+00:01:16.045 --> 00:01:21.519
+it's compounding your complexity with creating new environments,
+
+00:01:21.519 --> 00:01:23.890
+with managing these environments,
+
+00:01:23.890 --> 00:01:31.385
+and with giving huge variety of people access to these platforms and these technologies.
+
+00:01:31.385 --> 00:01:38.420
+So that's really where we have the need for a tool like Jenkins to manage these.
+
+00:01:38.420 --> 00:01:43.939
+With Jenkins, we have a huge number of plugins that
+
+00:01:43.939 --> 00:01:49.625
+allow us to store our configurations as code,
+
+00:01:49.625 --> 00:01:51.784
+a law in GitHub,
+
+00:01:51.784 --> 00:01:55.099
+and to create pipelines,
+
+00:01:55.099 --> 00:01:57.239
+which we're going to do with a Blue Ocean.
+
+00:01:57.239 --> 00:02:00.500
+There are other tools that we will not be covering,
+
+00:02:00.500 --> 00:02:02.844
+but they do similar stuff with pipelines.
+
+00:02:02.844 --> 00:02:05.019
+Not to mention, you don't need Blue Ocean,
+
+00:02:05.019 --> 00:02:09.189
+you can do pipelines just with the core Jenkins platform as well.
+
+00:02:09.189 --> 00:02:12.474
+So next up, we're going to talk about just,
+
+00:02:12.474 --> 00:02:17.375
+what is the definition of CI and CD?
+
+00:02:17.375 --> 00:02:21.080
+Continuous Integration is a development practice,
+
+00:02:21.080 --> 00:02:25.713
+where developers integrate code into a shared repository frequently,
+
+00:02:25.713 --> 00:02:27.759
+preferably seven times a day.
+
+00:02:27.759 --> 00:02:32.944
+Each integration can then be verified by automated build and automated test.
+
+00:02:32.944 --> 00:02:35.750
+Then for Continuous Deployment is a strategy
+
+00:02:35.750 --> 00:02:38.539
+for software releases wherein any code commit that
+
+00:02:38.539 --> 00:02:40.879
+passes the automated testing phase is
+
+00:02:40.879 --> 00:02:44.150
+automatically released into the production environment,
+
+00:02:44.150 --> 00:02:48.064
+making changes that are visible to the software users.
+
+00:02:48.064 --> 00:02:52.164
+So this is from Search Operations Tech Target.
+
+00:02:52.164 --> 00:02:58.919
+So let's just take the 10000 foot overview on what that means.
+
+00:02:58.919 --> 00:03:05.004
+So this slide is to give you a diagram of first starting with the user,
+
+00:03:05.004 --> 00:03:07.750
+which is you managing your code.
+
+00:03:07.750 --> 00:03:09.979
+You check in a change into
+
+00:03:09.979 --> 00:03:14.269
+a Git Repository for a new feature that you've added to your product.
+
+00:03:14.270 --> 00:03:18.605
+Then this pull request is reviewed by two of your colleagues,
+
+00:03:18.604 --> 00:03:24.560
+and this then gets merged back into your Repository,
+
+00:03:24.560 --> 00:03:27.469
+and Jenkins is able to start the pipeline.
+
+00:03:27.469 --> 00:03:29.705
+So we have our little pipeline icon.
+
+00:03:29.705 --> 00:03:33.500
+Next up comes our cute Linton process,
+
+00:03:33.500 --> 00:03:37.340
+which Linton is when we're checking for any kind of
+
+00:03:37.340 --> 00:03:43.439
+problem in the code you've made like a type of some sort.
+
+00:03:43.439 --> 00:03:46.050
+After we've successfully Linton it,
+
+00:03:46.050 --> 00:03:48.405
+we want a security check it,
+
+00:03:48.405 --> 00:03:51.890
+and finally we want to actually deploy it,
+
+00:03:51.889 --> 00:03:53.914
+being the final step here.
+
+00:03:53.914 --> 00:03:58.560
+This is mainly for our development and our staging environments.
+
+00:03:58.560 --> 00:04:01.250
+Our production environments usually don't have
+
+00:04:01.250 --> 00:04:06.514
+continuous deploy because that's considered too dangerous.
+
+00:04:06.514 --> 00:04:11.554
+So this is what we're dealing with as
+
+00:04:11.555 --> 00:04:16.495
+the technologies that are involved with Jenkins and CI/CD.
+
+00:04:16.495 --> 00:04:24.810
+So next up, we're going to start getting deep into pipelines.
+

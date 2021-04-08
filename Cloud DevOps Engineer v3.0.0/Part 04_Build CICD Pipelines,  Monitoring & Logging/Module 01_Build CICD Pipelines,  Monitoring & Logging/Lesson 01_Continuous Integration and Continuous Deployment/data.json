@@ -1,0 +1,1372 @@
+{
+  "data": {
+    "lesson": {
+      "id": 906779,
+      "key": "3669b843-e0f2-4887-b3ce-eae70cfdadc7",
+      "title": "Continuous Integration and Continuous Deployment",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Set up Jenkins environment and learn the fundamentals of pipelines",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/3669b843-e0f2-4887-b3ce-eae70cfdadc7/906779/1564803745238/Continuous+Integration+and+Continuous+Deployment+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/3669b843-e0f2-4887-b3ce-eae70cfdadc7/906779/1564803742050/Continuous+Integration+and+Continuous+Deployment+Subtitles.zip"
+          },
+          {
+            "name": "CI/CD Lesson Slides",
+            "uri": "https://video.udacity-data.com/topher/2019/August/5d439788_l1-ci-cd-slides/l1-ci-cd-slides.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 906767,
+          "key": "62436dd2-9a77-43bf-8001-34f3676c92e5",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "62436dd2-9a77-43bf-8001-34f3676c92e5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906741,
+              "key": "65d72c6a-c9c9-4de5-a854-2b31faa57e25",
+              "title": "ND#9991 C03 L01 A01 Teacher Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hVY8GNvhfek",
+                "china_cdn_id": "hVY8GNvhfek.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 906768,
+          "key": "fc38a065-9026-4cec-b803-eae97d2ea224",
+          "title": "Course Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fc38a065-9026-4cec-b803-eae97d2ea224",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906736,
+              "key": "0e5b2cc6-fd05-421a-89a6-586a8ac04ed7",
+              "title": "Course Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## A. Course Prerequisites\nWe assume that you have completed courses 1 - Cloud Fundamentals and course 2 - Deploy Infrastructure as Code of the Cloud DevOps Nanodegree. It would help if you had the following as prerequisite: \n* Knowledge of the AWS fundamentals\n* Familiarity with basic commands in a Linux / Unix environment\n* A Github account\n\n## B. Course Objectives\nIn this course, you will learn the fundamentals of Continuous Integration and Continuous Deployment (CI/CD) subject matters, such as Jenkins, Pipelines, Prometheus, and Ansible. After completing the course, you will be able to:\n1. Explain the fundamentals of CI/CD and Jenkins as a framework to achieve automation in CI/CD. *Lesson 1* introduces Jenkins for building, testing, and delivering or deploying software. \n1. Make use of various Jenkins Plugins and Deployment Strategies to boost your CI/CD requirements. *Lesson 2* will demonstrate to install and configure Blue Ocean, Aqua MicroScanner plugins for CI/CD pipeline. It will discuss several Deployment Strategies, as well. \n1. Utilize Ansible as a configuration management tool. *Lesson 3* describes the basics of Ansible, such as Templates, Services, Conditionals, and Roles. It will demonstrate to run Ansible to provision the target infrastructure using code (infrastructure as code) .\n1. Make use of monitoring and log aggregation tools. *Lesson 4* will guide you to install, configure, and use the Prometheus tool and ELK services. \n\n## C. Course Github Repository\nThroughout this course, we will be addressing code for performing builds in Jenkins using scripts written in Groovy, Bash, and Ansible markup language. Please refer to the following Git repository to see these code samples used in video demonstrations. There are three branches of code within this repository; master, blue, and green.\nhttps://github.com/udacity/nd9991-c3-Build-CI-CD-Pipelines-Monitoring-and-Logging-v1\n\n## D. Project Overview\nThe end of this course will lead to a project where you can show your acquired skills taught in this course. In our project, you will deploy and run an instance on AWS, configure Jenkins, and create a pipeline to deploy a static website on S3.\n\n## E. Lesson Objectives\nAfter completing this lesson, you will be able to:\n* Explain the fundamentals of CI/CD and pipelines\n* Setup the prerequisites for Jenkins, such as AWS IAM user, EC2 instance, and S3 services\n* Install and configure Jenkins as automation server to build a pipeline \n* Describe the role of Jenkinsfile\n* Install Blue Ocean plugin into Jenkins\n\n## F. Slides for each lesson\nAll of the slides used by the instructor in the lesson videos are available to you in the Resources section of the classroom. You can find the “Resources” tab in the left sidebar of your classroom here, up above “Concepts.” You can download the slides for the lesson you’re on there.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906766,
+          "key": "a866ca49-7ace-4e34-a1e0-6912e37c483e",
+          "title": "Interview: Career Skills",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a866ca49-7ace-4e34-a1e0-6912e37c483e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906790,
+              "key": "b382b585-cd7e-409f-9490-08718475c635",
+              "title": "Instructor Interview: Career Skills",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Instructor Interview: Cloud DevOps Career Skills and This Course\n\nHere, Instructor Olin Wread talks about his career experiences, and how DevOps has changed significantly over the course of the last 12 years of his work in the field. \n\nHe also talks about the key Cloud DevOps skills you will learn in this course that are valued highly by companies in hiring DevOps Engineers.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906731,
+              "key": "2d7f676f-448f-4721-a7c1-44f1caf59100",
+              "title": "ND#9991 C3 Interview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HN4FeArAz5A",
+                "china_cdn_id": "HN4FeArAz5A.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 906770,
+          "key": "5633f33a-e983-45d5-8182-89ca814a6c0e",
+          "title": "What is CI/CD and a Pipeline?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5633f33a-e983-45d5-8182-89ca814a6c0e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906739,
+              "key": "5a00f940-5270-4455-ab0c-b7412b0a943f",
+              "title": "CI / CD Definitions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n## Background - What is DevOps?\nWe have learned in the [previous course](https://classroom.udacity.com/nanodegrees/nd9991/parts/78ebd463-628c-4f6e-8802-f7a344f9cf55/modules/9711d330-0d6c-4dc5-9738-cf23c237a779/lessons/7d63a04c-5f53-4091-b87c-0ed3071c71c2/concepts/1075c920-b539-4330-ab6f-adea87f16c05) that DevOps is the combination of industry best practices, and set of tools that improve an organization’s ability to:\n*Increase the speed of software delivery\n* Increases the speed of software evolution\n* Have better reliability of the software\n* Have scalability using automation,\n* Improved collaboration among teams.\nThe two most important practices are - **Continuous Integration / Continuous Delivery or Deployment (CI/CD)** and Infrastructure as Code (IaaC). \n\n\n## What is CI/CD?\nCI/CD is a consistent and automated way for a DevOps team to build, package, test, and deploy applications\n* **Continuous Integration** means newly developed code changes of a project are periodically built, tested, and integrated into a shared repository like Git. Then, the integrated code is verified and tested using automated tools.\n\n* **Continuous Delivery** is the process of automating the release of the merged and validated code to a repository and finally release a production-ready build to the production environment.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906732,
+              "key": "52bf7812-2bfe-42ee-9d47-e283fc2f6410",
+              "title": "ND9991 C03 L01 A09 Continuous Integration & Continuous Deployment FINAL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "66j2hTy4G68",
+                "china_cdn_id": "66j2hTy4G68.mp4"
+              }
+            },
+            {
+              "id": 906756,
+              "key": "c0832e95-3c28-4f1a-af28-36811f66599d",
+              "title": "CI / CD Diagram",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d40f775_screen-shot-2019-07-30-at-7.05.20-pm/screen-shot-2019-07-30-at-7.05.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c0832e95-3c28-4f1a-af28-36811f66599d",
+              "caption": "",
+              "alt": "",
+              "width": 600,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 906734,
+              "key": "569af1bf-18f3-4ced-8e75-d7e62475c5a0",
+              "title": "CI/CD Q1",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "569af1bf-18f3-4ced-8e75-d7e62475c5a0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the primary purposes of CI/CD? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "To create repeatable actions",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "To test software",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "To deploy software",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Automate AWS actions",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 906740,
+              "key": "99f57451-3aa3-4093-9fbb-f3632ed5c088",
+              "title": "CI/CD Q2",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "99f57451-3aa3-4093-9fbb-f3632ed5c088",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of these actions is performed in continuous integration? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Linting",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Security testing",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Deployment",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Authentication",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 906742,
+              "key": "f46e8aa1-9674-465b-a702-d0e48813b840",
+              "title": "Pipelines Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pipelines Overview\nOne of the key best practices of DevOps is to be able to do “Infrastructure as Code”. A Pipeline enables us to store our Jenkins project configuration as code in a Git repository.  ***A Pipeline is a set of tools and processes to automate the CI/CD.*** \n\nThe previous way of doing this was to store the configurations as text on the Jenkins server. However, it is far superior to store this in a Git repository, because that way we version it, review it, perform pull requests, and integrate it just like the rest of our code. \n\nA pipeline contains steps that have different actions performed as part of those steps. Pipelines are written in Groovy code and designed to be reusable. Pipelines can be used similarly to how programming languages use “Modules” in a pluggable manner. The value in a Pipeline is it enables advanced functionality above and beyond simple Bash scripting. There are additional programmatic controls such as try and catch. A try/catch block creates a means of responding to errors in code or data for Jenkins functions. Pipelines assist with performing code testing and verification due to their modular nature and try/catch routines. This enables advanced error handling which lends itself to complex functionality.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006869,
+              "key": "134335c4-9ecd-42ac-a311-16001d0f5ebb",
+              "title": "CI CD Pipeline",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e727135_images-1/images-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/134335c4-9ecd-42ac-a311-16001d0f5ebb",
+              "caption": "A simple view of CI/CD Pipeline",
+              "alt": "CI/CD Pipeline",
+              "width": 720,
+              "height": 222,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006870,
+              "key": "088314b2-30a6-4d8c-86fc-79fbf42a07f4",
+              "title": "Pipeline 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As shown in the figure above, CI/CD pipeline implementation is the backbone of the modern DevOps environment. With pipelines we are able to use code checked into a Git repository to control the execution, linting, security testing, and performance testing of code. We use different environments to perform different functions, such as - development environment for building the code, staging environment for testing, and production environment for deployment. \n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906776,
+          "key": "0096eb0b-1af6-4b95-abb9-b153a2f9f039",
+          "title": "AWS Setup",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0096eb0b-1af6-4b95-abb9-b153a2f9f039",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906749,
+              "key": "e0aa8f6e-b128-45a9-a33e-889f56563aa8",
+              "title": "ND#9991 C03 L01 A03 AWS Setup",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Iqt0zDm3wCU",
+                "china_cdn_id": "Iqt0zDm3wCU.mp4"
+              }
+            },
+            {
+              "id": 906730,
+              "key": "91a97b10-e5ca-423f-abb7-f24972b59ab5",
+              "title": "AWS History",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS - Overview\nAmazon Web Services was introduced in 2006. In 2018 AWS represented 42% of the profit of Amazon\n\nWe recommend deploying our code on cloud infrastructure because cloud infrastructure (servers, storage, networks, supporting applications, and services) is auto-scalable, accessible broadly, and measurable for \"charge-per-use\" basis.\n\nAmazon Web Services (AWS) is an Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) provider. At this point, we may think of a \"cloud\" as a geographically distributed set of data centers that host different Virtual Machines (VMs) from different users. AWS has divided the entire world into several geographical regions. Each region has many availability zones, which in turn, comprises few data centers. Each data center has hundreds of servers, each of which hosts thousands of VMs dynamically. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906771,
+          "key": "945b9f39-f8ed-4357-aa8a-998490ac9e75",
+          "title": "IAM and EC2 Setup",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "945b9f39-f8ed-4357-aa8a-998490ac9e75",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906763,
+              "key": "03ee759d-2f68-41b6-8e04-85fe9338b2b0",
+              "title": "ND#9991 C03 L01 A04 IAM And EC2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Wl8tLO59Y90",
+                "china_cdn_id": "Wl8tLO59Y90.mp4"
+              }
+            },
+            {
+              "id": 1006907,
+              "key": "6180d95e-aa5e-43fc-9c78-b421c19cb743",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Avoiding Running Up Your AWS Charges - Stopping your Instance\n> **Disclaimer**\n> You can shut down/stop the resource(s) and close the billing account after the usage. These services are free, only up to a specific threshold.\n\n**Pay close attention in the video below to stop your EC2 instances, in order avoid running up charges with AWS.**\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906744,
+              "key": "46d72ff8-0fa5-4ce7-b727-2b53da7c25fd",
+              "title": "ND#9991 C03 L01 A05 AWS Stopping And Imaging EC2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_VZQ954tPfM",
+                "china_cdn_id": "_VZQ954tPfM.mp4"
+              }
+            },
+            {
+              "id": 1006908,
+              "key": "77d4d6c3-45fa-4794-9334-f5ede9326590",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS Billing\nThe billing policy, allowed limits, and bill tracking information for AWS Free Tier is available [here](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-limits.html).\n  \n\n### Recommended Read\n* [How to launch an EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-launch-instance).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906775,
+          "key": "6b95d419-cc19-4c8d-aa4a-a335070dc9cb",
+          "title": "AWS Setup Quiz",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6b95d419-cc19-4c8d-aa4a-a335070dc9cb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906765,
+              "key": "133e6051-3434-42a4-82f0-10f23ed18eaf",
+              "title": "Check for Understanding on AWS Setup",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Checking your Understanding\nNow let’s review your knowledge on a couple of AWS items.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906747,
+              "key": "921a9ebc-1f20-4879-b929-2ba2cd78f8b6",
+              "title": "AWS Setup Q1",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "921a9ebc-1f20-4879-b929-2ba2cd78f8b6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the most expensive cost in AWS?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "S3 storage",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "EC2 instances",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "ELB load balancers",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Network ingress and egress",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 906745,
+              "key": "cc680b36-8dba-4e86-9c89-6b64d58808b2",
+              "title": "AWS Setup Q2",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cc680b36-8dba-4e86-9c89-6b64d58808b2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What does IAM stand for?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Intranet Always Managed",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Identity and Access Management",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "I Am Manny",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Integrated AWS Management",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006872,
+              "key": "f68f8b5b-c0a6-4644-98d7-595505ab3d2f",
+              "title": "Billing MCQ",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f68f8b5b-c0a6-4644-98d7-595505ab3d2f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all that is True related to AWS Billing for free tier accounts.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Services such as Amazon EC2, Amazon Cloudwatch, Amazon RDS, and Elastic Load Balancing, charge for usage on an hourly basis.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "The free tier allocation for Linux and Microsoft Windows instances is calculated independently.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "For EC2 limits under free tier, you can operate (active state) 750 hours of a Linux t2.micro or t1.micro instance AND 750 hours of a Windows t2.micro / t1.micro instance each month for the first year.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 906773,
+          "key": "11cd46bb-bd21-498f-aec1-a8c04bfed7a7",
+          "title": "Jenkins Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "11cd46bb-bd21-498f-aec1-a8c04bfed7a7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906760,
+              "key": "402753ac-6a50-445c-a2b8-5797d1dd2cc6",
+              "title": "ND#9991 C03 L01 A02 Intro To Jenkins",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "E18pi8GYwWE",
+                "china_cdn_id": "E18pi8GYwWE.mp4"
+              }
+            },
+            {
+              "id": 906733,
+              "key": "9f904cbf-c68d-4df7-8fa1-10baa989193a",
+              "title": "Jenkins Intro icons",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d40f049_screen-shot-2019-07-30-at-6.34.52-pm/screen-shot-2019-07-30-at-6.34.52-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9f904cbf-c68d-4df7-8fa1-10baa989193a",
+              "caption": "Fun with Jenkins",
+              "alt": "Jenkins through the ages",
+              "width": 400,
+              "height": 145,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006873,
+              "key": "009d54ba-2413-4bdc-887d-8a0ea1e3f765",
+              "title": "Jenkins Intro",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n## What is Jenkins?\nTo *\"expedite\"* the software development process, CI/CD has become an essential practice for rapid building, testing, and deployment. Jenkins is an automation server that is used to ***automate the tasks associated with CI/CD***, such as building, testing, and deploying the application. There are many more other frameworks available in the market, as listed [here](https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software).\n\n[Jenkins](https://jenkins.io/doc/) comes originally from the Hudson project, which had very similar features and functionality but was controlled by Sun Microsystems. Jenkins is an open-source tool that was released in 2011. Jenkins is written in Java language. The prime feature of Jenkins is *Jenkins Pipeline*.\n\n## What is Jenkins Pipeline?\nIn general, a Pipeline is a set of tools and processes to automate the CI/CD of a software application. Jenkins Pipeline is a set of plugins that assist in achieving continuous delivery. Jenkins is highly modular and supports a multitude of plugins. Plugins extend Jenkins with additional features to support various requirements. We will cover a few of the plugins at a higher level in the next lesson. \n\n### `Jenkinsfile`\n`Jenkinsfile` is a text file that contains the definition of a Jenkins Pipeline. This text file is stored into the application’s Source Control Repository e.g., Github. Storing the `Jenkinsfile` into a source control repository makes it possible to review and audit collaboratively. A `Jenkinsfile` can be written using two types of syntax - Declarative and Scripted. In this course, we will use the Declarative way to write `Jenkinsfile` .\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006898,
+              "key": "14c1dd92-4781-4a38-be75-89549122d094",
+              "title": "Jenkinsfile",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7274cd_screenshot-2020-03-14-at-11.38.23-pm/screenshot-2020-03-14-at-11.38.23-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/14c1dd92-4781-4a38-be75-89549122d094",
+              "caption": "A sample `Jenkinsfile` having declarative syntax",
+              "alt": "",
+              "width": 1199,
+              "height": 632,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006896,
+              "key": "a15f48e9-e821-4b83-b2fb-aeb008385a11",
+              "title": "Read",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## Recommended Read\n* Jenkins provides **Guided Tours, Tutorials, and Handbook documentation**. \n* Read the [handbook documentation for Pipeline](https://jenkins.io/doc/book/pipeline/). The snapshot below highlights the topics that would provide insight into the Pipeline.\n* We suggest to read the Handbook first, and then go through the last two tutorials - “Create a Pipeline in Blue Ocean” and “End-to-End Multibranch Pipeline Project Creation”, later in this course. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006909,
+              "key": "eba01364-04d1-473c-92ec-829d6644f9c7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e72751a_screenshot-2020-03-14-at-10.50.40-pm/screenshot-2020-03-14-at-10.50.40-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/eba01364-04d1-473c-92ec-829d6644f9c7",
+              "caption": "",
+              "alt": "",
+              "width": 1131,
+              "height": 493,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006868,
+              "key": "b761afc8-b7a8-4b2b-97c8-82d6e2e813af",
+              "title": "Contrast",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## AWS Pipeline Service [OPTIONAL TO READ]\nAWS offers a CI/CD pipeline service, named as “CodePipeline”. This service can be used to model, visualize, as well as automate the steps required to release software. AWS CodePipeline enables us to increase the speed and quality of our development. It also runs a set of quality checks to ensure consistency. As a part of our project, we will need to provision (spinning-up) VMs in the cloud and use the service(s) of AWS.\n\nAWS CodeBuild and AWS CodeDeploy are the two most relevant services that are useful as a part of DevOps. AWS offers a plethora of other services, and you can see an implementation guide to set up a CI/CD pipeline on AWS [here](https://aws.amazon.com/getting-started/projects/set-up-ci-cd-pipeline/?trk=gs_card).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006906,
+          "key": "d4178b37-2cbe-402e-883f-a396dedce64d",
+          "title": "EC2 - Connect to Linux Instance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d4178b37-2cbe-402e-883f-a396dedce64d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1103810,
+              "key": "f9868601-8557-40a4-b728-45446ee70398",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can connect to your Linux/Ubuntu EC2 instance using the private key generated by AWS. To get started, start your instance and connect to it, as shown in the snapshot below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006899,
+              "key": "b1930014-f0ac-4028-90a5-da1694a95664",
+              "title": "public DNS",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbe05b0_screenshot-2020-11-25-at-12.47.06-pm/screenshot-2020-11-25-at-12.47.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b1930014-f0ac-4028-90a5-da1694a95664",
+              "caption": "Snapshot: Connect to the selected instance. Note the public DNS.",
+              "alt": "",
+              "width": 700,
+              "height": 1336,
+              "instructor_notes": null
+            },
+            {
+              "id": 1103812,
+              "key": "fc37c863-d84f-4506-b902-2d606e29b7ae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Recently, AWS has launched the [EC2 Instance Connect](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html) wizard, which can help you to connect directly from the EC2 dashboard. Alternatively, you can use SSH as well. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006902,
+              "key": "94debf74-3e9c-4b9f-83de-2006e11e4968",
+              "title": "connect to EC2",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbe05cc_screenshot-2020-11-25-at-12.47.50-pm/screenshot-2020-11-25-at-12.47.50-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/94debf74-3e9c-4b9f-83de-2006e11e4968",
+              "caption": "Snapshot: You can connect using the **EC2 Instance Connect** wizard. ",
+              "alt": "",
+              "width": 500,
+              "height": 1336,
+              "instructor_notes": null
+            },
+            {
+              "id": 1103811,
+              "key": "2ea46fcf-c139-4dcf-8f2e-b4a37bc821a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Linux/Mac users\nLinux/Mac users can log into your EC2 instance using Secure Shell (SSH) client. The following are the steps:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1103795,
+              "key": "5453d438-c963-4a75-b932-3c83b8d061fb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbe05fb_screenshot-2020-11-25-at-12.48.04-pm/screenshot-2020-11-25-at-12.48.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5453d438-c963-4a75-b932-3c83b8d061fb",
+              "caption": "Snapshot: Connect using SSH. **Copy** the commands and follow the steps mentioned above. ",
+              "alt": "",
+              "width": 500,
+              "height": 1260,
+              "instructor_notes": null
+            },
+            {
+              "id": 1031960,
+              "key": "0146b3ea-fbb1-4cf6-9bc5-430f05016b8f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n\n\n1. **Change the Private key file permissions**<br>\n Open an SSH client/terminal. Navigate to the directory where you have your private key (.pem) file in your local machine, and change the permissions to hide it from the public for SSH to work, using the command \n```\nchmod 400 <path of private key .pem file locally>\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1031961,
+              "key": "ebe109da-c184-4233-a128-dfe260f2cdcb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n2. **Connect using the Public DNS**<br>\nYou will log-in using the default name. The default username for Ubuntu instances is `ubuntu`, and for Linux, it is `ec2-user`.  The list of default usernames is available [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html). \n \n Connect to your instance using its public DNS, as \n```bash\nssh -i <path of private key .pem file locally> <public DNS>\n```\nThe successful login will show you a prompt as shown in the snapshot below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006874,
+              "key": "1b799ccb-5142-4191-9127-bd6e0843717b",
+              "title": "Ubuntu SSH",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fbe0856_screenshot-2020-11-25-at-1.01.00-pm/screenshot-2020-11-25-at-1.01.00-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1b799ccb-5142-4191-9127-bd6e0843717b",
+              "caption": "Snapshot: Successful login using SSH. Notice the private IPv4 address at the prompt is `172.31.23.177`, which you can also see in your EC2 dashboard. ",
+              "alt": "",
+              "width": 700,
+              "height": 676,
+              "instructor_notes": null
+            },
+            {
+              "id": 1103788,
+              "key": "97a855b9-4369-4645-a89e-f7d0dae65bb2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Windows users\nWindows users can log in using PuTTY utility. The following are the steps:\n\n1. Download, and install the *PuTTY* utility suite in your Windows machine from [https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) .",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006887,
+              "key": "f66c40dd-6955-49cb-a41b-a91e8b752b68",
+              "title": "SSH 5",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. You will need to have your PuTTY Private Key (.ppk) file locally. For this reason, we will use *PuTTYgen* utility to convert the .pem file to .ppk format. \n * Run the *PuTTYgen* in your machine. \n * Click **Load**, as shown in the snapshot below. \n * Browse and load the .pem key into the *PuTTYgen* and then click on **Save private key** to save the key in .ppk format without a passphrase. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006881,
+              "key": "b7eef309-f740-4c57-b570-1fb48c32866e",
+              "title": "SSH 6",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e72767e_screenshot-2020-03-14-at-7.21.47-pm/screenshot-2020-03-14-at-7.21.47-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b7eef309-f740-4c57-b570-1fb48c32866e",
+              "caption": "",
+              "alt": "",
+              "width": 488,
+              "height": 473,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006876,
+              "key": "2036e93f-0f0a-402f-9437-f3aa4755aa5d",
+              "title": "SSH 7",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e727698_screenshot-2020-03-14-at-7.26.48-pm/screenshot-2020-03-14-at-7.26.48-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2036e93f-0f0a-402f-9437-f3aa4755aa5d",
+              "caption": "",
+              "alt": "",
+              "width": 490,
+              "height": 476,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006897,
+              "key": "0945bd3e-5eb3-4f1c-87d7-8949bb19b453",
+              "title": "SSH 8",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Run the *PuTTY* to connect to the EC2 instance. \n4. Get the public DNS / IP address of your EC2 instance (host) from your AWS EC2 dashboard. Then, enter the public DNS / IP address of your EC2 instance (host) into the *PuTTY* . See snapshot below. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006878,
+              "key": "3e58cef2-1a1b-42a4-a0d2-823604574afb",
+              "title": "SSH 9",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7276b2_screenshot-2020-03-14-at-7.39.44-pm/screenshot-2020-03-14-at-7.39.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3e58cef2-1a1b-42a4-a0d2-823604574afb",
+              "caption": "",
+              "alt": "",
+              "width": 457,
+              "height": 442,
+              "instructor_notes": null
+            },
+            {
+              "id": 1031962,
+              "key": "a79bb2d6-df87-4de4-9a43-e41a4fed8fa7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n5. Click on Connection → Data to enter the default username as `ubuntu` for Ubuntu, or `ec2-user` for Linux based OS. The list of default usernames are listed [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html)\n6. Click on Connection → SSH → Auth to upload the .ppk file. See the snapshot below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006900,
+              "key": "8f1ec9b7-e9a2-4300-b529-8b1b6d1db809",
+              "title": "SSH 11",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7276cd_screenshot-2020-03-14-at-7.46.42-pm/screenshot-2020-03-14-at-7.46.42-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8f1ec9b7-e9a2-4300-b529-8b1b6d1db809",
+              "caption": "",
+              "alt": "",
+              "width": 456,
+              "height": 440,
+              "instructor_notes": null
+            },
+            {
+              "id": 1031963,
+              "key": "60e871a8-bb27-41ca-bd17-2fa73f330965",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "7. If everything is set up correctly, a terminal window would open up to log you into your Linux/Ubuntu EC2 instance.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906777,
+          "key": "092938b0-6428-4a0a-be45-dfa4ea0462cc",
+          "title": "Installing Jenkins",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "092938b0-6428-4a0a-be45-dfa4ea0462cc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906748,
+              "key": "78ffce32-d37e-45ea-824c-5b3c7aea3b8a",
+              "title": "Jenkins image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d44fb87_screen-shot-2019-08-02-at-8.11.42-pm/screen-shot-2019-08-02-at-8.11.42-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/78ffce32-d37e-45ea-824c-5b3c7aea3b8a",
+              "caption": "",
+              "alt": "Jenkins",
+              "width": 161,
+              "height": 189,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006905,
+              "key": "19fd2efa-2876-4769-9e29-9ff4cd87cf63",
+              "title": "Prerequisite",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## Prerequisite to Install Jenkins\nYou can install Jenkins using native system packages, Docker, or run on any machine having a Java Runtime Environment (JRE) available on it. We will install Jenkins on an AWS EC2 instance (a Virtual Machine) running the 64-bit (x86) Ubuntu OS. Later, we will log-in to that EC2 instance as an IAM user to configure the *Jenkins Pipeline*.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906737,
+              "key": "60189046-7720-44e4-b6f9-f47fa9ed8922",
+              "title": "ND#9991 C03 L01 A06 Installing Jenkins",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iVxigCxK5Q8",
+                "china_cdn_id": "iVxigCxK5Q8.mp4"
+              }
+            },
+            {
+              "id": 906735,
+              "key": "d99af831-bcbc-4a9b-850f-74c4445fa41f",
+              "title": "Commands for Installing Jenkins",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Commands for Installing Jenkins on an EC2 instance \n(Note: You can scroll to the right to see all the content in the box below.)\nWe assume that your EC2 instance is running the 64-bit (x86) Ubuntu OS.\n\n```bash\n# Step 1 - Update existing packages\nsudo apt-get update\n\n# Step 2 - Install Java\nsudo apt install -y default-jdk\n\n# Step 3 - Download Jenkins package. \n# You can go to http://pkg.jenkins.io/debian/ to see the available commands\n# First, add a key to your system\nwget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -\n\n# # Step 4 - Add the following entry in your /etc/apt/sources.list:\nsudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'\n\n# # Step 5 -Update your local package index\nsudo apt-get update\n\n# Step 6 - Install Jenkins\nsudo apt-get install -y jenkins\n\n# Step 7 - Start the Jenkins server\nsudo systemctl start jenkins\n\n# Step 8 - Enable the service to load during boot\nsudo systemctl enable jenkins\nsudo systemctl status jenkins\n```\n\nThe sudo command allows us to run a command as root. The apt utility is for installing software. It is a package manager and performs dependency resolution to install the supporting libraries for the end user. A package manager facilitates easy installation, upgrading, and management of software on a computer. The -y option for apt enables it to automatically select the “yes” option to install the software and prevents prompting of the end user. You will observe in the step which adds “jenkins.list” that we are adding an additional software repository source for which our Linux computer will be able to install software from. This is referred to as an Apt Package Repo.\n\n## Logging into Jenkins using GUI\n* Go to AWS dashboard to copy the public IP address of your Ubuntu EC2 instance. \n* Paste the public IP address into your browser, appended with `:8080` port. For the first time, it will open up the Jenkins GUI as shown in the snapshot below:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006880,
+              "key": "aba9a5fd-e945-4473-90b3-99c0f9484a56",
+              "title": "GUI 1",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e727755_screenshot-2020-03-14-at-6.04.20-pm/screenshot-2020-03-14-at-6.04.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/aba9a5fd-e945-4473-90b3-99c0f9484a56",
+              "caption": "Jenkins GUI saves the administrator password in a file on server",
+              "alt": "",
+              "width": 1541,
+              "height": 699,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006884,
+              "key": "ed1f2b2a-84b0-4368-ab50-36a4eb7a382f",
+              "title": "GUI 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* On the terminal, where you have connected to the Ubuntu EC2 instance, view the content of the file using the command `sudo cat <path copied in the previous step>`. It will show the default administrator password. You can copy and use this password in the GUI (browser) to log in first time.\n\n* After successful login, you may choose to install default plugins. Though, we will learn to use specific plugins for our needs in the next lesson. See the snapshot below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006879,
+              "key": "b530d649-52e6-4ba1-acb7-c5f6259287e9",
+              "title": "GUI 3",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e72777c_screenshot-2020-03-14-at-6.26.15-pm/screenshot-2020-03-14-at-6.26.15-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b530d649-52e6-4ba1-acb7-c5f6259287e9",
+              "caption": "",
+              "alt": "",
+              "width": 1534,
+              "height": 851,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006901,
+              "key": "a1632d1d-a4c9-4bdd-bdb3-5bbc90d262f9",
+              "title": "GUI 4",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* If you choose to install suggested plugins, the following plugins would get installed. See the snapshot below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006891,
+              "key": "471618f7-56e8-404a-8d9a-da8f3b268fcc",
+              "title": "GUI 5",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7277a2_screenshot-2020-03-14-at-6.29.34-pm/screenshot-2020-03-14-at-6.29.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/471618f7-56e8-404a-8d9a-da8f3b268fcc",
+              "caption": "",
+              "alt": "",
+              "width": 1167,
+              "height": 488,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006875,
+              "key": "50e4e877-b908-446f-96c8-35417313b8f3",
+              "title": "GUI 6",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Set up the user credentials. See the snapshot below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006895,
+              "key": "5ac3eaca-69f8-490d-aa8c-410ca834d461",
+              "title": "GUI 7",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7277c1_screenshot-2020-03-14-at-6.47.42-pm/screenshot-2020-03-14-at-6.47.42-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5ac3eaca-69f8-490d-aa8c-410ca834d461",
+              "caption": "",
+              "alt": "",
+              "width": 847,
+              "height": 339,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006893,
+              "key": "901ef86c-513b-474f-83d7-330144279013",
+              "title": "GUI 8",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Next, it will show you a success message and take you to the Jenkins dashboard.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006888,
+              "key": "d2360d66-4f68-42e3-913f-3161561ff779",
+              "title": "GUI 9",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7277d7_screenshot-2020-03-14-at-6.49.34-pm/screenshot-2020-03-14-at-6.49.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d2360d66-4f68-42e3-913f-3161561ff779",
+              "caption": "",
+              "alt": "",
+              "width": 941,
+              "height": 251,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006889,
+              "key": "6051633d-ffd6-471c-a433-83148673142f",
+              "title": "GUI 10",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e727803_screenshot-2020-03-14-at-6.53.29-pm/screenshot-2020-03-14-at-6.53.29-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6051633d-ffd6-471c-a433-83148673142f",
+              "caption": "Jenkins dashboard",
+              "alt": "",
+              "width": 1522,
+              "height": 646,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006892,
+              "key": "c245a10e-e427-4421-8dff-d5f3067cab29",
+              "title": "GUI 11",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recommended Read\n* Read the official [guided **tour** to install Jenkins and create your first Pipeline](https://jenkins.io/doc/pipeline/tour/getting-started/)\n* There are a few tutorials available on the Jenkins website to help you get started with a variety of applications - Maven, Node.js, Python, and Blue Ocean. \n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906772,
+          "key": "e77aabb9-035c-4f47-8c07-5781bcdff1cc",
+          "title": "Install Blue Ocean Plugin into Jenkins",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e77aabb9-035c-4f47-8c07-5781bcdff1cc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006910,
+              "key": "3481b59a-4ece-4218-8d8e-4cffa88249ae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Jenkins Plugins\nJenkins supports a plenitude of plugins. Plugins extend Jenkins with additional features to support various requirements. Here we will install the Blue Ocean Plugin into Jenkins. The general sequence of steps to select and install any plugin into Jenkins are: \n> Jenkins dashboard --> Manage Jenkins --> Manage Plugins --> Available tab --> Filter out using a keyword\n\n\n## Blue Ocean Plugin\n[Blue Ocean](https://jenkins.io/doc/book/blueocean/) essentially provides a re-skinned and simplified GUI for working with Jenkins. Blue Ocean can help you configure your pipeline using a few clicks.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906764,
+              "key": "f1f56ba1-7ea3-44bc-bee9-3e51fa6b3d30",
+              "title": "ND#9991 C03 L01 A07 Logging In To Jenkins GUI And Managing Plugins",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9vj9zukg8ig",
+                "china_cdn_id": "9vj9zukg8ig.mp4"
+              }
+            },
+            {
+              "id": 1006911,
+              "key": "f7148490-1805-44bb-b96f-6dd97320e404",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Configure Jenkins for Enterprise Authentication with LDAP\n1. In the Jenkins GUI click on “Manage Jenkins”\n1. Click the lock icon “Configure Global Security”\n1. Select the checkbox “Enable Security”\n1. Use the radio button option for LDAP\n1. Enter the Hostname/IP address of the LDAP server\n1. Select “Advanced Server Configuration”\n1. Configure the LDAP authentication to match your environment\n1. Once configured, use the “Test LDAP Setting” and put in your username and password\n1. If successful, it will present a login success message\n1. Click Apply and Save button\n\n### Active Directory Authentication\n1. Select “Manage Jenkins” in home screen\n1. Click “Manage Plugins”\n1. Select the “Available” tab\n1. Enter “Active Directory” in the search box\n1. Select the “Active Directory Plugin” and click “Download now and install after restart”\n1. Restart your Jenkins server when it is idle\n1. Once installed, in “Manage Jenkins” select “Configure Global Security”\n1. Select “Active Directory” and enter the domain and domain accounts\n1. Choose “Matrix based Security” and configure the desired users and groups (note: they are case sensitive)\n1. Login to the web interface with Active Directory credentials to test the functionality\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906751,
+              "key": "6109ba35-8c7e-4c9a-b2d4-5f111a39a033",
+              "title": "ND9991 C03 L01 A08 Jenkins Recap FINAL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bGwrSLfo3Ms",
+                "china_cdn_id": "bGwrSLfo3Ms.mp4"
+              }
+            },
+            {
+              "id": 1006904,
+              "key": "5328d15a-cde7-409a-98f7-6111074249ce",
+              "title": "Read",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recommended Read\n* For this course, you can refer to the **tutorial** [Create a Pipeline in Blue Ocean](https://jenkins.io/doc/tutorials/create-a-pipeline-in-blue-ocean/) to have a better understanding of the demonstrations in the upcoming videos. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906769,
+          "key": "9be4f2ad-45fa-4e36-871d-b6cedfce8f2c",
+          "title": "Jenkins Quiz",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9be4f2ad-45fa-4e36-871d-b6cedfce8f2c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906746,
+              "key": "127a5bee-4950-4e30-84d0-4a0d6516534e",
+              "title": "Radio  Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "127a5bee-4950-4e30-84d0-4a0d6516534e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What language is Jenkins written in?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Python",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Ruby",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Scala",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Java",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006886,
+              "key": "3f1fba07-386f-4be2-a287-7f3fff76e1c1",
+              "title": "MCQ",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3f1fba07-386f-4be2-a287-7f3fff76e1c1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is `Jenkinsfile`?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A text file that contains the definition of a Jenkins Pipeline.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A file that can be written in either of two types of syntax - Declarative versus Scripted.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A configuration file that can define steps to be performed in different stages through the specified agent.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 906778,
+          "key": "b1f54ef4-5d94-4391-b55c-4c54c9bcaa1a",
+          "title": "Review and Practice Exercises",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b1f54ef4-5d94-4391-b55c-4c54c9bcaa1a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906758,
+              "key": "1076a72e-58e6-497b-8ed3-1e2a68de7b8a",
+              "title": "Key Skills and Concepts from CI / CD Lesson",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Skills and Concepts from CI / CD Lesson\nYou’ve learned a lot in this lesson! Here are some of the key skills and topics we covered in the course so far:\n- Set up IAM user, role, group & policy\n- Launched EC2 instance\n- Installed Jenkins\n- Enabled BlueOcean\n- Showed the components of CI/CD\n- Described a pipeline\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906738,
+              "key": "d20b393e-a9c4-4b81-a536-d5f285f9d450",
+              "title": "Practice Exercise 1",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Practice Exercise 1\n** Working through these practice exercises will set you up for success in your project at the end of the course!**\n\nAs a practice exercise, please do the following:\n- Set up IAM user, role, group and policy\n- Now check your work by reviewing your policy JSON. It should look like the following:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906757,
+              "key": "fe1794cc-4f5b-460e-b81e-6a0a4e67752c",
+              "title": "Policy JSON for Practice Exercise 1",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d40f91e_screen-shot-2019-07-30-at-7.10.48-pm/screen-shot-2019-07-30-at-7.10.48-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fe1794cc-4f5b-460e-b81e-6a0a4e67752c",
+              "caption": "Your policy JSON should look like this",
+              "alt": "",
+              "width": 465,
+              "height": 546,
+              "instructor_notes": null
+            },
+            {
+              "id": 906752,
+              "key": "c4e09637-6a24-4fe4-a38c-f62c09f5dba3",
+              "title": "Practice Exercise 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Practice Exercise 2\nHere is another practice exercise. Please do the following:\n\n- Launch a t2.micro EC2 instance \n- Install Jenkins\n- Recall these are the steps to install Jenkins:\n\n```\nsudo apt-get update\nsudo apt install -y default-jdk\nwget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -\nsudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'\nsudo apt-get update\nsudo apt-get install -y jenkins\n```\n\n- Take a screenshot of the Homepage after logging into Jenkins. Check your work by comparing your screenshot to the following. Include the URL bar in your screenshot.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906750,
+              "key": "07cfd521-aa6d-4c66-a767-62486b7a0f4a",
+              "title": "Practice Exercise 2",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d40f9a0_screen-shot-2019-07-30-at-7.14.40-pm/screen-shot-2019-07-30-at-7.14.40-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/07cfd521-aa6d-4c66-a767-62486b7a0f4a",
+              "caption": "Your Jenkins screen should look like this",
+              "alt": "Jenkins Home Screen",
+              "width": 305,
+              "height": 566,
+              "instructor_notes": null
+            },
+            {
+              "id": 906762,
+              "key": "1ba96e80-26ba-424c-bfb6-b947c6fd0527",
+              "title": "Practice Exercise 3",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Practice Exercise 3\nFor the last practice exercise for this lesson, please do the following:\n\n- Install the Blue Ocean Plugin. \n- To check your work, compare the screen you see inside of Blue Ocean with the following. Make sure you include the URL bar in your comparison also.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906754,
+              "key": "e59a4f2e-0588-4a88-9f9a-ba4a4e084a66",
+              "title": "Practice Exercise 3",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d40fa51_screen-shot-2019-07-30-at-7.17.39-pm/screen-shot-2019-07-30-at-7.17.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e59a4f2e-0588-4a88-9f9a-ba4a4e084a66",
+              "caption": "Your view from inside Blue Ocean should look like this",
+              "alt": "Blueocean Pipelines",
+              "width": 1432,
+              "height": 256,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}
