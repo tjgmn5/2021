@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:08.175
+In the past, we have seen development and operations be a completely separate entities.
+
+00:00:08.175 --> 00:00:09.915
+That's less than ideal.
+
+00:00:09.914 --> 00:00:11.954
+Developers will create code,
+
+00:00:11.955 --> 00:00:14.759
+the code needs to be deployed to production,
+
+00:00:14.759 --> 00:00:19.379
+and because of that operation needs to communicate with developers.
+
+00:00:19.379 --> 00:00:21.269
+Operational, if you don't know,
+
+00:00:21.269 --> 00:00:24.719
+is the part of IT that manages,
+
+00:00:24.719 --> 00:00:28.094
+monitors, configures, and deploys software.
+
+00:00:28.094 --> 00:00:31.410
+Their job is to make sure that the software for the business
+
+00:00:31.410 --> 00:00:36.009
+is producing as suspected and it's running at top performance.
+
+00:00:36.009 --> 00:00:39.079
+Now, software developers, what they do is they'll take
+
+00:00:39.079 --> 00:00:41.299
+a requirement sheet and then they will turn it
+
+00:00:41.299 --> 00:00:44.384
+into a piece of software that gets deployed.
+
+00:00:44.384 --> 00:00:46.799
+Now, they'll pass information to
+
+00:00:46.799 --> 00:00:52.424
+operationals folks that need to deploy the software and make sure it's running properly.
+
+00:00:52.424 --> 00:00:57.369
+There's usual communication gaps in between those two groups of people.
+
+00:00:57.369 --> 00:01:00.284
+The job of development and operation,
+
+00:01:00.284 --> 00:01:01.609
+now in the world of DevOps,
+
+00:01:01.609 --> 00:01:04.640
+is to integrate each other and get everything working
+
+00:01:04.640 --> 00:01:08.790
+together as a team and not as two separate entities.
+

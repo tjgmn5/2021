@@ -1,0 +1,1171 @@
+{
+  "data": {
+    "lesson": {
+      "id": 844578,
+      "key": "f5e16648-22d1-41d7-af34-2b187a36d331",
+      "title": "Networking Infrastructure",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn about various networking components that can be used in a VPC. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/f5e16648-22d1-41d7-af34-2b187a36d331/844578/1569515158864/Networking+Infrastructure+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/f5e16648-22d1-41d7-af34-2b187a36d331/844578/1569515154441/Networking+Infrastructure+Subtitles.zip"
+          },
+          {
+            "name": "network.yml",
+            "uri": "https://video.udacity-data.com/topher/2020/February/5e50d2fb_network/network.yml"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 844580,
+          "key": "1a911d3f-1951-4f53-ac33-f633da31d252",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1a911d3f-1951-4f53-ac33-f633da31d252",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847304,
+              "key": "398dff1c-2a47-465b-918a-0899962005c4",
+              "title": "01 - L3 Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_APPBcY5GrM",
+                "china_cdn_id": "_APPBcY5GrM.mp4"
+              }
+            },
+            {
+              "id": 971588,
+              "key": "49cd1b86-90e2-491b-8bec-6ca2750ea7e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Objectives\nUpon completion of this lesson, you will be able to: \n* Describe the syntax of the CloudFormation code that builds the infrastructure\n* Build the following resources - \n * Virtual Private Cloud and subnets\n * Internet gateway and NAT gateway\n * Route table\n* Export the stack output\n\n\n### Supporting Material\nThe supporting material that is referred to in the video demonstration is available in the [Github repository](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/tree/master/supporting_material) folder.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 844581,
+          "key": "d187f4c8-2743-40b2-8994-12220bd8bc8d",
+          "title": "Workflow and Helpers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d187f4c8-2743-40b2-8994-12220bd8bc8d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 847310,
+              "key": "d07e8124-f17a-4e02-b9d0-253e6876409e",
+              "title": "02 - L3 -No Title-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sDbpsJVXd8M",
+                "china_cdn_id": "sDbpsJVXd8M.mp4"
+              }
+            },
+            {
+              "id": 858716,
+              "key": "b2d0e47f-efd4-4a25-8336-dcfa066c7275",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### Reference diagram\nThe file [AWSWebApp.jpeg](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/tree/master/supporting_material) is complete a reference diagram that we exported from LucidChart in Jpeg format. Luckily, our VS code editor supports the jpeg format, and we can quickly reference this as a visual checklist to make sure we don’t forget any component when writing our CloudFormation script.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132465,
+              "key": "14133a16-2379-4295-89a2-f602884acc39",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601a7a6f_awswebapp-2/awswebapp-2.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/14133a16-2379-4295-89a2-f602884acc39",
+              "caption": "AWSWebApp.jpeg diagram. We will create only the network-related resources in the current lesson. ",
+              "alt": "",
+              "width": 800,
+              "height": 1241,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132464,
+              "key": "f2586bbb-67aa-4385-9630-93a0fdb883cf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601a7cb7_screenshot-2021-02-03-at-4.03.19-pm/screenshot-2021-02-03-at-4.03.19-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f2586bbb-67aa-4385-9630-93a0fdb883cf",
+              "caption": "Filtered out networking infrastructures, such as VPC, subnets, Internet gateway, NAT gateway, and route tables. ",
+              "alt": "",
+              "width": 800,
+              "height": 1314,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132463,
+              "key": "9982ec58-42b2-44e8-9672-1979d3645320",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### Learning about the YAML file\nThe video above shows you the `testcfn.yml` file, which you'd have created in the previous lesson. In the upcoming video demos, you will have to create a new YAML file. Let's learn about the sections present the `testcfn.yml` file:<br>\n1. **Format version**: The `AWSTemplateFormatVersion` section is optional. The current valid value is 2010-09-09. You can add it to your file as:\n```\nAWSTemplateFormatVersion: 2010-09-09\n```\n\n\n2. **Description**:  The`Description` field is also optional. Here we start by adding a short description of the project we are working on.\n```\nAWSTemplateFormatVersion: 2010-09-09\nDescription: Carlos Rivas / Udacity - This template deploys a VPC\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858717,
+              "key": "40acffc3-8b56-4ad6-87be-99acec02b59f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. **Resouces**: Although a description is optional, the `Resources` section is required. Remember to include **at least one resource** (e.g., a VPC, an EC2 instance, a database) in the CloudFormation template, otherwise, it will give an error when you try to run the script.\n```\nAWSTemplateFormatVersion: 2010-09-09\nDescription: Carlos Rivas / Udacity - This template deploys a VPC\nResources:\n  UdacityVPC:\n    Type: 'AWS::EC2::VPC'\n    Properties:\n      CidrBlock: 10.0.0.0/16\n      EnableDnsHostnames: 'true'\n```\n**Reference**: [Template anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)\n<br/>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848861,
+              "key": "85769af8-d155-4b62-abe5-947e149f1347",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS command in a Shell script\nAs demonstrated in the video above, you can save your `aws cloudformation` command in a shell (.sh) script, so that you can run it multiple times easily. The instructor has created the following two shell scripts for the current course:\n1. **create.sh**: This file contains the `create-stack` command, which expects three command-line arguments.\n```\naws cloudformation create-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --region=us-east-1\n```\n2. **update.sh**: This file contains the `update-stack` command, and this too expects three command-line arguments.\n```\naws cloudformation update-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --region=us-east-1\n```\n>Note: As stated earlier, you can choose either region, **us-west-2** or **us-east-1**. \n\n Moving forward, we will learn and add an additional option, `--capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\"`, in these commands as:\n```\naws cloudformation create-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\" --region=us-east-1\n```\n\n### Practice Fixing Errors\n* Practice fixing errors, as this will help you prepare for real scenarios on the job.  \n\n\n* For instance, try altering correct, working YAML scripts to see if they generate an error.  \n\n\n* Practice reading error messages to understand what caused the error, and how to fix them.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 844582,
+          "key": "5029f0c3-06a5-479d-8fb5-5fd4947fabfe",
+          "title": "VPC and Internet Gateway",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5029f0c3-06a5-479d-8fb5-5fd4947fabfe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "network.yml",
+                "uri": "https://video.udacity-data.com/topher/2021/February/60179e28_network/network.yml"
+              },
+              {
+                "name": "network-parameters.json",
+                "uri": "https://video.udacity-data.com/topher/2021/February/6017d5b6_network-parameters/network-parameters.json"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 1132085,
+              "key": "5f386354-f4fd-4e3d-a650-98a4894edc19",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Create a VPC ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908188,
+              "key": "98c8e360-d8e8-49eb-b606-085f26078027",
+              "title": "ND9991 C02 L03 A03-1 VPC And Internet Gateway P1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Es5BXzhreMk",
+                "china_cdn_id": "Es5BXzhreMk.mp4"
+              }
+            },
+            {
+              "id": 1132466,
+              "key": "5bc18c79-fe0b-486a-9ca1-45ab5c2bb086",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Purpose of the `network.yml` and `network-parameters.json` files\nWe have already created a CloudFormation template (`network.yml`) and a properties file (`network-parameters.json`) that contains the code related to provisioning the networking infrastructure.\n\n**However, we strongly encourage you to follow along with the video demonstrations.** \n\nTo get started, create two new **empty files**: `ourinfra.yml` and `ourinfra.json`. Then, gradually append code to them, after referring/copying from the `network.yml` and `network-parameters.json`.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132071,
+              "key": "0d904745-8feb-4360-80ab-e513b2d6db11",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Learning More about a YAML file \nThe `network.yml` file is included in the **Resources tab** in this page's left sidebar. The same file is also available in the [Github repository](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/tree/master/supporting_material). This file contains the following four sections (we will learn all of them gradually):\n1. **Description** - It presents a text description.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132075,
+              "key": "f7a788ab-4472-457c-bb6d-b7a3250ba565",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6017a812_screenshot-2021-02-01-at-12.34.15-pm/screenshot-2021-02-01-at-12.34.15-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f7a788ab-4472-457c-bb6d-b7a3250ba565",
+              "caption": "Description section. Feel free to edit/change it. ",
+              "alt": "",
+              "width": 700,
+              "height": 424,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132074,
+              "key": "7ad0a128-e81d-45c0-b735-5feb2b462319",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. **Parameters** - It contains the list of parameters that are being used in the current CloudFormation template. Parameters should be declared above your Resources. Any value that you consider to change in the future, put it as a parameter instead of hard-coding it into your script. Note that each parameter is further defined with the following **properties** (or fields): \n * Parameter Name - You can provide the name of your choice\n * Description - A textual value\n * Type - Identifies the data type of the parameter, such as String or a Number\n * Default (optional) - Presents the default value of the parameter\n * AllowedValues (optional) - Presents the list of all possible values.\n \n For example, here we set the `EnvironmentName` parameter in our sample code from the video:\n```\nParameters:\n    EnvironmentName:\n        Description: An Environment name that will be prefixed to resources\n        Type: String\n```\nYou can also provide default values for parameters in case one was not passed in. In this example, you can see that `VpcCIDR` has a default value of `10.0.0.0/16`.\n```\nParameters:\n    EnvironmentName:\n        Description: An Environment name that will be prefixed to resources\n        Type: String\n        \n    VpcCIDR:\n        Description: Please enter the IP range (CIDR notation) for this\n        Type: String\n        Default: 10.0.0.0/16\n```\n\n The use of parameters in the template makes your CloudFormation templates more reusable, by allowing you to input *custom values* to your template each time you create or update a stack. These *custom values* can be defined in a separate JSON file, as we will see later. These parameters are referenced in the **Resources** and ** Outputs ** section using a `!Ref` intrinsic function. <br><br>\n**Reference**: Refer to the [Parameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html) documentation for learning more about `!Ref` intrinsic function and all possible properties of a parameter. \n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132076,
+              "key": "f58e7fe1-89a5-42fa-83d8-45711818a55c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6017a84a_screenshot-2021-02-01-at-12.34.02-pm/screenshot-2021-02-01-at-12.34.02-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f58e7fe1-89a5-42fa-83d8-45711818a55c",
+              "caption": "Parameters section",
+              "alt": "",
+              "width": 700,
+              "height": 536,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132073,
+              "key": "bb1b12ff-970c-4741-87e2-a62984347614",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. **Resources**: This (mandatory) section declares the AWS resources that you want to include in the stack, such as Servers, Gateways, VPN Connections, and more. We learned earlier that the `Resource` section is mandatory. You must include **at least one resource** (e.g., a VPC, and an internet gateway) in the CloudFormation template, otherwise, it will give an error when you try to run the script.<br><br>\nEach resource is defined with the help of fields, such as **Name**, **Resource type**, and **Resource properties**. \n * **Name** - It is a string value representing the resource name. You can use a name of your choice. <br>\n * **Resource type** - The resource type identifies the type of resource that you are declaring. For example, `Type: AWS::EC2::VPC` creates a VPC. You can view the  [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) for a complete list of possible resources you can provision. <br>\n * **Resource properties** - The resource **Properties** field has further sub-fields that are specific to each type of resource. See an example below.\n```\nResources:\n  MyEC2Instance:\n    Type: \"AWS::EC2::Instance\"\n    Properties:\n      ImageId: \"ami-0ff8a91507f77f867\"\n```\n \n **Reference**: Refer to the [Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html) documentation for learning more about resource fields, and see more examples. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132078,
+              "key": "e56f9d66-b5a9-40b2-a423-600f05b83f47",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6017af22_screenshot-2021-02-01-at-12.37.00-pm/screenshot-2021-02-01-at-12.37.00-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e56f9d66-b5a9-40b2-a423-600f05b83f47",
+              "caption": "Resources section",
+              "alt": "",
+              "width": 700,
+              "height": 1244,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132077,
+              "key": "1946a37c-07dd-42b4-af1f-59d3b0e2b388",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n4. **Outputs**: This section declares output values for each resource that you can import into other stacks. For example, you can output the VPC ID for a stack to make it easier to find from another stack/template. You should not output any sensitive information, such as passwords or secrets. For each resource's output, you will have to provide the following: \n * Description (optional) - A string\n * Value (required) - The property returned by the `aws cloudformation describe-stacks` command. \n * Export (optional) - The name of the resource output to be exported for a cross-stack reference.\n\n **Reference**: Refer to the [Outputs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html) documentation for examples.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132079,
+              "key": "54f43eaf-0fe7-48cf-b692-0a6d9d862104",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6017b2a6_screenshot-2021-02-01-at-1.19.46-pm/screenshot-2021-02-01-at-1.19.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/54f43eaf-0fe7-48cf-b692-0a6d9d862104",
+              "caption": "Outputs section",
+              "alt": "",
+              "width": 700,
+              "height": 736,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132082,
+              "key": "b360c5c4-991e-4da0-8e6e-d24947c8456d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971383,
+              "key": "4a92fbe0-3d91-409d-b6d5-ae246c0e7aec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Understanding the JSON (Parameters) file \n* **Why do we need a separate parameter file (JSON)?** <br>\nThe separate parameter file (JSON) file helps us to avoid hard-coding the parameters in the template (YAML) file.<br><br>\n\n* Any named parameters in the **Parameters** section of our CloudFormation template will need to have a matching value in a separate, Parameter file, which is in JSON format. The YAML format is not yet supported for the parameter file. A sample JSON-formatted Parameter file is:\n```json\n[\n\t{\n\t\t\"ParameterKey\": \"EnvironmentName\",\n\t\t\"ParameterValue\": \"UdacityProject\"\n\t}\n]\n```\nHaving this additional file with actual parameter values allows you to change data used by your CloudFormation template without the risk of modifying the template directly and possibly introducing a typo or some logical error. \n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132080,
+              "key": "04676eee-d814-4ae5-a424-20b4ba80870a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6017ba43_screenshot-2021-02-01-at-1.48.25-pm/screenshot-2021-02-01-at-1.48.25-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/04676eee-d814-4ae5-a424-20b4ba80870a",
+              "caption": "A sample parameter file (JSON)",
+              "alt": "",
+              "width": 700,
+              "height": 594,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132086,
+              "key": "7e2bad23-a71a-4059-9a5e-d46ae2dcf4f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Create Internet Gateway",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908189,
+              "key": "2d7135df-4804-4207-9e6c-d538b17302f5",
+              "title": "ND9991 C02 L03 A03-2 VPC And Internet Gateway P2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ji4AoQjY8Os",
+                "china_cdn_id": "ji4AoQjY8Os.mp4"
+              }
+            },
+            {
+              "id": 848862,
+              "key": "92ccb881-4c5c-4260-ba50-ff511a96c044",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Creating CloudFormation Stack\n* When calling AWS CloudFormation, you’ll pass in the name of the `.yml` file as well as the name of the parameter file as parameters to the CloudFormation call.  For example:\n```\naws cloudformation create-stack --stack-name ourdemoinfra --template-body file://ourinfra.yml    --parameters file://ourinfra.json  --region=us-east-1\n```\n>**Note** that CloudFormation creates the resources in order, based on their dependencies (VPC and InternetGateway, before creating the InternetGatewayAttachment).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132081,
+              "key": "35b4eb7c-f5a8-4750-85ce-0ae69ba06fd0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### How to execute the Shell scripts?\n* You can run either of the shell scripts (*create.sh* or *update.sh*) as:\n```\n./<file_name> argument_1 argument_2 argument_3\n```\nFor example, you can run the following command:\n```\n./create.sh ourdemoinfra ourinfra.yml ourinfra.json\n```\nThe command above is equivalent of running the following:\n```\naws cloudformation create-stack --stack-name ourdemoinfra --template-body file://ourinfra.yml    --parameters file://ourinfra.json  --region=us-east-1\n```\n\n\n### Troubleshoot\n* While running the AWS commands using either *create.sh* or *update.sh* file, if you face permission denied error, then you will have to grant the **execute** permission to the owner (yourself) explicitly as:\n```bash\nchmod +x update.sh \nchmod +x create.sh \n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132087,
+              "key": "d1142ee5-6c5c-4d1b-920b-46e2a20de5ec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Attach VPC and Internet Gateway",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908190,
+              "key": "d82f8894-ebe5-4c31-8b9c-357bb01bb874",
+              "title": "ND9991 C02 L03 A03-2 VPC And Internet Gateway P3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fOIOIeDiad0",
+                "china_cdn_id": "fOIOIeDiad0.mp4"
+              }
+            },
+            {
+              "id": 858725,
+              "key": "f7dd14c6-aa33-4b3c-ac03-32b78225c897",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Connecting VPC's & Internet Gateways\n* **Syntax of VPCGatewayAttachment resource:** It's important to note when connecting an `Internet Gateway` to a `VPC`, we need to define an additional resource called `InternetGatewayAttachment`. This attachment references both the VPC and the InternetGateway. Here is the syntax for the following connection:\n```\nType: AWS::EC2::VPCGatewayAttachment\nProperties: \n  InternetGatewayId: String\n  VpcId: String\n  VpnGatewayId: String\n```\n>**Note** that you must specify either InternetGatewayId or VpnGatewayId, but not both.\n\n* **Example:** See the **VPCGatewayAttachment** from the video above, referencing both the VPC and the InternetGateway defined above using a `!Ref` intrinsic function:\n```\nResources:\n    VPC: \n        Type: AWS::EC2::VPC\n        Properties:\n            CidrBlock: !Ref VpcCIDR\n            EnableDnsHostnames: true\n            Tags: \n                - Key: Name \n                  Value: !Ref EnvironmentName            \n    InternetGateway:\n        Type: AWS::EC2::InternetGateway\n        Properties:\n            Tags:\n                - Key: Name\n                  Value: !Ref EnvironmentName\n\n    InternetGatewayAttachment:\n        Type: AWS::EC2::VPCGatewayAttachment\n        Properties:\n            InternetGatewayId: !Ref InternetGateway\n            VpcId: !Ref VPC\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132084,
+              "key": "991f0017-56d1-4500-95ec-d341985b2a5c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6017cf5a_screenshot-2021-02-01-at-3.11.56-pm/screenshot-2021-02-01-at-3.11.56-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/991f0017-56d1-4500-95ec-d341985b2a5c",
+              "caption": "Referencing in the Resources section",
+              "alt": "",
+              "width": 700,
+              "height": 1254,
+              "instructor_notes": null
+            },
+            {
+              "id": 858723,
+              "key": "eb1302be-6dcf-43ee-a04f-f55a540bc998",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS Documentation Resources\n* [EC2 resource type reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_EC2.html) - A list of all resources that are needed for an EC2 instance, such as VPC, internet gateway, or a VPCCidrBlock. We encourage you to follow the examples and more details about the following resources:\n * [AWS::EC2::VPC](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html) \n * [AWS::EC2::VPCCidrBlock](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpccidrblock.html) \n * [AWS::EC2::InternetGateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-internetgateway.html)\n * [AWS::EC2::VPCGatewayAttachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc-gateway-attachment.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 844583,
+          "key": "56ff1197-3418-4b06-96d5-2dfe9dbaf724",
+          "title": "Subnets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "56ff1197-3418-4b06-96d5-2dfe9dbaf724",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1132089,
+              "key": "1a96511e-573e-44ad-87aa-5c8f2e1218a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Create Subnets - Part I",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908182,
+              "key": "990296c7-a9f6-4e50-9e41-108001b1d34a",
+              "title": "ND9991 C02 L03 A04-1 NAT Gateway And Subnets Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "POSjbgeUoU8",
+                "china_cdn_id": "POSjbgeUoU8.mp4"
+              }
+            },
+            {
+              "id": 1132090,
+              "key": "15c91d61-ca75-4091-a005-07162521bf4b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Create Subnets - Part II",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908183,
+              "key": "9ce475b1-94b9-4958-adea-66784cef142f",
+              "title": "ND9991 C02 L03 A04-2 NAT Gateway And Subnets Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ycguCh6ReVo",
+                "china_cdn_id": "ycguCh6ReVo.mp4"
+              }
+            },
+            {
+              "id": 1132097,
+              "key": "2e56d116-0f2b-41f4-ad79-94442b67e19a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": ">**Note**: Please be careful about the indentation while copying and pasting the code from *network.yml* to your *ourinfra.yml* file. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858727,
+              "key": "ff743eea-be7c-4c05-b586-995b98cf3d2b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Subnets Syntax\n* To specify a subnet for your VPC you can use the following syntax: \n```\nType: AWS::EC2::Subnet\nProperties: \n    AssignIpv6AddressOnCreation: Boolean\n    AvailabilityZone: String\n    CidrBlock: String\n    Ipv6CidrBlock: String\n    MapPublicIpOnLaunch: Boolean\n    Tags: \n      - Tag\n    VpcId: String\n```\n<br/>\n* **Reference** - [AWS::EC2::Subnet resource documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html)\n\n\n### Adding Subnets to the VPC\n* Here is the actual setup of our 2 private subnets in different AZs:\n```\n    PrivateSubnet1: \n        Type: AWS::EC2::Subnet\n        Properties:\n            VpcId: !Ref VPC\n            AvailabilityZone: !Select [ 0, !GetAZs '' ]\n            CidrBlock: !Ref PrivateSubnet1CIDR\n            MapPublicIpOnLaunch: false\n            Tags: \n                - Key: Name \n                  Value: !Sub ${EnvironmentName} Private Subnet (AZ1)\n\n    PrivateSubnet2: \n        Type: AWS::EC2::Subnet\n        Properties:\n            VpcId: !Ref VPC\n            AvailabilityZone: !Select [ 1, !GetAZs '' ]\n            CidrBlock: !Ref PrivateSubnet2CIDR\n            MapPublicIpOnLaunch: false\n            Tags: \n                - Key: Name \n                  Value: !Sub ${EnvironmentName} Private Subnet (AZ2)\n```\n* Points to notice in the code above:\n  *  `!Ref VPC` is referencing to the VPC created earlier. <br> <br>\n \n *  `!Ref PrivateSubnet1CIDR` is referencing to the **PrivateSubnet1CIDR** parameter. For this parameter, we have already defined the default value as `10.0.2.0/24`. Similarly, the **PrivateSubnet2CIDR** parameter is being used in the above code.  <br> <br>\n \n * Notice that our private subnets **are not** sharing availability zones. We are keeping them separated as we displayed in our diagrams from the previous lesson.  To do so, the `!GetAZs‘’` function fetches the list of AZs in your region which are indexed 0, 1, etc. Then, the `!select [0, !GetAZs‘’]` returns only the first AZ.<br> <br>\n\n * For PrivateSubnet1, the`!Select [ 0, !GetAZs '' ]` is returning the **first AZ** from the list of all AZs in your region. Similarly, for PrivateSubnet2, the `!Select [ 1, !GetAZs '' ]` will return the second AZ. <br> <br>\n\n* Similar to the private subnets shown above, you will have to create two public subnets each in AZ0 and AZ1, except for the changed value in the field `MapPublicIpOnLaunch: true`. Marking this field as True will enable the **Auto-assign public IP address** field of the public subnet.<br> <br>\n* **Tip** - Name your subnets using tags, to keep track when you create many subnets.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1132099,
+          "key": "df37f4d6-9e3f-4220-8b0b-4c6bc64e3b1e",
+          "title": "NAT Gateways",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "df37f4d6-9e3f-4220-8b0b-4c6bc64e3b1e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1132100,
+              "key": "7efc1c3b-c9d5-4439-a17f-12770635dc59",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Create NAT Gateway - Part I",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132101,
+              "key": "5bd4b5d4-458b-4d26-a175-66e1a5d90916",
+              "title": "ND9991 C02 L03 A04-3 NAT Gateway And Subnets Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RrExFA9b8GM",
+                "china_cdn_id": "RrExFA9b8GM.mp4"
+              }
+            },
+            {
+              "id": 1132102,
+              "key": "a4d6c9c1-a759-4f44-a426-72a345baadde",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Create NAT Gateway - Part II",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132103,
+              "key": "e4f58505-1e94-43cb-b8d9-f35adf857162",
+              "title": "ND9991 C02 L03 A04-4 NAT Gateway And Subnets Part 4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KyYaGcT3200",
+                "china_cdn_id": "KyYaGcT3200.mp4"
+              }
+            },
+            {
+              "id": 1132104,
+              "key": "d194a5f4-3dcb-4fe1-8c92-fae1e819348b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Verify NAT Gateway in the Web Console",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132105,
+              "key": "9deec983-6dc9-4e3b-8598-f3e5cce31b8f",
+              "title": "ND9991 C02 L03 A04-5 NAT Gateway And Subnets Part 5",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "10GkOFKHBXg",
+                "china_cdn_id": "10GkOFKHBXg.mp4"
+              }
+            },
+            {
+              "id": 1132106,
+              "key": "926b0f98-ff88-4d25-8c94-972f38151b55",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Adding a NAT Gateway\n* Before you actually create a NAT gateway, make sure to understand the functionality and purpose of a NAT Gateway from [here](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat.html). \n>Generally, we place a NAT gateway in a public subnet to enable the servers in a private subnet to connect to the Internet. And sometimes, we want to prevent the Internet from connecting to the servers in the private subnet.\n\n\n* **Syntax** - You can use NAT Gateways in both your public and/or private subnets. The following code is the basic syntax for declaring a NAT Gateway:\n```\nType: AWS::EC2::NatGateway\nProperties: \n  AllocationId: String\n  SubnetId: String\n  Tags: \n    - Tag\n```\n<br/>\n* **Example** - The following declarations are from the sample code shown in the above video:\n```\nResources:\n    NatGateway1EIP:\n        Type: AWS::EC2::EIP\n        DependsOn: InternetGatewayAttachment\n        Properties: \n            Domain: vpc\n\n    NatGateway2EIP:\n        Type: AWS::EC2::EIP\n        DependsOn: InternetGatewayAttachment\n        Properties:\n            Domain: vpc\n\n    NatGateway1: \n        Type: AWS::EC2::NatGateway\n        Properties: \n            AllocationId: !GetAtt NatGateway1EIP.AllocationId\n            SubnetId: !Ref PublicSubnet1\n\n    NatGateway2: \n        Type: AWS::EC2::NatGateway\n        Properties:\n            AllocationId: !GetAtt NatGateway2EIP.AllocationId\n            SubnetId: !Ref PublicSubnet2\n```\n The code above will create two Elastic IPs and two NAT gateways. \n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132107,
+              "key": "c5787a5e-08ed-47ba-9ab6-2aa3d5e0320e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* The `EIP` in `AWS::EC2::EIP` stands for Elastic IP. This will give us a known/constant IP address to use instead of a disposable or ever-changing IP address. This is important when you have applications that depend on a particular IP address. `NatGateway1EIP` uses this type for that very reason:\n```\n NatGateway1EIP:\n        Type: AWS::EC2::EIP\n        DependsOn: InternetGatewayAttachment\n        Properties: \n            Domain: vpc\n```\n<br>\n* **Tip** - Use the `DependsOn` attribute to protect your dependencies from being created without the proper requirements. In the scenario above the `EIP` allocation will only happen after the `InternetGatewayAttachment` has completed. Read more about the [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html) here. <br><br>\n\n* **Reference**: [AWS::EC2::NatGateway resource documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 844584,
+          "key": "1de804a7-0576-4a86-bf7c-223e5711a4bd",
+          "title": "Routing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1de804a7-0576-4a86-bf7c-223e5711a4bd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 848864,
+              "key": "fc358794-f063-4bce-840c-bc9fbcd2a26b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Before we proceed ahead, let's understand two terms:\n* __Route table__: Routing is the action of applying (routing) rules to your network, in this case, to your VPC. A [route table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) contains a set of rules. It blocks traffic from resources that do not follow the routing rule. It is represented as an **AWS::EC2::RouteTable** resource in CloudFormation terminology. <br>\n\n\n* __Rules:__ Rules define (in a particular order of precedence) the network protocol, allowed IP addresses, and ports to allow the inbound and outbound traffic separately. A single rule is called an **AWS::EC2::Route** resource in CloudFormation terminology. <br/>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132111,
+              "key": "3ce49bd3-d78e-47bb-9719-131323d73ea3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This section will create the following route tables (AWS::EC2::RouteTable) in our VPC and attach each of them to individual subnets, as mentioned below. \n1. **PublicRouteTable** - This route table will have a default rule (AWS::EC2::Route) to allow all outbound traffic routed to the internet gateway. Next, we will attach this route table (AWS::EC2::SubnetRouteTableAssociation) to both our public subnets.\n\n\n2. **PrivateRouteTable1** - This route table will have a default rule (AWS::EC2::Route) to route all outbound traffic to the NAT gateway (**NatGateway1**). We will associate this route table to the **PrivateSubnet1**.\n\n\n3. **PrivateRouteTable2** - This route table is similar in nature to **PrivateRouteTable1**, except that it is routing the traffic to the **NatGateway2**, and will be attached to the **PrivateSubnet2**. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132112,
+              "key": "61886eaa-43a1-4ac4-b867-69870f1510e4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": ">The flow of creating resources here will be: Create route tables &#8594; Add routes &#8594; Associate route table to subnets. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132108,
+              "key": "106e5da5-374c-45f7-820b-f2a16bd3ccc0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Route Tables (AWS::EC2::RouteTable) and Rules (AWS::EC2::Route) ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908205,
+              "key": "e2e4cac7-082b-439d-8481-ae8e062ae782",
+              "title": "ND9991 C02 L03 A07-1 Routing Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EyyDDGgrcdo",
+                "china_cdn_id": "EyyDDGgrcdo.mp4"
+              }
+            },
+            {
+              "id": 858963,
+              "key": "81ab83cf-2059-4fec-a6cd-01ee463e8b22",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Route Tables\n* First, create route tables in your VPC, and then add routes (rules) to each route table.  Later, associate the route table with individual subnets. The following is the syntax used to define a route table:\n```\nType: AWS::EC2::RouteTable\nProperties: \n  Tags: \n    - Tag\n  VpcId: String\n```\n\n\n* **Example** - The only required property for setting up a `RouteTable` is the `VpcId`. Here is an example table from the video lesson:\n```\nResources:\n    PublicRouteTable:\n        Type: AWS::EC2::RouteTable\n        Properties: \n            VpcId: !Ref VPC\n            Tags: \n                - Key: Name \n                  Value: !Sub ${EnvironmentName} Public Routes\n```\n\n\n* Create the **PrivateRouteTable1** and **PrivateRouteTable2** similar to the code shown above. There will not be any change except the name of the resource. \n\n\n* **Reference**: [AWS::EC2::RouteTable](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route-table.html)\n<br/>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858960,
+              "key": "f1af490d-ee48-47e8-82df-1cecf9a8f2fb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Routes\n* The following is the syntax used to set up a route:\n```\nType: AWS::EC2::Route\nProperties: \n  DestinationCidrBlock: String\n  DestinationIpv6CidrBlock: String\n  EgressOnlyInternetGatewayId: String\n  GatewayId: String\n  InstanceId: String\n  NatGatewayId: String\n  NetworkInterfaceId: String\n  RouteTableId: String\n  VpcPeeringConnectionId: String\n```\nIn the syntax above, the `DestinationCidrBlock` property is used for destination matching and a `wildcard address` (`0.0.0/0`) to reference all traffic. \n\n\n* The default **public** route: In the following example, when we use the wildcard address `0.0.0.0/0`, we are saying for any address that is destined for any IP address in the world, send it to the referenced `GatewayId`\n```\nDefaultPublicRoute: \n        Type: AWS::EC2::Route\n        DependsOn: InternetGatewayAttachment\n        Properties: \n            RouteTableId: !Ref PublicRouteTable\n            DestinationCidrBlock: 0.0.0.0/0\n            GatewayId: !Ref InternetGateway\n```\n* The default **private** route can be defined as:\n```\n    DefaultPrivateRoute1:\n        Type: AWS::EC2::Route\n        Properties:\n            RouteTableId: !Ref PrivateRouteTable1\n            DestinationCidrBlock: 0.0.0.0/0\n            NatGatewayId: !Ref NatGateway1\n```\n* The route above is attached to the `PrivateRouteTable1` and is routed via `NatGateway1`. Create the `DefaultPrivateRoute2` for `PrivateRouteTable2` similar to the code shown above. \n\n\n* **Reference**: [AWS::EC2::Route](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html)\n<br/>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132109,
+              "key": "cd509941-4928-472b-8a7d-0652ae8be420",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Associate Route Tables to Subnets",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908207,
+              "key": "75a37212-cb50-461b-b5e4-caba80419241",
+              "title": "ND9991 C02 L03 A07-2 Routing Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "t9viU9vNJTc",
+                "china_cdn_id": "t9viU9vNJTc.mp4"
+              }
+            },
+            {
+              "id": 858962,
+              "key": "368a983b-358f-402c-9513-720713e6115d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### SubnetRouteTableAssociation\n* In order to associate subnets with our route table, we will need to use a `SubnetRouteTableAssociation` resource using the following syntax:\n```\nType: AWS::EC2::SubnetRouteTableAssociation\nProperties: \n  RouteTableId: String\n  SubnetId: String\n```\nThis only takes two properties, which are the id's used for our `RouteTable` and our `Subnet`. You can see references used in the example from our video lesson above.\n\n\n* **Example** - Associate PublicSubnet1 with the PublicRouteTable\n```\nPublicSubnet1RouteTableAssociation:\n        Type: AWS::EC2::SubnetRouteTableAssociation\n        Properties:\n            RouteTableId: !Ref PublicRouteTable\n            SubnetId: !Ref PublicSubnet1\n```\n* Similarly, associate the rest of the three subnets to each of its intended route tables. \n\n\n* **Reference**: [AWS::EC2::SubnetRouteTableAssociation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet-route-table-assoc.html).\n>**Important Note:**  `Routes` should be defined starting with the most specific rule and transitioning to the least specific rule.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132113,
+              "key": "8383f243-87f6-40b2-9d5c-d622b92a0283",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solution\nYou can refer to the `network.yml` file in the [Github repository](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/tree/master/supporting_material). (If you haven't, feel free to download the entire repo and open the file in a code editor to see the proper indentation). ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132110,
+              "key": "3f208bd5-0028-4d7f-8de6-cadbc1fa6f51",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo - Verify Route Table Creation in the Web Console",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908208,
+              "key": "d4eeebcd-afa9-4983-b651-d5d3e5ee8522",
+              "title": "ND9991 C02 L03 A07-3 Routing Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XRub_LCjKa8",
+                "china_cdn_id": "XRub_LCjKa8.mp4"
+              }
+            },
+            {
+              "id": 847615,
+              "key": "cf7335c3-9f49-4d4a-b8d4-2de72332f389",
+              "title": "Routing",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cf7335c3-9f49-4d4a-b8d4-2de72332f389",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If your servers have no internet access it's probably because...",
+                "answers": [
+                  {
+                    "id": "a1557529930992",
+                    "text": "You created the internet gateway but forgot to attach it to your VPC",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1557529962009",
+                    "text": "You placed your NAT Gateways inside private subnets with no routes to the outside world",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1557529962794",
+                    "text": "You have a missing route in your routing table",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1557530034473",
+                    "text": "You created a routing table but forgot to associate your subnet(s) with it.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 858964,
+              "key": "a1ea46ac-42a6-4546-952a-5131eb84ad6e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS Documentation\n* [Route Tables Overview](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)\n* [AWS::EC2::RouteTable resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route-table.html)\n* [AWS::EC2::Route resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html)\n* [AWS::EC2::SubnetRouteTableAssociation resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet-route-table-assoc.html)\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 844585,
+          "key": "53f7dd83-3640-47b8-b98d-7cd93f2dc2c7",
+          "title": "Outputs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "53f7dd83-3640-47b8-b98d-7cd93f2dc2c7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 908180,
+              "key": "01213c07-cd34-449d-9d5e-ba1e07bc79ea",
+              "title": "ND9991 C02 L03 A08-1 Outputs Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KeFVml7-9Po",
+                "china_cdn_id": "KeFVml7-9Po.mp4"
+              }
+            },
+            {
+              "id": 908181,
+              "key": "5cf5b726-7813-492e-8e35-7214efb21033",
+              "title": "ND9991 C02 L03 A08-2 Outputs Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KMwHNSBiXic",
+                "china_cdn_id": "KMwHNSBiXic.mp4"
+              }
+            },
+            {
+              "id": 858966,
+              "key": "b7a1bff0-9834-4041-a26f-06f78b3cab5c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Outputs\n---\n`Outputs` are optional but are very useful if there are output values you need to:\n* import into another stack\n* return in a response\n* view in AWS console\n\nTo declare an `Output` use the following syntax:\n\n```\nOutputs:\n  Logical ID:\n    Description: Information about the value\n    Value: Value to return\n    Export:\n      Name: Value to export\n```\n\nThe `Value` is required but the `Name` is optional. In the following example we are returning the id of our `VPC` as well as our Environment's Name:\n\n```\nVPC: \n        Description: A reference to the created VPC\n        Value: !Ref VPC\n        Export:\n          Name: !Sub ${EnvironmentName}-VPCID\n```\n<br/>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858968,
+              "key": "2a272544-3425-4bdd-b152-cc448f420f18",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Join Function\n---\nYou can use the `join` function to combine a group of  `values`. The syntax requires you provide a `delimiter` and a list of values you want appended.\n\n`Join` function syntax:\n\n```\nFn::Join: [ delimiter, [ comma-delimited list of values ] ]\n```\n\nIn the following example we are using `!Join` to combine our subnets before returning their values:\n\n```\nPublicSubnets:\n        Description: A list of the public subnets\n        Value: !Join [ \",\", [ !Ref PublicSubnet1, !Ref PublicSubnet2 ]]\n        Export:\n          Name: !Sub ${EnvironmentName}-PUB-NETS\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858967,
+              "key": "58c218ff-6064-42c4-84d2-04efc1d59699",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [Outputs Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html)\n* [Join Function](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html)\n* [Substitutes](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 844586,
+          "key": "30528a5c-6b53-4135-9fc3-5d18d9788441",
+          "title": "Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30528a5c-6b53-4135-9fc3-5d18d9788441",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847322,
+              "key": "bcb92917-3367-4a57-917d-5684891e9bdd",
+              "title": "10 -L3 Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aq9xZ-fcRiY",
+                "china_cdn_id": "aq9xZ-fcRiY.mp4"
+              }
+            },
+            {
+              "id": 971590,
+              "key": "358b558b-9aa7-4a73-b396-1515b9b27a2b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\nAs this lesson comes to an end, now you should be able to ... \n* Describe the syntax of the CloudFormation code that builds the infrastructure\n* Build the following resources - \n * Virtual Private Cloud and subnets\n * Internet gateway and NAT gateway\n * Route table\n* Export the stack output",
+              "instructor_notes": ""
+            },
+            {
+              "id": 847511,
+              "key": "bec1b1dd-d524-49cf-8652-5daff6970e09",
+              "title": "Create an \"extension of the on-premises network\"",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bec1b1dd-d524-49cf-8652-5daff6970e09",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Modify the provided CloudFormation script",
+                "Deploy it using the CLI Tool"
+              ],
+              "positive_feedback": "It is not uncommon to find private-only clouds with no outside connectivity. Having this knowledge will show that you understand both public facing and corporate-only cloud environments.",
+              "video_feedback": null,
+              "description": "Using the provided CloudFormation script to deploy a private corporate cloud.\n\nYou’ll need to remove any components not needed (such as public subnets and NAT Gateways).  There is no need to connect the VPN to anything, but go ahead and include it in your code."
+            },
+            {
+              "id": 980648,
+              "key": "50d72126-0905-454a-a089-72b658298c08",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### Exercise Solution\nWe strongly recommend you to solve the exercise on your own. If stuck, you may see the lesson-wise solution available in this [GitHub repository](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1-Exercises_Solution)\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1137372,
+          "key": "83348f58-8a5b-44ee-8384-181d436bbf20",
+          "title": "Challenge 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "83348f58-8a5b-44ee-8384-181d436bbf20",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "challenge2-solution.yml",
+                "uri": "https://video.udacity-data.com/topher/2021/February/602bb590_challenge2-solution/challenge2-solution.yml"
+              },
+              {
+                "name": "challenge2-solution-parameters.json",
+                "uri": "https://video.udacity-data.com/topher/2021/February/602bb5b6_challenge2-solution-parameters/challenge2-solution-parameters.json"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 1137375,
+              "key": "1bae6b20-2c16-4302-aa07-32be676e4141",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Challenge 2 \n\n## Project Overview\nYou have been tasked with creating the required Infrastructure-as-code scripts for a new cloud environment in AWS. The *Lead Solutions Architect* for the project sends you the following diagram.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137373,
+              "key": "716ed49d-03c7-4cbd-89db-c901d523cc34",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602bb312_screenshot-2021-02-16-at-5.24.30-pm/screenshot-2021-02-16-at-5.24.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/716ed49d-03c7-4cbd-89db-c901d523cc34",
+              "caption": "",
+              "alt": "",
+              "width": 800,
+              "height": 1630,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137376,
+              "key": "cfeca3ae-ea3a-4680-a96b-466abca7e426",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## ToDo\nWrite a CloudFormation script that:\n\n1. Creates a VPC\n * It will accept the IP Range -also known as CIDR block- from an input parameter\n\n\n2. Creates and attaches an Internet Gateway to the VPC\n\n\n3. Creates Two Subnets within the VPC with Name Tags to call them “Public” and “Private”\n * These will also need input parameters for their ranges, just like the VPC.\n\n\n4. The Subnet called “Public” needs to have a NAT Gateway deployed in it \n * This will require you to allocate an Elastic IP that you can then use to assign it to the NAT Gateway.\n\n\n5. The Public Subnet needs to have the MapPublicIpOnLaunch property set to true. Use this [reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html#cfn-ec2-subnet-mappubliciponlaunch) for help.\n\n\n6. The Private Subnet needs to have the MapPublicIpOnLaunch property set to false.\n\n\n7. Both subnets need to be /24 in size.\n * If you need assistance with IP math, you can use a subnet calculator such as [this one](https://network00.com/NetworkTools/IPv4AddressPlanner/). \n\n\n8. You will need 2 Routing Tables, one named Public and the other one Private\n\n\n9. Assign the Public and Private Subnets to their corresponding Routing table\n\n\n10. Create a Route in the Public Route Table to send default traffic ( 0.0.0.0/0 ) to the Internet Gateway  you created\n\n\n11. Create a Route in the Private Route Table to send default traffic ( 0.0.0.0/0 ) to the NAT Gateway\n\n\n12. Finally, once you execute this CloudFormation script, you should be able to delete it and create it again, over and over in a predictable and repeatable manner, this is the true verification of working Infrastructure-as-Code\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137377,
+              "key": "9d6a5d0a-6b12-4604-a7f1-39edc8c6042a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Helpful hints:\n\n1. The numbers in the diagram below show the recommended sequence for resource creation. This is not required by CloudFormation but it helps to keep you on track and allows you to stop and verify as you go.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137374,
+              "key": "b167b325-1d41-4dd2-be6a-5c0fe64a46a3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602bb337_screenshot-2021-02-16-at-5.25.20-pm/screenshot-2021-02-16-at-5.25.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b167b325-1d41-4dd2-be6a-5c0fe64a46a3",
+              "caption": "Create the resources in the order highlighted above ",
+              "alt": "",
+              "width": 700,
+              "height": 1696,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137383,
+              "key": "30f212cf-0d20-4ce2-abf9-7c07ed6d7e57",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602bb814_screenshot-2021-02-16-at-5.22.04-pm/screenshot-2021-02-16-at-5.22.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/30f212cf-0d20-4ce2-abf9-7c07ed6d7e57",
+              "caption": "To help you get running, the snapshot above <br>shows the **Resources** that you would want to create. ",
+              "alt": "",
+              "width": 500,
+              "height": 1558,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137378,
+              "key": "31a37657-1981-452c-9efd-e0e43e3d8dff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Because NAT Gateways and Internet Gateway attachments aren’t automatic and take some time to provision, you may need the DependsOn attribute to wait for these events in your script.\n\n This NAT Gateway example shows the use of “DependsOn” to wait for an Attachment to complete: \n\n https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html \n\n\n3. Finally: *Divide and Conquer!* For example: just write the script for the VPC and Internet Gateway and make sure it works, then move on to adding more resources, increasing complexity as you go. <br><br>\n<center><font color=\"blue\">**Tip: Don’t attempt to write it all at once!**</font></center>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137380,
+              "key": "78862797-34a6-499d-97e1-656f9062b995",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Expected Output\nThe stack details should show you the list of resources created successfully:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137381,
+              "key": "52221b00-5ef0-4fb5-a5ec-bb77b6aca518",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602bb697_screenshot-2021-02-16-at-5.40.38-pm/screenshot-2021-02-16-at-5.40.38-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/52221b00-5ef0-4fb5-a5ec-bb77b6aca518",
+              "caption": "",
+              "alt": "",
+              "width": 600,
+              "height": 1188,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137382,
+              "key": "0aff14c0-3efd-4339-96b5-6d477021c8af",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602bb706_screenshot-2021-02-16-at-5.40.51-pm/screenshot-2021-02-16-at-5.40.51-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0aff14c0-3efd-4339-96b5-6d477021c8af",
+              "caption": "Newly created resources under the stack * challenge2* ",
+              "alt": "",
+              "width": 600,
+              "height": 638,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137379,
+              "key": "aedca319-ab00-4e3b-b6be-bdec0b763f34",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solution\n<div id=\"spoiler_1\" style=\"display:none\">\n#### <font color=\"green\">Download the solution files, and run the command below:</font>\n\n```\naws cloudformation create-stack  --stack-name challenge2 --region us-east-1 --template-body file://challenge2-solution.yml --parameters file://challenge2-solution-parameters.json\n```\nDon't forget to change the Region | Availability Zone, such as `us-east-1a` as applicable to you.\n</div>\n<button type=\"button\" id=\"myButton1\" onclick=\"if(document.getElementById('spoiler_1') .style.display=='none') {document.getElementById('spoiler_1') .style.display=''}else{document.getElementById('spoiler_1') .style.display='none'}if (document.getElementById('myButton1').innerHTML=='Show Solution') {document.getElementById('myButton1').innerHTML='Hide Solution';}else{document.getElementById('myButton1').innerHTML = 'Show Solution';}\">Show Solution</button>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137402,
+              "key": "84541fb2-8b3a-4b5f-a196-31c70bcee8b2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": ">Delete the stack, and recreate the same for the next challenge coming your way!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

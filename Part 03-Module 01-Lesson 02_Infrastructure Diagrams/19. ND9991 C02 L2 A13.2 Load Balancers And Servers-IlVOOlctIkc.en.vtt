@@ -1,0 +1,151 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.945
+So instead of exposing these guys to the Internet,
+
+00:00:03.945 --> 00:00:06.480
+that's okay we're going to leave them public but we're not
+
+00:00:06.480 --> 00:00:09.180
+going to share their address with anybody.
+
+00:00:09.180 --> 00:00:14.370
+What we're going to do is I'm going to set up an Amazon service in front of them,
+
+00:00:14.370 --> 00:00:16.620
+that's going to provide access to both of
+
+00:00:16.620 --> 00:00:20.850
+them nearly at the same time or in an equal way,
+
+00:00:20.850 --> 00:00:25.600
+and we're going to call that a load balancer.
+
+00:00:26.480 --> 00:00:30.630
+So, we're going to look for the icon here for load balancer.
+
+00:00:30.630 --> 00:00:32.235
+If I can find it.
+
+00:00:32.235 --> 00:00:35.560
+Now beyond your Compute down here.
+
+00:00:36.740 --> 00:00:41.160
+The job of the load balancer is exactly what it sounds like you
+
+00:00:41.160 --> 00:00:45.285
+will provide workers in this case it's going to be two web servers,
+
+00:00:45.285 --> 00:00:49.835
+and these two web servers are going to be behind this load balancer.
+
+00:00:49.835 --> 00:00:52.780
+The load balancer you're going to give it a name and that's going to be
+
+00:00:52.780 --> 00:00:56.215
+your business.com or whatever address you're using,
+
+00:00:56.215 --> 00:00:59.975
+and that's going to be your one of entry into your service.
+
+00:00:59.975 --> 00:01:02.360
+What the application load balancer is going to do,
+
+00:01:02.360 --> 00:01:05.915
+is going to send requests to your servers,
+
+00:01:05.915 --> 00:01:09.140
+and it's going to equally distribute the load of incoming requests.
+
+00:01:09.140 --> 00:01:11.680
+So if you get a 100 users at the same time,
+
+00:01:11.680 --> 00:01:13.485
+a 1,000 users at the same time,
+
+00:01:13.485 --> 00:01:17.970
+is going to distribute the load equally to both servers.
+
+00:01:17.970 --> 00:01:20.000
+Now, keep in mind,
+
+00:01:20.000 --> 00:01:22.055
+I don't have an auto scaling group here.
+
+00:01:22.055 --> 00:01:24.185
+This is something that you need to understand.
+
+00:01:24.185 --> 00:01:30.925
+If I think that these two web servers are not enough to handle the traffic that I have,
+
+00:01:30.925 --> 00:01:33.199
+on my normal day-to-day operations,
+
+00:01:33.199 --> 00:01:38.750
+I should be using an auto scaling group to make them be able to expand and contract,
+
+00:01:38.750 --> 00:01:43.240
+to spin up more servers as needed behind the load balancer,
+
+00:01:43.240 --> 00:01:48.530
+and the load balancer can be associated not only with servers specifically,
+
+00:01:48.530 --> 00:01:50.705
+but also with an auto scaling group.
+
+00:01:50.705 --> 00:01:53.240
+Which means if you have 10 new servers that just
+
+00:01:53.240 --> 00:01:55.580
+were spin up automatically about an auto scaling group,
+
+00:01:55.580 --> 00:01:57.350
+the load balancer will know this,
+
+00:01:57.350 --> 00:02:00.020
+and it will send traffic to those as needed.
+
+00:02:00.020 --> 00:02:04.295
+Also, another benefit that you get from the load balancer is, health checks.
+
+00:02:04.295 --> 00:02:07.215
+The load balancer will check your servers,
+
+00:02:07.215 --> 00:02:09.195
+make sure that they're operational,
+
+00:02:09.195 --> 00:02:12.125
+if they're not they will be taken out of service completely
+
+00:02:12.125 --> 00:02:16.510
+and traffic will be routed to the healthy instances.
+
+00:02:16.510 --> 00:02:20.070
+Now, if you have that question which you probably do,
+
+00:02:20.070 --> 00:02:24.045
+any servers you deploy in the public sub-nets,
+
+00:02:24.045 --> 00:02:28.685
+they do have visibility into the private sub-nets because we're all in the same Cloud,
+
+00:02:28.685 --> 00:02:31.190
+in the same VPC container.
+
+00:02:31.190 --> 00:02:33.200
+So in this container,
+
+00:02:33.200 --> 00:02:36.515
+it's inbound and outbound traffic is
+
+00:02:36.515 --> 00:02:41.020
+unrestricted for everything within there because obviously it is trusted traffic,
+
+00:02:41.020 --> 00:02:42.260
+it is as your own traffic.
+
+00:02:42.260 --> 00:02:46.850
+So anything in there will be able to talk to one another without any issues.
+

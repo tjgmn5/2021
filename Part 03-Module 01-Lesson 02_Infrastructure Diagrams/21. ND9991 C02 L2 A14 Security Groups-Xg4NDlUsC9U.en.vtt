@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.690
+The very last component that we have to mention here is very,
+
+00:00:03.690 --> 00:00:07.740
+very important, it's called the "security group," and that's a way to manage traffic.
+
+00:00:07.740 --> 00:00:13.080
+So, let's try to see what it looks like to have a security group in here.
+
+00:00:13.080 --> 00:00:20.850
+The security group, it goes at the level of the server or services.
+
+00:00:20.850 --> 00:00:23.355
+So you can put it the load balancer level,
+
+00:00:23.355 --> 00:00:26.290
+you could put it at specific instances.
+
+00:00:26.360 --> 00:00:31.800
+Actually, I am missing one component which we're going to add here in
+
+00:00:31.800 --> 00:00:37.360
+a moment after we mention security groups. Let's see.
+
+00:00:38.450 --> 00:00:45.125
+So imagine this security group that is surrounding this server that we have.
+
+00:00:45.125 --> 00:00:47.705
+The job of the security group is to provide
+
+00:00:47.705 --> 00:00:51.680
+network traffic control at the level of the server,
+
+00:00:51.680 --> 00:00:53.265
+not at the sub-net level,
+
+00:00:53.265 --> 00:00:54.870
+not at the VPC level,
+
+00:00:54.870 --> 00:00:56.625
+not at the level of the account,
+
+00:00:56.625 --> 00:00:58.980
+but the specific server level.
+
+00:00:58.980 --> 00:01:01.065
+So what that means is,
+
+00:01:01.065 --> 00:01:07.340
+if I'm providing a web server and this web server only needs to
+
+00:01:07.340 --> 00:01:09.260
+be opened on port 80 because that's
+
+00:01:09.260 --> 00:01:13.910
+the HTTP port or traffic is going to be coming in inbound,
+
+00:01:13.910 --> 00:01:16.645
+then you open inbound, port 80,
+
+00:01:16.645 --> 00:01:18.500
+using a security group and you use
+
+00:01:18.500 --> 00:01:21.830
+that same security group to deny traffic everywhere else.
+
+00:01:21.830 --> 00:01:23.990
+And by the way, that's the default behavior.
+
+00:01:23.990 --> 00:01:26.330
+If you don't specify any open ports,
+
+00:01:26.330 --> 00:01:31.625
+the default behavior will lock down any other ports on that particular security group.
+
+00:01:31.625 --> 00:01:33.740
+Once you create that security group,
+
+00:01:33.740 --> 00:01:36.540
+you get to assign it to any resource that you want.
+
+00:01:36.540 --> 00:01:38.055
+You can assign it to a load balancer.
+
+00:01:38.055 --> 00:01:41.720
+You can assign it to a web server or any other machine that you have.
+
+00:01:41.720 --> 00:01:45.270
+You can use that same security group over and over.
+
+00:01:45.430 --> 00:01:49.010
+Just remember that it applies only to
+
+00:01:49.010 --> 00:01:54.810
+a specific resources and not the overall infrastructure that you just created.
+

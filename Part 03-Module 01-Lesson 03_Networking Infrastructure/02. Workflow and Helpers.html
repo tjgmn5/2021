@@ -1,0 +1,289 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Workflow and Helpers</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Networking Infrastructure</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Workflow and Helpers.html">02. Workflow and Helpers</a>
+    </li>
+    <li class="">
+      <a href="03. VPC and Internet Gateway.html">03. VPC and Internet Gateway</a>
+    </li>
+    <li class="">
+      <a href="04. Subnets.html">04. Subnets</a>
+    </li>
+    <li class="">
+      <a href="05. NAT Gateways.html">05. NAT Gateways</a>
+    </li>
+    <li class="">
+      <a href="06. Routing.html">06. Routing</a>
+    </li>
+    <li class="">
+      <a href="07. Outputs.html">07. Outputs</a>
+    </li>
+    <li class="">
+      <a href="08. Conclusion.html">08. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="09. Challenge 2.html">09. Challenge 2</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">02. Workflow and Helpers</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>02 - L3 -No Title-</p></h3>
+  <video controls>
+  <source src="02. 02 - L3 -No Title--sDbpsJVXd8M.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="02. 02 - L3 -No Title--sDbpsJVXd8M.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="reference-diagram">Reference diagram</h3>
+<p>The file <a href="https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/tree/master/supporting_material" rel="noopener noreferrer" target="_blank">AWSWebApp.jpeg</a> is complete a reference diagram that we exported from LucidChart in Jpeg format. Luckily, our VS code editor supports the jpeg format, and we can quickly reference this as a visual checklist to make sure we don’t forget any component when writing our CloudFormation script.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/awswebapp-2.jpeg" alt="AWSWebApp.jpeg diagram. We will create only the network-related resources in the current lesson. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>AWSWebApp.jpeg diagram. We will create only the network-related resources in the current lesson. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-03-at-4.03.19-pm.png" alt="Filtered out networking infrastructures, such as VPC, subnets, Internet gateway, NAT gateway, and route tables. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Filtered out networking infrastructures, such as VPC, subnets, Internet gateway, NAT gateway, and route tables. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="learning-about-the-yaml-file">Learning about the YAML file</h3>
+<p>The video above shows you the <code>testcfn.yml</code> file, which you'd have created in the previous lesson. In the upcoming video demos, you will have to create a new YAML file. Let's learn about the sections present the <code>testcfn.yml</code> file:<br></p>
+<ol>
+<li><strong>Format version</strong>: The <code>AWSTemplateFormatVersion</code> section is optional. The current valid value is 2010-09-09. You can add it to your file as:</li>
+</ol>
+<pre><code>AWSTemplateFormatVersion: 2010-09-09</code></pre>
+<ol start="2">
+<li><strong>Description</strong>:  The<code>Description</code> field is also optional. Here we start by adding a short description of the project we are working on.</li>
+</ol>
+<pre><code>AWSTemplateFormatVersion: 2010-09-09
+Description: Carlos Rivas / Udacity - This template deploys a VPC</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li><strong>Resouces</strong>: Although a description is optional, the <code>Resources</code> section is required. Remember to include <strong>at least one resource</strong> (e.g., a VPC, an EC2 instance, a database) in the CloudFormation template, otherwise, it will give an error when you try to run the script.</li>
+</ol>
+<pre><code>AWSTemplateFormatVersion: 2010-09-09
+Description: Carlos Rivas / Udacity - This template deploys a VPC
+Resources:
+  UdacityVPC:
+    Type: 'AWS::EC2::VPC'
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: 'true'</code></pre>
+<p><strong>Reference</strong>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html" rel="noopener noreferrer" target="_blank">Template anatomy</a><br />
+<br/></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="aws-command-in-a-shell-script">AWS command in a Shell script</h3>
+<p>As demonstrated in the video above, you can save your <code>aws cloudformation</code> command in a shell (.sh) script, so that you can run it multiple times easily. The instructor has created the following two shell scripts for the current course:</p>
+<ol>
+<li><strong>create.sh</strong>: This file contains the <code>create-stack</code> command, which expects three command-line arguments.</li>
+</ol>
+<pre><code>aws cloudformation create-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --region=us-east-1</code></pre>
+<ol start="2">
+<li><strong>update.sh</strong>: This file contains the <code>update-stack</code> command, and this too expects three command-line arguments.</li>
+</ol>
+<pre><code>aws cloudformation update-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --region=us-east-1</code></pre>
+<blockquote>
+  <p>Note: As stated earlier, you can choose either region, <strong>us-west-2</strong> or <strong>us-east-1</strong>. </p>
+</blockquote>
+<p>Moving forward, we will learn and add an additional option, <code>--capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM"</code>, in these commands as:</p>
+<pre><code>aws cloudformation create-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" --region=us-east-1</code></pre>
+<h3 id="practice-fixing-errors">Practice Fixing Errors</h3>
+<ul>
+<li><p>Practice fixing errors, as this will help you prepare for real scenarios on the job.  </p></li>
+<li><p>For instance, try altering correct, working YAML scripts to see if they generate an error.  </p></li>
+<li><p>Practice reading error messages to understand what caused the error, and how to fix them.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="03. VPC and Internet Gateway.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('02. Workflow and Helpers')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

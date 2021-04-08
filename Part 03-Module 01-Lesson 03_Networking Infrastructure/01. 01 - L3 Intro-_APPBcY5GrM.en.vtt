@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.725
+Hi. In the previous lesson,
+
+00:00:01.725 --> 00:00:03.870
+we created other cider for structure diagram.
+
+00:00:03.870 --> 00:00:07.080
+Now, we're going to go over the exact same components.
+
+00:00:07.080 --> 00:00:09.945
+However, this attempt is not going to be artistic.
+
+00:00:09.945 --> 00:00:11.850
+Instead, we're going to use the diagram,
+
+00:00:11.850 --> 00:00:13.289
+I'll say, visual reference,
+
+00:00:13.289 --> 00:00:16.965
+to write the CloudFormation code that builds a infrastructure.
+
+00:00:16.965 --> 00:00:20.145
+But before we do, let's go ahead and create a workflow,
+
+00:00:20.145 --> 00:00:21.870
+and go over some basics.
+
+00:00:21.870 --> 00:00:24.055
+Here we are in Visual Studio Code,
+
+00:00:24.055 --> 00:00:28.710
+and we're going to be able to see our diagram because conveniently,
+
+00:00:28.710 --> 00:00:31.814
+Visual Studio Code supports the display of graphics,
+
+00:00:31.814 --> 00:00:33.495
+even though is a text editor,
+
+00:00:33.495 --> 00:00:36.700
+it's very convenient for us in this case.
+
+00:00:37.640 --> 00:00:40.125
+You'll see right now,
+
+00:00:40.125 --> 00:00:44.510
+the web architecture that we tried to do yesterday.
+
+00:00:44.510 --> 00:00:50.310
+Now, of course, this is a lot cleaner and better organized than the attempt that we did.
+

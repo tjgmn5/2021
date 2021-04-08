@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.380
+However, we need to discuss CloudFormation,
+
+00:00:04.380 --> 00:00:06.690
+what it is before we even attempt to run something,
+
+00:00:06.690 --> 00:00:11.470
+because we don't want to be running something that we don't understand.
+
+00:00:11.750 --> 00:00:18.060
+This is the part where we start talking about infrastructure as code by itself.
+
+00:00:18.060 --> 00:00:20.550
+When it comes to CloudFormation,
+
+00:00:20.550 --> 00:00:25.440
+CloudFormation is a declarative language, what that means is,
+
+00:00:25.440 --> 00:00:28.020
+you declare the resources that you want and you
+
+00:00:28.020 --> 00:00:32.715
+allow the logic behind it to take care of everything.
+
+00:00:32.715 --> 00:00:37.140
+I'll give you an example. If you create a server,
+
+00:00:37.140 --> 00:00:41.940
+it's not your responsibility to tell Amazon,
+
+00:00:41.940 --> 00:00:44.595
+does this server already exists?
+
+00:00:44.595 --> 00:00:46.020
+Is this an update?
+
+00:00:46.020 --> 00:00:47.910
+Are we creating it from scratch?
+
+00:00:47.910 --> 00:00:49.910
+Those things, that will be
+
+00:00:49.910 --> 00:00:53.840
+a programmer's type of logic and we don't need you to become a software developer.
+
+00:00:53.840 --> 00:00:55.520
+If you are an operational person,
+
+00:00:55.520 --> 00:00:57.460
+you don't need to understand any of that logic,
+
+00:00:57.460 --> 00:01:00.685
+you can just use this and let Amazon worry about that.
+
+00:01:00.685 --> 00:01:04.295
+The same goes for interdependencies.
+
+00:01:04.295 --> 00:01:08.600
+So let's say you have a network that you're creating,
+
+00:01:08.600 --> 00:01:13.210
+an infrastructure and you're also creating a server,
+
+00:01:13.210 --> 00:01:15.750
+the first thing that comes to mind,
+
+00:01:15.750 --> 00:01:18.215
+how is it Amazon going to know,
+
+00:01:18.215 --> 00:01:23.360
+should I create the network first and then deploy a server second on top of that network,
+
+00:01:23.360 --> 00:01:25.010
+or should it be the other way around?
+
+00:01:25.010 --> 00:01:27.270
+Well, again, that's none of your concern,
+
+00:01:27.270 --> 00:01:29.580
+they have their own server [inaudible] that does all
+
+00:01:29.580 --> 00:01:32.690
+this for you so you don't really have to worry about any of that,
+
+00:01:32.690 --> 00:01:34.820
+you just declare your resources.
+
+00:01:34.820 --> 00:01:37.070
+There are very rare exceptions when you actually have
+
+00:01:37.070 --> 00:01:42.575
+to specify dependencies, for example,
+
+00:01:42.575 --> 00:01:45.170
+let's say that you are creating a load balancer or
+
+00:01:45.170 --> 00:01:50.240
+a web server and this load balancer needs to wait for the web server to be ready,
+
+00:01:50.240 --> 00:01:52.640
+then you can specify a situation where you would say,
+
+00:01:52.640 --> 00:01:56.600
+this resource that I'm creating depends on that other resource,
+
+00:01:56.600 --> 00:02:00.770
+so please wait until the other resource is created before continuing.
+
+00:02:00.770 --> 00:02:04.940
+You can do that but ideally you want to avoid those situations,
+
+00:02:04.940 --> 00:02:06.710
+you want to let the server do it's thing,
+
+00:02:06.710 --> 00:02:09.060
+so you don't have to worry about nothing.
+

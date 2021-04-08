@@ -1,0 +1,205 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.290 --> 00:00:04.395
+I do have a file here that contains the necessary commands.
+
+00:00:04.395 --> 00:00:06.570
+However, we are going to be going over,
+
+00:00:06.570 --> 00:00:08.250
+I'm building this step-by-step.
+
+00:00:08.250 --> 00:00:12.000
+We're not just going to take the file and run it and then explain it after the fact,
+
+00:00:12.000 --> 00:00:16.810
+we're going to go and build it, resource by resource.
+
+00:00:17.060 --> 00:00:25.755
+Let's take a look. We obviously going to start out with our VPC, which is the foundation.
+
+00:00:25.755 --> 00:00:27.855
+We already have an AWS account.
+
+00:00:27.855 --> 00:00:30.450
+So what we need to do is create our VPC
+
+00:00:30.450 --> 00:00:34.060
+and then we're going to start deploying resources on top of that.
+
+00:00:50.570 --> 00:00:53.280
+We're going to create a new file.
+
+00:00:53.280 --> 00:00:56.810
+In this new file, I'm going to go back to
+
+00:00:56.810 --> 00:00:59.390
+my source document and we're just going to take
+
+00:00:59.390 --> 00:01:03.000
+a portion of it so that we can build in and discuss it as we go.
+
+00:01:05.840 --> 00:01:10.350
+In this case, we're going to start with just a VPC.
+
+00:01:13.000 --> 00:01:16.350
+I'll select the VPC,
+
+00:01:20.740 --> 00:01:27.620
+copy and go back to our file,
+
+00:01:27.620 --> 00:01:29.970
+the new file that we created.
+
+00:01:32.150 --> 00:01:34.340
+I'm going to remove the description.
+
+00:01:34.340 --> 00:01:36.390
+We don't need that at this time.
+
+00:01:39.770 --> 00:01:45.210
+We're going to make sure our text editor is in YAML format.
+
+00:01:46.940 --> 00:01:51.020
+We're going to save this file and we're going to start working on it.
+
+00:01:51.020 --> 00:01:57.860
+I'll hit "Save," we'll give it
+
+00:01:57.860 --> 00:02:07.100
+a meaningful name here, ourinfra.yml.
+
+00:02:07.100 --> 00:02:10.590
+I'll save it. Now let's take a look at this.
+
+00:02:10.590 --> 00:02:14.360
+The first thing you're going to see is that we have a parameter,
+
+00:02:14.360 --> 00:02:16.130
+something that we haven't discussed yet.
+
+00:02:16.130 --> 00:02:18.765
+So let's talk about parameters for a moment.
+
+00:02:18.765 --> 00:02:21.800
+A parameter is something that you're going to use
+
+00:02:21.800 --> 00:02:24.395
+to pass values to your CloudFormation script.
+
+00:02:24.395 --> 00:02:26.000
+If you look at the screen,
+
+00:02:26.000 --> 00:02:33.520
+it says the VpcCIDR has a default value of 10.0.0.0/16.
+
+00:02:33.520 --> 00:02:36.410
+As a default value, that's okay,
+
+00:02:36.410 --> 00:02:40.430
+but we want to have the option of changing that value.
+
+00:02:40.430 --> 00:02:43.235
+Never hardcode values into your
+
+00:02:43.235 --> 00:02:46.100
+affirmation scripts because what that means is you're going to have to go in
+
+00:02:46.100 --> 00:02:49.775
+there and possibly change it and risk
+
+00:02:49.775 --> 00:02:54.420
+making a typo in a already tested script, and you could break it.
+
+00:02:54.420 --> 00:02:57.620
+So if we have a separate file where we have these values
+
+00:02:57.620 --> 00:03:01.550
+like the CIDR for the VPC or the name for
+
+00:03:01.550 --> 00:03:05.600
+load balancing or something that you can conveniently change without
+
+00:03:05.600 --> 00:03:09.620
+having to touch the script at all, is ideal.
+
+00:03:09.620 --> 00:03:12.410
+So that's why we have a separate parameter file so that
+
+00:03:12.410 --> 00:03:16.410
+we have these values away from the script.
+
+00:03:19.480 --> 00:03:21.860
+So let's see how we do this here.
+
+00:03:21.860 --> 00:03:23.630
+First of all, we're going to need a parameter file,
+
+00:03:23.630 --> 00:03:26.520
+obviously, so that we can pass these values.
+
+00:03:26.620 --> 00:03:28.670
+I do have one here,
+
+00:03:28.670 --> 00:03:30.895
+which is the real one that we're going to use,
+
+00:03:30.895 --> 00:03:36.490
+and we're going make a simplified copy for our purpose right now.
+
+00:03:37.730 --> 00:03:43.870
+Make a copy, drop it in a new file.
+
+00:03:48.050 --> 00:03:52.330
+This file is going to be in JSON format.
+
+00:03:56.420 --> 00:04:01.870
+The parameter file does not support YAML format at the time of this recording,
+
+00:04:01.870 --> 00:04:05.960
+so it's going to be a JSON formatted document.
+
+00:04:06.980 --> 00:04:10.450
+I'll hit "Save" and give it a name,
+
+00:04:12.560 --> 00:04:16.780
+ourinfra-params, and then save.
+
+00:04:19.420 --> 00:04:22.610
+So we have two parameters in this file.
+
+00:04:22.610 --> 00:04:25.325
+One, we're calling environment name,
+
+00:04:25.325 --> 00:04:27.340
+and you'll see why in a second.
+
+00:04:27.340 --> 00:04:29.030
+We're just going to call
+
+00:04:29.030 --> 00:04:32.330
+this parameter environment name and provide a value of Udacity project.
+
+00:04:32.330 --> 00:04:35.690
+You can then put whatever value you want in there,
+
+00:04:35.690 --> 00:04:38.570
+but you'll see why is that important later
+
+00:04:38.570 --> 00:04:43.150
+on and the CIDR for the VPC that we just discussed.
+
+00:04:43.150 --> 00:04:46.310
+Now we have this in a file where we can change it without ever
+
+00:04:46.310 --> 00:04:50.435
+having to touch our CloudFormation script, or risk-breaking something.
+
+00:04:50.435 --> 00:04:53.000
+So let's go back to the script that we're building,
+
+00:04:53.000 --> 00:04:55.590
+which is our YAML file.
+

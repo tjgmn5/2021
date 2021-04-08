@@ -1,0 +1,112 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.759
+Our goal in this lesson is to get you comfortable in
+
+00:00:02.759 --> 00:00:06.494
+the creation and interpretation of Cloud network and diagrams.
+
+00:00:06.495 --> 00:00:10.109
+Just in case this is your first time building a network from scratch,
+
+00:00:10.109 --> 00:00:13.230
+let me give you a few quick concepts for your reference.
+
+00:00:13.230 --> 00:00:18.300
+For example, we're looking at a virtual private Cloud, or VPC.
+
+00:00:18.300 --> 00:00:24.630
+A VPC is simply a network segment or container that is isolated from the other networks.
+
+00:00:24.629 --> 00:00:31.169
+So any computers or devices that you deploy within a VPC can easily talk to each other,
+
+00:00:31.170 --> 00:00:35.340
+but they can not reach other networks such as the Internet,
+
+00:00:35.340 --> 00:00:39.225
+unless you create a specific routing to allow this.
+
+00:00:39.225 --> 00:00:41.960
+Thanks to VPCs, you can have
+
+00:00:41.960 --> 00:00:46.009
+several completely independent networks within your AWS account,
+
+00:00:46.009 --> 00:00:48.604
+such as production and development,
+
+00:00:48.604 --> 00:00:54.384
+where you may want to have completely separate and isolated network traffic, for example.
+
+00:00:54.384 --> 00:01:01.570
+VPCs can be split further into smaller network segments that we know as subnets.
+
+00:01:01.570 --> 00:01:05.614
+Then you can apply routing rules to those subnets, for example,
+
+00:01:05.614 --> 00:01:09.699
+to allow Internet traffic to one subnet but not another.
+
+00:01:09.700 --> 00:01:13.850
+Another benefit of subnets that you get from the Cloud is that you can have
+
+00:01:13.849 --> 00:01:18.094
+one subnet in a separate data center, then another subnet.
+
+00:01:18.094 --> 00:01:21.739
+This is known as high availability because if you lose
+
+00:01:21.739 --> 00:01:25.219
+electricity or network connectivity to one of your subnets,
+
+00:01:25.219 --> 00:01:28.730
+you can still see the other subnets within your VPC,
+
+00:01:28.730 --> 00:01:31.040
+and if you design your application correctly,
+
+00:01:31.040 --> 00:01:34.240
+it will be able to continue normal operation.
+
+00:01:34.239 --> 00:01:37.349
+This is our target network deployment.
+
+00:01:37.349 --> 00:01:43.114
+We're just going to have two public subnets and two private subnets within a VPC.
+
+00:01:43.114 --> 00:01:48.604
+The public ones will have two-way Internet access that's why we call them public.
+
+00:01:48.605 --> 00:01:53.165
+The private ones will have one way traffic only.
+
+00:01:53.165 --> 00:01:56.180
+Ultimately, we're trying to build a diagram that
+
+00:01:56.180 --> 00:01:59.405
+contains all the elements of a web application deployment,
+
+00:01:59.405 --> 00:02:02.614
+including a load balancer,
+
+00:02:02.614 --> 00:02:06.024
+web servers with our application running,
+
+00:02:06.025 --> 00:02:12.680
+networking elements such as the Internet Gateway and NAT Gateways, and finally,
+
+00:02:12.680 --> 00:02:16.115
+the network itself, which is made up of the VPC,
+
+00:02:16.115 --> 00:02:20.570
+public and private subnets and routing rules.
+
+00:02:20.569 --> 00:02:22.924
+So without further ado,
+
+00:02:22.925 --> 00:02:27.030
+let's build this infrastructure diagram step-by-step.
+

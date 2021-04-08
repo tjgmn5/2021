@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.230
+Now, I'm going to show you a storage bucket.
+
+00:00:04.230 --> 00:00:06.669
+There's a reason for it.
+
+00:00:07.610 --> 00:00:10.710
+I'm going to find the component here.
+
+00:00:10.710 --> 00:00:16.785
+You see, is it s3 bucket?
+
+00:00:16.785 --> 00:00:20.054
+Let's see, yes.
+
+00:00:20.054 --> 00:00:22.785
+So the s3 bucket,
+
+00:00:22.785 --> 00:00:28.870
+I need to put it outside of your PCC.
+
+00:00:29.329 --> 00:00:36.739
+Now, the reason why I'm putting it outside of your PCC is because AWS provide services,
+
+00:00:36.740 --> 00:00:39.350
+s3 is a storage service where you can store
+
+00:00:39.350 --> 00:00:42.469
+files that your applications are going to use such as;
+
+00:00:42.469 --> 00:00:46.825
+images, video, HTML files, and similar.
+
+00:00:46.825 --> 00:00:51.200
+But keep in mind, this is a service, a public service.
+
+00:00:51.200 --> 00:00:56.900
+So this is going to reside outside of your private cloud context.
+
+00:00:56.899 --> 00:01:01.229
+So what that means is if you need to access this bucket,
+
+00:01:01.229 --> 00:01:04.534
+this storage bucket from within your private subnets
+
+00:01:04.534 --> 00:01:08.269
+you have to have those NAT gateways so that they can access the Internet,
+
+00:01:08.269 --> 00:01:11.838
+because even though you're still inside Amazon,
+
+00:01:11.838 --> 00:01:13.879
+it still has to go to
+
+00:01:13.879 --> 00:01:18.274
+the outside public Internet and send traffic to be able to reach this bucket.
+
+00:01:18.275 --> 00:01:23.870
+So when you're doing diagrams that's a situation where you're going to see a bucket that
+
+00:01:23.870 --> 00:01:30.170
+is placed outside of the containers and you wonder, "Why is it outside?
+
+00:01:30.170 --> 00:01:31.670
+Should I not put it in the PCC?"
+
+00:01:31.670 --> 00:01:33.890
+Well, the reason is you can not put it inside
+
+00:01:33.890 --> 00:01:37.174
+the PCC because it's a service that they provide to you.
+
+00:01:37.174 --> 00:01:39.140
+So keep that in mind,
+
+00:01:39.140 --> 00:01:44.060
+that's why we need Internet traffic to be available for
+
+00:01:44.060 --> 00:01:46.655
+the private subnets because you have to reach things that are
+
+00:01:46.655 --> 00:01:50.460
+outside of the normal context.
+

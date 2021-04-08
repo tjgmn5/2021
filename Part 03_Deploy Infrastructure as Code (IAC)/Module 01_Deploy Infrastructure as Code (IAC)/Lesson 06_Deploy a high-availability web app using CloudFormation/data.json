@@ -1,0 +1,166 @@
+{
+  "data": {
+    "lesson": {
+      "id": 844014,
+      "key": "9e4b346b-a0ce-4bfd-92e9-4f7412682240",
+      "title": "Deploy a high-availability web app using CloudFormation",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this project, you’ll deploy web servers for a highly available web app using CloudFormation. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "final-project-starter.yml",
+            "uri": "https://video.udacity-data.com/topher/2020/February/5e50c35f_final-project-starter/final-project-starter.yml"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "d29cb1a0-e82a-40a2-94be-75a388404509",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Deploy a high-availability web app using CloudFormation",
+        "description": "In this project, you’ll deploy web servers for a highly available web app using CloudFormation. You will write the code that creates and deploys the infrastructure and application for an Instagram-like app from the ground up. You will begin with deploying the networking components, followed by servers, security roles and software.  The procedure you follow here will become part of your portfolio of cloud projects. You’ll do it exactly as it’s done on the job - following best practices and scripting as much as possible. \n\nGather your files and submit them via a zipped folder or a GitHub link. \n\nBe sure you have completed all of the project requirements.\n\nAlso, check your work against the rubric [here](https://review.udacity.com/#!/rubrics/2556/view) before submitting!\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. \n<input type=\"checkbox\"> Project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n\n**Once you have checked all these items, you are ready to submit!**\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2556",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 848905,
+          "key": "fd04cd5d-d8fc-48a6-a19f-fc478e15db20",
+          "title": "Project Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fd04cd5d-d8fc-48a6-a19f-fc478e15db20",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 848913,
+              "key": "b3beae2a-360b-41aa-ad67-efb7361a59fa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As your final project, you'll be faced with a real scenario.\n\nCreating this project will give you the hands-on experience you need to confidently talk about infrastructure as code. So, for that reason, we have chosen a realistic scenario where you deploy an application (Apache Web Server) and you also pick up code (JavaScript and HTML) from S3 Storage and deploy it in the appropriate folder on the web server.\n\nThere will be two parts to this project:\n- **Diagram**: You'll first develop a diagram that you can present as part of your portfolio and as a visual aid to understand the CloudFormation script.\n\n\n- **Script (Template and Parameters)**: The second part is to interpret the instructions and create a matching CloudFormation script.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 848906,
+          "key": "7622a5f3-e9f4-4320-91ed-98eea15a7062",
+          "title": "Problem",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7622a5f3-e9f4-4320-91ed-98eea15a7062",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 848907,
+              "key": "eff3b48b-53b3-4451-8aaf-80aa95059d45",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Scenario\nYour company is creating an Instagram clone called Udagram. \nDevelopers pushed the latest version of their code in a zip file located in a public S3 Bucket. \n\nYou have been tasked with deploying the application, along with the necessary supporting software into its matching infrastructure. \n\nThis needs to be done in an automated fashion so that the infrastructure can be discarded as soon as the testing team finishes their tests and gathers their results.\n\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 848908,
+          "key": "ae4490fe-9cba-4bc7-b682-313dd2322f0e",
+          "title": "Project Requirements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ae4490fe-9cba-4bc7-b682-313dd2322f0e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 848909,
+              "key": "97f02869-8643-4c74-8116-6a38557b33df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Server specs\n-----------------\n<br/>\n\n1. You'll need to create a **Launch Configuration** for your application servers in order to deploy four servers, two located in each of your private subnets. The launch configuration will be used by an auto-scaling group.\n\n\n2. You'll need two vCPUs and at least 4GB of RAM. The Operating System to be used is Ubuntu 18. So, choose an Instance size and Machine Image (AMI) that best fits this spec. \n\n\n3. Be sure to allocate at least 10GB of disk space so that you don't run into issues.\n\f\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848910,
+              "key": "bf73be00-2ab5-4f78-a257-4dd7baba6dc4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Security Groups and Roles\n------------------------------------\n<br/>\n\n1. Since you will be downloading the application archive from an **S3 Bucket**, you'll need to create an **IAM Role** that allows your instances to use the S3 Service.  \n\n\n2. Udagram communicates on the default `HTTP Port: 80`, so your servers will need this inbound port open since you will use it with the **Load Balancer** and the **Load Balancer Health Check**.  As for outbound, the servers will need unrestricted internet access to be able to download and update their software.\n\n\n3. The load balancer should allow all public traffic `(0.0.0.0/0)` on `port 80` inbound, which is the default `HTTP port`. Outbound, it will only be using `port 80` to reach the internal servers.\n\n\n4. The application needs to be deployed into private subnets with a **Load Balancer** located in a public subnet.\n\n\n5. One of the output exports of the **CloudFormation** script should be the public URL of the **LoadBalancer**. **Bonus points** if you add `http://` in front of the load balancer **DNS Name** in the output, for convenience.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906326,
+              "key": "8b067143-e92a-4df5-8bfe-ccbcd50ed148",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Starter Code\n\nYou will find starter code for the project in the [.yaml file](https://video.udacity-data.com/topher/2019/July/5d391e8b_final-project-starter/final-project-starter.yml), also located in the Resources section of the left sidebar of this page.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 848911,
+          "key": "5ee81b7c-3192-4993-8b15-8fdecf797fd1",
+          "title": "Other Considerations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5ee81b7c-3192-4993-8b15-8fdecf797fd1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 848912,
+              "key": "8167cb5d-f549-4229-9803-99e1cebf6107",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Other Considerations\n--------------------\n<br/>\n\n1. You can deploy your servers with an **SSH Key** into Public subnets while you are creating the script. This helps with troubleshooting.  Once done, move them to your private subnets and remove the **SSH Key** from your **Launch Configuration**. \n\n\n2. It also helps to test directly, without the load balancer. Once you are confident that your server is behaving correctly, increase the instance count and add the load balancer to your script.\n\n\n\n3. While your instances are in public subnets, you'll also need the `SSH port open (port 22)` for your access, in case you need to troubleshoot your instances.  \n\n\n\n4. Log information for UserData scripts is located in this file: `cloud-init-output.log` under the folder: `/var/log`.\n\n\n5. You should be able to destroy the entire infrastructure and build it back up without any manual steps required, other than running the **CloudFormation** script.\n\n\n6. The provided UserData script should help you install all the required dependencies. Bear in mind that this process takes several minutes to complete. Also, the application takes a few seconds to load. This information is crucial for the settings of your load balancer health check.\n\n\n7. It's up to you to decide which values should be parameters and which you will hard-code in your script.\n\n\n8. See the provided supporting code for help and more clues.\n\n\n9. If you want to go the extra mile, set up a bastion host (jump box) to allow you to SSH into your private subnet servers. This bastion host would be on a Public Subnet with `port 22` open only to your home `IP address`, and it would need to have the private key that you use to access the other servers.\n\n\nLast thing: Remember to **delete your CloudFormation stack** when you're done to avoid recurring charges!\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

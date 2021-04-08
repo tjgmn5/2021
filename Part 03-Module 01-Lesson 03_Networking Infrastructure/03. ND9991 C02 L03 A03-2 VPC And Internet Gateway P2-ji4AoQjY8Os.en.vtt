@@ -1,0 +1,319 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.375
+We have two parameters declared in our parameter section,
+
+00:00:03.375 --> 00:00:06.610
+which is the EnvironmentName. We have a description.
+
+00:00:06.610 --> 00:00:08.670
+This description is really just for us,
+
+00:00:08.670 --> 00:00:11.350
+not really provides any function audit.
+
+00:00:11.350 --> 00:00:14.220
+This is just for you to remember what the perimeter is
+
+00:00:14.220 --> 00:00:18.195
+for and it gives you an opportunity to provide a default value,
+
+00:00:18.195 --> 00:00:20.880
+like you see here for the VpcCIDR.
+
+00:00:22.820 --> 00:00:25.230
+Now, remember what I said,
+
+00:00:25.230 --> 00:00:27.570
+in this case, we don't have a resources section.
+
+00:00:27.570 --> 00:00:29.625
+So if we try to run this right now,
+
+00:00:29.625 --> 00:00:31.275
+it would say, "Hey, that's great,
+
+00:00:31.275 --> 00:00:32.940
+we have a parameter section,
+
+00:00:32.940 --> 00:00:36.460
+but there are no resources, so it would fail.
+
+00:00:37.160 --> 00:00:39.240
+In a programming language,
+
+00:00:39.240 --> 00:00:42.380
+if you actually write an empty code file,
+
+00:00:42.380 --> 00:00:43.640
+the compiler will not complain.
+
+00:00:43.640 --> 00:00:45.005
+It will tell you everything's fine.
+
+00:00:45.005 --> 00:00:49.010
+In this case, it will fail if you don't actually have any resources.
+
+00:00:49.010 --> 00:00:51.870
+So let's add some resources.
+
+00:00:55.010 --> 00:00:57.800
+In this case, we're just trying to build a VPC,
+
+00:00:57.800 --> 00:00:59.930
+so let's go ahead and do that.
+
+00:00:59.930 --> 00:01:07.750
+We'll go back to our reference document here and look for the VPC resource.
+
+00:01:14.930 --> 00:01:21.430
+We're going to copy this, bring it over to our document.
+
+00:01:28.850 --> 00:01:33.355
+Now we have a VPC resource and it's referencing
+
+00:01:33.355 --> 00:01:37.765
+that parameter that we talked about. Let's try to run it.
+
+00:01:37.765 --> 00:01:39.370
+We're probably going to run into some errors,
+
+00:01:39.370 --> 00:01:40.730
+but that's ideal in this case,
+
+00:01:40.730 --> 00:01:45.640
+especially at an early stage where we don't have too much code to troubleshoot,
+
+00:01:45.640 --> 00:01:47.980
+it's perfect to run into some basic error.
+
+00:01:47.980 --> 00:01:51.710
+So let's see what happens if we try to execute this.
+
+00:01:51.930 --> 00:01:58.310
+I'll hit "Save." Now let's see.
+
+00:01:59.960 --> 00:02:02.355
+So if we remember our script,
+
+00:02:02.355 --> 00:02:08.540
+the create.sh, and we're going to pass the stack name,
+
+00:02:09.880 --> 00:02:13.160
+ourdemoinfrastructure, and we're going to
+
+00:02:13.160 --> 00:02:15.785
+pass the file name that we just created for the infrastructure,
+
+00:02:15.785 --> 00:02:23.400
+our infra.yml, and the matching parameter file.
+
+00:02:26.150 --> 00:02:29.380
+Now, let's just see what happens.
+
+00:02:30.110 --> 00:02:33.965
+We get a stack ID returned to us.
+
+00:02:33.965 --> 00:02:36.215
+What that means in this case is we didn't get an error.
+
+00:02:36.215 --> 00:02:38.240
+Everything worked as expected.
+
+00:02:38.240 --> 00:02:43.740
+Let's go to the console to verify that it's doing something.
+
+00:02:52.940 --> 00:02:55.540
+We see that the status is creating
+
+00:02:55.540 --> 00:03:02.320
+progress and now it switches to create complete. Let's take a look.
+
+00:03:05.660 --> 00:03:08.310
+There's the VPC that we created.
+
+00:03:08.310 --> 00:03:09.450
+So far, there's nothing.
+
+00:03:09.450 --> 00:03:11.725
+It's just a VPC networking container.
+
+00:03:11.725 --> 00:03:15.950
+So now we're going to start adding subnets to it.
+
+00:03:18.120 --> 00:03:20.320
+Actually, before we do that,
+
+00:03:20.320 --> 00:03:23.050
+let's go ahead and connect an internet gateway
+
+00:03:23.050 --> 00:03:26.870
+to our VPC so I can explain how that works.
+
+00:03:32.720 --> 00:03:35.740
+Going back to our reference document,
+
+00:03:35.740 --> 00:03:41.380
+we have an Internet gateway and we have an Internet gateway attachment.
+
+00:03:41.380 --> 00:03:45.350
+This is why referencing the documentation is very important,
+
+00:03:45.350 --> 00:03:52.420
+because if you think that you need an Internet gateway based on your diagram, yes,
+
+00:03:52.420 --> 00:03:53.950
+you do need an Internet gateway,
+
+00:03:53.950 --> 00:03:56.050
+but once you read the documentation,
+
+00:03:56.050 --> 00:03:58.180
+you're going to see that it says, "By the way,
+
+00:03:58.180 --> 00:03:59.500
+if you just create it,
+
+00:03:59.500 --> 00:04:02.170
+it's not going to be associated to any VPC".
+
+00:04:02.170 --> 00:04:04.855
+So you need to create another resource which is
+
+00:04:04.855 --> 00:04:07.180
+a gateway attachment or you're going to take
+
+00:04:07.180 --> 00:04:10.450
+this Internet gateway and associate it with the VPC that you want.
+
+00:04:10.450 --> 00:04:14.780
+Otherwise, it will just be an Internet gateway that is not connected to any network,
+
+00:04:14.780 --> 00:04:16.235
+so it's not useful to you.
+
+00:04:16.235 --> 00:04:19.115
+So in this case, we need two resources.
+
+00:04:19.115 --> 00:04:21.620
+Let's take a look. It's going to be
+
+00:04:21.620 --> 00:04:27.285
+this gateway attachment and the Internet gateway itself.
+
+00:04:27.285 --> 00:04:31.505
+Remember, an Internet gateway is just a resource so that you can have access to
+
+00:04:31.505 --> 00:04:36.515
+inbound and outbound network traffic from the outside into your private Cloud.
+
+00:04:36.515 --> 00:04:42.300
+Let's make it work. I'll copy this over
+
+00:04:42.300 --> 00:04:48.850
+to our file and I'll drop it over here.
+
+00:04:51.530 --> 00:04:54.180
+Probably, this formatting is not ideal.
+
+00:04:54.180 --> 00:05:00.150
+Let me move this over and Shift,
+
+00:05:00.150 --> 00:05:01.215
+Tab to move back.
+
+00:05:01.215 --> 00:05:04.560
+Now it's aligned properly with the VPC here.
+
+00:05:04.560 --> 00:05:07.775
+So the first thing is the creation of the Internet gateway.
+
+00:05:07.775 --> 00:05:10.610
+You see, the resource type is Internet gateway.
+
+00:05:10.610 --> 00:05:16.965
+We just gave it a name of Internet gateway and we're providing tags.
+
+00:05:16.965 --> 00:05:18.240
+This is the first time, I believe,
+
+00:05:18.240 --> 00:05:20.240
+where we're using tags for something useful.
+
+00:05:20.240 --> 00:05:22.490
+It's not just a label anymore.
+
+00:05:22.490 --> 00:05:30.265
+Tags, which in this case are referencing the parameter that we call EnvironmentName.
+
+00:05:30.265 --> 00:05:33.050
+Now you see things start to make sense.
+
+00:05:33.050 --> 00:05:34.400
+We have this EnvironmentName,
+
+00:05:34.400 --> 00:05:37.130
+which we're going to call UdacityProject,
+
+00:05:37.130 --> 00:05:40.910
+and we use the reference function from CloudFormation,
+
+00:05:40.910 --> 00:05:44.225
+the exclamation point, a ref,
+
+00:05:44.225 --> 00:05:48.755
+will go and substitute the value here from the parameter.
+
+00:05:48.755 --> 00:05:54.720
+So you're going to have a tag that says name equals UdacityProject ".
+
+00:05:54.720 --> 00:05:57.540
+So if you have 100 internet gateways,
+
+00:05:57.540 --> 00:06:00.680
+or 100 VPCs, or 100 of whatever resource.
+
+00:06:00.680 --> 00:06:03.830
+When you see the name tag that says, UdacityProject,
+
+00:06:03.830 --> 00:06:09.670
+it's going to remind you, this is part of that specific infrastructure that we created.
+
+00:06:14.420 --> 00:06:17.655
+Once the resource is created,
+
+00:06:17.655 --> 00:06:19.890
+we'll create an additional resource,
+
+00:06:19.890 --> 00:06:21.345
+which is the attachment.
+
+00:06:21.345 --> 00:06:25.145
+It's really just a functionality to associate the VPC.
+
+00:06:25.145 --> 00:06:27.515
+In this case, we also do a ref.
+
+00:06:27.515 --> 00:06:31.580
+This is the first time that we're using the reference function not for a parameter.
+
+00:06:31.580 --> 00:06:36.635
+We're using the reference function to refer to another resource by name.
+
+00:06:36.635 --> 00:06:38.900
+In this case, the name is VPC,
+
+00:06:38.900 --> 00:06:41.935
+which is the first resource that we created.
+
+00:06:41.935 --> 00:06:47.720
+It's right here. So it will automatically pass the VPC ID to
+
+00:06:47.720 --> 00:06:50.270
+this attachment so the Internet gateway will know for
+
+00:06:50.270 --> 00:06:54.300
+sure which VPC it's associated with.
+

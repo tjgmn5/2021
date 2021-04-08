@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.880
+So now in our architecture where we are right now,
+
+00:00:02.880 --> 00:00:06.015
+is very very solid, it's secure.
+
+00:00:06.015 --> 00:00:07.590
+We have security groups, we have
+
+00:00:07.590 --> 00:00:10.965
+private subnets that are not exposing anything to the internet,
+
+00:00:10.965 --> 00:00:12.480
+and we have public subnet,
+
+00:00:12.480 --> 00:00:15.060
+exposing what we want to expose, in this case,
+
+00:00:15.060 --> 00:00:18.030
+NAT service that is used by private subnets,
+
+00:00:18.030 --> 00:00:23.355
+and we also have web services that are behind a load balancer.
+
+00:00:23.355 --> 00:00:27.690
+One distinction that is good to make about the load balancer,
+
+00:00:27.690 --> 00:00:29.790
+you see it's a single component.
+
+00:00:29.790 --> 00:00:34.320
+What it's going to require that you have more than one subnet.
+
+00:00:34.320 --> 00:00:36.675
+In fact, I can show you right now,
+
+00:00:36.675 --> 00:00:41.010
+I'm going to look for cloud formation,
+
+00:00:41.010 --> 00:00:44.590
+and I'm going to type "application load balancer".
+
+00:00:48.820 --> 00:00:51.600
+We're going to click on the listing here,
+
+00:00:51.600 --> 00:00:54.390
+this is the documentation for that.
+
+00:00:55.040 --> 00:01:00.560
+One of the things that I wanted you to notice here is that it has
+
+00:01:00.560 --> 00:01:05.930
+a value here that says "subnets" in the definition for a load balancer.
+
+00:01:05.930 --> 00:01:07.870
+We're going to click "Subnets",
+
+00:01:07.870 --> 00:01:12.060
+and in the definition for our subnets or application load balancer,
+
+00:01:12.060 --> 00:01:18.890
+it says that you must specify at least two availability zones.
+
+00:01:18.890 --> 00:01:20.455
+This is very important.
+
+00:01:20.455 --> 00:01:23.210
+What that means is, even though you see as a single point of
+
+00:01:23.210 --> 00:01:26.945
+entry or possibly a single point of failure in our diagram,
+
+00:01:26.945 --> 00:01:29.350
+don't think that that's the case,
+
+00:01:29.350 --> 00:01:35.000
+this application load balancer is going to be spread across two of your [inaudible].
+
+00:01:35.000 --> 00:01:39.935
+What that means is, it is also bound to what we said earlier.
+
+00:01:39.935 --> 00:01:42.100
+If we have a failure in one data center,
+
+00:01:42.100 --> 00:01:45.410
+your service still going to continue to run in the other.
+
+00:01:45.410 --> 00:01:49.415
+The same applies for the Internet gateway and the routing and the autoscaling.
+
+00:01:49.415 --> 00:01:52.970
+Those things you can assume safely that they're not going to fail,
+
+00:01:52.970 --> 00:01:58.380
+because they have multiple copies of those services running behind the scenes for you.
+

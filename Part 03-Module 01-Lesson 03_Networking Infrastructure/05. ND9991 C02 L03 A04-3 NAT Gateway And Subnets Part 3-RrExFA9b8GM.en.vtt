@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.290 --> 00:00:05.024
+So going back to our reference diagram,
+
+00:00:05.024 --> 00:00:08.805
+now we have an Internet gateway,
+
+00:00:08.805 --> 00:00:10.440
+we have subnets created.
+
+00:00:10.440 --> 00:00:12.270
+We have four of those subnets created.
+
+00:00:12.270 --> 00:00:14.999
+So let's continue adding to our infrastructure.
+
+00:00:14.999 --> 00:00:17.820
+I believe the next step would be to allow
+
+00:00:17.820 --> 00:00:21.030
+NAT gateways to be able to route
+
+00:00:21.030 --> 00:00:24.465
+traffic for our private subnets while keeping them private.
+
+00:00:24.465 --> 00:00:27.600
+We need to place those in our public subnets.
+
+00:00:27.600 --> 00:00:28.920
+So let's do that portion now.
+
+00:00:28.920 --> 00:00:32.745
+That also going to involve plenty of routing.
+
+00:00:32.745 --> 00:00:36.190
+So going back to our reference.
+
+00:00:44.210 --> 00:00:48.610
+We're going to start with our NAT gateways.
+
+00:00:52.190 --> 00:00:54.375
+We're not going to do routing.
+
+00:00:54.375 --> 00:00:56.760
+Just a second, let's just set up the NAT gateways.
+
+00:00:56.760 --> 00:01:05.565
+We're going to copy this over to our file and paste it here.
+
+00:01:05.565 --> 00:01:09.309
+Now, in addition to two NAT gateway resources,
+
+00:01:09.309 --> 00:01:11.290
+you're going to notice that there's two,
+
+00:01:11.290 --> 00:01:15.585
+all the resources here called EIP. What does that mean?
+
+00:01:15.585 --> 00:01:18.870
+EIP stands for Elastic IP.
+
+00:01:18.870 --> 00:01:21.520
+This is an IP allocation that you can do.
+
+00:01:21.520 --> 00:01:23.170
+Is just exactly what it sounds.
+
+00:01:23.170 --> 00:01:28.085
+You make a request to get an IP address and that IP address belongs to you.
+
+00:01:28.085 --> 00:01:29.540
+So the question is,
+
+00:01:29.540 --> 00:01:33.320
+why not just deploy the NAT gateway and allow Amazon
+
+00:01:33.320 --> 00:01:37.340
+to assign any random IP because anyways is a public IP,
+
+00:01:37.340 --> 00:01:39.800
+so I don't really care what the number is.
+
+00:01:39.800 --> 00:01:44.185
+The recent one you want to allocate your own IPs
+
+00:01:44.185 --> 00:01:48.860
+is because once you allocate it for yourself is never going to change.
+
+00:01:48.860 --> 00:01:51.260
+If a NAT gateway is running by itself,
+
+00:01:51.260 --> 00:01:52.520
+not just a NAT gateway,
+
+00:01:52.520 --> 00:01:55.445
+any resource on Amazon is disposable.
+
+00:01:55.445 --> 00:02:00.275
+So even for a simple maintenance reason or a restart,
+
+00:02:00.275 --> 00:02:03.184
+you could end up with a different IP on that resource,
+
+00:02:03.184 --> 00:02:05.900
+and that could throw off anything that
+
+00:02:05.900 --> 00:02:09.110
+you have that depends on that particular IP address.
+
+00:02:09.110 --> 00:02:12.185
+If you need a public IP that will never change,
+
+00:02:12.185 --> 00:02:16.430
+make sure you have an allocation for an Elastic IP.
+

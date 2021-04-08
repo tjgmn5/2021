@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.880
+Here we have lucidchart.com which is a standard diagram tool.
+
+00:00:05.880 --> 00:00:12.090
+You could probably do the same with a tool like Visio or Cloudcraft,
+
+00:00:12.090 --> 00:00:14.730
+those are very popular tools for designing diagrams,
+
+00:00:14.730 --> 00:00:17.180
+but we're going to use Lucidchart today.
+
+00:00:17.180 --> 00:00:19.320
+It's free, you can open an account here and then you
+
+00:00:19.320 --> 00:00:22.095
+use it for your Cloud related diagrams.
+
+00:00:22.095 --> 00:00:25.020
+We're going to start with a blank diagram.
+
+00:00:25.020 --> 00:00:33.435
+I need to delete this older one here,
+
+00:00:33.435 --> 00:00:35.860
+which I'm going to do now.
+
+00:00:44.030 --> 00:00:50.890
+The only requirement that you have once you open the default diagram screen is that you
+
+00:00:50.890 --> 00:00:57.750
+better have enable AWS Architecture 2017,2019.
+
+00:00:57.750 --> 00:01:03.740
+This is what's going to give you the ability to draw and read AWS diagrams.
+
+00:01:07.040 --> 00:01:10.540
+Now in this tool, we're going to start with a blank screen,
+
+00:01:10.540 --> 00:01:12.325
+what you're looking at right now,
+
+00:01:12.325 --> 00:01:15.940
+and then we're going to start working with AWS diagram.
+
+00:01:15.940 --> 00:01:22.310
+But first, let me stop right here and tell you what it is that we're trying to do.
+
+00:01:22.520 --> 00:01:25.965
+Whenever you have a Cloud architecture,
+
+00:01:25.965 --> 00:01:29.330
+you're going to have a diagram which explains that architecture.
+
+00:01:29.330 --> 00:01:32.390
+You never really going to start from scratch and try to
+
+00:01:32.390 --> 00:01:37.190
+do code or Infrastructure as Code from a vision in your head.
+
+00:01:37.190 --> 00:01:41.165
+You need to put it on paper to be able to communicate that with your team.
+
+00:01:41.165 --> 00:01:44.455
+One of the best way to do it is with visuals.
+
+00:01:44.455 --> 00:01:47.250
+As you know a visual is worth 1,000 words,
+
+00:01:47.250 --> 00:01:49.395
+probably more than that.
+
+00:01:49.395 --> 00:01:54.710
+So when somebody hands you over a diagram,
+
+00:01:54.710 --> 00:01:57.290
+maybe a person that is a senior solutions architect,
+
+00:01:57.290 --> 00:02:00.470
+and tell you, "Hey, go ahead end your job and implement this."
+
+00:02:00.470 --> 00:02:05.575
+What they mean is, take this diagram and turn into a CloudFormation script,
+
+00:02:05.575 --> 00:02:10.125
+deploy into production or tests, and get back to me.
+
+00:02:10.125 --> 00:02:12.240
+So in this case,
+
+00:02:12.240 --> 00:02:14.480
+you need to be able to read that diagram.
+
+00:02:14.480 --> 00:02:17.600
+So I'm not going to teach you exactly how to read it,
+
+00:02:17.600 --> 00:02:19.580
+I'm going to teach you how to do it yourself,
+
+00:02:19.580 --> 00:02:23.660
+which in turn will make you a very proficient in terms of
+
+00:02:23.660 --> 00:02:29.400
+reading the diagrams themselves once you see them out in the real world.
+

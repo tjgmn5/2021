@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.779
+Even though in this diagram you're going to see that we're using
+
+00:00:03.779 --> 00:00:07.710
+mostly AWS as specific icons,
+
+00:00:07.710 --> 00:00:11.099
+you can be reassured that this components have
+
+00:00:11.099 --> 00:00:14.894
+similar names when it comes to other Cloud providers.
+
+00:00:14.894 --> 00:00:17.984
+For example, you have compute resources,
+
+00:00:17.984 --> 00:00:20.954
+you have BMs, you have load balancers.
+
+00:00:20.954 --> 00:00:23.684
+These resources have the exact same names
+
+00:00:23.684 --> 00:00:26.759
+when you take them to Microsoft Azure or Google Cloud.
+
+00:00:26.760 --> 00:00:28.860
+In fact, this is the exact same thing.
+
+00:00:28.859 --> 00:00:30.734
+In Google Cloud, they call it BPC.
+
+00:00:30.734 --> 00:00:32.429
+As well as Amazon, they call it BPC.
+
+00:00:32.429 --> 00:00:34.649
+It's just virtual private Cloud.
+
+00:00:34.649 --> 00:00:36.225
+It's not really a marketing name.
+
+00:00:36.225 --> 00:00:39.289
+It's the actual name of the tool that you can use.
+
+00:00:39.289 --> 00:00:42.979
+So this knowledge can certainly apply if
+
+00:00:42.979 --> 00:00:47.409
+you end up using a different Cloud provider other than Amazon.
+
+00:00:47.409 --> 00:00:49.989
+Another thing that you should know is that there are
+
+00:00:49.990 --> 00:00:53.219
+reference architectures that you can google,
+
+00:00:53.219 --> 00:00:56.149
+and this reference architecture will show you
+
+00:00:56.149 --> 00:00:59.420
+a diagram similar to what we are looking at today,
+
+00:00:59.420 --> 00:01:02.554
+and that can help you also breach the gap of the name of
+
+00:01:02.554 --> 00:01:06.560
+a specific service when it comes to another Cloud.
+
+00:01:06.560 --> 00:01:10.085
+For example, you can have let's say a WordPress deployment.
+
+00:01:10.084 --> 00:01:15.619
+You can look at that and AWS and then look for the similar deployment in Microsoft Azure,
+
+00:01:15.620 --> 00:01:18.500
+and that way, they're probably going to be very similar.
+
+00:01:18.500 --> 00:01:22.325
+So you can use that in order to be able to
+
+00:01:22.325 --> 00:01:28.109
+compare names and learn the proper name in the Cloud provider that you'll be using.
+

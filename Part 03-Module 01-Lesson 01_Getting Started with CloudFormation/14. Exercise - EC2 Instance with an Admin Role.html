@@ -1,0 +1,586 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise - EC2 Instance with an Admin Role</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Getting Started with CloudFormation</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Course Overview.html">02. Course Overview</a>
+    </li>
+    <li class="">
+      <a href="03. What is DevOps.html">03. What is DevOps</a>
+    </li>
+    <li class="">
+      <a href="04. Why you need DevOps.html">04. Why you need DevOps</a>
+    </li>
+    <li class="">
+      <a href="05. What are the benefits of Cloud DevOps.html">05. What are the benefits of Cloud DevOps?</a>
+    </li>
+    <li class="">
+      <a href="06. Set up Tools.html">06. Set up Tools</a>
+    </li>
+    <li class="">
+      <a href="07. Creating Access Key ID for IAM User.html">07. Creating Access Key ID for IAM User</a>
+    </li>
+    <li class="">
+      <a href="08. Configuring AWS CLI.html">08. Configuring AWS CLI</a>
+    </li>
+    <li class="">
+      <a href="09. Adding Additional Keys.html">09. Adding Additional Keys</a>
+    </li>
+    <li class="">
+      <a href="10. Understanding CloudFormation.html">10. Understanding CloudFormation</a>
+    </li>
+    <li class="">
+      <a href="11. Getting Started With CloudFormation Script.html">11. Getting Started With CloudFormation Script</a>
+    </li>
+    <li class="">
+      <a href="12. Create a VPC Manually.html">12. Create a VPC: Manually</a>
+    </li>
+    <li class="">
+      <a href="13. Exercise - Create a VPC Automated.html">13. Exercise - Create a VPC: Automated</a>
+    </li>
+    <li class="">
+      <a href="14. Exercise - EC2 Instance with an Admin Role.html">14. Exercise - EC2 Instance with an Admin Role</a>
+    </li>
+    <li class="">
+      <a href="15. Conclusion.html">15. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="16. Challenge 1.html">16. Challenge 1</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">14. Exercise - EC2 Instance with an Admin Role</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Previously, in this course, we have installed and configured the AWS CLI on our local computer to do our work. However, there’s an alternative.</p>
+<h3 id="brief-introduction">Brief Introduction</h3>
+<p>You will create an EC2 Instance based on Amazon Linux AMI  that you can connect via SSH. While provisioning the instance, you will make sure to limit access to your IP address only, using Security Groups. The instance will already have the CLI installed by default. You just need to assign permissions to this instance. </p>
+<p>Once the instance is running, create an IAM role with admin access to your account. Then, attach the role to your EC2. In this case, the CLI tool will pick up the credentials from the role and won’t need hard-coded credentials.</p>
+<p>Let's do this exercise to make your learning fun. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="exercise-objectives">Exercise objectives</h3>
+<p>By the end of this exercise, you will be able to:</p>
+<ul>
+<li>Launch a secure EC2 instance</li>
+<li>Create IAM role with admin privileges </li>
+<li>Attach the IAM role to the EC2 instance created earlier</li>
+<li>Connect to your EC2 instance via SSH</li>
+<li>Use CLI tool in the EC2 instance </li>
+</ul>
+<h3 id="step-1-create-a-default-vpc">Step 1. Create a default VPC</h3>
+<p>It is possible that you already have a <a href="https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html" rel="noopener noreferrer" target="_blank">default VPC</a> created in your account. If not, go to the VPC dashboard and create a default VPC. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-9.52.46-pm.png" alt="Ensure to have a default VPC" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Ensure to have a default VPC</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-launch-an-ec2-instance">Step 2. Launch an EC2 instance</h3>
+<ul>
+<li>Navigate to the EC2 dashboard, and select the <strong>Instances</strong> services in the left-hand navigation pane.</li>
+<li>Use the <strong>Launch Instance</strong> wizard to launch an instance with the following configuration, and leave the remaining values as the defaults:</li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="stage" style="text-align:center;">Stage</th>
+<th id="configuration">Configuration</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">1.</td>
+<td>Amazon Machine Image (AMI)</td>
+<td><code>Amazon Linux 2 AMI (HVM), SSD Volume Type</code><br> Note: You have chosen a <strong>Free Tier Eligible</strong> AMI</td>
+</tr>
+<tr>
+<td style="text-align:center;">2.</td>
+<td>Instance Type</td>
+<td><code>t2.micro</code></td>
+</tr>
+<tr>
+<td style="text-align:center;">3.</td>
+<td>Configure Instance Details</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>a. Number of Instances</td>
+<td>1</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>b. Network</td>
+<td>Default <br>Select the VPC that was created in the previous step</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td>c. Subnet</td>
+<td>Default</td>
+</tr>
+<tr>
+<td style="text-align:center;">4.</td>
+<td>Storage</td>
+<td>Default</td>
+</tr>
+<tr>
+<td style="text-align:center;">5.</td>
+<td>Tags</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td style="text-align:center;">6.</td>
+<td>Security Group</td>
+<td>New. <br>Limit access to your IP address only</td>
+</tr>
+<tr>
+<td style="text-align:center;"></center></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center;">&nbsp; &nbsp; &nbsp; &nbsp; See a snapshot below:</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-9.57.17-pm.png" alt="Allow only yourself to access the EC2 instance " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Allow only yourself to access the EC2 instance </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Download a new SSH Key if you don't have one already. </li>
+</ul>
+<blockquote>
+  <p><strong>Important:</strong> This key-pair will allow you to log into your instance, using SSH, from your local machine. Save the key-pair carefully, because the same private key cannot be re-generated. </p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-9.58.57-pm.png" alt="Download the private key" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Download the private key</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Verify that you should see the newly created EC2 instance in the <strong>Instances</strong> services. Check the instance state, it should say <strong>Running</strong>.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-10.04.39-pm.png" alt="Running EC2 instance" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Running EC2 instance</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3-create-an-iam-role">Step 3. Create an IAM Role</h3>
+<ul>
+<li><p>Navigate to the IAM dashboard, and select the <strong>Roles</strong> services in the left-hand navigation pane.</p></li>
+<li><p>Click on the <strong>Create role</strong> button, and provide the configuration details, as follows. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-10.37.33-pm.png" alt="Launch the wizard to create a new IAM role" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Launch the wizard to create a new IAM role</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Select <strong>AWS service</strong> as the type of trusted entity, and choose EC2 service to assume the new role. It will allow the EC2 instance, to whom we will attach this role later, to be able to call any AWS service on your behalf. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-10.40.13-pm.png" alt="Select the AWS service as the trusted entity, and choose the EC2 service to assume the new role" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Select the AWS service as the trusted entity, and choose the EC2 service to assume the new role</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>In the <strong>Filter policies</strong> textbox, search for the "admin" policy. Select the <strong>AdministratorAccess</strong> policy to apply to the new role. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-10.42.03-pm.png" alt="Attach the admin policy to the new role" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Attach the admin policy to the new role</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Provide a name to the new role, such as <em>VocareumSecureServerRole</em>, or choose any other name of your choice. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-10.43.43-pm.png" alt="Provide a role name" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Provide a role name</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-10.48.00-pm.png" alt="A successfully created role" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>A successfully created role</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-4-attach-the-role-to-the-ec2-instance">Step 4. Attach the Role to the EC2 Instance</h3>
+<ul>
+<li><p>Go back to the EC2 dashboard, and view the list of the running instances. </p></li>
+<li><p>Select the checkbox against the recently launched (earlier in this exercise) EC2 instance, and click the <strong>Actions</strong> button on the top of the list. It will open up drop-down options, select the <strong>Security &#8594; Modify IAM role</strong> option. See the snapshot below. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-11.06.22-pm.png" alt="Modify IAM role" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Modify IAM role</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>On the next window, select and apply the newly created <em>VocareumSecureServerRole</em> to your instance. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-11.07.09-pm.png" alt="Apply the new role to your EC2 instance" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Apply the new role to your EC2 instance</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-5-connect-to-your-ec2-instance">Step 5. Connect to your EC2 instance</h3>
+<ul>
+<li>Connect to your EC2 instance using SSH.  Follow the instructions, as shown in the snapshot below.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-11.14.18-pm.png" alt="Connect to your EC2 instance using an SSH client" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Connect to your EC2 instance using an SSH client</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>After connecting to your instance, verify the existing installation of AWS CLI, and run any AWS command, such as <code>aws iam list-users</code>. </li>
+</ul>
+<blockquote>
+  <p><strong>Note</strong>: The AWS CLI tool will already be installed because we had chosen Amazon Linux AMI while provisioning. The CLI tool, in this case, will pick up the credentials from the role and won’t need hard-coded credentials</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-11.18.43-pm.png" alt="Connect to your instance, and run any AWS command " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Connect to your instance, and run any AWS command </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>This is a convenient way to have a properly configured - and secure - server that you can use to test and not have to worry about credentials.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="15. Conclusion.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('14. Exercise - EC2 Instance with an Admin Role')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

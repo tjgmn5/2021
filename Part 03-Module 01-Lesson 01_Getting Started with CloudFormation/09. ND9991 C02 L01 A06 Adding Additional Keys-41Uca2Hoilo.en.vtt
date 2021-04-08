@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.285
+Look like services IM,
+
+00:00:03.285 --> 00:00:05.640
+and then click users.
+
+00:00:05.639 --> 00:00:09.464
+You see that we have our user created. I'll click it now.
+
+00:00:09.464 --> 00:00:11.669
+Now, we have a lot of options.
+
+00:00:11.669 --> 00:00:13.785
+We have groups, tax,
+
+00:00:13.785 --> 00:00:16.109
+security credentials, and access adviser.
+
+00:00:16.109 --> 00:00:18.969
+We're going to click on security credentials.
+
+00:00:19.309 --> 00:00:24.919
+Here you'll see we have the access key that we just created,
+
+00:00:24.920 --> 00:00:26.615
+is there and and it says active,
+
+00:00:26.614 --> 00:00:29.059
+we can make it inactive. This is great.
+
+00:00:29.059 --> 00:00:32.884
+When you think that you have lost your key for whatever reason,
+
+00:00:32.884 --> 00:00:35.634
+you can make it inactive instead of deleting it,
+
+00:00:35.634 --> 00:00:40.219
+or basically this is another option if you have
+
+00:00:40.219 --> 00:00:42.515
+a CI/CD Pipeline or something that's
+
+00:00:42.515 --> 00:00:46.054
+automated and you want it not to work for whatever reason.
+
+00:00:46.054 --> 00:00:47.975
+You just come here and make it inactive.
+
+00:00:47.975 --> 00:00:49.875
+When that thing runs,
+
+00:00:49.875 --> 00:00:52.975
+it's going to error out because you disabled the access.
+
+00:00:52.975 --> 00:00:58.054
+So there are times when you actually need to disable the access and not just delete it.
+
+00:00:58.054 --> 00:01:01.865
+As you can see, I have the option here to create an access key.
+
+00:01:01.865 --> 00:01:04.215
+You just click on it and it works right away.
+
+00:01:04.215 --> 00:01:05.850
+Now, we have two keys.
+
+00:01:05.849 --> 00:01:07.769
+However, I don't want that.
+
+00:01:07.769 --> 00:01:12.189
+So I'm going to go ahead and just click Delete.
+
+00:01:14.090 --> 00:01:18.060
+So there's that. Since we're messing with this,
+
+00:01:18.060 --> 00:01:20.894
+let's make sure our key still works.
+
+00:01:20.894 --> 00:01:23.519
+So, we type the same command,
+
+00:01:23.519 --> 00:01:28.664
+I always type it by habit to make sure everything is working and everything is fine.
+
+00:01:28.665 --> 00:01:31.470
+So we have our tool tested,
+
+00:01:31.469 --> 00:01:35.640
+we have visual studio code, we have our keys,
+
+00:01:35.640 --> 00:01:40.500
+so we're basically fully set up now to start testing.
+

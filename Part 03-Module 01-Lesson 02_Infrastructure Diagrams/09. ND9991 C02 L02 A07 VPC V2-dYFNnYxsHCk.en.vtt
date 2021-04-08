@@ -1,0 +1,235 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.800 --> 00:00:04.260
+Let's take a moment to go over some definitions.
+
+00:00:04.260 --> 00:00:07.290
+Virtual private clouds and subnets within
+
+00:00:07.290 --> 00:00:11.070
+that cloud follow the same rules as traditional networking.
+
+00:00:11.070 --> 00:00:15.130
+So let's take a look at those before moving forward.
+
+00:00:16.220 --> 00:00:22.110
+The main attribute of your VPC is to block of available IP addresses,
+
+00:00:22.110 --> 00:00:25.860
+also known as the address space and the CIDR block.
+
+00:00:25.860 --> 00:00:29.040
+These simply imply the number of
+
+00:00:29.040 --> 00:00:31.140
+available IP addresses that you will have
+
+00:00:31.140 --> 00:00:33.585
+to deploy resources within this private network,
+
+00:00:33.585 --> 00:00:35.040
+such as Windows servers,
+
+00:00:35.040 --> 00:00:38.020
+Linux servers, databases and so on.
+
+00:00:38.020 --> 00:00:41.480
+Each one of these will require its own IP address.
+
+00:00:41.480 --> 00:00:43.310
+Each number in this
+
+00:00:43.310 --> 00:00:50.720
+10.0.0.0 it's called an octet because each number has eight bits in binary,
+
+00:00:50.720 --> 00:00:53.940
+it can go from 0-255.
+
+00:00:54.260 --> 00:00:56.684
+So in this example,
+
+00:00:56.684 --> 00:01:04.020
+10.0.0.0/16 means reserve the top 16 bits,
+
+00:01:04.020 --> 00:01:10.530
+that is, two octets or the first two numbers to be the fixed part of this network.
+
+00:01:11.020 --> 00:01:14.810
+This is in the same way the area code in your phone number,
+
+00:01:14.810 --> 00:01:18.900
+it's the same for a large group of phone numbers.
+
+00:01:20.150 --> 00:01:23.550
+This leaves you with the last two numbers,
+
+00:01:23.550 --> 00:01:26.325
+two octets or 16 bits,
+
+00:01:26.325 --> 00:01:28.480
+available for your IP addresses.
+
+00:01:28.480 --> 00:01:30.325
+How many IPs is that?
+
+00:01:30.325 --> 00:01:34.755
+Let's see, 256 times 256,
+
+00:01:34.755 --> 00:01:37.965
+gives you around 65,000 IP addresses,
+
+00:01:37.965 --> 00:01:41.150
+which is plenty for most use cases.
+
+00:01:41.240 --> 00:01:45.235
+Now, a subnet is simply a small subset
+
+00:01:45.235 --> 00:01:49.150
+of those 65,000 IP addresses available in our example.
+
+00:01:49.150 --> 00:01:51.265
+But why do I need a subnet?
+
+00:01:51.265 --> 00:01:58.149
+What is the purpose? Well, a subnet creates logical separation between resources,
+
+00:01:58.149 --> 00:02:01.615
+say separate production from development,
+
+00:02:01.615 --> 00:02:08.395
+it can help you easily block or allow access to and from resources through routing,
+
+00:02:08.395 --> 00:02:11.930
+and it can help you by providing services such as
+
+00:02:11.930 --> 00:02:17.130
+public internet access to a specific set of resources and not to others.
+
+00:02:17.420 --> 00:02:20.160
+So back to our example,
+
+00:02:20.160 --> 00:02:24.915
+if our VPC is 10.0.0.0/16,
+
+00:02:24.915 --> 00:02:28.280
+meaning that the top two numbers are fixed in place,
+
+00:02:28.280 --> 00:02:34.440
+we could create a subnet and call it 10.0.1.0/24.
+
+00:02:34.580 --> 00:02:39.329
+Meaning that the top three numbers or three octets,
+
+00:02:39.329 --> 00:02:42.954
+totaling 24 bits are constant,
+
+00:02:42.954 --> 00:02:49.325
+with eight bits available for addresses or 255 IP addresses.
+
+00:02:49.325 --> 00:02:57.470
+I could create 255 of this smaller subnets within our VPC by doing 10.0.2.0,
+
+00:02:57.470 --> 00:03:01.285
+10.0.3.0, and so on.
+
+00:03:01.285 --> 00:03:04.880
+So to recap, the main goal of the VPC is to
+
+00:03:04.880 --> 00:03:08.300
+provide private IP address space for your network and resources.
+
+00:03:08.300 --> 00:03:12.895
+A subnet is simply a smaller chunk of that IP address space.
+
+00:03:12.895 --> 00:03:17.360
+The slash number at the end of an address represents the number of bits
+
+00:03:17.360 --> 00:03:22.405
+that are constant for this VPC or subnet from left to right.
+
+00:03:22.405 --> 00:03:29.220
+Having subnets help you with routing and providing services to and from your resources.
+
+00:03:29.230 --> 00:03:34.160
+Remember to create networks and subnets with future expansion in mind,
+
+00:03:34.160 --> 00:03:37.920
+you will likely need more IP addresses than you think.
+
+00:03:38.570 --> 00:03:43.760
+The VPC container is one of these.
+
+00:03:43.760 --> 00:03:46.260
+We're going to drag it over.
+
+00:03:47.080 --> 00:03:52.260
+This is very interesting because the VPC has the ability to
+
+00:03:52.260 --> 00:03:57.695
+span over several availability zones.
+
+00:03:57.695 --> 00:04:03.280
+So now, we have a VPC covering both of our availability zones.
+
+00:04:03.280 --> 00:04:07.790
+Again, so far the only thing that we created is the VPC.
+
+00:04:07.790 --> 00:04:10.040
+Those availability zones are already there,
+
+00:04:10.040 --> 00:04:11.330
+you don't need to worry about those,
+
+00:04:11.330 --> 00:04:14.210
+those are there available for you.
+
+00:04:14.210 --> 00:04:19.555
+Now, when we actually going to create something inside our VPC,
+
+00:04:19.555 --> 00:04:23.850
+now is going to be specific to one of these zones that we have,
+
+00:04:23.850 --> 00:04:27.740
+and that's going to be called a subnet.
+
+00:04:28.370 --> 00:04:31.445
+I'm going to drop a subnet in here,
+
+00:04:31.445 --> 00:04:34.330
+I'm going to make it small because I'm going to need several of
+
+00:04:34.330 --> 00:04:40.910
+these and I'm going to explain what they are.
+
+00:04:44.000 --> 00:04:49.120
+In this case, we're going to call them private subnet.
+
+00:04:49.120 --> 00:04:52.020
+Actually no, we're going to name this as public subnet.
+
+00:04:52.020 --> 00:04:58.610
+Let me change the name here and specify public subnet.
+
+00:04:58.610 --> 00:05:02.040
+I'm going to zoom in so you can see better.
+
+00:05:02.440 --> 00:05:05.705
+I'm going to do the same for the other one.
+
+00:05:05.705 --> 00:05:09.470
+I'm going to call it public subnet.
+
+00:05:09.470 --> 00:05:13.955
+We can call it 1 and 2 in order to be able to distinguish them.
+
+00:05:13.955 --> 00:05:15.440
+We're going to have private ones,
+
+00:05:15.440 --> 00:05:18.410
+but right now let's call this Public Subnet 1 and 2,
+
+00:05:18.410 --> 00:05:21.210
+and this is what we have for right now.
+

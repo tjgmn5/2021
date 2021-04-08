@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.559
+Okay. Now that we have our script tested, verified, and deployed,
+
+00:00:04.559 --> 00:00:09.239
+now you can see the real benefits of infrastructure as code.
+
+00:00:09.240 --> 00:00:12.019
+You don't run into the risk of forgetting something,
+
+00:00:12.019 --> 00:00:15.189
+or missing a stab, or mistyping something.
+
+00:00:15.189 --> 00:00:18.509
+This is the time when you would need to be able
+
+00:00:18.510 --> 00:00:23.190
+to do this over and over again not just for a single resource,
+
+00:00:23.190 --> 00:00:25.260
+like we just did, but for many resources.
+
+00:00:25.260 --> 00:00:26.655
+It could be hundreds.
+
+00:00:26.655 --> 00:00:30.155
+So the only way to visualize this is through a diagram.
+
+00:00:30.155 --> 00:00:31.910
+So in the next lesson, what we're going to do is,
+
+00:00:31.910 --> 00:00:34.384
+we're going to be able to start creating
+
+00:00:34.384 --> 00:00:38.449
+our own diagrams and be able to read them because in the real world,
+
+00:00:38.450 --> 00:00:41.470
+what you're going to see is somebody is going to hand you
+
+00:00:41.469 --> 00:00:46.445
+a Cloud architecture diagram and you need to be able to understand what everything means,
+
+00:00:46.445 --> 00:00:52.340
+all the containers, all the specific symbols that represent infrastructure.
+
+00:00:52.340 --> 00:00:55.795
+Once you understand those and create your own,
+
+00:00:55.795 --> 00:00:59.234
+then we're going to go into actually turning that into code.
+
+00:00:59.234 --> 00:01:02.740
+But right now, let's just focus on the diagrams.
+

@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.000
+Hey everyone. Welcome to this course.
+
+00:00:03.000 --> 00:00:08.520
+In this course, we're going to discuss infrastructure as code. My name is Carlos.
+
+00:00:08.520 --> 00:00:10.934
+I have a background in software development,
+
+00:00:10.934 --> 00:00:13.440
+which then later turned into DevOps,
+
+00:00:13.440 --> 00:00:16.935
+and then later evolves into Cloud DevOps,
+
+00:00:16.935 --> 00:00:18.750
+which is the reason why we're here.
+
+00:00:18.750 --> 00:00:23.550
+Cloud DevOps is the topic of a culture shift where you're going to
+
+00:00:23.550 --> 00:00:29.055
+see code that actually deploys physical servers instead of software.
+
+00:00:29.055 --> 00:00:35.860
+Or I should say, a little bit of both is the combination of development and operation.
+

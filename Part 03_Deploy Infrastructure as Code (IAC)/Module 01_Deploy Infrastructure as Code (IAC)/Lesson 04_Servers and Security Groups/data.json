@@ -1,0 +1,1455 @@
+{
+  "data": {
+    "lesson": {
+      "id": 844579,
+      "key": "8c47e088-8d6e-4847-861d-30a32edb9599",
+      "title": "Servers and Security Groups",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Implement security groups and understand the concept of least-privilege as it applies to network traffic",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/8c47e088-8d6e-4847-861d-30a32edb9599/844579/1582840084236/Servers+and+Security+Groups+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/8c47e088-8d6e-4847-861d-30a32edb9599/844579/1582840078917/Servers+and+Security+Groups+Subtitles.zip"
+          },
+          {
+            "name": "servers.yml",
+            "uri": "https://video.udacity-data.com/topher/2020/February/5e54ae27_servers/servers.yml"
+          },
+          {
+            "name": "server-parameters.json",
+            "uri": "https://video.udacity-data.com/topher/2021/February/601a8b28_server-parameters/server-parameters.json"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 844587,
+          "key": "6155c0ac-118a-4ead-8624-6a81779e62c7",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6155c0ac-118a-4ead-8624-6a81779e62c7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847284,
+              "key": "bee6cb79-20a2-4ca3-87b7-4f9b0c002e20",
+              "title": "01 - L4 Intro-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pJ1pXFiHccQ",
+                "china_cdn_id": "pJ1pXFiHccQ.mp4"
+              }
+            },
+            {
+              "id": 971594,
+              "key": "6e23c941-d7c4-414c-8de3-6ea3f1ac9358",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Objectives\n\nIn the previous lesson, we built the necessary networking infrastructure as a part of **ourdemoinfra** stack for a web application: a VPC, subnets, internet gateway, NAT gateway, and routing tables. \n\n\nIn the current lesson, we will create a new stack **demoserverstack**, that will create servers and associated resources in the previously created VPC. **Yes, we will cross-reference the resources created in the previous stack in our new stack. **\n\n\nIn particular, we will create the following resources using the CloudFormation template:\n* **Security groups** - Security group specify firewall rules. We will create two of them, one for a load-balancer and another for a web server.\n\n\n*  **AutoScaling group** - An autoscaling group ensures that a desired number of servers (EC2 instances) are always up and running. If an instance goes down due to any reason, such as bad health, a substitute instance with a similar configuration will spin up automatically. \n\n\n* **Launch configuration** - The configuration of the EC2 instance that spins up automatically, if required, as a part of autoscaling group resides in a launch configuration. \n\n\n* **Load balancer** - A load balancer distributes the incoming traffic uniformly across multiple servers (target group) within the same or different AZs. We will also create a listener and target group for the load balancer.\n\n\n### Supporting Material\nThe supporting material that is referred to in the video demonstration is available in the [Github repository](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/tree/master/supporting_material) folder.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847263,
+          "key": "648b1704-6428-448f-b490-a8f3723c0e60",
+          "title": "Setting Up Our Environment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "648b1704-6428-448f-b490-a8f3723c0e60",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847264,
+              "key": "88122281-a33f-4b04-800a-8cffa006bf89",
+              "title": "ND9991 C2 L04 A02  No Title",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lBIDgNZ0O84",
+                "china_cdn_id": "lBIDgNZ0O84.mp4"
+              }
+            },
+            {
+              "id": 1132467,
+              "key": "f61d961a-5c19-40bd-aeb5-a08a922e4119",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 1. Purpose of  the `servers.yml` and `server-parameters.json` files\nWe have already created a CloudFormation template (`servers.yml`) and a properties file (`server-parameters.json`) containing the code related to the resources that you will create in this lesson. You can download these files either from the **Resources section** or the [Github repository](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1). \n\n\n>**We will refer to the files mentioned above as we proceed through the lesson.** We strongly encourage you to follow along with the video demonstrations.\n\nThe `servers.yml` file defines various resources, such as security groups, an autoscaling group, launch configuration, target group, load balancer, and listener. Each type of resource has a different set of properties. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132742,
+              "key": "c2a021b8-1e3f-4935-8b05-4b13eb05b98b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/60117cd9_screenshot-2021-01-27-at-8.10.04-pm/screenshot-2021-01-27-at-8.10.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c2a021b8-1e3f-4935-8b05-4b13eb05b98b",
+              "caption": "The resources defined in the `servers.yml` file ",
+              "alt": "",
+              "width": 1000,
+              "height": 1096,
+              "instructor_notes": null
+            },
+            {
+              "id": 971384,
+              "key": "7736323c-551e-4070-a594-68776e52566d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n### 2. Create `demoservers.yml` and `demoservers.json`\nTo get started, create two new **empty files**, and append the initial code as shown below: \n\n1. `demoservers.yml` file\n```\nDescription: >\n    Carlos Rivas / Udacity\nParameters:\n    EnvironmentName:\n        Description: An environment name that will be prefixed to resource names\n        Type: String\nResources:\n```\n<br>\n2. `demoservers.json` file\n```json\n[\n\t{\n\t\t\"ParameterKey\": \"EnvironmentName\",\n\t\t\"ParameterValue\": \"UdacityProject\"\n\t}\n]\n```\n\n\n\n\n>We will gradually append code to the files above, after referring/copying from the `servers.yml` and `server-parameters.json`.  \n\nLet's start with writing code for security groups. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847265,
+          "key": "044641b5-1843-445b-9dd4-2e9156d8ae71",
+          "title": "Understanding Security Groups",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "044641b5-1843-445b-9dd4-2e9156d8ae71",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847266,
+              "key": "dc793684-d3d5-4a28-a244-e89170b319e3",
+              "title": "ND9991 C2 L04 A03.1  Understanding Security Groups",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QQ0jyDt_B0E",
+                "china_cdn_id": "QQ0jyDt_B0E.mp4"
+              }
+            },
+            {
+              "id": 1132743,
+              "key": "c9f242cb-9b80-44c9-8db1-0fc6a7295e9b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n>Recall that a security group defines the firewall rules, such as the protocol to open to network traffic and the set of valid IP addresses. \n\nWe will create two Security groups: \n1. `WebServerSecGroup ` for the webserver\n2. `LBSecGroup` for a load balancer",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859320,
+              "key": "0c44a6a1-e0be-4606-824f-7e5389eb18e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Security Group Syntax\n* The following is the syntax required to create a **SecurityGroup**:\n```yml\nType: AWS::EC2::SecurityGroup\nProperties: \n  GroupDescription: String\n  GroupName: String\n  SecurityGroupEgress: \n    - Egress\n  SecurityGroupIngress: \n    - Ingress\n  Tags: \n    - Tag\n  VpcId: String\n```\n* In the SecurityGroup syntax shown above:\n * The only required (mandatory) property is `GroupDescription`.  It is a String value up to 255 characters without quotes.\n<br/><br/>\n * The `GroupName` is similar to `GroupDescription`, but it's not a required property. \n<br/><br/>\n * The `SecurityGroupEgress` and `SecurityGroupIngress` property rules are the most critical as it defines where the traffic will go. The former defines outbound traffic, whereas the latter defines the inbound traffic.\n<br/><br/>\n * The `VpcId` denotes the VPC ID in which you are creating the Security Group. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859448,
+              "key": "b9156c0d-2307-4aab-bcb7-c6c1ddbb0bef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Ingress rules and egress rules\n\n* Ingress rules are for inbound traffic, and egress rules are for outbound traffic. \n\n\n* Ingress rules restrict or allow traffic trying to reach our resources on specific ports. \n\n\n* Egress rules restrict or allow traffic originating from our server -- typically we are ok allowing all outbound traffic without restrictions as this doesn’t pose a risk for a security breach.\n\n### Example\n* The security group below with ingress/egress rules allowing traffic on port 80 using TCP protocol from/to any location:\n```yaml\nInstanceSecurityGroup:\n  Type: AWS::EC2::SecurityGroup\n  Properties:\n      GroupDescription: Allow http to client host\n      VpcId:\n         Ref: myVPC\n      SecurityGroupIngress:\n      - IpProtocol: tcp\n        FromPort: 80\n        ToPort: 80\n        CidrIp: 0.0.0.0/0\n      SecurityGroupEgress:\n      - IpProtocol: tcp\n        FromPort: 80\n        ToPort: 80\n        CidrIp: 0.0.0.0/0\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 849756,
+              "key": "aac60c10-6a86-4e55-836e-c12cf663b624",
+              "title": "Access port",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "aac60c10-6a86-4e55-836e-c12cf663b624",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "By default Security Groups provide the following to the resources to which they are assigned:",
+                "answers": [
+                  {
+                    "id": "a1558134200320",
+                    "text": "Inbound: HTTP, Outbound: All",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558134294639",
+                    "text": "Inbound: Deny All, Outbound: Allow all",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558134299781",
+                    "text": "Inbound: Deny All, Outbound: Deny all",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 849757,
+              "key": "28434e89-ad73-42d8-af8b-16783221c87e",
+              "title": "Parameters",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "28434e89-ad73-42d8-af8b-16783221c87e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Security group entries in CloudFormation can have: <br> (Select all that apply)",
+                "answers": [
+                  {
+                    "id": "a1558134475254",
+                    "text": "IP address or range",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558134527388",
+                    "text": "Start port",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558134527932",
+                    "text": "End port",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558134550239",
+                    "text": "Rule type  (ingress or egress) ",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 859321,
+              "key": "a1386fb1-2ae3-4983-a2b8-f7d04d46bee9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n#### AWS Documentation \n* Refer to the description of each property of a security group - [AWS::EC2::SecurityGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847267,
+          "key": "252dd564-9318-4b9e-8a0b-b6c61fdeea86",
+          "title": "Security Groups",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "252dd564-9318-4b9e-8a0b-b6c61fdeea86",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847268,
+              "key": "cf6c604d-d603-45dc-b974-144c39451953",
+              "title": "ND9991 C2 L04 A03.2  Security Groups",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NyasAk9s3ys",
+                "china_cdn_id": "NyasAk9s3ys.mp4"
+              }
+            },
+            {
+              "id": 848867,
+              "key": "cc4de591-5942-4c31-885b-fc7d30d38bc8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Security Groups\nSecurity groups are specific to individual resources (EC2 servers, databases) and not to subnets. There are few points that you must remember:\n\n1. **Traffic is blocked by default**<br>\nIn the cloud, traffic is completely blocked, so you have to explicitly open ports to allow traffic in and out.  This is a general networking concept.\n\n\n2. **Limit inbound traffic for security**<br>\nFor ingress rules, we want to limit inbound traffic, for security, to a single port or just a handful of ports required by the application we are running. For example, if it’s a public web server, it will require `port 80` open to the world ( World = `0.0.0.0/0` ). Should you need the SSH port open, restrict this port only to your specific IP address.\n\n\n3. **For outbound traffic, give full access**<br>\nFor egress rules, we want to give the resource full access to the internet, so we give egress access to all ports, from `0` all the way to `65535`.\n\n---\n### AWS::EC2::SecurityGroup\nCreate the following two Security groups, as shown in the video above. You can refer to the [AWS::EC2::SecurityGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html) documentation if needed. \n\n1. `WebServerSecGroup` for the webserver. The following code must fall under the Resources section in the template.\n```\n  WebServerSecGroup:\n    Type: AWS::EC2::SecurityGroup\n    Properties:\n      GroupDescription: Allow http to our hosts and SSH from local only\n      VpcId:\n        Fn::ImportValue:\n          !Sub \"${EnvironmentName}-VPCID\"\n      SecurityGroupIngress:\n      - IpProtocol: tcp\n        FromPort: 8080\n        ToPort: 8080\n        CidrIp: 0.0.0.0/0\n      - IpProtocol: tcp\n        FromPort: 22\n        ToPort: 22\n        CidrIp: 0.0.0.0/0\n      SecurityGroupEgress:\n      - IpProtocol: tcp\n        FromPort: 0\n        ToPort: 65535\n        CidrIp: 0.0.0.0/0\n```\nAfter creation, the firewall rules for this will look like:\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132746,
+              "key": "a4c1bfd9-6c77-4300-b0f9-f39ce097d817",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601c1bb0_screenshot-2021-02-04-at-8.31.22-pm/screenshot-2021-02-04-at-8.31.22-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a4c1bfd9-6c77-4300-b0f9-f39ce097d817",
+              "caption": "Inbound rules for the `WebServerSecGroup`",
+              "alt": "",
+              "width": 600,
+              "height": 464,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132747,
+              "key": "f641cbf3-85ce-4677-b674-5f94d474b47b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601c1bc1_screenshot-2021-02-04-at-8.31.28-pm/screenshot-2021-02-04-at-8.31.28-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f641cbf3-85ce-4677-b674-5f94d474b47b",
+              "caption": "Outbound rules for the `WebServerSecGroup`",
+              "alt": "",
+              "width": 600,
+              "height": 398,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132744,
+              "key": "ba31d40f-ce19-413e-b76f-c9d3a71655fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n2. `LBSecGroup` for a load balancer. After creation, the firewall rules for this will look like:\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132748,
+              "key": "b4d22469-6a22-4df2-931c-a5f8b2cb83db",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601c1c52_screenshot-2021-02-04-at-8.31.04-pm/screenshot-2021-02-04-at-8.31.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b4d22469-6a22-4df2-931c-a5f8b2cb83db",
+              "caption": "Inbound rules for the `LBSecGroup`",
+              "alt": "",
+              "width": 600,
+              "height": 418,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132749,
+              "key": "114a8e10-28aa-414a-94bc-fc499f88be73",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601c1c8c_screenshot-2021-02-04-at-8.31.11-pm/screenshot-2021-02-04-at-8.31.11-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/114a8e10-28aa-414a-94bc-fc499f88be73",
+              "caption": "Outbound rules for the `LBSecGroup`",
+              "alt": "",
+              "width": 600,
+              "height": 398,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132750,
+              "key": "baf2494e-7efb-4216-9556-a089a0cd35b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> Did you notice the intrinsic function `!Sub` or `!Ref` in the code above? Let's learn about it.   \n>\n\n\n## Intrinsic functions in the CloudFormation template\n\n**AWS provides a few predefined functions that you can use in your template. These functions can assign values to properties that are not available until runtime.** Notice that there a few function-calls in the template (servers.yml) provided to you, such as:\n\n1. <a href=\"https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html\" target=\"_blank\">Fn::Sub</a>: This function substitutes value to a property at runtime. You can use this function as `!Sub \"$Value\"`.  For example, the `!Sub \"${EnvironmentName}-VPCID\"` will substitute the value of **EnvironmentName** parameter during runtime.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132752,
+              "key": "8dc4530f-24a0-4b13-846c-721d9a1e8cc1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601c2273_screenshot-2021-02-04-at-10.04.44-pm/screenshot-2021-02-04-at-10.04.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8dc4530f-24a0-4b13-846c-721d9a1e8cc1",
+              "caption": "Exporting a value of a VPC (`\"${EnvironmentName}-VPCID\"`) from the **ourdemoinfra** stack. Note that the value of **EnvironmentName** parameter will be substituted at runtime.",
+              "alt": "",
+              "width": 500,
+              "height": 684,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132864,
+              "key": "d2cddf3c-4cbf-4ca1-a359-552f19d915f4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. [Fn::GetAZs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getavailabilityzones.html): This function returns an array that lists Availability Zones for a specified region in alphabetical order. For example, we learned the following code in the last lesson where we are fetching the list of AZs.\n```\n    PublicSubnet1: \n        Type: AWS::EC2::Subnet\n        Properties:\n            VpcId: !Ref VPC\n            AvailabilityZone: !Select [ 0, !GetAZs '' ]\n            CidrBlock: !Ref PublicSubnet1CIDR\n            MapPublicIpOnLaunch: true\n            Tags: \n                - Key: Name \n                  Value: !Sub ${EnvironmentName} Public Subnet (AZ1)\n```\nThe example above shows the usage of three more intrinsic functions,  `!Sub`, `!Select` and `!Ref `.\n\n\n3. [Fn::Select](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-select.html): This function returns a single object from a list of objects by index.\n\n\n4. [Ref](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html): It returns the value of the specified parameter or resource. You can specify a parameter or a resource by its logical name. \n\n\n5. [Fn::ImportValue](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html): This function returns the value of an output exported by another stack. \n\n * For example, in the last lesson, we created **ourdemoinfra** stack having a VPC and declared its output value.\n >Recall that the **Outputs** section in a template declares output values that you can import into another stack. \n  * In this lesson, while creating another stack **demoserverstack**, we can refer to the VPC created earlier as:\n ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132753,
+              "key": "e4c6f122-86af-485c-b454-7955b432a9bf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601c2285_screenshot-2021-02-04-at-10.05.36-pm/screenshot-2021-02-04-at-10.05.36-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e4c6f122-86af-485c-b454-7955b432a9bf",
+              "caption": "Importing the value of the VPC in the **demoserverstack**. Here also, the value of **EnvironmentName** parameter will be substituted at runtime.",
+              "alt": "",
+              "width": 500,
+              "height": 930,
+              "instructor_notes": null
+            },
+            {
+              "id": 859449,
+              "key": "721b53f6-6c9f-4bd1-a1b1-4f40e62a8931",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [Security Group Rules Reference](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847269,
+          "key": "0579dd66-596e-4eec-b537-fc5e75781562",
+          "title": "Creating Autoscaling Group",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0579dd66-596e-4eec-b537-fc5e75781562",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847270,
+              "key": "dd9f2ddc-8af9-41e7-a6d3-ac8f84e319ca",
+              "title": "ND9991 C2 L04 A03.3  Creating Autoscaling Group",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "B4kf8zv5q1I",
+                "china_cdn_id": "B4kf8zv5q1I.mp4"
+              }
+            },
+            {
+              "id": 1132875,
+              "key": "056fcf5a-cd61-41e9-9bc1-4dd584362ffc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is an Autoscaling group?\nAn Autoscaling group is a logical group of EC2 instances that share a similar configuration.\n\nThis AWS service monitors the  EC2 instances and automatically adjusts the running count by adding/removing EC2 instances, ensuring that a desired number of servers (EC2 instances) are always up and running. \n* **Scaling policy**<br>\nA Scaling Policy is the criteria used to decide when to Add or Remove Servers from your Auto Scaling Group. Running the servers 24 hours a day costs money. So, It's best to have criteria/conditions, called Scaling policy, that will turn those servers off when they are not needed and then turn them back on demand.\n\n For example, you could create a CloudWatch Alarm with a custom metric that counts the number of web visitors in the last 2 hours; if the number is less than 100, perhaps a single server is enough. This will be a trigger to Scale Down if there is more than one server running at the time.\n\n A Scaling policy spins up/shuts down EC2 instances automatically based on certain conditions that we specify, such as:\n\n * If an instance goes down due to any reason, such as bad health\n * If an instance achieves a CPU utilization upper threshold, say 90%\n * If the CPU utilization comes down below a certain lower threshold, then one of the instances will be shut down automatically\n<br><br>\n\n* **Launch configuration**<br>\nNote that all the EC2 instances running as a part of an autoscaling group share a common configuration, such as AMI, instance-type, security-group, key pair, etc. All these configurations are saved in a separate resource: Launch configuration. Think of a Launch Configuration as a template or a recipe. You are instructing the Auto Scaling service HOW to run your web application. \n\n For example: An application requires 2GB RAM , 4 vCPUs, 10GB of Disk Space, Java runtime version 8 or NodeJS 10.0. All this on top of a standard distribution of Linux or Windows. \n\n >**Note**: AWS provides another option, [Launch templates](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html), as an alternative to the [Launch configuration](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html). They both serve a similar purpose. \n\n Writing YAML code for either of them is similar in syntax. We will learn to code Launch configuration in this lesson, though. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132901,
+              "key": "f4a00c41-a96f-464d-9b41-e183ef89bc16",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## AWS::AutoScaling::AutoScalingGroup\nAn autoscaling group in our example exercise will require the following:\n\n* VPCZoneIdentifier\n* LaunchConfigurationName\n* Min and Max count of instances\n* TargetGroupARNs\n\nSee the code below having a reference to a Launch configuration,  `WebAppLaunchConfig`,  that we will create next:\n```\nWebAppGroup:\n    Type: AWS::AutoScaling::AutoScalingGroup\n    Properties:\n      VPCZoneIdentifier:\n      - Fn::ImportValue: \n          !Sub \"${EnvironmentName}-PRIV-NETS\"\n      LaunchConfigurationName:\n        Ref: WebAppLaunchConfig\n      MinSize: '3'\n      MaxSize: '5'\n      TargetGroupARNs:\n      - Ref: WebAppTargetGroup\n      HealthCheckGracePeriod: 60\n      HealthCheckType: ELB\n```\nIn the code above:\n* The `VPCZoneIdentifier` is a list of subnet IDs for a virtual private cloud (VPC) where instances in the Auto Scaling group can be created. We are using the private subnets.\n\n\n* The `LaunchConfigurationName` represents the name of the launch configuration to use to launch instances. We will create a launch configuration in the next demo. \n\n\n\n* The `MinSize` & `MaxSize` lets us know the range of machines we will be running, which also alerts us to the min/max costs we can be expecting from these machines.\n\n\n\n* **A target group is a group of registered instances, to whom the traffic will be routed.** The ARN (Amazon Resource Names) serves as a unique ID for any resource. The `TargetGroupARNs` property refers to the ARNs of the load balancer target group that we will create in the upcoming demos. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 849758,
+              "key": "9c7498a2-f00b-43dd-8487-1d5c2c9b119f",
+              "title": "autoscaling group",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9c7498a2-f00b-43dd-8487-1d5c2c9b119f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of these are elements of an autoscaling group? (Pick two below.)",
+                "answers": [
+                  {
+                    "id": "a1558134724145",
+                    "text": "Scaling Policy",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558134772883",
+                    "text": "Launch Configuration",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558134778756",
+                    "text": "Security Policy",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558134787427",
+                    "text": "Load Balancer",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1132904,
+              "key": "7806c43d-99dc-4385-8499-58d2c92dfb96",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [AWS::AutoScaling::AutoScalingGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html)\n* The <a href=\"https://aws.amazon.com/autoscaling/faqs/\" target=\"_blank\">AWS Frequently Asked Questions</a> (FAQs) is a great resource to master the finer details of scaling servers",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847271,
+          "key": "e1eeae46-9f10-4f0d-a5af-26be3a4148c2",
+          "title": "Launch Configuration ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e1eeae46-9f10-4f0d-a5af-26be3a4148c2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847272,
+              "key": "2c43c8bd-677e-449f-88b6-4839284befb0",
+              "title": "ND9991 C2 L04 A04.1  Launch Configuration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QGM_Sf3YuiU",
+                "china_cdn_id": "QGM_Sf3YuiU.mp4"
+              }
+            },
+            {
+              "id": 1132887,
+              "key": "7e609d0e-f93b-41ca-a5cf-f786b7df36db",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is a Launch configuration? \nIt is a saved-resource that stores the configuration details of an EC2 instance, such as the AMI, instance-type, security-group, key pair, etc. The Autoscaling group uses a launch configuration to launch EC2 instances.\n\nLet's see how you can code a launch configuration.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859452,
+              "key": "8f032252-5f74-4908-b08d-dcc707bb0aac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS::AutoScaling::LaunchConfiguration\nThis is an updated **WebAppLaunchConfig** so that you don’t need external dependencies, such as Docker in the UserData script. \n```\nResources:\n  WebAppLaunchConfig:\n    Type: AWS::AutoScaling::LaunchConfiguration\n    Properties:\n      UserData:\n        Fn::Base64: !Sub |\n          #!/bin/bash\n          apt-get update -y\n          apt-get install apache2 -y\n          systemctl start apache2.service\n          cd /var/www/html\n          echo \"Udacity Demo Web Server Up and Running!\" > index.html\n      ImageId: ami-0ac73f33a1888c64a\n      KeyName: VocareumKey2\n      SecurityGroups:\n      - Ref: WebServerSecGroup\n      InstanceType: t3.small\n      BlockDeviceMappings:\n      - DeviceName: \"/dev/sdk\"\n        Ebs:\n          VolumeSize: '10'\n```\n\nIn the example above, we have done the following:\n1. Set a `UserData` script that will **run on the new instance automatically after launch**. See the next paragraph for more details. \n\n\n2. Used the `ami-0ac73f33a1888c64a` as AMI in the **us-west-2** (Oregon) region. If you wish to run the whole exercise in another region, say **us-east-1** (N Virginia), then you will have to change the AMI ID to `ami-00ddb0e5626798373`. \n\n AMI IDs are specific to the region and keep changing with updates in the image. The AMI ID used in the example above is for a **Ubuntu Server 18.04 LTS (HVM), SSD Volume Type** system. You can search the AMI ID of all Ubuntu-based images [here](https://cloud-images.ubuntu.com/locator/).\n\n\n3. Assumed that the RSA login key name is `VocareumKey2`. **Please create a key-pair with the name `VocareumKey2` (or any name) in the AWS web console (under EC2 services) before using it in the code above.**\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132909,
+              "key": "3bd6086b-d306-42e5-ab5f-94b269d57474",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601d80af_screenshot-2021-02-05-at-10.59.34-pm/screenshot-2021-02-05-at-10.59.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3bd6086b-d306-42e5-ab5f-94b269d57474",
+              "caption": "Create a key-pair in the web-console before using it the YAML template",
+              "alt": "",
+              "width": 700,
+              "height": 762,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132908,
+              "key": "15090415-2633-4b6d-8ac7-7e9da1deab2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n4. Referenced the previously defined `WebServerSecGroup` for our `SecurityGroup`\n\n\n5. Set our `InstanceType` to `t3.small` .  You can also use `t3.medium`, as shown in the video demo above. To see all available instance types, [click here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes).\n\n\n6. Specified 10gbs for our `VolumeSize`.  \n\n\n**Note**: In a Launch configuration, the only required properties are `ImageId` and `Instance Type`. The remaining ones are optional.\n\n\n\n\n<br/>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132876,
+              "key": "0d96af49-5977-4aaf-99af-36fdf6214ee5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## UserData script\nA UserData script is a series of commands that run automatically at the time of instantiating your EC2 instance. The purpose of a UserData script is to properly configure the EC2 instance before running your application. \n\n\n* **Script to use in your exercise**<br>\nBy default, the EC2 instance will not have the Apache Tomcat server installed and running. Use the following UserData script to do so. Note that this script is meant to run only on **Ubuntu Linux** systems.\n```\n        #!/bin/bash\n        apt-get update -y\n        apt-get install apache2 -y\n        systemctl start apache2.service\n        cd /var/www/html\n        echo \"Udacity Demo Web Server Up and Running!\" > index.html\n```\nIt will first install the Apache Tomcat server, starting the server, and then create an `index.html` page at the default location, `/var/www/html`. \n\n\n* **Script shown in the demo is different**<br>\nThe instructor uses a slightly different UserData script in the demo video above that uses external dependencies, such as installing a Docker and then installing the Apache Tomcat in a Docker container. \n```\n\t\t #!/bin/bash\n \t\t# Install docker\n\t\t apt-get update\n\t\t apt-get install -y apt-transport-https ca-certificates curl software-properties-common\n\t\t curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -\n\t\t add-apt-repository \\\n\t\t \"deb [arch=amd64] https://download.docker.com/linux/ubuntu \\\n\t\t $(lsb_release -cs) \\\n\t\t stable\"\n\t\t apt-get update\n\t\t apt-get install -y docker-ce\n\t\t usermod -aG docker ubuntu\n\t\t docker run -p 8080:8080 tomcat:8.0\n```\n**You are not required to use the script above in the current exercise; however, you can use it while launching a new EC2 instance to verify if it works.** \n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132885,
+              "key": "a82742a1-db12-492e-96f4-75d3c345d1dd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601d639d_screenshot-2021-02-05-at-8.54.44-pm/screenshot-2021-02-05-at-8.54.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a82742a1-db12-492e-96f4-75d3c345d1dd",
+              "caption": "Helping you recall how we can write the User data script while launching an EC2 instance in the web console. ",
+              "alt": "",
+              "width": 700,
+              "height": 1056,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132881,
+              "key": "4afc1886-a32e-42dc-b697-aa50cb907f2c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* **What else you can do with a UserData script?**<br>\nIn addition to the example shown above, you can also do things such as:\n * Fetch credentials\n * Set Environment Variables ( ENV=PROD, for example )\n * Download and Install libraries\n * Get your source files or binaries from a storage location, such as S3\n\n\n*  **When should you use the UserData script?**<br>\nIf you want to run your application in a plain out-of-the-box Linux or Window server, you'll use the UserData script to do all the necessary configurations. **You don't need it if you are using an AMI  that already has everything installed.**\n\n\n\n\n*  **How to verify and troubleshoot a UserData script?**<br>\nThe best way to create and verify a UserData script is to run each command manually and verify everything works as expected. If you run yours and it fails, you should login to the server and check the logs that can be found here:\n```\n/var/log/cloud-init-output.log\n``` \nFor Windows:\n```\nC:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Log\\UserdataExecution.log\n```\n\n\n* **What is the difference between UserData on Windows and Linux?**<br>\nOn Windows, you have the option of PowerShell:\n```\n<powershell>\n$file = $env:SystemRoot + \"\\Temp\\\" + (Get-Date).ToString(\"MM-dd-yy-hh-mm\")\nNew-Item $file -ItemType file\n</powershell>\n```\n\n Or more traditional Batch scripts:\n```\n<script>\necho Current date and time >> %SystemRoot%\\Temp\\test.log\necho %DATE% %TIME% >> %SystemRoot%\\Temp\\test.log\n</script>\n```\n\n<hr>\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132884,
+              "key": "f1f808d6-fa8b-4204-a4cc-943c5ac7b3f7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## [Optional] Additional lnformation \nPlease note the UserData script above is meant to run only on Ubuntu Linux. Had it been a CentOS-based **Amazon Linux 2 AMI (HVM), SSD Volume Type**, then you may have to use the following UserData script to install and start the Apache Tomcat server with PHP:\n```\n#!/bin/bash\nsudo yum update -y\nsudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2\nsudo yum install -y httpd mariadb-server\nsudo systemctl start httpd\nsudo systemctl enable httpd\nsudo chkconfig httpd on\n```\nAlso, in this case, you will have to use different AMI-ID as:\n* **us-east-1 N Virginia** - `ami-047a51fa27710816e` \n\n* **us-west-2 Oregon ** - `ami-0e999cbd62129e3b1` \n\n\n\n<hr>\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859451,
+              "key": "b0280e34-48d6-403c-870d-ff09ac10d227",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n---\n* [AWS::AutoScaling::LaunchConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-launchconfig.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847274,
+          "key": "ac321381-0e49-43a0-a262-af6b896a220e",
+          "title": "Debugging Launch Configuration",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ac321381-0e49-43a0-a262-af6b896a220e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847275,
+              "key": "30dc3c3f-e031-4b3b-9ed2-bb9276c0b540",
+              "title": "ND9991 C2 L04 A05.1  No Title",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "c_6_6Rb0308",
+                "china_cdn_id": "c_6_6Rb0308.mp4"
+              }
+            },
+            {
+              "id": 971386,
+              "key": "f86be7c4-a108-42ee-8406-e66c55de5ea4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### WebAppGroup\n* An Auto Scaling Group is in charge of providing servers for your application based on an Alarm/Criteria, such as number of concurrent users, CPU Usage or HTTP Requests\n\n\n* Since The Auto Scaling Group is not specific to your application, you need to provide a Launch Configuration  which says which machine image to use and how much memory and disk space your application will need, among other things.\n\n\n* You can specify a  Minimum and Maximum count of servers to use for Auto Scaling -- This is a great feature of cloud that can save you lots of money in unused infrastructure and it’s a key example of the elasticity of the cloud.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 847614,
+              "key": "a73d106d-23d3-46a9-8c72-af30269b77b3",
+              "title": "Immutable infrastructure",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a73d106d-23d3-46a9-8c72-af30269b77b3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Should a server in your auto-scaling group fail, you would...",
+                "answers": [
+                  {
+                    "id": "a1557529574001",
+                    "text": "Try to log in to it and figure out what's going on",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1557529637430",
+                    "text": "Remove the server from the ASG and try to understand what happened",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1557529657514",
+                    "text": "Destroy the server and let the auto-scaling group create a new, fresh server",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1132894,
+          "key": "bb6008aa-1667-4488-acd4-90fa1ae5cb8a",
+          "title": "Launch Templates",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bb6008aa-1667-4488-acd4-90fa1ae5cb8a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1132895,
+              "key": "01d9ffc9-8437-4864-a173-20f90d7bf2aa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create a Launch Template from Launch Configuration\n\nPreviously, we learned that an autoscaling group in our example exercise requires the following:\n\n* VPCZoneIdentifier\n* **LaunchConfigurationName**\n* Min and Max count of instances\n* TargetGroupARNs\n\nBut, **you can also use a **<a href=\"https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html\" target=\"_blank\">**Launch Template**</a>** instead of a **<a href=\"https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html\" target=\"_blank\">**Launch Configuration**</a>**.** Let's understand how to code an AWS::EC2::LaunchTemplate from AWS::EC2::LaunchConfiguration. \n\n1. Notice that a <a href=\"https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-launchconfig.html\" target=\"_blank\">AWS::AutoScaling::LaunchConfiguration</a> comprises the following two section:\n```\nWebAppLaunchConfig:\n     Type: AWS::AutoScaling::LaunchConfiguration\n     Properties:\n```\n\n\n2. On the other hand, a <a href=\"https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html\" target=\"_blank\">AWS::EC2::LaunchTemplate</a> has the following sections:\n```bash\nWebAppLaunchTemplate:\n      Type: AWS::EC2::LaunchTemplate\n      Properties: \n          LaunchTemplateName: \n          LaunchTemplateData:\n```\nIn other words, a LaunchTemplate comprises of two main components: LaunchTemplateName and **LaunchTemplateData**. The LaunchTemplateName is optional, and LaunchTemplateData will have the detailed configuration. \n\n\n\n3. The content of the <a href=\"https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html\" target=\"_blank\">LaunchTemplateData</a> can have various fields and values. However, in our example, the content of the **LaunchConfiguration → Properties** is *similar* to the **LaunchTemplate → LaunchTemplateData** section. The analogous LaunchTemplate will be:\n```\n  myWebAppLaunchTemplate:\n    Type: AWS::EC2::LaunchTemplate\n    Properties: \n      LaunchTemplateData:\n        UserData:\n          Fn::Base64: !Sub |\n            #!/bin/bash\n            apt-get update -y\n            apt-get install apache2 -y\n            systemctl start apache2.service\n            cd /var/www/html\n            echo \"Udacity Demo Web Server Up and Running!\" > index.html\n        ImageId: ami-005bdb005fb00e791\n        KeyName: VocareumKey2\n        SecurityGroupIds:\n          - sg-020ac9d8f54335c66\n        InstanceType: t3.small\n        BlockDeviceMappings:\n        - DeviceName: \"/dev/sdk\"\n          Ebs:\n            VolumeSize: '10'\n```\nIn the Launch template above, notice the following important points:\n * It is almost similar to a Launch configuration.<br><br>\n * It must be defined prior to defining the AutoScalingGroup. <br><br>\n * We already had a user key-pair with the name `VocareumKey2` in our account. You can use the one you have. <br><br>\n * In the `SecurityGroupIds` field, we have used a hard-coded value of the web server SecurityGroup we created earlier. It is because, in a nondefault VPC, AWS doesn't allow us to use the `SecurityGroups` field. Instead, we must use security group IDs. Therefore, replace the `sg-020ac9d8f54335c66` with the one applicable to you. See snapshots below for more context:\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133355,
+              "key": "6579069f-86ca-4392-b2a4-c3fa27a7ac00",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6020e927_screenshot-2021-02-08-at-1.00.46-pm/screenshot-2021-02-08-at-1.00.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6579069f-86ca-4392-b2a4-c3fa27a7ac00",
+              "caption": "Use either SecurityGroupIds or SecurityGroups field in a LaunchTemplateData. Source [AWS::EC2::LaunchTemplate LaunchTemplateData](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html#cfn-ec2-launchtemplate-launchtemplatedata-securitygroups)",
+              "alt": "",
+              "width": 700,
+              "height": 326,
+              "instructor_notes": null
+            },
+            {
+              "id": 1133358,
+              "key": "34058c05-554d-4c73-beba-7ffd2595495c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6020ed18_screenshot-2021-02-08-at-1.19.09-pm/screenshot-2021-02-08-at-1.19.09-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/34058c05-554d-4c73-beba-7ffd2595495c",
+              "caption": "Get the Security groups ID to use it further in the LaunchTemplate",
+              "alt": "",
+              "width": 700,
+              "height": 576,
+              "instructor_notes": null
+            },
+            {
+              "id": 1133354,
+              "key": "b1376a5a-8a87-469e-b2cc-8ba52c29f2d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n4. Lastly, change the autoscaling group to use the new LaunchTemplate as:\n```\n  WebAppGroup:\n    Type: AWS::AutoScaling::AutoScalingGroup\n    Properties:\n      VPCZoneIdentifier:\n      - Fn::ImportValue: \n          !Sub \"${EnvironmentName}-PRIV-NETS\"\n      LaunchTemplate:\n        LaunchTemplateId: !Ref myWebAppLaunchTemplate\n        Version: !Ref myLaunchTemplateVersionNumber\n      MinSize: '3'\n      MaxSize: '5'\n      TargetGroupARNs:\n      - Ref: WebAppTargetGroup\n```\n>In the `LaunchTemplate` field above, both the `LaunchTemplateId` and `Version` are mandatory to the specified. Therefore, you may have to create a new parameter `myLaunchTemplateVersionNumber` as shown in the snapshots below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133357,
+              "key": "cb934156-14d2-45a3-8505-50a118b53a4b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6020eca4_screenshot-2021-02-08-at-1.11.17-pm/screenshot-2021-02-08-at-1.11.17-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cb934156-14d2-45a3-8505-50a118b53a4b",
+              "caption": "A LaunchTemplate analogous to the LaunchConfiguration we created earlier.",
+              "alt": "",
+              "width": 700,
+              "height": 1602,
+              "instructor_notes": null
+            },
+            {
+              "id": 1133359,
+              "key": "d56fe170-2f6e-4eb0-b10d-377314c5dc9b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/6020ee83_screenshot-2021-02-08-at-1.24.18-pm/screenshot-2021-02-08-at-1.24.18-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d56fe170-2f6e-4eb0-b10d-377314c5dc9b",
+              "caption": "Defining a new parameter",
+              "alt": "",
+              "width": 700,
+              "height": 322,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 847276,
+          "key": "87e6d3d1-2b20-4eda-96be-5a97dfed227a",
+          "title": "Adding Target Groups and Listeners",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "87e6d3d1-2b20-4eda-96be-5a97dfed227a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847277,
+              "key": "6f39632a-9861-4cbf-8200-f25e4a39e96d",
+              "title": "ND9991 C2 L04 A05.2  No Title",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ygtn4MsZjwA",
+                "china_cdn_id": "Ygtn4MsZjwA.mp4"
+              }
+            },
+            {
+              "id": 1133365,
+              "key": "62d44f92-524c-4903-b9c2-0472dfcf479c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is a Load Balancer?\nWe learned earlier that a [load-balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html) automatically distributes incoming application traffic across multiple servers (EC2 instances). These servers need not essentially be present in a single subnet. They (servers) can span across numerous subnets in a given VPC. In our example, these servers are residing in the private subnets. \n\n>In general, an application load balancer routes the traffic to one of the target groups based on the application URL path (API endpoints). But, in our case, we have just one target group having all instances serving the same root (`/`) API endpoint.\n\nA load balancer is not exactly a part of Auto Scaling. Still, it helps answer the question: *\"If I am running a web application in 20 different servers, how do I set up a single point of entry that guarantees an even workload distribution across all 20 servers?\"* The answer is a load balancer.\n\nA load balancer allows you to reduce your Autoscaling down to 1 server at night when very few people are using your web application, and then Scale up to 10 or more servers during the day, when hundreds or thousands may be using it. The user doesn't experience any difference in availing of the services due to auto-scaling.\n\n### What is a Listener and Listener Rule?\nA load balancer requires a listener. A [listener](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html) is a process that checks for connection requests using the protocol and port that you specify in your code. In comparison, a **listener rule** determines how the load balancer routes request to the registered targets. For example, a listener for an application load balancer will route the particular request to a specific target group based on some conditions we specify, such as URL path. \n\n\n### What is a Target Group?\nA [target group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) is a logical group of EC2 instances spanning across numerous subnets in a given VPC. You must explicitly register an EC2 instance with a target group, after which it will be called a target. In our example, the autoscaling group manages all EC2 instances in the target group, meaning it will automatically add/remove the instances to/from the target group.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133364,
+              "key": "692e764e-cd6c-4ca6-8cd8-4c600460e38d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/60210a2b_aws-loadbalancer-and-target-group/aws-loadbalancer-and-target-group.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/692e764e-cd6c-4ca6-8cd8-4c600460e38d",
+              "caption": "Relationship between a Load balancer, Listener, Listener Rule, Target group, and an Autoscaling group. We will code them all. ",
+              "alt": "",
+              "width": 600,
+              "height": 220,
+              "instructor_notes": null
+            },
+            {
+              "id": 971387,
+              "key": "0986c491-2f5e-492a-81f9-abce2efb7661",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Relationship between Target Groups and Auto Scaling groups.\n\n* A load balancer is a device that simply forwards traffic, evenly across a group of servers, known as a Target Group. \n* The problem is, we can’t specifically name those servers, because if they are part of an Auto Scaling group, this means that they can come and go as demand for your application increases or decreases.\n\nThe way around this is, using the `TargetGroupARNs` property of the Auto Scaling group, we can automatically associate any new servers and remove discarded servers from the Target group automatically by simply including the Resource Name (ARN) of our Load Balancer’s target group in this property of our Auto Scaling Group. This way, the Load Balancer will always know where to send the traffic.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133367,
+              "key": "978799d3-9777-437c-9082-7a9f889570f2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602111df_screenshot-2021-02-08-at-2.03.51-pm/screenshot-2021-02-08-at-2.03.51-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/978799d3-9777-437c-9082-7a9f889570f2",
+              "caption": "ARN of our Load Balancer’s target group in the **TargetGroupARNs** property of our Auto Scaling Group. ",
+              "alt": "",
+              "width": 600,
+              "height": 626,
+              "instructor_notes": null
+            },
+            {
+              "id": 859476,
+              "key": "74943b76-fa15-4aa1-96f6-76f0b9bde151",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS::ElasticLoadBalancingV2::TargetGroup\n*Health Checks* are the requests your *Application Load Balancer* sends to its registered targets. These periodic requests test the status of these targets. You can see us defining our *Health Check* properties in the code below:\n\n```\n  WebAppTargetGroup:\n    Type: AWS::ElasticLoadBalancingV2::TargetGroup\n    Properties:\n      HealthCheckIntervalSeconds: 10\n      HealthCheckPath: /\n      HealthCheckProtocol: HTTP\n      HealthCheckTimeoutSeconds: 8\n      HealthyThresholdCount: 2\n      Port: 8080\n      Protocol: HTTP\n      UnhealthyThresholdCount: 5\n      VpcId: \n        Fn::ImportValue:\n          Fn::Sub: \"${EnvironmentName}-VPCID\"\n```\n**In the above example we specify the following:**\n* The port where our targets receive traffic - ` Port: 80` <br><br>\n* The protocol the load balancer uses when performing health checks on targets - `HealthCheckProtocol: HTTP`<br><br>\n* The time it takes to determine a non-responsive target is unhealthy - `HealthCheckIntervalSeconds: 10`<br><br>\n* The number of healthy/unhealthy checks required to change the health status - ` HealthyThresholdCount: 2` ` UnhealthyThresholdCount: 5`<br><br>\n* The healthy threshold represents the number of consecutive health check *successes* required before considering an unhealthy target healthy. An unhealthy threshold shows the number of consecutive health check *failures* required before considering a target unhealthy.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133366,
+              "key": "c0a9c5a0-e821-4fcd-bb16-44c8b7533f65",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS::ElasticLoadBalancingV2::LoadBalancer\nOur load balancer will be present in the public subnet, and use the dedicated security group we created earler. The code will look like:\n```\n  WebAppLB:\n    Type: AWS::ElasticLoadBalancingV2::LoadBalancer\n    Properties:\n      Subnets:\n      - Fn::ImportValue: !Sub \"${EnvironmentName}-PUB1-SN\"\n      - Fn::ImportValue: !Sub \"${EnvironmentName}-PUB2-SN\"\n      SecurityGroups:\n      - Ref: LBSecGroup\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133361,
+              "key": "96d7464c-a200-4963-ba04-177d6c3a6ef3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS::ElasticLoadBalancingV2::Listener\nThe listener to attach to our load balancer will be:\n```\n  Listener:\n    Type: AWS::ElasticLoadBalancingV2::Listener\n    Properties:\n      DefaultActions:\n      - Type: forward\n        TargetGroupArn:\n          Ref: WebAppTargetGroup\n      LoadBalancerArn:\n        Ref: WebAppLB\n      Port: '80'\n      Protocol: HTTP\n```\n**It will check for the load balancer's connection requests on the HTTP protocol port 80 directed towards the target group.**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133362,
+              "key": "b43888af-517f-4381-841a-fd1bdbba1571",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS::ElasticLoadBalancingV2::ListenerRule\nA Listener requires a Listener Rule. The Listener Rule below will determine how (condition) the load balancer's connection requests are routed to the registered targets.\n```\n  ALBListenerRule:\n      Type: AWS::ElasticLoadBalancingV2::ListenerRule\n      Properties:\n        Actions:\n        - Type: forward\n          TargetGroupArn: !Ref 'WebAppTargetGroup'\n        Conditions:\n        - Field: path-pattern\n          Values: [/]\n        ListenerArn: !Ref 'Listener'\n        Priority: 1\n```\nThe above listener rule will route all connection requests with the default root (`/`) endpoint to the specified target group. \n>Had our application served two different API endpoints, we could have created a dedicated target group for each API endpoint. The listener rule will correspondingly route the first endpoint's connection requests to one target group and the requests for other endpoints to the second target group. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859477,
+              "key": "bfaa3c9d-050d-4931-a098-5be489bd9590",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Resources\n* [ElasticLoadBalancingV2 resource type reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_ElasticLoadBalancingV2.html)\n* [AWS::ElasticLoadBalancingV2::TargetGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html)\n* [Health Checks for Your TargetGroups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html)\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847278,
+          "key": "84a2a3b2-f765-4dda-8b5e-180c0001f18e",
+          "title": "Updating the Stack with the Load Balancer",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "84a2a3b2-f765-4dda-8b5e-180c0001f18e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847279,
+              "key": "5aec8b71-39f8-41c0-91e6-e3ac6bbdd5d7",
+              "title": "ND9991 C2 L04 A05.3  No Title",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "01spAEvMoVw",
+                "china_cdn_id": "01spAEvMoVw.mp4"
+              }
+            },
+            {
+              "id": 1133368,
+              "key": "88593a3c-d7bd-4dad-8c02-d0490dae70d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This new stack is cross-referencing the resources that you have already created in the previous lesson.  The final command that the instructor has run to create a new stack **ourdemoservers** is (run either one):\n```\naws cloudformation create-stack --stack-name ourdemoservers --template-body file://servers.yml  --parameters file://server-parameters.json  --region=us-west-2\n```\n```\n./create.sh ourdemoservers servers.yml server-parameters.json\n```\nIn the command above, you can:\n* Use stack name of your choice, other than **ourdemoservers**. \n\n\n* Use your own YAML file instead of **servers.yml** file\n\n\n* Use your own parameters file instead of **server-parameters.json**\n\n\n* Create the stack in a different region, say **us-east-1 N Virginia** instead of **us-west-2 Oregon**. Note that you will have to change the AMI ID and the user key-pair name if you switch to a region other than us-west-2 Oregon. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847280,
+          "key": "ea112f6a-a83a-4944-b732-032642f015be",
+          "title": "Debugging Our Security Group",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ea112f6a-a83a-4944-b732-032642f015be",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847281,
+              "key": "c6604634-5462-453d-8cd9-7bc4444d4f6a",
+              "title": "ND9991 C2 L04 A06.1 No Title",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kN8Ezf_seEI",
+                "china_cdn_id": "kN8Ezf_seEI.mp4"
+              }
+            },
+            {
+              "id": 1133402,
+              "key": "161f970c-6ba2-4133-a292-c8c778eaac78",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The correction mentioned above can be understood with the following firewall rules:\n1. **Load Balancer Group**\n\n<center>\n\n|In/Out Rule|Type|Protocol|Port|Source|\n|---|:---:|---|---|---|\n|Inbound|HTTP|TCP|80|`0.0.0.0/0`|\n|Outbound|HTTP|TCP|80|`0.0.0.0/0`|\n||Custom TCP|TCP|8080|`0.0.0.0/0`|\n</center>\n2. **Webserver Security Group**\n\n<center>\n\n|In/Out Rule|Type|Protocol|Port|Source|\n|---|:---:|---|---|---|\n|Inbound|Custom TCP|TCP|8080|`0.0.0.0/0`|\n||SSH|TCP|22|`0.0.0.0/0`|\n|Outbound|All TCP|TCP|0-65535|`0.0.0.0/0`|\n</center>\nYet, if you cannot connect to your private servers, there is an alternative way using a Jumpbox, as discussed on the next page.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133391,
+              "key": "bf22e588-f221-4d01-9d27-48fa9e0c7664",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### External Resources\n* **Troubleshoot**: [How do I attach backend instances with private IP addresses to my internet-facing load balancer in ELB?](https://aws.amazon.com/premiumsupport/knowledge-center/public-load-balancer-private-ec2/)\n\n\n* You can perform a similar exercise using the AWS web console to [access the private server using application load balancer](https://youtu.be/9Ut0cEWV9NQ).\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1132867,
+          "key": "62b874da-7a59-462c-a80a-a961d229b115",
+          "title": "Connect to private servers via a Jumpbox",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "62b874da-7a59-462c-a80a-a961d229b115",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1132868,
+              "key": "8200e574-b93e-4d60-9fd2-eb66790dd159",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Demo - Accessing Servers in a Private Subnet via Jump Box",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132869,
+              "key": "caf30685-e1eb-4c4a-884d-d68c01770612",
+              "title": "Lesson 4 - Concept 4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YexsqEexUnI",
+                "china_cdn_id": "YexsqEexUnI.mp4"
+              }
+            },
+            {
+              "id": 1132870,
+              "key": "cb7164e8-ef26-44f2-877f-1a3db12a1dd4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is a Jumpbox?\n\nThese are the EC2 instances in the public subnet with required access to the private subnets' servers. Generally, we would not want our private servers to be discoverable by anyone outside the VPC. However, we want to access those private servers from the Internet. It is made possible by using a Jumpbox (also called as Bastion Host). It is important to note that the security group attached to the private servers must allow the IP address of the public Jumpbox to connect to it.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132871,
+              "key": "f3210de1-637f-42ef-9664-a33c3f757cae",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/601d2b35_screenshot-2021-02-05-at-4.49.16-pm/screenshot-2021-02-05-at-4.49.16-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f3210de1-637f-42ef-9664-a33c3f757cae",
+              "caption": "Role of a Jumpbox",
+              "alt": "",
+              "width": 700,
+              "height": 1704,
+              "instructor_notes": null
+            },
+            {
+              "id": 1132872,
+              "key": "f83c3ade-6be6-43d4-9046-49e9809c14b8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Create a Jumpbox\nIn the demo video above, the instructor shows creating a new key-pair, **jumpbox-key.pem**.  However, you can use an existing key-pair if available. Remember that key-pairs are specific to an AWS region. Also, the VPC you have to choose while launching the Jumpbox must be the same one in which you have been creating Cloudformation stacks. \n\n\nHere is the summary of the Jumpbox configuration: \n\n<center>\n\n|Stage|Configuration|Value|\n|:---:|---|---|\n|1.|Amazon Machine Image (AMI)|`Amazon Linux 2 AMI (HVM), SSD Volume Type`<br> Note: You have chosen a **Free Tier Eligible** AMI|\n|2.|Instance Type|`t2.micro`|\n|3.|Configure Instance Details||\n||a. Number of Instances|1|\n||b. Network|Select the VPC that you created in the previous step|\n||c. Subnet|Public|\n||d. Auto-assign Public IP|Enable|\n|4.|Storage |Default |\n|5.|Tags |Name:Jumpbox|\n|6.|Security Group |Create a **new** security group. <br>Add rule to allow SSH type connection on default port 22 from your IP as source|\n</center>\nOnce the Jumpbox is up and running, you can connect to it using SSH protocol. \n\n### Connect to the Jumpbox\nSince the Jumpbox is a Linux machine, therefore you will have to use SSH protocol to connect to it. Remember that the flow of connection will be \n>**Your local computer (Mac/Windows/Linux) &#8594; Jumpbox(CentOS Linux) &#8594; Private servers (Ubuntu Linux).**\n\nIf you are running a Windows computer locally, then you would have to convert the **jumpbox-key.pem** to **jumpbox-key.ppk** using the PuTTy utility and use the same PuTTy to connect to the Jumpbox.  \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1132873,
+              "key": "210cc11f-6940-418b-a9e1-b4e0c92f145c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Test the Jumpbox \nRecall that the instructor has the following two different login keys: 1). **jumpbox-key.pem** for the Jumpbox and  2). **private-server-devops-key.pem** for the private servers. Let's test if you are able to connect to the private servers via a Jumpbox:\n\n1. Copy the public IP address of the Jumpbox, say **3.17.80.159**\n\n\n2. Copy and paste the **private servers' login key file** from your local computer to the Jumpbox. Run the following command from your local terminal (replace the file names and the IP address as applicable to you):\n```bash\nscp -i jumpbox-key.pem private-server-devops-key.pem ec2-user@3.17.80.159:/home/ec2-user/private-server-devops-key.pem\n```\n\n\n\n3. SSH login to the Jumpbox:\n```bash\nssh ec2-user@3.17.80.159 -i jumpbox-key.pem\n```\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133394,
+              "key": "c7b64934-ee88-4019-a30e-0f90a2cdaf7b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Copy the private IP address of any private server, say **10.0.2.74**. \n\n\n\n5. Once you are logged into the Jumpbox, confirm if you have the **private-server-devops-key.pem** key available in the home directory, and then change the access-mode of the key file. Later, try to **SSH login to the private server**:\n```bash\nls\n# you must see the private-server-devops-key.pem file\nchmod 400 private-server-devops-key.pem\nssh -i \"private-server-devops-key.pem\" ubuntu@10.0.2.74\n```\n>Recall that the default user name for a Linux system is `ec2-user` and for an Ubuntu system is `ubuntu`. \n\n\n6. Lastly, check the status of the running web server in the private instance, as shown in the snapshot below:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1133397,
+              "key": "12fa70f9-6579-429d-b9db-40af206e10c8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602168ce_screenshot-2021-02-08-at-10.04.57-pm/screenshot-2021-02-08-at-10.04.57-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/12fa70f9-6579-429d-b9db-40af206e10c8",
+              "caption": "Checking if the Apache server is running in the Ubuntu machine, using `service apache2 status` command. ",
+              "alt": "",
+              "width": 600,
+              "height": 836,
+              "instructor_notes": null
+            },
+            {
+              "id": 1133396,
+              "key": "2a1dc2bb-2a8c-49c7-8813-bfa666ba4881",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Similarly, you can SSH login to the second private server from the Jumpbox. You have to replace the private IP address of the second server in the commands above. \n\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847282,
+          "key": "b4670306-702f-4689-a93f-96a28d2f0a07",
+          "title": "Final Review",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b4670306-702f-4689-a93f-96a28d2f0a07",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847283,
+              "key": "cc679432-4dba-4afb-9300-44066c9706d3",
+              "title": "ND9991 C2 L04 A06.2 No Title",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tUWv03PAzfc",
+                "china_cdn_id": "tUWv03PAzfc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 844591,
+          "key": "db834f14-d7e6-46e4-8125-daed5fc0d055",
+          "title": "Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db834f14-d7e6-46e4-8125-daed5fc0d055",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847138,
+              "key": "a4f01165-4aff-48d9-b676-7cb68f5673dd",
+              "title": "ND9991 C2 L04 A07 Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-tY6lyLsmfE",
+                "china_cdn_id": "-tY6lyLsmfE.mp4"
+              }
+            },
+            {
+              "id": 971595,
+              "key": "45414786-18d8-4ec5-a916-a485e1a7b1f7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\nAs this lesson comes to an end, now you should be able to...\n* Specify firewall rules using security groups \n* Create autoscaling groups for the elasticity of servers\n* Code the launch configuration for the web application\n* Add the target groups and listeners\n* Update the stack with the load balancer\n* Learn to debug the security group",
+              "instructor_notes": ""
+            },
+            {
+              "id": 847510,
+              "key": "ada1de5e-10a7-4903-8443-a0dbe97bf08e",
+              "title": "Research the EC2 Parameter Store",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ada1de5e-10a7-4903-8443-a0dbe97bf08e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "In the EC2 console, find the Parameter Store and add a few parameters",
+                "Use the CLI Tool to retrieve your parameters",
+                "Try updating your parameters from the command line and also creating new ones"
+              ],
+              "positive_feedback": "Keeping sensitive data away from your servers and only providing it to your software when needed is yet another layer of security that will give your cloud customers peace of mind.",
+              "video_feedback": null,
+              "description": "One way to avoid hard-coding ever-changing values into your server infrastructure is by using parameters.\nExamples of parameters that frequently change include database connection details, and sensitive data, such as passwords and secret API access keys.\n\nUsing the AWS CLI Tool,  store and retrieve parameters from the EC2 Parameter Store. \nPlay around with changing the value from the EC2 Console and not just the CLI Tool.\n\nIt’s critical that you practice this, as this is not only a best practice but also a common practice."
+            },
+            {
+              "id": 980650,
+              "key": "b0ab0c57-dcd6-40b1-9586-7506515a42b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### Exercise Solution\nWe strongly recommend you to solve the exercise on your own. If stuck, you may see the lesson-wise solution available in this [GitHub repository](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1-Exercises_Solution)\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1137404,
+          "key": "0331a9a5-865a-4636-8f46-877be171bb1b",
+          "title": "Challenge 3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0331a9a5-865a-4636-8f46-877be171bb1b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "challenge3.yml",
+                "uri": "https://video.udacity-data.com/topher/2021/February/602bdbbe_challenge3/challenge3.yml"
+              },
+              {
+                "name": "challenge3-parameters.json",
+                "uri": "https://video.udacity-data.com/topher/2021/February/602bdbd7_challenge3-parameters/challenge3-parameters.json"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 1137405,
+              "key": "cb0394cc-934e-441d-ae26-ae948400bca5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The ToDo in the current challenge is continuing to the *Challenge 2* that you must have completed in the previous lesson. \n\n## Prerequisites\n1. You will need the VPC ID and Subnet ID from the previously created stack in *Challenge 2*. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137407,
+              "key": "bdddb7f8-c673-449b-a918-d43492137f37",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602bcf86_screenshot-2021-02-16-at-7.18.54-pm/screenshot-2021-02-16-at-7.18.54-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bdddb7f8-c673-449b-a918-d43492137f37",
+              "caption": "Use the VPC created in the *Challenge 2*",
+              "alt": "",
+              "width": 500,
+              "height": 600,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137408,
+              "key": "aba24646-d5df-427b-a825-b318b094a491",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602bcfbb_screenshot-2021-02-16-at-7.21.11-pm/screenshot-2021-02-16-at-7.21.11-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/aba24646-d5df-427b-a825-b318b094a491",
+              "caption": "Use the private subnet to create a webserver",
+              "alt": "",
+              "width": 500,
+              "height": 596,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137410,
+              "key": "6be0192e-b84a-430e-8ac7-8cae639f1622",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Overview\nIn this exercise, you have been tasked with deploying a Linux server in a **private** subnet, using the infrastructure that you created in a previous exercise. In the future, this machine will be a web server that sits behind a load balancer, so it never needs to be public, as long as the Load Balancer can reach it. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137409,
+              "key": "b3e87f1c-0ae9-4af3-bfd7-31da8781aa8a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602bd078_screenshot-2021-02-16-at-7.31.23-pm/screenshot-2021-02-16-at-7.31.23-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b3e87f1c-0ae9-4af3-bfd7-31da8781aa8a",
+              "caption": "",
+              "alt": "",
+              "width": 700,
+              "height": 1376,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137411,
+              "key": "cfee5f44-aeb8-42aa-b334-de3721e4f193",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you look at the diagram it shows the EC2 Server connecting to AWS Systems Manager.\nThis service will allow you to connect to this server and verify it’s working properly. This is because you cannot SSH into a server over the internet if it doesn’t have a public IP address.\nActually, you could, if you set up a VPN inside your VPC, but that’s beyond the scope of this exercise.\n\n\nIn order to connect your instance to AWS Systems Manager, you will be using Amazon Linux 2 for your AMI, since it’s already installed and configured in there. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137413,
+              "key": "9ccede82-5b8a-4a6d-9107-631e744d98cf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## ToDo\nUse the infrastructure we created earlier to build and deploy the following:\n\n1. **EC2 Instance**: An Amazon Linux 2 EC2 server in the private subnet. Choose the right AMI ID as applicable to your region and  the`t3.micro` instance-type. \n\n\n2. **SecurityGroup**: A security group for the server, that allows inbound port 80 access, for future use.\n\n\n3. **IAM Role and InstanceProfile**: The IAM Role to allow EC2 Session Manager to access our server. An *InstanceProfile* will allow passing the IAM role to our server. \n\n\n4. You will provide input parameters to this script, for future expansion and flexibility.\n\n\n5. **Bonus/Optional**: Instead of hard-coding the VPC and Subnet ID, use the import-export feature to cross reference the resources created in *Challenge 2*. \n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137412,
+              "key": "f903d669-457a-4154-8c9d-6d1021b60630",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Helpful hints\n* Mind the order of the Resources that you want to create. To help you get started, we have provided the snapshot of the starter template, see below:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137415,
+              "key": "ebc61c4f-7165-419f-a3bb-68b2b5ef79c3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602bd907_screenshot-2021-02-16-at-8.05.40-pm/screenshot-2021-02-16-at-8.05.40-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ebc61c4f-7165-419f-a3bb-68b2b5ef79c3",
+              "caption": "Resources that you have to create in this exercise",
+              "alt": "",
+              "width": 500,
+              "height": 976,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137414,
+              "key": "90275a7f-0a7f-4327-a6ce-3d0b02979113",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Refer to the standard AWS Cloudformation [EC2 resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_EC2.html) and [IAM resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_IAM.html) documentation, as necessary. \n\n\n* If you can't connect after a couple of minutes, it means there's something wrong with your networking setup. It could be either the Subnet Routing or NAT Gateway, and we recommend troubleshooting this manually in the web console before continuing.\n\n\n* If you are running the script using the CLI and the cloudformation `create-stack` command, please remember to include the `--capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\" ` option (*see the [AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/deploy/index.html)*). This is because we are creating an IAM Role to provide permissions and we want to make the person executing `create-stack` aware of this fact.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137416,
+              "key": "52e01502-6c5f-4da8-8fb2-9c54d20d1c1f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solution\n<div id=\"spoiler_1\" style=\"display:none\">\n#### <font color=\"green\">Download the solution files, and run the command below:</font>\n\n```bash\naws cloudformation create-stack  --stack-name challenge3 --region us-east-1 --template-body file://challenge3.yml --parameters file://challenge3-parameters.json --capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\" \n```\nDon't forget to change the VPC ID, Subnet ID, and AMI ID as applicable to you.\n</div>\n<button type=\"button\" id=\"myButton1\" onclick=\"if(document.getElementById('spoiler_1') .style.display=='none') {document.getElementById('spoiler_1') .style.display=''}else{document.getElementById('spoiler_1') .style.display='none'}if (document.getElementById('myButton1').innerHTML=='Show Solution') {document.getElementById('myButton1').innerHTML='Hide Solution';}else{document.getElementById('myButton1').innerHTML = 'Show Solution';}\">Show Solution</button>",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,1419 @@
+{
+  "data": {
+    "lesson": {
+      "id": 844573,
+      "key": "7d63a04c-5f53-4091-b87c-0ed3071c71c2",
+      "title": "Getting Started with CloudFormation",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Set up the necessary tools to get started with AWS CloudFormation and deploy your first server.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/7d63a04c-5f53-4091-b87c-0ed3071c71c2/844573/1561071023808/Getting+Started+with+CloudFormation+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/7d63a04c-5f53-4091-b87c-0ed3071c71c2/844573/1561071018145/Getting+Started+with+CloudFormation+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 844574,
+          "key": "367e2a6e-bd3e-41ac-8e01-bbeda5fcd1ae",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "367e2a6e-bd3e-41ac-8e01-bbeda5fcd1ae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 859761,
+              "key": "8af81eaa-3b15-4d2c-9657-ad9b0f6de32e",
+              "title": "ND9991 C02 L01 A01.1 Intro And Dev Ops V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jXH8eciF6Zs",
+                "china_cdn_id": "jXH8eciF6Zs.mp4"
+              }
+            },
+            {
+              "id": 971570,
+              "key": "86395e79-ace7-4bb2-89e3-6271eb90ba0f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is (Cloud) Infrastructure?\nCloud services are broadly categorized as Software as a Service (SaaS), Platform as a Service (PaaS), or Infrastructure as a Service (IaaS). \nCloud is a collection of geographically distributed data centers that are logically grouped into regions and availability-zones. \n\nThe IaaS allows a user to provision Virtual Machines (VMs), set up networks (VPC), create subnets, and associate necessary security features. Further, VMs can be attached to storage volumes, different networks, or servers. All the resources mentioned above are referred to as **Infrastructure**. \n\n\nThe diagram below shows various cloud infrastructure resources that we will learn to provision on the AWS cloud using the AWS command line and CloudFormation tools. These are the primary resources that are required to build a web app architecture. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971571,
+              "key": "6db46f66-861b-45f0-bbc6-46922a990f0c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4fdf1e_aws-services/aws-services.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6db46f66-861b-45f0-bbc6-46922a990f0c",
+              "caption": "Configuring and managing various infrastructure resources on AWS cloud using CloudFormation",
+              "alt": "",
+              "width": 768,
+              "height": 490,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 847174,
+          "key": "83e103cf-3293-4d3a-856c-b9dde4991d76",
+          "title": "Course Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "83e103cf-3293-4d3a-856c-b9dde4991d76",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847175,
+              "key": "a519f136-ca16-414a-81f7-3649c50d769a",
+              "title": "ND9991 C02 L01 A02 Course Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iKYE3YToVN4",
+                "china_cdn_id": "iKYE3YToVN4.mp4"
+              }
+            },
+            {
+              "id": 848814,
+              "key": "a27e6ac3-8745-4100-8277-e4b6ad756e9d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Course Objectives\nIn this course, you will learn to provision cloud-infrastructure resources using (re-usable) scripts. We will use AWS as a cloud service provider. After completing the course, you will be able to:\n1. Make use of the Cloud Formation tool to provision and manage cloud infrastructure. __Lesson 1: Introduction to Cloud Formation__ presents the basics of this tool.  \n2. Create diagrams for web application architecture that represents how different resources can be placed in the cloud. __Lesson 2:  Infrastructure Diagrams__ will take the help of LucidChart to draw diagrams. \n3. Provision networking components such as VPN, subnets, route tables, and internet gateway as a part of your cloud infrastructure. __Lesson 3:  Networking Infrastructure__ describes all the networking components mentioned above.\n4. Deploy servers with the necessary level of security (firewall rules). __Lesson 4:  Servers and Security Groups__ demonstrate the placement of servers (VMs) in private subnets and managing them using a jump-box. \n5. Attach the storage volumes to your servers. __Lesson 5: Storage and Databases__ describes configuring the S3 service.  \n\n### Lesson Objectives\nAfter completing this lesson, you will be able to...\n* Describe Infrastructure as a Code (IaaC) as one of the best practices used in the DevOps model.\n* Configure basic settings to start using AWS services as an Identity and Access Management (IAM) user.\n* Explain the fundamentals of Cloud Formation.\n* Contrast the manual vs. automated (script-based) provisioning of Elastic Compute Cloud (EC2) instances in a Virtual Private Cloud (VPC).\n* Utilize the AWS command-line tool - CLI for necessary activities, such as configuring a VPC, or creating an IAM user. \n\n### Course Github Repository\nThe link to the Github repository is - https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1 that contains the following:\n1. Supporting material used in this course, inside `supporting_material` folder. It contains the files used in the demonstration videos in Lesson 1 to Lesson 5.\n1. Project starter code, inside `project starter` folder. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 859762,
+          "key": "1075c920-b539-4330-ab6f-adea87f16c05",
+          "title": "What is DevOps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1075c920-b539-4330-ab6f-adea87f16c05",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971356,
+              "key": "feec9e2e-eed5-4869-ad24-4a2305da4303",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is DevOps?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859763,
+              "key": "3054687b-eee4-421b-b8bc-6442ccfbcc7e",
+              "title": "ND9991 C02 L01 A01.5 What Is Cloud Computing",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mPw3zBGyQV0",
+                "china_cdn_id": "mPw3zBGyQV0.mp4"
+              }
+            },
+            {
+              "id": 971357,
+              "key": "aa497070-f856-4182-a513-2b415512b8ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "DevOps is the combination of industry best practices, and set of tools that improve an organization’s ability to:\n* Increase the speed of software delivery\n* Increases the speed of software evolution\n* Have better reliability of the software\n* Have scalability using automation,\n* Improved collaboration among teams. \n\n__In other words, these tools enable a company to showcase industry best practices in software development.__\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 859684,
+          "key": "f1f9fa6d-5b11-4215-86cd-74511de9c86e",
+          "title": "Why you need DevOps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f1f9fa6d-5b11-4215-86cd-74511de9c86e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 859687,
+              "key": "19f2f8ff-186b-467a-ae61-6d118651492a",
+              "title": "ND9991 C02 L01 A01.2 Intro And Dev Ops",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "E_LPxEzatDI",
+                "china_cdn_id": "E_LPxEzatDI.mp4"
+              }
+            },
+            {
+              "id": 859688,
+              "key": "118a9f51-39d1-4fe3-a014-fe8723563eea",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Issues that DevOps tries to solve:\n* Unpredictable deployments\n* Mismatched environments (development doesn’t match production)\n* Configuration Drift\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 859690,
+          "key": "bfe5f59b-a43c-4c69-98d9-b31fac8031c9",
+          "title": "What are the benefits of Cloud DevOps?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bfe5f59b-a43c-4c69-98d9-b31fac8031c9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 859702,
+              "key": "5dc61a3f-5b19-4ee8-ab39-b3e99bdfef9f",
+              "title": "ND9991 C02 L01 A01.3 Intro And Dev Ops",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7EW0A-qlzFw",
+                "china_cdn_id": "7EW0A-qlzFw.mp4"
+              }
+            },
+            {
+              "id": 859705,
+              "key": "3ad9ae6a-2407-4c81-96cd-e8df14272647",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### DevOps best practices and tools\nOne of the benefits of using DevOps is that it allows predictable deployments using automated scripts. In the DevOps model, development and operations teams are merged into a single team. These DevOps teams use a few tools and best practices that deploy and manage configuration changes to servers. [Stackexchange](https://softwareengineering.stackexchange.com/questions/130850/difference-between-devops-and-software-configuration-management) has a discussion post detailing the difference between DevOps tools vs. Software Configuration Tools. \n\nThe most important practices are:\n* Continuous Integration / Continuous Delivery (CI/CD) - new features are automatically deployed with all the required dependencies.\n* **Infrastructure as Code (IaaC)** - configuration and management of cloud infrastructure using re-usable scripts. \n\nOther prevalent practices are: \n* Microservices\n* Monitoring and Logging\n* Communication and Collaboration",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859691,
+              "key": "7803d081-c996-4872-ad2a-247093838511",
+              "title": "ND9991 C02 L01 A01.4 Intro And Dev Ops",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NtaNe7ioFzM",
+                "china_cdn_id": "NtaNe7ioFzM.mp4"
+              }
+            },
+            {
+              "id": 859692,
+              "key": "c8b1646a-c967-4e15-91e5-f765bbed4c11",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Glossary \n1. __Continuous Integration Continuous Deployment (CI/CD)__:  Tracks the development workflow from testing through production. Continuous integration is the process flow of testing any change made to your development flow, while continuous deployment tracks those changes through to staging and production systems. You may like to read this article by [Atlassian.com](https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment) that describes CI/CD in detail.\n\n\n2. __Infrastructure as code (IaC)__: Provision and manages the cloud-infrastructure by using scripts. These scripts can be written in YAML or JSON format. These scripts ensure that the same architecture can be re-built multiple numbers of times. These scripts are particularly useful in enterprise applications and different environments - dev, prod, or test. Read more [here](https://en.wikipedia.org/wiki/Infrastructure_as_code). ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847176,
+          "key": "fab1ca79-786c-4988-a8f6-cde21a635ede",
+          "title": "Set up Tools",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fab1ca79-786c-4988-a8f6-cde21a635ede",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847177,
+              "key": "c4b8ab7b-6d1d-4db0-b595-994edd17a7c2",
+              "title": "ND9991 C02 L01 A03 What Do I Need To Get Started-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tLLB6fA6f_A",
+                "china_cdn_id": "tLLB6fA6f_A.mp4"
+              }
+            },
+            {
+              "id": 848815,
+              "key": "31f33fb4-370f-425c-b74d-427a3e912c4c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### What is CloudFormation?\n[CloudFormation](https://youtu.be/Omppm_YUG2g) is an AWS tool for creating, managing, configuring, and deploying cloud resources. This tool is beneficial if you have to provision a set of cloud resources multiple times, at scale. You can do so by simply writing (YAML or JSON) scripts that you can easily edit and run numerous times. In the script, we mention each resource's necessary configuration that we want to provision and then use the AWS CLI tool and commands to execute the scripts. \n\n\n### Tools required for the current course\n1. **AWS CLI tool**: If you haven't installed and configured [AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) yet, we will learn to do that in the upcoming pages again. You can verify the installation using the following command in your terminal (macOS)/cmd (Windows). \n```\n# See the current version\naws --version\n```\n Recall that you will have to configure AWS CLI after the installation as:\n * Create an IAM User and copy the access key\n\n * Configure the credentials in CLI\n\n On the next page, you will see the demo showing the above two steps. \n\n\n\n\n2. **Terminal** (macOS/Linux) or **CMD** (Windows)\n\n\n3. **Git** - [Download and install the Git for your system](https://git-scm.com/downloads). Git is an open-source distributed Version Control System (VCS). Github is a repository hosting and version control service, where you can store, share, or download the repository content in collaboration with multiple contributors. Once downloaded, you can use Git as a command-line tool in your Terminal (macOS) or Git bash(Windows). \n\n\n4. **Code editor**: The instructor has used the VS code editor in his demonstrations. You are free to choose any code editor of your choice. However, you can [download and install VS code here](https://code.visualstudio.com/download). Once you have the editor installed, you can run the following commands in your Terminal (macOS)/Git bash (Windows):\n```bash\n# Clone the repository to your local system\ngit clone https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1.git\ncd nd9991-c2-Infrastructure-as-Code-v1\n# See the content in the current directory. You will see README.md, project_starter, and supporting_material directories. \nls\n# Get inside the supporting_material\ncd supporting_material\n# Open the VS code editor to display your content\ncode .\n```\n\n---\n\nIn addition to the tools above, \n* **Language proficiency**: It will be beneficial to have a *little* familiarity with the JSON and YAML programming language basics. Even if you are not acquainted, you can still learn on-the-go. \n\n\n* **AWS region used for this course**: Prefer to choose either **US West (Oregon)us-west-2** or **US East (N. Virginia) us-east-1**. This will guarantee the options are the same for all students.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859720,
+              "key": "68d7f25c-78f7-46ff-888f-39ff49b41ef4",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "68d7f25c-78f7-46ff-888f-39ff49b41ef4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Let's recap and identify which tools you need to set up?",
+                "answers": [
+                  {
+                    "id": "a1560469055410",
+                    "text": "Version Control",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1560469141911",
+                    "text": "Code Editor for YAML and JSON",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1560469337288",
+                    "text": "Amazon Web Services account",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1560469664977",
+                    "text": "GitHub",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 847178,
+          "key": "131c701c-624a-49f0-8021-1aa42429b2e9",
+          "title": "Creating Access Key ID for IAM User",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "131c701c-624a-49f0-8021-1aa42429b2e9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1131133,
+              "key": "1baa3126-0af0-4efa-9b9d-195fedb2b8d7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "After installing AWS CLI, recall that you must configure the following four items on your local machine before you can interact with any of the AWS services:\n\n1. **Access key** - It is a combination of *Access Key ID* and a *Secret Access Key*. You can generate an Access key from the AWS IAM service, and specify the level of permissions (authorization) with the help of *IAM Roles*. \n\n\n2. **Default AWS Region** - It specifies the AWS Region where you want to send your requests by default.\n\n\n3. **Default output format** - It specifies how the results are formatted. It can either be a json, yaml, text, or a table. \n\n\n4. **Profile** - A collection of settings is called a profile. The default profile name is `default`, however, you can create a new profile using the `aws configure --profile new_name` command. \n\n## Let’s create an IAM User and copy the access key",
+              "instructor_notes": ""
+            },
+            {
+              "id": 847179,
+              "key": "859656e9-1b24-4df4-904b-c6214f7d19b9",
+              "title": "ND9991 C02 L01 A04 Creating Access Key ID",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-3zKIoSiDRo",
+                "china_cdn_id": "-3zKIoSiDRo.mp4"
+              }
+            },
+            {
+              "id": 1131155,
+              "key": "2cb34031-b65a-4483-852a-c2b6c2b77eb0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": ">Note that each user can have up to 2 access keys at the same time.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848819,
+              "key": "e783c4a3-209b-436c-af78-37d5060ec5ad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Deciding Access Privileges within AWS\n\n#### AWS access type\n* **Programmatic Access**: In the AWS console, choose \"**programmatic access**.\"  This allows us to use code to interact with AWS, instead of relying on mouse clicking in the console web pages. Choosing this option will Enable the access key ID and secret access key for the AWS CLI.\n\n\n\n* **AWS Management Console access**: it is used only when you want the new user to be able to sign-in to the AWS web console using a password. This one is not the case in our course\n\n\n#### Permissions\n* **Administrator Access**: The permissions to a user are granted in form of **Policies**, which are JSON documents. The AWS web console provides a pre-created list of policies to choose from. For the current IAM user that you are creating, choose “**administrator access**.”  This is just for the initial setup of your account.  Afterward, you’ll want to limit access to only what you need.\n\n>Once a user is created, copy the access key for configuring the CLI. Do not save the access key in your code or into any public repositories. Keep them private to you.\n\n#### Development and Production user accounts\nIn practice, Development and DevOps members may have separate user accounts for the development environment as opposed to the production environment.  This makes it easier for developers by giving them wider privileges in the dev environment that would normally only be reserved for DevOps members in the production environment.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 849759,
+              "key": "41ad21e5-2da1-40fd-b43e-33b59218f0ad",
+              "title": "AWS Access Keys",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "41ad21e5-2da1-40fd-b43e-33b59218f0ad",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When creating a new API Access user, you will...\n(Select all that apply)",
+                "answers": [
+                  {
+                    "id": "a1558135204410",
+                    "text": "Specify the region - in our case, us-west-2",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558135236716",
+                    "text": "Create a programmatic access IAM User",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558135256705",
+                    "text": "Configure the AWS CLI Tool with the newly created keys for our user",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558135335319",
+                    "text": "Assign an appropriate IAM Policy to the user, depending on the required access",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 847180,
+          "key": "a4a1c5fa-0ed8-4be9-8ec0-c98fc324ed90",
+          "title": "Configuring AWS CLI",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a4a1c5fa-0ed8-4be9-8ec0-c98fc324ed90",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847181,
+              "key": "d63e9246-3852-4bb1-991b-19aa31df7998",
+              "title": "ND9991 C02 L01 A05 Configuring AWS CLI",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6hZrwxBiPaI",
+                "china_cdn_id": "6hZrwxBiPaI.mp4"
+              }
+            },
+            {
+              "id": 849760,
+              "key": "ff1b6c6d-ed32-4531-9497-34ec27bbd279",
+              "title": "Best Practices",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ff1b6c6d-ed32-4531-9497-34ec27bbd279",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Regarding your access keys it's always best to... ",
+                "answers": [
+                  {
+                    "id": "a1558135581687",
+                    "text": "Rotate them (change them ) frequently",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558135623990",
+                    "text": "Make them inactive if they won't be used for a while",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558135645128",
+                    "text": "Save them along with your code in your GitHub repository",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558135671856",
+                    "text": "Put them in your S3 bucket in a plain-text file",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 848822,
+              "key": "66f13821-f28c-4be9-8ff6-28b880422c56",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Configuring the AWS Command Line Interface (CLI)\nAssuming you have already installed the [AWS CLI tool](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and copied the access key for an administrator IAM user, follow the steps below:\n\n* Verify, if you already have a CLI v1 installed. If yes, prefer to [uninstall CLI v1](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html) and have CLI v2 installed, which is the latest one. You can verify the version using:\n```\naws --version\n```\n\n\n* To set up your AWS CLI, type either of the following commands in the terminal:\n```\naws configure\naws configure --profile default\n```\nUpon prompt:\n * Paste the copied access key (access key id and secret access key).\n * Enter the default region either as as `us-east-1` or `us-west-2`, even if you’re living closer to another available region.\n * Enter the output format either as `json` or leave it blank\n\n\n### Verifying your Setup\nVerify the successful configuration of the AWS CLI, by running any AWS command:\n```\n# List your S3 buckets. This will be blank if you have no S3 buckets\naws s3 ls\n# List the IAM users in your account\naws iam list-users\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131156,
+              "key": "e6dc3481-2655-464c-b21f-1415ddd4f56e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The output of `aws iam list-users` command will display the details of the recently created user:\n```\n{\n  \"Users\": [\n      {\n          \"Path\": \"/\",\n          \"UserName\": \"NameOfUser\",\n          \"UserId\": \"AIDAZMXYZ3LY2BNC5ZM5E\",\n          \"Arn\": \"arn:aws:iam::388752792305:user/Admin\",\n          \"CreateDate\": \"2021-01-28T13:44:15+00:00\"\n      }\n  ]\n}\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847182,
+          "key": "e078cd53-ff90-4cf6-bc32-58b6ceb5485d",
+          "title": "Adding Additional Keys",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e078cd53-ff90-4cf6-bc32-58b6ceb5485d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847183,
+              "key": "41a260e5-3a3d-44d5-aac9-94886542a7d9",
+              "title": "ND9991 C02 L01 A06 Adding Additional Keys",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "41Uca2Hoilo",
+                "china_cdn_id": "41Uca2Hoilo.mp4"
+              }
+            },
+            {
+              "id": 848823,
+              "key": "fff13c3e-96e5-47eb-b3bd-09b2be7fa38d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Additional Access Keys\n\nNote that each user can have up to 2 access keys at the same time.\n\n#### Why Making Keys Inactive is a Better Choice\n\nYou may make your access key temporarily inactive rather than destroying it and creating a new one.  This may be helpful if you want to stop an automated process that uses that key (for example, a CI/CD process).\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847202,
+          "key": "f4af8e77-a00e-49a9-b111-57ab3b4a9ed9",
+          "title": "Understanding CloudFormation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f4af8e77-a00e-49a9-b111-57ab3b4a9ed9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 859764,
+              "key": "78c3cff6-c081-4cfa-acce-1dc2e19f827f",
+              "title": "ND9991 C02 L01 A07 Understanding Cloud Formation V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Uom73nRVUY4",
+                "china_cdn_id": "Uom73nRVUY4.mp4"
+              }
+            },
+            {
+              "id": 848824,
+              "key": "8ba15cc1-d117-45c9-9d4b-ef2e8f33168b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### CloudFormation\n* CloudFormation is a declarative language, not an imperative language. \n* CloudFormation handles resource dependencies so that you don’t have to specify which resource to start up before another.  There are cases where you can specify that a resource depends on another resource, but ideally, you’ll let CloudFormation take care of dependencies.\n* VPC is the smallest unit of resource.\n\n### Glossary\n__Declarative languages__: These languages specify what you want, without requiring you to specify how to get it.  An example of a popular declarative language is SQL.<br>\n__Imperative languages__: These languages use statements to change the state of the program.\n<br>_Additional resources:_\n* Here is the [Wikipedia page](https://en.wikipedia.org/wiki/Imperative_programming) describing the differences between the two.\n*  Here is a [Stack Overflow](https://stackoverflow.com/questions/17826380/what-is-difference-between-functional-and-imperative-programming-languages) thread describing imperative languages.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847206,
+          "key": "ce400f79-d570-4337-bd46-0041d8b50ec9",
+          "title": "Getting Started With CloudFormation Script",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ce400f79-d570-4337-bd46-0041d8b50ec9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847207,
+              "key": "b1c84599-e40b-45d5-b30b-9e3826670eb6",
+              "title": "ND9991 C02 L01 A08 Getting Started With Cloud Formation Script",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "n8BFzWxu0dY",
+                "china_cdn_id": "n8BFzWxu0dY.mp4"
+              }
+            },
+            {
+              "id": 1131159,
+              "key": "1be1888e-5f37-4205-accc-f7ae299bbd38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Here is the link to the [Cloudformation VPC documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html) referred to in the video above. \n\n\n* Before you proceed further, get yourself familiarized with the terminologies, such as **Template**, and **Stack** from the [official documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html). ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 849762,
+              "key": "fee80dbe-faa4-4f38-abaf-786e7053bbb8",
+              "title": "Grouping Resources",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fee80dbe-faa4-4f38-abaf-786e7053bbb8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you have several types of IT experts across your company, how would you group the resources you are creating in CloudFormation in order to make it easy for everyone to have their expert input on them?",
+                "answers": [
+                  {
+                    "id": "a1558136594419",
+                    "text": "Type of resource",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1558136662895",
+                    "text": "Operating System",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1558136671982",
+                    "text": "Disk Space",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 848825,
+              "key": "cb453bc7-c2f0-436f-8fd3-98e8242551c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### YAML and JSON\n* YAML and JSON file formats are both supported in CloudFormation, but YAML is the industry preferred version that’s used for AWS and other cloud providers (Azure, Google Cloud Platform).\n\n* An important note about YAML files: the whitespace indentation matters!  We recommend that you use **four white spaces for each indentation**.\n\n### Glossary in CloudFormation scripts\n* **Name**: A name you want to give to the resource (does this have to be unique across all resource types?)<br>\n\n\n* **Type**: Specifies the actual hardware resource that you’re deploying.<br>\n\n\n* **Properties**: Specifies configuration options for your resource.  Think of these as all the drop-down menus and checkbox options that you would see in the AWS console if you were to request the resource manually.<br>\n\n\n* __Stack__: A stack is a group of resources.  These are the resources that you want to deploy, and that are specified in the YAML file.\n\n\n### Best practices\n* Create separate files to organize your code.  You can either create separate files for similar resources or create files for each developer who uses those resources.\n\n\n### How do I find the syntax for a particular resource?\n* You don't need to memorize the code that you need for each resource.  You can find sample code in the [AWS CloudFormation - Resource and property types](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) documentation for each AWS Service, such as **EC2**. Then, you can select the particular resource within the selected service, such as **AWS::EC2::VPC** in the list. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847214,
+          "key": "81809604-80bd-4e43-be89-f4ed04c21d28",
+          "title": "Create a VPC: Manually",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "81809604-80bd-4e43-be89-f4ed04c21d28",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847215,
+              "key": "0070187f-1f9a-4aed-98ac-3349c4e14179",
+              "title": "ND9991 C02 L01 A11 Creating A Resource Manually (VPC)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "d8s8VaELbAM",
+                "china_cdn_id": "d8s8VaELbAM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 847208,
+          "key": "3b30d187-e599-49da-a953-7a41f2ddbfd9",
+          "title": "Exercise - Create a VPC: Automated",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3b30d187-e599-49da-a953-7a41f2ddbfd9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "Testcfn",
+                "uri": "https://video.udacity-data.com/topher/2021/January/601429ce_testcfn/testcfn.yml"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 847209,
+              "key": "a0d6916f-5a5f-42ad-b587-11d5d03af78c",
+              "title": "ND9991 C02 L01 A09 Testing Cloud Formation V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "F9C0gtnSwk0",
+                "china_cdn_id": "F9C0gtnSwk0.mp4"
+              }
+            },
+            {
+              "id": 848826,
+              "key": "8c624c2b-66d9-4dc6-927e-9ebd3800d2ea",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create stack\n* **Create the template file**: Use the following code for your first test file: **testcfn.yml** (or choose any other name). Be careful about the indentation while you paste/write the same code in your editor. \n```\nAWSTemplateFormatVersion: 2010-09-09\nDescription: Carlos Rivas / Udacity - This template deploys a VPC\nResources:\n  UdacityVPC:\n    Type: 'AWS::EC2::VPC'\n    Properties:\n      CidrBlock: 10.0.0.0/16\n      EnableDnsHostnames: 'true'\n      Tags:\n      - Key: name\n        Value: myfirsttestvpc\n```\n>Do not copy-paste the template shown above because a YAML file is indentation-sensitive. Instead, write it on your own, or download it from the bottom of this page. Right-click on the file name and select the \"Save-as\" option to download it locally in the right format. \n\n<br>\n* **Run the aws command **: Run the following command in the terminal, from the same directory where you've placed your **testcfn.yml** file. We are assuming that your stack name is `myFirstTest` (or choose any other name).\n```\naws cloudformation create-stack  --stack-name myFirstTest --region us-east-1 --template-body file://testcfn.yml\n```\n<br>\n* **Alternate method - Shell Script**: You can write a **shell script** (.sh) file as:\n```sh\naws cloudformation create-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\" --region=us-west-2\n```\nwere `$1`, `$2`, and `$3` can be replaced with the actual values passed as command-line arguments. Note the `--parameters` and `--capabilities` options that we will learn in the upcoming lesson. \n\n<br>\n* **Alternate method - Batch Script** You can also try a **batch script** (.bat) with a similar syntax, except that the actual values can be written as `%1` instead as`$1`.\n\n<br>\n* Reference:  The `create-stack` command has many options that you can refer to in the [documentation here](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/create-stack.html). \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131170,
+              "key": "69fe0423-0e6b-41d5-9153-e8c80448cf15",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/601426cb_screenshot-2021-01-29-at-8.30.03-pm/screenshot-2021-01-29-at-8.30.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/69fe0423-0e6b-41d5-9153-e8c80448cf15",
+              "caption": "Output of the `create-stack` command",
+              "alt": "",
+              "width": 700,
+              "height": 296,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131167,
+              "key": "dacb51db-8038-4def-8152-a915c5ee60f5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Update stack\n* You may also want to use `update-stack` when you want to update an existing stack instead of destroying your stack and creating a new one. The syntax is similar to before:\n```sh\naws cloudformation update-stack  --stack-name myFirstTest --region us-east-1 --template-body file://testcfn.yml\n```\nThe command above will update the existing stack based on the YAML script you've written. \n\n\n* Reference:  [`update-stack` documentation](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/update-stack.html). \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131168,
+              "key": "0d327400-7b7c-488a-bb1e-8c9d37d440bf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Describe stack\n* Once a stack is created successfully, you can verify by either going to the web console or running the following command, which will display all the details the stack.\n```\naws cloudformation describe-stacks --stack-name myFirstTest\n```\n* You can describe the details of multiple stacks in one command. If no stack name is specified, then it will return the description for all the stacks created in your account.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131169,
+              "key": "9425d8d0-a3f1-40a8-ae20-2df2ab7b8eee",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/6014269c_screenshot-2021-01-29-at-8.45.26-pm/screenshot-2021-01-29-at-8.45.26-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9425d8d0-a3f1-40a8-ae20-2df2ab7b8eee",
+              "caption": "Output of the `describe-stacks` command. ",
+              "alt": "",
+              "width": 700,
+              "height": 926,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131171,
+              "key": "a14535f6-c10c-45b6-86fb-116c07da7dce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Reference: [describe-stacks documentation](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/describe-stacks.html)\n\n\n* [List of all possible `aws cloudformation` commands](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html#cli-aws-cloudformation)\n\n\n### More about Templates\n* AWS documentation on [template basics](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/gettingstarted.templatebasics.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 858970,
+          "key": "4471a730-5555-4c4e-94f3-e0b37cf219e8",
+          "title": "Exercise - EC2 Instance with an Admin Role",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4471a730-5555-4c4e-94f3-e0b37cf219e8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1131197,
+              "key": "7e627258-570d-4344-a9b6-8883d112000b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Previously, in this course, we have installed and configured the AWS CLI on our local computer to do our work. However, there’s an alternative.\n\n### Brief Introduction\nYou will create an EC2 Instance based on Amazon Linux AMI  that you can connect via SSH. While provisioning the instance, you will make sure to limit access to your IP address only, using Security Groups. The instance will already have the CLI installed by default. You just need to assign permissions to this instance. \n\n\nOnce the instance is running, create an IAM role with admin access to your account. Then, attach the role to your EC2. In this case, the CLI tool will pick up the credentials from the role and won’t need hard-coded credentials.\n\n\nLet's do this exercise to make your learning fun. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131201,
+              "key": "3720b56a-e91e-4bcb-b88e-8a0006316aba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Exercise objectives\nBy the end of this exercise, you will be able to:\n* Launch a secure EC2 instance\n* Create IAM role with admin privileges \n* Attach the IAM role to the EC2 instance created earlier\n* Connect to your EC2 instance via SSH\n* Use CLI tool in the EC2 instance \n\n\n### Step 1. Create a default VPC\nIt is possible that you already have a [default VPC](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html) created in your account. If not, go to the VPC dashboard and create a default VPC. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131200,
+              "key": "4fa472cb-a6cc-486a-ac74-e345a83b80b4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/60143674_screenshot-2021-01-29-at-9.52.46-pm/screenshot-2021-01-29-at-9.52.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4fa472cb-a6cc-486a-ac74-e345a83b80b4",
+              "caption": "Ensure to have a default VPC",
+              "alt": "",
+              "width": 500,
+              "height": 704,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131199,
+              "key": "3ab7ad91-eb39-4db0-8226-bad04105e1c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 2. Launch an EC2 instance\n* Navigate to the EC2 dashboard, and select the **Instances** services in the left-hand navigation pane.\n* Use the **Launch Instance** wizard to launch an instance with the following configuration, and leave the remaining values as the defaults:\n\n<center>\n\n|Stage|Configuration|Value|\n|:---:|---|---|\n|1.|Amazon Machine Image (AMI)|`Amazon Linux 2 AMI (HVM), SSD Volume Type`<br> Note: You have chosen a **Free Tier Eligible** AMI|\n|2.|Instance Type|`t2.micro`|\n|3.|Configure Instance Details||\n||a. Number of Instances|1|\n||b. Network|Default <br>Select the VPC that was created in the previous step|\n||c. Subnet|Default|\n|4.|Storage |Default|\n|5.|Tags |Optional|\n|6.|Security Group |New. <br>Limit access to your IP address only|\n</center>\n&nbsp; &nbsp; &nbsp; &nbsp; See a snapshot below:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131203,
+              "key": "21e5958c-8a17-40a4-8cb6-587559b5fa87",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/60143800_screenshot-2021-01-29-at-9.57.17-pm/screenshot-2021-01-29-at-9.57.17-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/21e5958c-8a17-40a4-8cb6-587559b5fa87",
+              "caption": "Allow only yourself to access the EC2 instance ",
+              "alt": "",
+              "width": 700,
+              "height": 904,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131202,
+              "key": "f16e9c8d-3236-481a-8ad8-a2736aa96667",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n  \n * Download a new SSH Key if you don't have one already. \n   >**Important:** This key-pair will allow you to log into your instance, using SSH, from your local machine. Save the key-pair carefully, because the same private key cannot be re-generated. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131204,
+              "key": "98e2b1ee-66de-40f0-959c-83332cdb9936",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/601438bd_screenshot-2021-01-29-at-9.58.57-pm/screenshot-2021-01-29-at-9.58.57-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/98e2b1ee-66de-40f0-959c-83332cdb9936",
+              "caption": "Download the private key",
+              "alt": "",
+              "width": 500,
+              "height": 1110,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131205,
+              "key": "73a70db7-b64a-4886-8eba-a7528138fb84",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n   * Verify that you should see the newly created EC2 instance in the **Instances** services. Check the instance state, it should say **Running**.\n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131206,
+              "key": "229df47f-e76e-4396-81c2-b8da4e321d0c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/60143931_screenshot-2021-01-29-at-10.04.39-pm/screenshot-2021-01-29-at-10.04.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/229df47f-e76e-4396-81c2-b8da4e321d0c",
+              "caption": "Running EC2 instance",
+              "alt": "",
+              "width": 700,
+              "height": 434,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131227,
+              "key": "af5edbb7-5868-4038-beaf-5271f92adb69",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 3. Create an IAM Role \n* Navigate to the IAM dashboard, and select the **Roles** services in the left-hand navigation pane.\n\n\n* Click on the **Create role** button, and provide the configuration details, as follows. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131243,
+              "key": "5a3fa8e7-71ef-4027-8715-f315ce2905e3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/6014438a_screenshot-2021-01-29-at-10.37.33-pm/screenshot-2021-01-29-at-10.37.33-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5a3fa8e7-71ef-4027-8715-f315ce2905e3",
+              "caption": "Launch the wizard to create a new IAM role",
+              "alt": "",
+              "width": 700,
+              "height": 668,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131248,
+              "key": "3cfd33f9-84ad-443e-b7b0-d578318de9fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Select **AWS service** as the type of trusted entity, and choose EC2 service to assume the new role. It will allow the EC2 instance, to whom we will attach this role later, to be able to call any AWS service on your behalf. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131244,
+              "key": "f3a6182f-556c-42a0-8511-0a951d4f1a0c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/601443b6_screenshot-2021-01-29-at-10.40.13-pm/screenshot-2021-01-29-at-10.40.13-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f3a6182f-556c-42a0-8511-0a951d4f1a0c",
+              "caption": "Select the AWS service as the trusted entity, and choose the EC2 service to assume the new role",
+              "alt": "",
+              "width": 700,
+              "height": 966,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131249,
+              "key": "70f60442-be75-4707-8905-c309ed4ebd3c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* In the **Filter policies** textbox, search for the \"admin\" policy. Select the **AdministratorAccess** policy to apply to the new role. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131245,
+              "key": "9bc4da67-ae29-4a04-bd44-c8a47d55e263",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/60144412_screenshot-2021-01-29-at-10.42.03-pm/screenshot-2021-01-29-at-10.42.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9bc4da67-ae29-4a04-bd44-c8a47d55e263",
+              "caption": "Attach the admin policy to the new role",
+              "alt": "",
+              "width": 700,
+              "height": 780,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131250,
+              "key": "f0f04236-45cb-4384-b25c-3f9f3de08238",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Provide a name to the new role, such as *VocareumSecureServerRole*, or choose any other name of your choice. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131246,
+              "key": "9d58af68-06f0-464f-9b91-96174452fbd2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/6014444b_screenshot-2021-01-29-at-10.43.43-pm/screenshot-2021-01-29-at-10.43.43-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9d58af68-06f0-464f-9b91-96174452fbd2",
+              "caption": "Provide a role name",
+              "alt": "",
+              "width": 700,
+              "height": 1086,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131247,
+              "key": "4d9575d2-80f7-443c-a050-8ae7ad559ed2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/60144471_screenshot-2021-01-29-at-10.48.00-pm/screenshot-2021-01-29-at-10.48.00-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4d9575d2-80f7-443c-a050-8ae7ad559ed2",
+              "caption": "A successfully created role",
+              "alt": "",
+              "width": 700,
+              "height": 842,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131251,
+              "key": "b334b328-2def-4c2c-87c3-9daea6de6a3f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 4. Attach the Role to the EC2 Instance\n\n* Go back to the EC2 dashboard, and view the list of the running instances. \n\n\n* Select the checkbox against the recently launched (earlier in this exercise) EC2 instance, and click the **Actions** button on the top of the list. It will open up drop-down options, select the **Security &#8594; Modify IAM role** option. See the snapshot below. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131253,
+              "key": "f4c0c4c4-9e8c-4889-a338-9642804911e3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/601448cf_screenshot-2021-01-29-at-11.06.22-pm/screenshot-2021-01-29-at-11.06.22-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f4c0c4c4-9e8c-4889-a338-9642804911e3",
+              "caption": "Modify IAM role",
+              "alt": "",
+              "width": 700,
+              "height": 796,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131252,
+              "key": "ce10af1f-59f4-4ffe-8f52-4d334f853166",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* On the next window, select and apply the newly created *VocareumSecureServerRole* to your instance. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131254,
+              "key": "122e0a17-9306-4d93-b318-bbb89f17b4d5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/601448f1_screenshot-2021-01-29-at-11.07.09-pm/screenshot-2021-01-29-at-11.07.09-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/122e0a17-9306-4d93-b318-bbb89f17b4d5",
+              "caption": "Apply the new role to your EC2 instance",
+              "alt": "",
+              "width": 700,
+              "height": 1108,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131255,
+              "key": "49b9222b-a1cc-498e-b33b-562e15a207b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Step 5. Connect to your EC2 instance\n* Connect to your EC2 instance using SSH.  Follow the instructions, as shown in the snapshot below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131256,
+              "key": "2c2ef5fe-ba39-4920-80d3-0b45b6a12d77",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/60144986_screenshot-2021-01-29-at-11.14.18-pm/screenshot-2021-01-29-at-11.14.18-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2c2ef5fe-ba39-4920-80d3-0b45b6a12d77",
+              "caption": "Connect to your EC2 instance using an SSH client",
+              "alt": "",
+              "width": 500,
+              "height": 1274,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131260,
+              "key": "24ec5b5f-1a79-45dc-9934-b4290c43dc23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* After connecting to your instance, verify the existing installation of AWS CLI, and run any AWS command, such as `aws iam list-users`. \n>**Note**: The AWS CLI tool will already be installed because we had chosen Amazon Linux AMI while provisioning. The CLI tool, in this case, will pick up the credentials from the role and won’t need hard-coded credentials",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1131262,
+              "key": "53433ce4-75fc-48f9-8091-030442246ec6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/January/60144b59_screenshot-2021-01-29-at-11.18.43-pm/screenshot-2021-01-29-at-11.18.43-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/53433ce4-75fc-48f9-8091-030442246ec6",
+              "caption": "Connect to your instance, and run any AWS command ",
+              "alt": "",
+              "width": 700,
+              "height": 896,
+              "instructor_notes": null
+            },
+            {
+              "id": 1131196,
+              "key": "69213269-7300-4261-9ae8-c41416eafef8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nThis is a convenient way to have a properly configured - and secure - server that you can use to test and not have to worry about credentials.\n\n\n\n ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 847232,
+          "key": "85d5512d-df06-4af5-8378-7b88b3842c63",
+          "title": "Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "85d5512d-df06-4af5-8378-7b88b3842c63",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 847233,
+              "key": "bd0d5abb-55b2-4b2d-9a43-08e323a57c3d",
+              "title": "ND9991 C02 L01 A15 Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TbuMGXSRK_w",
+                "china_cdn_id": "TbuMGXSRK_w.mp4"
+              }
+            },
+            {
+              "id": 971569,
+              "key": "e0f245fb-ff2f-41fc-aa8a-b810e7a8fe72",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\nAs this lesson comes to an end, now you must be able to...\n* Describe IaaC as one of the best practices used in the DevOps model.\n* Configure basic settings to start using AWS services as an IAM user.\n* Explain the fundamentals of Cloud Formation.\n* Contrast the manual vs. automated provisioning of EC2 instances in a VPC.\n* Utilize the AWS command-line tool - CLI for necessary activities, such as configuring a VPC, or creating an IAM user. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1137353,
+          "key": "f61ca16f-dafb-4e66-ad03-919eafd4e3a4",
+          "title": "Challenge 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f61ca16f-dafb-4e66-ad03-919eafd4e3a4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "challenge1.yml",
+                "uri": "https://video.udacity-data.com/topher/2021/February/602ba2da_challenge1/challenge1.yml"
+              },
+              {
+                "name": "challenge1-parameters.json",
+                "uri": "https://video.udacity-data.com/topher/2021/February/602ba301_challenge1-parameters/challenge1-parameters.json"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 1137354,
+              "key": "6fbb4087-5509-4c1e-9636-cd576b843a9e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you proceed through this course, we have added a few challenges to make your learning fun. Though the solutions are available for each challenge, we strongly encourage you to give your best shot while attempting them. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137355,
+              "key": "c655fde8-597e-49f3-b0d1-d58490d1bb89",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you have created your first VPC to deploy servers, go ahead and try the following:\n\n# Challenge 1 - Create an EC2 instance in a given VPC\n\n## Prerequisites\n1. You should have a VPC available in your account. Note the ID of a particular VPC, to use in your new template.\n>VPCs are specific to a region. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137363,
+              "key": "3e089884-a536-4901-a94d-c9ee411e30be",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602b9a63_screenshot-2021-02-16-at-3.36.55-pm/screenshot-2021-02-16-at-3.36.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3e089884-a536-4901-a94d-c9ee411e30be",
+              "caption": "Copy the VPC ID from the web console",
+              "alt": "",
+              "width": 500,
+              "height": 572,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137365,
+              "key": "9398b8c6-3200-42bc-9eea-70fcc1baf678",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. You should have a **public** subnet available in the VPC selected above. Note down the subnet-ID.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137364,
+              "key": "fbed462d-7bd3-4779-9653-6a0864fb7d67",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602b9a88_screenshot-2021-02-16-at-3.37.51-pm/screenshot-2021-02-16-at-3.37.51-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fbed462d-7bd3-4779-9653-6a0864fb7d67",
+              "caption": "Copy a public subnet's ID",
+              "alt": "",
+              "width": 500,
+              "height": 626,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137362,
+              "key": "c9c5a827-7845-4cac-a4f7-80236a81f1ce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## ToDo\nWrite a CloudFormation script that will create the following two Resources: AWS::EC2::SecurityGroup and AWS::EC2::Instance. See the snapshot below as a starter point.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137367,
+              "key": "e81be023-c276-4870-ad5a-a749f0650596",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602b9c2a_screenshot-2021-02-16-at-3.48.43-pm/screenshot-2021-02-16-at-3.48.43-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e81be023-c276-4870-ad5a-a749f0650596",
+              "caption": "Template with two resources: a SecurityGroup and an EC2 instance",
+              "alt": "",
+              "width": 500,
+              "height": 568,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137366,
+              "key": "1965b79e-25df-4695-8f71-b40916207111",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You will have to write the suitable properties for each resource. Inside one of the properties' fields, you will have to specify the VPC and Subnet ID. Details of the resource to create are:\n\n### 1. AWS::EC2::SecurityGroup\nCreates a Security Group which only allows inbound access on TCP port 80 and also allows unrestricted outbound access. Refer to the [documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html) to check which properties you want to use.\n\n\n### 2. AWS::EC2::Instance\nIn the same CloudFormation script: create a resource that deploys an EC2 Server and associate its network interface with the security group mentioned above. Use the following properties:\n* The instance type will be `t3.micro`.\n\n\n\n* You will need the AMI ID of the base **Amazon Linux 2 AMI (HVM), SSD Volume Type**, on top of which we’ll install our web server software.  To get this ID, go to the EC2 web console and click on **Launch Instance**. Since we’ll be launching a t3.micro instance, be sure to copy the AMI Id that says 64-bit x86 next to it. \n>Note that AMI IDs are specific to the region, and keep changing with patches and updates. \n\n See the snapshot below:\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137358,
+              "key": "3def2c70-a30a-4c6b-ad49-6cfdea891015",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602b86eb_screenshot-2021-02-16-at-2.18.30-pm/screenshot-2021-02-16-at-2.18.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3def2c70-a30a-4c6b-ad49-6cfdea891015",
+              "caption": "Choose the AMI ID",
+              "alt": "",
+              "width": 700,
+              "height": 904,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137368,
+              "key": "c443d574-6a36-41f0-b5a1-7976af9d8a70",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Your EC2 resource’s networking interface will need this property set to true: `AssociatePublicIpAddress`. It ensures that your server gets assigned a public IP address that you can reach over the internet to verify it’s working correctly.\n\n\n* **Script to run**: We want a script to run automatically at the time of provisioning of the EC2 instance. In the UserData section of this EC2 server, you will deploy the Apache Web Server software that we can then use to verify that the machine correctly deployed. Use the following UserData script for your EC2 CloudFormation Resource:\n```yaml\n       UserData:\n         Fn::Base64: !Sub |\n           #!/bin/bash\n           sudo yum update -y\n           sudo yum install -y httpd\n           sudo systemctl start httpd\n           sudo systemctl enable httpd\n```\nThe script above installs, and start the Apache Web Server in the new EC2 instance. Also, it will enable this service to start automatically after reboot. \n\n\n\n* **Bonus points:** Write your script to use parameters for the Subnet, VPC and AMI! This will make the script easier to maintain in the future and easier to move to other AWS Regions or accounts.\n\n\nRefer to the [documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html) again to check which properties you want to use.\n<br><br>\n\n### Expected Output\n* To verify, you will use the public IP address of the newly launched EC2 instance, and paste it in a new browser window. You should see the Apache web server test page. \n>**Note**: Use http ( not https! ), like so: http://public-ip-address ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1137370,
+              "key": "0e9968f2-6202-46c1-9954-8150c9261eba",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2021/February/602ba1a2_screenshot-2021-02-16-at-4.12.14-pm/screenshot-2021-02-16-at-4.12.14-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0e9968f2-6202-46c1-9954-8150c9261eba",
+              "caption": "Sample output at http://18.206.98.11/",
+              "alt": "",
+              "width": 600,
+              "height": 872,
+              "instructor_notes": null
+            },
+            {
+              "id": 1137371,
+              "key": "41603329-1953-4a4f-8ad9-e0c74eda4e68",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solution\n<div id=\"spoiler_1\" style=\"display:none\">\n#### <font color=\"green\">Download the solution files, and run the command below:</font>\n\n```\naws cloudformation create-stack  --stack-name challenge1 --region us-east-1 --template-body file://challenge1.yml --parameters file://challenge1-parameters.json\n```\nDon't forget to change the VPC ID and Subnet ID as applicable to you.\n</div>\n<button type=\"button\" id=\"myButton1\" onclick=\"if(document.getElementById('spoiler_1') .style.display=='none') {document.getElementById('spoiler_1') .style.display=''}else{document.getElementById('spoiler_1') .style.display='none'}if (document.getElementById('myButton1').innerHTML=='Show Solution') {document.getElementById('myButton1').innerHTML='Hide Solution';}else{document.getElementById('myButton1').innerHTML = 'Show Solution';}\">Show Solution</button>",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

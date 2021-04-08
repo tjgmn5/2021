@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.860 --> 00:00:05.880
+Here in this tool,
+
+00:00:05.880 --> 00:00:07.365
+let's see what we can do here.
+
+00:00:07.365 --> 00:00:10.949
+If we scroll down in the shapes toolbar,
+
+00:00:10.949 --> 00:00:15.285
+you're going to see that we have compute resources.
+
+00:00:15.285 --> 00:00:17.805
+These are specific to AWS,
+
+00:00:17.805 --> 00:00:21.425
+and we have what we call container which is where we're going to start,
+
+00:00:21.425 --> 00:00:24.225
+and those are again related to AWS.
+
+00:00:24.225 --> 00:00:28.125
+There are several others such as storage, databases,
+
+00:00:28.125 --> 00:00:31.260
+and as you can see they're grouped in
+
+00:00:31.260 --> 00:00:35.530
+a logical fashion so that you can find things when you need them.
+
+00:00:39.500 --> 00:00:42.700
+So let's go ahead and start.
+
+00:00:42.830 --> 00:00:48.470
+Usually, the very first container that you're going to have is called the AWS Cloud.
+
+00:00:48.470 --> 00:00:55.230
+So I'm going to click on the AWS Cloud container and drag it into my work surface.
+
+00:00:56.560 --> 00:01:03.080
+Now, this Cloud container it just represents your account,
+
+00:01:03.080 --> 00:01:05.870
+it's just a visual to show you hey this is
+
+00:01:05.870 --> 00:01:11.130
+my AWS account and if there are resources outside of the AWS account,
+
+00:01:11.130 --> 00:01:14.510
+this gives you the opportunity to have these boundaries where you can have
+
+00:01:14.510 --> 00:01:19.325
+this line specifying what's inside and what's outside.
+
+00:01:19.325 --> 00:01:25.915
+One example that I could give you right now is I can click search here and type users,
+
+00:01:25.915 --> 00:01:30.590
+and you will have users here and I'm going to drag this over here,
+
+00:01:30.590 --> 00:01:33.485
+and I'm going to change the text,
+
+00:01:33.485 --> 00:01:37.920
+and I'm just going to call it users.
+
+00:01:38.150 --> 00:01:42.710
+What this means is if you have a web application that you're running,
+
+00:01:42.710 --> 00:01:45.560
+the users means the web visitors
+
+00:01:45.560 --> 00:01:48.650
+and those are going to be obviously outside of your cloud,
+
+00:01:48.650 --> 00:01:51.810
+they just come from the internet in this case.
+
+00:01:54.560 --> 00:01:57.700
+Now, once we have our account,
+
+00:01:57.700 --> 00:02:05.320
+the very first container that you could come up with from this list would be the region.
+
+00:02:05.320 --> 00:02:08.805
+However, in this case and in the real world,
+
+00:02:08.805 --> 00:02:11.490
+you're going to be working within a region most of the time.
+
+00:02:11.490 --> 00:02:17.390
+Why? Because your business is going to be centered around a specific geographic region.
+
+00:02:17.390 --> 00:02:19.775
+If you have a business in California,
+
+00:02:19.775 --> 00:02:24.125
+chances are that the customers are going to be in the same area unless you
+
+00:02:24.125 --> 00:02:28.340
+are part of a global company that needs to do a multi-region deployment.
+
+00:02:28.340 --> 00:02:30.445
+So we're not going to do that here,
+
+00:02:30.445 --> 00:02:32.420
+we're going to limit ourselves to a single region.
+
+00:02:32.420 --> 00:02:35.570
+So I'm not going to specify the container for region to
+
+00:02:35.570 --> 00:02:40.620
+keep things more readable and easy to understand for you.
+

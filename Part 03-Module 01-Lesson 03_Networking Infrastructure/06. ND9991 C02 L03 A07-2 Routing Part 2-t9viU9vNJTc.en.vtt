@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.045
+The very next resort is a subnet route table association.
+
+00:00:06.045 --> 00:00:11.579
+What that means is we do have a route table in the BPC and it has rules,
+
+00:00:11.579 --> 00:00:15.345
+but the BPC could have a lot of subnet,
+
+00:00:15.345 --> 00:00:17.040
+not just 1, 2, 4,
+
+00:00:17.040 --> 00:00:18.915
+10, it could have many subnets.
+
+00:00:18.915 --> 00:00:24.090
+So you need to specify this rule that we just created to which subnet does it apply.
+
+00:00:24.090 --> 00:00:27.760
+In this case, we are applying a two public subnet 1.
+
+00:00:30.260 --> 00:00:33.630
+Following that is another association where
+
+00:00:33.630 --> 00:00:37.690
+applying the same rule to public subnet number 2.
+
+00:00:41.420 --> 00:00:46.370
+Now, we're going to create another route table and probably another one.
+
+00:00:46.370 --> 00:00:48.230
+This is for the private routing,
+
+00:00:48.230 --> 00:00:50.460
+so let's get into that part.
+
+00:00:51.500 --> 00:00:55.180
+So we create that route table and right away,
+
+00:00:55.180 --> 00:00:57.290
+we create a rule that say, ''Hey,
+
+00:00:57.290 --> 00:01:01.745
+when you're routing traffic to the wildcard address which is 000,
+
+00:01:01.745 --> 00:01:04.800
+this time, I want you to send it to the NAT gateway.
+
+00:01:04.800 --> 00:01:08.615
+I don't want you to be able to exit to the outside.''
+
+00:01:08.615 --> 00:01:14.340
+This will keep the traffic for the private subnets within the BPC.
+
+00:01:15.280 --> 00:01:17.825
+Also something to remember,
+
+00:01:17.825 --> 00:01:21.890
+the private BPC servers are not going to have a public address.
+
+00:01:21.890 --> 00:01:24.725
+So even if they were placed on a public subnet,
+
+00:01:24.725 --> 00:01:28.740
+there's no way to access them if they have no IP address.
+
+00:01:31.400 --> 00:01:33.749
+Now, we do this association,
+
+00:01:33.749 --> 00:01:38.290
+we associate private subnet 1 with this rule that we just created,
+
+00:01:39.230 --> 00:01:47.235
+and then we do the same thing for private subnet number 2.
+
+00:01:47.235 --> 00:01:54.025
+Now, you might notice that we have created an additional routing table. Why is that?
+
+00:01:54.025 --> 00:01:57.005
+It seems unnecessary because we just could create
+
+00:01:57.005 --> 00:02:01.820
+the same rule and a single route table and apply it to both private subnets.
+
+00:02:01.820 --> 00:02:04.645
+That would be ideal.
+
+00:02:04.645 --> 00:02:07.080
+You're going to have to trust me on this one,
+
+00:02:07.080 --> 00:02:08.650
+this is for future expansion.
+
+00:02:08.650 --> 00:02:13.475
+When you could have more subnets and more complex rules,
+
+00:02:13.475 --> 00:02:15.770
+you don't want to just have a single place where you put
+
+00:02:15.770 --> 00:02:18.515
+a rule and you could affect and break something else.
+
+00:02:18.515 --> 00:02:20.719
+So this is something that seems unnecessary
+
+00:02:20.719 --> 00:02:24.000
+right now but it will help you with future expansion.
+
+00:02:26.000 --> 00:02:28.900
+This is all the resources we're doing right now,
+
+00:02:28.900 --> 00:02:31.460
+so we're going to save and execute.
+
+00:02:31.460 --> 00:02:36.610
+So I'll hit "Save" and update our Stack one more time.
+

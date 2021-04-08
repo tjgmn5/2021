@@ -1,0 +1,271 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.785
+Now that we have a BPC with a function and Internet gateway attached,
+
+00:00:04.785 --> 00:00:07.900
+let's continue expanding our infrastructure.
+
+00:00:08.180 --> 00:00:10.980
+If we go back to our reference,
+
+00:00:10.980 --> 00:00:13.570
+which is this graphic right here,
+
+00:00:13.910 --> 00:00:18.285
+we already have an Internet gateway,
+
+00:00:18.285 --> 00:00:20.685
+and we already have the BPC,
+
+00:00:20.685 --> 00:00:24.780
+now it's time for us to create subnets,
+
+00:00:24.780 --> 00:00:29.175
+which we're going to do that in the different availability zones.
+
+00:00:29.175 --> 00:00:31.780
+So let's get to the fun part.
+
+00:00:34.610 --> 00:00:38.230
+So going back to our reference document,
+
+00:00:38.230 --> 00:00:44.470
+I see here that we have a public subnet and a couple of private subnets,
+
+00:00:44.470 --> 00:00:47.100
+let's go ahead and use those.
+
+00:00:47.100 --> 00:00:50.560
+So I'm going to mark this text here,
+
+00:00:54.110 --> 00:00:57.220
+and then we're going to discuss it.
+
+00:01:00.380 --> 00:01:03.540
+Then get over to our file,
+
+00:01:03.540 --> 00:01:05.380
+we're going to add it to the end here.
+
+00:01:05.380 --> 00:01:10.940
+Let me minimize this for us to be able to see more with the screen.
+
+00:01:10.940 --> 00:01:18.020
+The formatting is not ideal,
+
+00:01:18.020 --> 00:01:21.020
+so I'm going to select it again,
+
+00:01:21.020 --> 00:01:28.645
+and I'm going to do Shift-Tab to bring it back a little, there it is.
+
+00:01:28.645 --> 00:01:33.090
+So now let's discuss these new elements that we added here.
+
+00:01:36.890 --> 00:01:39.875
+So we just added a public subnet,
+
+00:01:39.875 --> 00:01:42.575
+which we're calling public subnet 1,
+
+00:01:42.575 --> 00:01:48.720
+public subnet 2, private subnet 1, and private subnet 2.
+
+00:01:48.720 --> 00:01:55.185
+Let's see what they are. They all have the type of EC2 subnet, and of course,
+
+00:01:55.185 --> 00:01:57.930
+the first parameter that they have is a reference to
+
+00:01:57.930 --> 00:01:59.760
+the BPC resource because
+
+00:01:59.760 --> 00:02:04.320
+our CloudFormation needs to know where you're trying to deploy this.
+
+00:02:04.460 --> 00:02:09.725
+Now, this is the first time that we're seeing the Select function from CloudFormation.
+
+00:02:09.725 --> 00:02:11.840
+The Select function, what it does is,
+
+00:02:11.840 --> 00:02:15.985
+it'll pick a value from a list of values that you provide.
+
+00:02:15.985 --> 00:02:19.955
+In this case, the list of values is also a function,
+
+00:02:19.955 --> 00:02:23.200
+which we're calling GetAZs,
+
+00:02:23.200 --> 00:02:24.585
+what this function will do is,
+
+00:02:24.585 --> 00:02:28.010
+it will give you a list of availability zones that
+
+00:02:28.010 --> 00:02:32.195
+are available to you in this particular geographical area.
+
+00:02:32.195 --> 00:02:35.420
+I believe if this were using us-west-2,
+
+00:02:35.420 --> 00:02:37.970
+which is Oregon in the United States,
+
+00:02:37.970 --> 00:02:40.270
+it'll probably provide us back with,
+
+00:02:40.270 --> 00:02:42.240
+I think, three or four values,
+
+00:02:42.240 --> 00:02:46.440
+which would be us-west-2 A,
+
+00:02:46.440 --> 00:02:48.845
+B, and C, and so on.
+
+00:02:48.845 --> 00:02:55.090
+What we're doing here was just picking value number 1 for private subnet 2.
+
+00:02:55.090 --> 00:02:57.829
+Keep in mind that these are arrays,
+
+00:02:57.829 --> 00:02:59.795
+like it would be in a programming language,
+
+00:02:59.795 --> 00:03:04.055
+so the first value is really index with the number 0.
+
+00:03:04.055 --> 00:03:07.555
+So number 1 would be the second value on that list.
+
+00:03:07.555 --> 00:03:10.910
+We don't really care which values are
+
+00:03:10.910 --> 00:03:14.050
+returned to us or in which order they're returned to us,
+
+00:03:14.050 --> 00:03:15.890
+that doesn't really matter,
+
+00:03:15.890 --> 00:03:19.820
+we would just want to be sure that private subnet 1 is
+
+00:03:19.820 --> 00:03:23.600
+in a different availability zone than private subnet 2.
+
+00:03:23.600 --> 00:03:28.590
+We just want to be sure that they're in separate building locations.
+
+00:03:28.910 --> 00:03:37.300
+So hopefully, that explains the Select function and the GetAZs function.
+
+00:03:40.100 --> 00:03:43.835
+The next value will be the CIDR block for this subnet,
+
+00:03:43.835 --> 00:03:50.090
+which has to be a subnet or a subnetwork of the overall BPC.
+
+00:03:50.090 --> 00:03:55.250
+So if we have a BPC that is 10.0.0/16,
+
+00:03:55.250 --> 00:04:00.840
+it will be a subset for the specific subnets.
+
+00:04:01.640 --> 00:04:07.610
+The CIDR block parameter for the private subnets has to be as subnetwork
+
+00:04:07.610 --> 00:04:12.770
+or a small subset of what the BPC has to offer.
+
+00:04:12.770 --> 00:04:17.785
+So if the BPC is 10.0.0.0/16,
+
+00:04:17.785 --> 00:04:21.240
+you can have subnets that are dot one,
+
+00:04:21.240 --> 00:04:23.640
+dot two, dot three, and so on.
+
+00:04:23.640 --> 00:04:26.115
+This additional parameter here, which says,
+
+00:04:26.115 --> 00:04:31.550
+"Map public IP on launch set to false," you can play with that.
+
+00:04:31.550 --> 00:04:34.610
+It just means that if you deploy a server,
+
+00:04:34.610 --> 00:04:38.105
+is it automatically going to get a public IP or not?
+
+00:04:38.105 --> 00:04:41.190
+That's up to you, it doesn't matter.
+
+00:04:41.190 --> 00:04:44.840
+Because of the routing that we're going to assign to the private subnets,
+
+00:04:44.840 --> 00:04:46.715
+even if you, by mistake,
+
+00:04:46.715 --> 00:04:48.655
+assign a public IP,
+
+00:04:48.655 --> 00:04:50.485
+it's still perfectly fine,
+
+00:04:50.485 --> 00:04:53.360
+because it won't be routable from the outside,
+
+00:04:53.360 --> 00:04:55.855
+because of the routing rules.
+
+00:04:55.855 --> 00:04:59.480
+Again, as we're following the same practice regarding tags,
+
+00:04:59.480 --> 00:05:01.550
+so if I have hundreds of subnets,
+
+00:05:01.550 --> 00:05:07.525
+I want to be sure that I know to which CloudFormation stock they belong or to which BPC,
+
+00:05:07.525 --> 00:05:11.425
+something like that, so we assign the name tag,
+
+00:05:11.425 --> 00:05:16.080
+and I'm using the environment name viable for that purpose.
+
+00:05:17.930 --> 00:05:21.080
+There is really no difference at this time
+
+00:05:21.080 --> 00:05:23.645
+between the private subnet and the public subnet.
+
+00:05:23.645 --> 00:05:25.475
+So if we're looking at the code here,
+
+00:05:25.475 --> 00:05:27.080
+they all look exactly the same,
+
+00:05:27.080 --> 00:05:31.700
+it's just the difference in the selection of the availability zone.
+
+00:05:31.700 --> 00:05:35.020
+In this case, we have zero for public subnet 1,
+
+00:05:35.020 --> 00:05:37.710
+and one for public subnet 2.
+
+00:05:37.710 --> 00:05:42.155
+Again, we don't know exactly for sure what zero and one are going to be replaced with
+
+00:05:42.155 --> 00:05:47.905
+because it's going to change depending on the geographical region where you deploy this.
+
+00:05:47.905 --> 00:05:51.430
+So let's run this. Let's see what happens.
+

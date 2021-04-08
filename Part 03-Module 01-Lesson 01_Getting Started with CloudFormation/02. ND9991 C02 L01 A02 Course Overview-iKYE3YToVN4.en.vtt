@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.170
+In this course, we're going to cover a series of five lessons,
+
+00:00:04.170 --> 00:00:06.465
+and the first lesson what we're going to do is,
+
+00:00:06.465 --> 00:00:10.155
+we're going to just get properly set up, introduce the conversation,
+
+00:00:10.155 --> 00:00:12.810
+talk about confirmation, and get everything
+
+00:00:12.810 --> 00:00:16.155
+properly tested and verified so that we can do our work.
+
+00:00:16.155 --> 00:00:17.820
+Now in lesson two,
+
+00:00:17.820 --> 00:00:19.485
+we're going to talk about diagrams.
+
+00:00:19.485 --> 00:00:21.045
+Obviously in the real world,
+
+00:00:21.045 --> 00:00:24.720
+you're going to have a lot of diagrams showing cloud architecture,
+
+00:00:24.720 --> 00:00:29.085
+and I want you to be able to understand those completely from the ground up.
+
+00:00:29.085 --> 00:00:32.680
+With that knowledge, then we can go to lesson three,
+
+00:00:32.680 --> 00:00:36.080
+where we're actually going to go ahead and take that diagram and turn it
+
+00:00:36.080 --> 00:00:40.055
+into a script or as we call it, Infrastructure as Code.
+
+00:00:40.055 --> 00:00:43.415
+Lesson four is going to be a continuation of lesson three,
+
+00:00:43.415 --> 00:00:47.510
+where after we have deployed the networking components,
+
+00:00:47.510 --> 00:00:51.610
+we're going to actually deployed our servers on top of that infrastructure.
+
+00:00:51.610 --> 00:00:53.725
+Finally in lesson five,
+
+00:00:53.725 --> 00:00:56.600
+we're going to have additional services that
+
+00:00:56.600 --> 00:00:59.419
+are going to help you build your final project,
+
+00:00:59.419 --> 00:01:01.760
+such as databases and storage services that you're
+
+00:01:01.760 --> 00:01:05.100
+going to use along with your final project.
+

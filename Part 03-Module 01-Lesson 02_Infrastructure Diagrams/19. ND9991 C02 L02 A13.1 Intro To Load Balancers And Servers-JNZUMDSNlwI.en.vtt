@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.170 --> 00:00:03.720
+A very interesting service that you can use in
+
+00:00:03.720 --> 00:00:07.500
+the Cloud is called load balancing. Let's take a look.
+
+00:00:07.500 --> 00:00:11.100
+Load balancers is a service simply designed to
+
+00:00:11.100 --> 00:00:14.235
+distribute a work request meant for target group.
+
+00:00:14.235 --> 00:00:16.350
+So what is a target group?
+
+00:00:16.350 --> 00:00:20.505
+A target group is just a collection of servers that provide a common service.
+
+00:00:20.505 --> 00:00:22.170
+So for example, if you have
+
+00:00:22.170 --> 00:00:26.325
+an image processing application that is taking requests and it will take,
+
+00:00:26.325 --> 00:00:28.890
+say an image and it will gather
+
+00:00:28.890 --> 00:00:33.580
+metadata out of that image or generate a thumbnail and store it somewhere,
+
+00:00:33.740 --> 00:00:36.640
+you would have a load balancer in front.
+
+00:00:36.640 --> 00:00:41.270
+This load balancer will manage all the requests coming in and it will distribute
+
+00:00:41.270 --> 00:00:43.880
+those requests across many different servers
+
+00:00:43.880 --> 00:00:47.210
+that you have providing the exact same service.
+
+00:00:47.210 --> 00:00:49.895
+This is an illustration of what I'm talking about.
+
+00:00:49.895 --> 00:00:53.010
+You have the load balancer symbol here.
+
+00:00:53.330 --> 00:00:59.120
+You have three instances or three servers inside your auto scaling group and
+
+00:00:59.120 --> 00:01:00.830
+let's say all three obviously have
+
+00:01:00.830 --> 00:01:04.625
+the exact same image processing application that you created.
+
+00:01:04.625 --> 00:01:07.600
+If we get 300 request right now,
+
+00:01:07.600 --> 00:01:12.230
+the load balancer will save 100 to each one of your three servers.
+
+00:01:12.230 --> 00:01:14.810
+Now because you have an auto scaling group,
+
+00:01:14.810 --> 00:01:16.430
+you will have a criteria,
+
+00:01:16.430 --> 00:01:18.755
+let's say the number of requests,
+
+00:01:18.755 --> 00:01:21.260
+that will allow this auto scaling group to spin up
+
+00:01:21.260 --> 00:01:25.735
+more servers as needed to keep up with the demand of your service.
+
+00:01:25.735 --> 00:01:28.000
+If the man goes down,
+
+00:01:28.000 --> 00:01:30.425
+the auto-scaling will scale back down to
+
+00:01:30.425 --> 00:01:33.290
+three servers or whatever you say that's the minimum.
+
+00:01:33.290 --> 00:01:39.560
+So remember, the job of the load balancer is to spread the work load evenly across
+
+00:01:39.560 --> 00:01:42.680
+the target group and the target group is however many
+
+00:01:42.680 --> 00:01:47.610
+servers you have available to provide a common service.
+

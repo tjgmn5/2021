@@ -1,0 +1,296 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Creating Access Key ID for IAM User</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Getting Started with CloudFormation</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Course Overview.html">02. Course Overview</a>
+    </li>
+    <li class="">
+      <a href="03. What is DevOps.html">03. What is DevOps</a>
+    </li>
+    <li class="">
+      <a href="04. Why you need DevOps.html">04. Why you need DevOps</a>
+    </li>
+    <li class="">
+      <a href="05. What are the benefits of Cloud DevOps.html">05. What are the benefits of Cloud DevOps?</a>
+    </li>
+    <li class="">
+      <a href="06. Set up Tools.html">06. Set up Tools</a>
+    </li>
+    <li class="">
+      <a href="07. Creating Access Key ID for IAM User.html">07. Creating Access Key ID for IAM User</a>
+    </li>
+    <li class="">
+      <a href="08. Configuring AWS CLI.html">08. Configuring AWS CLI</a>
+    </li>
+    <li class="">
+      <a href="09. Adding Additional Keys.html">09. Adding Additional Keys</a>
+    </li>
+    <li class="">
+      <a href="10. Understanding CloudFormation.html">10. Understanding CloudFormation</a>
+    </li>
+    <li class="">
+      <a href="11. Getting Started With CloudFormation Script.html">11. Getting Started With CloudFormation Script</a>
+    </li>
+    <li class="">
+      <a href="12. Create a VPC Manually.html">12. Create a VPC: Manually</a>
+    </li>
+    <li class="">
+      <a href="13. Exercise - Create a VPC Automated.html">13. Exercise - Create a VPC: Automated</a>
+    </li>
+    <li class="">
+      <a href="14. Exercise - EC2 Instance with an Admin Role.html">14. Exercise - EC2 Instance with an Admin Role</a>
+    </li>
+    <li class="">
+      <a href="15. Conclusion.html">15. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="16. Challenge 1.html">16. Challenge 1</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">07. Creating Access Key ID for IAM User</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>After installing AWS CLI, recall that you must configure the following four items on your local machine before you can interact with any of the AWS services:</p>
+<ol>
+<li><p><strong>Access key</strong> - It is a combination of <em>Access Key ID</em> and a <em>Secret Access Key</em>. You can generate an Access key from the AWS IAM service, and specify the level of permissions (authorization) with the help of <em>IAM Roles</em>. </p></li>
+<li><p><strong>Default AWS Region</strong> - It specifies the AWS Region where you want to send your requests by default.</p></li>
+<li><p><strong>Default output format</strong> - It specifies how the results are formatted. It can either be a json, yaml, text, or a table. </p></li>
+<li><p><strong>Profile</strong> - A collection of settings is called a profile. The default profile name is <code>default</code>, however, you can create a new profile using the <code>aws configure --profile new_name</code> command. </p></li>
+</ol>
+<h2 id="let’s-create-an-iam-user-and-copy-the-access-key">Let’s create an IAM User and copy the access key</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C02 L01 A04 Creating Access Key ID</p></h3>
+  <video controls>
+  <source src="07. ND9991 C02 L01 A04 Creating Access Key ID--3zKIoSiDRo.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="07. ND9991 C02 L01 A04 Creating Access Key ID--3zKIoSiDRo.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p>Note that each user can have up to 2 access keys at the same time.</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="deciding-access-privileges-within-aws">Deciding Access Privileges within AWS</h3>
+<h4 id="aws-access-type">AWS access type</h4>
+<ul>
+<li><p><strong>Programmatic Access</strong>: In the AWS console, choose "<strong>programmatic access</strong>."  This allows us to use code to interact with AWS, instead of relying on mouse clicking in the console web pages. Choosing this option will Enable the access key ID and secret access key for the AWS CLI.</p></li>
+
+<li><p><strong>AWS Management Console access</strong>: it is used only when you want the new user to be able to sign-in to the AWS web console using a password. This one is not the case in our course</p></li>
+</ul>
+<h4 id="permissions">Permissions</h4>
+<ul>
+<li><strong>Administrator Access</strong>: The permissions to a user are granted in form of <strong>Policies</strong>, which are JSON documents. The AWS web console provides a pre-created list of policies to choose from. For the current IAM user that you are creating, choose “<strong>administrator access</strong>.”  This is just for the initial setup of your account.  Afterward, you’ll want to limit access to only what you need.</li>
+</ul>
+<blockquote>
+  <p>Once a user is created, copy the access key for configuring the CLI. Do not save the access key in your code or into any public repositories. Keep them private to you.</p>
+</blockquote>
+<h4 id="development-and-production-user-accounts">Development and Production user accounts</h4>
+<p>In practice, Development and DevOps members may have separate user accounts for the development environment as opposed to the production environment.  This makes it easier for developers by giving them wider privileges in the dev environment that would normally only be reserved for DevOps members in the production environment.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>AWS Access Keys</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>When creating a new API Access user, you will…<br />
+(Select all that apply)</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1558135204410" name="849759" id="a1558135204410">
+      <label for="a1558135204410"><p>Specify the region - in our case, us-west-2</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558135236716" name="849759" id="a1558135236716">
+      <label for="a1558135236716"><p>Create a programmatic access IAM User</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558135256705" name="849759" id="a1558135256705">
+      <label for="a1558135256705"><p>Configure the AWS CLI Tool with the newly created keys for our user</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558135335319" name="849759" id="a1558135335319">
+      <label for="a1558135335319"><p>Assign an appropriate IAM Policy to the user, depending on the required access</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Create a programmatic access IAM User</li>
+      <li>Configure the AWS CLI Tool with the newly created keys for our user</li>
+      <li>Assign an appropriate IAM Policy to the user, depending on the required access</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="08. Configuring AWS CLI.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. Creating Access Key ID for IAM User')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

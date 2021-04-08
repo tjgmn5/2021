@@ -1,0 +1,157 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.130
+Let's try to do our update here.
+
+00:00:07.910 --> 00:00:10.020
+It got executed.
+
+00:00:10.020 --> 00:00:20.045
+So let's take a look. This is going to be a very fast update,
+
+00:00:20.045 --> 00:00:22.290
+and I'll show you why.
+
+00:00:24.200 --> 00:00:27.680
+We're getting an error. This is the first time we actually
+
+00:00:27.680 --> 00:00:30.560
+got to execute and we're getting an error here in the console.
+
+00:00:30.560 --> 00:00:32.700
+So let's see what happens.
+
+00:00:32.960 --> 00:00:35.715
+If we go to Events,
+
+00:00:35.715 --> 00:00:44.430
+it's going to tell you UdacityProject - PUB1 - SN is already exported by another stack.
+
+00:00:44.430 --> 00:00:45.780
+That's very interesting.
+
+00:00:45.780 --> 00:00:49.055
+This is the kind of error that you want to be paying attention to.
+
+00:00:49.055 --> 00:00:52.190
+What this means is there's another stack that
+
+00:00:52.190 --> 00:00:55.370
+has the exact same environment name variable.
+
+00:00:55.370 --> 00:00:57.875
+So when I try to do this, it says, "Hey,
+
+00:00:57.875 --> 00:00:59.660
+I can't explore this because this is
+
+00:00:59.660 --> 00:01:05.535
+a global export variable and it's already clashing with something else."
+
+00:01:05.535 --> 00:01:08.300
+Remember, we're trying to communicate with other stacks,
+
+00:01:08.300 --> 00:01:12.320
+with other CloudFormation stacks that we're going to be creating in the future.
+
+00:01:12.320 --> 00:01:17.405
+So because this value is shared globally across your AWS account,
+
+00:01:17.405 --> 00:01:19.910
+you have to have a completely unique names.
+
+00:01:19.910 --> 00:01:23.210
+So the way we solve this in a more efficient way,
+
+00:01:23.210 --> 00:01:24.950
+I will say the quickest way,
+
+00:01:24.950 --> 00:01:26.780
+it will be by going
+
+00:01:26.780 --> 00:01:31.820
+to the environment name variable that we have our parameter and changing that.
+
+00:01:31.820 --> 00:01:37.450
+So let's do that right now. So we'll go to our parameters.
+
+00:01:37.450 --> 00:01:40.785
+You see, we call it the UdacityProject.
+
+00:01:40.785 --> 00:01:46.185
+Let's just add the word demo here and it's safe.
+
+00:01:46.185 --> 00:01:51.110
+That should do it. That will make the values here completely unique.
+
+00:01:53.490 --> 00:01:57.325
+Because now we're going to have you UdacityProjectDemo,
+
+00:01:57.325 --> 00:02:02.450
+public subnets, UdacityProjectDemo, private subnets, and so on.
+
+00:02:04.040 --> 00:02:12.900
+Let's go take a look. We're going to refresh this.
+
+00:02:15.040 --> 00:02:23.400
+Says in progress. Now, it says complete.
+
+00:02:23.400 --> 00:02:24.590
+This time it worked really fast,
+
+00:02:24.590 --> 00:02:28.600
+and the reason is we're just creating output values.
+
+00:02:28.600 --> 00:02:30.250
+We're not creating any resources.
+
+00:02:30.250 --> 00:02:31.680
+We just did a little thing.
+
+00:02:31.680 --> 00:02:35.020
+Now, we can go to the output section here and verify that we have
+
+00:02:35.020 --> 00:02:39.490
+all these values that are accessible from all their script.
+
+00:02:39.490 --> 00:02:43.740
+These are basically what you would call public variables in a programming language,
+
+00:02:43.740 --> 00:02:46.945
+or global variables that you can access from anywhere.
+
+00:02:46.945 --> 00:02:49.460
+This is the same case here.
+
+00:02:50.150 --> 00:02:53.130
+This is the private subnet.
+
+00:02:53.130 --> 00:02:55.080
+This is one of those joins that I mentioned.
+
+00:02:55.080 --> 00:02:59.250
+Well, you have the subnet id comma and another subnet id.
+
+00:02:59.250 --> 00:03:04.470
+This is shared as UdacityProjectDemo -PRIV - NETS,
+
+00:03:04.470 --> 00:03:08.650
+which is just referring to the private subnets.
+
+00:03:12.410 --> 00:03:17.120
+This concludes our section regarding networking foundation.
+
+00:03:17.120 --> 00:03:21.305
+If we go to our reference graphic,
+
+00:03:21.305 --> 00:03:24.830
+we have everything we need from the point of network infrastructure.
+
+00:03:24.830 --> 00:03:30.335
+So now we're going to go into the server creation process.
+
+00:03:30.335 --> 00:03:34.170
+We can actually deploy server and services in our Cloud.
+

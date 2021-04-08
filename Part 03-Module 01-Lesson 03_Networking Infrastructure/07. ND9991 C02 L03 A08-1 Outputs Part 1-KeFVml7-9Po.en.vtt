@@ -1,0 +1,226 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.195
+Going back to a reference document,
+
+00:00:03.195 --> 00:00:07.240
+you'll see that I have an output section here.
+
+00:00:11.270 --> 00:00:15.220
+I'm going to explain what this means shortly.
+
+00:00:15.980 --> 00:00:21.190
+I'll copy these values and bring into our script.
+
+00:00:24.770 --> 00:00:27.910
+Let's go over each one.
+
+00:00:28.250 --> 00:00:30.390
+So the output section,
+
+00:00:30.390 --> 00:00:32.700
+you have a VPC.
+
+00:00:32.700 --> 00:00:35.960
+A VPC is obviously a container so you're going to be
+
+00:00:35.960 --> 00:00:39.080
+placing servers and other resources inside of VPC.
+
+00:00:39.080 --> 00:00:42.500
+So there's a good chance that if you have some other scripts that
+
+00:00:42.500 --> 00:00:46.220
+creates a server or some other type of AWS resource,
+
+00:00:46.220 --> 00:00:50.980
+that resource is going to require a VPC for you to put it on.
+
+00:00:50.980 --> 00:00:54.740
+Of course, this is being created dynamically for you behind the scenes,
+
+00:00:54.740 --> 00:00:57.935
+you don't know the VPCID until it's actually created.
+
+00:00:57.935 --> 00:01:02.930
+So this is a good place to capture the VPCID,
+
+00:01:02.930 --> 00:01:04.445
+store it in a variable,
+
+00:01:04.445 --> 00:01:08.440
+and then we'll be able to be use that in some other scrip and some other file.
+
+00:01:08.440 --> 00:01:12.640
+So we'll have a description,
+
+00:01:12.810 --> 00:01:15.190
+we'll have a reference, in this case,
+
+00:01:15.190 --> 00:01:19.685
+a reference to the VPC that we're creating in this file.
+
+00:01:19.685 --> 00:01:21.885
+Then we have an Export.
+
+00:01:21.885 --> 00:01:24.420
+The Export is exactly what I just mentioned.
+
+00:01:24.420 --> 00:01:31.650
+We're going to give it a name and we're going to capture the VPCID along with this name.
+
+00:01:31.650 --> 00:01:35.290
+Now, we're looking at this function which I believe we have not seen yet,
+
+00:01:35.290 --> 00:01:38.590
+sub stands for substitution.
+
+00:01:38.590 --> 00:01:44.160
+What this does is it will take this variable, in this case,
+
+00:01:44.160 --> 00:01:48.395
+the parameter called Udacity project that we have in our parameter file,
+
+00:01:48.395 --> 00:01:50.850
+and it will attach this text right here.
+
+00:01:50.850 --> 00:01:53.130
+This is just text, it just says VPCID,
+
+00:01:53.130 --> 00:01:54.520
+it could say anything you want,
+
+00:01:54.520 --> 00:01:56.265
+anything that makes sense to you.
+
+00:01:56.265 --> 00:01:57.950
+So in this case,
+
+00:01:57.950 --> 00:02:04.095
+we're going to have something that says Udacity project dash VPCID,
+
+00:02:04.095 --> 00:02:10.090
+and it's going to contain a value of the actual ID of the VPC that we just created.
+
+00:02:10.090 --> 00:02:16.750
+That's the same logic that it applies to everything else down here.
+
+00:02:16.750 --> 00:02:20.145
+All these values that I chose here,
+
+00:02:20.145 --> 00:02:24.200
+the reasoning is that I already understand that I'm going to need
+
+00:02:24.200 --> 00:02:29.585
+them in a potential new script that we're going to be creating,
+
+00:02:29.585 --> 00:02:33.860
+you can just do all of them if you like but usually,
+
+00:02:33.860 --> 00:02:35.825
+only a few makes sense to share,
+
+00:02:35.825 --> 00:02:40.140
+like the VPCID routing table and so on and so forth.
+
+00:02:41.210 --> 00:02:44.510
+So all the resources are going to have
+
+00:02:44.510 --> 00:02:47.030
+a consistent name so that you can find them which is going to be
+
+00:02:47.030 --> 00:02:52.250
+the name of your project dash some acronym that means something to you.
+
+00:02:52.250 --> 00:02:54.620
+In this case, public route,
+
+00:02:54.620 --> 00:02:57.340
+private route, and so on.
+
+00:02:57.440 --> 00:02:59.685
+Now, this one is interesting.
+
+00:02:59.685 --> 00:03:03.065
+It introduces us to another function here.
+
+00:03:03.065 --> 00:03:05.815
+It says, the function is Join.
+
+00:03:05.815 --> 00:03:07.820
+Join is exactly as it sounds,
+
+00:03:07.820 --> 00:03:10.535
+it will take several strings or several values,
+
+00:03:10.535 --> 00:03:13.150
+put them together, and output that value.
+
+00:03:13.150 --> 00:03:20.930
+So in this case, I'm creating a value that says Udacity project dash public dash nets,
+
+00:03:20.930 --> 00:03:22.760
+this is my public subnets,
+
+00:03:22.760 --> 00:03:25.280
+and this time, it's formatted as a list.
+
+00:03:25.280 --> 00:03:26.710
+There's a reason for it.
+
+00:03:26.710 --> 00:03:29.720
+Some resources such as auto scaling and
+
+00:03:29.720 --> 00:03:34.055
+load balancer will require a list of resources, not just one.
+
+00:03:34.055 --> 00:03:38.130
+So in this case, we're creating a list thinking ahead of this.
+
+00:03:38.420 --> 00:03:44.255
+So what we're doing here is we have PublicSubnet1, PublicSubnet2,
+
+00:03:44.255 --> 00:03:46.640
+and those are the IDs because you're doing a ref,
+
+00:03:46.640 --> 00:03:48.649
+so it's going to those resources,
+
+00:03:48.649 --> 00:03:52.095
+getting the ID and putting it here in this list.
+
+00:03:52.095 --> 00:03:54.770
+Those values are going to be joined together by
+
+00:03:54.770 --> 00:03:58.855
+the Join function using a comma separator.
+
+00:03:58.855 --> 00:04:04.340
+So in the end, you end up with a list that says the value of PublicSubnet1,
+
+00:04:04.340 --> 00:04:06.785
+the value of PublicSubnet2.
+
+00:04:06.785 --> 00:04:08.845
+Those are the IDs, of course.
+
+00:04:08.845 --> 00:04:14.224
+Then you'd be able to access that list with the variable that says EnvironmentName,
+
+00:04:14.224 --> 00:04:17.010
+in this case, UdacityProject-PUB-NETS.
+
+00:04:18.730 --> 00:04:27.900
+I have a similar lists for private subnets in case I need it,
+
+00:04:27.900 --> 00:04:30.370
+and it goes on down the line.
+
+00:04:30.800 --> 00:04:35.240
+Basically, sharing the specific subnets IDs in case you
+
+00:04:35.240 --> 00:04:39.700
+just need one for whatever reason. Then that's it.
+

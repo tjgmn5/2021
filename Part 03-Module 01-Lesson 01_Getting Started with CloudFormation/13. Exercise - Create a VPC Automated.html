@@ -1,0 +1,325 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise - Create a VPC: Automated</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Getting Started with CloudFormation</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Course Overview.html">02. Course Overview</a>
+    </li>
+    <li class="">
+      <a href="03. What is DevOps.html">03. What is DevOps</a>
+    </li>
+    <li class="">
+      <a href="04. Why you need DevOps.html">04. Why you need DevOps</a>
+    </li>
+    <li class="">
+      <a href="05. What are the benefits of Cloud DevOps.html">05. What are the benefits of Cloud DevOps?</a>
+    </li>
+    <li class="">
+      <a href="06. Set up Tools.html">06. Set up Tools</a>
+    </li>
+    <li class="">
+      <a href="07. Creating Access Key ID for IAM User.html">07. Creating Access Key ID for IAM User</a>
+    </li>
+    <li class="">
+      <a href="08. Configuring AWS CLI.html">08. Configuring AWS CLI</a>
+    </li>
+    <li class="">
+      <a href="09. Adding Additional Keys.html">09. Adding Additional Keys</a>
+    </li>
+    <li class="">
+      <a href="10. Understanding CloudFormation.html">10. Understanding CloudFormation</a>
+    </li>
+    <li class="">
+      <a href="11. Getting Started With CloudFormation Script.html">11. Getting Started With CloudFormation Script</a>
+    </li>
+    <li class="">
+      <a href="12. Create a VPC Manually.html">12. Create a VPC: Manually</a>
+    </li>
+    <li class="">
+      <a href="13. Exercise - Create a VPC Automated.html">13. Exercise - Create a VPC: Automated</a>
+    </li>
+    <li class="">
+      <a href="14. Exercise - EC2 Instance with an Admin Role.html">14. Exercise - EC2 Instance with an Admin Role</a>
+    </li>
+    <li class="">
+      <a href="15. Conclusion.html">15. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="16. Challenge 1.html">16. Challenge 1</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">13. Exercise - Create a VPC: Automated</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND9991 C02 L01 A09 Testing Cloud Formation V2</p></h3>
+  <video controls>
+  <source src="13. ND9991 C02 L01 A09 Testing Cloud Formation V2-F9C0gtnSwk0.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="13. ND9991 C02 L01 A09 Testing Cloud Formation V2-F9C0gtnSwk0.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="create-stack">Create stack</h2>
+<ul>
+<li><strong>Create the template file</strong>: Use the following code for your first test file: <strong>testcfn.yml</strong> (or choose any other name). Be careful about the indentation while you paste/write the same code in your editor. </li>
+</ul>
+<pre><code>AWSTemplateFormatVersion: 2010-09-09
+Description: Carlos Rivas / Udacity - This template deploys a VPC
+Resources:
+  UdacityVPC:
+    Type: 'AWS::EC2::VPC'
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: 'true'
+      Tags:
+      - Key: name
+        Value: myfirsttestvpc</code></pre>
+<blockquote>
+  <p>Do not copy-paste the template shown above because a YAML file is indentation-sensitive. Instead, write it on your own, or download it from the bottom of this page. Right-click on the file name and select the "Save-as" option to download it locally in the right format. </p>
+</blockquote>
+<p><br></p>
+<ul>
+<li>**Run the aws command **: Run the following command in the terminal, from the same directory where you've placed your <strong>testcfn.yml</strong> file. We are assuming that your stack name is <code>myFirstTest</code> (or choose any other name).</li>
+</ul>
+<pre><code>aws cloudformation create-stack  --stack-name myFirstTest --region us-east-1 --template-body file://testcfn.yml</code></pre>
+<p><br></p>
+<ul>
+<li><strong>Alternate method - Shell Script</strong>: You can write a <strong>shell script</strong> (.sh) file as:</li>
+</ul>
+<pre><code class="sh language-sh">aws cloudformation create-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" --region=us-west-2</code></pre>
+<p>were <code>$1</code>, <code>$2</code>, and <code>$3</code> can be replaced with the actual values passed as command-line arguments. Note the <code>--parameters</code> and <code>--capabilities</code> options that we will learn in the upcoming lesson. </p>
+<p><br></p>
+<ul>
+<li><strong>Alternate method - Batch Script</strong> You can also try a <strong>batch script</strong> (.bat) with a similar syntax, except that the actual values can be written as <code>%1</code> instead as<code>$1</code>.</li>
+</ul>
+<p><br></p>
+<ul>
+<li>Reference:  The <code>create-stack</code> command has many options that you can refer to in the <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/create-stack.html" rel="noopener noreferrer" target="_blank">documentation here</a>. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-8.30.03-pm.png" alt="Output of the &#x60;create-stack&#x60; command" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Output of the <code>create-stack</code> command</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="update-stack">Update stack</h3>
+<ul>
+<li>You may also want to use <code>update-stack</code> when you want to update an existing stack instead of destroying your stack and creating a new one. The syntax is similar to before:</li>
+</ul>
+<pre><code class="sh language-sh">aws cloudformation update-stack  --stack-name myFirstTest --region us-east-1 --template-body file://testcfn.yml</code></pre>
+<p>The command above will update the existing stack based on the YAML script you've written. </p>
+<ul>
+<li>Reference:  <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/update-stack.html" rel="noopener noreferrer" target="_blank"><code>update-stack</code> documentation</a>. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="describe-stack">Describe stack</h3>
+<ul>
+<li>Once a stack is created successfully, you can verify by either going to the web console or running the following command, which will display all the details the stack.</li>
+</ul>
+<pre><code>aws cloudformation describe-stacks --stack-name myFirstTest</code></pre>
+<ul>
+<li>You can describe the details of multiple stacks in one command. If no stack name is specified, then it will return the description for all the stacks created in your account.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-29-at-8.45.26-pm.png" alt="Output of the &#x60;describe-stacks&#x60; command. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Output of the <code>describe-stacks</code> command. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li><p>Reference: <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/describe-stacks.html" rel="noopener noreferrer" target="_blank">describe-stacks documentation</a></p></li>
+<li><p><a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html#cli-aws-cloudformation" rel="noopener noreferrer" target="_blank">List of all possible <code>aws cloudformation</code> commands</a></p></li>
+</ul>
+<h3 id="more-about-templates">More about Templates</h3>
+<ul>
+<li>AWS documentation on <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/gettingstarted.templatebasics.html" rel="noopener noreferrer" target="_blank">template basics</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="14. Exercise - EC2 Instance with an Admin Role.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('13. Exercise - Create a VPC: Automated')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

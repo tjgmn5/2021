@@ -1,0 +1,313 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.129
+I mentioned earlier that it is based on our market language.
+
+00:00:05.129 --> 00:00:07.679
+In this case, we're using YML format.
+
+00:00:07.679 --> 00:00:09.300
+Its the preferred format.
+
+00:00:09.300 --> 00:00:14.220
+But if you're comfortable with JSON or JavaScript Object Notation,
+
+00:00:14.220 --> 00:00:18.085
+you can use that as well because that one is supported by Cloud formation.
+
+00:00:18.085 --> 00:00:23.600
+However, I've noticed in the industry overall that YML is much more common,
+
+00:00:23.600 --> 00:00:26.660
+not only in AWS but in other Clouds as well.
+
+00:00:26.660 --> 00:00:31.054
+YML is a very standard way of declaring resources.
+
+00:00:31.054 --> 00:00:32.935
+So you might want to stick to that.
+
+00:00:32.935 --> 00:00:35.635
+That's why we chose Visual Studio Code,
+
+00:00:35.634 --> 00:00:41.280
+simply because it allows you to format properly YML files.
+
+00:00:41.280 --> 00:00:42.990
+As you'll get to understand,
+
+00:00:42.990 --> 00:00:47.765
+YML is very picky about indentations and tabs and spaces, so be careful with that.
+
+00:00:47.765 --> 00:00:51.439
+You want to have a text editor or code editor that allows
+
+00:00:51.439 --> 00:00:56.239
+you to properly see the indentations that you have.
+
+00:00:56.240 --> 00:01:00.300
+Now let's talk specifics about Cloud formation.
+
+00:01:01.329 --> 00:01:04.189
+This script that we're looking at,
+
+00:01:04.189 --> 00:01:08.765
+which we're calling testsCloudformation.YML
+
+00:01:08.765 --> 00:01:12.079
+is basically the smallest thing that you will have.
+
+00:01:12.079 --> 00:01:14.674
+It basically creates a single resource.
+
+00:01:14.674 --> 00:01:17.379
+In this case, we're calling it a VPC.
+
+00:01:17.379 --> 00:01:21.134
+By the way, it says VPC here in the name,
+
+00:01:21.135 --> 00:01:25.250
+but the name is just a reference for you when you are creating the scripts.
+
+00:01:25.250 --> 00:01:30.230
+So you can call UdacityVPC and there's nothing wrong with that.
+
+00:01:30.230 --> 00:01:31.640
+So that's just a label for
+
+00:01:31.640 --> 00:01:37.239
+your personal reference so that you can refer to it throughout the script.
+
+00:01:37.239 --> 00:01:40.670
+Now the type is very specific for what we're doing.
+
+00:01:40.670 --> 00:01:44.120
+The type is really what tells Cloud Formation what do you want to create.
+
+00:01:44.120 --> 00:01:49.015
+In this case, the type that we're specifying is AWS::EC2::VPC.
+
+00:01:49.015 --> 00:01:53.090
+Now, I'm not going to ask you to memorize any of this,
+
+00:01:53.090 --> 00:01:57.049
+even you'll see me myself going to the documentation
+
+00:01:57.049 --> 00:02:00.750
+to look up these values when it's appropriate.
+
+00:02:00.750 --> 00:02:04.219
+For example, let's say that I wanted to create this VPC right now and I don't
+
+00:02:04.219 --> 00:02:07.730
+know how to do it or I do know I just forgot.
+
+00:02:07.730 --> 00:02:11.090
+So what I would do is I will go back to the browser here,
+
+00:02:11.090 --> 00:02:12.800
+I'm going to open a new tab,
+
+00:02:12.800 --> 00:02:21.010
+and I will type cloudformation vpc.
+
+00:02:21.009 --> 00:02:24.079
+Chances are that will be the first link that you see,
+
+00:02:24.080 --> 00:02:30.710
+and it will take you to the documentation on confirmation on how to create VPCs.
+
+00:02:31.560 --> 00:02:35.710
+The first thing you'll see is syntax followed by properties.
+
+00:02:35.710 --> 00:02:41.430
+So let's take a look. I'm going to skip the JSON format because I'm working with the YML.
+
+00:02:41.430 --> 00:02:43.480
+So you'll see that right away.
+
+00:02:43.479 --> 00:02:46.405
+It will show you all the properties that it has.
+
+00:02:46.405 --> 00:02:50.259
+However, most of the resources that you're going to create,
+
+00:02:50.259 --> 00:02:53.469
+they have smart default values,
+
+00:02:53.469 --> 00:02:58.240
+so you can get away with not specifying everything and it will still work just fine.
+
+00:02:58.240 --> 00:03:00.969
+So let's take a look at these values here.
+
+00:03:00.969 --> 00:03:02.965
+So as I mentioned earlier,
+
+00:03:02.965 --> 00:03:06.289
+the type is AWS::EC2::VPC.
+
+00:03:06.289 --> 00:03:07.909
+Again, you don't need to memorize it.
+
+00:03:07.909 --> 00:03:13.189
+In fact, the official documentation has a copy button here,
+
+00:03:13.189 --> 00:03:16.009
+so you can copy and paste this into your script right away.
+
+00:03:16.009 --> 00:03:19.259
+So you don't have to worry about that.
+
+00:03:20.680 --> 00:03:25.415
+Now you see this says this property CIDR block is required.
+
+00:03:25.414 --> 00:03:26.989
+So if you are creating one,
+
+00:03:26.990 --> 00:03:28.715
+you need to specify this property.
+
+00:03:28.715 --> 00:03:33.110
+However, the rest you'll see enabled DNS support is not required,
+
+00:03:33.110 --> 00:03:35.770
+so you can just ignore that and not put it at all,
+
+00:03:35.770 --> 00:03:39.260
+and the same goes on all the way down.
+
+00:03:39.259 --> 00:03:45.969
+So really the only required parameter in this case is CIDR block.
+
+00:03:45.969 --> 00:03:49.289
+So if I were to create a VPC right now,
+
+00:03:49.289 --> 00:03:50.969
+all I would do is type a name,
+
+00:03:50.969 --> 00:03:52.319
+whatever name I like,
+
+00:03:52.319 --> 00:03:56.319
+type the resource type, which is EC2::VPC,
+
+00:03:56.319 --> 00:03:59.209
+and then specify the single property of CIDR block,
+
+00:03:59.210 --> 00:04:00.625
+whatever value it may be.
+
+00:04:00.625 --> 00:04:03.569
+Again, don't worry at this time of what is
+
+00:04:03.569 --> 00:04:06.469
+the VPC and what it does and why am I creating one,
+
+00:04:06.469 --> 00:04:10.324
+because we're just trying to test the script and make sure it works.
+
+00:04:10.324 --> 00:04:12.750
+Let's get back to this script.
+
+00:04:14.539 --> 00:04:16.699
+Here in the script,
+
+00:04:16.699 --> 00:04:19.370
+we have enabled DNS host name is true.
+
+00:04:19.370 --> 00:04:23.254
+Like we said earlier, this is an optional property,
+
+00:04:23.254 --> 00:04:28.459
+but I decided to have it here to be able to set it to true and I specified a value for
+
+00:04:28.459 --> 00:04:30.529
+the cider block which is going to be
+
+00:04:30.529 --> 00:04:34.369
+the IP address space that is going to be used by this VPC.
+
+00:04:34.370 --> 00:04:38.870
+We will get to that probably in the next lesson,
+
+00:04:38.870 --> 00:04:42.305
+we're going to discuss what exactly it is and how to use a properly,
+
+00:04:42.305 --> 00:04:46.660
+but right now let's just focus on the format and how to test this.
+
+00:04:46.660 --> 00:04:49.995
+So going down the line,
+
+00:04:49.995 --> 00:04:56.490
+you will see we can create more and more resources.
+
+00:04:56.490 --> 00:04:59.069
+We can create more resources in the same script.
+
+00:04:59.069 --> 00:05:00.689
+So this is just a VPC.
+
+00:05:00.689 --> 00:05:04.889
+We can create more networking components,
+
+00:05:04.889 --> 00:05:06.000
+we can create servers,
+
+00:05:06.000 --> 00:05:07.605
+we can create web server.
+
+00:05:07.605 --> 00:05:10.700
+Anything you need, you can declare it in this file.
+
+00:05:10.699 --> 00:05:13.909
+Also your learned that it's not a good idea to just continue
+
+00:05:13.910 --> 00:05:17.300
+down the line that clearing a lot of things because this is going to grow very fast,
+
+00:05:17.300 --> 00:05:22.324
+you're going to end up with hundreds of lines of code just talking about the same thing.
+
+00:05:22.324 --> 00:05:23.884
+We don't want that situation.
+
+00:05:23.884 --> 00:05:31.459
+What we want to do is create several files and group them based on either logic,
+
+00:05:31.459 --> 00:05:36.995
+for example, one for networks and one for servers, or by ownership.
+
+00:05:36.995 --> 00:05:42.819
+Ownership means if the software developers know better how to deploy their application,
+
+00:05:42.819 --> 00:05:47.240
+then create Lego development of file for resources and let them do it.
+
+00:05:47.240 --> 00:05:50.074
+If the operational folks they know better how to
+
+00:05:50.074 --> 00:05:53.539
+deploy a database and manage those production resources,
+
+00:05:53.540 --> 00:05:56.890
+then let them have a separate file with those resources.
+
+00:05:56.889 --> 00:05:59.959
+Anyways, everything comes together in the deployment pipeline,
+
+00:05:59.959 --> 00:06:02.944
+so no worries there.
+
+00:06:02.944 --> 00:06:10.709
+So just remember that it's a best practice to group resources.
+
+00:06:10.910 --> 00:06:16.170
+Group those resources based on what works best for your company,
+
+00:06:16.170 --> 00:06:20.490
+not just one large file with everything, you don't want to do that.
+

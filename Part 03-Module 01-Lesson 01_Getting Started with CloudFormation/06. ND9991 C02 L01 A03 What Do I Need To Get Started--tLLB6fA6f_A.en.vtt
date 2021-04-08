@@ -1,0 +1,160 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.819
+So what do I need to get started?
+
+00:00:02.819 --> 00:00:04.320
+So in this lesson,
+
+00:00:04.320 --> 00:00:08.730
+we're going to set out certain tools when it comes to the use of CloudFormation.
+
+00:00:08.730 --> 00:00:11.130
+Before I talk about the tools,
+
+00:00:11.130 --> 00:00:13.335
+I'll tell you what CloudFormation is.
+
+00:00:13.335 --> 00:00:19.170
+CloudFormation is a tool that we're going to use to be able to manage, configure,
+
+00:00:19.170 --> 00:00:23.460
+and deploy the necessary infrastructure to do what we just discussed,
+
+00:00:23.460 --> 00:00:29.115
+which is push code along with the necessary server configuration to make it run.
+
+00:00:29.114 --> 00:00:33.329
+CloudFormation is a tool that is specific to Amazon Web Services,
+
+00:00:33.329 --> 00:00:36.574
+and what we're going to do in this lesson is set up
+
+00:00:36.575 --> 00:00:40.820
+a code editor because CloudFormation is a scripting language.
+
+00:00:40.820 --> 00:00:43.570
+So we're going to have to write some code.
+
+00:00:43.570 --> 00:00:45.535
+We're going to set up a co-editor,
+
+00:00:45.534 --> 00:00:49.229
+ideally you want to Git support for version control,
+
+00:00:49.229 --> 00:00:53.704
+is a best practice to use version control for any code that you write,
+
+00:00:53.704 --> 00:00:56.329
+even if the code is infrastructure as code.
+
+00:00:56.329 --> 00:00:59.229
+I know it's not software development per se,
+
+00:00:59.229 --> 00:01:02.299
+but it is something that you're definitely going to want to
+
+00:01:02.299 --> 00:01:05.450
+version control because the scripts for deployment,
+
+00:01:05.450 --> 00:01:07.549
+they can get pretty complex.
+
+00:01:07.549 --> 00:01:09.980
+So you want to be able to have the ability to
+
+00:01:09.980 --> 00:01:12.515
+roll back a change if something bad happens,
+
+00:01:12.515 --> 00:01:16.055
+if you make a deployment and it doesn't work as you intended to.
+
+00:01:16.055 --> 00:01:17.500
+If you're using version control,
+
+00:01:17.500 --> 00:01:19.810
+you have the option of rolling back,
+
+00:01:19.810 --> 00:01:22.325
+and reverting that change quickly.
+
+00:01:22.325 --> 00:01:26.855
+Before we get to that, we're going to have to create a user account, obviously.
+
+00:01:26.855 --> 00:01:31.175
+You should have an Amazon Web Services account to go through this course.
+
+00:01:31.174 --> 00:01:36.349
+Once in there, we're going to go ahead and create an IAM user
+
+00:01:36.349 --> 00:01:41.659
+and this user is going to provide us with API or application programming interface axis.
+
+00:01:41.659 --> 00:01:45.200
+This way we don't need to go to the console in AWS,
+
+00:01:45.200 --> 00:01:47.329
+and type and point-and-click commands,
+
+00:01:47.329 --> 00:01:51.504
+we're actually just going to send commands directly from our terminal,
+
+00:01:51.504 --> 00:01:55.590
+which obviously, we can then automate in to a script.
+
+00:01:55.590 --> 00:01:56.730
+Once we have those credentials,
+
+00:01:56.730 --> 00:01:59.180
+we're going to configure the AWS CLI tool,
+
+00:01:59.180 --> 00:02:03.100
+or command line interface tool with those credentials,
+
+00:02:03.099 --> 00:02:07.280
+and we're going to be using US West 2.
+
+00:02:07.280 --> 00:02:11.525
+I know it's very tempting to go to AWS and pick the region,
+
+00:02:11.525 --> 00:02:15.155
+the geographical region that is closest to where you are in the world.
+
+00:02:15.155 --> 00:02:17.449
+But in this case because of there are
+
+00:02:17.449 --> 00:02:20.769
+certain features that may not be available in all regions,
+
+00:02:20.770 --> 00:02:24.200
+we're going to try to be consistent and use US West 2,
+
+00:02:24.199 --> 00:02:28.949
+that's the Oregon region in the United States for our course.
+
+00:02:28.949 --> 00:02:32.909
+For the editor, I'm going to be using Visual Studio code.
+
+00:02:32.909 --> 00:02:38.025
+I like this tool because it has internal version control and Git support,
+
+00:02:38.025 --> 00:02:40.789
+and it also has support for
+
+00:02:40.789 --> 00:02:45.049
+cloud formation and additional tools that will get to see in a moment because we need
+
+00:02:45.050 --> 00:02:53.200
+an editor that can use JSON format which stands for JavaScript Object Notation format,
+
+00:02:53.199 --> 00:02:56.564
+and YAML format which is a markup language,
+
+00:02:56.564 --> 00:02:57.629
+and YAML, I believe,
+
+00:02:57.629 --> 00:03:03.819
+stands for Yet Another Markup Language. Yeah, let's continue.
+

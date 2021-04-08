@@ -1,0 +1,205 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.500 --> 00:00:04.980
+I'm going to go ahead now and then add a couple of servers here.
+
+00:00:04.980 --> 00:00:09.050
+I'm going to go to EC2, I'm going to add one here.
+
+00:00:09.050 --> 00:00:15.325
+I'm going to rename it into a web server or www.
+
+00:00:15.325 --> 00:00:18.610
+I'm going to add a secondary one of these.
+
+00:00:18.610 --> 00:00:23.030
+Let me copy this over to the other subnet.
+
+00:00:23.030 --> 00:00:26.260
+Now, keep in mind, these are individual web servers.
+
+00:00:26.260 --> 00:00:29.860
+So you have web server 1 and web server 2.
+
+00:00:29.860 --> 00:00:32.185
+So this is less than ideal,
+
+00:00:32.185 --> 00:00:34.165
+obviously, if you're running a business,
+
+00:00:34.165 --> 00:00:39.430
+you want your customers to remember a single web address, yourbusiness.com.
+
+00:00:39.430 --> 00:00:42.280
+They don't need to remember business1.com,
+
+00:00:42.280 --> 00:00:45.500
+business2.com, that is totally impractical.
+
+00:00:45.500 --> 00:00:50.540
+So we're probably going to load balance disguise by adding servers in front of
+
+00:00:50.540 --> 00:00:52.700
+them so that people will access
+
+00:00:52.700 --> 00:00:56.750
+that server instead of accessing your web servers directly.
+
+00:00:56.750 --> 00:01:00.650
+However, let's take a moment to talk about auto-scaling groups,
+
+00:01:00.650 --> 00:01:05.625
+something that we can use for the purpose of meeting customer demand,
+
+00:01:05.625 --> 00:01:09.650
+as well as meeting our requirements for high availability.
+
+00:01:09.650 --> 00:01:13.140
+I'll look for autoscaling here.
+
+00:01:15.040 --> 00:01:19.535
+I'm going to use this container that says autoscaling.
+
+00:01:19.535 --> 00:01:23.450
+I'm going to put it right here in our private subnets and I'm going to expand it
+
+00:01:23.450 --> 00:01:27.715
+across two of our subnets.
+
+00:01:27.715 --> 00:01:33.510
+Now, let's take a moment now to explain what an autoscaling group is.
+
+00:01:33.710 --> 00:01:37.850
+Autoscaling or autoscaling groups is a service that you can
+
+00:01:37.850 --> 00:01:41.510
+use to manage servers that provide a common service.
+
+00:01:41.510 --> 00:01:44.335
+They need more than one sub-net.
+
+00:01:44.335 --> 00:01:49.450
+They can't be used for the purpose of high availability and elasticity.
+
+00:01:49.450 --> 00:01:56.225
+Elasticity is the ability to expand and contract your resources to meet demand.
+
+00:01:56.225 --> 00:01:59.105
+So back here in our diagram,
+
+00:01:59.105 --> 00:02:01.100
+let's explain those concepts.
+
+00:02:01.100 --> 00:02:03.790
+First of all, high availability.
+
+00:02:03.790 --> 00:02:06.470
+Let's say I had a single server that is part of
+
+00:02:06.470 --> 00:02:11.010
+this autoscaling group and it's located in private subnet 1.
+
+00:02:11.010 --> 00:02:15.700
+If something were to happen to that datacenter in AZ1,
+
+00:02:15.700 --> 00:02:19.540
+the autoscaling group will detect that failure and will spin up
+
+00:02:19.540 --> 00:02:23.560
+an identical copy of that service in private subnet 2,
+
+00:02:23.560 --> 00:02:26.610
+which is located in availability zone 2,
+
+00:02:26.610 --> 00:02:31.230
+which is a physical datacenter that is different from AZ1.
+
+00:02:31.400 --> 00:02:34.960
+This will make your servers highly available because if
+
+00:02:34.960 --> 00:02:38.410
+private subnet 1's becomes unavailable for whatever reason,
+
+00:02:38.410 --> 00:02:41.140
+you can be guaranteed that the autoscaling group will
+
+00:02:41.140 --> 00:02:44.115
+make sure your server is still running,
+
+00:02:44.115 --> 00:02:50.170
+now in a different datacenter located in private subnet 2 and availability zone 2.
+
+00:02:50.990 --> 00:02:53.559
+Now, let's talk about elasticity,
+
+00:02:53.559 --> 00:02:57.370
+which is the second and most important concept regarding autoscaling.
+
+00:02:57.370 --> 00:03:02.425
+If you have an application that is receiving 100 requests and you decide that, hey,
+
+00:03:02.425 --> 00:03:05.875
+I can handle those 100 requests with one or two servers,
+
+00:03:05.875 --> 00:03:08.705
+you can set them up inside an autoscaling group.
+
+00:03:08.705 --> 00:03:12.415
+Let's say, if the number of requests exceeds 50,
+
+00:03:12.415 --> 00:03:14.920
+you can instruct the autoscaling to spin up
+
+00:03:14.920 --> 00:03:18.710
+another copy of that service to be able to handle the requests.
+
+00:03:18.710 --> 00:03:21.805
+Now, if you have less than 50 requests at that time,
+
+00:03:21.805 --> 00:03:22.960
+you can also instruct
+
+00:03:22.960 --> 00:03:26.290
+the autoscaling group to delete that additional servers and that way,
+
+00:03:26.290 --> 00:03:30.310
+you don't have to pay for those additional resources that are not being utilized.
+
+00:03:30.310 --> 00:03:33.430
+The same can be said about any scale.
+
+00:03:33.430 --> 00:03:39.040
+If you need hundreds of servers to be able to handle thousands of requests per second,
+
+00:03:39.040 --> 00:03:43.555
+you can do that by spinning up more servers based on demand.
+
+00:03:43.555 --> 00:03:47.285
+The scaling up and down criteria can be anything.
+
+00:03:47.285 --> 00:03:49.684
+It can be the number of orders,
+
+00:03:49.684 --> 00:03:51.890
+the number of images to be processed,
+
+00:03:51.890 --> 00:03:54.890
+the number of web requests that your web server is receiving.
+
+00:03:54.890 --> 00:03:57.985
+Anything that relates to the application that you're doing.
+
+00:03:57.985 --> 00:04:00.060
+That's the availability of the Cloud.
+
+00:04:00.060 --> 00:04:03.050
+You only pay for resources that you're actually using and
+
+00:04:03.050 --> 00:04:06.335
+you eliminate those resources as soon as you're done using them.
+
+00:04:06.335 --> 00:04:09.240
+That's the concept of elasticity.
+

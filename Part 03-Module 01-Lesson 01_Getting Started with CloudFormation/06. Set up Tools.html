@@ -1,0 +1,290 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Set up Tools</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Getting Started with CloudFormation</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Course Overview.html">02. Course Overview</a>
+    </li>
+    <li class="">
+      <a href="03. What is DevOps.html">03. What is DevOps</a>
+    </li>
+    <li class="">
+      <a href="04. Why you need DevOps.html">04. Why you need DevOps</a>
+    </li>
+    <li class="">
+      <a href="05. What are the benefits of Cloud DevOps.html">05. What are the benefits of Cloud DevOps?</a>
+    </li>
+    <li class="">
+      <a href="06. Set up Tools.html">06. Set up Tools</a>
+    </li>
+    <li class="">
+      <a href="07. Creating Access Key ID for IAM User.html">07. Creating Access Key ID for IAM User</a>
+    </li>
+    <li class="">
+      <a href="08. Configuring AWS CLI.html">08. Configuring AWS CLI</a>
+    </li>
+    <li class="">
+      <a href="09. Adding Additional Keys.html">09. Adding Additional Keys</a>
+    </li>
+    <li class="">
+      <a href="10. Understanding CloudFormation.html">10. Understanding CloudFormation</a>
+    </li>
+    <li class="">
+      <a href="11. Getting Started With CloudFormation Script.html">11. Getting Started With CloudFormation Script</a>
+    </li>
+    <li class="">
+      <a href="12. Create a VPC Manually.html">12. Create a VPC: Manually</a>
+    </li>
+    <li class="">
+      <a href="13. Exercise - Create a VPC Automated.html">13. Exercise - Create a VPC: Automated</a>
+    </li>
+    <li class="">
+      <a href="14. Exercise - EC2 Instance with an Admin Role.html">14. Exercise - EC2 Instance with an Admin Role</a>
+    </li>
+    <li class="">
+      <a href="15. Conclusion.html">15. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="16. Challenge 1.html">16. Challenge 1</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">06. Set up Tools</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND9991 C02 L01 A03 What Do I Need To Get Started-</p></h3>
+  <video controls>
+  <source src="06. ND9991 C02 L01 A03 What Do I Need To Get Started--tLLB6fA6f_A.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="06. ND9991 C02 L01 A03 What Do I Need To Get Started--tLLB6fA6f_A.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="what-is-cloudformation">What is CloudFormation?</h3>
+<p><a href="https://youtu.be/Omppm_YUG2g" rel="noopener noreferrer" target="_blank">CloudFormation</a> is an AWS tool for creating, managing, configuring, and deploying cloud resources. This tool is beneficial if you have to provision a set of cloud resources multiple times, at scale. You can do so by simply writing (YAML or JSON) scripts that you can easily edit and run numerous times. In the script, we mention each resource's necessary configuration that we want to provision and then use the AWS CLI tool and commands to execute the scripts. </p>
+<h3 id="tools-required-for-the-current-course">Tools required for the current course</h3>
+<ol>
+<li><strong>AWS CLI tool</strong>: If you haven't installed and configured <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" rel="noopener noreferrer" target="_blank">AWS CLI tool</a> yet, we will learn to do that in the upcoming pages again. You can verify the installation using the following command in your terminal (macOS)/cmd (Windows). </li>
+</ol>
+<pre><code># See the current version
+aws --version</code></pre>
+<p>Recall that you will have to configure AWS CLI after the installation as:</p>
+<ul>
+<li><p>Create an IAM User and copy the access key</p></li>
+<li><p>Configure the credentials in CLI</p>
+<p>On the next page, you will see the demo showing the above two steps. </p></li>
+</ul>
+<ol>
+<li><p><strong>Terminal</strong> (macOS/Linux) or <strong>CMD</strong> (Windows)</p></li>
+<li><p><strong>Git</strong> - <a href="https://git-scm.com/downloads" rel="noopener noreferrer" target="_blank">Download and install the Git for your system</a>. Git is an open-source distributed Version Control System (VCS). Github is a repository hosting and version control service, where you can store, share, or download the repository content in collaboration with multiple contributors. Once downloaded, you can use Git as a command-line tool in your Terminal (macOS) or Git bash(Windows). </p></li>
+<li><p><strong>Code editor</strong>: The instructor has used the VS code editor in his demonstrations. You are free to choose any code editor of your choice. However, you can <a href="https://code.visualstudio.com/download" rel="noopener noreferrer" target="_blank">download and install VS code here</a>. Once you have the editor installed, you can run the following commands in your Terminal (macOS)/Git bash (Windows):</p></li>
+</ol>
+<pre><code class="bash language-bash"># Clone the repository to your local system
+git clone https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1.git
+cd nd9991-c2-Infrastructure-as-Code-v1
+# See the content in the current directory. You will see README.md, project_starter, and supporting_material directories. 
+ls
+# Get inside the supporting_material
+cd supporting_material
+# Open the VS code editor to display your content
+code .</code></pre>
+<hr />
+<p>In addition to the tools above, </p>
+<ul>
+<li><p><strong>Language proficiency</strong>: It will be beneficial to have a <em>little</em> familiarity with the JSON and YAML programming language basics. Even if you are not acquainted, you can still learn on-the-go. </p></li>
+<li><p><strong>AWS region used for this course</strong>: Prefer to choose either <strong>US West (Oregon)us-west-2</strong> or <strong>US East (N. Virginia) us-east-1</strong>. This will guarantee the options are the same for all students.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Let's recap and identify which tools you need to set up?</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1560469055410" name="859720" id="a1560469055410">
+      <label for="a1560469055410"><p>Version Control</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1560469141911" name="859720" id="a1560469141911">
+      <label for="a1560469141911"><p>Code Editor for YAML and JSON</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1560469337288" name="859720" id="a1560469337288">
+      <label for="a1560469337288"><p>Amazon Web Services account</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1560469664977" name="859720" id="a1560469664977">
+      <label for="a1560469664977"><p>GitHub</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Version Control</li>
+      <li>Code Editor for YAML and JSON</li>
+      <li>Amazon Web Services account</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="07. Creating Access Key ID for IAM User.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Set up Tools')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

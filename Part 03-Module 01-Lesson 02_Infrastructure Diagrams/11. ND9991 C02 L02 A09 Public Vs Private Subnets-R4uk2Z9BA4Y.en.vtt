@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.950
+Let's do another couple of subnets and I'll explain why in a second.
+
+00:00:06.740 --> 00:00:10.440
+So I'm going to throw this one in here,
+
+00:00:10.439 --> 00:00:17.439
+and I'm going to do another one down here,
+
+00:00:20.000 --> 00:00:25.019
+and I'm going to rename this and I'm going to call them a private Subnet
+
+00:00:25.019 --> 00:00:30.089
+1 and 2, private Subnet 1.
+
+00:00:30.089 --> 00:00:33.000
+These are just labels so that we can tell them apart.
+
+00:00:33.000 --> 00:00:35.115
+So it's not really critical at this time,
+
+00:00:35.115 --> 00:00:36.690
+and after all, it's just a diagram,
+
+00:00:36.689 --> 00:00:40.804
+we're not really writing a specific infrastructure as code just yet,
+
+00:00:40.804 --> 00:00:43.409
+so bear with me here.
+
+00:00:43.409 --> 00:00:49.574
+So we have private Subnet 1 and 2 and the other ones I'll call public.
+
+00:00:49.575 --> 00:00:53.210
+Now, like I said, that's just a label distinction right now.
+
+00:00:53.210 --> 00:00:56.575
+I wonder what can we do with that information.
+
+00:00:56.575 --> 00:01:01.700
+So the real goal here is to use the IP addresses in
+
+00:01:01.700 --> 00:01:06.784
+this subnets as our key for routing traffic.
+
+00:01:06.784 --> 00:01:08.765
+Let me explain what that means.
+
+00:01:08.765 --> 00:01:10.870
+If you have a routing table,
+
+00:01:10.870 --> 00:01:13.070
+you can use that routing table to say, "Hey,
+
+00:01:13.069 --> 00:01:17.009
+I want this traffic to stay within my VPC or
+
+00:01:17.010 --> 00:01:21.420
+this traffic to just go to this one subnet or to that subnet."
+
+00:01:21.420 --> 00:01:24.680
+That's the basics of networking.
+
+00:01:24.680 --> 00:01:29.435
+What we do with that is we use it as an element of security.
+
+00:01:29.435 --> 00:01:31.454
+So in our private subnets,
+
+00:01:31.454 --> 00:01:33.319
+we're going to deploy, let's say, a database,
+
+00:01:33.319 --> 00:01:36.759
+something that has very sensitive and critical data for your business,
+
+00:01:36.760 --> 00:01:38.930
+you don't want that exposed to the Internet.
+
+00:01:38.930 --> 00:01:40.730
+However, if you have
+
+00:01:40.730 --> 00:01:46.215
+a web server showing the applications and talking about your company,
+
+00:01:46.215 --> 00:01:47.960
+obviously, you want people in
+
+00:01:47.959 --> 00:01:51.469
+the outside world to be able to see this information and say,
+
+00:01:51.469 --> 00:01:54.289
+"Hey, this is a public facing server.
+
+00:01:54.290 --> 00:01:56.660
+We want everybody to be able to see this server."
+
+00:01:56.659 --> 00:02:00.769
+You would put a such a server and what we call a public subnet.
+
+00:02:00.769 --> 00:02:03.920
+In that subnet, what you're going to have is
+
+00:02:03.920 --> 00:02:08.955
+this server running and receiving inbound Internet traffic from any source.
+
+00:02:08.955 --> 00:02:10.110
+Obviously, as a web server,
+
+00:02:10.110 --> 00:02:12.155
+you want it to be accessible from anywhere.
+
+00:02:12.155 --> 00:02:13.564
+However, like I mentioned,
+
+00:02:13.564 --> 00:02:14.900
+you don't want that to happen to
+
+00:02:14.900 --> 00:02:17.569
+your database or anything that's sensitive for your company.
+
+00:02:17.569 --> 00:02:19.549
+You don't want that exposed to the Internet.
+
+00:02:19.550 --> 00:02:22.100
+So there comes the concept of a private subnet.
+
+00:02:22.099 --> 00:02:25.239
+This is where you're going to deploy your sensitive data,
+
+00:02:25.240 --> 00:02:27.230
+and then we're going to use routing rules and
+
+00:02:27.229 --> 00:02:30.139
+security group which we're going to introduce here in a moment,
+
+00:02:30.139 --> 00:02:34.789
+and those will help you block access to those things.
+

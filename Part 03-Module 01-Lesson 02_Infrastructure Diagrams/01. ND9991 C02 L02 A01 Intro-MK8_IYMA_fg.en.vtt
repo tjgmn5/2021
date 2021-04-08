@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.135
+Now in this lesson, we're going to cover diagrams.
+
+00:00:03.135 --> 00:00:08.955
+In the previous lesson, we just discussed how to get our CLI tool properly set up.
+
+00:00:08.955 --> 00:00:11.520
+Everything is running correctly.
+
+00:00:11.520 --> 00:00:13.260
+But we're going to take a break from
+
+00:00:13.260 --> 00:00:17.190
+CloudFormation scripts and we're going to go into diagrams now.
+
+00:00:17.190 --> 00:00:19.740
+Diagrams are very, very important because that's
+
+00:00:19.740 --> 00:00:22.950
+where everything that's cloud-related begins.
+
+00:00:22.950 --> 00:00:25.080
+They may not be super important in
+
+00:00:25.080 --> 00:00:28.350
+the real world where you actually set up a physical server that
+
+00:00:28.350 --> 00:00:33.760
+you can touch and install on your datacenter and connect it to your network,
+
+00:00:33.760 --> 00:00:35.970
+that's perfect in the real world because you get
+
+00:00:35.970 --> 00:00:37.920
+to really get to see it and test and verify.
+
+00:00:37.920 --> 00:00:39.525
+Now, in the cloud,
+
+00:00:39.525 --> 00:00:43.209
+since you don't have physical access to that datacenter,
+
+00:00:43.209 --> 00:00:45.575
+you're going to need diagrams and then turn
+
+00:00:45.575 --> 00:00:49.250
+those diagrams into actual infrastructure called scripts.
+
+00:00:49.250 --> 00:00:51.780
+So let's get started.
+

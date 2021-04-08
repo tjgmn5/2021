@@ -1,0 +1,28 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.700
+I realize networking isn't fun.
+
+00:00:02.700 --> 00:00:06.750
+Well, if there's one takeaway for you from this course, it would be this lesson.
+
+00:00:06.750 --> 00:00:09.810
+When you're performing work as a cloud solutions architect,
+
+00:00:09.810 --> 00:00:12.630
+you'll soon notice that getting the network right will
+
+00:00:12.630 --> 00:00:16.019
+save you a lot of headaches in the areas of future expansion,
+
+00:00:16.019 --> 00:00:18.419
+security, and traffic routing.
+
+00:00:18.420 --> 00:00:19.935
+But enough of networking,
+
+00:00:19.934 --> 00:00:25.239
+let's find a way to assess our setup with some actual traffic in the next lesson.
+

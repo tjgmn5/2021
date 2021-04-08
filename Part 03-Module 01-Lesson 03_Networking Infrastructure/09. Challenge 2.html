@@ -1,0 +1,350 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Challenge 2</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Networking Infrastructure</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Workflow and Helpers.html">02. Workflow and Helpers</a>
+    </li>
+    <li class="">
+      <a href="03. VPC and Internet Gateway.html">03. VPC and Internet Gateway</a>
+    </li>
+    <li class="">
+      <a href="04. Subnets.html">04. Subnets</a>
+    </li>
+    <li class="">
+      <a href="05. NAT Gateways.html">05. NAT Gateways</a>
+    </li>
+    <li class="">
+      <a href="06. Routing.html">06. Routing</a>
+    </li>
+    <li class="">
+      <a href="07. Outputs.html">07. Outputs</a>
+    </li>
+    <li class="">
+      <a href="08. Conclusion.html">08. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="09. Challenge 2.html">09. Challenge 2</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">09. Challenge 2</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="challenge-2">Challenge 2</h1>
+<h2 id="project-overview">Project Overview</h2>
+<p>You have been tasked with creating the required Infrastructure-as-code scripts for a new cloud environment in AWS. The <em>Lead Solutions Architect</em> for the project sends you the following diagram.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-16-at-5.24.30-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="todo">ToDo</h2>
+<p>Write a CloudFormation script that:</p>
+<ol>
+<li>Creates a VPC</li>
+</ol>
+<ul>
+<li>It will accept the IP Range -also known as CIDR block- from an input parameter</li>
+</ul>
+<ol>
+<li><p>Creates and attaches an Internet Gateway to the VPC</p></li>
+<li><p>Creates Two Subnets within the VPC with Name Tags to call them “Public” and “Private”</p></li>
+</ol>
+<ul>
+<li>These will also need input parameters for their ranges, just like the VPC.</li>
+</ul>
+<ol>
+<li>The Subnet called “Public” needs to have a NAT Gateway deployed in it </li>
+</ol>
+<ul>
+<li>This will require you to allocate an Elastic IP that you can then use to assign it to the NAT Gateway.</li>
+</ul>
+<ol>
+<li><p>The Public Subnet needs to have the MapPublicIpOnLaunch property set to true. Use this <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html#cfn-ec2-subnet-mappubliciponlaunch" rel="noopener noreferrer" target="_blank">reference</a> for help.</p></li>
+<li><p>The Private Subnet needs to have the MapPublicIpOnLaunch property set to false.</p></li>
+<li><p>Both subnets need to be /24 in size.</p></li>
+</ol>
+<ul>
+<li>If you need assistance with IP math, you can use a subnet calculator such as <a href="https://network00.com/NetworkTools/IPv4AddressPlanner/" rel="noopener noreferrer" target="_blank">this one</a>. </li>
+</ul>
+<ol>
+<li><p>You will need 2 Routing Tables, one named Public and the other one Private</p></li>
+<li><p>Assign the Public and Private Subnets to their corresponding Routing table</p></li>
+<li><p>Create a Route in the Public Route Table to send default traffic ( 0.0.0.0/0 ) to the Internet Gateway  you created</p></li>
+<li><p>Create a Route in the Private Route Table to send default traffic ( 0.0.0.0/0 ) to the NAT Gateway</p></li>
+<li><p>Finally, once you execute this CloudFormation script, you should be able to delete it and create it again, over and over in a predictable and repeatable manner, this is the true verification of working Infrastructure-as-Code</p></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="helpful-hints">Helpful hints:</h2>
+<ol>
+<li>The numbers in the diagram below show the recommended sequence for resource creation. This is not required by CloudFormation but it helps to keep you on track and allows you to stop and verify as you go.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-16-at-5.25.20-pm.png" alt="Create the resources in the order highlighted above " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Create the resources in the order highlighted above </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-16-at-5.22.04-pm.png" alt="To help you get running, the snapshot above &lt;br&gt;shows the **Resources** that you would want to create. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>To help you get running, the snapshot above <br>shows the <strong>Resources</strong> that you would want to create. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li><p>Because NAT Gateways and Internet Gateway attachments aren’t automatic and take some time to provision, you may need the DependsOn attribute to wait for these events in your script.</p>
+<p>This NAT Gateway example shows the use of “DependsOn” to wait for an Attachment to complete: </p>
+<p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html</a> </p></li>
+<li><p>Finally: <em>Divide and Conquer!</em> For example: just write the script for the VPC and Internet Gateway and make sure it works, then move on to adding more resources, increasing complexity as you go. <br><br><br />
+<center><font color="blue"><strong>Tip: Don’t attempt to write it all at once!</strong></font></center></p></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="expected-output">Expected Output</h2>
+<p>The stack details should show you the list of resources created successfully:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-16-at-5.40.38-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-16-at-5.40.51-pm.png" alt="Newly created resources under the stack * challenge2* " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Newly created resources under the stack * challenge2* </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="solution">Solution</h3>
+<div id="spoiler_1" style="display:none">
+#### <font color="green">Download the solution files, and run the command below:</font>
+<pre><code>aws cloudformation create-stack  --stack-name challenge2 --region us-east-1 --template-body file://challenge2-solution.yml --parameters file://challenge2-solution-parameters.json</code></pre>
+Don't forget to change the Region | Availability Zone, such as `us-east-1a` as applicable to you.
+</div>
+<p><button type="button" id="myButton1" onclick="if(document.getElementById('spoiler_1') .style.display=='none') {document.getElementById('spoiler_1') .style.display=''}else{document.getElementById('spoiler_1') .style.display='none'}if (document.getElementById('myButton1').innerHTML=='Show Solution') {document.getElementById('myButton1').innerHTML='Hide Solution';}else{document.getElementById('myButton1').innerHTML = 'Show Solution';}">Show Solution</button></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p>Delete the stack, and recreate the same for the next challenge coming your way!</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('09. Challenge 2')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

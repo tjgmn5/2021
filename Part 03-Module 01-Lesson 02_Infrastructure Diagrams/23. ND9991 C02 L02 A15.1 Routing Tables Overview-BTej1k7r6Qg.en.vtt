@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.530
+Routing in the Cloud is a very critical component of your infrastructure.
+
+00:00:05.830 --> 00:00:07.945
+By using route tables,
+
+00:00:07.945 --> 00:00:11.175
+you can regulate traffic to and from your network.
+
+00:00:11.175 --> 00:00:13.515
+Let's take a look at some definitions.
+
+00:00:13.515 --> 00:00:16.755
+A routing table is simply a set of entries or rules
+
+00:00:16.755 --> 00:00:21.255
+associated with one or more of your subnets inside your VPC.
+
+00:00:21.255 --> 00:00:27.765
+These rules allow or deny traffic to and from the address ranges that you specify.
+
+00:00:27.765 --> 00:00:30.850
+Rules can be as open as the entire world,
+
+00:00:30.850 --> 00:00:36.580
+or they can be as restrictive as to a single particular IP address.
+
+00:00:36.740 --> 00:00:40.130
+Let's take a look at this diagram here.
+
+00:00:40.130 --> 00:00:46.205
+This is a VPC that is connected to the on-premise network as well as the Internet.
+
+00:00:46.205 --> 00:00:52.670
+The main components here are a public subnet and a private subnet.
+
+00:00:52.670 --> 00:00:58.380
+Now the public subnet is associated with a custom routing table up here,
+
+00:00:58.750 --> 00:01:05.160
+and the private subnet is associated with the main routing table down here.
+
+00:01:05.800 --> 00:01:11.330
+What makes the private subnet private is the fact that it has a rule that
+
+00:01:11.330 --> 00:01:17.225
+says all traffic is going to go to the virtual private gateway,
+
+00:01:17.225 --> 00:01:20.015
+which is this component right here.
+
+00:01:20.015 --> 00:01:21.850
+It will send traffic through
+
+00:01:21.850 --> 00:01:27.050
+a VPN connection to the corporate network of this fictitious company.
+
+00:01:27.870 --> 00:01:36.170
+Now, there's another rule in domain routing table that says, 10.0.0.0/16,
+
+00:01:36.170 --> 00:01:38.700
+which is the address of our VPC,
+
+00:01:38.700 --> 00:01:40.425
+and the target is local,
+
+00:01:40.425 --> 00:01:46.580
+meaning that all servers within the Cloud can talk to one another without restrictions.
+
+00:01:46.580 --> 00:01:52.659
+However, when the private subnet attempts to access anything to the outside world,
+
+00:01:52.659 --> 00:01:55.930
+it can only do so through the corporate network.
+
+00:01:55.930 --> 00:01:58.495
+It is not visible from the outside,
+
+00:01:58.495 --> 00:02:03.135
+it can only be accessed to and from the corporate network.
+
+00:02:03.135 --> 00:02:06.890
+Now in contrast, let's take a look at the upper one,
+
+00:02:06.890 --> 00:02:11.585
+the public subnet, which is associated with a custom routing table.
+
+00:02:11.585 --> 00:02:14.935
+It has the same target for local routes,
+
+00:02:14.935 --> 00:02:18.955
+that is 10.0.0.0/16 will be routed to local,
+
+00:02:18.955 --> 00:02:21.800
+meaning that there are no restrictions of
+
+00:02:21.800 --> 00:02:26.010
+access to and from as long as it's within the same VPC.
+
+00:02:26.750 --> 00:02:33.350
+However, any other address that are not within this VPC will be router to the IGW,
+
+00:02:33.350 --> 00:02:35.630
+in this case, the Internet gateway.
+
+00:02:35.630 --> 00:02:39.110
+So any machines that you put inside
+
+00:02:39.110 --> 00:02:44.675
+this public subnet will be visible to the outside world and will have Internet access,
+
+00:02:44.675 --> 00:02:47.550
+thanks to the Internet gateway.
+

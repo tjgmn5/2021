@@ -1,0 +1,169 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.120
+Now, it's going get more interesting because we have to talk about Internet access,
+
+00:00:06.120 --> 00:00:08.260
+and let's do that right now.
+
+00:00:08.540 --> 00:00:12.340
+So as we have said,
+
+00:00:12.400 --> 00:00:17.875
+a Virtual Private Cloud or VPC is a networking container,
+
+00:00:17.875 --> 00:00:19.950
+and this is what we're looking at right now.
+
+00:00:19.950 --> 00:00:24.150
+Now, it is completely isolated from the world,
+
+00:00:24.150 --> 00:00:27.315
+from everything, there's no way to get in here.
+
+00:00:27.315 --> 00:00:31.905
+So how is something public if we can't access,
+
+00:00:31.905 --> 00:00:33.270
+right? It doesn't make sense.
+
+00:00:33.270 --> 00:00:35.205
+So I'm going to do is,
+
+00:00:35.205 --> 00:00:45.100
+I am going to introduce you to a service here called an internet gateway.
+
+00:00:47.360 --> 00:00:50.915
+The internet gateway, what it does is,
+
+00:00:50.915 --> 00:00:55.415
+we're going to put it in right here at the edge of our VPC.
+
+00:00:55.415 --> 00:01:01.295
+The Internet gateway provides inbound and outbound traffic to your VPC.
+
+00:01:01.295 --> 00:01:04.040
+That doesn't mean everybody can get in just yet,
+
+00:01:04.040 --> 00:01:05.750
+we're going to get to that part,
+
+00:01:05.750 --> 00:01:09.915
+but we need this component to be able to access the VPC.
+
+00:01:09.915 --> 00:01:14.120
+Obviously, it doesn't make sense if you create resources in data center that belongs
+
+00:01:14.120 --> 00:01:19.250
+to Amazon Web Services somewhere if you cannot access that from your company, right?
+
+00:01:19.250 --> 00:01:21.215
+There's no sense there.
+
+00:01:21.215 --> 00:01:27.485
+So the internet gateway is going provide us the way to go in and out.
+
+00:01:27.485 --> 00:01:30.530
+Now you may ask yourself,
+
+00:01:30.530 --> 00:01:35.190
+what if I have only private resources in this Cloud?
+
+00:01:35.190 --> 00:01:38.330
+Could I use the Cloud if I don't have anything to share with the public?
+
+00:01:38.330 --> 00:01:41.960
+Let's say that I'm running a human resources application,
+
+00:01:41.960 --> 00:01:44.510
+something internal and specific that only
+
+00:01:44.510 --> 00:01:48.890
+belongs to your internal company and may not be shared with anybody else,
+
+00:01:48.890 --> 00:01:50.960
+can I still use the Cloud in this case?
+
+00:01:50.960 --> 00:01:52.385
+The answer is yes,
+
+00:01:52.385 --> 00:01:54.480
+you would not have an internet gateway,
+
+00:01:54.480 --> 00:02:02.210
+you will probably have a VPN connection or a direct connect connection into your Cloud.
+
+00:02:02.210 --> 00:02:06.140
+Direct connect is a service that you can buy directly from
+
+00:02:06.140 --> 00:02:10.855
+Amazon or directly from a telecom provider.
+
+00:02:10.855 --> 00:02:13.130
+You can reach out to a telecom provider and they'll put
+
+00:02:13.130 --> 00:02:16.070
+a physical line from your office to
+
+00:02:16.070 --> 00:02:18.800
+the Cloud and that will give you a complete security because there's no
+
+00:02:18.800 --> 00:02:21.620
+going through public internet traffic in any way,
+
+00:02:21.620 --> 00:02:24.245
+you will have complete access to your Cloud
+
+00:02:24.245 --> 00:02:31.570
+and it would only be routable using internal private IP addresses.
+
+00:02:31.570 --> 00:02:36.470
+There will be no public IP addresses so it's impossible to reach from the outside.
+
+00:02:36.470 --> 00:02:39.670
+But in our case, the one that we are designing here,
+
+00:02:39.670 --> 00:02:43.930
+we're going to have public web servers so we need an internet gateway so that we can put
+
+00:02:43.930 --> 00:02:50.495
+those servers in a place where they can access and be accessed from the outside world.
+
+00:02:50.495 --> 00:02:54.370
+Now, we're facing a little problem here.
+
+00:02:54.620 --> 00:03:01.300
+If we wanted to provide internet access to our private servers, how do we do that?
+
+00:03:01.300 --> 00:03:03.580
+Because those servers may need to download
+
+00:03:03.580 --> 00:03:07.555
+software patches or configuration changes that come from the public internet.
+
+00:03:07.555 --> 00:03:13.190
+In fact, Amazon services such as S3 which is the storage service,
+
+00:03:13.190 --> 00:03:17.030
+is actually a public service which means
+
+00:03:17.030 --> 00:03:20.690
+that if you want to access that from your private subnet,
+
+00:03:20.690 --> 00:03:23.690
+you need a way to get out and be able to access.
+
+00:03:23.690 --> 00:03:27.005
+So even though we're calling them private,
+
+00:03:27.005 --> 00:03:28.250
+whatever you put in there,
+
+00:03:28.250 --> 00:03:33.345
+still needs to have a way to have outbound internet access.
+
+00:03:33.345 --> 00:03:35.560
+Let's take a look at that now.
+

@@ -1,0 +1,297 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>S3</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Infrastructure Diagrams </h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Generalizing to other cloud providers.html">02. Generalizing to other cloud providers</a>
+    </li>
+    <li class="">
+      <a href="03. Setting up Lucidcharts.html">03. Setting up Lucidcharts</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Setting Up Lucid Charts.html">04. Exercise: Setting Up Lucid Charts</a>
+    </li>
+    <li class="">
+      <a href="05. Diagramming AWS Accounts and Regions.html">05. Diagramming AWS Accounts and Regions</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Diagramming AWS accounts &amp; regions.html">06. Exercise: Diagramming AWS accounts &amp; regions</a>
+    </li>
+    <li class="">
+      <a href="07. Diagramming Availability Zones.html">07. Diagramming Availability Zones</a>
+    </li>
+    <li class="">
+      <a href="08. Exercise Diagramming Availability Zones.html">08. Exercise: Diagramming Availability Zones</a>
+    </li>
+    <li class="">
+      <a href="09. Virtual Private Cloud.html">09. Virtual Private Cloud</a>
+    </li>
+    <li class="">
+      <a href="10. Exercise Virtual Private Cloud.html">10. Exercise: Virtual Private Cloud</a>
+    </li>
+    <li class="">
+      <a href="11. Public vs Private Subnets.html">11. Public vs Private Subnets</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise Public vs Private Subnets.html">12. Exercise: Public vs Private Subnets</a>
+    </li>
+    <li class="">
+      <a href="13. IGW Internet Gateway.html">13. IGW Internet Gateway</a>
+    </li>
+    <li class="">
+      <a href="14. Exercise IGW Internet Gateway.html">14. Exercise: IGW Internet Gateway</a>
+    </li>
+    <li class="">
+      <a href="15. Network Address Translation.html">15. Network Address Translation</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise NAT&#x27;s.html">16. Exercise: NAT&#x27;s</a>
+    </li>
+    <li class="">
+      <a href="17. Autoscaling groups.html">17. Autoscaling groups</a>
+    </li>
+    <li class="">
+      <a href="18. Exercise Autoscaling Groups.html">18. Exercise: Autoscaling Groups</a>
+    </li>
+    <li class="">
+      <a href="19. Load Balancers.html">19. Load Balancers</a>
+    </li>
+    <li class="">
+      <a href="20. Exercise Load Balancers.html">20. Exercise: Load Balancers</a>
+    </li>
+    <li class="">
+      <a href="21. Security Groups.html">21. Security Groups</a>
+    </li>
+    <li class="">
+      <a href="22. Exercise Security Groups.html">22. Exercise: Security Groups</a>
+    </li>
+    <li class="">
+      <a href="23. Routing Table.html">23. Routing Table</a>
+    </li>
+    <li class="">
+      <a href="24. Exercise Routing Table.html">24. Exercise: Routing Table</a>
+    </li>
+    <li class="">
+      <a href="25. S3.html">25. S3</a>
+    </li>
+    <li class="">
+      <a href="26. Exercise S3.html">26. Exercise: S3</a>
+    </li>
+    <li class="">
+      <a href="27. Reviewing Our Diagram.html">27. Reviewing Our Diagram</a>
+    </li>
+    <li class="">
+      <a href="28. Conclusion.html">28. Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">25. S3</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND9991 C02 L2 A17 S3</p></h3>
+  <video controls>
+  <source src="25. ND9991 C02 L2 A17 S3-8arlUCAVK38.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="25. ND9991 C02 L2 A17 S3-8arlUCAVK38.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="s3">S3</h4>
+<ul>
+<li>An S3 bucket is a public service for users to upload or download files.  </li>
+<li>Place the S3 service <strong>outside of your VPC</strong>.</li>
+</ul>
+<p>In the following quiz you’ll see an option for <strong>Log files</strong> as one of the possible answers, please keep in mind that this means <strong>sanitized</strong> logs, which means: with all sensitive information removed, such as passwords, credit card numbers or similar info.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>S3</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What should I store on S3? (Pick two answer choices here.)</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1558367344225" name="850205" id="a1558367344225">
+      <label for="a1558367344225"><p>Images/Video</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558367369328" name="850205" id="a1558367369328">
+      <label for="a1558367369328"><p>Credentials</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558367369973" name="850205" id="a1558367369973">
+      <label for="a1558367369973"><p>Log files</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558367384923" name="850205" id="a1558367384923">
+      <label for="a1558367384923"><p>Databases</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Images/Video</li>
+      <li>Log files</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="26. Exercise S3.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('25. S3')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

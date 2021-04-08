@@ -1,0 +1,223 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.020 --> 00:00:04.510
+Let's go back to the CloudFormation console, and take a look.
+
+00:00:05.180 --> 00:00:08.250
+The Update creation is in progress.
+
+00:00:08.250 --> 00:00:10.560
+So you can see it's getting more and more complex
+
+00:00:10.560 --> 00:00:13.890
+as we add resources to our CloudFormation stack.
+
+00:00:13.890 --> 00:00:18.280
+You see all this resources are being created right now.
+
+00:00:26.510 --> 00:00:30.315
+Now we get an update complete CloudFormation.
+
+00:00:30.315 --> 00:00:34.245
+Let's go take a look at Services,
+
+00:00:34.245 --> 00:00:38.550
+VPC and scroll down to Subnets,
+
+00:00:38.550 --> 00:00:40.140
+and this right there click on it.
+
+00:00:40.140 --> 00:00:44.455
+Actually, no, this time we're going to visit Route Tables.
+
+00:00:44.455 --> 00:00:46.975
+We see in the Route Tables,
+
+00:00:46.975 --> 00:00:50.960
+you see there's an association with two subnets.
+
+00:00:50.960 --> 00:00:52.940
+You can probably take a hint what that means.
+
+00:00:52.940 --> 00:00:58.080
+We're going to click on one of these, let's take a look.
+
+00:00:58.080 --> 00:01:01.920
+Let's expand this bottom part of the screen here.
+
+00:01:03.640 --> 00:01:06.085
+So this Route Table,
+
+00:01:06.085 --> 00:01:08.055
+it has two routes.
+
+00:01:08.055 --> 00:01:12.030
+One, the default that we discussed which is traffic within the VPC,
+
+00:01:12.030 --> 00:01:15.140
+and we added this route that says, "Hey,
+
+00:01:15.140 --> 00:01:16.490
+anything going into the wildcard,
+
+00:01:16.490 --> 00:01:19.860
+which is 000, send it to the Internet gateway."
+
+00:01:19.860 --> 00:01:21.840
+So I'm going to guess that this Route Table that
+
+00:01:21.840 --> 00:01:24.370
+we're looking at is the one for public traffic.
+
+00:01:24.370 --> 00:01:28.045
+So we click on the Subnet Associations,
+
+00:01:28.045 --> 00:01:32.940
+and we sure enough, we see this two subnets that are associated here.
+
+00:01:34.370 --> 00:01:36.380
+You can just click on it,
+
+00:01:36.380 --> 00:01:40.045
+and it will tell you which ones are these.
+
+00:01:40.045 --> 00:01:43.910
+This is why it's important to have tags,
+
+00:01:43.910 --> 00:01:47.180
+because otherwise, you're going to have to be memorizing these IDs.
+
+00:01:47.180 --> 00:01:49.355
+You don't want to have to do that.
+
+00:01:49.355 --> 00:01:54.440
+For example, you can see the description that we added to Route Table is here.
+
+00:01:54.440 --> 00:01:58.790
+It says ROUTE table, UdacityProject Public Routes.
+
+00:01:58.790 --> 00:02:02.935
+So we know already that this subnet is one of the public ones.
+
+00:02:02.935 --> 00:02:05.930
+Actually you can see the routing information from
+
+00:02:05.930 --> 00:02:08.950
+the subnet screen that we're on right now, so let's take a look.
+
+00:02:08.950 --> 00:02:11.190
+I could just click on that.
+
+00:02:11.190 --> 00:02:14.195
+One of these subnets, and then click on "Route Table".
+
+00:02:14.195 --> 00:02:18.660
+It will tell you to which Route Table it is associated with.
+
+00:02:19.220 --> 00:02:22.160
+You can actually see the Routes right here.
+
+00:02:22.160 --> 00:02:27.215
+This is one of the private ones because it has the local Route for the VPC,
+
+00:02:27.215 --> 00:02:31.500
+and the outside Route pointing to one of the nets.
+
+00:02:33.740 --> 00:02:37.030
+Let's go back to our Code Editor.
+
+00:02:39.160 --> 00:02:45.550
+Now I could just keep going and keep adding more and more resources to this file.
+
+00:02:45.550 --> 00:02:52.420
+But as you can see, we're already going over an excessive amount of line.
+
+00:02:52.420 --> 00:02:55.555
+We're almost at 200 lines of code in this particular script.
+
+00:02:55.555 --> 00:02:57.160
+So if I keep going,
+
+00:02:57.160 --> 00:02:59.020
+we could end up with hundreds,
+
+00:02:59.020 --> 00:03:03.280
+if not thousands of lines of resources in code. We don't want to do that.
+
+00:03:03.280 --> 00:03:06.205
+We want to be able to stop at some point and say, "Hey,
+
+00:03:06.205 --> 00:03:08.980
+this script creates a network, it's great,
+
+00:03:08.980 --> 00:03:12.580
+it works fine, and we can stop here."
+
+00:03:12.580 --> 00:03:15.715
+So how do we communicate with other files?
+
+00:03:15.715 --> 00:03:19.765
+In this case, what we're going to do is we're going to add an output section.
+
+00:03:19.765 --> 00:03:24.550
+The output section, it's going to collect all these little resources that we created,
+
+00:03:24.550 --> 00:03:28.430
+and it's going to turn them into variables that we can use in other scripts.
+
+00:03:28.430 --> 00:03:30.550
+This way, we don't just have to keep going and
+
+00:03:30.550 --> 00:03:32.530
+going and adding more resources to this file,
+
+00:03:32.530 --> 00:03:37.250
+and making things too complex or too unmanageable.
+
+00:03:37.250 --> 00:03:38.855
+Another reason for this,
+
+00:03:38.855 --> 00:03:41.450
+is that you may have a network expert in your company,
+
+00:03:41.450 --> 00:03:44.130
+and somebody that's dedicated to servers,
+
+00:03:44.130 --> 00:03:46.060
+and web servers and applications.
+
+00:03:46.060 --> 00:03:48.430
+You don't want them working on the exact same file.
+
+00:03:48.430 --> 00:03:52.405
+You want the network person to be able to just see network and resources.
+
+00:03:52.405 --> 00:03:53.770
+So in that case,
+
+00:03:53.770 --> 00:03:56.240
+you would have this file, and you would stop here,
+
+00:03:56.240 --> 00:03:58.530
+and this person would take
+
+00:03:58.530 --> 00:04:02.840
+these networking values and pass it to the other person that's working
+
+00:04:02.840 --> 00:04:05.375
+on a similar CloudFormation stack just
+
+00:04:05.375 --> 00:04:09.785
+using those networking resources, not creating them.
+
+00:04:09.785 --> 00:04:12.350
+So with this done,
+
+00:04:12.350 --> 00:04:14.960
+let's create an output section to collect those values,
+
+00:04:14.960 --> 00:04:18.270
+and then be able to use them in other scripts.
+

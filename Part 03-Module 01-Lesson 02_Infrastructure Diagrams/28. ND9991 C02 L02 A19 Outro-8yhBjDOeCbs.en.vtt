@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.254
+All right. In this lesson, we just covered how to do
+
+00:00:03.254 --> 00:00:06.629
+a diagram which helps you understand how everything works.
+
+00:00:06.629 --> 00:00:09.150
+Now, with this information,
+
+00:00:09.150 --> 00:00:10.800
+what we're going to do is obviously we're going to have
+
+00:00:10.800 --> 00:00:13.380
+a more polished diagram which we're going to
+
+00:00:13.380 --> 00:00:17.850
+use in the next lesson to actually turn it into infrastructure as code.
+
+00:00:17.850 --> 00:00:21.685
+We're going to go into each component individually just like we did here,
+
+00:00:21.684 --> 00:00:24.524
+but this time it's going to be from the code perspective.
+
+00:00:24.524 --> 00:00:26.070
+We're going to go to CloudFormation.
+
+00:00:26.070 --> 00:00:28.710
+We're going to use our Visual Studio code editor to
+
+00:00:28.710 --> 00:00:31.800
+create each and every one of the resources one by one,
+
+00:00:31.800 --> 00:00:37.230
+so we can have the same explanations cover into more detail.
+
+00:00:37.229 --> 00:00:41.939
+I want to cover particularly the routing section which is critical for this course.
+
+00:00:41.939 --> 00:00:46.059
+You will see that in more detail in the next lesson.
+

@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.110 --> 00:00:06.480
+RIGHT now, let's go ahead and add NAT Service to our infrastructure.
+
+00:00:06.480 --> 00:00:11.740
+So I'll go here into the search and I'll type NAT,
+
+00:00:12.320 --> 00:00:16.125
+and here we have VPC NAT gateway.
+
+00:00:16.125 --> 00:00:18.899
+I will add one over here,
+
+00:00:18.899 --> 00:00:22.769
+and I will add a secondary one just for the purpose of
+
+00:00:22.769 --> 00:00:26.219
+high availability and eliminating single points of failure.
+
+00:00:26.219 --> 00:00:28.869
+I have a secondary one right here.
+
+00:00:29.059 --> 00:00:31.529
+Now, at this point,
+
+00:00:31.530 --> 00:00:36.395
+let's take a moment to understand what a NAT gateway is and does.
+
+00:00:36.395 --> 00:00:41.585
+A NAT or Network Address Translation Service
+
+00:00:41.585 --> 00:00:46.954
+is used to provide outbound Internet access to resources in your private sub-nets.
+
+00:00:46.954 --> 00:00:53.214
+What it does is it translates incoming public traffic into private traffic.
+
+00:00:53.215 --> 00:00:57.170
+By the way, remember, that it needs to have public access itself.
+
+00:00:57.170 --> 00:01:00.414
+So remember to place it in a public sub-net.
+
+00:01:00.414 --> 00:01:02.399
+Back here in our diagram,
+
+00:01:02.399 --> 00:01:05.554
+let's say we had a server right now in our private sub-net that needed
+
+00:01:05.555 --> 00:01:09.380
+something from udacity.com or github.com.
+
+00:01:09.379 --> 00:01:13.379
+What it could do is it could place a request to the NAT gateway,
+
+00:01:13.379 --> 00:01:18.084
+which will translate that private network requests into a public request,
+
+00:01:18.084 --> 00:01:20.875
+which will go out through the Internet gateway,
+
+00:01:20.875 --> 00:01:25.010
+and the data will come back and the NAT gateway will translate that
+
+00:01:25.010 --> 00:01:29.285
+back into private traffic that our server can see.
+
+00:01:29.284 --> 00:01:32.989
+Remember, our private sub-nets will have resources that
+
+00:01:32.989 --> 00:01:35.929
+only half private IPs meaning that they
+
+00:01:35.930 --> 00:01:39.380
+cannot by themselves be exposed out to the Internet,
+
+00:01:39.379 --> 00:01:41.879
+so they are going to need the NAT or
+
+00:01:41.879 --> 00:01:45.560
+Network Address Translation Service in order to be able to access
+
+00:01:45.560 --> 00:01:48.530
+outside resources such as GitHub or
+
+00:01:48.530 --> 00:01:54.299
+udacity.com or anything that is public relative to this network.
+

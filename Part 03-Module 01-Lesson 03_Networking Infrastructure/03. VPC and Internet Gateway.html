@@ -1,0 +1,518 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VPC and Internet Gateway</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Networking Infrastructure</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Workflow and Helpers.html">02. Workflow and Helpers</a>
+    </li>
+    <li class="">
+      <a href="03. VPC and Internet Gateway.html">03. VPC and Internet Gateway</a>
+    </li>
+    <li class="">
+      <a href="04. Subnets.html">04. Subnets</a>
+    </li>
+    <li class="">
+      <a href="05. NAT Gateways.html">05. NAT Gateways</a>
+    </li>
+    <li class="">
+      <a href="06. Routing.html">06. Routing</a>
+    </li>
+    <li class="">
+      <a href="07. Outputs.html">07. Outputs</a>
+    </li>
+    <li class="">
+      <a href="08. Conclusion.html">08. Conclusion</a>
+    </li>
+    <li class="">
+      <a href="09. Challenge 2.html">09. Challenge 2</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">03. VPC and Internet Gateway</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="demo---create-a-vpc">Demo - Create a VPC</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C02 L03 A03-1 VPC And Internet Gateway P1</p></h3>
+  <video controls>
+  <source src="03. ND9991 C02 L03 A03-1 VPC And Internet Gateway P1-Es5BXzhreMk.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="03. ND9991 C02 L03 A03-1 VPC And Internet Gateway P1-Es5BXzhreMk.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="purpose-of-the-networkyml-and-network-parametersjson-files">Purpose of the <code>network.yml</code> and <code>network-parameters.json</code> files</h3>
+<p>We have already created a CloudFormation template (<code>network.yml</code>) and a properties file (<code>network-parameters.json</code>) that contains the code related to provisioning the networking infrastructure.</p>
+<p><strong>However, we strongly encourage you to follow along with the video demonstrations.</strong> </p>
+<p>To get started, create two new <strong>empty files</strong>: <code>ourinfra.yml</code> and <code>ourinfra.json</code>. Then, gradually append code to them, after referring/copying from the <code>network.yml</code> and <code>network-parameters.json</code>.  </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="learning-more-about-a-yaml-file">Learning More about a YAML file</h3>
+<p>The <code>network.yml</code> file is included in the <strong>Resources tab</strong> in this page's left sidebar. The same file is also available in the <a href="https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/tree/master/supporting_material" rel="noopener noreferrer" target="_blank">Github repository</a>. This file contains the following four sections (we will learn all of them gradually):</p>
+<ol>
+<li><strong>Description</strong> - It presents a text description.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-01-at-12.34.15-pm.png" alt="Description section. Feel free to edit/change it. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Description section. Feel free to edit/change it. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li><strong>Parameters</strong> - It contains the list of parameters that are being used in the current CloudFormation template. Parameters should be declared above your Resources. Any value that you consider to change in the future, put it as a parameter instead of hard-coding it into your script. Note that each parameter is further defined with the following <strong>properties</strong> (or fields): </li>
+</ol>
+<ul>
+<li><p>Parameter Name - You can provide the name of your choice</p></li>
+<li><p>Description - A textual value</p></li>
+<li><p>Type - Identifies the data type of the parameter, such as String or a Number</p></li>
+<li><p>Default (optional) - Presents the default value of the parameter</p></li>
+<li><p>AllowedValues (optional) - Presents the list of all possible values.</p>
+<p>For example, here we set the <code>EnvironmentName</code> parameter in our sample code from the video:</p></li>
+</ul>
+<pre><code>Parameters:
+    EnvironmentName:
+        Description: An Environment name that will be prefixed to resources
+        Type: String</code></pre>
+<p>You can also provide default values for parameters in case one was not passed in. In this example, you can see that <code>VpcCIDR</code> has a default value of <code>10.0.0.0/16</code>.</p>
+<pre><code>Parameters:
+    EnvironmentName:
+        Description: An Environment name that will be prefixed to resources
+        Type: String
+
+    VpcCIDR:
+        Description: Please enter the IP range (CIDR notation) for this
+        Type: String
+        Default: 10.0.0.0/16</code></pre>
+<p>The use of parameters in the template makes your CloudFormation templates more reusable, by allowing you to input <em>custom values</em> to your template each time you create or update a stack. These <em>custom values</em> can be defined in a separate JSON file, as we will see later. These parameters are referenced in the <strong>Resources</strong> and ** Outputs ** section using a <code>!Ref</code> intrinsic function. <br><br><br />
+<strong>Reference</strong>: Refer to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html" rel="noopener noreferrer" target="_blank">Parameters</a> documentation for learning more about <code>!Ref</code> intrinsic function and all possible properties of a parameter. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-01-at-12.34.02-pm.png" alt="Parameters section" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Parameters section</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li><strong>Resources</strong>: This (mandatory) section declares the AWS resources that you want to include in the stack, such as Servers, Gateways, VPN Connections, and more. We learned earlier that the <code>Resource</code> section is mandatory. You must include <strong>at least one resource</strong> (e.g., a VPC, and an internet gateway) in the CloudFormation template, otherwise, it will give an error when you try to run the script.<br><br><br />
+Each resource is defined with the help of fields, such as <strong>Name</strong>, <strong>Resource type</strong>, and <strong>Resource properties</strong>. </li>
+</ol>
+<ul>
+<li><strong>Name</strong> - It is a string value representing the resource name. You can use a name of your choice. <br></li>
+<li><strong>Resource type</strong> - The resource type identifies the type of resource that you are declaring. For example, <code>Type: AWS::EC2::VPC</code> creates a VPC. You can view the  <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html" rel="noopener noreferrer" target="_blank">AWS resource and property types reference</a> for a complete list of possible resources you can provision. <br></li>
+<li><strong>Resource properties</strong> - The resource <strong>Properties</strong> field has further sub-fields that are specific to each type of resource. See an example below.</li>
+</ul>
+<pre><code>Resources:
+  MyEC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId: "ami-0ff8a91507f77f867"</code></pre>
+<p><strong>Reference</strong>: Refer to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html" rel="noopener noreferrer" target="_blank">Resources</a> documentation for learning more about resource fields, and see more examples. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-01-at-12.37.00-pm.png" alt="Resources section" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Resources section</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="4">
+<li><strong>Outputs</strong>: This section declares output values for each resource that you can import into other stacks. For example, you can output the VPC ID for a stack to make it easier to find from another stack/template. You should not output any sensitive information, such as passwords or secrets. For each resource's output, you will have to provide the following: </li>
+</ol>
+<ul>
+<li><p>Description (optional) - A string</p></li>
+<li><p>Value (required) - The property returned by the <code>aws cloudformation describe-stacks</code> command. </p></li>
+<li><p>Export (optional) - The name of the resource output to be exported for a cross-stack reference.</p>
+<p><strong>Reference</strong>: Refer to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html" rel="noopener noreferrer" target="_blank">Outputs</a> documentation for examples.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-01-at-1.19.46-pm.png" alt="Outputs section" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Outputs section</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <hr />
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="understanding-the-json-parameters-file">Understanding the JSON (Parameters) file</h3>
+<ul>
+<li><p><strong>Why do we need a separate parameter file (JSON)?</strong> <br><br />
+The separate parameter file (JSON) file helps us to avoid hard-coding the parameters in the template (YAML) file.<br><br></p></li>
+<li><p>Any named parameters in the <strong>Parameters</strong> section of our CloudFormation template will need to have a matching value in a separate, Parameter file, which is in JSON format. The YAML format is not yet supported for the parameter file. A sample JSON-formatted Parameter file is:</p></li>
+</ul>
+<pre><code class="json language-json">[
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "UdacityProject"
+    }
+]</code></pre>
+<p>Having this additional file with actual parameter values allows you to change data used by your CloudFormation template without the risk of modifying the template directly and possibly introducing a typo or some logical error. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-01-at-1.48.25-pm.png" alt="A sample parameter file (JSON)" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>A sample parameter file (JSON)</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="demo---create-internet-gateway">Demo - Create Internet Gateway</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C02 L03 A03-2 VPC And Internet Gateway P2</p></h3>
+  <video controls>
+  <source src="03. ND9991 C02 L03 A03-2 VPC And Internet Gateway P2-ji4AoQjY8Os.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="03. ND9991 C02 L03 A03-2 VPC And Internet Gateway P2-ji4AoQjY8Os.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="creating-cloudformation-stack">Creating CloudFormation Stack</h3>
+<ul>
+<li>When calling AWS CloudFormation, you’ll pass in the name of the <code>.yml</code> file as well as the name of the parameter file as parameters to the CloudFormation call.  For example:</li>
+</ul>
+<pre><code>aws cloudformation create-stack --stack-name ourdemoinfra --template-body file://ourinfra.yml    --parameters file://ourinfra.json  --region=us-east-1</code></pre>
+<blockquote>
+  <p><strong>Note</strong> that CloudFormation creates the resources in order, based on their dependencies (VPC and InternetGateway, before creating the InternetGatewayAttachment).</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="how-to-execute-the-shell-scripts">How to execute the Shell scripts?</h3>
+<ul>
+<li>You can run either of the shell scripts (<em>create.sh</em> or <em>update.sh</em>) as:</li>
+</ul>
+<pre><code>./&lt;file_name&gt; argument_1 argument_2 argument_3</code></pre>
+<p>For example, you can run the following command:</p>
+<pre><code>./create.sh ourdemoinfra ourinfra.yml ourinfra.json</code></pre>
+<p>The command above is equivalent of running the following:</p>
+<pre><code>aws cloudformation create-stack --stack-name ourdemoinfra --template-body file://ourinfra.yml    --parameters file://ourinfra.json  --region=us-east-1</code></pre>
+<h3 id="troubleshoot">Troubleshoot</h3>
+<ul>
+<li>While running the AWS commands using either <em>create.sh</em> or <em>update.sh</em> file, if you face permission denied error, then you will have to grant the <strong>execute</strong> permission to the owner (yourself) explicitly as:</li>
+</ul>
+<pre><code class="bash language-bash">chmod +x update.sh 
+chmod +x create.sh </code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="demo---attach-vpc-and-internet-gateway">Demo - Attach VPC and Internet Gateway</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C02 L03 A03-2 VPC And Internet Gateway P3</p></h3>
+  <video controls>
+  <source src="03. ND9991 C02 L03 A03-2 VPC And Internet Gateway P3-fOIOIeDiad0.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="03. ND9991 C02 L03 A03-2 VPC And Internet Gateway P3-fOIOIeDiad0.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="connecting-vpcs--internet-gateways">Connecting VPC's &amp; Internet Gateways</h3>
+<ul>
+<li><strong>Syntax of VPCGatewayAttachment resource:</strong> It's important to note when connecting an <code>Internet Gateway</code> to a <code>VPC</code>, we need to define an additional resource called <code>InternetGatewayAttachment</code>. This attachment references both the VPC and the InternetGateway. Here is the syntax for the following connection:</li>
+</ul>
+<pre><code>Type: AWS::EC2::VPCGatewayAttachment
+Properties: 
+  InternetGatewayId: String
+  VpcId: String
+  VpnGatewayId: String</code></pre>
+<blockquote>
+  <p><strong>Note</strong> that you must specify either InternetGatewayId or VpnGatewayId, but not both.</p>
+</blockquote>
+<ul>
+<li><strong>Example:</strong> See the <strong>VPCGatewayAttachment</strong> from the video above, referencing both the VPC and the InternetGateway defined above using a <code>!Ref</code> intrinsic function:</li>
+</ul>
+<pre><code>Resources:
+    VPC: 
+        Type: AWS::EC2::VPC
+        Properties:
+            CidrBlock: !Ref VpcCIDR
+            EnableDnsHostnames: true
+            Tags: 
+                - Key: Name 
+                  Value: !Ref EnvironmentName            
+    InternetGateway:
+        Type: AWS::EC2::InternetGateway
+        Properties:
+            Tags:
+                - Key: Name
+                  Value: !Ref EnvironmentName
+
+    InternetGatewayAttachment:
+        Type: AWS::EC2::VPCGatewayAttachment
+        Properties:
+            InternetGatewayId: !Ref InternetGateway
+            VpcId: !Ref VPC</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-02-01-at-3.11.56-pm.png" alt="Referencing in the Resources section" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Referencing in the Resources section</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="aws-documentation-resources">AWS Documentation Resources</h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_EC2.html" rel="noopener noreferrer" target="_blank">EC2 resource type reference</a> - A list of all resources that are needed for an EC2 instance, such as VPC, internet gateway, or a VPCCidrBlock. We encourage you to follow the examples and more details about the following resources:<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html" rel="noopener noreferrer" target="_blank">AWS::EC2::VPC</a> </li>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpccidrblock.html" rel="noopener noreferrer" target="_blank">AWS::EC2::VPCCidrBlock</a> </li>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-internetgateway.html" rel="noopener noreferrer" target="_blank">AWS::EC2::InternetGateway</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc-gateway-attachment.html" rel="noopener noreferrer" target="_blank">AWS::EC2::VPCGatewayAttachment</a></li></ul></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="04. Subnets.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. VPC and Internet Gateway')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

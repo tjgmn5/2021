@@ -1,0 +1,175 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.810
+However, there is one that was very important which will be the next one,
+
+00:00:03.810 --> 00:00:06.640
+and that's the availability zone.
+
+00:00:06.950 --> 00:00:11.745
+I'm going to drag this over here and expand it.
+
+00:00:11.744 --> 00:00:15.879
+You can think of an availability zone as a data center,
+
+00:00:15.880 --> 00:00:21.105
+as a physical building housing your computer and services.
+
+00:00:21.105 --> 00:00:25.755
+This availability zone is within the region that you're working in obviously,
+
+00:00:25.754 --> 00:00:33.179
+and it helps you design diagrams that are multi-availability zones.
+
+00:00:33.179 --> 00:00:34.964
+You always want to have more than one,
+
+00:00:34.965 --> 00:00:37.455
+ideally two or more always.
+
+00:00:37.454 --> 00:00:40.274
+The reason why that is is because
+
+00:00:40.274 --> 00:00:47.359
+AZs or availability zones are designed to be resilient by themselves,
+
+00:00:47.359 --> 00:00:49.579
+meaning that if something bad happens in one of
+
+00:00:49.579 --> 00:00:52.265
+them it doesn't necessarily affect the other one.
+
+00:00:52.265 --> 00:00:55.535
+This is great and this is critical for you to understand.
+
+00:00:55.534 --> 00:00:57.309
+When you're doing a diagram,
+
+00:00:57.310 --> 00:00:59.750
+every time you're dropping components on the screen,
+
+00:00:59.750 --> 00:01:02.750
+you want to be able to tell yourself where is
+
+00:01:02.750 --> 00:01:07.084
+the single point of failure in my diagram before you actually go implement it.
+
+00:01:07.084 --> 00:01:10.759
+You never want to have single points of failures in your diagram.
+
+00:01:10.760 --> 00:01:14.585
+For example, if you put everything in a single availability zone,
+
+00:01:14.584 --> 00:01:18.034
+you are risking yourself that if something happens to this datacenter,
+
+00:01:18.034 --> 00:01:19.608
+whether it's a fire,
+
+00:01:19.608 --> 00:01:21.319
+or an electrical failure,
+
+00:01:21.319 --> 00:01:28.003
+or temperature goes over certain value and the computers overheat,
+
+00:01:28.004 --> 00:01:29.800
+if something happens in this place,
+
+00:01:29.799 --> 00:01:34.414
+your application will be down and you could lose data or resources.
+
+00:01:34.415 --> 00:01:39.274
+So if you want to design an application that is highly available,
+
+00:01:39.274 --> 00:01:44.370
+always think about having more than one availability zone.
+
+00:01:44.379 --> 00:01:49.549
+A question that you will see in a certification exam would be can you design
+
+00:01:49.549 --> 00:01:54.299
+this diagram for for high availability?
+
+00:01:54.299 --> 00:01:55.500
+What they're asking you is, "Hey,
+
+00:01:55.500 --> 00:01:57.540
+make sure that there's two of everything.
+
+00:01:57.540 --> 00:01:58.980
+At least two or more."
+
+00:01:58.980 --> 00:02:02.880
+Or can you optimize this design for a cost?
+
+00:02:02.879 --> 00:02:04.515
+When they tell you about cost,
+
+00:02:04.515 --> 00:02:05.840
+they tell you, okay,
+
+00:02:05.840 --> 00:02:09.694
+get rid of high availability because this is probably just a test environment.
+
+00:02:09.694 --> 00:02:12.530
+So do a single availability zone,
+
+00:02:12.530 --> 00:02:13.699
+which would mean you would have
+
+00:02:13.699 --> 00:02:17.509
+less high availability and you will have more risk of failure,
+
+00:02:17.509 --> 00:02:20.629
+but you will optimize for costs so it will be cheaper to run.
+
+00:02:20.629 --> 00:02:25.099
+Those are the questions that they ask you around exams for
+
+00:02:25.099 --> 00:02:31.435
+Cloud certification as to think about cost or high availability.
+
+00:02:31.435 --> 00:02:36.409
+So as I was saying, let's make sure we have two of these in our design.
+
+00:02:36.409 --> 00:02:39.590
+I will drag this down here.
+
+00:02:39.590 --> 00:02:47.775
+Probably need to expand the overall Cloud to include some more space for us.
+
+00:02:47.775 --> 00:02:50.890
+Let's see. I'm going to put this down here.
+
+00:02:51.169 --> 00:02:55.599
+Now, so far, even though we have
+
+00:02:55.599 --> 00:03:01.039
+two availability zones within an account and we have some users over here,
+
+00:03:01.039 --> 00:03:03.379
+we really have nothing
+
+00:03:03.379 --> 00:03:07.639
+because an availability zone it doesn't represent anything, it's nothing that you build.
+
+00:03:07.639 --> 00:03:10.469
+It's already there, you get to use it.
+
+00:03:10.960 --> 00:03:14.960
+So far, we haven't really done anything from the point of
+
+00:03:14.960 --> 00:03:18.455
+view of something that will be turned into a script.
+
+00:03:18.455 --> 00:03:21.320
+So what we're going to do now is when it
+
+00:03:21.319 --> 00:03:24.354
+actually starts to get into the networking portion.
+
+00:03:24.354 --> 00:03:27.729
+We're going to start that by doing a VPC.
+
