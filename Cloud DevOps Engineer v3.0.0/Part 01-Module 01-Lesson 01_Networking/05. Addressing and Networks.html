@@ -1,0 +1,393 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Addressing and Networks</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Networking</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Interview.html">01. Interview</a>
+    </li>
+    <li class="">
+      <a href="02. Lesson Map &amp; Learning Objectives.html">02. Lesson Map &amp; Learning Objectives</a>
+    </li>
+    <li class="">
+      <a href="03. Network Communication Model.html">03. Network Communication Model</a>
+    </li>
+    <li class="">
+      <a href="04. Addressing.html">04. Addressing</a>
+    </li>
+    <li class="">
+      <a href="05. Addressing and Networks.html">05. Addressing and Networks</a>
+    </li>
+    <li class="">
+      <a href="06. OSI Model.html">06. OSI Model</a>
+    </li>
+    <li class="">
+      <a href="07. Switching.html">07. Switching</a>
+    </li>
+    <li class="">
+      <a href="08. Frame Structure.html">08. Frame Structure</a>
+    </li>
+    <li class="">
+      <a href="09. Switching At Scale.html">09. Switching At Scale</a>
+    </li>
+    <li class="">
+      <a href="10. Virtual LANs.html">10. Virtual LANs</a>
+    </li>
+    <li class="">
+      <a href="11. Routing.html">11. Routing</a>
+    </li>
+    <li class="">
+      <a href="12. Wireshark.html">12. Wireshark</a>
+    </li>
+    <li class="">
+      <a href="13. Domain Name System.html">13. Domain Name System</a>
+    </li>
+    <li class="">
+      <a href="14. Types of DNS Records.html">14. Types of DNS Records</a>
+    </li>
+    <li class="">
+      <a href="15. DNS Hierarchy.html">15. DNS Hierarchy</a>
+    </li>
+    <li class="">
+      <a href="16. Load Balancing.html">16. Load Balancing</a>
+    </li>
+    <li class="">
+      <a href="17. Load Balancing Approaches.html">17. Load Balancing Approaches</a>
+    </li>
+    <li class="">
+      <a href="18. Outro.html">18. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Addressing and Networks</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="addressing-and-networks">Addressing and Networks</h1>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Addressing And Networking 1</p></h3>
+  <video controls>
+  <source src="05. Addressing And Networking 1-oO_mJEet-uo.mp4" type="video/mp4">
+
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>/22 Addresses Available?</p></h3>
+  <div>
+  <div>
+    <p><strong>QUESTION:</strong> <p>How many individual addresses are there on a <code>/22</code> network (recall that several of them are reserved).</p></p>
+    <div class="" form-group">
+      <label for="answer"><strong>ANSWER:</strong></label>
+      <textarea class="form-control" id="answer"></textarea>
+    </div>
+  </div>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <p><i>These answers need to be solved by yourself, I believe you can do it</i></p>
+
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Addressing And Networking 2</p></h3>
+  <video controls>
+  <source src="05. Addressing And Networking 2-YxamxHBVJkQ.mp4" type="video/mp4">
+
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="review-of-binary-conversion-and-the-and-operator">Review of Binary Conversion and the AND operator</h2>
+<p>If you watched that video and wondered, "How do I convert to binary?" and "What's an AND operation?", don't worry because the following resources will explain the basics to you. </p>
+<p>If you'd like to learn how to convert decimal to binary by hand, read <a href="https://www.electronics-tutorials.ws/binary/bin_2.html" rel="noopener noreferrer" target="_blank">this tutorial on the subject</a>. </p>
+<p>Once you understand how the math works and have practiced a conversion or two, you'll probably want to use an online conversion tool for efficiency's sake. The following two tools were used to perform the conversions seen in the video,</p>
+<ul>
+<li><a href="https://www.browserling.com/tools/ip-to-bin" rel="noopener noreferrer" target="_blank">IP Address to Binary</a></li>
+<li><a href="https://www.browserling.com/tools/bin-to-ip" rel="noopener noreferrer" target="_blank">Binary to IP Address</a></li>
+</ul>
+<p>Additionally, the process of determining the network address given an address of a host on the network and the subnet mask requires you to perform a logical AND operation. The AND operator compares two inputs to produce an output. In the case of the address and mask, it compared each bit position individually. </p>
+<p>The following truth table summarizes which inputs produce what output.</p>
+<table>
+<thead>
+<tr>
+<th id="**input_1**" style="text-align:center;"><strong>Input 1</strong></th>
+<th id="**input_2**" style="text-align:center;"><strong>Input 2</strong></th>
+<th id="**output**" style="text-align:center;"><strong>Output</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">0</td>
+<td style="text-align:center;">0</td>
+<td style="text-align:center;">0</td>
+</tr>
+<tr>
+<td style="text-align:center;">0</td>
+<td style="text-align:center;">1</td>
+<td style="text-align:center;">0</td>
+</tr>
+<tr>
+<td style="text-align:center;">1</td>
+<td style="text-align:center;">0</td>
+<td style="text-align:center;">0</td>
+</tr>
+<tr>
+<td style="text-align:center;">1</td>
+<td style="text-align:center;">1</td>
+<td style="text-align:center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>You read the table above from left to right. In the first row, Input 1 is <code>0</code>, Input 2 is also a <code>0</code>. If you do a logical AND of <code>0</code> and <code>0</code>, you'll get another <code>0</code>. The second and third rows are both doing a logical and of a zero and a one (albeit, in different orders) and both result in <code>0</code>. The last row is the interesting one; a logical AND of <code>1</code> and <code>1</code> equals <code>1</code>! So the logical AND is actually very simple - the output is only <code>1</code> when <em>both</em> inputs have values of <code>1</code>.</p>
+<p>Happy Converting! </p>
+<h2 id="quizzes">Quizzes</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Same Subnet? 1</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which of the following IP addresses are on the same subnet as 122.48.253.2/18?</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="rbk1" name="809095" id="rbk1">
+      <label for="rbk1"><p>122.48.200.200</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk2" name="809095" id="rbk2">
+      <label for="rbk2"><p>122.49.1.102</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk3" name="809095" id="rbk3">
+      <label for="rbk3"><p>122.47.255.219</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk4" name="809095" id="rbk4">
+      <label for="rbk4"><p>122.48.162.3</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk5" name="809095" id="rbk5">
+      <label for="rbk5"><p>122.48.193.61</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>122.48.200.200</li>
+      <li>122.48.193.61</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Same Subnet? 2</p></h3>
+  <div>
+  <div>
+    <p><strong>QUESTION:</strong> <p>Write an IP address that is in same subnet as 172.254.3.17/8.</p></p>
+    <div class="" form-group">
+      <label for="answer"><strong>ANSWER:</strong></label>
+      <textarea class="form-control" id="answer"></textarea>
+    </div>
+  </div>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <p><i>These answers need to be solved by yourself, I believe you can do it</i></p>
+
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="reserved-addresses-on-a-netblock">Reserved Addresses on a Netblock</h2>
+<p>If you recall, the number of addresses that are available for use in a netblock were reduced by three, because those three addresses are reserved for something. Well, what are they? </p>
+<ul>
+<li>The first address (<code>.0</code>) is used for identification of the network,</li>
+<li>the follow address (<code>.1</code>) is often assigned to the router,</li>
+<li>the last address (<code>.255</code>) is called the broadcast address. Anything sent to the broadcast address will be sent out to all devices on the network.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="additional-resources">Additional Resources</h2>
+<p>Some basic reading on subnetworks and Classless Inter-Domain Routing (CIDR):</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Subnetwork" rel="noopener noreferrer" target="_blank">Subnetworks</a>,</li>
+<li>A good read on <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" rel="noopener noreferrer" target="_blank">CIDR</a> with a helpful table on all IPv4 CIDR blocks.</li>
+</ul>
+<p>And several technical reports on the following subjects:</p>
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc1878" rel="noopener noreferrer" target="_blank">RFC IPv4</a>,</li>
+<li><a href="https://tools.ietf.org/html/rfc5942" rel="noopener noreferrer" target="_blank">RFC IPv6</a>,</li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc1519.txt" rel="noopener noreferrer" target="_blank">RFC CIDR</a>.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. OSI Model.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Addressing and Networks')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

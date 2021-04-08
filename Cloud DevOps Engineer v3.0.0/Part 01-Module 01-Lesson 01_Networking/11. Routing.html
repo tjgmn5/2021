@@ -1,0 +1,321 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Routing</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Networking</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Interview.html">01. Interview</a>
+    </li>
+    <li class="">
+      <a href="02. Lesson Map &amp; Learning Objectives.html">02. Lesson Map &amp; Learning Objectives</a>
+    </li>
+    <li class="">
+      <a href="03. Network Communication Model.html">03. Network Communication Model</a>
+    </li>
+    <li class="">
+      <a href="04. Addressing.html">04. Addressing</a>
+    </li>
+    <li class="">
+      <a href="05. Addressing and Networks.html">05. Addressing and Networks</a>
+    </li>
+    <li class="">
+      <a href="06. OSI Model.html">06. OSI Model</a>
+    </li>
+    <li class="">
+      <a href="07. Switching.html">07. Switching</a>
+    </li>
+    <li class="">
+      <a href="08. Frame Structure.html">08. Frame Structure</a>
+    </li>
+    <li class="">
+      <a href="09. Switching At Scale.html">09. Switching At Scale</a>
+    </li>
+    <li class="">
+      <a href="10. Virtual LANs.html">10. Virtual LANs</a>
+    </li>
+    <li class="">
+      <a href="11. Routing.html">11. Routing</a>
+    </li>
+    <li class="">
+      <a href="12. Wireshark.html">12. Wireshark</a>
+    </li>
+    <li class="">
+      <a href="13. Domain Name System.html">13. Domain Name System</a>
+    </li>
+    <li class="">
+      <a href="14. Types of DNS Records.html">14. Types of DNS Records</a>
+    </li>
+    <li class="">
+      <a href="15. DNS Hierarchy.html">15. DNS Hierarchy</a>
+    </li>
+    <li class="">
+      <a href="16. Load Balancing.html">16. Load Balancing</a>
+    </li>
+    <li class="">
+      <a href="17. Load Balancing Approaches.html">17. Load Balancing Approaches</a>
+    </li>
+    <li class="">
+      <a href="18. Outro.html">18. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">11. Routing</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="routing">Routing</h1>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Not Enough Addresses - Part 1</p></h3>
+  <video controls>
+  <source src="11. Not Enough Addresses - Part 1-IOwZiH2LaGE.mp4" type="video/mp4">
+
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Not Enough Addresses - Part 2</p></h3>
+  <video controls>
+  <source src="11. Not Enough Addresses - Part 2-WK6QLjORF7Q.mp4" type="video/mp4">
+
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="try-it-yourself">Try It Yourself</h2>
+<h3 id="your-public-ipv4-address">Your Public IPv4 Address</h3>
+<p>The easiest way to find your public IP address is using the web. You can navigate to a website, such as <a href="https://www.whatismyip.com/" rel="noopener noreferrer" target="_blank">whatismyip.com</a>, or simply search, "What is my IP address" in a search engine such as Google to produce the result. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>This is the title of the Reflection</p></h3>
+  <div>
+  <p><strong>QUESTION: </strong></p>
+  <p>What is your public IPv4 address?</p>
+
+  <details>
+    <summary><strong>ANSWER:</strong></summary>
+    <p><p>Thanks for your response.</p></p>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="your-private-ipv4-address">Your Private IPv4 Address</h3>
+<p>To find your private IP address, you can use a terminal. Depending on which OS (Operating System) you are running, the command to determine your IP address will differ. On a Linux or Mac, type in <code>ifconfig</code>, whereas on a Windows computer, type in <code>ipconfig</code> to find your IP address. The result may look like so, </p>
+<pre><code class="sh language-sh">Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . :
+   Link-local IPv6 Address . . . . . : fe80::14a5:92a8:6620:114a%4
+   IPv4 Address. . . . . . . . . . . : 192.168.50.197
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.50.1</code></pre>
+<p>Often, running this command will return not one, but a number of network interfaces. Ethernet interfaces will be labelled <code>eth0</code>, <code>eth1</code>, etc., while Wi-Fi interfaces are often labelled <code>wlan0</code>, <code>wlan1</code>, on so on. A Mac may return an especially large number of network interfaces, as it uses a number of loopback interfaces (interfaces that the OS uses to communicate with itself). </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>This is the title of the Reflection</p></h3>
+  <div>
+  <p><strong>QUESTION: </strong></p>
+  <p>What's your private IPv4 address?</p>
+
+  <details>
+    <summary><strong>ANSWER:</strong></summary>
+    <p><p>Thanks for your response.</p></p>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Private IP addresses often reside on <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, and <code>192.168.0.0/16</code>, with the most common of all being, <code>192.168.0.0/24</code> (with a default gateway of <code>192.168.0.1</code>).</p>
+<h3 id="ipv6">IPv6</h3>
+<p>Note that not all Internet Service Providers (ISPs) support IPv6. To see if you have IPv6 enabled, visit the <a href="http://test-ipv6.com/" rel="noopener noreferrer" target="_blank">IPv6 test site</a>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>This is the title of the Reflection</p></h3>
+  <div>
+  <p><strong>QUESTION: </strong></p>
+  <p>Do you have IPv6 enabled?</p>
+
+  <details>
+    <summary><strong>ANSWER:</strong></summary>
+    <p><p>If you do - that's great, your ISP is on top of things! If you don't - not to worry, you're likely to have it soon.</p></p>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=EkNq4TrHP_U" rel="noopener noreferrer" target="_blank">TCP/IP and Subnet Masking</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Network_address_translation" rel="noopener noreferrer" target="_blank">Wikipedia article on NAT</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="12. Wireshark.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('11. Routing')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>
