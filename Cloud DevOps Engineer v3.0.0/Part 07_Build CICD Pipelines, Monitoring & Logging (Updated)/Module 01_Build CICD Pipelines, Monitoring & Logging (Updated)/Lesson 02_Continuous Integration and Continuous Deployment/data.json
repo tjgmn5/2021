@@ -1,0 +1,1367 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1019374,
+      "key": "dcbda48c-aa97-4c42-bc33-ea235089492e",
+      "title": "Continuous Integration and Continuous Deployment",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, we'll cover the fundamentals of CI/CD. Talk about the benefits, best practices, and look at the building blocks of pipelines!",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/dcbda48c-aa97-4c42-bc33-ea235089492e/1019374/1594793794106/Continuous+Integration+and+Continuous+Deployment+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/dcbda48c-aa97-4c42-bc33-ea235089492e/1019374/1594793789978/Continuous+Integration+and+Continuous+Deployment+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1019375,
+          "key": "e25ba6f7-4a66-4c0c-8688-3f0f9ae44c02",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e25ba6f7-4a66-4c0c-8688-3f0f9ae44c02",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1043982,
+              "key": "bd4ee553-2309-478a-83b2-a75b61d97074",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introduction to CI/CD",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019377,
+              "key": "385029a7-8721-43bf-9612-726c0deda89b",
+              "title": "ND9991 C3 L01 Introduction To CI-CD",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "E3wBGOJfut4",
+                "china_cdn_id": "E3wBGOJfut4.mp4"
+              }
+            },
+            {
+              "id": 1044937,
+              "key": "89c62bdd-18c3-4c2c-bbd9-a64353bc8c48",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/July/5f0dfdbd_screen-shot-2020-07-14-at-11.44.57-am/screen-shot-2020-07-14-at-11.44.57-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/89c62bdd-18c3-4c2c-bbd9-a64353bc8c48",
+              "caption": "**Our First Stop**",
+              "alt": "An image highlighting that we're in the first main lesson: Continuous Integration and Continuous Deployment.",
+              "width": 1343,
+              "height": 212,
+              "instructor_notes": null
+            },
+            {
+              "id": 1029562,
+              "key": "3d229872-22fb-4876-809f-68c0c127c5cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### In this Lesson, We Will Learn About...\n\n- Fundamentals of CI/CD\n- Benefits of CI/CD\n- Continuous Delivery as a Paradigm\n- CI/CD Best Practices\n- Deployment Strategies\n- Pipeline Building Blocks and Jobs\n- CI/CD Tools",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1023035,
+          "key": "828046d1-5bc5-473b-abc2-8b5d17ed4f89",
+          "title": "Big Picture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "828046d1-5bc5-473b-abc2-8b5d17ed4f89",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1043983,
+              "key": "e3d03f31-f33d-4279-9cb3-1d71be48f574",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Big Picture",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028841,
+              "key": "7724b73a-9534-43de-ba11-a3777b563c92",
+              "title": "ND9991 C3 L01 Big Picture",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "a6iiTRwMOTI",
+                "china_cdn_id": "a6iiTRwMOTI.mp4"
+              }
+            },
+            {
+              "id": 1031043,
+              "key": "0e04e2f5-dbd0-412a-ae77-e8e0ffcec39f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Where Does CI/CD Fit In?\n\n| **Stage**                      | **_Before_ CI/CD**                                                      | **_After_ CI/CD**                                        |\n| -------------------------- | ------------------------------------------------------------------- | -------------------------------------------------- |\n| Coding                     | _Human_                                                              | _Human_                                             |\n| Code Review                | _Human_, Subjective, Inconsistent                                     | _Human_/CI - Static Analysis                         |\n| Compile/Lint               | _Human_                                                               | CI                                                 |\n| Merge/Integrate            | _Human_                                                               | CI                                                 |\n| Run Unit Tests             | _Human_, Hit or Miss, Easily Bought Off with Pressure                 | CI                                                 |\n| Run Integration Tests      | _Human_, Hit or Miss, Easily Bought Off with Pressure                 | CI                                                 |\n| Verify Dependency Security | _Human_, Often Not Done                                               | CI                                                 |\n| Deploy to Test Env         | _Human_, Problematic, Missed Steps                                    | CD                                                 |\n| Team Test                  | _Human_, Time Consuming                                               | CD - Automated Acceptance Tests                    |\n| Deploy to Client Test Env  | _Human_, Problematic, Missed Steps                                    | CD                                                 |\n| Client Test                | _Human_, Often Unnecessary If Pre-Development Activities are On Point | _Human_ - Maybe Not Needed If We Can Build Confidence |\n| Create Infrastructure      | _Human_, Problematic, Missed Steps, Stressful                         | CD                                                 |\n| Deploy to Production       | _Human_, Problematic, Missed Steps, Stressful                         | CD                                                 |\n| Smoke Test in Prod         | _Human_, Inconsistent                                                 | Automated Smoke Tests (Subset of AAT's)            |\n| Rollbacks                  | _Human_, Problematic, Missed Steps, Stressful                         | CD                                                 |\n| Promoting Production       | _Human_, Problematic, Missed Steps, Stressful                         | CD                                                 |\n| Celebrate!                  | _Human_                                                               | _Human_                                              |\n\n### Removing _Human_ Error\nBefore we implement CI/CD almost *everything* requires human intervention. Can you imagine a world without human error? \n\n... Neither can I, but with CI/CD, we can reduce it!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1023036,
+          "key": "edfbec6d-7d15-4b5a-8b8e-6ffa9b620bc1",
+          "title": "Intuition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "edfbec6d-7d15-4b5a-8b8e-6ffa9b620bc1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1043984,
+              "key": "6aff1239-bcb8-49db-8b6d-4b1bdab11a20",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Intuition about CI/CD",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029049,
+              "key": "f961bf9b-28d0-42cf-bad2-77bc5975f617",
+              "title": "ND9991 C3 L01 Intuition",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "X_V7ywdVXTE",
+                "china_cdn_id": "X_V7ywdVXTE.mp4"
+              }
+            },
+            {
+              "id": 1031042,
+              "key": "374f36de-9800-4f75-a82e-9d6da9e20d70",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### How do you know you need CI/CD or Continuous Delivery?\n\n_There are several \"warning signs\" that teams exhibit that suggest they would be good candidates for CI/CD or Continuous Delivery. If you identify with any of these items, you should consider CI/CD an essential piece of your development workflow._\n\n- Investing **more time** in a release cycle than delivering value\n- Going through integration hell every time we finish a feature\n- **Code gets lost** because of botched merges\n- Unit test suite hasn't been green in ages\n- Deployments contribute to **schedule slip**\n- Friction between ops and development departments\n- **Only one engineer** can deploy a system\n- _**Deployments are not cause for celebration**_\n\n### No Free Lunch\n\n_No pain, no gain, right? Did you think CI/CD was going to solve all your woes and ask nothing in return? Think again!_\n\n- <ins>No more</ins> manual deploying to environments\n- <ins>No more</ins> modifying environment settings in GUI's\n- <ins>No more</ins> neglecting the unit tests\n- <ins>No more</ins> leaving broken code in place\n- Requires a high level of discipline\n- Requires additional skills to maintain and extend automation",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1023099,
+              "key": "02d7e5ec-3c77-409a-ae75-27ad4eefea8c",
+              "title": "Intuition Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "02d7e5ec-3c77-409a-ae75-27ad4eefea8c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the signals that you need CI/CD?",
+                "answers": [
+                  {
+                    "id": "a1589861937417",
+                    "text": "Investing more time in a release cycle than delivering value",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589861962790",
+                    "text": "Deploys are not cause for celebration",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589861963467",
+                    "text": "Code gets lost because of botched merges",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589861964069",
+                    "text": "Features are not well enough defined",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589861964628",
+                    "text": "Deployments cause schedule slip",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589861965253",
+                    "text": "Developers write unmaintainable code",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589862077160",
+                    "text": "Only one developer can deploy a system",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1023037,
+          "key": "e5454cf7-5106-465f-be6f-bbf259f93b0f",
+          "title": "Fundamentals of CI/CD",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e5454cf7-5106-465f-be6f-bbf259f93b0f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1043985,
+              "key": "1fc9319a-4b5f-478e-8d28-03dab7e8eb7f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Fundamentals of CI/CD",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029050,
+              "key": "93ab45d0-0ee2-4f3c-935d-5d4c2fc367eb",
+              "title": "ND9991 C3 L01 Fundamentals Of CI-CD",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gLwnttQkW8I",
+                "china_cdn_id": "gLwnttQkW8I.mp4"
+              }
+            },
+            {
+              "id": 1031046,
+              "key": "3bec38a1-6bff-4a95-9f15-210cc68da48a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Continuous Integration\n\n_The practice of merging all developers' working copies to a shared mainline several times a day. It's the process of \"**Making**\". Everything related to the code fits here, and it all culminates in the ultimate goal of CI: a high quality, deployable artifact! Some common CI-related phases might include:_\n\n  - Compile\n  - Unit Test\n  - Static Analysis\n  - Dependency vulnerability testing\n  - Store artifact\n\n### Continuous Deployment\n\n_A software engineering approach in which the value is delivered frequently through automated deployments. Everything related to deploying the artifact fits here. It's the process of \"**Moving**\" the artifact from the shelf to the spotlight. Some common CD-related phases might include:_\n\n  - Creating infrastructure\n  - Provisioning servers\n  - Copying files\n  - Promoting to production\n  - Smoke Testing (aka Verify)\n  - Rollbacks\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044734,
+              "key": "07716851-d299-46c1-a825-8d8e9b87ca8b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/July/5f0c9a06_screen-shot-2020-07-13-at-10.26.22-am/screen-shot-2020-07-13-at-10.26.22-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/07716851-d299-46c1-a825-8d8e9b87ca8b",
+              "caption": "**The Phases of CI/CD Pipeline**",
+              "alt": "An image listing the steps of a CI/CD Pipeline: Build, Test, Analyze, Deploy, Verify, and Promote.",
+              "width": 1730,
+              "height": 750,
+              "instructor_notes": null
+            },
+            {
+              "id": 1044733,
+              "key": "62351c7e-700f-4b6d-901c-01b540560f0b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n\n- **Pipeline**: A set of data processing elements connected in series, where the output of one element is the input of the next one.\n- **Continuous Integration**: The practice of merging all developers' working copies to a shared mainline several times a day.\n- **Continuous Delivery**: An engineering practice in which teams produce and release value in short cycles.\n- **Continuous Deployment**: A software engineering approach in which the value is delivered frequently through automated deployments.\n- **Infrastructure as Code**: The management of infrastructure using code.\n- **Provisioning**: The process of setting up IT infrastructure.\n- **Artifact**: A product of some process applied to the code repository.\n- **DevOps**: A set of practices that works to automate and integrate the processes between software development and IT teams.\n- **Testing**: A practice that seeks to ensure the quality of the software.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1023038,
+          "key": "f23ee34d-0b94-4469-84b9-21b62c774330",
+          "title": "Fundamentals Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f23ee34d-0b94-4469-84b9-21b62c774330",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1023100,
+              "key": "55d54c28-43e9-4fcc-8510-7ddc8d9bde20",
+              "title": "Match Key Terms",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "55d54c28-43e9-4fcc-8510-7ddc8d9bde20",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the key terms to definitions."
+                },
+                "concepts_label": "Definition",
+                "answers_label": "Term",
+                "concepts": [
+                  {
+                    "text": "A set of data processing elements connected in series, where the output of one element is the input of the next one.",
+                    "correct_answer": {
+                      "id": "a1589862481531",
+                      "text": "Pipeline"
+                    }
+                  },
+                  {
+                    "text": "The practice of merging all developers' working copies to a shared mainline several times a day.",
+                    "correct_answer": {
+                      "id": "a1589862544149",
+                      "text": "Continuous Integration"
+                    }
+                  },
+                  {
+                    "text": "An engineering practice in which teams produce and release value in short cycles.",
+                    "correct_answer": {
+                      "id": "a1589862556338",
+                      "text": "Continuous Delivery"
+                    }
+                  },
+                  {
+                    "text": "A software engineering approach in which the value is delivered frequently through automated deployments.",
+                    "correct_answer": {
+                      "id": "a1589862576714",
+                      "text": "Continuous Deployment"
+                    }
+                  },
+                  {
+                    "text": "The process of setting up IT infrastructure.",
+                    "correct_answer": {
+                      "id": "a1589862606987",
+                      "text": "Provisioning"
+                    }
+                  },
+                  {
+                    "text": "A set of practices that works to automate and integrate the processes between software development and IT teams.",
+                    "correct_answer": {
+                      "id": "a1589862632092",
+                      "text": "DevOps"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1589862556338",
+                    "text": "Continuous Delivery"
+                  },
+                  {
+                    "id": "a1589862606987",
+                    "text": "Provisioning"
+                  },
+                  {
+                    "id": "a1589862481531",
+                    "text": "Pipeline"
+                  },
+                  {
+                    "id": "a1589862576714",
+                    "text": "Continuous Deployment"
+                  },
+                  {
+                    "id": "a1589862632092",
+                    "text": "DevOps"
+                  },
+                  {
+                    "id": "a1589862544149",
+                    "text": "Continuous Integration"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1023101,
+              "key": "1eb05c30-779a-419a-a331-ba1cfa520aca",
+              "title": "Scenario 1",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1eb05c30-779a-419a-a331-ba1cfa520aca",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Given the scenario below, which of the concepts would address the team's pain points?\n\n> There have been several human errors when deploying the production version of a complicated application over the past 6 months. The team has a detailed deployment checklist, but there is always something that doesn't get done quite right. The company has tasked you with finding a solution to the problem.",
+                "answers": [
+                  {
+                    "id": "a1589862739177",
+                    "text": "Continuous Integration",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589862763497",
+                    "text": "Continuous Deployment",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589862769973",
+                    "text": "Neither",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1023102,
+              "key": "17a506d1-abfb-4330-b5cc-89b14c1da8f6",
+              "title": "Scenario 2",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "17a506d1-abfb-4330-b5cc-89b14c1da8f6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Given the scenario below, which of the concepts would address the team's pain points?\n\n> You are involved in the development of an application in a large company where there are contractors who live in different time zones. The team is divided into 3 groups to cover several functionalities at the same time. Your team is having major issues with conflicting code and a neglected unit test suite.\n",
+                "answers": [
+                  {
+                    "id": "a1589862897383",
+                    "text": "Continuous Integration",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589862936519",
+                    "text": "Continuous Deployment",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589862937257",
+                    "text": "Neither",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1023039,
+          "key": "a206808d-be07-45f3-b620-1e6b0164ea15",
+          "title": "Benefits of CI/CD",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a206808d-be07-45f3-b620-1e6b0164ea15",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044204,
+              "key": "3fe6176f-213c-418a-a267-1fb23562ef9a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Benefits of CI/CD",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029052,
+              "key": "8ee2a066-cf4a-4c70-82e1-13d21b9edae0",
+              "title": "ND9991 C03 L01 Benefits Of CI-CD",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yl49rMpMu9s",
+                "china_cdn_id": "yl49rMpMu9s.mp4"
+              }
+            },
+            {
+              "id": 1031048,
+              "key": "b105bcd1-ce12-4ed2-9255-c49780dbe0da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Why Is Translation Important?\n_If the decision-makers in your company can't understand why something is important or adds value, they might not approve it. This usually isn't because they're ignorant or trying to be difficult, this is often because they don't understand how the technical changes translate into benefits for the company. Using language they understand will make everyone's lives better and easier!_\n\n| **Technical Language**                                       | **Value**            | **Translation**                                                |\n| :---------------------------------------------- | ---------------- | :--------------------------------------------------------- |\n| Catch Compile Errors After Merge                | Reduce Cost      | Less developer time on issues from new developer code      |\n| Catch Unit Test Failures                        | Avoid Cost       | Less bugs in production and less time in testing           |\n| Detect Security Vulnerabilities                 | Avoid Cost       | Prevent embarrassing or costly security holes              |\n| Automate Infrastructure Creation                | Avoid Cost       | Less human error, Faster deployments                       |\n| Automate Infrastructure Cleanup                 | Reduce Cost      | Less infrastructure costs from unused resources            |\n| Faster and More Frequent Production Deployments | Increase Revenue | New value-generating features released more quickly        |\n| Deploy to Production Without Manual Checks      | Increase Revenue | Less time to market                                        |\n| Automated Smoke Tests                           | Protect Revenue  | Reduced downtime from a deploy-related crash or major bug |\n| Automated Rollback Triggered by Job Failure     | Protect Revenue  | Quick undo to return production to working state           |\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1023103,
+              "key": "e5f02217-f878-43f5-88ef-a7669fed614a",
+              "title": "Business Benefit Matching",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e5f02217-f878-43f5-88ef-a7669fed614a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match technical benefits to business benefits."
+                },
+                "concepts_label": "Technical Benefit",
+                "answers_label": "Business Benefit",
+                "concepts": [
+                  {
+                    "text": "Catch Compile Errors After Merge",
+                    "correct_answer": {
+                      "id": "a1589863020693",
+                      "text": "Less developer time on issues from new developer code"
+                    }
+                  },
+                  {
+                    "text": "Catch Unit Test Failures",
+                    "correct_answer": {
+                      "id": "a1589863085080",
+                      "text": "Less bugs in production and less time in testing"
+                    }
+                  },
+                  {
+                    "text": "Automate Infrastructure Creation",
+                    "correct_answer": {
+                      "id": "a1589863110525",
+                      "text": "Less human error, Faster deployments"
+                    }
+                  },
+                  {
+                    "text": "Deploy to Production Without Manual Checks",
+                    "correct_answer": {
+                      "id": "a1589863131302",
+                      "text": "Less time to market"
+                    }
+                  },
+                  {
+                    "text": "Automated Smoke Tests",
+                    "correct_answer": {
+                      "id": "a1589863141944",
+                      "text": "Reduced downtime from a deploy-related crash or major bug"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1589863131302",
+                    "text": "Less time to market"
+                  },
+                  {
+                    "id": "a1589863085080",
+                    "text": "Less bugs in production and less time in testing"
+                  },
+                  {
+                    "id": "a1591325316269",
+                    "text": "Prevent embarrassing or costly security holes"
+                  },
+                  {
+                    "id": "a1591325318522",
+                    "text": "Less infrastructure costs from unused resources"
+                  },
+                  {
+                    "id": "a1589863141944",
+                    "text": "Reduced downtime from a deploy-related crash or major bug"
+                  },
+                  {
+                    "id": "a1589863020693",
+                    "text": "Less developer time on issues from new developer code"
+                  },
+                  {
+                    "id": "a1591325317334",
+                    "text": "Quick undo to return production to working state"
+                  },
+                  {
+                    "id": "a1589863110525",
+                    "text": "Less human error, Faster deployments"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1044731,
+              "key": "6fd62b40-fef6-4727-8b3a-36b1853e8f49",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Reading\n\n- Read more about [Black Swan Farming's \"Value Framework\"](https://blackswanfarming.com/value-a-framework-for-thinking/).\n- Check out Atlassian's [great article](https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment) on the benefits of CI/CD.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1019958,
+          "key": "04b637f1-accd-45b6-964d-57da19a6e1ae",
+          "title": "Exercise: Benefits",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "04b637f1-accd-45b6-964d-57da19a6e1ae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1019960,
+              "key": "7e22a76d-9729-4274-8cba-96070cb683fb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Benefits of CI/CD\n\nLet's practice translating from technical language to business language. \n\nI'll play the boss in your company. For fun, let's pretend that I am really great at running the business, but technology is not my strong suit. Your team wants to start working with CI/CD, _someone_ has to come to my office to convince me to set aside some days for implementation, and you drew \"the short straw.\" \n\nPick two of the most compelling benefits of CI/CD and write a paragraph for each, explaining to me why it should be implemented in your team. Let's see if you can convince me! **Don't forget to use some of the \"translations\" you learned about earlier!**\n\nHere are a few examples to choose from:\n\n1. Smaller code changes\n2. Error Isolation\n3. Reduced deploy errors\n4. More reliable tests\n5. Faster release rate\n6. Increase accountability and transparency\n7. Smaller backlog\n8. Faster error resolution time\n9. Customer satisfaction\n10. Team satisfaction\n11. Easy maintenance and updates",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019966,
+              "key": "c7786269-4a7f-448c-8f5b-2f197e4e44f4",
+              "title": "Convince Me Question 1",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c7786269-4a7f-448c-8f5b-2f197e4e44f4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Choose one benefit of CI/CD and write a short paragraph to convince a non-technical boss using non-technical language."
+              },
+              "answer": {
+                "text": "Make sure your paragraph translates the technical benefits to terms that matter to any business: revenue and/or costs. If you did that, then you're doing great!",
+                "video": null
+              }
+            },
+            {
+              "id": 1019967,
+              "key": "6ccf5961-c130-4c48-a7a9-704a09ae80df",
+              "title": "Convince Me Question 2",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6ccf5961-c130-4c48-a7a9-704a09ae80df",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Choose another benefit of CI/CD and write a short paragraph to convince a non-technical boss using non-technical language."
+              },
+              "answer": {
+                "text": "Do you feel like you were able to boil down the technical concepts to the businesses' native language? If you talked in terms of revenue or cost, then you have me convinced!",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1019968,
+          "key": "165e4e73-31f9-4092-830c-477ab644ebda",
+          "title": "Solution: Benefits ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "165e4e73-31f9-4092-830c-477ab644ebda",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1019970,
+              "key": "e70eca2c-0f69-4e43-9e49-b73ef25716a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Benefits of CI/CD\n\nIsn't CI/CD great? Now, not only do you understand CI/CD and it's benefits, but you also know how to \"sell\" it to decision-makers! Way to go!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019969,
+              "key": "6aba13fc-36dd-4af6-a6f4-286b0c7d2cb0",
+              "title": "ND9991 C3 L01 Solution - Benefits Of CI-CD",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ER63We0nxDs",
+                "china_cdn_id": "ER63We0nxDs.mp4"
+              }
+            },
+            {
+              "id": 1043980,
+              "key": "eb11042d-e314-4507-ac4d-823206bdfac7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/July/5f0616c8_screen-shot-2020-07-01-at-1.35.58-pm/screen-shot-2020-07-01-at-1.35.58-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/eb11042d-e314-4507-ac4d-823206bdfac7",
+              "caption": "**One Team with One Language**",
+              "alt": "A graphic showing the Technical Team and Business Team as one unified team.",
+              "width": 860,
+              "height": 285,
+              "instructor_notes": null
+            },
+            {
+              "id": 1019971,
+              "key": "7873afa9-4f43-4d4f-b84b-19ffac7629a9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "It's great, as a technical member of the team, for you to understand the benefits of CI/CD. This way, when you're banging your head against the wall because of some confusing mess you've gotten yourself into, you will remember the benefits and they will motivate you to keep going! But, it's quite possibly more important that you understand how to translate these benefits to other members of the team so they can understand how CI/CD will benefit their area of responsibility as well!\n\nRemember, whenever you are attempting to convince business people of some technical benefit, you should always translate it to either revenue or cost. **If the benefits truly outweigh the costs of implementation, you'll find that the business will often give you the green light.**\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1023041,
+          "key": "9a93756e-89fd-44a2-a5f2-07f3224e9043",
+          "title": "Best Practices",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9a93756e-89fd-44a2-a5f2-07f3224e9043",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044205,
+              "key": "818ff218-35a0-4370-a9fc-dbb4c0ed9879",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Best Practices",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029054,
+              "key": "544566a9-5fe2-4982-920b-ba55cf597702",
+              "title": "ND9991 C03 L01 Best Practices",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MNlPK-55auA",
+                "china_cdn_id": "MNlPK-55auA.mp4"
+              }
+            },
+            {
+              "id": 1031056,
+              "key": "d3ddc2c0-fd72-4b91-bc13-3942a8279205",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Best Practices for CI/CD:\n\n#### Fail Fast\n\nSet up your CI/CD pipeline to find and reveal failures as fast as possible. The faster you can bring your code failures to light, the faster you can fix them.\n\n#### Measure Quality\n\nMeasure your code quality so that you can see the positive effects of your improvement work (or the negative effects of technical debt).\n\n#### Only Road to Production\n\nOnce CI/CD is deploying to production on your behalf, it must be the only way to deploy. Any other person or process that meddles with production after CI/CD is running will inevitably cause CI/CD to become inconsistent and fail. \n\n#### Maximum Automation\n\nIf it can be automated, automate it. This will only improve your process!\n\n#### Config in Code\n\nAll configuration code must be in code and versioned alongside your production code. This includes the CI/CD configuration files!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1023106,
+              "key": "fe912c92-5e29-4bfd-a5b1-acf78602c06f",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fe912c92-5e29-4bfd-a5b1-acf78602c06f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Which of the best practices we discussed resonates with you and seems especially important? Explain why."
+              },
+              "answer": {
+                "text": "Great job! It's always important to start with \"why\" in anything we do. Knowing and being able to recite principles and best practices is nice, but understanding the motivation behind them is even more important. ",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1023042,
+          "key": "6790da65-7a7c-4162-9fea-e5b3d2d76881",
+          "title": "Deployment Strategies",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6790da65-7a7c-4162-9fea-e5b3d2d76881",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044206,
+              "key": "655cea29-9e93-490e-ac5f-5fc738b8243e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deployment Strategies",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029055,
+              "key": "294e9adf-fc7f-4c72-aec2-1858ead9c065",
+              "title": "ND9991 C03 L01 Deployment Strategies",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "x6JsDGTKHmU",
+                "china_cdn_id": "x6JsDGTKHmU.mp4"
+              }
+            },
+            {
+              "id": 1029502,
+              "key": "51a3fdf1-672d-4675-aab0-41f87c29129a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "| **Deployment Strategy** | **Description**                                                                                                                                                                                                                                                  |\n| :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Big-Bang            | Replace A with B all at once.                                                                                                                                                                |\n| Blue Green          | Two versions of production: Blue or previous version and Green or new version. Traffic can still be routed to blue while testing green. Switching to the new version is done by simply shifting traffic from blue to green.                                  |\n| Canary              | Aka Rolling Update, After deploying the new version, start routing traffic to new version little by little until all traffic is hitting the new production. Both versions coexist for a period of time.                                                      |\n| A/B Testing         | Similar to Canary, but instead of routing traffic to new version to accomplish a full deployment, you are testing your new version with a subset of users for feedback. You might end up routing all traffic to the new version, but that's always the goal. |\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1034983,
+          "key": "d49d9819-8523-4149-a4f4-ad854091b9ba",
+          "title": "Blue Green Deployment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d49d9819-8523-4149-a4f4-ad854091b9ba",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1034984,
+              "key": "9d4a2a61-dd63-4d49-94db-0708493f6d56",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Blue Green Deployment",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1034985,
+              "key": "ff220bbb-d459-4399-b2ce-72f68e130a09",
+              "title": "ND9991 C03 L01 Blue Green Deployment",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zHeg-3jrq8E",
+                "china_cdn_id": "zHeg-3jrq8E.mp4"
+              }
+            },
+            {
+              "id": 1034986,
+              "key": "65cdc1e7-7692-41a0-9a2a-cb109a4d1c20",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Blue Green Deployments\n\n#### The Router\n\n| **Router Option** | **Description**                                             |\n| :------------ | :------------------------------------------------------ |\n| Load Balancer | Instant switch for FE or BE, ideal router in most cases |\n| CDN           | Instant switch for front-end web apps.                  |\n| DNS           | A bit slow because of DNS propagation.                  |\n\n#### Common Jobs\n\n| **Step**                             | **Description**                                                              |\n| :------------------------------- | :----------------------------------------------------------------------- |\n| Integrate Code in a Build        | Compile and create artifact                                              |\n| Run Tests                        | Run unit and/or integration tests                                        |\n| Ensure Infrastructure is Present | Create green infrastructure                                              |\n| Provision the Environment        | Configure green instance, migrate DB, etc                                |\n| Deploy Artifact                  | Copy artifact files to instance                                          |\n| Run Smoke Tests                  | Run a few tests that don't impact the prod server                        |  |\n| Perform Rollback if Failure      | Rollback here is more of a cleanup of green                              |\n| Switch Router                    | Redirect traffic to new version                                          |\n| Run Sanity Test                  | Run a few tests that don't impact the prod server                        |\n| Perform Rollback If Failure      | Rollback here is switching the router back to blue and cleaning up green |\n| Destroy Old Release Environment? | Clean up blue env _(optional)_                                             |\n| Notify The Team (Successful)     |  Celebrate!                                                                        |\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044902,
+              "key": "1929c4bc-83c3-497d-8488-bcc31a06e3dc",
+              "title": "Blue Green Sequence",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1929c4bc-83c3-497d-8488-bcc31a06e3dc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select the best sequence for a Blue Green Deployment.",
+                "answers": [
+                  {
+                    "id": "a1594697597236",
+                    "text": "Compile, Unit Tests, Provision, Sanity Test, Deploy, Switch the Router, Smoke Tests, Notify Team of Success. Destroy Old Environment",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1594697625523",
+                    "text": "Compile, Unit Tests, Provision, Deploy, Smoke Tests, Switch the Router, Sanity Test, Destroy Old Environment, Notify Team of Success",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1594697626220",
+                    "text": "Compile, Unit Tests, Provision, Deploy, Switch the Router, Destroy Old Environment, Smoke Tests, Notify Team of Success",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1594697626788",
+                    "text": "Compile, Unit Tests, Provision, Deploy, Smoke Tests, Switch the Router, Destroy Old Environment, Notify Team of Success",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1034988,
+              "key": "a26bff99-62be-4bf5-a2f8-5907f316a33d",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a26bff99-62be-4bf5-a2f8-5907f316a33d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Imagine a company you'd like to work for (or currently work for) and a team you'd like to work on. What sort of router might that team use to manage the switch from one prod env to another? It might be a load balancer or some other mechanism."
+              },
+              "answer": {
+                "text": "There are so many ways to implement the \"router\" in Blue Green Deployment. The main thing is that we need a way to have both environments live so that we can test before making the switch. ",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1023044,
+          "key": "5b95a9da-f540-4061-8b82-cc8bd88bacb5",
+          "title": "Pipeline Building Blocks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5b95a9da-f540-4061-8b82-cc8bd88bacb5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044207,
+              "key": "177dbaeb-45f5-43e7-8061-1d9742dcd50c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pipeline Building Blocks",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029057,
+              "key": "10a068d3-09c0-4073-8285-eae8b209e7f8",
+              "title": "ND9991 C03 L01 Pipeline Building Blocks",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6ODBWK4Vcyo",
+                "china_cdn_id": "6ODBWK4Vcyo.mp4"
+              }
+            },
+            {
+              "id": 1044740,
+              "key": "0a799822-88dc-4676-a588-d65ed63466df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Build Stages\n\nThink of stages like categories or types of jobs. Stages are used to group jobs and control timing.\n\n| **Stage**   | **Description**                                                                                                            |\n| :------ | :--------------------------------------------------------------------------------------------------------------------- |\n| Build   | Everything that has to do with making code executable in production (e.g. Compile). The goal is to produce an artifact. |\n| Test    | All automated tests that verify at the code level.                                                                      |\n| Analyze | Any static analysis on the code or checking of dependencies.                                                            |\n| Deploy  | Anything to do with creating server instances or copying pre-built application files to an instance.                 |\n| Verify  | Any tests that can be run against a running instance of the application, often against a pre-production instance.      |\n| Promote | Replacing the current production environment with the new version which was just built and deployed.                   |\n| Revert  | Rolling back or undoing changes in case any verification fails after deployment.                                       |\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044735,
+              "key": "bf8e9bb9-7de5-4ddd-a81f-f295f36f608d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/July/5f0c9c2a_screen-shot-2020-07-13-at-10.26.22-am/screen-shot-2020-07-13-at-10.26.22-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bf8e9bb9-7de5-4ddd-a81f-f295f36f608d",
+              "caption": "**The Stages of CI/CD Pipeline**",
+              "alt": "An image listing the stages of a CI/CD Pipeline: Build, Test, Analyze, Deploy, Verify, and Promote.",
+              "width": 1730,
+              "height": 750,
+              "instructor_notes": null
+            },
+            {
+              "id": 1035574,
+              "key": "cc58c115-b69c-4c28-9a1e-940dd8c11062",
+              "title": "ND9991 C3 L01 Pipeline Building Blocks Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "y15dsiRUr_U",
+                "china_cdn_id": "y15dsiRUr_U.mp4"
+              }
+            },
+            {
+              "id": 1044736,
+              "key": "7e5662f1-1cb1-402e-87bc-1b769d490160",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Jobs and Steps\n\n**Jobs** are what actually do the work of CI/CD. Each job has a name and defines a set of instructions to run and an environment in which to run those instructions. The instructions are called **steps**. Each step has a name and a bit of instructions to carry out a script to execute or a task to complete. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1023110,
+              "key": "54e169a9-1694-48df-b2d7-7eb35d23e1e2",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "54e169a9-1694-48df-b2d7-7eb35d23e1e2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What might be some steps names in a job that compiles the backend for a website?"
+              },
+              "answer": {
+                "text": "Those names are pretty good. Always think of how the names communicate to the next developer who will have to maintain this code.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1019972,
+          "key": "bdbc705a-2c1a-4844-bb10-279c7502534c",
+          "title": "Exercise: Pipeline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bdbc705a-2c1a-4844-bb10-279c7502534c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1019973,
+              "key": "ddb92f70-ea46-4c5c-8d77-4bd84c63999b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Pipeline Building Blocks\n\nCreate a diagram of a complete CI/CD pipeline including passing and failing branches.\n\n### Instructions:\n\n1. Open your favorite diagraming or drawing application. [Draw.io](https://www.diagrams.net/) and [LucidChart](https://www.lucidchart.com/) are both great options. Even PowerPoint or Google Slides would do the trick. If all else fails, a piece of paper and a pencil would be fine.\n2. Think through the steps your code needs to take between check-in and deployment. Ask yourself, \"What are all the things that need to be done?\" Try your best to keep things fairly granular. \n3. Use shapes like circles and squares to represent stops along the journey to deployment. Label your shapes with one or two words to describe the jobs that need to be done. This doesn't need to be a formal flow-chart or UML diagram (unless you like that sort of thing). \n4. Connect the shapes to represent the sequence of events.\n5. Add in some branches in your diagram to represent failures. Think about what should happen in each failure and write that in.\n6. Test our your pipeline with a few imaginary scenarios to see how well it holds up. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019974,
+              "key": "9b381f86-012e-4353-9c68-86c27131613d",
+              "title": "Design the Pipeline",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9b381f86-012e-4353-9c68-86c27131613d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create Free Account in draw.io (if you don't have one already) or Another Design Tool of Your Choice.",
+                "Start with a Blank Workspace.",
+                "Design a CI/CD Pipeline Using Simple Shapes.",
+                "Add Pass and Fail Decision Branches."
+              ],
+              "positive_feedback": "Great job! You have designed your first CI/CD pipeline!",
+              "video_feedback": null,
+              "description": "We're going to design a pipeline!"
+            }
+          ]
+        },
+        {
+          "id": 1020349,
+          "key": "69000114-c6e7-4b35-86f8-e5dceefed5e8",
+          "title": "Solution: Pipeline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "69000114-c6e7-4b35-86f8-e5dceefed5e8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020350,
+              "key": "4e225fbc-db80-494a-9a23-1a28cd3c29b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Pipeline Building Blocks",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020351,
+              "key": "f68f140e-7b9e-4d66-a663-592300fec7a5",
+              "title": "ND9991 C3 L01 Solution - Pipeline Building Blocks",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mMB5qoNkhG8",
+                "china_cdn_id": "mMB5qoNkhG8.mp4"
+              }
+            },
+            {
+              "id": 1044738,
+              "key": "3afdf55d-5325-48cf-bd7b-1ef59268304d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### One Solution, Not _The_ Solution\nDepending on your project and your pipeline, your diagram might look different from mine! Maybe you're not using Slack to display success or failure messages or maybe you're using a different deployment strategy. Use my below solution as a reference, but it's not the only answer!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1027383,
+              "key": "1bcb1c35-3c66-4ef3-8865-09ab7cebacae",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5edc7ae7_udapeople-pipeline-1/udapeople-pipeline-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1bcb1c35-3c66-4ef3-8865-09ab7cebacae",
+              "caption": "**My Pipeline Diagram**",
+              "alt": "My pipeline diagram. It has may branches to account for successes, failures, rollbacks, as well as testing and success/failures messages.",
+              "width": 2889,
+              "height": 2573,
+              "instructor_notes": null
+            },
+            {
+              "id": 1023111,
+              "key": "bda4be48-4624-4f0e-82c0-2144823c2f7d",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bda4be48-4624-4f0e-82c0-2144823c2f7d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What would you do differently in your diagram after seeing mine?"
+              },
+              "answer": {
+                "text": "Always keep refining this skill. The ability to distill complicated processes into something understandable is very important to development teams.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1029552,
+          "key": "0a189604-cb45-4713-b518-54d81a45c2aa",
+          "title": "CI/CD Tools",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0a189604-cb45-4713-b518-54d81a45c2aa",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1029555,
+              "key": "2d478886-99ab-4e02-bea9-6dc1055316ef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## CI/CD Tools",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029553,
+              "key": "f81eb584-768c-41f7-abb4-1601b87fa403",
+              "title": "ND9991 C3 L01 CI-CD Tools",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "A25MydZOnbA",
+                "china_cdn_id": "A25MydZOnbA.mp4"
+              }
+            },
+            {
+              "id": 1029557,
+              "key": "2c2193aa-4349-4dac-a263-5942668d77b8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Tools\nPlenty of tools exist that can handle the entire CI and CD pipeline. Some tools can be installed on your own hardware, while others are cloud-based services.\n\n#### Common Features\n\nWhether your tool is on-prem or a SaaS product, it will likely have at least the basic features of any CI/CD system. Getting to know these common features will help you to be a little more \"tool agnostic\".\n\n| **Feature**                      | **Comments**                                                                                                                                                                                                |\n| :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| Scoped Environment Variables | These are Environment variables that are built-in or defined at various scope levels including account, project, pipeline and job.                                                                      |\n| Steps                        | A step is an instruction that should be run during a job in order to accomplish a single goal.                                                                                                          |\n| Jobs                         | A job is made up of a group of steps that should run in a specific order.                                                                                                                               |\n| Job Images                   | Jobs can take advantage of various pre-existing Docker images that provide an environment in which to run steps.                                                                                        |\n| Agents                       | An agent is a machine, either physical or virtual, that responds to the CI/CD system to run jobs on-demand.                                                                                             |\n| Pipelines                    | A pipeline is a set of instructions to run a group of jobs in parallel or sequentially and according to a pre-determined dependency tree.                                                                 |\n| File Sharing                 | File sharing in the CI/CD context is the ability to share files between jobs, even though the jobs might be run on completely different images or agents.                                               |\n| Code-Based Configuration     | Code-based configuration enables engineers to build configuration files that define and control CI/CD pipelines. These files can be saved to disk, shared with others, and versioned in source control. |\n| Failure Branching            | Failure branching allows engineers to write instructions that should be run only in the event of a job failure.                                                                                         |\n\n\n#### Installable/On-Prem\nYour team may prefer an on-prem CI/CD server running closer to the development team. There are a lot of great options with varying pricing models. One major benefit to an on-prem CI/CD server is a high degree of control. On the other hand, an on-prem CI/CD server requires time from someone in the team to maintain. The list below has a few options, but certainly not all!\n\n| **Tool**                         | **Creator/Maintainer**   | **Differentiators**                                                                |\n| :--------------------------- | :------------------- | :----------------------------------------------------------------------------- |\n| Jenkins                      | Various Contributors | Vibrant open-source communbity, 100% free                                      |\n| Gitlab Community             | Gitlab               | Open-source, installable version of the popular cloud-based service, 100% free |\n| Team City                    | JetBrains            | Very mature, JetBrains support                                                 |\n| Team Foundation Server (TFS) | Microsoft            | Seemless integration with Microsoft products, Microsoft support                |\n\n#### Cloud-Based\nSome teams prefer to use cloud-based services since they require mush less time to maintain and configure. The list below is far from exhaustive. There are many many options out there. These are just a few of our favorites.\n\n| **Tool**      | **Creator/Maintainer**       | **Differentiators**                                                                                                                                   |\n| :-------- | :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |\n| Bamboo    | Atlassian                | Integrates well with other Atlassian products like Stride and Jira.                                                                               |\n| Circle CI | Circle Internet Services | Free for limited use, personal or business. Boasts of faster builds.                                                                              |\n| Travis CI | Travis CI                | Extremely simple CI/CD orchestration tool. Some specialty features for libraries and packages. Free for open-source projects.                     |\n| GitLab    | GitLab                   | Complete set of development tools including git repositories and built-in, integrated CI/CD pipelines. 2000 free minutes of CI/CD jobs per month. |\n\n### In This Course\n\nThroughout this course, we will be using Circle CI because of the following reasons:\n\n* Circle CI's features are fairly universal\n* Since it's a cloud-based tool, Circle CI will not require much configuration\n* Circle CI has a free tier that is fairly generous",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029559,
+              "key": "aafb64d0-50ed-4908-a5ed-86a6d45b1273",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "aafb64d0-50ed-4908-a5ed-86a6d45b1273",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Why might a team opt for a cloud-based CI/CD product rather than setting up a server themselves?\n"
+              },
+              "answer": {
+                "text": "Great job. Being able to shift the responsibility for CI server maintenance can be a huge productivity boost for development teams. ",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1023048,
+          "key": "88180825-ea3f-4e4e-b14a-9552294c258e",
+          "title": "Lesson Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "88180825-ea3f-4e4e-b14a-9552294c258e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044208,
+              "key": "bace02ad-0f7d-4efa-972d-1fd5402a5c90",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Conclusion",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029061,
+              "key": "aa425e6a-7573-47d7-aca2-211ea26be832",
+              "title": "ND9991 C3 L01 Lesson Conclusion",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZhaBT7zW1GA",
+                "china_cdn_id": "ZhaBT7zW1GA.mp4"
+              }
+            },
+            {
+              "id": 1029564,
+              "key": "48b49fc8-0f3e-4ebb-b9cc-4ef566d1a90e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We discussed...\n\n- Fundamentals of CI/CD\n- Benefits of CI/CD\n- Continuous Delivery as a Paradigm\n- Some Best Practices\n- Deployment Strategies, Especially Blue Green Deployment\n- Pipelines and Jobs\n- CI/CD Tools",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

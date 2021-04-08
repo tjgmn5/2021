@@ -1,0 +1,178 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.130 --> 00:00:04.230
+The building blocks of CI/CD are actually the
+
+00:00:04.230 --> 00:00:07.230
+same as the building blocks for any deployment process,
+
+00:00:07.230 --> 00:00:09.220
+even if it's a manual process.
+
+00:00:09.220 --> 00:00:13.770
+I'll refer to these building blocks as stages, jobs, and steps.
+
+00:00:13.770 --> 00:00:16.500
+Stages are categories of jobs.
+
+00:00:16.500 --> 00:00:21.600
+For example, you might have several jobs that relate to building an artifact.
+
+00:00:21.600 --> 00:00:26.640
+Maybe those would be jobs like lenting, transpiling, compiling, zipping.
+
+00:00:26.640 --> 00:00:30.750
+All of those would be associated with a stage like build.
+
+00:00:30.750 --> 00:00:32.940
+Let's take a look at a few more stages.
+
+00:00:32.940 --> 00:00:38.620
+The test stage is where we would run all of our automated code level tests,
+
+00:00:38.620 --> 00:00:41.645
+that includes unit tests, integration tests.
+
+00:00:41.645 --> 00:00:45.030
+If they pass, then we go to the Analyze stage.
+
+00:00:45.030 --> 00:00:49.715
+This is where we can do things like security audits on our package dependencies,
+
+00:00:49.715 --> 00:00:55.520
+perform mutation testing, or trigger some static code analysis.
+
+00:00:55.520 --> 00:00:57.349
+If that stage passes,
+
+00:00:57.349 --> 00:00:59.680
+then we can start the deployment phase.
+
+00:00:59.680 --> 00:01:04.565
+Of course, this is where we want to actually set up servers and move files.
+
+00:01:04.565 --> 00:01:07.010
+This is where you would execute all of
+
+00:01:07.010 --> 00:01:10.400
+your infrastructure as code and provisioning scripts,
+
+00:01:10.400 --> 00:01:12.590
+as well as, copying over the artifact.
+
+00:01:12.590 --> 00:01:16.415
+Once that new production instance is finished spinning up,
+
+00:01:16.415 --> 00:01:18.970
+we can actually begin to verify it.
+
+00:01:18.970 --> 00:01:22.370
+This is where we will execute some automated smoke test,
+
+00:01:22.370 --> 00:01:26.285
+to do some spot checks on our new production version,
+
+00:01:26.285 --> 00:01:29.405
+just to make sure everything is working properly.
+
+00:01:29.405 --> 00:01:32.525
+If there's a failure in any smoke test,
+
+00:01:32.525 --> 00:01:35.240
+we revert our changes and put
+
+00:01:35.240 --> 00:01:39.220
+everything back the way it was and notify the development team.
+
+00:01:39.220 --> 00:01:42.424
+But if verification passes,
+
+00:01:42.424 --> 00:01:45.920
+then we can pass to the promote stage.
+
+00:01:45.920 --> 00:01:51.365
+This is where we can finally replace the old version of production with the new version.
+
+00:01:51.365 --> 00:01:56.100
+Once that's done, we notify the Dev Team and celebrate.
+
+00:01:56.100 --> 00:02:00.785
+Now, you've got several very common build stages in your toolbox.
+
+00:02:00.785 --> 00:02:04.790
+Along the way, you may come up with more stages, which is fine.
+
+00:02:04.790 --> 00:02:08.510
+The idea is not to box you in with only a few possibilities.
+
+00:02:08.510 --> 00:02:11.780
+The idea here is to give you a way to keep all of
+
+00:02:11.780 --> 00:02:17.050
+your possibilities organized and maintainable for future developers.
+
+00:02:17.050 --> 00:02:20.360
+If you think about a pipeline as a tree,
+
+00:02:20.360 --> 00:02:23.180
+stages would be the first children.
+
+00:02:23.180 --> 00:02:26.390
+Now, did you notice when I was listing off all those stages
+
+00:02:26.390 --> 00:02:30.035
+before that the names were self-explanatory.
+
+00:02:30.035 --> 00:02:32.615
+I almost didn't need to give you descriptions.
+
+00:02:32.615 --> 00:02:35.260
+If a picture is worth 1,000 words,
+
+00:02:35.260 --> 00:02:38.440
+then a good name is worth at least a few 100.
+
+00:02:38.440 --> 00:02:41.985
+In the next level down, we have jobs.
+
+00:02:41.985 --> 00:02:45.230
+Jobs are what actually do the work of CI/CD.
+
+00:02:45.230 --> 00:02:50.140
+Each job has a name and defines a set of instructions.
+
+00:02:50.140 --> 00:02:55.295
+It also has an environment where those instructions should be run.
+
+00:02:55.295 --> 00:02:58.250
+The instructions are called steps.
+
+00:02:58.250 --> 00:03:02.270
+Each step has a name and a bit of instructions to
+
+00:03:02.270 --> 00:03:06.775
+carry out like a script to execute or a task to complete.
+
+00:03:06.775 --> 00:03:14.165
+I can't stress enough the importance of how you name your stages, jobs, and steps.
+
+00:03:14.165 --> 00:03:17.150
+Good names help us keep our pipelines
+
+00:03:17.150 --> 00:03:20.650
+maintainable and understandable for future developers.
+
+00:03:20.650 --> 00:03:24.850
+Bad names guarantee future confusion.
+
+00:03:24.850 --> 00:03:29.000
+Now remember, all of this is in code and inversion control.
+
+00:03:29.000 --> 00:03:31.610
+If you leave behind bad names,
+
+00:03:31.610 --> 00:03:35.220
+your name will eventually be mad.
+

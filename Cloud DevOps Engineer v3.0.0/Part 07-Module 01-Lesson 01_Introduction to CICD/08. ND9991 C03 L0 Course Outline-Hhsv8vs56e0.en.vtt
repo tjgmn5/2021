@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.370 --> 00:00:06.120
+My goal isn't to teach you everything about CI/CD and monitoring.
+
+00:00:06.120 --> 00:00:09.270
+That would require way too much time and let's face it,
+
+00:00:09.270 --> 00:00:11.535
+you probably wouldn't retain all that information.
+
+00:00:11.535 --> 00:00:16.140
+What I will do, is attempt to give you enough awareness of
+
+00:00:16.140 --> 00:00:18.210
+the core principles and lead you to
+
+00:00:18.210 --> 00:00:22.200
+practice a few of the most useful things in each area.
+
+00:00:22.200 --> 00:00:24.030
+In the time we have together,
+
+00:00:24.030 --> 00:00:28.320
+we're going to fill up your toolbox with some new and useful skills.
+
+00:00:28.320 --> 00:00:31.200
+My hope is to equip you well enough to start
+
+00:00:31.200 --> 00:00:34.480
+using those skills even as early as next week.
+
+00:00:34.480 --> 00:00:38.040
+In this course, we'll talk a lot about the theory and
+
+00:00:38.040 --> 00:00:42.630
+principles behind continuous delivery, integration and deployment.
+
+00:00:42.630 --> 00:00:46.579
+Then, we'll put that theory to work as we discuss
+
+00:00:46.579 --> 00:00:50.120
+and even build a complete CI pipeline from commit,
+
+00:00:50.120 --> 00:00:52.360
+to build, to artifact.
+
+00:00:52.360 --> 00:00:55.820
+Once we have CI running and artifacts building,
+
+00:00:55.820 --> 00:00:59.150
+we'll build out an entire CD pipeline,
+
+00:00:59.150 --> 00:01:01.630
+putting more of that theory to the test.
+
+00:01:01.630 --> 00:01:04.970
+Then, once we have CI and CD running,
+
+00:01:04.970 --> 00:01:10.469
+we'll spin up a monitoring system that can alert us when something fails.
+

@@ -1,0 +1,166 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.490 --> 00:00:07.050
+In this section we're going to talk about CI/CD tools that you can choose from.
+
+00:00:07.050 --> 00:00:13.280
+Plenty of tools exist that can handle the entire CI and CD pipeline.
+
+00:00:13.280 --> 00:00:16.240
+Some tools can be installed on your own hardware,
+
+00:00:16.240 --> 00:00:18.925
+while others are cloud-based services.
+
+00:00:18.925 --> 00:00:25.525
+Your team may prefer a CI/CD server running on-premises closer to the development team.
+
+00:00:25.525 --> 00:00:30.235
+There are a lot of great options with varying pricing models.
+
+00:00:30.235 --> 00:00:33.790
+One major benefit to an on-prem CI/CD server is
+
+00:00:33.790 --> 00:00:38.150
+a high degree of control over security or configuration.
+
+00:00:38.150 --> 00:00:41.550
+On the other hand, an on-prem CI/CD server
+
+00:00:41.550 --> 00:00:45.855
+requires time from somebody in the team to maintain.
+
+00:00:45.855 --> 00:00:48.705
+Jenkins is a great example,
+
+00:00:48.705 --> 00:00:50.130
+it's an open source,
+
+00:00:50.130 --> 00:00:55.475
+full-featured CI/CD server built by a vibrant community of developers.
+
+00:00:55.475 --> 00:00:57.820
+Jenkins is also 100 percent free.
+
+00:00:57.820 --> 00:01:01.440
+There's also GitLab CI/CD, the community edition.
+
+00:01:01.440 --> 00:01:04.410
+GitLab CI/CD is also an open source,
+
+00:01:04.410 --> 00:01:09.815
+full-featured CI/CD server that is built by a large community of developers.
+
+00:01:09.815 --> 00:01:13.400
+GitLab also has many other useful features
+
+00:01:13.400 --> 00:01:17.680
+like built-in git repositories and project management features.
+
+00:01:17.680 --> 00:01:21.470
+The installable community version is 100 percent free,
+
+00:01:21.470 --> 00:01:25.075
+but they also offer a paid option with hosting.
+
+00:01:25.075 --> 00:01:27.350
+TeamCity is a great example.
+
+00:01:27.350 --> 00:01:32.920
+It was built by JetBrains and was the first CI/CD server I ever used.
+
+00:01:32.920 --> 00:01:38.840
+TeamCity is a mature product with about every feature you could ever dream of.
+
+00:01:38.840 --> 00:01:43.375
+Plus, JetBrains offers enterprise support for TeamCity.
+
+00:01:43.375 --> 00:01:47.120
+There's also Team Foundation Server from Microsoft.
+
+00:01:47.120 --> 00:01:51.365
+This is another very mature system that includes CI/CD,
+
+00:01:51.365 --> 00:01:55.825
+but also other version control and project management solutions.
+
+00:01:55.825 --> 00:01:59.930
+It also has a very tight integration with Visual Studio,
+
+00:01:59.930 --> 00:02:02.090
+which might come in handy for some.
+
+00:02:02.090 --> 00:02:05.210
+Some prefer to use cloud-based services since
+
+00:02:05.210 --> 00:02:08.530
+they require much less time to maintain and configure.
+
+00:02:08.530 --> 00:02:11.960
+One downside to cloud-based solutions like
+
+00:02:11.960 --> 00:02:15.635
+this is that they are almost never completely free,
+
+00:02:15.635 --> 00:02:21.245
+at least not when you're using it for a real team development situation.
+
+00:02:21.245 --> 00:02:23.225
+However, if you do the math,
+
+00:02:23.225 --> 00:02:27.245
+you might find that the cost for a cloud-based CI/CD server is
+
+00:02:27.245 --> 00:02:32.090
+less than the labor and hardware costs of an on-prem solution.
+
+00:02:32.090 --> 00:02:35.600
+Let's take a look at a few of the leaders in this space.
+
+00:02:35.600 --> 00:02:40.805
+Bamboo is a CI/CD server offered by Atlassian.
+
+00:02:40.805 --> 00:02:44.270
+It integrates well with other Atlassian products,
+
+00:02:44.270 --> 00:02:49.715
+so it might be a good option if you use Jira or Bitbucket.
+
+00:02:49.715 --> 00:02:55.040
+Travis CI is an extremely simple CI/CD orchestration tool
+
+00:02:55.040 --> 00:02:58.895
+that has some special features for library and package builders.
+
+00:02:58.895 --> 00:03:04.345
+Travis CI is completely free for open source projects.
+
+00:03:04.345 --> 00:03:07.205
+I'll mention GitLab again here.
+
+00:03:07.205 --> 00:03:09.590
+In addition to their open source version,
+
+00:03:09.590 --> 00:03:15.480
+they also have a fully managed cloud-based option that can be quite convenient.
+
+00:03:15.500 --> 00:03:22.790
+CircleCI has a reputation for being one of the fastest cloud-based CI/CD servers around.
+
+00:03:22.790 --> 00:03:26.815
+We'll use this option during this course.
+
+00:03:26.815 --> 00:03:29.525
+All of these have free versions,
+
+00:03:29.525 --> 00:03:31.505
+but with certain limitations.
+
+00:03:31.505 --> 00:03:34.265
+Again, you'll have to weigh the pros and cons with
+
+00:03:34.265 --> 00:03:39.300
+each option to find the CI/CD server that works best for you and your team.
+

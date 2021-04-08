@@ -1,0 +1,1953 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1020013,
+      "key": "f7413591-315a-45e6-90d9-34bc67e2388c",
+      "title": "Enabling Continuous Delivery with Deployment Pipelines",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, we'll design an Ansible playbook, write our own playbooks and build deployment-related jobs.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/f7413591-315a-45e6-90d9-34bc67e2388c/1020013/1594793752264/Enabling+Continuous+Delivery+with+Deployment+Pipelines+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/f7413591-315a-45e6-90d9-34bc67e2388c/1020013/1594793745749/Enabling+Continuous+Delivery+with+Deployment+Pipelines+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1020015,
+          "key": "c295c301-b879-49b4-a3cc-963458ebf26e",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c295c301-b879-49b4-a3cc-963458ebf26e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044213,
+              "key": "ce53d7df-d11f-4117-beb4-f8a903296c71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introduction",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029062,
+              "key": "c74b5172-1008-4480-b262-cfa579e73c00",
+              "title": "ND9991 C03 L03 Introduction To Continuous Deployment",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "93NwTOQqX4M",
+                "china_cdn_id": "93NwTOQqX4M.mp4"
+              }
+            },
+            {
+              "id": 1044939,
+              "key": "6a0032e4-8f84-46cf-8aef-cfe4f264e675",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/July/5f0dfee8_screen-shot-2020-07-14-at-11.42.51-am/screen-shot-2020-07-14-at-11.42.51-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6a0032e4-8f84-46cf-8aef-cfe4f264e675",
+              "caption": "**Halfway Through!**",
+              "alt": "An image of a timeline showing we're on the third main lesson: Enabling Continuous Delivery and Deployment.",
+              "width": 1333,
+              "height": 242,
+              "instructor_notes": null
+            },
+            {
+              "id": 1032043,
+              "key": "579acf11-ea85-4c55-bf35-34a0daba5548",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### In this Lesson, We Will...\n\n- Learn what Configuration Management Tools are and How to Use Them\n- Design an Ansible Playbook\n- Control a Remote Machine with an Ansible Playbook\n- Build an Ansible Inventory File\n- Make Various Types of CD Jobs in our CI/CD Pipeline\n  - Create Infrastructure\n  - Configure Infrastructure\n  - Deploy Production Artifacts\n  - Smoke Testing\n  - Rollback\n  - Promoting to Production\n\nIn the next few sections, we're going to dive deep into some of the building blocks of continuous deployment tooling. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021714,
+          "key": "0fb0b07f-fda1-48bf-a21d-58cce336ab79",
+          "title": "Big Picture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0fb0b07f-fda1-48bf-a21d-58cce336ab79",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044214,
+              "key": "f5a641f2-7373-4777-9adc-45d98c6014d3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Big Picture",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029063,
+              "key": "ca276251-646c-4511-bbf3-29f49f215654",
+              "title": "ND9991 C03 L03 Big Picture",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "m3iwPW1WhVk",
+                "china_cdn_id": "m3iwPW1WhVk.mp4"
+              }
+            },
+            {
+              "id": 1044842,
+              "key": "ebada9f2-7134-4764-a1f2-eb64844b7a28",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Continuous Deployment\n\nContinuous Deployment can be an incredible tool in your arsenal. Not only does CD save time, but it opens some unexpected doors that have a ripple effect over the entire organization. Let's take a look at where CD fits into the overall **S**oftware **D**evelopment **L**ife**c**ycle. \n\n#### Where does CD fit in the SDLC?\n\n- While CI is all about code, CD is all about the deployment of the artifact.\n- CI produces the artifact, whether it's a docker image, a zip file, or an executable.\n- CD Validates the artifact, builds the infrastructure needed to run it, and sets the artifact in motion.\n- CD affects earlier stages of development over time because team members see quick deployments and begin slicing features into smaller pieces to take advantage.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1031766,
+              "key": "ece0c0f1-4152-4526-af3f-59fdded4e1c2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ef0ca38_005-h/005-h.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ece0c0f1-4152-4526-af3f-59fdded4e1c2",
+              "caption": "**Time to Deploy!**",
+              "alt": "An image of a pipeline with Deploy, Verify, and Promote highlighted.",
+              "width": 7330,
+              "height": 2030,
+              "instructor_notes": null
+            },
+            {
+              "id": 1031769,
+              "key": "6e210ac3-d9f1-4d2f-b0eb-333348144c92",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### What will I need to add CD?\n\n- Buy in from decision-makers.\n- Automation skills, which you are learning in this course.\n- Access to servers or cloud resources.\n- Time to build automation.\n\n#### What will I lose when I add CD?\n\n- The ability to tinker with the servers manually.\n- The opaque wall of secrecy around one dev's way of deploying.\n- Free pizza from the deployment all-nighters.\n\n#### What will I gain when I have CD?\n\n- Automated deployments to QA, Staging, Prod.\n- More time to develop features.\n- Generate more confidence amongst stakeholders.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021718,
+              "key": "afd92373-f9cc-45b6-a266-9b9b433a19a2",
+              "title": "Big Picture Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "afd92373-f9cc-45b6-a266-9b9b433a19a2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mark the things that are part of CD concept",
+                "answers": [
+                  {
+                    "id": "a1589655510474",
+                    "text": "Compile Code",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589655535054",
+                    "text": "Promote to Production",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589655535646",
+                    "text": "Run Unit Tests",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589655536328",
+                    "text": "Run Smoke Tests",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589655537418",
+                    "text": "Rollback",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589655556685",
+                    "text": "Analyze Code",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1021715,
+          "key": "e1425537-24e1-4f74-9c88-f1740436101b",
+          "title": "Intuition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e1425537-24e1-4f74-9c88-f1740436101b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044215,
+              "key": "d494789b-10b6-4ed8-a1c4-fcbd39314127",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Continuous Delivery Intuition",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029066,
+              "key": "ac41835a-0b00-48ff-b539-e38eab4b5b36",
+              "title": "ND9991 C03 L03 Continuous Delivery Intuition",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QpeO3RqKbzA",
+                "china_cdn_id": "QpeO3RqKbzA.mp4"
+              }
+            },
+            {
+              "id": 1031734,
+              "key": "a1074149-e2f3-4301-acd9-de4a107ca193",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you get to know CD pipelines in general, you'll eventually develop some intuition about how healthy your CD pipeline is or is not. You'll also be able to easily spot problem areas and be able to explain how they impact the whole process.\n\nWhether you're still waiting on that intuition to form or if you've had it for a long time, it's helpful to have metrics to guide decisions and demonstrate impact empirically.\n\n### Healthy Continuous Delivery\n\nLet's take a look at a few metrics I use when I want to demonstrate the level of health or impact of a CD pipeline:\n\n| **Metric**                  | **Formula**                                                                         | **Impact**                                                                                                                                                                                                                                      |\n| :---------------------- | :------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| Lead Time to Production | (_Time at Successful Prod Deployment_) - (_Time at Completion of Feature Grooming_) | Shows how CI/CD is impacting overall delivery time, from the point the team hears about the feature to the point at which it is done (deployed to production). Easy metric to collect if using task management system to track feature grooming and deployments.                                                                                       |\n| Rollback Rate           | (_Total Rollbacks_) / (_Total Deployments_)                                         | Shows the quality of our deployments. Of course, rate should be low because previous stages should filter out defected builds. This metric is a leading indicator for the confidence of the business in the dev team's ability to delivery. |\n| Time to Failure         | (_Time at Failure Discovery_) - (_Time at Build Start_)                             | Shows how quickly we find failures. The lower the better.                                                                                                                                                                                   |\n| Production Uptime       | (_Total Production Working Time_) / (_Total Time_)                                  | Shows the amount of time we are taking production down because of botched deployments or due to our chosen deployment strategy.                                                                                                             |\n| Failed Pipeline Cost    | Various calculations including job run time and resources created               | Shows the estimated amount of money spent on a failed build. Encourages us to put cheaper jobs earlier in the pipeline.  |\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021719,
+              "key": "0b1706db-17f9-4fd2-a592-1a1dd8041696",
+              "title": "CD Intuition Quiz 1",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0b1706db-17f9-4fd2-a592-1a1dd8041696",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mark the healthy characteristics of a CI/CD pipeline.",
+                "answers": [
+                  {
+                    "id": "a1589655846229",
+                    "text": "Cheapest, Fastest First",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589655846725",
+                    "text": "Fails Quickly and Loudly",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589655847863",
+                    "text": "Allows Defects to Pass",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589655848555",
+                    "text": "Has Various Points of Manual Interaction",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589655886386",
+                    "text": "Builds Confidence in Production Deployment",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1594704491831",
+                    "text": "Rolls Back Changes Quickly on Failure",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1021725,
+          "key": "3f0fa67c-0c6c-48f0-8083-ac4070b42f0c",
+          "title": "Configuration Management",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3f0fa67c-0c6c-48f0-8083-ac4070b42f0c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044216,
+              "key": "732bd6f3-7da3-4864-8a71-b04ad19b5c1c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Configuration Management Tools",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029064,
+              "key": "325d559f-b140-48ae-9233-cc048f7e8fdb",
+              "title": "ND9991 C03 L03 Configuration Management Tools",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xEE2PLu3LvY",
+                "china_cdn_id": "xEE2PLu3LvY.mp4"
+              }
+            },
+            {
+              "id": 1031787,
+              "key": "8d198d13-16f2-409a-821f-7c1ead76b68a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Configuration Management and Automation Tools\n\n| **Tool**    | **Website**                                     | **Description**                                                 |\n| :------ | :------------------------------------------ | :---------------------------------------------------------- |\n| Chef    | [chef.io](https://www.chef.io/)             | Depends on agent to be installed. Very mature.              |\n| Puppet  | [ouppet.com](https://puppet.com/)           | Requires master \"puppet master\" server. Performance issues. |\n| Salt    | [saltstack.com](https://www.saltstack.com/) | Keeps inventory on a central server.                          |\n| Ansible | [ansible.com](https://www.ansible.com/)     | Most popular. Very fast. Agentless.                        |\n\nTools like these are great for everything that happens _AFTER_ the server instances are running. \n\n## Ansible\n\nWe're going to focus on **Ansible** since it is currently the most popular!\n\n### Installation\n\nInstallation is easy as long as you already have Python installed.\n\n```bash\npip install --user ansible\n```\n\nFor more information about installation, check [the docs](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).\n\n### Ansible uses SSH\n\nAnsible connects to a remote machine using ssh and executes commands and scripts remotely. If you already have scripts written to set up an instance, you can reuse those scripts easily with Ansible. After all, it's all about ssh and bash!\n\nAnsible uses yaml files called Playbooks to manage all the configurations to be made. As always, we should check this file into source control so that it is versioned and available to the entire team.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044364,
+              "key": "0ee08ab5-ac76-49d5-a6cd-00cdd78453b9",
+              "title": "Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0ee08ab5-ac76-49d5-a6cd-00cdd78453b9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mark the things that a configuration management tool should do.",
+                "answers": [
+                  {
+                    "id": "a1594394646065",
+                    "text": "Configure Environment Variables",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1594394664309",
+                    "text": "Create EC2 Instances",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1594394665055",
+                    "text": "Install Dependencies",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1594394665568",
+                    "text": "Wash Dishes",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1594394666064",
+                    "text": "Start/Stop Services",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1594394666598",
+                    "text": "Deploy Applications",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1594394667144",
+                    "text": "Run CloudFormation Templates",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1021726,
+          "key": "c9ce2471-2ed8-4287-9687-05472d0126f6",
+          "title": "Design an Ansible Playbook",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c9ce2471-2ed8-4287-9687-05472d0126f6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044217,
+              "key": "dc3ccec1-000f-4f3c-8537-58fd391c9ade",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Design an Ansible Playbook",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029067,
+              "key": "7c3afbd4-9f32-4877-b18f-607128567225",
+              "title": "ND9991 C03 L03 Design An Ansible Playbook",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BB5aKlsYfo0",
+                "china_cdn_id": "BB5aKlsYfo0.mp4"
+              }
+            },
+            {
+              "id": 1044844,
+              "key": "7022205b-7c77-4c5a-aa4c-aad6c4fb7639",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What's the Play, Coach?\nYou'll be creating lots of Playbooks from here on out! They're a large part of using Ansible to implement Continuous Delivery.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044843,
+              "key": "513ad829-bf8a-4784-8709-93b93e302762",
+              "title": "ND9991 C03 L03 Ansible Playbook Code Demo",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fDZ6d9L1ECQ",
+                "china_cdn_id": "fDZ6d9L1ECQ.mp4"
+              }
+            },
+            {
+              "id": 1031922,
+              "key": "e764ba5e-e7ca-4876-95c2-b3175ffae630",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Our `main.yml`File:\n\n```\n---\n- name: \"configuration play.\"\n  hosts: web\n  user: ubuntu\n  gather_facts: false\n  vars:\n    - ansible_python_interpreter: /usr/bin/python3\n    - ansible_host_key_checking: false\n    - ansible_stdout_callback: yaml\n\n  pre_tasks:\n    - name: \"wait 600 seconds for target connection to become reachable/usable.\"\n      wait_for_connection:\n\n    - name: \"install python for Ansible.\"\n      become: true\n      raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3)\n      changed_when: false\n\n    - setup:\n  roles:\n    - configure-prometheus-node-exporter\n    - configure-server1\n```\n\n### Authentication\n\nRemember that Ansible is just executing bash commands over SSH, so whatever you need to log in to your instance manually, you will also need for Ansible. \n\nThere are two things we need to authenticate: \n1. username \n2. ssh key\n\nThe first component of authentication is the \"username\" of the user we will log in as. In most cases, you will use the default user for the EC2 instance. For example, if your instance was created using the Ubuntu AMI, then your default username is \"ubuntu\" according to [this page](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html).\n\n```\n  user: ubuntu\n```\n\nThe second component of authentication is the SSH key, also known as the key pair or the PEM file. The SSH key would have been associated with our default user already. We need a copy of the SSH key in the form of a PEM file. We will refer to this PEM file when executing the playbook.\n\n### Targets\n\nYou can target one or more machines with just one Ansible playlist. Each play in a Playbook should have a `hosts` section where you can select machines that you want to configure. You can specify one hostname, a group name, or use a pattern to select multiple hosts from an inventory list.\n\n```\n  hosts: web\n```\n\nAn inventory file can be very powerful and complex, but it can also be extremely simple. On the easy extreme, the inventory file is just a list of DNS hostnames or IP addresses in a group labeled by a `[\"group_name\"]` in typical INI style. This is what it looks like.\n\n```\n[web]\nec2-50-16-166-50.compute-1.amazonaws.com\n```\n\nNote that the `web` group name is being referred to in the Playbook `host` line.\n\n### Roles\n\nIn Ansible, roles are a great way to clean up your Ansible code and make it more maintainable. We can build roles by using Ansible's expected folder/file structure.\n\n```\nmain.yml\nroles/\n    configure-prometheus-node-exporter/\n        tasks/\n            main.yml\n        files/\n            main.yml\n    configure-server/\n        tasks/\n            main.yml\n```\n\nHere we have two roles, `configure-prometheus-node-exporter` and `configure-server`.\n\nThe sub-folders in each role folder represent a different function in the role:\n\n| **Role Component** | **Description**                                             |\n| :------------- | :------------------------------------------------------ |\n| tasks          | Main list of tasks that the role executes           |\n| files          | Files that the role deploys                             |\n| handlers       | Handlers, which may be used within or outside this role |\n| library        | Modules, which may be used within this role             |\n| defaults       | Default variables for the role                          |\n| vars           | Other variables for the role                            |\n| templates      | Templates that the role deploys                         |\n| meta           | Metadata for the role, including role dependencies      |\n\nAccording to Ansible's rules, each sub-folder of each role must have a `main.yml` file in it, which is how it is able to discover and incorporate the role functionality.\n\nWe're going to mostly use `tasks` and `files`. If you want to know more about how to use the other components of Ansible roles, you should check out the docs.\n\nLet's take a look at my task code.\n\nOur `main.yml` File _(Playbook)_:\n\n```\n---\n- name: \"configuration play.\"\n  hosts: web\n  user: ubuntu\n  gather_facts: false\n  vars:\n    - ansible_python_interpreter: /usr/bin/python3\n    - ansible_host_key_checking: false\n    - ansible_stdout_callback: yaml\n\n  pre_tasks:\n    - name: \"wait 600 seconds for target connection to become reachable/usable.\"\n      wait_for_connection:\n\n    - name: \"install python for Ansible.\"\n      become: true\n      raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3)\n      changed_when: false\n\n    - setup:\n  roles:\n    - configure-prometheus-node-exporter\n    - configure-server1\n```\n\nOur `roles/configure-server/tasks/main.yml` File _(Roles)_:\n\n```\n---\n- name: \"upgrade packages.\"\n  become: true\n  apt:\n    upgrade: \"yes\"\n\n- name: \"install dependencies.\"\n  become: true\n  apt:\n    name: [\"nodejs\", \"npm\"]\n    state: latest\n    update_cache: yes\n\n- name: \"install pm2\"\n  become: true\n  npm:\n    name: pm2\n    global: yes\n    production: yes\n    state: present\n```\n\nIn my code, you'll notice a few things:\n\n- The playbook is the entry point\n- The playbook delegates to roles by name\n- The role does the actual work. You can probably guess what it's doing without much explanation.\n- Each task is using `become: yes` to escalate to `root` user (like adding `sudo` before bash commands).\n\nRead more about Ansible roles in [the docs](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html).\n\n### Modules\n\n| **Module**    | **Description**                                               |\n| :-------- | :-------------------------------------------------------- |\n| `shell`       | How you execute shell commands and scripts             |\n| `apt`       | Manage apt packages                                       |\n| `npm`       | Manage `nodejs` packages                                    |\n| `file`      | Set attributes of files and directories as well as remove |\n| `git`       | Push and pull code and files from git                     |\n| `script`    | Execute a shell script                                    |\n| `copy`      | Copy files                                                |\n| `unarchive` | Unpack an archive file                                    |\n| `systemd`   | Manage services                                           |\n\n#### Further Reading:\n- Read more about how to target different hosts in [the docs](https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html).\n- Read more about how to build an inventory file in [the docs](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html).\n- You can see a list of all the modules in [the Ansible docs](https://docs.ansible.com/ansible/latest/modules/list_of_all_modules.html).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044365,
+              "key": "687e8e0f-7dbb-4474-88d5-ac3e82b16839",
+              "title": "Reflect 1",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "687e8e0f-7dbb-4474-88d5-ac3e82b16839",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Think outside the box. What are some non-deployment-related things you could do with a tool like Ansible? (washing dishes is already taken)"
+              },
+              "answer": {
+                "text": "Right, the sky is the limit. Configuration Management Tools can do just about anything. On the other hand, it's really useful to know where tools like this should begin and end their jobs. Now that you have that \"out of the box\" stuff out of your system, it's time to get back in the box and be sensible. ",
+                "video": null
+              }
+            },
+            {
+              "id": 1044366,
+              "key": "d3de6b22-acb9-4a3c-9980-735561a92d12",
+              "title": "Reflect 2",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d3de6b22-acb9-4a3c-9980-735561a92d12",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Tell about the difference between a Playbook and an inventory file."
+              },
+              "answer": {
+                "text": "A Playbook is a set of instructions that Ansible uses to configure a machine. An inventory file is the list of machines on which to perform those instructions.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1020766,
+          "key": "d0b7f0db-d033-48f4-abf1-f03749e94751",
+          "title": "Exercise: Define Ansible Playbook",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d0b7f0db-d033-48f4-abf1-f03749e94751",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020771,
+              "key": "a6fc62dc-3369-4c40-b55b-616bf1f1b3c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Define Ansible Playbook\n\nFor this exercise, your objective will be to print the contents of an environment variable to the console using an Ansible Playbook via a [role](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html).\n\n### Instructions:\n\nFor this exercise, it assumes you already have installed Ansible in your workstation.\n\n1. Create a new Ansible Playbook file named `main.yml` (starting out, it's just a blank text file).\n1. Create a new directory named `roles`.\n1. In the roles directory, create a new folder called `print`.\n1. Inside `print`, create a new folder called `tasks`.\n1. Your folder structure should look like this:\n\n   ```\n     /main.yml\n     /roles\n     /roles/print\n     /roles/print/tasks\n   ```\n\n1. Create a task to be executed by the role. Name it `/roles/print/tasks/main.yml` and add the following content:\n\n   ```\n   ---\n    - name: Print env variable\n      shell: echo $PATH\n      register: print_result\n\n    - name: print message\n      debug:\n        msg: \"{{ print_result.stdout_lines }}\"\n   ```\n\n1. Navigate back to the folder that contains your Playbook (in case you navigated away).\n1. Add the following code to your Playbook file:\n\n   ```\n   ---\n   - name: Exercise #1\n     hosts: localhost\n\n     roles:\n      - print\n   ```\n\n   Notice that we reference a role named `print`. We didn't mention a path to the task file. That's because Ansible knows where to look as long as we follow the folder structure convention!\n\n1. Run your playbook using the command `ansible-playbook main.yml`.\n1. You should see some results like the following:\n\n   ```\n   TASK [print : print message]     ************************************************************************\n   ok: [localhost] => {\n       \"msg\": [\n           \"/home/user/.local/bin:/home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/    sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin\"\n       ]\n   }\n\n   ```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020772,
+              "key": "4df1f20b-cb7e-46b1-b066-043960b2a9d6",
+              "title": "Define an Ansible Playbook",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4df1f20b-cb7e-46b1-b066-043960b2a9d6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a Blank Playbook.",
+                "Create a Role.",
+                "Add Playbook Code.",
+                "Run the Playbook.",
+                "Verify the Path Printed Correctly."
+              ],
+              "positive_feedback": "You're doing great!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1020767,
+          "key": "c90285bf-6115-433c-8ee8-709e0f7d2372",
+          "title": "Solution: Define Ansible Playbook",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c90285bf-6115-433c-8ee8-709e0f7d2372",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020770,
+              "key": "d003dd6c-f321-4def-82f6-1b04036b1f1d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Define Ansible Playbook\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020773,
+              "key": "0f3d618d-7c2e-4ba2-bb6d-d49ee62f0109",
+              "title": "ND9991 C03 L03 Solution - Design A Playbook",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "huyBE2yhdKI",
+                "china_cdn_id": "huyBE2yhdKI.mp4"
+              }
+            },
+            {
+              "id": 1020768,
+              "key": "0e58f6c5-9fe6-4134-91be-d9e97713f5a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Congratulations!\n\nYou can now print to the console. Big deal, right? Well, in a way, it IS a big deal. Now that you know how to build a simple Ansible Playbook with a role, you can probably imagine how to do more complicated things. Many times starting is the key to finishing.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021717,
+          "key": "82561965-7d30-4613-80bf-089496b77073",
+          "title": "Build an Inventory File",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "82561965-7d30-4613-80bf-089496b77073",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1031925,
+              "key": "dc93319b-b495-4167-a348-e4bcc59808cd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Build an Ansible Inventory File",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1031926,
+              "key": "5926c295-0436-4f21-aeb7-e68e88758e65",
+              "title": "ND9991 C03 L03 Build An Ansible Inventory File",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "R8k8970kNQ8",
+                "china_cdn_id": "R8k8970kNQ8.mp4"
+              }
+            },
+            {
+              "id": 1031924,
+              "key": "68cdfdeb-ccbd-46cd-a2ab-108ca2b126ce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Script to Create the Initial Inventory File\n```bash\necho \"[all]\" > inventory\n```\n\n### Script to Query EC2 for Instances and Output to File\n```bash\naws ec2 describe-instances \\\n   --query 'Reservations[*].Instances[*].PublicIpAddress' \\\n   --output text >> inventory\n```\n\nHere, we called the output file `inventory`. But you could call it anything at all as long as you use the same name when running your Ansible Playbook later on.\n\nAlso, in the first script, we use `>` because we are creating a new file. Then, in the second script, we are using `>>` because we want to append the output to the file, not overwrite it (since it has our `[all]` header).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044903,
+              "key": "ba594e6a-9d56-40aa-a1d5-6a63e168a081",
+              "title": "Building an Inventory File",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ba594e6a-9d56-40aa-a1d5-6a63e168a081",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why is it so important to be able to build an inventory file during CI/CD?",
+                "answers": [
+                  {
+                    "id": "a1594697902074",
+                    "text": "Circle CI needs to display the IP addresses.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1594697979903",
+                    "text": "CloudFormation needs the inventory file for history.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1594698067635",
+                    "text": "Ansible needs the IP addresses so that it can configure EC2 instances.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1594698110439",
+                    "text": "Our unit tests need IP addresses to properly test our backend code.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1020774,
+          "key": "8a79d491-139d-454a-81a5-85f2993b1aa2",
+          "title": "Exercise: Inventory File",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8a79d491-139d-454a-81a5-85f2993b1aa2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020776,
+              "key": "d392112c-a66b-4770-bde5-59a6f5beff46",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Build Ansible Inventory File\n\nWe are going to generate an Ansible inventory file using the AWS CLI. So that we can easily reference devices and machines from our Ansible Playbook, we need to list those devices in an [inventory file](https://docs.ansible.com/ansible/2.7/user_guide/intro_inventory.html). Instead of creating it manually, we're going to use AWS to list the EC2 instance hostnames and then we will pipe that to an inventory file automatically.\n\n### Instructions:\n\n1. Create an EC2 instance in your AWS account for testing (micro/free tier is fine). Add a memorable tag like `Project:udacity` to the instance. Please remember the tag name you're adding.\n1. If you don't have AWS CLI installed and configured, [please do that now](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html).\n1. Create a \"starter\" inventory file called `inventory` with which we're going to add the value of `all` using the bash command `echo [all] > inventory`.\n1. Run the following CLI command to list the EC2 instances:\n   ```\n   aws ec2 describe-instances \\\n   \\\n    \t   --query 'Reservations[*].Instances[*].PublicIpAddress' \\\n         --filters \"Name=tag:Project,Values=udacity\" \\\n         --output text >> inventory\n   ```\n1. This will append the \"udacity\" instance IP addresses to our inventory file and should look something like this:\n\n   ```\n   [all]\n   169.254.123.12\n   ```\n\n `XX.XXX.XXX.XX` will be the public IP of your udacity-tagged instance.\n\n6. Terminate any test EC2 instances you created for this exercise to clean up.\n\n### For Some Extra Challenge\n\nTry wrapping this script in a Circle CI job and save the inventory file to the cache or workspace. You'll have to do this later in your project, but it might help to try it now to get a head start!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020777,
+              "key": "e668e693-b0d8-4221-baaa-9cb525b0301a",
+              "title": "Build Ansible Inventory File",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e668e693-b0d8-4221-baaa-9cb525b0301a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create Test EC2 Instance with a Tag.",
+                "Create a Starter Inventory File.",
+                "Use AWS CLI to Append EC2 IP Addresses to the Inventory File.",
+                "Verify the Inventory File Got the Right IP Address.",
+                "Terminate the EC2 Instance to Clean Up."
+              ],
+              "positive_feedback": "Isn't automation cool! Keep rolling. You're getting to the good stuff!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1020775,
+          "key": "a68b7979-06fa-4ba0-b219-13d02760c1d0",
+          "title": "Solution: Inventory File",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a68b7979-06fa-4ba0-b219-13d02760c1d0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020778,
+              "key": "17f81a48-a0cb-424a-ae41-ded68c369ff9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Build Ansible Inventory File",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020780,
+              "key": "211af13c-d6d6-416f-ac81-59f932c6cf04",
+              "title": "ND9991 C03 L03 Solution - Generate Inventory File",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_fBflW0e7Vc",
+                "china_cdn_id": "_fBflW0e7Vc.mp4"
+              }
+            },
+            {
+              "id": 1020779,
+              "key": "9117ab9b-488e-4dc8-9f14-2b9db4df1db4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### You Did It!\n\nPart of your success in automating your infrastructure creation and configuration will come from the ability to \"see around corners\". As you build your pipelines and configuration code, you will run into several instance where you need information that does not exist yet. Little tricks like this help you to plan for the future and will make the impossible possible.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021727,
+          "key": "dbe5228d-b3c9-432e-904d-ce57104620b0",
+          "title": "Remote Control Using Ansible",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dbe5228d-b3c9-432e-904d-ce57104620b0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044218,
+              "key": "53ecb94d-cc8a-41f6-bf2e-9d3144253995",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Remote Control Using Ansible",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029068,
+              "key": "bbe9d812-cfd8-42ce-8fd4-9aa759a1ab31",
+              "title": "ND9991 C03 L03 Remote Control Using Ansible",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ejitRE3Ff2k",
+                "china_cdn_id": "ejitRE3Ff2k.mp4"
+              }
+            },
+            {
+              "id": 1031928,
+              "key": "d0e1e966-bde8-429a-9513-dc6fc280852f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Building an Ansible Playbook from a Tutorial\n\nAnsible is like a remote control robot that teleports in (via SSH of course) to our remote machine and performs some shell commands on our behalf. Seriously, it's just THAT simple. So, in theory, you could take any tutorial on the web and turn it into an Ansible Playbook. That's what we're doing right here!\n\nIf you'd like to try this for yourself, here's the tutorial I followed in the video: [Installing Apache](https://riptutorial.com/apache/example/5607/-ubuntu--simple-hello-world-example)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1020781,
+          "key": "285895cf-03b9-4418-b5b6-06af3d0d03f5",
+          "title": "Exercise: Remote Control Using Ansible",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "285895cf-03b9-4418-b5b6-06af3d0d03f5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020783,
+              "key": "7bdfd2a6-95b6-4ef1-a7de-12453e205427",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Remote Control Using Ansible\n\nBuild a playbook that automates configuration of an EC2 instance by adapting [manual instructions](https://www.howtoforge.com/tutorial/nodejs-ubuntu-getting-started/) to Ansible Playbook tasks.\n\n### Instructions:\n\n1. If you don't have a key pair already created in your AWS Console, you should do that now! Follow [these instructions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair) to create the key pair and save a copy to your computer in a file named `udacity.pem`. We suggest using \"udacity\" as the key pair name so that it's easier to follow future instructions.\n1. Create a new EC2 instance with a tag like \"udacity\". As you are creating the instance, be sure to assign the \"udacity\" key pair. Also, be sure to open up port `3000` for incoming traffic since that's what our web server will use. \n1. Generate an inventory file using the method you learned from the previous exercise. The public IP of our test EC2 instance should be in the file under the line `[all]`.\n1. Create a new Playbook file named `main-remote.yml` with the following contents:\n\n   ```\n   ---\n   - name: Exercise for setting up a web server in an EC2\n     hosts: all\n     user: ubuntu\n     roles:\n     - setup\n   ```\n\n   Notice the reference to `all` here. That refers to the `[all]` we added to the top of the inventory file in the previous exercise.\n\n1. Create a role for `setup`. Remember how to do that? Your folder structure should be named after the role and should contain a `tasks` folder and a `files` folder. Just in case you need a reminder, your folder structure should look like this:\n   ```\n     /main-remote.yml\n     /roles\n     /roles/setup\n     /roles/setup/tasks\n     /roles/setup/files\n   ```\n1. Create a simple web server in NodeJS named `index.js`. Add it to the `files` folder so that we can copy it later. That file should have the following code:\n\n   ```javascript\nvar http = require(\"http\");\nvar server = http.createServer(function (req, res) {\n  res.writeHead(200);\n  res.end(\"Hello world!\");\n});\nserver.listen(3000);\n   ```\n\n1. Add a new task file to your `setup` role called `main.yml`. Can you guess where to put that?\n1. This task file should contain instructions to handle each one of the manual steps from the [manual instructions](https://www.howtoforge.com/tutorial/nodejs-ubuntu-getting-started/) we provided (Hello World on NodeJS). As a hint, the file should start by updating and upgrading the packages in the Ubuntu server like this:\n\n   ```\n   ---\n   - name: \"update apt packages.\"\n     become: yes\n     apt:\n       update_cache: yes\n\n   - name: \"upgrade packages\"\n     become: tyes\n     apt:\n       upgrade: yes\n   ```\n\n   You'll need several other tasks to fully configure the instance. Some will need `become: yes` and others will not depending on if you need privilege escalation.\n\n1. Now let's run the Playbook using your inventory file and `udacity.pem` file:\n   ```bash\n   ansible-playbook main-remote.yml -i inventory --private-key udacity.pem\n   ```\n1. After running all the plays, Ansible should give you a successful message.\n1. You should be able to navigate to the hostname:port (e.g. `3000`) of the instance and view your Hello World message.\n1. Terminate any test EC2 instances you created for this exercise to clean up.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020784,
+              "key": "81d36be3-fbd5-4887-89a8-bc0bd7b14c4b",
+              "title": "Remote Control Using Ansible",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "81d36be3-fbd5-4887-89a8-bc0bd7b14c4b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create/Select Key Pair (save PEM file).",
+                "Create Test EC2 Instance with a Tag.",
+                "Create an Inventory File.",
+                "Create a Playbook.",
+                "Create Setup Role Folder Structure.",
+                "Create Web Server Code (`index.js`).",
+                "Create Setup Task File.",
+                "Run Playbook and Verify Success.",
+                "Navigate to Hello World on Public IP of EC2 Instance.",
+                "Terminate the EC2 Instance to Clean Up."
+              ],
+              "positive_feedback": "Wow, you did it!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1020782,
+          "key": "8d81ec50-e28f-4d0c-b9cc-61520d8a1660",
+          "title": "Solution: Remote Control Using Ansible",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8d81ec50-e28f-4d0c-b9cc-61520d8a1660",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020785,
+              "key": "9bc7025a-c494-4acb-a085-84afab0b5b75",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Remote Control Using Ansible",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020786,
+              "key": "0ba4bd75-c330-4224-8257-d54c53612bbc",
+              "title": "ND9991 C03 L03 Solution - Remote Control Using Ansible",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AlPiyrsuoBU",
+                "china_cdn_id": "AlPiyrsuoBU.mp4"
+              }
+            },
+            {
+              "id": 1020787,
+              "key": "822c45a0-38e8-4072-a4ed-e928d3e8cc70",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here's my setup role code:\n```\n---\n- name: \"update apt packages.\"\n  become: yes\n  apt:\n    update_cache: yes\n\n- name: \"upgrade packages\"\n  become: yes\n  apt:\n    upgrade: yes\n\n- name: remove dependencies that are no longer required\n  become: yes\n  apt:\n    autoremove: yes\n\n- name: \"install dependencies.\"\n  become: yes\n  apt:\n    name: [\"nodejs\", \"npm\"]\n    state: latest\n    update_cache: yes\n\n- name: \"install pm2\"\n  become: yes\n  npm:\n    name: pm2\n    global: yes\n    production: yes\n    state: present\n\n- name: Creates directory\n  file:\n    path: ~/web\n    state: directory\n\n- name: Copy index test page\n  template:\n    src: \"files/index.js\"\n    dest: \"~/web/index.js\"\n\n- name: Executing node\n  shell: |\n    pm2 start ~/web/index.js -f\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021729,
+          "key": "8cdac3d2-cc78-4e57-8fa0-cc75015a750c",
+          "title": "Deployment Jobs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8cdac3d2-cc78-4e57-8fa0-cc75015a750c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044219,
+              "key": "8072db68-c3fd-471b-965e-631b061c47ce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deployment Jobs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029070,
+              "key": "ded8d659-927e-4cd4-91a6-abecdf697eb1",
+              "title": "ND9991 C03 L03 Deployment Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DaFOpPFXOdQ",
+                "china_cdn_id": "DaFOpPFXOdQ.mp4"
+              }
+            },
+            {
+              "id": 1043808,
+              "key": "6788bafd-ae3f-4e87-95d5-acf095cd652c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The next few sections of this lesson will cover the pipeline jobs that would normally make up a Blue Green Deployment pipeline. We will create infrastructure, configure infrastructure, deploy our application, verify it is working, revert, and clean up if necessary, and finally promote the new production version if possible! All of this in the context of a fully automated CI/CD pipeline.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1031935,
+              "key": "ece16b4b-4ca4-4944-b88c-0cc7d6bedb40",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ef0ccae_005-h/005-h.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ece16b4b-4ca4-4944-b88c-0cc7d6bedb40",
+              "caption": "**Deploy, Deploy, Deploy!**",
+              "alt": "An image of a pipeline showing Deploy, Verify, and Promote highlighted.",
+              "width": 7330,
+              "height": 2030,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1021730,
+          "key": "ec1ceff3-aefd-4931-9b4b-9dc7a265d47e",
+          "title": "Infrastructure Creation Jobs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ec1ceff3-aefd-4931-9b4b-9dc7a265d47e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044220,
+              "key": "677723e5-1cff-44a7-ac4a-88da3e729d4a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Infrastructure Creation Jobs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029071,
+              "key": "3d4b2317-3a6b-4495-848b-94d1e80ec43e",
+              "title": "ND9991 C03 L03 Infrastructure Creation Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2-_VGUYdy4g",
+                "china_cdn_id": "2-_VGUYdy4g.mp4"
+              }
+            },
+            {
+              "id": 1031937,
+              "key": "6123b638-bcc7-4820-9fcc-14ca3d49ff9e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Let's Create Some Infrastructure\n\nIdeally, when you are running a Blue Green Deployment, you are creating new infrastructure for each CI/CD run. In other words, each time you run a CI/CD build, you will be using an \"Infrastructure as Code\" tool like CloudFormation to build up the needed AWS instances and resources for a fresh deployment. \n\n### What is Needed in This Job?\n\n1. AWS credentials saved in your project environment variables so they are available to the AWS CLI _([Instructions](https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project))_.\n1. An image that has AWS CLI pre-installed.\n1. A filter to only run this job on the `master` branch.\n1. To check out the code.\n1. A step that executes CloudFormation with our template.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1031930,
+              "key": "8929ec2c-4c8d-4838-8fb7-71e2cba300ef",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ef0ccd1_005-d/005-d.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8929ec2c-4c8d-4838-8fb7-71e2cba300ef",
+              "caption": "**The \"Deploy\" Stage Kicks off the Continuous Deployment Portion of CI/CD**",
+              "alt": "An Image of a pipeline with Deploy highlighted.",
+              "width": 7330,
+              "height": 2030,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1020816,
+          "key": "2ec56003-87fc-43a8-944c-a6f77606c89a",
+          "title": "Exercise: Infrastructure Creation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2ec56003-87fc-43a8-944c-a6f77606c89a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020818,
+              "key": "db5bba19-e748-412b-a477-5d04437e66f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Infrastructure Creation\n\nWrite a job that creates your infrastructure.\n\n### Instructions:\n\n1. If you don't have a key pair created already in your AWS Console, you should do that now. Folllow [these instructions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair) to create the key pair and save a copy to your computer in a file named `udacity.pem`. We suggest using \"udacity\" as the key pair name so that it's easier to follow future instructions.\n1. To use the AWS CLI in your jobs you'll need to add some environment variables to the Project Settings in Circle CI. You should already have an IAM account with programmatic access from previous exercises. Let's add those credentials as environment variables with these name:\n\n  - `AWS_ACCESS_KEY_ID`\n  - `AWS_SECRET_ACCESS_KEY`\n  - `AWS_DEFAULT_REGION` (ex: us-west-1)\n\n2. Create a simple CloudFormation template named `template.yml` that will create some infrastructure. This should be checked into your git repo. You can use your own from previous lessons or you can try this example:\n\n ```\nResources:\n  Ec2Instance:\n    Type: 'AWS::EC2::Instance'\n    Properties:\n      SecurityGroups:\n        - !Ref InstanceSecurityGroup\n      KeyName: udacity\n      ImageId: 'ami-068663a3c619dd892' # you may need to find out what instance types are available in your region - use https://cloud-images.ubuntu.com/locator/ec2/\n  InstanceSecurityGroup:\n    Type: 'AWS::EC2::SecurityGroup'\n    Properties:\n      GroupDescription: Enable SSH access via port 22\n      SecurityGroupIngress:\n        - IpProtocol: tcp\n          FromPort: '22'\n          ToPort: '22'\n          CidrIp: 0.0.0.0/0\n ```\n\n Notice we are using the `udacity` as the `KeyName`. That refers to the key pair we created before.\n\n3. Create a job in your Circle CI config file named `create_infrastructure`. It should use a docker image that has AWS CLI installed already. This one is perfect: `amazon/aws-cli`. The job should execute your CloudFormation template to create the infrastructure.\n4. Define a workflow that uses the job.\n5. Run the job in Circle CI by committing your changes.\n6. Once the job has run successfully, check for your new stack in [CloudFormation](https://console.aws.amazon.com/cloudformation/home) in the AWS Console to see if it was created.\n7. Remove the stack manually from Cloudformation in the AWS Console to clean up.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020819,
+              "key": "4cf2beae-56a7-4afe-95be-e0ff5bf268e9",
+              "title": "Infrastructure Creation",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4cf2beae-56a7-4afe-95be-e0ff5bf268e9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Ensure You Have a Usable Key Pair.",
+                "Ensure You Have an IAM Account with Programmatic Access and You Have the Access Key ID and the Secret Access Key In-Hand.",
+                "Add AWS Credentials in Environment Variables to Project Settings.",
+                "Create/Select a CloudFormation Template.",
+                "Define a Job to Build the Infrastructure.",
+                "Define a Workflow that Uses the Job.",
+                "Confirm the Stack was Created Successfully.",
+                "Delete the Stack to Clean Up."
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1020817,
+          "key": "a43b22fc-46a2-48a6-a758-81ff2721d80e",
+          "title": "Solution: Infrastructure Creation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a43b22fc-46a2-48a6-a758-81ff2721d80e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044221,
+              "key": "19d19e78-fcec-4abb-80d0-e17e699087a4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Infrastructure Creation",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020821,
+              "key": "da695827-30ce-45a2-a889-59ee2de50345",
+              "title": "ND9991 C03 L03 Solution - Infrastructure Creation Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HP8okhhZNgk",
+                "china_cdn_id": "HP8okhhZNgk.mp4"
+              }
+            },
+            {
+              "id": 1020820,
+              "key": "c25c3796-a58e-4e7b-8ef4-e810a492f048",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Your `config.yml` should look something like this:\n\n```\nversion: 2.1\n\njobs:\n  create_infrastructure:\n    docker:\n      - image: amazon/aws-cli\n    steps:\n      - checkout\n      - run:\n          name: Ensure backend infrastructure exist\n          command: |\n            aws cloudformation deploy \\\n              --template-file template.yml \\\n              --stack-name my-stack\nworkflows:\n  my_workflow:\n    jobs:\n      - create_infrastructure\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021731,
+          "key": "02961661-20b4-4043-a79c-fe262b17b24b",
+          "title": "Configuration and Deployment Jobs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "02961661-20b4-4043-a79c-fe262b17b24b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044241,
+              "key": "4a2e4bfa-0da0-48c9-8532-520c5e832f6f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Configuration and Deployment Jobs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029072,
+              "key": "d015d6b8-81bc-4604-866e-732df52f0fca",
+              "title": "ND9991 C03 L03 Configuration And Deployment Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5_eMhdjKrJA",
+                "china_cdn_id": "5_eMhdjKrJA.mp4"
+              }
+            },
+            {
+              "id": 1031966,
+              "key": "c9054667-5e06-4403-b37d-f420c7c01701",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is Needed In This Job?\n1. An image that gets us ready to run Ansible. \n1. A filter to only run this job on `master` branch.\n1. Our ssh keys/key pair for our EC2 instance. \n1. Install the Ansible CLI in the job.\n1. An inventory file with the hostname or IP address of our EC2 instance in it.\n1. An Ansible playbook that configures the instance and copies files.\n1. A step that executes Ansible.\n1. A dependency in our workflow to make sure the infrastructure creation job finishes before this job runs.\n\nIn case you haven't added your SSH keys to Circle CI yet, check out [these instructions](https://circleci.com/docs/2.0/add-ssh-key) in the doc to do that now.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1031931,
+              "key": "03408291-50d0-4b51-a0ed-344324015d6d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ef0ccfb_005-d/005-d.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/03408291-50d0-4b51-a0ed-344324015d6d",
+              "caption": "**Deployment Going Smoothly!**",
+              "alt": "An image of a pipeline showing Deploy highlighted.",
+              "width": 7330,
+              "height": 2030,
+              "instructor_notes": null
+            },
+            {
+              "id": 1044849,
+              "key": "b1343174-6834-4339-9d3a-ec04f8e562fd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Reading:\n- [Sequential Job Execution](https://circleci.com/docs/2.0/workflows/#sequential-job-execution-example)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1020834,
+          "key": "d202bb5b-c974-4c29-bdd8-fd5cca565469",
+          "title": "Exercise: Config and Deployment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d202bb5b-c974-4c29-bdd8-fd5cca565469",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1021324,
+              "key": "a4ff615d-b42d-405a-b6e2-88608239deff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Configuration and Deployment\n\nWrite a job that uses Ansible to configure an EC2 instance and copy production files.\n\n### Instructions:\n\n1. If you don't have a key pair created already in your AWS Console, you should do that now. Folllow [these instructions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair) to create the key pair and save a copy to your computer in a file named `udacity.pem`. We suggest using \"udacity\" as the key pair name so that it's easier to follow future instructions.\n1. Add the contents of your PEM file to the SSH keys in your Circle CI account so that Ansible will have the creds it needs to access the EC2 instance. You can follow [these instructions](https://circleci.com/docs/2.0/add-ssh-key/) for help doing this. Since you already have SSH keys from your EC2 instance, you can skip step 1.\n1. Manually create an EC2 instance and note it's public IP address for later. Micro/free tier is fine. We suggest ubuntu for better compatibility with the exercise. Be sure to use your \"udacity\" key pair.\n1. You created the Ansible Playbook to configure infrastructure and copy production files. If it's not already present in your repo, bring in that Playbook now.\n1. Create a job to execute your Playbook.\n   - It should use a docker image that has the necessary settings and dependencies to install Ansible. The docker image `python:3.7-alpine3.11` seems to work well.\n   - You need to give your job access to your SSH keys saved in your Circle CI account. To do this, follow [these instructions](https://circleci.com/docs/2.0/add-ssh-key/#adding-ssh-keys-to-a-job) to add a section to `add_ssh_keys` to your job.\n   - Manually add the public IP address of your EC2 instance to the inventory file underneath `[all]` (not automating this since we're not automating the creation of the EC2 instance in this exercise).\n1. Define a workflow that uses the job.\n1. After your pipeline executes successfully in Circle CI, verify the instance was properly configured.\n1. Clean up your EC2 instance by terminating it.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021334,
+              "key": "0e9ac377-0bca-4a6d-b6d8-b7dd24baf8c3",
+              "title": "Configuration and Deployment",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0e9ac377-0bca-4a6d-b6d8-b7dd24baf8c3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Ensure You Have a Usable Key Pair.",
+                "Add the SSH Key From your PEM File to Circle CI.",
+                "Create EC2 Instance for Testing.",
+                "Bring in Ansible Playbook from Previous Exercise.",
+                "Create Circle CI Job to Execute Playbook.",
+                "Add Job to Workflow.",
+                "Run Pipeline and Verify Successful Execution.",
+                "Clean Up EC2 Instance."
+              ],
+              "positive_feedback": "Looking good!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1020835,
+          "key": "afae1bb3-c1fa-4311-abd8-44ce1e9a3c40",
+          "title": "Solution: Config and Deployment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "afae1bb3-c1fa-4311-abd8-44ce1e9a3c40",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044222,
+              "key": "95479d94-f6a2-4af2-9d0e-ff177a766cd5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Configuration and Deployment",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021341,
+              "key": "eea823d4-2fed-42b7-bb81-28f52f29ed0d",
+              "title": "ND9991 C03 L03 Solution - Configuration And Deployment Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6MrqwKXBGIg",
+                "china_cdn_id": "6MrqwKXBGIg.mp4"
+              }
+            },
+            {
+              "id": 1021337,
+              "key": "28e9c7ff-d5be-49b1-9103-a9c80f7f3a3d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Your `config.yml` should look something like this:\n\n```\nversion: 2.1\n\njobs:\n  configure_infrastructure:\n    docker:\n      - image: python:3.7-alpine3.11\n    steps:\n      - checkout\n      - add_ssh_keys:\n          fingerprints: [\"06:7c:db:71:49:2f:03:36:60:08:d2:fd:33:6f:17:d3\"] # You can get this ID in the section where you registered the SSH Key\n      - run:\n          name: Install dependencies\n          command: |\n            apk add --update ansible # install the dependencies needed for your playbook\n      - run:\n          name: Configure server\n          command: |\n            ansible-playbook -i inventory.txt playbook.yml\n\nworkflows:\n  my_workflow:\n    jobs:\n      - configure_infrastructure\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021732,
+          "key": "82ee397b-f213-4736-a146-5c4692a725b4",
+          "title": "Smoke Testing Jobs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "82ee397b-f213-4736-a146-5c4692a725b4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044223,
+              "key": "222e4252-e893-46d4-95d9-95984d839b8f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Smoke Testing Jobs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029073,
+              "key": "778446ae-26dd-4b38-a3f8-1c360468f38e",
+              "title": "ND9991 C03 L03 Smoke Testing Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GaB7juMq99k",
+                "china_cdn_id": "GaB7juMq99k.mp4"
+              }
+            },
+            {
+              "id": 1044850,
+              "key": "4d393f8c-d031-4416-811d-a92a230c3b79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Smoke Tests Build Confidence\n\nIf you hope to get any closer to true Continuous Delivery, you need to focus on building confidence in your stakeholders. In a manual deployment scenario, humans will often \"kick the tires\" on a new deployment and, if everything is working as expected, give their stamp of approval to go ahead and complete the deployment. Many times, those human smoke tests can be replaced by automated smoke tests and still provide the same level of confidence that comes from a manual test.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1031932,
+              "key": "9fc60c42-a299-483a-a7d2-9b10bc43311a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ef0d0be_005-e/005-e.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9fc60c42-a299-483a-a7d2-9b10bc43311a",
+              "caption": "**Now, We've Deployed; Let's Verify It Works!**",
+              "alt": "An image of a pipeline with Verify highlighted*",
+              "width": 7330,
+              "height": 2030,
+              "instructor_notes": null
+            },
+            {
+              "id": 1044852,
+              "key": "fb273874-df73-4fb0-bb0c-9a59ecda2da4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Creating a Smoke Test",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044851,
+              "key": "95e131c6-cfbf-412e-ab3c-86d916f4c455",
+              "title": "ND9991 C03 L03 Smoke Testing Jobs Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MGPjnO0jlXc",
+                "china_cdn_id": "MGPjnO0jlXc.mp4"
+              }
+            },
+            {
+              "id": 1031968,
+              "key": "b77151a9-f6d0-4227-8a2c-380c917a4a18",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What Do We Need to Pull this Job Off?\n\n1. An entry in the workflow that requires the previous job.\n1. A very lightweight image like `alpine:latest`.\n1. For my test, I'm going to simply use `curl`, so I need to install it in the job.  You can do this with a normal testing tool if you want, but curl works for simple tests.\n1. A simple script to verify some condition is true.\n1. Exit with non-zero if the test fails.\n\nYou can use a simple command like this to see if a website is responding to requests:\n```bash\ncurl -s --head \"https://google.com\"\n```\n\nYou can put that curl command in bash conditional structure to do or return something:\n```bash\nif curl -s --head \"https://google.com\" \nthen\n  echo \"It worked!\"\nelse\n  echo \"It failed\"\nfi\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021345,
+          "key": "33910cf6-c1a2-46fd-a9c1-641096d635cc",
+          "title": "Exercise: Smoke Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "33910cf6-c1a2-46fd-a9c1-641096d635cc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1021350,
+              "key": "51e084a5-4ce8-4008-8f12-2ab0a5fa125a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Smoke Testing Jobs\n\nWrite a job that performs a smoke test.\n\n### Instructions:\n\n1. Create a job named `smoke_test` to do a simple check on a website to see if it exists or not. You can do this easily with `curl`.\n2. If the curl command exits with a non-zero, it means the site had an error. Catch the error and make sure the pipeline fails.\n3. Define a workflow that uses the job.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021355,
+              "key": "f7dae537-69e4-4c97-96a9-94ac5c1f8cfa",
+              "title": "Smoke Testing",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f7dae537-69e4-4c97-96a9-94ac5c1f8cfa",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Define a Smoke Test Job.",
+                "Force an Error.",
+                "Define a Workflow."
+              ],
+              "positive_feedback": "This is getting easier, isn't it?",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1021346,
+          "key": "038c78a0-3be4-4dcd-88c7-441da497efb3",
+          "title": "Solution: Smoke Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "038c78a0-3be4-4dcd-88c7-441da497efb3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044224,
+              "key": "8beacc47-9a5a-49ec-86d9-9651bcda77e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Smoke Testing Jobs\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021354,
+              "key": "e527ec2f-797c-4495-b634-ff821a958df5",
+              "title": "ND9991 C03 L03 Solution - Smoke Testing Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7rDziEoXzx8",
+                "china_cdn_id": "7rDziEoXzx8.mp4"
+              }
+            },
+            {
+              "id": 1021352,
+              "key": "082bb453-6680-438c-a9ce-5aa002b1f4ce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Your `smoke_test` job should look something like this:\n\n```\nversion: 2.1\n\njobs:\n  smoke_test:\n      docker:\n        - image: alpine:latest\n      steps:\n        - run: apk add --update curl\n        - run:\n            name: smoke test.\n            command: |\n              URL=\"https://blog.udacity.com/\"\n              if curl -s --head ${URL} # test if blog.udacity. com exists\n              then\n               return 0\n              else\n               return 1\n              fi\n\nworkflows:\n  my_workflow:\n    jobs:\n      - smoke_test:\n          requires:\n            - configure_infrastructure\n            \n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021733,
+          "key": "4d287308-2f1a-410d-9dde-b80daa47590e",
+          "title": "Rollback Jobs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4d287308-2f1a-410d-9dde-b80daa47590e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044225,
+              "key": "cf158f3e-b0a0-4038-ac76-e1cf7ca0a084",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Rollback Jobs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029074,
+              "key": "ec07646f-7165-4889-a526-caa7c6106523",
+              "title": "ND9991 C03 L03 Rollback Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f-6ptBoJlxQ",
+                "china_cdn_id": "f-6ptBoJlxQ.mp4"
+              }
+            },
+            {
+              "id": 1044854,
+              "key": "183ab65d-63f5-4c5b-bfeb-fc670668e624",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### When the Smoke Tests Fail\n\nDare I mention confidence again? If smoke tests are about building confidence, rollbacks are about preserving it! Rollback jobs are an essential part of any mature CI/CD pipeline. Rollbacks give you the ability to hit CTRL-Z on all the changes you made during CI/CD and protect your stakeholders' confidence by failing gracefully.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1031933,
+              "key": "fc7449ce-c144-49d7-9799-10358950abd8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ef0d11f_005-g/005-g.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fc7449ce-c144-49d7-9799-10358950abd8",
+              "caption": "**Uh Oh, Time to Roll Everything Back!**",
+              "alt": "An image of a pipeline showing a Revert pipe taking us back to the beginning.",
+              "width": 7330,
+              "height": 2030,
+              "instructor_notes": null
+            },
+            {
+              "id": 1044853,
+              "key": "fa19d1b2-01e0-453e-827b-0c9f4211f2bc",
+              "title": "ND9991 C03 L03 Rollback Jobs Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3uqRhhKhjRY",
+                "china_cdn_id": "3uqRhhKhjRY.mp4"
+              }
+            },
+            {
+              "id": 1031979,
+              "key": "992c0879-fcab-4cd3-8987-7b8477c9218a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What Do I Need for This Job?\n\n1. A reusable command to handle the work of destroying the green infrastructure.\n1. In the command, a step to delete the stack using whatever name we defined when creating the stack. \n1. A job with an image that can handle AWS CLI commands.\n1. A step that simulates a failed smoke test or any other failure (exit with non-zero).\n1. A step that uses our reusable command with a condition to run only when something failed.\n1. A workflow that runs our job.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021357,
+          "key": "88a357bb-03dc-4462-8294-f998829bebaa",
+          "title": "Exercise: Rollback",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "88a357bb-03dc-4462-8294-f998829bebaa",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1021360,
+              "key": "159bd0b6-3a11-4d1e-9304-6505597b610d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Rollback\n\nWrite a reusable command that rolls back changes.\n\n### Instructions:\n\n1. Create a simple CloudFormation template named `template.yml` that will create some infrastructure. This should be checked into your git repo. You can use your own from previous lessons or you can try this example:\n\n   ```\n   Resources:\n     Ec2Instance:\n       Type: 'AWS::EC2::Instance'\n       Properties:\n         SecurityGroups:\n           - !Ref InstanceSecurityGroup\n         KeyName: udacity\n         ImageId: 'ami-068663a3c619dd892'\n     InstanceSecurityGroup:\n       Type: 'AWS::EC2::SecurityGroup'\n       Properties:\n         GroupDescription: Enable SSH access via port 22\n         SecurityGroupIngress:\n           - IpProtocol: tcp\n             FromPort: '22'\n             ToPort: '22'\n             CidrIp: 0.0.0.0/0\n   ```\n\n Notice we are using the `udacity` as the `KeyName`. That refers to the key pair we created before.\n\n2. Write a job that creates a new stack using the template you just created. Feel free to copy/paste any job from a previous exercise where you did this already. Name this job `create_infrastructure`.\n\n1. There may be many places where we want to rollback your changes. That means we need a command so that we can reuse the code. Add a command to your Circle CI config file called `destroy_environments`. This command should use [cloudformation delete-stack](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/delete-stack.html) to delete the stack that the job previously created.\n\n1. Make your job fail (intentionally) after CloudFormation creates the stack. You can simply add a step that says `return 1` to simulate an error.\n\n1. Add a step to the job that only executes if the job fails. Call your `destroy_environments` command.\n\n1. Define a workflow that uses the `create_infrastructure` job.\n\n1. After your pipeline executes successfully, you should be able to verify the stack was created and then deleted. In the end, you should have no additional stacks in your AWS CloudFormation console.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021365,
+              "key": "a0880b33-377b-49d1-9593-896dc6ac8d99",
+              "title": "Rollback",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a0880b33-377b-49d1-9593-896dc6ac8d99",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create/Select a CloudFormation Template to Build a Stack.",
+                "Write a Job That Executes CloudFormation With the Template.",
+                "Write a Reusable Command to Delete the Stack.",
+                "Add a Step to the Job to Execute the Command When There is a Failure.",
+                "Add a Step That Causes a Failure.",
+                "Add Job to the Workflow.",
+                "Run the Pipeline Successfully.",
+                "Verify The Stack Was Indeed Created and Deleted."
+              ],
+              "positive_feedback": "You're really getting the hang of this!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1021358,
+          "key": "625bd93c-0b10-41c0-9010-dfd05e4c1b32",
+          "title": "Solution: Rollback",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "625bd93c-0b10-41c0-9010-dfd05e4c1b32",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044226,
+              "key": "ee24ce5f-53f2-4b93-a65e-fbf3b562be2c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Rollback",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021368,
+              "key": "7c66b636-f554-4035-bd3e-c18a499f09cc",
+              "title": "ND9991 C03 L03 Solution - Rollback Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jmSwEITYYy0",
+                "china_cdn_id": "jmSwEITYYy0.mp4"
+              }
+            },
+            {
+              "id": 1021366,
+              "key": "4a23e513-1979-47e6-a8cd-970d1b84040e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Your `config.yml` should look something like this:\n\n```\nversion: 2.1\n\ncommands:\n  destroy_environment:\n    steps:\n      - run:\n          name: Destroy environment\n          command: |\n            aws cloudformation delete-stack --stack-name prod-${CIRCLE_WORKFLOW_ID}\n\njobs:\n  create_infrastructure:\n    docker:\n      - image: amazon/aws-cli\n    steps:\n      - checkout\n      - run:\n          name: Create Stack\n          command: |\n            aws cloudformation deploy \\\n              --template-file template.yml \\\n              --stack-name prod-${CIRCLE_WORKFLOW_ID}\n      - run: return 1\n      - destroy_environment\n        when: on_fail\n\nworkflows:\n  my_workflow:\n    jobs:\n      - build\n\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021734,
+          "key": "db40bfcf-8ffa-4b9a-a211-c8db1ae9639d",
+          "title": "Production Candidate Promotion Jobs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db40bfcf-8ffa-4b9a-a211-c8db1ae9639d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044227,
+              "key": "4063115e-fed5-49cf-97e2-b99114c7bd1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Production Candidate Promotion Jobs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029075,
+              "key": "91b607e9-49f4-4b37-a44f-55544823b05e",
+              "title": "ND9991 C03 L03 Production Candidate Promotion Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "a0SGXkxmKwg",
+                "china_cdn_id": "a0SGXkxmKwg.mp4"
+              }
+            },
+            {
+              "id": 1044856,
+              "key": "4087c924-976d-4f54-a91e-e6e759e39b30",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Promoting to Production\n\nPromoting a new version in a Blue Green Deployment is the same as \"switching the router\" from the old to the new version. In some cases, the switch is fairly straightforward. In other cases, you might need to have some extra information about the old and new deployments so that you can inform the router of properly. In the case of my examples, we need the S3 Bucket's name so that we can configure CloudFront with a new \"[origin](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_Origin.html)\".",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1031934,
+              "key": "dc6ec907-b0d5-4eee-85e7-ae441e083cd7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ef0d12e_005-f/005-f.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dc6ec907-b0d5-4eee-85e7-ae441e083cd7",
+              "caption": "**We Did It! Time to Promote!**",
+              "alt": "An image of a pipeline with Promote highlighted.",
+              "width": 7330,
+              "height": 2030,
+              "instructor_notes": null
+            },
+            {
+              "id": 1044855,
+              "key": "f8101e4e-5766-4ead-8b34-4978ead6ca8a",
+              "title": "ND9991 C03 L03 Production Candidate Promotion Jobs Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "12BWa_UpgUg",
+                "china_cdn_id": "12BWa_UpgUg.mp4"
+              }
+            },
+            {
+              "id": 1032041,
+              "key": "9a901b42-ceb6-46dc-91a2-33efb753af5a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This is it! We've got our green production version humming, smoke tests have passed, confidence is high... it's time to make the switch!\n\n### What Do I Need for This Job?\n\n1. A previous job named resources with the workflow ID so that it's easy to refer to them later. For example, if we want to create an S3 bucket:\n   ```\n   aws cloudformation deploy \\\n     --template-file bucket.yml \\\n     --stack-name \"${CIRCLE_WORKFLOW_ID}\" \\\n     --parameter-overrides NAME=\"${CIRCLE_WORKFLOW_ID}\"\n```\nAnd copy the web files to the bucket:\n```\nrun: aws s3 sync . s3://\"${CIRCLE_WORKFLOW_ID}\" --delete\n```\n1. An image that can handle AWS CLI.\n1. An existing CloudFront distribution, created by CloudFormation so that it has a stack. The origin should be the old production version S3 Bucket.\n1. A CloudFormation template that can update an existing CloudFront stack with a new \"origin\".\n1. A job to execute the CloudFormation template to switch from blue to green, like this:\n```\naws cloudformation deploy \\\n  --template-file cloudfront.yml \\\n  --stack-name cloudfront \\\n  --parameter-overrides PipelineID=\"${CIRCLE_WORKFLOW_ID}\"\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021395,
+          "key": "b2df7e84-43f4-40a0-acf0-88e7c088d97b",
+          "title": "Exercise: Promote to Production",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b2df7e84-43f4-40a0-acf0-88e7c088d97b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1021397,
+              "key": "f2efede5-c6bc-4173-870b-8d578de5bd4c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Promote to Production\n\nWrite a set of jobs that promotes a new environment to production and decommissions the old environment in an automated process.\n\n### Instructions:\n\nThere are a few manual steps we need to take to \"prime the pump\". These manual steps enable steps that will be automated later.\n\n#### Manual Steps\n\n- Create an S3 Bucket manually. If you need help with this, follow the instructions found in the [documentation](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html).\n- Make the bucket public. Follow these [steps](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html#root-domain-walkthrough-configure-bucket-permissions) if you need help.\n- Create a simple home page (version 1) in html and name it `index.html`. It could be as simple as:\n\n ```html\n<html>\n  <body>\n    <h1>Hello World version 1</h1>\n  </body>\n</html>\n ```\n\n- Add your home page to your bucket. Follow these [steps](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html#upload-website-content) if you need help. Make sure you can browse to the home page.\n- We want to use CloudFormation to modify a [CloudFront Distribution](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distribution.html) later on. It will be _MUCH_ easier to do this if CloudFormation was responsible for creating the distribution in the first place, thus creating a \"stack\" that can be easily accessed. Create a CloudFormation template file named `cloudfront.yml` with the following contents and execute it:\n\n```\nParameters:\n  PipelineID:\n    Description: Unique identifier.\n    Type: String\n\nResources:\n\n  CloudFrontOriginAccessIdentity:\n    Type: \"AWS::CloudFront::CloudFrontOriginAccessIdentity\"\n    Properties:\n      CloudFrontOriginAccessIdentityConfig:\n        Comment: Origin Access Identity for Serverless Static Website\n\n  WebpageCDN:\n    Type: AWS::CloudFront::Distribution\n    Properties:\n      DistributionConfig:\n        Origins:\n          - DomainName: !Sub \"${PipelineID}.s3.amazonaws.com\"\n            Id: webpage\n            S3OriginConfig:\n              OriginAccessIdentity: !Sub \"origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}\"\n        Enabled: True\n        DefaultRootObject: index.html\n        DefaultCacheBehavior:\n          ForwardedValues:\n            QueryString: False\n          TargetOriginId: webpage\n          ViewerProtocolPolicy: allow-all\n\nOutputs:\n  PipelineID:\n    Value: !Sub ${PipelineID}\n    Export:\n      Name: PipelineID\n ```\n\n Save that file to your repo as you will need it in the automation steps later.\n\n- Execute the template with the following command:\n\n ```\naws cloudformation deploy \\\n  --template-file cloudfront.yml \\\n  --stack-name production-distro \\\n  --parameter-overrides PipelineID=\"${S3_BUCKET_NAME}\" \\ # Name of the S3 bucket you created manually.\n  --tags project=udapeople &\n ```\n\n### Automation Instructions\n\n- Create a CloudFormation template named `bucket.yml` that will create a new S3 bucket and copy production files every time we deploy to production. You can use the following template:\n\n ```\nParameters:\n  NAME:\n    Type: String\nResources:\n  WebsiteBucket:\n    Type: AWS::S3::Bucket\n    Properties:\n      BucketName: !Sub \"${NAME}\"\n      AccessControl: PublicRead\n      WebsiteConfiguration:\n        IndexDocument: index.html\n        ErrorDocument: 404.html\n  WebsiteBucketPolicy:\n    Type: AWS::S3::BucketPolicy\n    Properties:\n      Bucket: !Ref 'WebsiteBucket'\n      PolicyDocument:\n        Statement:\n        - Sid: PublicReadForGetBucketObjects\n          Effect: Allow\n          Principal: '*'\n          Action: s3:GetObject\n          Resource: !Join ['', ['arn:aws:s3:::', !Ref 'WebsiteBucket', /*]]\n ```\n\n- Write a job named `create_and_deploy_front_end` that executes the `bucket.yml` template. Your CloudFormation command should look like this:\n\n ```\naws cloudformation deploy \\\n  --template-file bucket.yml \\\n  --stack-name \"${CIRCLE_WORKFLOW_ID:0:7}\" \\ # ${CIRCLE_WORKFLOW_ID:0:7} takes the first 7 chars of the variable CIRCLE_CI_WORKFLOW_ID\n  --parameter-overrides PipelineID=\"${CIRCLE_WORKFLOW_ID:0:7}\"\n ```\n\n Notice we are passing in the `CIRCLE_WORKFLOW_ID` to help form the name of our bucket. This helps us to reference the bucket later, if needed.\n\n- For cleanup after promotion, we need to know which pipeline ID was responsible for the last successful production release. For this, we can query CloudFormation for the information. Write a CircleCI job named `get_last_deployment_id` that performs the query and saves the id to a file that we can persist to the workspace. For convenience, here's the command that you can use:\n\n ```\naws cloudformation \\\n  list-exports --query \"Exports[?Name==\\`PipelineID\\`].Value\" \\\n  --no-paginate --output text\n ```\n\n Save that ID to a file and persist the file to the workspace for other jobs to access.\n\n- Write a job named `promote_to_production` that executes our `cloudfront.yml` CloudFormation template used in the manual steps. Here's the command to execute the template:\n\n ```\naws cloudformation deploy \\\n  --template-file cloudfront.yml \\\n  --stack-name production-distro \\\n  --parameter-overrides PipelineID=\"${CIRCLE_WORKFLOW_ID}\"\n ```\n\n Notice here we use the stack name `production-distro` which is the same name we used in the throw-away CloudFormation template above. Also, as you have seen before, we are passing in the Pipeline Id as a parameter.\n\n- Write a Job Named `clean_up_old_front_end` that uses the pipeline ID to destroy the previous production version's S3 bucket and CloudFormation stack. To achieve this, you need to retrieve from the workspace the file where the previous Pipeline ID was stored. Once you have the Pipeline ID, use the following commands to clean up:\n\n ```\naws s3 rm \"s3://${OldPipelineID}\" --recursive\naws cloudformation delete-stack --stack-name \"${PreviousPipelineID}\"\n ```\n\n- Define a Workflow that puts these jobs in order.\n- Run the pipeline successfully.\n- Verify version 2 is browsable using CloudFront URL.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021398,
+              "key": "b18baba4-74af-4969-b56b-d2756cf42d43",
+              "title": "Promote to Production",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b18baba4-74af-4969-b56b-d2756cf42d43",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a Public S3 Bucket with a Home Page.",
+                "Create a CloudFront Distribution for the Bucket.",
+                "Modify Home Page.",
+                "Write a Job to Create a New S3 Bucket and Copies Files.",
+                "Write a Job that Gets the Previous Pipeline ID.",
+                "Write a Job that Modifies the CloudFront Distro's Origin Bucket to Our New Bucket.",
+                "Write a Job Kills the Old Bucket and Stack.",
+                "Define a Workflow that Puts These Jobs In Order.",
+                "Verify The Modified Home Page is Browsable."
+              ],
+              "positive_feedback": "Amazing! You made it!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1021396,
+          "key": "04cdb93a-9299-4b66-b7e4-b2caad49ff79",
+          "title": "Solution: Promote to Production",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "04cdb93a-9299-4b66-b7e4-b2caad49ff79",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1021399,
+              "key": "5be886dd-c05b-42a5-bf42-95c61fa5e84b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Promote to Production",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021401,
+              "key": "5196551b-eba3-416c-982c-783417136b90",
+              "title": "ND9991 C03 L03 Solution - Production Candidate Promotion Jobs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-u8yxb2jroQ",
+                "china_cdn_id": "-u8yxb2jroQ.mp4"
+              }
+            },
+            {
+              "id": 1036704,
+              "key": "7196b924-dd28-4a7b-b2db-08170addc910",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Your Circle CI config should look like this:\n\n```\nversion: 2.1\njobs:\n  create_and_deploy_front_end:\n    docker:\n      - image: amazon/aws-cli\n    steps:\n      - checkout\n      - run: |\n          aws cloudformation deploy \\\n            --template-file bucket.yml \\\n            --stack-name \"${CIRCLE_WORKFLOW_ID}\" \\\n            --parameter-overrides NAME=\"${CIRCLE_WORKFLOW_ID}\"\n      - run: aws s3 sync . s3://\"${CIRCLE_WORKFLOW_ID}\" --delete\n  \n  promote_to_production:\n    docker:\n      - image: amazon/aws-cli\n    steps:\n      - checkout\n      - run: |\n          aws cloudformation deploy \\\n            --template-file cloudformation.yml \\\n            --stack-name cloudfront \\\n            --parameter-overrides PipelineID=\"${CIRCLE_WORKFLOW_ID}\"\n  \n  \n  workflows:\n    default:\n      jobs:\n        - create_and_deploy_front_end\n        - promote_to_production\n            requires: [create_and_deploy_front_end]\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021735,
+          "key": "084a8d15-5016-4ba4-8ec7-4dbecd0a056e",
+          "title": "Lesson Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "084a8d15-5016-4ba4-8ec7-4dbecd0a056e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044228,
+              "key": "6e5ea0e9-8f7a-47c7-8a71-8f52d3c4472b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Conclusion",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1029076,
+              "key": "94e7ff82-87bc-4ad4-8ff8-d32acff38093",
+              "title": "ND9991 C03 L03 Lesson Conclusion",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mfUL032Fyfs",
+                "china_cdn_id": "mfUL032Fyfs.mp4"
+              }
+            },
+            {
+              "id": 1032044,
+              "key": "98496bbb-7042-4d01-bd44-01574767dc63",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### To Recap, You Were Able To...\n\n- Learn what Configuration Management Tools are and How to Use Them\n- Design an Ansible Playbook\n- Control a Remote Machine with an Ansible Playbook\n- Build an Ansible Inventory File\n- Make Various Types of CD Jobs in our CI/CD Pipeline\n  - Create Infrastructure\n  - Configure Infrastructure\n  - Deploy Production Artifacts\n  - Smoke Testing\n  - Rollback\n  - Promoting to Production\n\nThat was quite a journey. We really covered a lot of ground in a short amount of time, but I hope the practice we did helped to solidify the new knowledge. ",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

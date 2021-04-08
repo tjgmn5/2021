@@ -1,0 +1,1586 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1020014,
+      "key": "672ec4f6-4a0f-450d-9c1b-5092e4e02dc7",
+      "title": "Monitoring Environments",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, we'll install Prometheus, set up alerts, and learn how to monitor data you receive.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/672ec4f6-4a0f-450d-9c1b-5092e4e02dc7/1020014/1594793712587/Monitoring+Environments+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/672ec4f6-4a0f-450d-9c1b-5092e4e02dc7/1020014/1594793706027/Monitoring+Environments+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1020016,
+          "key": "d333e3ee-9122-49b0-9ec7-3e46914546bd",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d333e3ee-9122-49b0-9ec7-3e46914546bd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044230,
+              "key": "c61d5952-7e7b-4f7f-958f-d58848a1777d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introduction",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028056,
+              "key": "c789fb2a-51a2-42be-b6fb-4ec56da78c03",
+              "title": "ND9991 C03 L04 Introduction To Monitoring",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xS0THk6oHMs",
+                "china_cdn_id": "xS0THk6oHMs.mp4"
+              }
+            },
+            {
+              "id": 1044943,
+              "key": "215d73fb-5045-4b33-ac69-2da98e11b08e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/July/5f0dff36_screen-shot-2020-07-14-at-11.42.35-am/screen-shot-2020-07-14-at-11.42.35-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/215d73fb-5045-4b33-ac69-2da98e11b08e",
+              "caption": "**Our Final Stop**",
+              "alt": "An image with a timeline showing we're on the final lesson: Monitoring Environments.",
+              "width": 1340,
+              "height": 222,
+              "instructor_notes": null
+            },
+            {
+              "id": 1028055,
+              "key": "8ac787fd-1160-4def-a814-6364e39eb4d0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### In this Lesson, We Will...\n\n- Talk About the New Capabilities Monitoring Gives Us as Cloud Developers\n- Discuss Some Monitoring Tools that are Available\n- Talk about Prometheus\n- Install and Configure Prometheus\n- Talk About the Various Data Source Options and How to Get that Data into Prometheus\n- Discuss How to Start Analyzing the Monitoring Data You Have\n- Learn About Alerts and How to Set Them Up",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021378,
+          "key": "6db28149-4259-4da7-a094-313ce28be8af",
+          "title": "Big Picture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6db28149-4259-4da7-a094-313ce28be8af",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044231,
+              "key": "ab2ef4f5-cbda-4e5e-8528-75d9032bcc35",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Big Picture",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028050,
+              "key": "75704ba0-fe0e-4cdb-a515-a9b52a1eee25",
+              "title": "ND9991 C03 L04 Big Picture",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IIReHtF8Nt4",
+                "china_cdn_id": "IIReHtF8Nt4.mp4"
+              }
+            },
+            {
+              "id": 1028052,
+              "key": "c2245130-28f7-45a4-8295-2e44951fa596",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What Does Monitoring Feel Like?\nLet's face it, monitoring is not that exciting! When you became an engineer, you probably didn't say \"I can't wait to monitor _stuff_!\". For many, it's like the matrix; there's so much information, it's like lines just blurring together! For others, it's not enough useful data. Plus, it's hard to get excited about something that seems to only brings bad news.\n\n### What's the Reality?\n\n- It's a necessary evil!\n- Raise issues quickly and loudly.\n- Best weapon against down-time.\n- Often the most neglected or underestimated tool.\n\n### What are the Possibilities?\n\n- In the heat of battle, you'll get to problems faster.\n- Find out when something goes down or degrades _(network logs)_.\n- Wake up the right people in an event _(app logs)_.\n- Find out an hour before an outage _(CPU, memory, disk)_.\n- Use data to predict the next outage in 2 weeks _(ML, data science)_.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021379,
+              "key": "6d54ed3c-f43a-409c-be40-82d88ba4385c",
+              "title": "Benefits of Monitoring",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6d54ed3c-f43a-409c-be40-82d88ba4385c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Monitoring helps with the following things:",
+                "answers": [
+                  {
+                    "id": "a1589569848889",
+                    "text": "Predicting Problems Before the Happen",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589569877542",
+                    "text": "Automatically Updating Packages and Dependencies",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589569883350",
+                    "text": "Real-Time Notifications of Issues",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589569884079",
+                    "text": "Watching Server Performance",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589569884798",
+                    "text": "Watching For Application Errors",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589569885745",
+                    "text": "Restarting Server On Crash",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1021381,
+          "key": "9772011b-35ee-44e2-b386-e620f9ada8a4",
+          "title": "Intuition About Monitoring",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9772011b-35ee-44e2-b386-e620f9ada8a4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044232,
+              "key": "d704f720-2d5e-4edd-b095-7c7961dd3d3d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Intuition About Monitoring",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028048,
+              "key": "217422e2-e6b6-4784-a186-7d79e2ccdad0",
+              "title": "ND9991 C03 L04 Intuition About Monitoring",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b2RBs4fmjUk",
+                "china_cdn_id": "b2RBs4fmjUk.mp4"
+              }
+            },
+            {
+              "id": 1028047,
+              "key": "756f1c2a-cd65-4910-8d8c-a09c69d1c942",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### A Needle in a Haystack?\n\nAs a cloud developer, during an outage, you should be able to know where to look to find the source of the problem. You should be able to see through a haystack of monitoring data and zero in on the issue at hand.\n\nBefore any outage, you should be thinking about where failures might occur and ensure those areas have proper monitoring. Some common areas where you might need monitoring are:\n\n- Database Stats\n- Application Logs\n- Docker Logs\n- Firewall\n- Load Balancer\n- GPU\n- Operating System\n- Router\n- Cable Modem\n- Message Bus\n- AWS Services\n- Mail Server\n- Other 3rd Party Services\n- Other Monitoring Systems",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021385,
+              "key": "53ac370e-feef-46fb-a78d-1bb2a24e720d",
+              "title": "Reflect 1",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "53ac370e-feef-46fb-a78d-1bb2a24e720d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What are some of the typical places you look to troubleshoot a production issue?"
+              },
+              "answer": {
+                "text": "Of course, you'd look at the logs for application errors or operating system errors. ",
+                "video": null
+              }
+            },
+            {
+              "id": 1021386,
+              "key": "334b9fe0-71c4-439b-80e6-52e5a17d73f9",
+              "title": "Reflect 2",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "334b9fe0-71c4-439b-80e6-52e5a17d73f9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What kind of data sources do you think might be the thing that could solve a great mystery some day?"
+              },
+              "answer": {
+                "text": "The \"right answer\" here is obviously in the air. You would be right if you mentioned any kind of output produced as a result of our application running. The problem is not always choosing the right data source. Often the bigger problem is having data sources at all!",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1021387,
+          "key": "be557f71-ca48-4d32-bafd-3cf182d53ee5",
+          "title": "The Case for Monitoring",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "be557f71-ca48-4d32-bafd-3cf182d53ee5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044233,
+              "key": "adb2cab9-4b40-47c8-9ba5-4cb693912e23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Case for Monitoring",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028053,
+              "key": "13fbd548-a1b6-4c26-a764-b075f950ee1d",
+              "title": "ND9991 C03 L04 The Case For Monitoring",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rr3k9o_csuM",
+                "china_cdn_id": "rr3k9o_csuM.mp4"
+              }
+            },
+            {
+              "id": 1044857,
+              "key": "9b00448d-ab3e-43eb-8787-1a791b49847c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### \"But Monitoring Isn't Exciting!\"\n\nIn case you need convincing, I'm going to give you a few reasons why monitoring is not an optional piece of your cloud development strategy.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028091,
+              "key": "3d0e882a-b75f-41cb-b356-d450bf653044",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ef0d19d_001/001.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3d0e882a-b75f-41cb-b356-d450bf653044",
+              "caption": "**It Helps To Find the Needle When You Have a (Metaphorical) Metal Detector**",
+              "alt": "An image showing a straight line through a mess taking 5 minutes, and many stops through the mess taking 5 hours. This represents knowing where to look.",
+              "width": 888,
+              "height": 652,
+              "instructor_notes": null
+            },
+            {
+              "id": 1028089,
+              "key": "0bc95116-67f3-422d-915f-413892d7a11c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Availability\n\n> Uptime or downtime often translates to dollars, one way or the other. Downtime will increase drastically without monitoring since you won't be watching the system manually, round the clock. This downtime will negatively affect revenue or could increase legal costs.\n\n### Performance\n\n> Company performance and image often hangs the reliability of its technology. If systems degrade when users are trying to consume it, their confidence in the system will also degrade, which might result in employee turn-over or loss of clients.\n\n### Capacity\n\n> Company or product growth is (generally) a good thing, especially if technology can rise to the demands of its users. But, when infrastructure is not ready meet the needs of business on time, it can result in lost revenue or increased costs.\n\n### Productivity\n\n> Development teams who spend time less troubleshooting tend to spend more time developing. However, without proper monitoring,  development team members will have no choice but to dive into time-consuming troubleshooting, affecting feature release plans and incurring opportunity costs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028105,
+              "key": "59d0df64-242a-48ac-830c-da4d93ee8f95",
+              "title": "ND9991 C03 L04 The Case For Monitoring Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KG0mqUshD68",
+                "china_cdn_id": "KG0mqUshD68.mp4"
+              }
+            },
+            {
+              "id": 1028106,
+              "key": "ed203eb4-6a0b-4227-969f-c63f1f657db4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reactive vs Proactive\n\nReactive monitoring is common practice because of its usefulness during a crisis. But, monitoring can have even more power when used proactively.\n\n### Reactive Monitoring\n\n- Real time CPU, memory or disk space meters\n- Current health status of any server or resource\n- Application logs\n- Operating System logs\n\n### Proactive Monitoring\n\n- Forecast Infrastructure Costs\n- Monitor the Unknowns\n- Track Bugs to Their True Source\n- Predict Seasonal Spikes and Trends\n\n### Convinced yet?\nIf you're interested in learning more about Data Science and gain new capabilities to utilize your monitoring data, I highly recommend the [Data Scientist Nanodegree](https://www.udacity.com/course/data-scientist-nanodegree--nd025). \n\nMonitoring isn't important until it is. It's not interesting or exciting until it is. If you're still not convinced, you have to trust me. Just do it.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021681,
+              "key": "e0efa631-7129-482b-9c5f-075a2acad04c",
+              "title": "Easy Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e0efa631-7129-482b-9c5f-075a2acad04c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "We can use  \\_\\_\\_\\_\\_\\_\\_\\_\\_  combined with  \\_\\_\\_\\_\\_\\_\\_\\_\\_  to predict things like _problems_ and _costs_.",
+                "answers": [
+                  {
+                    "id": "a1589638425983",
+                    "text": "metrics, dice",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589638454626",
+                    "text": "alerts, outage dates",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589638455218",
+                    "text": "metrics, machine learning",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589638455798",
+                    "text": "alerts, calendars ",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1021682,
+              "key": "a00b6305-b7d2-4a55-98c2-0e588e28f98b",
+              "title": "Hard Quiz",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a00b6305-b7d2-4a55-98c2-0e588e28f98b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Which scenarios are proactive or reactive?"
+                },
+                "concepts_label": "Scenario",
+                "answers_label": "Proactive/Reactive",
+                "concepts": [
+                  {
+                    "text": "Based on past metrics from database monitoring, adjust connection settings to reduce memory usage.",
+                    "correct_answer": {
+                      "id": "a1589638568872",
+                      "text": "Proactive"
+                    }
+                  },
+                  {
+                    "text": "Watch real-time CPU usage and kill off some processes to reduce load.",
+                    "correct_answer": {
+                      "id": "a1589638629994",
+                      "text": "Reactive"
+                    }
+                  },
+                  {
+                    "text": "Use prediction of server costs based on usage metrics to decide to start a new costly project or not. ",
+                    "correct_answer": {
+                      "id": "a1589638635483",
+                      "text": "Proactive"
+                    }
+                  },
+                  {
+                    "text": "Get an alert of a network resource that just went to an unhealthy state. ",
+                    "correct_answer": {
+                      "id": "a1589638636208",
+                      "text": "Reactive"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1589638636208",
+                    "text": "Reactive"
+                  },
+                  {
+                    "id": "a1589638629994",
+                    "text": "Reactive"
+                  },
+                  {
+                    "id": "a1589638635483",
+                    "text": "Proactive"
+                  },
+                  {
+                    "id": "a1589638676332",
+                    "text": "Proactive"
+                  },
+                  {
+                    "id": "a1589638568872",
+                    "text": "Proactive"
+                  },
+                  {
+                    "id": "a1589638684143",
+                    "text": "Reactive"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1021683,
+          "key": "747cf803-20c5-4aad-ba66-3c9bba4452ea",
+          "title": "Monitoring Tools",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "747cf803-20c5-4aad-ba66-3c9bba4452ea",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044234,
+              "key": "23756c99-7a06-4220-bef7-35b7436b0e42",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Monitoring Tools",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028057,
+              "key": "af874b7d-03ea-4aef-aeaa-56a96ff298ae",
+              "title": "ND9991 C03 L04 Monitoring Tools",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FnDigm_QBmc",
+                "china_cdn_id": "FnDigm_QBmc.mp4"
+              }
+            },
+            {
+              "id": 1028108,
+              "key": "083a1843-025e-40e5-b4cc-abd8c7c4bbc0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Any Complete Monitoring System will be Composed of: \n\n#### 1. Time-Series Data \n**Time-series data** is data that is in a series of time intervals. Some examples include:\n\n- Blood-sugar level checked at the top of every hour\n- Daily closing value of Microsoft stock\n- Monthly rainfall by city\n- Available disk space by the minute\n\nAnother way I like to describe time-series data is \"anything with a timestamp and at least 10 data points.\" Therefore, data collected from your monitoring system is time-series data!\n\n#### 2. Data Aggregator\n\nA **data aggregator** is a system that collects and groups data by type or data source. One way to think of data aggregators is like a database with extra tooling to aid in data collection.\n\n#### 3. Data Visualizer\n\nA **data visualizer** takes copious amounts of seemingly unintelligible data from the data aggregator and produces useful charts and graphs.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021684,
+              "key": "0c5ba3c1-e219-4a07-aad2-55261057d567",
+              "title": "Easy Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0c5ba3c1-e219-4a07-aad2-55261057d567",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mark those that could be classified as time-series data.",
+                "answers": [
+                  {
+                    "id": "a1589638842286",
+                    "text": "Network Traffic",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589638850830",
+                    "text": "Application logs",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589638851466",
+                    "text": "CPU Usage",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589638852012",
+                    "text": "Inches of Rain per Day",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589638852570",
+                    "text": "All of these",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1044859,
+              "key": "fe9e85ce-1cb1-46bf-8060-f228a63b0d6a",
+              "title": "ND9991 C03 L04 Start Monitoring Tools Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pJRsj9Fm_uM",
+                "china_cdn_id": "pJRsj9Fm_uM.mp4"
+              }
+            },
+            {
+              "id": 1044858,
+              "key": "3764ee5a-296b-418d-82e5-606953d892d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Monitoring Tools\n\n| **Data Aggregator **| **Details**                                               | **Visualizers** |\n| :-------------: | ----------------------------------------------------- | ----------- |\n|    Graphite     | Mature, Open-Source, Installable                      | _Grafana_     |\n|     Loggly      | Managed, Cloud-Based, Powerful tooling                | _Built-In_    |\n|     Datadog     | Managed, Cloud-Based, Built-in AI/ML                  | _Built-In_    |\n|   Prometheus    | Open Source, Lightweight, Self-Contained, Installable | _Grafana_     |\n|    Logstash     | Open Source, Cloud-Based or Installable               | _Kibana_      |\n|   CloudWatch    | Built-In to AWS                                       | _Built-In_    |\n\nFor demonstration purposes, we will be using **Prometheus** for this course.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021710,
+          "key": "4eb75139-b2d5-4f4c-a823-936df577da80",
+          "title": "Set Up Prometheus",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4eb75139-b2d5-4f4c-a823-936df577da80",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044235,
+              "key": "83f20870-890e-44d0-871e-768c152ef6fb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Set Up Prometheus",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028110,
+              "key": "d6a6d63e-50c5-4db5-bf64-08eede75aba0",
+              "title": "ND9991 C03 L04 Set Up Prometheus",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qJl5fMKpETg",
+                "china_cdn_id": "qJl5fMKpETg.mp4"
+              }
+            },
+            {
+              "id": 1043809,
+              "key": "125a658f-46ee-4878-8440-d0517bef8a39",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Setting Up Prometheus\n\n1. Launch a new instance in EC2 with port `9090` open to the public.\n1. Log into the instance via SSH.\n1. Download and extract the Prometheus server files.\n1. Start Prometheus.\n1. Open the instance's hostname or IP address in your browser with port `9090`.\n1. Profit!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044860,
+              "key": "970570d7-9caf-4a8f-8c2c-08de8c99df67",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Editing Your `prometheus.yml` File",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044861,
+              "key": "f49352ee-605f-4d16-b721-dcf7d84dfcec",
+              "title": "ND9991 C03 L04 Set Up Prometheus Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3ZA-FzZr8iw",
+                "china_cdn_id": "3ZA-FzZr8iw.mp4"
+              }
+            },
+            {
+              "id": 1044862,
+              "key": "7a5ddb78-b668-48d6-ae66-f4614a694ac0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you're still feeling uncertain when working with this file, don't worry! We'll be seeing it a lot more during this lesson.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1020171,
+          "key": "6baaae53-49a2-4388-8149-5cf9c0c182df",
+          "title": "Exercise: Prometheus",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6baaae53-49a2-4388-8149-5cf9c0c182df",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020172,
+              "key": "9b27f24d-aac8-410d-b46c-de7316659e7b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Set Up Prometheus\n\nSet up a Prometheus server in EC2.\n\n### Instructions:\n\n1. Create a new EC2 instance. Micro/free tier works great!\n1. If you don't have a key pair created already in your AWS Console, you should do that now. Folllow [these instructions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair) to create the key pair and save a copy to your computer in a file named `keypair.pem`.\n1. SSH into the instance using the console using the key pair.\n1. Install the application \"Prometheus\" using the instructions in [this tutorial](https://codewizardly.com/prometheus-on-aws-ec2-part1/).\n1. Open up port `9090` on the EC2 instance's security groups.\n1. Browse to the Prometheus application using the EC2 instance's hostname and port `9090` to verify it's working.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020173,
+              "key": "fb2b670e-f161-497e-9e99-4bf12d3691a0",
+              "title": "Setting up Prometheus in EC2",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fb2b670e-f161-497e-9e99-4bf12d3691a0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create EC2 Instance.",
+                "SSH into the Instance.",
+                "Install Prometheus.",
+                "Open up port `9090`.",
+                "Browse to Prometheus."
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1020174,
+          "key": "6006bfb2-4557-4986-b497-ab16dc87c0d5",
+          "title": "Solution: Prometheus",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6006bfb2-4557-4986-b497-ab16dc87c0d5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020175,
+              "key": "db7b71e8-7195-4420-8ab3-9a4e9775eb67",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Set Up Prometheus",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020176,
+              "key": "010af594-05ea-4f86-b2e8-8f3725f36bbb",
+              "title": "ND9991 C03 L04 Solution - Set Up Prometheus",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hiFrVMxRpJk",
+                "china_cdn_id": "hiFrVMxRpJk.mp4"
+              }
+            },
+            {
+              "id": 1043810,
+              "key": "e0291570-8e08-4155-96ba-0cadb888d43f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you were able to navigate to Prometheus, then you're good to go.\n\nIf you had some trouble, go back over the instructions to see if you missed something. One hint: It's easy to overlook the \"security group\" portion of this exercise. Make sure you have added a security group to open up TCP traffic to port `9090` so that your server is publicly accessible.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021685,
+          "key": "c37bde8c-dad2-406e-b961-861842ca3174",
+          "title": "Exporters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c37bde8c-dad2-406e-b961-861842ca3174",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044237,
+              "key": "38f8498e-9369-4e14-9d9c-90ce6f9d8816",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Exporters",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028112,
+              "key": "7df23d1b-efbb-4e04-a87b-c10f5d579074",
+              "title": "ND9991 C03 L04 Exporters",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DIWe5_1sek4",
+                "china_cdn_id": "DIWe5_1sek4.mp4"
+              }
+            },
+            {
+              "id": 1044864,
+              "key": "7868619c-7af8-4eef-899f-ed0e4d34ac44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Exporters Abound\n\nData is pulled from various data sources using lightweight agents called an **Exporters** that are installed on or attached to the data sources themselves. Once it knows about an exporter, Prometheus \"scrapes\" data from those exporters every few seconds. No matter how many exporters you have providing data, Prometheus can scrape them all and happily collect your monitoring data in near real-time.\n ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028114,
+              "key": "ee083681-f38b-462b-93ce-782dee9d9508",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ef0d482_002-1/002-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ee083681-f38b-462b-93ce-782dee9d9508",
+              "caption": "**Prometheus Works with Lots of Different Data Sources!**",
+              "alt": "An image showing Prometheus drawing data from lots of different data sources.",
+              "width": 1611,
+              "height": 905,
+              "instructor_notes": null
+            },
+            {
+              "id": 1044863,
+              "key": "ee5aa754-2511-415b-b274-520bfa9faeee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Node Exporters",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028116,
+              "key": "6855a35b-a7cf-4afd-8204-a99e1dc1cdfa",
+              "title": "ND9991 C03 L04 Exporters Wakthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rQ2XLmvAh0w",
+                "china_cdn_id": "rQ2XLmvAh0w.mp4"
+              }
+            },
+            {
+              "id": 1028115,
+              "key": "8333e285-2b1d-4327-ae0b-8956fc8947cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Available Exporters\n\n| **Exporters**                                                                    | **Purpose**                                                                                        |\n| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |\n| [Node exporter](https://github.com/prometheus/node_exporter)                 | Provides basic operating system metrics like CPU, Disk and Memory Usage.                       |\n| [Nginx VTS Exporter](https://github.com/hnlq715/nginx-vts-exporter)          | Provides metrics on connections, server zones, and upstream requests.                          |\n| [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)         | The Blackbox exporter allows black-box probing of endpoints over HTTP, HTTPS, DNS, TCP, and ICMP |\n| [Github Exporter](https://github.com/infinityworksltd/github-exporter)       | Provides metrics on repository commits, pull requests, and issues.                             |\n| [MongoDB Exporter](https://github.com/percona/mongodb_exporter)              | The MongoDB exporter periodically scrapes MongoDB server stats.                                |\n| [Jira Exporter](https://github.com/AndreyVMarkelov/jira-prometheus-exporter) | Provides metrics on Jira issues and projects.                                                  |\n| [Swagger Stats](https://github.com/slanatech/swagger-stats)                  | API performance stats available to Prometheus                                                  |\n| [AWS Health Exporter](https://github.com/Jimdo/aws-health-exporter)          | Provides health metrics on all AWS services and regions.                                       |\n\n... and [many more](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exporters.md).\n\nEven with all these existing exporters, you might need something that doesn't exist yet. The documentation is very helpful and mature, but there's a steep learning curve. One way you can flatten that curve a bit is to use an existing exporter and modifying it.\n\n### Key Terms:\n\n- **Exporter**\n\n- **Pull System**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1021707,
+              "key": "5461ccf5-d0f4-486a-ae64-264b84ff3b0d",
+              "title": "Easy Quiz",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5461ccf5-d0f4-486a-ae64-264b84ff3b0d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match each exporter to its function."
+                },
+                "concepts_label": "Function",
+                "answers_label": "Exporter",
+                "concepts": [
+                  {
+                    "text": "Provides basic operating system metrics like CPU, Disk and Memory Usage.",
+                    "correct_answer": {
+                      "id": "a1589638992588",
+                      "text": "Node Exporter"
+                    }
+                  },
+                  {
+                    "text": "Provides metrics on Jira issues and projects. ",
+                    "correct_answer": {
+                      "id": "a1589639035494",
+                      "text": "Jira Exporter"
+                    }
+                  },
+                  {
+                    "text": "Provides metrics on connections, server zones, and upstream requests.",
+                    "correct_answer": {
+                      "id": "a1589639036296",
+                      "text": "Nginx VTS Exporter"
+                    }
+                  },
+                  {
+                    "text": "Provides metrics on repository commits, pull requests, and issues.",
+                    "correct_answer": {
+                      "id": "a1589639038036",
+                      "text": "Github Exporter"
+                    }
+                  },
+                  {
+                    "text": "Provides health metrics on all AWS services and regions.",
+                    "correct_answer": {
+                      "id": "a1589639039866",
+                      "text": "AWS Health Exporter"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1589638992588",
+                    "text": "Node Exporter"
+                  },
+                  {
+                    "id": "a1589639036296",
+                    "text": "Nginx VTS Exporter"
+                  },
+                  {
+                    "id": "a1589639113974",
+                    "text": "VM Exporter"
+                  },
+                  {
+                    "id": "a1589639039866",
+                    "text": "AWS Health Exporter"
+                  },
+                  {
+                    "id": "a1589639035494",
+                    "text": "Jira Exporter"
+                  },
+                  {
+                    "id": "a1589639038036",
+                    "text": "Github Exporter"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1020178,
+          "key": "96508790-b2a8-4976-9694-74364ae03211",
+          "title": "Exercise: Exporters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "96508790-b2a8-4976-9694-74364ae03211",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020179,
+              "key": "cdfb4747-4ae4-4935-9fa8-f2376922163f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Configuring Node Exporter\n\nConfigure a simple \"exporter\" in an EC2 instance so that its data and metrics are available to Prometheus. Also, configure Prometheus to auto-detect EC2 instances with built-in Service Discovery so that the new instance don't need to be added manually.\n\n### Instructions:\n\n1. Create a new EC2 instance for testing.\n2. SSH into and configure the EC2 instance with `node_exporter` using the instructions in [this tutorial](https://codewizardly.com/prometheus-on-aws-ec2-part2/).\n3. Connect again via SSH to your Prometheus server in EC2.\n4. Configure Prometheus to discover EC2 instances automatically following [this tutorial](https://codewizardly.com/prometheus-on-aws-ec2-part3/).\n5. View the test EC2 instance in Prometheus.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020180,
+              "key": "9b179f77-8d7d-4cf5-952f-987769c594c7",
+              "title": "Configuring `node_exporter` and Service Discovery",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9b179f77-8d7d-4cf5-952f-987769c594c7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a New EC2 Instance for Testing.",
+                "Use Ansible to Configure the EC2 Instance with `node_exporter`.",
+                "SSH into the Prometheus Instance.",
+                "Configure Prometheus to Automatically Discover EC2 Instances.",
+                "View the Test EC2 Instance in Prometheus."
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1020181,
+          "key": "5310a21d-4463-427e-977d-411b423950a1",
+          "title": "Solution: Exporters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5310a21d-4463-427e-977d-411b423950a1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020182,
+              "key": "c98be715-e7d7-41fb-9d8d-c6c4cca65e61",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Configuring Node Exporter",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020183,
+              "key": "e898de19-cc65-4798-96af-a8ace84d298b",
+              "title": "ND9991 C03 L04 Solution - Exporters",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Dqw_bMG4c8I",
+                "china_cdn_id": "Dqw_bMG4c8I.mp4"
+              }
+            },
+            {
+              "id": 1020184,
+              "key": "f1df42af-b5b7-47b0-8b9a-21ab8724cd1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Congratulations!\n\n- You now know how to manually configure an instance with `node_exporter`.\n- Consider how you might do this using a configuration tool like Puppet or Ansible _(might be useful later, hint hint)_.\n- You now have a Prometheus server that will automatically discover every backend server you add to EC2. Nice!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021711,
+          "key": "9b10dad2-0f1c-4a51-908f-701b6b9b9fd8",
+          "title": "Analyzing Metrics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9b10dad2-0f1c-4a51-908f-701b6b9b9fd8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044238,
+              "key": "e88f2e81-e8b4-4f7e-91cc-6a9336f5528b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Analyzing Metrics",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028118,
+              "key": "58d25d66-9998-4bf2-98e5-10ddf2b90701",
+              "title": "ND9991 C03 L04 Analyzing Metrics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Od6Jcqpm12Q",
+                "china_cdn_id": "Od6Jcqpm12Q.mp4"
+              }
+            },
+            {
+              "id": 1028119,
+              "key": "513a58a3-1079-438d-886f-9ee502559b90",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Data Visualization Tools\n\nIt's not really practical to read monitoring data in its raw form. If we're doing it right, there will be WAY too much of it to make sense of, even for a super-human like you. Monitoring data is best enjoyed through a data visualization tool. In all seriousness, once you pipe your data through a data visualizer, you'll start to make sense of the data in ways that raw data is simply incapable of doing.\n\n| **Tool Name**                                                               | **Description**                                                                                                     |\n| :---------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |\n| [Grafana](https://grafana.com/)                                         | Recommended for Prometheus                                                                                      |\n| [Kibana](https://www.elastic.co/kibana)                                 | Recommended for Elastic Stack                                                                                   |\n| [DataDog](https://www.datadoghq.com/)                                   | Built in to DataDog cloud-based service                                                                         |\n| [Expression Browser](https://prometheus.io/docs/visualization/browser/) | Built in to Prometheus, okay for [experiments](https://prometheus.io/docs/prometheus/latest/querying/examples/) |\n\n### Further Research:\n\n- Read more about Prometheus's query language called [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1020368,
+          "key": "c347a09f-b6bb-45a5-93f7-ca61690116dd",
+          "title": "Exercise: Usage",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c347a09f-b6bb-45a5-93f7-ca61690116dd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020369,
+              "key": "579c6e71-11f8-4a4b-a19d-f53f4028b36c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Graph Memory Usage\n\nAdd a graph for memory usage to your Prometheus server.\n\n### Instructions:\n\n1. Browse to your Prometheus dashboard on port 9`090`.\n2. Go to the \"Graph tab\".\n3. Take a look at all the options in the dropdown labeled \"insert metric at cursor\".\n4. Create a few graphs to see what kind of information you can get. You can find some examples [here](https://prometheus.io/docs/prometheus/latest/querying/examples/).\n5. Create a graph that shows available memory for your EC2 instances with `node_exporter` running.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020570,
+              "key": "1c6a0904-2cb2-40d5-8f71-5decc9f2501f",
+              "title": "Graph Memory Usage",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1c6a0904-2cb2-40d5-8f71-5decc9f2501f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Browse to your Prometheus Server.",
+                "Experiment with Different Metrics in a Graph.",
+                "Graph Memory Usage from your EC2 Instance(s)."
+              ],
+              "positive_feedback": "You have now been inducted into the world server monitoring!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1020370,
+          "key": "4314ced3-2e9b-4d35-9d05-4eb80ea4e7d6",
+          "title": "Solution: Usage",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4314ced3-2e9b-4d35-9d05-4eb80ea4e7d6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020371,
+              "key": "2fe09440-064d-442b-ae96-af9f5cf87b79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Graph Memory Usage",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020372,
+              "key": "a08751c5-ff34-4949-aaff-4366922ab983",
+              "title": "ND9991 C03 L04 Solution - Analyzing Metrics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "_NOTE: Did you notice the mistake I made in the video? 10 points if you did! Hint: free memory vs used memory._\n",
+              "video": {
+                "youtube_id": "vbz2Js9iwos",
+                "china_cdn_id": "vbz2Js9iwos.mp4"
+              }
+            },
+            {
+              "id": 1020373,
+              "key": "e4ed57e5-5b6b-48b9-ba4a-6dfa02d30c91",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### Way to Go!\n\nOn the practical side, the metrics gathered from Prometheus don't mean a whole lot in their raw form. We need visualizations to help understand what we're looking at. You know how they say a picture is worth a thousand words? That might be more like a million words when it comes to monitoring data visualization.\n\nSomething really cool about monitoring data: When you understand the metrics and how they relate to server or application health, you can start predicting issues before they arise instead of just reacting to them!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1021708,
+          "key": "ac04ddd3-0780-4ec8-9007-93d221ac5cf5",
+          "title": "Sending Alert Messages",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ac04ddd3-0780-4ec8-9007-93d221ac5cf5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044239,
+              "key": "55f3fe0d-4751-410c-ba6b-a493b0001613",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Sending Alert Messages",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028294,
+              "key": "c647e539-cffa-4617-862c-7fc9a8ddd83a",
+              "title": "ND9991 C03 L04 Set Up Alerts",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JSl8kizCUcY",
+                "china_cdn_id": "JSl8kizCUcY.mp4"
+              }
+            },
+            {
+              "id": 1044873,
+              "key": "f75ffcf0-24b2-47db-bbfd-84594514e1b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Alerting Channels \nHow do you want to receive alerts?\n\n- Email\n- Chat Tool\n- Desktop Notifications\n- Phone Calls\n\n### Helpful Alerting\n\nAlerts should, whenever possible, point the way to the source of the problem so that it can be fixed quickly. \n- Alerts should always include a brief description of the problem _(the  easier to understand, the better)_.\n- For code-related issues like run-time exceptions, a stack trace and source code line number is always appreciated. \n- When a URL is available to direct the troubleshooting engineer to the problem, it should be included in the alert.\n\nEven though you could get really carried away with all the goodies you could cram into your alerts, we encourage you to keep them simple and to the point. Team member contact information is probably crossing the line. Trying to mix in cross-referenced incident data is probably out-of-scope for an alerting system. Both examples are valid and useful, but just not in the alerting context.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044874,
+              "key": "b6ad8d9e-0d2d-4f3a-9bce-59ac96f14938",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Adding Alertmanager",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044871,
+              "key": "b7261312-0484-4a8e-bbd7-35c858ab3d3e",
+              "title": "ND9991 C03 L04 Set Up Alerts Continued",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nxd9dDnouxo",
+                "china_cdn_id": "nxd9dDnouxo.mp4"
+              }
+            },
+            {
+              "id": 1028295,
+              "key": "155366f6-67cb-40ef-b3e7-30869e8538e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n### Alerting in Prometheus\n\nAlerts are not available in the core installation of Prometheus. We have to install a utility called [Alertmanager](https://prometheus.io/docs/alerting/alertmanager/) alongside Prometheus and configure them to talk to one another. Then, we can create alerting rules that decide when to send out alerts and to whom. \n\nAlerting rules actually use the same [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) expressions that saw in the Expression Browser.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044872,
+              "key": "23e024f7-a07d-4e07-ab2f-f0281dea20d7",
+              "title": "ND9991 C03 L04 Alert Manager",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sm-OhMs1kdY",
+                "china_cdn_id": "sm-OhMs1kdY.mp4"
+              }
+            },
+            {
+              "id": 1021709,
+              "key": "458c2554-ab33-4c17-886a-fe80a9d81d59",
+              "title": "Easy Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "458c2554-ab33-4c17-886a-fe80a9d81d59",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What kinds of information would be appropriate in an alert?",
+                "answers": [
+                  {
+                    "id": "a1589653282720",
+                    "text": "Quick Description of the Problem",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589653305462",
+                    "text": "Line Number to the Source Code Where the Issue Occurred",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589653306233",
+                    "text": "Stack Trace From Run-time Exception",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589653306789",
+                    "text": "Phone Number of Lead Engineer",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1589653307459",
+                    "text": "Url to Pointing to the Source of the Issue",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1589653308051",
+                    "text": "History of Similar Issues",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1020361,
+          "key": "b3879f37-5b22-4d7a-b4e5-9680b14559bd",
+          "title": "Exercise: Alerts",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b3879f37-5b22-4d7a-b4e5-9680b14559bd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020363,
+              "key": "8cd3ed96-383e-4220-878f-8289573daf44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Sending Alert Messages\n\nConfigure AlertManager to notify of a critical error.\n\n### Instructions:\n\n1. Open port `9093` to traffic in the security groups of your EC2 instance.\n1. SSH into your Prometheus server (EC2 instance from the previous exercise)\n1. Follow the instructions in [this tutorial](https://codewizardly.com/prometheus-on-aws-ec2-part4/) to set up Alertmanager and alerting rules for Prometheus.\n5. Set up a \"receiver\" for Slack, Pager Duty, or email using Gmail (or your own SMTP server).\n6. Restart the server and you should see an alert!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020365,
+              "key": "93450864-1f5f-42c4-ab3a-c7248079fe7f",
+              "title": "Configure AlertManager to Notify of a Critical Error",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "93450864-1f5f-42c4-ab3a-c7248079fe7f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Open Port `9093` so you can access Alertmanager's Dashboard.",
+                "SSH into Your Prometheus Server.",
+                "Create Alerting Rules and Link to Prometheus Config.",
+                "Configure Rule to Always Report Server as \"down\" to Force an Alert.",
+                "Install Alertmanager.",
+                "Set Up Alerting Receiver.",
+                "Restart and Receive Alert."
+              ],
+              "positive_feedback": "You made it! Now, maybe go back and fix that expression to only alert when the instance is _ACTUALLY_ down. :)",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 1020362,
+          "key": "5768ed6b-af84-4ef8-af42-48953c4cb899",
+          "title": "Solution: Alerts",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5768ed6b-af84-4ef8-af42-48953c4cb899",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1020364,
+              "key": "ad6ef9ed-9ee1-4a7b-9a64-d422b09db273",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Sending Alert Messages",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1020366,
+              "key": "8c031201-a01c-4a82-a6e2-4f00443b9d61",
+              "title": "ND9991 C03 L04 Solution - Set Up Alerts",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dRSmGkbPpBI",
+                "china_cdn_id": "dRSmGkbPpBI.mp4"
+              }
+            },
+            {
+              "id": 1020367,
+              "key": "11fb586c-c87c-4ec5-91b5-489fa0b061eb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Your Monitoring System Has a Voice!\n\nMonitoring is not much without alerting. Having metrics is good, but predicting problems before they exist is powerful! That being said, be careful with alert fatigue and desensitization and consider where to alert and who should see it. Maybe experiment with other receiver types as you work on your alerting systems.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1028303,
+          "key": "140fcd51-9dac-4b4b-89ae-1e7eb299992c",
+          "title": "Lesson Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "140fcd51-9dac-4b4b-89ae-1e7eb299992c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044229,
+              "key": "745f4b76-db8f-4fe7-92a7-778bed74c63b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Conclusion",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1028304,
+              "key": "ed2dc62a-ac57-4b55-abb0-83c0dbfb2309",
+              "title": "ND9991 C03 L04 Lesson Conclusion",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9WIhNUWs5qs",
+                "china_cdn_id": "9WIhNUWs5qs.mp4"
+              }
+            },
+            {
+              "id": 1028305,
+              "key": "b467dc43-6dc9-4428-a771-23882e465721",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### In This Lesson, We Were Able To...\n\n- Talk About the New Capabilities Monitoring Gives Us as Cloud Developers\n- Discuss Some Monitoring Tools that are Available\n- Talk about Prometheus\n- Install and Configure Prometheus\n- Talk About the Various Data Source Options and How to Get that Data into Prometheus\n- Discuss How to Start Analyzing the Monitoring Data You Have\n- Learn About Alerts and How to Set Them Up",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1044875,
+          "key": "178876dd-5bcd-4453-8054-72f441e7b35d",
+          "title": "Course Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "178876dd-5bcd-4453-8054-72f441e7b35d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044876,
+              "key": "b4c06354-92e0-438b-bbef-076436def3d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Course Recap\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044877,
+              "key": "209090b4-1810-43ad-9b8d-05ca98f0fec7",
+              "title": "ND9991 C03 L04 Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pqf_8gs5igU",
+                "china_cdn_id": "pqf_8gs5igU.mp4"
+              }
+            },
+            {
+              "id": 1044905,
+              "key": "1d2d28be-69fd-413c-9944-53df48fe08fa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## We've Reached the End!\n\nBy now, you should have a very full toolbox of new and useful skills:\n* Theory and Principles behind Continuous Delivery, Continuous Integration, and Continuous Deployment\n* Constructing a Complete CI/CD Pipeline, from Commit to Build to Artifact\n* Raising the Tide of Confidence in Your Dev Team\n* Building a Monitoring System to Alert Us When Something Fails\n\nHow can you use these new skills in your next project? We can't wait to see!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044944,
+              "key": "74d4d5c2-261f-409e-a6eb-8acfaca74f62",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/July/5f0dff6b_screen-shot-2020-07-14-at-11.45.45-am/screen-shot-2020-07-14-at-11.45.45-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/74d4d5c2-261f-409e-a6eb-8acfaca74f62",
+              "caption": "**Look at Everything You've Learned!**",
+              "alt": "An image showing our course outline.",
+              "width": 1335,
+              "height": 214,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1044878,
+          "key": "bef8347a-437e-4fd0-b5e8-1162ba0aecd4",
+          "title": "Congratulations!",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bef8347a-437e-4fd0-b5e8-1162ba0aecd4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1044879,
+              "key": "68e934c5-73aa-4354-8fba-bd42e5ca033b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Congratulations!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1044880,
+              "key": "7ef6e85c-d761-451e-82f3-4448cbd4ca42",
+              "title": "ND9991 C03 L04 Congratulations",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "g81v_WTj5No",
+                "china_cdn_id": "g81v_WTj5No.mp4"
+              }
+            },
+            {
+              "id": 1044881,
+              "key": "a68dd922-41a9-442f-a977-a351086ef689",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## You Made It!\n\nWhat a wild ride! But I was glad we could take this journey together. I have every confidence that what you have learned here will take you to the next level! Now, go change the world!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.290 --> 00:00:04.030
+If you're developing software,
+
+00:00:04.030 --> 00:00:05.380
+you have a development process,
+
+00:00:05.380 --> 00:00:07.220
+whether you realize it or not.
+
+00:00:07.220 --> 00:00:12.100
+This process is made up of a series of meetings, communication,
+
+00:00:12.100 --> 00:00:15.550
+documentation, coding time, handoffs,
+
+00:00:15.550 --> 00:00:19.600
+testing, deployment, and hopefully some celebration every now and then.
+
+00:00:19.600 --> 00:00:23.290
+I'm showing you here the tail end of a development process after
+
+00:00:23.290 --> 00:00:27.845
+all the features have been groomed and are ready to be developed and released.
+
+00:00:27.845 --> 00:00:31.375
+Do you see some things in this list that you're doing manually right now,
+
+00:00:31.375 --> 00:00:33.250
+but wish you weren't?
+
+00:00:33.250 --> 00:00:35.575
+Anything you wish you were doing,
+
+00:00:35.575 --> 00:00:38.020
+but can't because it takes too long?
+
+00:00:38.020 --> 00:00:41.860
+Some things on this list might even bring up repressed memories
+
+00:00:41.860 --> 00:00:45.530
+of botched deployments and all-nighter rollbacks.
+
+00:00:45.530 --> 00:00:47.940
+This is not a smooth process.
+
+00:00:47.940 --> 00:00:53.990
+We humans are not amazing at consistency or reliability. I know.
+
+00:00:53.990 --> 00:00:56.165
+I'm not talking about you or I,
+
+00:00:56.165 --> 00:00:59.185
+it's the rest of them that we have to worry about.
+
+00:00:59.185 --> 00:01:03.315
+Hey, you know who is consistent and reliable?
+
+00:01:03.315 --> 00:01:06.160
+More of a what than a who.
+
+00:01:06.160 --> 00:01:08.690
+It's your CI/CD server.
+
+00:01:08.690 --> 00:01:11.870
+CI/CD could actually do most of these things for us,
+
+00:01:11.870 --> 00:01:17.095
+leaving us cloud developers with more time to devote to feature development.
+
+00:01:17.095 --> 00:01:20.060
+Code reviews could be enhanced by hints from
+
+00:01:20.060 --> 00:01:25.480
+static analysis tools to fix code smells and to simplify complex code.
+
+00:01:25.480 --> 00:01:28.290
+Merges are an easy win.
+
+00:01:28.290 --> 00:01:32.920
+Compiling and running can be automated with ease.
+
+00:01:32.920 --> 00:01:36.680
+When is the last time you ran a security audit on your code?
+
+00:01:36.680 --> 00:01:39.230
+With CI/CD, you can say,
+
+00:01:39.230 --> 00:01:41.795
+the last time I committed my code.
+
+00:01:41.795 --> 00:01:47.080
+Deploying to any environment is a cinch with CI/CD.
+
+00:01:47.080 --> 00:01:51.680
+Team testing can be replaced with automated acceptance tests.
+
+00:01:51.680 --> 00:01:55.820
+QA can focus on prevention instead of reaction.
+
+00:01:55.820 --> 00:02:00.095
+For client test, we can add automated smoke tests.
+
+00:02:00.095 --> 00:02:03.920
+Over time, you'll build up enough confidence that the client
+
+00:02:03.920 --> 00:02:08.480
+might even let go of the need to test extensively beforehand.
+
+00:02:08.480 --> 00:02:12.950
+Raise your hand if you love rolling back after a bad deploy.
+
+00:02:12.950 --> 00:02:15.925
+CI/CD is over there raising his hand right now.
+
+00:02:15.925 --> 00:02:21.350
+I'll include celebration in the automation list since it's such a good feeling
+
+00:02:21.350 --> 00:02:26.380
+to have a well oiled machine like this do so much for so little effort.
+
+00:02:26.380 --> 00:02:28.635
+Celebration is given.
+
+00:02:28.635 --> 00:02:33.455
+The only thing left on this list that CI/CD didn't improve was the coding.
+
+00:02:33.455 --> 00:02:35.750
+But trust me, CI/CD has
+
+00:02:35.750 --> 00:02:38.405
+far-reaching benefits that can influence
+
+00:02:38.405 --> 00:02:41.110
+even the requirements gathering and grooming process.
+
+00:02:41.110 --> 00:02:44.810
+So yeah, we'll count coding here too.
+

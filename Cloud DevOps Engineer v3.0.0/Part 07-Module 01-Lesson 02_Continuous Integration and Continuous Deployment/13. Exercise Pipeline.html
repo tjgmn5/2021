@@ -1,0 +1,261 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Pipeline</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Continuous Integration and Continuous Deployment</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Fundamentals of CICD.html">04. Fundamentals of CI/CD</a>
+    </li>
+    <li class="">
+      <a href="05. Fundamentals Quizzes.html">05. Fundamentals Quizzes</a>
+    </li>
+    <li class="">
+      <a href="06. Benefits of CICD.html">06. Benefits of CI/CD</a>
+    </li>
+    <li class="">
+      <a href="07. Exercise Benefits.html">07. Exercise: Benefits</a>
+    </li>
+    <li class="">
+      <a href="08. Solution Benefits .html">08. Solution: Benefits </a>
+    </li>
+    <li class="">
+      <a href="09. Best Practices.html">09. Best Practices</a>
+    </li>
+    <li class="">
+      <a href="10. Deployment Strategies.html">10. Deployment Strategies</a>
+    </li>
+    <li class="">
+      <a href="11. Blue Green Deployment.html">11. Blue Green Deployment</a>
+    </li>
+    <li class="">
+      <a href="12. Pipeline Building Blocks.html">12. Pipeline Building Blocks</a>
+    </li>
+    <li class="">
+      <a href="13. Exercise Pipeline.html">13. Exercise: Pipeline</a>
+    </li>
+    <li class="">
+      <a href="14. Solution Pipeline.html">14. Solution: Pipeline</a>
+    </li>
+    <li class="">
+      <a href="15. CICD Tools.html">15. CI/CD Tools</a>
+    </li>
+    <li class="">
+      <a href="16. Lesson Conclusion.html">16. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">13. Exercise: Pipeline</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="exercise-pipeline-building-blocks">Exercise: Pipeline Building Blocks</h2>
+<p>Create a diagram of a complete CI/CD pipeline including passing and failing branches.</p>
+<h3 id="instructions">Instructions:</h3>
+<ol>
+<li>Open your favorite diagraming or drawing application. <a href="https://www.diagrams.net/" rel="noopener noreferrer" target="_blank">Draw.io</a> and <a href="https://www.lucidchart.com/" rel="noopener noreferrer" target="_blank">LucidChart</a> are both great options. Even PowerPoint or Google Slides would do the trick. If all else fails, a piece of paper and a pencil would be fine.</li>
+<li>Think through the steps your code needs to take between check-in and deployment. Ask yourself, "What are all the things that need to be done?" Try your best to keep things fairly granular. </li>
+<li>Use shapes like circles and squares to represent stops along the journey to deployment. Label your shapes with one or two words to describe the jobs that need to be done. This doesn't need to be a formal flow-chart or UML diagram (unless you like that sort of thing). </li>
+<li>Connect the shapes to represent the sequence of events.</li>
+<li>Add in some branches in your diagram to represent failures. Think about what should happen in each failure and write that in.</li>
+<li>Test our your pipeline with a few imaginary scenarios to see how well it holds up. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Design the Pipeline</p></h3>
+  <div>
+  <div>
+    <h4>Task Description:</h4>
+    <p>We're going to design a pipeline!</p>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="9b381f86-012e-4353-9c68-86c27131613d--0">
+        <label for="9b381f86-012e-4353-9c68-86c27131613d--0"><p>Create Free Account in draw.io (if you don't have one already) or Another Design Tool of Your Choice.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="9b381f86-012e-4353-9c68-86c27131613d--1">
+        <label for="9b381f86-012e-4353-9c68-86c27131613d--1"><p>Start with a Blank Workspace.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="9b381f86-012e-4353-9c68-86c27131613d--2">
+        <label for="9b381f86-012e-4353-9c68-86c27131613d--2"><p>Design a CI/CD Pipeline Using Simple Shapes.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="9b381f86-012e-4353-9c68-86c27131613d--3">
+        <label for="9b381f86-012e-4353-9c68-86c27131613d--3"><p>Add Pass and Fail Decision Branches.</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Great job! You have designed your first CI/CD pipeline!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="14. Solution Pipeline.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('13. Exercise: Pipeline')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

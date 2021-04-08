@@ -1,0 +1,178 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.280 --> 00:00:07.545
+Hi, I'm Barron [inaudible] and I'm excited to be here with you to teach you about CI/CD,
+
+00:00:07.545 --> 00:00:10.440
+and all the amazing things that come with it.
+
+00:00:10.440 --> 00:00:12.960
+I got an early start with computers.
+
+00:00:12.960 --> 00:00:16.275
+When I was a kid, my parents brought home a Commodore 64,
+
+00:00:16.275 --> 00:00:18.870
+our first computer and video game system.
+
+00:00:18.870 --> 00:00:23.715
+The modern equivalent would be if dad brought home a new model of a PlayStation,
+
+00:00:23.715 --> 00:00:27.915
+except that the C64 was more than just a video game console.
+
+00:00:27.915 --> 00:00:30.760
+It had the basic programming language,
+
+00:00:30.760 --> 00:00:35.750
+and came with a thick spiral bound book that taught the language.
+
+00:00:35.750 --> 00:00:37.370
+As soon as I could read,
+
+00:00:37.370 --> 00:00:42.080
+I started devouring that book and getting every bit of knowledge I could.
+
+00:00:42.080 --> 00:00:44.675
+My best friend had an Apple computer,
+
+00:00:44.675 --> 00:00:47.300
+and we spent every weekend experimenting,
+
+00:00:47.300 --> 00:00:49.955
+programming, printing code, refactoring,
+
+00:00:49.955 --> 00:00:52.595
+and building tons of useless games.
+
+00:00:52.595 --> 00:00:54.380
+Well, not so useless,
+
+00:00:54.380 --> 00:00:56.960
+considering we're both still programmers and have
+
+00:00:56.960 --> 00:01:00.440
+both built pretty good careers on our weekend playtime.
+
+00:01:00.440 --> 00:01:03.620
+Through the years, I've managed to keep up with the changes in
+
+00:01:03.620 --> 00:01:07.000
+technology by trying to do my best to stay ahead of them.
+
+00:01:07.000 --> 00:01:10.205
+This usually makes me a bit of an early adopter.
+
+00:01:10.205 --> 00:01:13.970
+I don't typically mind the experimental nature of frameworks,
+
+00:01:13.970 --> 00:01:15.440
+and languages, and libraries,
+
+00:01:15.440 --> 00:01:18.605
+as long as I can eventually understand what's going on.
+
+00:01:18.605 --> 00:01:22.460
+Until I discovered the concept of build and deployment automation,
+
+00:01:22.460 --> 00:01:24.110
+I did what everybody else did.
+
+00:01:24.110 --> 00:01:26.885
+I compiled locally, made a zip file,
+
+00:01:26.885 --> 00:01:29.225
+uploaded it to some FTP server,
+
+00:01:29.225 --> 00:01:30.725
+logged into the server,
+
+00:01:30.725 --> 00:01:33.105
+unzipped it and configure the server.
+
+00:01:33.105 --> 00:01:35.195
+Funny. Now that I think of it,
+
+00:01:35.195 --> 00:01:38.360
+that was one of the less complicated scenarios.
+
+00:01:38.360 --> 00:01:43.100
+Then IDEs like Eclipse and Visual Studio came along and tried their best
+
+00:01:43.100 --> 00:01:48.295
+to abstract as programmers away from all the mess with publishing features.
+
+00:01:48.295 --> 00:01:49.790
+But it was still pretty much
+
+00:01:49.790 --> 00:01:54.020
+the worst deployment experience I can imagine. But it was all we knew.
+
+00:01:54.020 --> 00:01:58.130
+I was an early adopter of continuous integration when JetBrains,
+
+00:01:58.130 --> 00:02:00.785
+one of my favorite companies in the world,
+
+00:02:00.785 --> 00:02:04.020
+came out with TeamCity in 2006.
+
+00:02:04.020 --> 00:02:09.050
+TeamCity is still one of the most popular commercial continuous integration servers.
+
+00:02:09.050 --> 00:02:14.800
+It transformed the team I was working on in ways that I and my teammates didn't expect.
+
+00:02:14.800 --> 00:02:17.450
+We were all so frustrated with one another.
+
+00:02:17.450 --> 00:02:19.265
+We were stepping on each other's work,
+
+00:02:19.265 --> 00:02:22.205
+leaving broken test, the compile errors everywhere,
+
+00:02:22.205 --> 00:02:25.895
+pushing deploy responsibility just off to one soul,
+
+00:02:25.895 --> 00:02:28.255
+while the rest of us had nice weekends.
+
+00:02:28.255 --> 00:02:30.440
+When we introduced CI to the mix,
+
+00:02:30.440 --> 00:02:32.810
+we started to act as a team.
+
+00:02:32.810 --> 00:02:37.340
+It's crazy how one piece of software can calm such as savage beast,
+
+00:02:37.340 --> 00:02:41.434
+as a raging team of software developers at each other's throats.
+
+00:02:41.434 --> 00:02:45.439
+Since those days, I've seen this story repeat several times,
+
+00:02:45.439 --> 00:02:48.350
+and the rest of the world has caught up as you can tell.
+
+00:02:48.350 --> 00:02:51.740
+Nowadays, it's very odd to find a development team who
+
+00:02:51.740 --> 00:02:55.685
+doesn't have a build server to unify them, enforce transparency.
+
+00:02:55.685 --> 00:02:58.475
+Speaking for me, and my clients, and my teams,
+
+00:02:58.475 --> 00:03:02.915
+we don't write a single line of code until there is a CI server in place.
+
+00:03:02.915 --> 00:03:06.965
+With so many choices and so many advances to make things simpler,
+
+00:03:06.965 --> 00:03:09.960
+there are no excuses.
+

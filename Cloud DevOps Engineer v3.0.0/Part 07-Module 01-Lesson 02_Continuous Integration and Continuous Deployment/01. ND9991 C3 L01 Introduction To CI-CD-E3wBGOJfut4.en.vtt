@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.130 --> 00:00:04.650
+In this lesson, we're going go over the concepts that make up
+
+00:00:04.650 --> 00:00:09.090
+Continuous Integration and Continuous Deployment or CI/CD.
+
+00:00:09.090 --> 00:00:12.000
+We'll start out theoretical at first and then
+
+00:00:12.000 --> 00:00:14.840
+start to get very practical by the next lesson.
+
+00:00:14.840 --> 00:00:20.070
+We'll start with the fundamentals of CI/CD to give you a good foundation.
+
+00:00:20.070 --> 00:00:24.480
+Then we'll talk about the benefits of CI/CD to get you excited and how
+
+00:00:24.480 --> 00:00:29.025
+to communicate those technical benefits with non-technical colleagues.
+
+00:00:29.025 --> 00:00:32.445
+We'll talk about continuous delivery as a paradigm
+
+00:00:32.445 --> 00:00:36.495
+and how it relates to continuous integration and deployment.
+
+00:00:36.495 --> 00:00:40.325
+We'll go over some best practices for CI/CD,
+
+00:00:40.325 --> 00:00:44.350
+so that you won't have to repeat the same mistakes that I did starting out.
+
+00:00:44.350 --> 00:00:47.600
+We'll talk about some of the different deployment strategies out
+
+00:00:47.600 --> 00:00:51.595
+there and zero in on one that you can implement right away.
+
+00:00:51.595 --> 00:00:55.655
+We'll take a look at the building blocks of pipelines.
+
+00:00:55.655 --> 00:01:00.200
+Finally, we'll look at the different CI/CD tools out on the market.
+
+00:01:00.200 --> 00:01:01.760
+It's time to get rolling,
+
+00:01:01.760 --> 00:01:05.305
+grab a caffeinated beverage of your choice and get ready.
+
+00:01:05.305 --> 00:01:07.960
+You're about to level up your game.
+

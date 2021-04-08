@@ -1,0 +1,202 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.660 --> 00:00:06.120
+What is continuous delivery?
+
+00:00:06.120 --> 00:00:10.320
+Continuous delivery is an engineering paradigm in which
+
+00:00:10.320 --> 00:00:14.565
+teams produce and release value in short cycles.
+
+00:00:14.565 --> 00:00:18.090
+I didn't mention tools, processes, or methodologies.
+
+00:00:18.090 --> 00:00:21.270
+It's a paradigm, it's a way of thinking about things.
+
+00:00:21.270 --> 00:00:25.755
+You might be wondering if continuous delivery is just a paradigm,
+
+00:00:25.755 --> 00:00:28.545
+where does continuous integration fit?
+
+00:00:28.545 --> 00:00:34.020
+Continuous integration is the practice of merging all developers working copies,
+
+00:00:34.020 --> 00:00:37.110
+to a shared main line several times a day.
+
+00:00:37.110 --> 00:00:40.160
+Continuous integration or CI,
+
+00:00:40.160 --> 00:00:44.105
+handles everything that has to do with code, compiling,
+
+00:00:44.105 --> 00:00:47.075
+unit tests, static analysis,
+
+00:00:47.075 --> 00:00:51.785
+dependency vulnerability testing, using code to generate an artifact.
+
+00:00:51.785 --> 00:00:54.110
+It's all about the zeros and ones.
+
+00:00:54.110 --> 00:00:56.180
+If it has to do with code,
+
+00:00:56.180 --> 00:00:58.300
+it has to do with CI.
+
+00:00:58.300 --> 00:01:00.105
+What about CD?
+
+00:01:00.105 --> 00:01:02.619
+Now to be clear, when I say CD,
+
+00:01:02.619 --> 00:01:07.010
+I mean continuous deployment, not continuous delivery.
+
+00:01:07.010 --> 00:01:11.465
+Continuous deployment is a software engineering approach
+
+00:01:11.465 --> 00:01:16.070
+in which value is delivered frequently through automated deployments.
+
+00:01:16.070 --> 00:01:21.125
+Continuous deployment handles everything that has to do with deployment.
+
+00:01:21.125 --> 00:01:25.640
+Creating infrastructure, provisioning servers, copying files,
+
+00:01:25.640 --> 00:01:28.205
+promoting to production, smoke tests,
+
+00:01:28.205 --> 00:01:30.290
+rollbacks, all of those things.
+
+00:01:30.290 --> 00:01:35.600
+When you think of CI, think of code and when you think of CD, think of deployments.
+
+00:01:35.600 --> 00:01:39.215
+One just feeds naturally into the other.
+
+00:01:39.215 --> 00:01:42.634
+Now, how are these different from continuous delivery?
+
+00:01:42.634 --> 00:01:46.385
+Remember that continuous delivery is a mindset or paradigm,
+
+00:01:46.385 --> 00:01:47.920
+not a set of tools.
+
+00:01:47.920 --> 00:01:51.410
+That mindset contains and informs and
+
+00:01:51.410 --> 00:01:56.440
+enhances the concepts of continuous integration and deployment.
+
+00:01:56.440 --> 00:02:03.775
+CI and CD, work so well together that you hardly hear one mentioned without the other.
+
+00:02:03.775 --> 00:02:05.735
+Once automation is in place,
+
+00:02:05.735 --> 00:02:09.425
+CI and CD work like a pipeline of sorts.
+
+00:02:09.425 --> 00:02:15.395
+A pipeline's job is to deliver goods or materials from one place to another.
+
+00:02:15.395 --> 00:02:19.325
+That's appropriate in the case of CI and CD,
+
+00:02:19.325 --> 00:02:22.985
+since we're trying to get features into users hands.
+
+00:02:22.985 --> 00:02:25.525
+However, in the case of CI/CD,
+
+00:02:25.525 --> 00:02:27.445
+the pipeline is special,
+
+00:02:27.445 --> 00:02:33.280
+since the materials get transformed from one state to another in the journey.
+
+00:02:33.280 --> 00:02:38.540
+It starts with the build which is ultimately meant to produce an artifact.
+
+00:02:38.540 --> 00:02:44.150
+An artifact is something that can be deployed and used without any further modification.
+
+00:02:44.150 --> 00:02:47.630
+Artifacts are typically created at the beginning of
+
+00:02:47.630 --> 00:02:51.800
+the pipeline and then used mostly at the end of the pipeline.
+
+00:02:51.800 --> 00:02:56.270
+Then, the pipeline continues with testing and analysis to make sure that
+
+00:02:56.270 --> 00:03:01.060
+the code that produce the artifact is of the right level of quality.
+
+00:03:01.060 --> 00:03:05.000
+Then when we're sure the code is fully integrated and validated,
+
+00:03:05.000 --> 00:03:06.845
+it's ready to be deployed.
+
+00:03:06.845 --> 00:03:12.245
+Part of deploying an artifact is creating and provisioning the infrastructure.
+
+00:03:12.245 --> 00:03:16.190
+Ideally, we're doing this with infrastructure as code.
+
+00:03:16.190 --> 00:03:20.425
+To provision something, just means to give it what it needs.
+
+00:03:20.425 --> 00:03:22.595
+In the CI/CD pipeline,
+
+00:03:22.595 --> 00:03:26.690
+we provision our infrastructure by setting up servers and
+
+00:03:26.690 --> 00:03:31.265
+resources with the needed updates, packages, and configurations.
+
+00:03:31.265 --> 00:03:34.475
+Infrastructure as code is just the management of
+
+00:03:34.475 --> 00:03:38.270
+infrastructure using code instead of UI tools.
+
+00:03:38.270 --> 00:03:40.670
+You learned all about that in the previous course.
+
+00:03:40.670 --> 00:03:44.494
+This is where it is really going to become important.
+
+00:03:44.494 --> 00:03:49.610
+If you think about it, our CI/CD pipeline behaves more like a value factory.
+
+00:03:49.610 --> 00:03:52.250
+You give it raw materials on one side,
+
+00:03:52.250 --> 00:03:54.455
+and in this case that's code,
+
+00:03:54.455 --> 00:03:57.370
+and it gives you value on the other side.
+
+00:03:57.370 --> 00:03:59.765
+With a pipeline or factory like this,
+
+00:03:59.765 --> 00:04:05.150
+your team can release and release and release and never break a sweat.
+
+00:04:05.150 --> 00:04:10.440
+We'll look more at the benefits of CI/CD in the next section.
+

@@ -1,0 +1,154 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.310 --> 00:00:06.405
+Before anybody was talking about CI/CD or continuous delivery,
+
+00:00:06.405 --> 00:00:11.955
+developers around the world were deploying software and delivering tremendous value.
+
+00:00:11.955 --> 00:00:16.410
+But the process to get from concept to cash was often laborious.
+
+00:00:16.410 --> 00:00:18.450
+Developers knew it could be better,
+
+00:00:18.450 --> 00:00:22.065
+and often they try their hands at automating this and that.
+
+00:00:22.065 --> 00:00:23.940
+Looking back over history,
+
+00:00:23.940 --> 00:00:28.820
+seeing the advancements from independent developers stretching for something better,
+
+00:00:28.820 --> 00:00:32.100
+the birth of CI/CD and continuous delivery was not
+
+00:00:32.100 --> 00:00:35.925
+really a onetime event from some super genius.
+
+00:00:35.925 --> 00:00:38.070
+It was more like synchronized swimming,
+
+00:00:38.070 --> 00:00:40.740
+where everyone arrived at the same conclusion,
+
+00:00:40.740 --> 00:00:42.075
+at the same time.
+
+00:00:42.075 --> 00:00:48.215
+Continuous delivery was just the next natural step in our evolution as an industry.
+
+00:00:48.215 --> 00:00:50.750
+Unfortunately, when you search around for
+
+00:00:50.750 --> 00:00:53.930
+definitions and comparisons of continuous delivery,
+
+00:00:53.930 --> 00:00:56.839
+continuous integration and continuous deployment,
+
+00:00:56.839 --> 00:01:00.040
+you get plenty of conflicting views,
+
+00:01:00.040 --> 00:01:05.120
+about all people can agree on is that they're all continuous.
+
+00:01:05.120 --> 00:01:08.960
+So here's what I'm going to do. I'm going to give you my definitions,
+
+00:01:08.960 --> 00:01:12.005
+which are influenced by the developer community and
+
+00:01:12.005 --> 00:01:17.405
+my own experience in living in all three paradigms for more than 15 years.
+
+00:01:17.405 --> 00:01:20.300
+This is the definition I'm going to use throughout the course.
+
+00:01:20.300 --> 00:01:22.100
+So you can count on some consistency,
+
+00:01:22.100 --> 00:01:24.390
+at least here in this course.
+
+00:01:24.390 --> 00:01:25.985
+When you're done with this course,
+
+00:01:25.985 --> 00:01:28.595
+you'll be free to adopt other people's views,
+
+00:01:28.595 --> 00:01:31.770
+but at least you'll have a strong foundation.
+
+00:01:31.780 --> 00:01:36.485
+I view continuous delivery as a mindset more than a tool.
+
+00:01:36.485 --> 00:01:42.289
+It's an engineering paradigm in which teams produce and release value in short cycles.
+
+00:01:42.289 --> 00:01:45.845
+To me, this can be done without tools and automation.
+
+00:01:45.845 --> 00:01:50.965
+It's more about your approach to the work more than the work itself.
+
+00:01:50.965 --> 00:01:53.930
+The concept of continuous integration fits
+
+00:01:53.930 --> 00:01:57.815
+beautifully inside of the continuous delivery paradigm.
+
+00:01:57.815 --> 00:02:01.430
+Continuous Integration is the practice of merging all developers
+
+00:02:01.430 --> 00:02:05.545
+working copies to a shared main line several times a day.
+
+00:02:05.545 --> 00:02:09.470
+The simple act of merging as a team opens the door to
+
+00:02:09.470 --> 00:02:14.555
+many cool possibilities like triggering automatic compile sequences,
+
+00:02:14.555 --> 00:02:17.690
+test runs, static analysis of code,
+
+00:02:17.690 --> 00:02:20.000
+and the list goes on and on.
+
+00:02:20.000 --> 00:02:23.960
+Like I said, you can deliver continuously without tools,
+
+00:02:23.960 --> 00:02:26.750
+but CI tools sure make it easier,
+
+00:02:26.750 --> 00:02:29.005
+faster, and more fun.
+
+00:02:29.005 --> 00:02:35.225
+Continuous deployment also fits really nicely in the continuous delivery paradigm,
+
+00:02:35.225 --> 00:02:37.460
+since it's a software engineering approach in
+
+00:02:37.460 --> 00:02:41.480
+which value is delivered frequently through automated deployments.
+
+00:02:41.480 --> 00:02:45.920
+Where continuous delivery differs from the other two is in its scope.
+
+00:02:45.920 --> 00:02:49.160
+You see a mindset of continuous delivery effects and
+
+00:02:49.160 --> 00:02:52.820
+colors every other part of a team's development process,
+
+00:02:52.820 --> 00:02:56.510
+even while gathering requirements and grooming features,
+
+00:02:56.510 --> 00:03:00.330
+before even one line of code has been written.
+

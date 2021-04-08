@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.220 --> 00:00:05.460
+Some of the tools that we'll be using in this course are,
+
+00:00:05.460 --> 00:00:08.340
+an editor, you can choose your own or if you'd like,
+
+00:00:08.340 --> 00:00:10.320
+you can use Visual Studio Code.
+
+00:00:10.320 --> 00:00:13.155
+We'll also be using AWS,
+
+00:00:13.155 --> 00:00:15.900
+we'll also be using CircleCI,
+
+00:00:15.900 --> 00:00:18.195
+and we'll be using GitHub.
+
+00:00:18.195 --> 00:00:23.440
+I've left some links for you down below the video where you can get these tools setup.
+

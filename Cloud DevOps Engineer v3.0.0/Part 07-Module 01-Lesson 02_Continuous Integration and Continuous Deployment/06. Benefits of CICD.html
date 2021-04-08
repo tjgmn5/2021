@@ -1,0 +1,402 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Benefits of CI/CD</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Continuous Integration and Continuous Deployment</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Fundamentals of CICD.html">04. Fundamentals of CI/CD</a>
+    </li>
+    <li class="">
+      <a href="05. Fundamentals Quizzes.html">05. Fundamentals Quizzes</a>
+    </li>
+    <li class="">
+      <a href="06. Benefits of CICD.html">06. Benefits of CI/CD</a>
+    </li>
+    <li class="">
+      <a href="07. Exercise Benefits.html">07. Exercise: Benefits</a>
+    </li>
+    <li class="">
+      <a href="08. Solution Benefits .html">08. Solution: Benefits </a>
+    </li>
+    <li class="">
+      <a href="09. Best Practices.html">09. Best Practices</a>
+    </li>
+    <li class="">
+      <a href="10. Deployment Strategies.html">10. Deployment Strategies</a>
+    </li>
+    <li class="">
+      <a href="11. Blue Green Deployment.html">11. Blue Green Deployment</a>
+    </li>
+    <li class="">
+      <a href="12. Pipeline Building Blocks.html">12. Pipeline Building Blocks</a>
+    </li>
+    <li class="">
+      <a href="13. Exercise Pipeline.html">13. Exercise: Pipeline</a>
+    </li>
+    <li class="">
+      <a href="14. Solution Pipeline.html">14. Solution: Pipeline</a>
+    </li>
+    <li class="">
+      <a href="15. CICD Tools.html">15. CI/CD Tools</a>
+    </li>
+    <li class="">
+      <a href="16. Lesson Conclusion.html">16. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">06. Benefits of CI/CD</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="benefits-of-cicd">Benefits of CI/CD</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L01 Benefits Of CI-CD</p></h3>
+  <video controls>
+  <source src="06. ND9991 C03 L01 Benefits Of CI-CD-yl49rMpMu9s.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="06. ND9991 C03 L01 Benefits Of CI-CD-yl49rMpMu9s.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="why-is-translation-important">Why Is Translation Important?</h3>
+<p><em>If the decision-makers in your company can't understand why something is important or adds value, they might not approve it. This usually isn't because they're ignorant or trying to be difficult, this is often because they don't understand how the technical changes translate into benefits for the company. Using language they understand will make everyone's lives better and easier!</em></p>
+<table>
+<thead>
+<tr>
+<th id="**technical_language**" style="text-align:left;"><strong>Technical Language</strong></th>
+<th id="**value**"><strong>Value</strong></th>
+<th id="**translation**" style="text-align:left;"><strong>Translation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">Catch Compile Errors After Merge</td>
+<td>Reduce Cost</td>
+<td style="text-align:left;">Less developer time on issues from new developer code</td>
+</tr>
+<tr>
+<td style="text-align:left;">Catch Unit Test Failures</td>
+<td>Avoid Cost</td>
+<td style="text-align:left;">Less bugs in production and less time in testing</td>
+</tr>
+<tr>
+<td style="text-align:left;">Detect Security Vulnerabilities</td>
+<td>Avoid Cost</td>
+<td style="text-align:left;">Prevent embarrassing or costly security holes</td>
+</tr>
+<tr>
+<td style="text-align:left;">Automate Infrastructure Creation</td>
+<td>Avoid Cost</td>
+<td style="text-align:left;">Less human error, Faster deployments</td>
+</tr>
+<tr>
+<td style="text-align:left;">Automate Infrastructure Cleanup</td>
+<td>Reduce Cost</td>
+<td style="text-align:left;">Less infrastructure costs from unused resources</td>
+</tr>
+<tr>
+<td style="text-align:left;">Faster and More Frequent Production Deployments</td>
+<td>Increase Revenue</td>
+<td style="text-align:left;">New value-generating features released more quickly</td>
+</tr>
+<tr>
+<td style="text-align:left;">Deploy to Production Without Manual Checks</td>
+<td>Increase Revenue</td>
+<td style="text-align:left;">Less time to market</td>
+</tr>
+<tr>
+<td style="text-align:left;">Automated Smoke Tests</td>
+<td>Protect Revenue</td>
+<td style="text-align:left;">Reduced downtime from a deploy-related crash or major bug</td>
+</tr>
+<tr>
+<td style="text-align:left;">Automated Rollback Triggered by Job Failure</td>
+<td>Protect Revenue</td>
+<td style="text-align:left;">Quick undo to return production to working state</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Business Benefit Matching</p></h3>
+  <div>
+  <p><strong>QUIZ QUESTION:</strong>: <p>Match technical benefits to business benefits.</p></p>
+  <p><strong>ANSWER CHOICES:</strong></p>
+  <button class="btn btn-primary"><p>Less time to market</p></button>
+  <button class="btn btn-primary"><p>Less bugs in production and less time in testing</p></button>
+  <button class="btn btn-primary"><p>Prevent embarrassing or costly security holes</p></button>
+  <button class="btn btn-primary"><p>Less infrastructure costs from unused resources</p></button>
+  <button class="btn btn-primary"><p>Reduced downtime from a deploy-related crash or major bug</p></button>
+  <button class="btn btn-primary"><p>Less developer time on issues from new developer code</p></button>
+  <button class="btn btn-primary"><p>Quick undo to return production to working state</p></button>
+  <button class="btn btn-primary"><p>Less human error, Faster deployments</p></button>
+
+  <br><br>
+
+  <table class="table">
+    <tr class="thead-dark table-hover">
+      <th>
+        <p>Technical Benefit</p>
+      </th>
+      <th>
+        <p>Business Benefit</p>
+      </th>
+    </tr>
+
+    <tr>
+      <td><p>Catch Compile Errors After Merge</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>Catch Unit Test Failures</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>Automate Infrastructure Creation</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>Deploy to Production Without Manual Checks</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>Automated Smoke Tests</p></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+
+    <table class="table">
+      <tr class="thead-dark table-hover">
+        <th>
+          <p>Technical Benefit</p>
+        </th>
+        <th>
+          <p>Business Benefit</p>
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Deploy to Production Without Manual Checks</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Less time to market</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Catch Unit Test Failures</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Less bugs in production and less time in testing</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Automated Smoke Tests</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Reduced downtime from a deploy-related crash or major bug</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Catch Compile Errors After Merge</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Less developer time on issues from new developer code</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Automate Infrastructure Creation</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Less human error, Faster deployments</p></button>
+        </td>
+      </tr>
+    </table>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="further-reading">Further Reading</h3>
+<ul>
+<li>Read more about <a href="https://blackswanfarming.com/value-a-framework-for-thinking/" rel="noopener noreferrer" target="_blank">Black Swan Farming's "Value Framework"</a>.</li>
+<li>Check out Atlassian's <a href="https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment" rel="noopener noreferrer" target="_blank">great article</a> on the benefits of CI/CD.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="07. Exercise Benefits.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Benefits of CI/CD')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

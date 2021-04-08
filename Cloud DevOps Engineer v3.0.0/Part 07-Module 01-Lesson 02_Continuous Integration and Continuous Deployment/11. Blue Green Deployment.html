@@ -1,0 +1,356 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blue Green Deployment</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Continuous Integration and Continuous Deployment</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Big Picture.html">02. Big Picture</a>
+    </li>
+    <li class="">
+      <a href="03. Intuition.html">03. Intuition</a>
+    </li>
+    <li class="">
+      <a href="04. Fundamentals of CICD.html">04. Fundamentals of CI/CD</a>
+    </li>
+    <li class="">
+      <a href="05. Fundamentals Quizzes.html">05. Fundamentals Quizzes</a>
+    </li>
+    <li class="">
+      <a href="06. Benefits of CICD.html">06. Benefits of CI/CD</a>
+    </li>
+    <li class="">
+      <a href="07. Exercise Benefits.html">07. Exercise: Benefits</a>
+    </li>
+    <li class="">
+      <a href="08. Solution Benefits .html">08. Solution: Benefits </a>
+    </li>
+    <li class="">
+      <a href="09. Best Practices.html">09. Best Practices</a>
+    </li>
+    <li class="">
+      <a href="10. Deployment Strategies.html">10. Deployment Strategies</a>
+    </li>
+    <li class="">
+      <a href="11. Blue Green Deployment.html">11. Blue Green Deployment</a>
+    </li>
+    <li class="">
+      <a href="12. Pipeline Building Blocks.html">12. Pipeline Building Blocks</a>
+    </li>
+    <li class="">
+      <a href="13. Exercise Pipeline.html">13. Exercise: Pipeline</a>
+    </li>
+    <li class="">
+      <a href="14. Solution Pipeline.html">14. Solution: Pipeline</a>
+    </li>
+    <li class="">
+      <a href="15. CICD Tools.html">15. CI/CD Tools</a>
+    </li>
+    <li class="">
+      <a href="16. Lesson Conclusion.html">16. Lesson Conclusion</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">11. Blue Green Deployment</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="blue-green-deployment">Blue Green Deployment</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND9991 C03 L01 Blue Green Deployment</p></h3>
+  <video controls>
+  <source src="11. ND9991 C03 L01 Blue Green Deployment-zHeg-3jrq8E.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="11. ND9991 C03 L01 Blue Green Deployment-zHeg-3jrq8E.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="blue-green-deployments">Blue Green Deployments</h3>
+<h4 id="the-router">The Router</h4>
+<table>
+<thead>
+<tr>
+<th id="**router_option**" style="text-align:left;"><strong>Router Option</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">Load Balancer</td>
+<td style="text-align:left;">Instant switch for FE or BE, ideal router in most cases</td>
+</tr>
+<tr>
+<td style="text-align:left;">CDN</td>
+<td style="text-align:left;">Instant switch for front-end web apps.</td>
+</tr>
+<tr>
+<td style="text-align:left;">DNS</td>
+<td style="text-align:left;">A bit slow because of DNS propagation.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="common-jobs">Common Jobs</h4>
+<table>
+<thead>
+<tr>
+<th id="**step**" style="text-align:left;"><strong>Step</strong></th>
+<th id="**description**" style="text-align:left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">Integrate Code in a Build</td>
+<td style="text-align:left;">Compile and create artifact</td>
+</tr>
+<tr>
+<td style="text-align:left;">Run Tests</td>
+<td style="text-align:left;">Run unit and/or integration tests</td>
+</tr>
+<tr>
+<td style="text-align:left;">Ensure Infrastructure is Present</td>
+<td style="text-align:left;">Create green infrastructure</td>
+</tr>
+<tr>
+<td style="text-align:left;">Provision the Environment</td>
+<td style="text-align:left;">Configure green instance, migrate DB, etc</td>
+</tr>
+<tr>
+<td style="text-align:left;">Deploy Artifact</td>
+<td style="text-align:left;">Copy artifact files to instance</td>
+</tr>
+<tr>
+<td style="text-align:left;">Run Smoke Tests</td>
+<td style="text-align:left;">Run a few tests that don't impact the prod server</td>
+</tr>
+<tr>
+<td style="text-align:left;">Perform Rollback if Failure</td>
+<td style="text-align:left;">Rollback here is more of a cleanup of green</td>
+</tr>
+<tr>
+<td style="text-align:left;">Switch Router</td>
+<td style="text-align:left;">Redirect traffic to new version</td>
+</tr>
+<tr>
+<td style="text-align:left;">Run Sanity Test</td>
+<td style="text-align:left;">Run a few tests that don't impact the prod server</td>
+</tr>
+<tr>
+<td style="text-align:left;">Perform Rollback If Failure</td>
+<td style="text-align:left;">Rollback here is switching the router back to blue and cleaning up green</td>
+</tr>
+<tr>
+<td style="text-align:left;">Destroy Old Release Environment?</td>
+<td style="text-align:left;">Clean up blue env <em>(optional)</em></td>
+</tr>
+<tr>
+<td style="text-align:left;">Notify The Team (Successful)</td>
+<td style="text-align:left;">Celebrate!</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Blue Green Sequence</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Select the best sequence for a Blue Green Deployment.</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1594697597236" name="1044902" id="a1594697597236">
+        <label for="a1594697597236"><p>Compile, Unit Tests, Provision, Sanity Test, Deploy, Switch the Router, Smoke Tests, Notify Team of Success. Destroy Old Environment</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1594697625523" name="1044902" id="a1594697625523">
+        <label for="a1594697625523"><p>Compile, Unit Tests, Provision, Deploy, Smoke Tests, Switch the Router, Sanity Test, Destroy Old Environment, Notify Team of Success</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1594697626220" name="1044902" id="a1594697626220">
+        <label for="a1594697626220"><p>Compile, Unit Tests, Provision, Deploy, Switch the Router, Destroy Old Environment, Smoke Tests, Notify Team of Success</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1594697626788" name="1044902" id="a1594697626788">
+        <label for="a1594697626788"><p>Compile, Unit Tests, Provision, Deploy, Smoke Tests, Switch the Router, Destroy Old Environment, Notify Team of Success</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Compile, Unit Tests, Provision, Deploy, Smoke Tests, Switch the Router, Sanity Test, Destroy Old Environment, Notify Team of Success
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Reflect</p></h3>
+  <div>
+  <p><strong>QUESTION: </strong></p>
+  <p>Imagine a company you'd like to work for (or currently work for) and a team you'd like to work on. What sort of router might that team use to manage the switch from one prod env to another? It might be a load balancer or some other mechanism.</p>
+
+  <details>
+    <summary><strong>ANSWER:</strong></summary>
+    <p><p>There are so many ways to implement the "router" in Blue Green Deployment. The main thing is that we need a way to have both environments live so that we can test before making the switch. </p></p>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="12. Pipeline Building Blocks.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('11. Blue Green Deployment')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

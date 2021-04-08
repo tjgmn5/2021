@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.170
+CI/CD isn't for every team,
+
+00:00:04.170 --> 00:00:07.275
+but I dare say it is for most teams.
+
+00:00:07.275 --> 00:00:09.040
+Let's try a quick assessment.
+
+00:00:09.040 --> 00:00:15.000
+Get out a pen and paper and mark with an X for every question you can answer with a yes.
+
+00:00:15.000 --> 00:00:19.275
+Do you invest more time developing software than coding it?
+
+00:00:19.275 --> 00:00:26.495
+You know it. Do you waste time on merge issues every time you finish a feature?
+
+00:00:26.495 --> 00:00:31.535
+Yes. Does your code get lost because of botched merges?
+
+00:00:31.535 --> 00:00:33.575
+Unfortunately, yes.
+
+00:00:33.575 --> 00:00:36.890
+Does your unit test suite gets skipped often?
+
+00:00:36.890 --> 00:00:40.550
+Does it have failing tests from days or weeks ago?
+
+00:00:40.550 --> 00:00:43.565
+Are you wondering what a unit test is?
+
+00:00:43.565 --> 00:00:48.035
+Do slow deployments make you miss deadlines?
+
+00:00:48.035 --> 00:00:53.880
+Is there a constant friction between ops and development departments?
+
+00:00:54.980 --> 00:01:00.890
+There's only one person know how to deploy a system the right way,
+
+00:01:00.890 --> 00:01:03.260
+are you that right person?
+
+00:01:03.260 --> 00:01:08.470
+Are deployments dreaded by the team or are they dreaded by you?
+
+00:01:08.470 --> 00:01:12.170
+Now be honest, how many X's do you have on your paper?
+
+00:01:12.170 --> 00:01:14.090
+If you have more than one,
+
+00:01:14.090 --> 00:01:16.855
+I'd say CI/CD is right for your team.
+
+00:01:16.855 --> 00:01:18.890
+If you have no X's,
+
+00:01:18.890 --> 00:01:23.990
+I'd say you couldn't find a pen or your team is made up of super humans.
+
+00:01:23.990 --> 00:01:26.720
+Now since super humans only exists in movies,
+
+00:01:26.720 --> 00:01:30.050
+it's safe to say, you've come to the right place.
+
+00:01:30.050 --> 00:01:34.435
+Now that I've painted a beautiful Utopian picture of CI/CD,
+
+00:01:34.435 --> 00:01:40.105
+I'd be irresponsible if I didn't throw a little mud on it in the right places.
+
+00:01:40.105 --> 00:01:43.550
+Before starting down the road of CI/CD for your team,
+
+00:01:43.550 --> 00:01:45.635
+you should definitely count the costs.
+
+00:01:45.635 --> 00:01:47.855
+There may be a few taxes to pay.
+
+00:01:47.855 --> 00:01:54.595
+Let's take a look at a few things that you might need to give up if you adopt CI/CD.
+
+00:01:54.595 --> 00:01:58.144
+Since CI/CD will be in charge of deployments,
+
+00:01:58.144 --> 00:02:02.090
+you should definitely give up manual deployments altogether.
+
+00:02:02.090 --> 00:02:06.605
+Automation doesn't play nice with manual processes.
+
+00:02:06.605 --> 00:02:10.180
+Your infrastructure as code will be handling provisioning now.
+
+00:02:10.180 --> 00:02:14.875
+So, no more modification of environment settings manually.
+
+00:02:14.875 --> 00:02:18.830
+You'll need to start showing some more love to your unit test suite.
+
+00:02:18.830 --> 00:02:23.850
+No more neglecting and leaving them to fail for days or weeks.
+
+00:02:24.170 --> 00:02:27.575
+Although I know it's not you doing this,
+
+00:02:27.575 --> 00:02:29.690
+but let's say we're asking for a friend,
+
+00:02:29.690 --> 00:02:35.135
+no more leaving broken code in place for other developers to stumble upon.
+
+00:02:35.135 --> 00:02:39.289
+CI/CD requires a high level of discipline.
+
+00:02:39.289 --> 00:02:46.505
+This is going to require your entire team to level up and develop some new disciplines.
+
+00:02:46.505 --> 00:02:50.480
+Adding CI/CD to your team means that you're going to need to
+
+00:02:50.480 --> 00:02:55.265
+acquire some additional skills to maintain and extend the system.
+
+00:02:55.265 --> 00:02:58.445
+Now that being said, I really do think it's worth it.
+
+00:02:58.445 --> 00:03:00.105
+You're still here with me,
+
+00:03:00.105 --> 00:03:02.980
+so, I take it you agree.
+

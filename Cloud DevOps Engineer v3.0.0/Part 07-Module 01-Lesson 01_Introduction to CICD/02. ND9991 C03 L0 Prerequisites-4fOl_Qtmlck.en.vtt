@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.280 --> 00:00:04.980
+I'm so glad you're here to learn about cloud development.
+
+00:00:04.980 --> 00:00:07.650
+The world needs people like you who are willing to give
+
+00:00:07.650 --> 00:00:10.515
+up their valuable time and learn a new skill.
+
+00:00:10.515 --> 00:00:14.895
+Aspiring to be a cloud developer is certainly no small goal,
+
+00:00:14.895 --> 00:00:17.625
+but it will definitely be worth all the work.
+
+00:00:17.625 --> 00:00:20.580
+I really want you to succeed and there are few things you
+
+00:00:20.580 --> 00:00:23.925
+should already know how to do before you start this course.
+
+00:00:23.925 --> 00:00:25.995
+If you don't have these things mastered,
+
+00:00:25.995 --> 00:00:28.920
+you might struggle in my course and I would rather you set
+
+00:00:28.920 --> 00:00:32.535
+yourself up for success as much as possible.
+
+00:00:32.535 --> 00:00:36.040
+I'll just run through the list quickly so you're aware.
+
+00:00:36.040 --> 00:00:40.380
+If you need to pause here and take some time to learn or re-learn something,
+
+00:00:40.380 --> 00:00:44.025
+no worries at all, I'll be right here when you get back.
+
+00:00:44.025 --> 00:00:47.225
+Here's what you need to stay afloat in this course.
+
+00:00:47.225 --> 00:00:49.415
+Experience with front end development
+
+00:00:49.415 --> 00:00:52.610
+using HTML and JavaScript, it's going to help a lot.
+
+00:00:52.610 --> 00:00:55.870
+Experience using version control using Git.
+
+00:00:55.870 --> 00:01:01.165
+Experience with back-end development of an application in AWS.
+
+00:01:01.165 --> 00:01:04.535
+Knowing how to use the Linux command line.
+
+00:01:04.535 --> 00:01:08.495
+The ability to create a key-pair from EC2.
+
+00:01:08.495 --> 00:01:14.335
+The ability to create an AWS IAM user with programmatic access.
+
+00:01:14.335 --> 00:01:20.640
+Being able to use PostgreSQL database in either AWS, RDS or locally.
+
