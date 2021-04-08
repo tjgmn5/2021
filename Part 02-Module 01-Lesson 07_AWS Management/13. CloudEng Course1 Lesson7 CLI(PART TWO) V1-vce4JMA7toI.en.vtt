@@ -1,0 +1,262 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.270
+Let's see the AWS CLI in action.
+
+00:00:03.270 --> 00:00:06.484
+I'm on a Mac, so I've navigated to a terminal window.
+
+00:00:06.485 --> 00:00:10.380
+Now, I'm going to demonstrate using the CLI to access and
+
+00:00:10.380 --> 00:00:14.595
+manage AWS services running in my account from the command line.
+
+00:00:14.595 --> 00:00:16.830
+I've already downloaded, installed,
+
+00:00:16.829 --> 00:00:18.779
+and configured the CLI.
+
+00:00:18.780 --> 00:00:22.140
+I'm going to show you the version that I'm running.
+
+00:00:22.140 --> 00:00:26.399
+So the command is AWS minus-minus version.
+
+00:00:26.399 --> 00:00:30.074
+So this is just a quick look showing the version.
+
+00:00:30.074 --> 00:00:34.799
+Next, let's look at the EC2 instances running in my account.
+
+00:00:34.799 --> 00:00:36.914
+So this is the command.
+
+00:00:36.914 --> 00:00:39.384
+First, you use AWS,
+
+00:00:39.384 --> 00:00:41.265
+then you use the service.
+
+00:00:41.265 --> 00:00:43.005
+In this case, EC2,
+
+00:00:43.005 --> 00:00:44.505
+and then the command.
+
+00:00:44.505 --> 00:00:46.730
+In this case, describe instances.
+
+00:00:46.729 --> 00:00:51.259
+So this is going to list all of the instances running in my account.
+
+00:00:51.259 --> 00:00:53.479
+So let me scroll back up.
+
+00:00:53.479 --> 00:00:56.829
+I have three instances currently running.
+
+00:00:56.829 --> 00:01:01.054
+So it shows the instance state for monitoring,
+
+00:01:01.054 --> 00:01:03.170
+it shows the public DNS name,
+
+00:01:03.170 --> 00:01:11.060
+lunchtime, IP address, it shows a lot of information related to your EC2 instances.
+
+00:01:11.060 --> 00:01:13.070
+So let me scroll back down.
+
+00:01:13.069 --> 00:01:16.819
+Next, let's look at starting an EC2 instance.
+
+00:01:16.819 --> 00:01:18.679
+So from the command line,
+
+00:01:18.680 --> 00:01:21.020
+if you have the instance ID,
+
+00:01:21.019 --> 00:01:24.560
+you can actually start or stop an instance.
+
+00:01:24.560 --> 00:01:26.629
+So this would be the command.
+
+00:01:26.629 --> 00:01:28.694
+You would use AWS,
+
+00:01:28.694 --> 00:01:31.889
+the service name, the command, in this case,
+
+00:01:31.890 --> 00:01:38.715
+start instances, and then the parameter for instance IDs, and the value.
+
+00:01:38.715 --> 00:01:41.415
+So let's click return.
+
+00:01:41.415 --> 00:01:43.520
+Notice in this case,
+
+00:01:43.519 --> 00:01:45.439
+the instances already running.
+
+00:01:45.439 --> 00:01:47.420
+If it weren't, it would start up.
+
+00:01:47.420 --> 00:01:50.659
+You can also stop the instance from the command line.
+
+00:01:50.659 --> 00:01:57.140
+Next, let's look at publishing a message to an SNS topic from the command line.
+
+00:01:57.140 --> 00:02:00.584
+So this is the command, AWS,
+
+00:02:00.584 --> 00:02:01.949
+the name of the service,
+
+00:02:01.950 --> 00:02:04.875
+SNS, the action publish.
+
+00:02:04.875 --> 00:02:07.915
+Then here for the topic ARM parameter,
+
+00:02:07.915 --> 00:02:11.270
+I'm passing in the ARM for the topic,
+
+00:02:11.270 --> 00:02:13.820
+and then for the message parameter,
+
+00:02:13.819 --> 00:02:17.224
+I'm passing in the message that I want to send.
+
+00:02:17.224 --> 00:02:20.044
+In this case, publish via command line.
+
+00:02:20.044 --> 00:02:21.934
+So let's click "Enter".
+
+00:02:21.935 --> 00:02:24.949
+Because this returns the message ID,
+
+00:02:24.949 --> 00:02:27.919
+I can assume that my request was successful.
+
+00:02:27.919 --> 00:02:32.614
+So let me go to my email client to see if an email came through.
+
+00:02:32.615 --> 00:02:35.920
+Yes, I see it. I will drag it over here and show it to you.
+
+00:02:35.919 --> 00:02:40.554
+So this is the message published via command line as expected.
+
+00:02:40.555 --> 00:02:47.120
+Now, let's look at sending a message to the sqsq that's in my account.
+
+00:02:47.120 --> 00:02:49.675
+So let's look at this command.
+
+00:02:49.675 --> 00:02:53.025
+It's AWS, the service name,
+
+00:02:53.025 --> 00:02:55.575
+the action, which is send message.
+
+00:02:55.574 --> 00:02:58.019
+Here, we need the queue URL.
+
+00:02:58.020 --> 00:03:00.615
+So this is the URL for the queue.
+
+00:03:00.615 --> 00:03:02.640
+The message body.
+
+00:03:02.639 --> 00:03:04.259
+Here, on the queue,
+
+00:03:04.259 --> 00:03:07.879
+I'm just putting a string message from CLI.
+
+00:03:07.879 --> 00:03:11.150
+You also need to pass in a group ID,
+
+00:03:11.150 --> 00:03:15.094
+and that's what I'm doing here and a message deduplication ID.
+
+00:03:15.094 --> 00:03:16.974
+That's what I'm passing in here.
+
+00:03:16.974 --> 00:03:19.034
+So let's click return.
+
+00:03:19.034 --> 00:03:22.039
+Because I get this message back showing
+
+00:03:22.039 --> 00:03:25.400
+the body and the sequence number and the message ID,
+
+00:03:25.400 --> 00:03:28.610
+I can assume that this request was successful.
+
+00:03:28.610 --> 00:03:30.980
+One easy way to do that,
+
+00:03:30.979 --> 00:03:34.149
+is to list the messages in a queue,
+
+00:03:34.150 --> 00:03:37.400
+and this is the command that you would use to do that,
+
+00:03:37.400 --> 00:03:42.360
+AWS, the service, sqs, the action,
+
+00:03:42.360 --> 00:03:46.235
+receive message, and then for the queue URL parameter,
+
+00:03:46.235 --> 00:03:49.610
+you would pass in the URL to the queue.
+
+00:03:49.610 --> 00:03:51.815
+So let's click "Return".
+
+00:03:51.814 --> 00:03:56.155
+Notice here, it shows one of the messages in the queue.
+
+00:03:56.155 --> 00:03:58.759
+Lastly, let's look at listing
+
+00:03:58.759 --> 00:04:03.019
+the contents of an S3 bucket via the command line interface.
+
+00:04:03.020 --> 00:04:05.330
+So this is the command that you would use,
+
+00:04:05.330 --> 00:04:08.060
+AWS, the name of the service,
+
+00:04:08.060 --> 00:04:11.235
+S3, the action in this case, LS,
+
+00:04:11.235 --> 00:04:12.870
+which stands for list,
+
+00:04:12.870 --> 00:04:15.134
+and then the bucket name.
+
+00:04:15.134 --> 00:04:18.439
+So let's click "Return", and notice here,
+
+00:04:18.439 --> 00:04:22.344
+it lists out all of the objects in the S3 bucket.
+
+00:04:22.345 --> 00:04:25.760
+So this was a quick look at using the CLI to
+
+00:04:25.759 --> 00:04:30.779
+access and manage AWS services from the command line.
+

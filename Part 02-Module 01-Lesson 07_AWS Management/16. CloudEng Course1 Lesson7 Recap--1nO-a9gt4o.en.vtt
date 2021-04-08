@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.059
+In this lesson, I introduce to you to services like CloudWatch and CloudTrail.
+
+00:00:06.059 --> 00:00:10.469
+CloudWatch allows you to collect and track metrics that allows
+
+00:00:10.470 --> 00:00:15.030
+you to monitor log files produced by your applications and so on.
+
+00:00:15.029 --> 00:00:20.894
+CloudTrail allows you to audit or review everything that occurs in your AWS account.
+
+00:00:20.894 --> 00:00:23.669
+You learn that you can turn your infrastructure into
+
+00:00:23.670 --> 00:00:26.880
+code using services like CloudFormation.
+
+00:00:26.879 --> 00:00:32.594
+We wrapped up by discussing the AWS CLI and saw that it was a useful tool
+
+00:00:32.594 --> 00:00:35.324
+that allows you to access and control services
+
+00:00:35.325 --> 00:00:39.510
+running in your AWS account from the command line.
+

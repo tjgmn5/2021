@@ -1,0 +1,294 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab - EC2 Auto Scaling</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Networking &amp; Elasticity</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need networking in the cloud.html">02. Why do we need networking in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Route 53.html">03. Route 53</a>
+    </li>
+    <li class="">
+      <a href="04. Why do we need elasticity in the cloud.html">04. Why do we need elasticity in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Auto Scaling.html">05. EC2 Auto Scaling</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Create Auto Scaling group.html">06. EC2 - Create Auto Scaling group</a>
+    </li>
+    <li class="">
+      <a href="07. EC2 - Auto Scaling Group.html">07. EC2 - Auto Scaling Group</a>
+    </li>
+    <li class="">
+      <a href="08. Elastic Load Balancing.html">08. Elastic Load Balancing</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - Elastic Load Balancing.html">09. EC2 - Elastic Load Balancing</a>
+    </li>
+    <li class="">
+      <a href="10. EC2 - Lab NLB.html">10. EC2 - Lab NLB</a>
+    </li>
+    <li class="">
+      <a href="11. Lab - EC2 Auto Scaling.html">11. Lab - EC2 Auto Scaling</a>
+    </li>
+    <li class="">
+      <a href="12. Lesson Recap.html">12. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">11. Lab - EC2 Auto Scaling</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-exercise---ec2-auto-scaling"># Exercise - EC2 Auto Scaling</h2>
+<p>In this hands-on exercise, you will use Auto Scaling to automatically launch Amazon EC2 instances in response to the conditions you specify. You will also see auto-scaling in action as it automatically provisions replacement instance(s). </p>
+<blockquote>
+  <p>Definition: An <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html" rel="noopener noreferrer" target="_blank">Autoscaling group</a> contains a collection of EC2 instances that share similar characteristics and are treated as a logical group. </p>
+</blockquote>
+<p>All EC2 instances that are provisioned as a part of auto-scaling have the same configuration because they are instantiated from a <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html" rel="noopener noreferrer" target="_blank">Launch template</a>. Let's get started.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="preparatory-steps">Preparatory Steps</h2>
+<ol>
+<li>Sign in to the <a href="https://aws.amazon.com/console/" rel="noopener noreferrer" target="_blank">AWS Management Console</a>. </li>
+<li>Navigate to the <a href="https://console.aws.amazon.com/ec2/" rel="noopener noreferrer" target="_blank">EC2 dashboard</a>. In this exercise, we will use the following two services available in the EC2 dashboard: </li>
+</ol>
+<ul>
+<li>Instances &rarr; Launch templates</li>
+<li>Auto Scaling &rarr; Auto Scaling Groups</li>
+</ul>
+<h2 id="stage-1-create-a-launch-template">Stage 1. Create a Launch template</h2>
+<blockquote>
+  <p>Definition: A Launch template specifies instance configuration information, such as, AMI ID, the instance type, a key pair, security groups, and the other parameters that you use to launch EC2 instances.</p>
+</blockquote>
+<ol>
+<li>Go to the <em>Launch templates</em> service, and create a new template by specifying the following parameters:</li>
+</ol>
+<ul>
+<li>Template name, and description of your choice. </li>
+<li>Template contents:<ul>
+<li>AMI ID: Amazon Linux 2 AMI (HVM), SSD volume type</li>
+<li>Instance type: t2.micro </li>
+<li>Key-pair for logging in to the EC2 instances: Your choice of key-pair</li>
+<li>Network settings: Choose a Virtual Private Cloud (VPC), and a subnet in which the network interface is located. Choose a security group accordingly, because <strong>this step will ensure that a public IP address is assigned automatically to every instance.</strong></li>
+<li>Storage (volumes), tags, and network interfaces: Default</li></ul></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="stage-2-create-an-autoscaling-group">Stage 2. Create an Autoscaling group</h2>
+<ol>
+<li>Go to the <em>Auto Scaling Groups</em> service, and create a new Autoscaling group. Creating an Autoscaling group is a multi-step process, in which you specify the configuration settings, group size, scaling policies (step/simple/target scaling policy), notifications, and tags. For this exercise, you have to specify the following <strong>minimal set</strong> of configurations:</li>
+</ol>
+<ul>
+<li>Choose a Launch template that you have created in the previous step. </li>
+<li>Provide the VPC, and subnets in which you want to create your EC2 instances. </li>
+<li>Specify the Group size with the desired, minimum, and maximum capacity, i.e., count of EC2 instances at any given moment. You can choose the default value, 1, for each capacity. </li>
+<li>Use the default values in the remaining steps of this process.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="stage-3-verify-your-autoscaling-group">Stage 3. Verify your Autoscaling group</h2>
+<ol>
+<li><p>On the <em>Auto Scaling Group</em> dashboard, select the Autoscaling group that you have created in the step above. </p></li>
+<li><p>Verify the details that were provided while creating the Autoscaling group.</p></li>
+</ol>
+<ul>
+<li><p>Verify that the Autoscaling group has launched the <em>desired</em> number of EC2 instance(s). The status of your instance(s) should be <em>Successful</em>, which means the instances are launched.</p></li>
+<li><p>Verify that the instances have the desired lifecycle and health. Also, note the <em>Instance ID</em> for the next step. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="stage-4-test-autoscaling-group">Stage 4. Test Autoscaling group</h2>
+<p>In this step, you will terminate only those instance(s) that were launched as a part of the Autoscaling group. And, then we will verify if the Autoscaling group automatically launches new instances to maintain the desired number of running instances. </p>
+<blockquote>
+  <p><strong>Note</strong> - In addition to the instances that are launched as a part of the Autoscaling group, it is possible that you have additional instances already created in your EC2 dashboard. </p>
+</blockquote>
+<ol>
+<li>Go to the <em>EC2 Instances</em> dashboard, and select the instance(s) that you want to terminate. </li>
+<li>Terminate the selected instance(s). </li>
+<li>Go back to the Auto Scaling Group service and select the Autoscaling group that you have created in the step above.</li>
+<li>While viewing the details of the Autoscaling group, review the history for the EC2 instance(s). You will see that the previous EC2 instance has been terminated, and a new one(s) are being instantiated.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="stage-5-delete-autoscaling-group-resources">Stage 5. Delete Autoscaling group resources</h2>
+<p>In order to avoid being billed unnecessarily, it is important to delete the resources provisioned during this exercise. </p>
+<ul>
+<li>Come back on the <em>Auto Scaling Group</em> dashboard, and select the checkbox against the auto-scaling group you want to delete.</li>
+<li>At the top of the screen, click the <em>Delete</em> option.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="12. Lesson Recap.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('11. Lab - EC2 Auto Scaling')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

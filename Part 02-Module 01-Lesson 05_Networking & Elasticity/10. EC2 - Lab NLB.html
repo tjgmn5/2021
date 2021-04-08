@@ -1,0 +1,796 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EC2 - Lab NLB</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Networking &amp; Elasticity</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need networking in the cloud.html">02. Why do we need networking in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Route 53.html">03. Route 53</a>
+    </li>
+    <li class="">
+      <a href="04. Why do we need elasticity in the cloud.html">04. Why do we need elasticity in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Auto Scaling.html">05. EC2 Auto Scaling</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Create Auto Scaling group.html">06. EC2 - Create Auto Scaling group</a>
+    </li>
+    <li class="">
+      <a href="07. EC2 - Auto Scaling Group.html">07. EC2 - Auto Scaling Group</a>
+    </li>
+    <li class="">
+      <a href="08. Elastic Load Balancing.html">08. Elastic Load Balancing</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - Elastic Load Balancing.html">09. EC2 - Elastic Load Balancing</a>
+    </li>
+    <li class="">
+      <a href="10. EC2 - Lab NLB.html">10. EC2 - Lab NLB</a>
+    </li>
+    <li class="">
+      <a href="11. Lab - EC2 Auto Scaling.html">11. Lab - EC2 Auto Scaling</a>
+    </li>
+    <li class="">
+      <a href="12. Lesson Recap.html">12. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">10. EC2 - Lab NLB</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>In this hands-on exercise, you will learn to create a <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html" rel="noopener noreferrer" target="_blank">network load balancer</a> (NLB), and see the role of an NLB. </p>
+<blockquote>
+  <p>An NLB serves as the single point of contact for clients and automatically distributes the incoming traffic uniformly across multiple targets. The targets are the EC2 instances within the same or different AZs. </p>
+</blockquote>
+<h3 id="prerequisites">Prerequisites:</h3>
+<ul>
+<li>An AWS account</li>
+<li>A default VPC. It is a VPC in a default region and has a public subnet in each Availability Zone. Refer to the <a href="https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-vpc" rel="noopener noreferrer" target="_blank">create a default VPC</a> for more details. Just to ensure you have the right set of VPC, subnet, route table, and internet gateway available, refer to the snapshots below. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-12.58.53-pm.png" alt="Create a default VPC" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Create a default VPC</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-19-at-6.20.22-pm.png" alt="Info about a default VPC" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Info about a default VPC</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-5.20.55-pm.png" alt="**Prerequisite 1:** A default VPC" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Prerequisite 1:</strong> A default VPC</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-5.24.08-pm.png" alt="**Prerequisite 2:** Subnets in each AZ in the default VPC. Also, notice that a common route table is attached to all subnets." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Prerequisite 2:</strong> Subnets in each AZ in the default VPC. Also, notice that a common route table is attached to all subnets.</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-5.26.29-pm.png" alt="**Prerequisite 3:** A route table with a rule for internet facing communication. See that it requires an internet gateway" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Prerequisite 3:</strong> A route table with a rule for internet facing communication. See that it requires an internet gateway</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-5.27.07-pm.png" alt="**Prerequisite 4:** The Internet gateway is a managed service. See an internet gateway attached to the default vpc. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Prerequisite 4:</strong> The Internet gateway is a managed service. See an internet gateway attached to the default vpc. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-1-create-the-first-ec2-instance">Step 1. Create the first EC2 instance</h3>
+<p>The steps below show how to create the first EC2 instance in a <strong>public subnet</strong> in any one Availability Zone, and install the Apache webserver on it. Use the following configuration, and leave the remaining values as the defaults. </p>
+<ul>
+<li>Navigate to the EC2 Dashboard page, and click on the <strong>Launch Instance</strong> wizard to launch an instance. Choose the AMI and instance type as: </li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="step">Step</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Amazon Machine Image (AMI)</td>
+<td><code>Amazon Linux 2 AMI (HVM), SSD Volume Type</code><br> Note: You have chosen a <strong>Free Tier Eligible</strong> AMI</td>
+</tr>
+<tr>
+<td>2. Instance Type</td>
+<td><code>t2.micro</code></td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>At the next step, Configure Instance Details, use the following values:</li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="field">Field</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number of Instances</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Select the default VPC that has public subnets in different AZs</td>
+</tr>
+<tr>
+<td>Subnet</td>
+<td>Choose anyone, say <code>us-east-2a</code></td>
+</tr>
+<tr>
+<td>Auto-assign Public IP</td>
+<td>Enable</td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Let's add advanced details.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-1.58.55-pm.png" alt="A default VPC and a public subnet chosen to launch the first EC2 instance. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>A default VPC and a public subnet chosen to launch the first EC2 instance. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Under the Advanced Details &#8594; User data section, add the following configuration script to run automatically during launch.</li>
+</ul>
+<pre><code class="bash language-bash">#!/bin/bash
+sudo yum update -y
+sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+sudo yum install -y httpd mariadb-server
+sudo systemctl start httpd
+sudo systemctl enable httpd
+sudo chkconfig httpd on
+# Set file permissions for the Apache web server
+sudo groupadd www
+sudo usermod -a -G www ec2-user
+sudo chgrp -R www /var/www
+sudo chmod 2775 /var/www
+find /var/www -type d -exec sudo chmod 2775 {} +
+find /var/www -type f -exec sudo chmod 0664 {} +
+# Create a new PHP file at  /var/www/html/ path
+echo "&lt;?php phpinfo(); ?&gt;" &gt; /var/www/html/phpinfo.php</code></pre>
+<p>The script above will install, configure, and launch the Apache webserver on the EC2 instance. You can learn more about the individual steps at <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateWebServer.html#CHAP_Tutorials.WebServerDB.CreateWebServer.Apache" rel="noopener noreferrer" target="_blank">Create an EC2 instance and install a web server</a>. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-2.55.33-pm.png" alt="Specify the user data to configure the EC2 instance" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Specify the user data to configure the EC2 instance</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li><p>Keep the storage as default, and use a tag as <code>Name: Server-A</code></p></li>
+<li><p>At the Configure Security Group step, you can create a new one, and ensure to have a firewall rule to allow incoming HTTP traffic on port 80.</p></li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="type" style="text-align:center;">Type</th>
+<th id="protocol">Protocol</th>
+<th id="port">Port</th>
+<th id="source">Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">HTTP</td>
+<td>TCP</td>
+<td>80</td>
+<td><code>0.0.0.0/0</code><br>It will allow all IPv4 <br> addresses to access your instance.</td>
+</tr>
+<tr>
+<td style="text-align:center;">SSH</td>
+<td>TCP</td>
+<td>22</td>
+<td><code>0.0.0.0/0</code></td>
+</tr>
+<tr>
+<td style="text-align:center;"></center></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The step above is crucial for the current experiment.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-11.11.31-am.png" alt="Configure firewall rule to allow HTTP traffic on port 80" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Configure firewall rule to allow HTTP traffic on port 80</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Generate and download a new key pair, at the last stage of the <strong>Launch Instance</strong> wizard. <br><br />
+<strong><em>Important:</em></strong> This key-pair will allow you to log into your instance, using SSH, from your local machine. Save the key-pair carefully, because the same private key cannot be re-generated. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-create-the-second-ec2-instance-in-a-separate-availability-zone">Step 2. Create the second EC2 instance, in a separate Availability Zone</h3>
+<p>Launch the second EC2 instance using the same steps above, except for the following changes at the Configure Instance Details step:</p>
+<ul>
+<li>Select another <strong>public subnet</strong> in a different AZ, say <code>us-east-2b</code></li>
+<li>Replace the last line of the user data (shell script) with </li>
+</ul>
+<pre><code class="bash language-bash">echo "&lt;? echo "&lt;h1&gt;Welcome to server 2&lt;/h1&gt;" ?&gt;" &gt; /var/www/html/phpinfo.php</code></pre>
+<p>Additionally, change the tag to <code>Name: Server-B</code>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3-verify-the-apache-webserver-installation">Step 3. Verify the Apache webserver installation</h3>
+<ul>
+<li>Confirm that the newly created EC2 instances are in the <code>running</code> state.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-11.26.31-am.png" alt="Two instances running in different AZs. **Server-A** is running in **us-east-2a**, while **Server-B** is running in **us-east-2b**." class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Two instances running in different AZs. <strong>Server-A</strong> is running in <strong>us-east-2a</strong>, while <strong>Server-B</strong> is running in <strong>us-east-2b</strong>.</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Verify that the Apache server is running successfully on both the  EC2 instances. Simply copy, and paste the <strong>public IPv4 address</strong> of each instance in a new browser window. If the Apache is configured successfully, you will see the Apache welcome page. </li>
+</ul>
+<blockquote>
+  <p><strong>Note</strong>: We have opened the HTTP traffic on the default port, therefore the public IPv4 address should be prepended with <code>http://</code>, instead of <code>https://</code>. </p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/SSL-on-amazon-linux-2.html" rel="noopener noreferrer" target="_blank">Configuring the secure HTTPS on EC2</a> will add overhead to the current experiment, and you may deviate from the intent of learning an NLB.</li>
+</ul>
+<blockquote>
+  <p><strong>Need help?</strong>: Refer to the <a href="https://aws.amazon.com/premiumsupport/knowledge-center/ec2-instance-hosting-unresponsive-website/" rel="noopener noreferrer" target="_blank">How do I troubleshoot an unresponsive website hosted on my EC2 instance</a> or clean restart the exercise by deleting the VPC, and EC2 resources again. </p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-11.23.42-am.png" alt="The image above shows the output at HTTP (not HTTPS), such as, 
+&#x60;http://18.218.185.145&#x60; and &#x60;http://18.217.72.14&#x60;" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>The image above shows the output at HTTP (not HTTPS), such as, <br />
+<code>http://18.218.185.145</code> and <code>http://18.217.72.14</code></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>View the content of the PHP page that you configured using the shell script. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/2.png" alt="The image above shows the output at HTTP (not HTTPS), such as, 
+&#x60;http://18.218.185.145/phpinfo.php&#x60; and &#x60;http://18.217.72.14/phpinfo.php&#x60;" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>The image above shows the output at HTTP (not HTTPS), such as, <br />
+<code>http://18.218.185.145/phpinfo.php</code> and <code>http://18.217.72.14/phpinfo.php</code></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-4-create-an-nlb">Step 4. Create an NLB</h3>
+<ul>
+<li>Select the <strong>Load Balancers</strong> service on the left-hand side menu of the EC2 dashboard, and click on the <strong>Create Load Balancer</strong> button.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-11.34.03-am.png" alt="Click on the Create Load Balancer button" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Click on the Create Load Balancer button</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>You will be prompt to choose the type of load balancer: Application, Network, or Classical load balancer. Choose to create a <strong>Network Balancer</strong>.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>At the first step, Configure Load Balancer, use the following basic configuration details</li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="**section**"><strong>Section</strong></th>
+<th id="**field**"><strong>Field</strong></th>
+<th id="**value**"><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic Configuration</td>
+<td>Name</td>
+<td><code>udacity-nlb</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Scheme</td>
+<td><code>internet-facing</code></td>
+</tr>
+<tr>
+<td>Availability Zones</td>
+<td>VPC</td>
+<td>Choose default-vpc</td>
+</tr>
+<tr>
+<td></td>
+<td>Availability Zones</td>
+<td>Check the two where you've launched the EC2 instances, <br> such as <code>us-east-2a</code> and <code>us-east-2b</code></td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; See the snapshot below:</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-11.44.11-am.png" alt="Add VPC and AZs to the load balancer" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Add VPC and AZs to the load balancer</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li><p>Skip the Configure Security Settings step, by clicking the Next button. </p></li>
+<li><p>At the Configure Routing step, use the following configuration details in the Target group section:</p></li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="**field**"><strong>Field</strong></th>
+<th id="**value**"><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target group</td>
+<td>New target group</td>
+</tr>
+<tr>
+<td>Name</td>
+<td><code>UdacityNLBTarget</code></td>
+</tr>
+<tr>
+<td>Target type</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>80</td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>At the Register Targets step, add the two EC2 instances created previously to the target group. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-11.50.48-am.png" alt="Add instances to the registered target group. Do not forget to click on the **Add to registered** button after selecting the instances from the list. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Add instances to the registered target group. Do not forget to click on the <strong>Add to registered</strong> button after selecting the instances from the list. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>Leave the remaining things as default, and finish creating the NLB. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-5-test-the-nlb">Step 5. Test the NLB</h3>
+<ul>
+<li>You will be taken back to the <strong>Load Balancers</strong> dashboard. Copy the <strong>DNS name</strong> of the newly created NLB, and append the <code>/phpinfo.php</code> at the end of it. A sample DNS name appended with the file name looks like this:</li>
+</ul>
+<pre><code>http://udacity-nlb-f00b2cb9e62f5c2a.elb.us-east-2.amazonaws.com/phpinfo.php</code></pre>
+<p><br></p>
+<ul>
+<li>Paste the copied DNS name to a new browser window and refresh the browser a few times, each after a few seconds. You will notice that sometimes the request is redirected to Server-A and other times, it is routed to Server-B.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-1.32.49-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-18-at-1.37.12-pm.png" alt="The NLB is getting the output from the two different webservers. Notice that the DNS name (URL) is the same in the above two cases. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>The NLB is getting the output from the two different webservers. Notice that the DNS name (URL) is the same in the above two cases. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-6-delete-the-resources">Step 6. Delete the resources</h3>
+<ul>
+<li><p>Delete the NLB by going to the Load Balancer dashboard. </p></li>
+<li><p>Stop and terminate the EC2 instances by going to the Instances dashboard. </p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="11. Lab - EC2 Auto Scaling.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('10. EC2 - Lab NLB')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

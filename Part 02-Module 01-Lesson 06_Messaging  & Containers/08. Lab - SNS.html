@@ -1,0 +1,367 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab - SNS</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Messaging  &amp; Containers</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need messaging in the cloud.html">02. Why do we need messaging in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Simple Notification Service (SNS).html">03. Simple Notification Service (SNS)</a>
+    </li>
+    <li class="">
+      <a href="04. Demo - Simple Notification Service (SNS) .html">04. Demo - Simple Notification Service (SNS) </a>
+    </li>
+    <li class="">
+      <a href="05. Why do we need queuing technology.html">05. Why do we need queuing technology?</a>
+    </li>
+    <li class="">
+      <a href="06. Simple Queue Service (SQS).html">06. Simple Queue Service (SQS)</a>
+    </li>
+    <li class="">
+      <a href="07. SQS - Create a Queue.html">07. SQS - Create a Queue</a>
+    </li>
+    <li class="">
+      <a href="08. Lab - SNS.html">08. Lab - SNS</a>
+    </li>
+    <li class="">
+      <a href="09. Why do we need containers.html">09. Why do we need containers?</a>
+    </li>
+    <li class="">
+      <a href="10. Elastic Container Service (ECS).html">10. Elastic Container Service (ECS)</a>
+    </li>
+    <li class="">
+      <a href="11. Demo - Elastic Container Service.html">11. Demo - Elastic Container Service</a>
+    </li>
+    <li class="">
+      <a href="12. ECS - Create a Cluster.html">12. ECS - Create a Cluster</a>
+    </li>
+    <li class="">
+      <a href="13. Lesson Recap.html">13. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">08. Lab - SNS</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-sns"># SNS</h2>
+<p>In this hands-on exercise, you will learn how to send alerts via SNS by creating a topic, subscribing to a topic, and publishing an alert message to a topic.</p>
+<ol>
+<li>Prerequisites: AWS Account</li>
+<li>By the end of this lab, you will be able to:</li>
+</ol>
+<ul>
+<li>Create a topic</li>
+<li>Subscribe to a topic</li>
+<li>Publish a message to a topic</li>
+</ul>
+<p>Follow the exercise instructions described below: </p>
+<h3 id="step-1-create-a-topic">Step 1. Create a Topic</h3>
+<ul>
+<li>From the <a href="https://console.aws.amazon.com/" rel="noopener noreferrer" target="_blank">AWS Management Console</a> page, select the SNS service.</li>
+<li>On the left-hand navigation pane, click on the <strong>Topics</strong> service, and start the <strong>Create topic</strong> wizard.</li>
+<li>In the <em>Details</em> section, enter a topic name of your choice</li>
+<li>In the <em>Access policy – optional</em> section, use the following configuration to create the topic:</li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="configuration">Configuration</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy method</td>
+<td><code>Basic</code></td>
+</tr>
+<tr>
+<td>Define who can publish messages to the topic</td>
+<td><code>Everyone</code></td>
+</tr>
+<tr>
+<td>Define who can subscribe to this topic</td>
+<td><code>Everyone</code></td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Finish the <strong>Create topic</strong>. The topic details will display, or you can select the newly created topic from the <strong>Topics</strong> dashboard to create a subscription next.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-2-subscribe-to-a-topic">Step 2. Subscribe to a Topic</h3>
+<ul>
+<li>While you are viewing the details of the newly created topic, start the <strong>Create subscription</strong> wizard, and use the following details:</li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="field">Field</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protocol</td>
+<td><code>Email</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>Enter your email that should receive the notifications</td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The subscription page will display, and the status will be <code>Pending confirmation</code>. You will receive an email from Amazon SNS to confirm the subscription. Confirm the subscription. </li>
+<li>In your web browser, a subscription confirmation screen appears.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="step-3-publish-message-to-a-topic">Step 3. Publish Message to a Topic</h3>
+<ul>
+<li>Go back to the <strong>Topics</strong> service.</li>
+<li>Select the topic you created earlier and <strong>Publish a message</strong>  with the following details:</li>
+</ul>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th id="section">Section</th>
+<th id="field">Field</th>
+<th id="value">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Message details</td>
+<td>Subject</td>
+<td>Wishes</td>
+</tr>
+<tr>
+<td>Message body</td>
+<td>Message body <br>to send to the endpoint</td>
+<td>Congratulations on your <br>Udacity Nanodegree Graduation!</td>
+</tr>
+<tr>
+<td>Message attributes</td>
+<td>Type, Name, Value</td>
+<td><code>String</code>, <code>Occasion</code>, <code>Graduation</code></td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In your email client, you will receive an email from AWS Notifications (<a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x6e;&#x6f;-&#x72;&#x65;&#x70;&#x6c;&#121;&#x40;&#x73;&#x6e;&#115;&#46;&#x61;&#x6d;&#97;&#x7a;&#x6f;n&#x61;w&#115;&#46;&#x63;&#x6f;&#109;">&#110;&#111;&#45;&#x72;&#x65;&#x70;&#108;&#x79;&#64;&#115;&#110;&#x73;.a&#x6d;&#x61;&#x7a;&#x6f;&#x6e;&#x61;&#119;&#x73;&#46;&#99;&#111;&#x6d;</a>)</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Send alerts via SNS</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="7f6cc701-dede-4c85-8c3f-80cb4acfb5c8--0">
+        <label for="7f6cc701-dede-4c85-8c3f-80cb4acfb5c8--0"><p>Create a Topic</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="7f6cc701-dede-4c85-8c3f-80cb4acfb5c8--1">
+        <label for="7f6cc701-dede-4c85-8c3f-80cb4acfb5c8--1"><p>Subscribe to a Topic</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="7f6cc701-dede-4c85-8c3f-80cb4acfb5c8--2">
+        <label for="7f6cc701-dede-4c85-8c3f-80cb4acfb5c8--2"><p>Publish a Message to a Topic</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Amazing Work!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="09. Why do we need containers.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. Lab - SNS')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.435
+Amazon Simple Queue Service, SQS,
+
+00:00:03.435 --> 00:00:06.419
+is a fully managed message queuing service that
+
+00:00:06.419 --> 00:00:10.410
+allows you to integrate queuing functionality in your application.
+
+00:00:10.410 --> 00:00:13.708
+With SQS, you can send, store,
+
+00:00:13.708 --> 00:00:18.524
+and receive messages between applications without losing messages.
+
+00:00:18.524 --> 00:00:23.729
+SQS offers two type of message queues; standard and FIFO.
+
+00:00:23.730 --> 00:00:26.865
+Standard queues offer best effort ordering,
+
+00:00:26.864 --> 00:00:31.289
+while SQS FIFO queues are designed to guarantee that messages are
+
+00:00:31.289 --> 00:00:36.060
+processed exactly once in the exact order they were added to the queue.
+
+00:00:36.060 --> 00:00:39.435
+Let's say you've created a course registration system,
+
+00:00:39.435 --> 00:00:41.455
+and to improve scalability,
+
+00:00:41.454 --> 00:00:46.204
+you send account creation and course registration messages to a queue.
+
+00:00:46.204 --> 00:00:49.309
+In order for a student to register for a course,
+
+00:00:49.310 --> 00:00:53.704
+their account must first be created then they can be registered.
+
+00:00:53.704 --> 00:00:56.854
+The ordering of these steps is very important.
+
+00:00:56.854 --> 00:00:59.509
+You do not want a student to attempt to register
+
+00:00:59.509 --> 00:01:02.405
+for a course before their account is created.
+
+00:01:02.405 --> 00:01:04.460
+Since ordering is important,
+
+00:01:04.459 --> 00:01:08.189
+a FIFO queue should be used in this case.
+

@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.785
+Enterprises are adopting container technology at an explosive rate.
+
+00:00:04.785 --> 00:00:07.860
+Docker is the leading container technology.
+
+00:00:07.860 --> 00:00:11.085
+There are several container orchestration services
+
+00:00:11.085 --> 00:00:14.070
+that help you manage your Docker clusters.
+
+00:00:14.070 --> 00:00:17.219
+Kubernetes is a container orchestration system
+
+00:00:17.219 --> 00:00:20.789
+for Docker containers similar to Docker Swarm.
+
+00:00:20.789 --> 00:00:23.504
+Why are containers so popular?
+
+00:00:23.504 --> 00:00:27.674
+A container consists of everything an application needs to run.
+
+00:00:27.675 --> 00:00:32.039
+The application itself and its dependencies like libraries,
+
+00:00:32.039 --> 00:00:35.070
+utilities, configuration files, etc.
+
+00:00:35.070 --> 00:00:37.774
+all bundled into one package.
+
+00:00:37.774 --> 00:00:40.850
+Instead of having to rebuild your application and
+
+00:00:40.850 --> 00:00:45.140
+its environment from scratch as it moves from environment to environment,
+
+00:00:45.140 --> 00:00:47.570
+say from development to production,
+
+00:00:47.570 --> 00:00:50.390
+you can easily move the entire container from
+
+00:00:50.390 --> 00:00:53.435
+environment to environment without any issues.
+
+00:00:53.435 --> 00:00:57.665
+Each container is an independent component that can run on its own.
+
+00:00:57.664 --> 00:01:01.219
+Let's say you have a huge monolith application,
+
+00:01:01.219 --> 00:01:04.730
+that you're migrating to a micro-services architecture.
+
+00:01:04.730 --> 00:01:11.569
+The micro-services architecture decomposes large complex monoliths systems into discrete,
+
+00:01:11.569 --> 00:01:16.219
+individual stand-alone components that can communicate among themselves,
+
+00:01:16.219 --> 00:01:19.355
+working together, or with external systems.
+
+00:01:19.355 --> 00:01:23.435
+A Docker container works well with the micro-services use case because
+
+00:01:23.435 --> 00:01:29.640
+each micro service is its own independent component with no interdependencies.
+

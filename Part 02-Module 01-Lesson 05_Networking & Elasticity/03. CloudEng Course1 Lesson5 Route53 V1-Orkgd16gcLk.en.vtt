@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.519
+Route 53 is AWSs cloud Domain Name System Service.
+
+00:00:05.519 --> 00:00:09.285
+Route 53 is a reliable and scalable service
+
+00:00:09.285 --> 00:00:12.855
+that has DNS servers distributed around the globe.
+
+00:00:12.855 --> 00:00:18.763
+Route 53 scales automatically to manage spikes in DNS queries,
+
+00:00:18.763 --> 00:00:23.539
+allows you to register a domain name or managed and existing one.
+
+00:00:23.539 --> 00:00:26.629
+Route's internet traffic to the resources for
+
+00:00:26.629 --> 00:00:30.695
+your domain and checks the health of your resources.
+
+00:00:30.695 --> 00:00:33.590
+The health checks are useful because they help to
+
+00:00:33.590 --> 00:00:37.430
+ensure that your web servers are up and running and offer
+
+00:00:37.429 --> 00:00:40.039
+DNS failover to automatically route
+
+00:00:40.039 --> 00:00:45.570
+your web visitors to an alternate location to avoid site outages.
+

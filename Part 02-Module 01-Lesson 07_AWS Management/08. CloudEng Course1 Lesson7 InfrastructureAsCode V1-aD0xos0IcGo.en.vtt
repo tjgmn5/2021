@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.109
+Have you heard the term infrastructure as code?
+
+00:00:03.109 --> 00:00:06.634
+This is where you stand up servers, databases,
+
+00:00:06.634 --> 00:00:10.099
+runtime parameters, resources, etc,
+
+00:00:10.099 --> 00:00:12.464
+based on scripts that you write.
+
+00:00:12.464 --> 00:00:18.615
+Essentially, you are scripting out infrastructure which turns infrastructure into code.
+
+00:00:18.614 --> 00:00:21.929
+This is a time-saving feature because it allows you to
+
+00:00:21.929 --> 00:00:26.039
+provision or stand up resources in a reproducible way.
+
+00:00:26.039 --> 00:00:28.649
+You are able to manage a collection of
+
+00:00:28.649 --> 00:00:32.820
+related resources and treat them as one logical unit.
+
+00:00:32.820 --> 00:00:36.420
+Let's say, in order to set up a development environment,
+
+00:00:36.420 --> 00:00:38.149
+you have to do these steps;
+
+00:00:38.149 --> 00:00:40.905
+configure a VPC security group,
+
+00:00:40.905 --> 00:00:43.515
+launch an EC2 instance,
+
+00:00:43.515 --> 00:00:50.210
+create load balancers, create an RDS instance, and create auto-scaling.
+
+00:00:50.210 --> 00:00:54.965
+Instead of manually having to set up each of these resources individually,
+
+00:00:54.965 --> 00:00:59.900
+you can write a script to create the resources for you in a repeatable way.
+
+00:00:59.899 --> 00:01:04.620
+Infrastructure as Code is a great time saving feature.
+

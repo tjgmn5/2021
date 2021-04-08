@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.645
+Now, that you know how to protect your data and systems,
+
+00:00:03.645 --> 00:00:06.644
+you will need a way for users to find your website.
+
+00:00:06.644 --> 00:00:09.660
+That's where networking connectivity comes into play,
+
+00:00:09.660 --> 00:00:12.419
+to route Internet traffic to your site.
+
+00:00:12.419 --> 00:00:16.754
+You'll also want to make sure that your website can handle the incoming traffic,
+
+00:00:16.754 --> 00:00:19.515
+providing peak performance to your users.
+
+00:00:19.515 --> 00:00:23.490
+The ability to scale up or scale down based on the load,
+
+00:00:23.489 --> 00:00:28.289
+or how many users are using your applications at a given time is critical.
+
+00:00:28.289 --> 00:00:33.390
+In this lesson, I will teach you about networking and elasticity in the cloud,
+
+00:00:33.390 --> 00:00:37.005
+covering features like auto scaling and load balancing.
+
+00:00:37.005 --> 00:00:39.400
+So let's get started.
+

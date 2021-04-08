@@ -1,0 +1,103 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.895
+Let's see CloudWatch in action.
+
+00:00:02.895 --> 00:00:05.564
+From the AWS management console,
+
+00:00:05.565 --> 00:00:08.775
+type CloudWatch and click on it.
+
+00:00:08.775 --> 00:00:11.565
+From the left-hand menu navigation,
+
+00:00:11.564 --> 00:00:13.634
+let's click on "Logs".
+
+00:00:13.634 --> 00:00:16.995
+Notice I have a lot of logs.
+
+00:00:16.995 --> 00:00:18.868
+One thing that is neat,
+
+00:00:18.868 --> 00:00:22.425
+within each log group after AWS,
+
+00:00:22.425 --> 00:00:24.045
+it shows the service.
+
+00:00:24.045 --> 00:00:25.620
+So in this case,
+
+00:00:25.620 --> 00:00:30.150
+the user logs from the Connect service connect as the Cloud call center.
+
+00:00:30.149 --> 00:00:35.070
+Here, I have logs from Green Grass that allows AWS services
+
+00:00:35.070 --> 00:00:39.829
+to run at the edge on IoT devices like the AWS deep lens.
+
+00:00:39.829 --> 00:00:41.969
+If you keep scrolling,
+
+00:00:41.969 --> 00:00:44.280
+you'll see lambda logs.
+
+00:00:44.280 --> 00:00:47.600
+Lastly, you'll see logs from Sage maker.
+
+00:00:47.600 --> 00:00:49.609
+This is the machine learning service.
+
+00:00:49.609 --> 00:00:53.134
+Let's look at the logs for one of my lambda functions.
+
+00:00:53.134 --> 00:00:54.304
+Let's pick this one.
+
+00:00:54.304 --> 00:00:57.530
+The log for my word jumble Alexis skill.
+
+00:00:57.530 --> 00:00:59.734
+Here again there are several logs.
+
+00:00:59.734 --> 00:01:01.339
+Let's just click on the first one.
+
+00:01:01.340 --> 00:01:03.500
+Let's scroll through.
+
+00:01:03.500 --> 00:01:05.269
+Notice here there is
+
+00:01:05.269 --> 00:01:11.000
+just generic logging information about when the Alexis skill was invoked.
+
+00:01:11.000 --> 00:01:17.965
+But notice here I am actually writing this out from my lambda function,
+
+00:01:17.965 --> 00:01:19.645
+and in this case,
+
+00:01:19.644 --> 00:01:26.239
+it shows the particular level that the user has reached in the word jumble game,
+
+00:01:26.239 --> 00:01:27.894
+in this case, 28.
+
+00:01:27.894 --> 00:01:31.399
+Logging is very helpful when you're supporting
+
+00:01:31.400 --> 00:01:35.120
+an application or even when you're in active development.
+
+00:01:35.120 --> 00:01:37.640
+CloudWatch really helps with that.
+
+00:01:37.640 --> 00:01:44.099
+So this was a quick look at CloudWatch and a few sample logs.
+

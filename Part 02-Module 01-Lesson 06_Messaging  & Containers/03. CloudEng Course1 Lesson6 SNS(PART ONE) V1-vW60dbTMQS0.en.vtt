@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.540
+Amazon Simple Notification Service or SNS is
+
+00:00:03.540 --> 00:00:06.419
+AWS cloud service that allows you to
+
+00:00:06.419 --> 00:00:09.945
+send notifications to the users of your applications.
+
+00:00:09.945 --> 00:00:12.300
+SNS allows you to decouple
+
+00:00:12.300 --> 00:00:16.019
+the notification logic from being embedded in your applications,
+
+00:00:16.019 --> 00:00:21.689
+and allows notifications to be published to a large number of subscribers.
+
+00:00:21.690 --> 00:00:25.920
+SNS uses the publish/subscribe model.
+
+00:00:25.920 --> 00:00:29.535
+This means, that in order for your users to be notified,
+
+00:00:29.535 --> 00:00:33.359
+they have to sign up or subscribe first.
+
+00:00:33.359 --> 00:00:38.295
+Subscribers can be a person or another AWS service.
+
+00:00:38.295 --> 00:00:42.225
+Notifications can be sent to end-users using mobile push,
+
+00:00:42.225 --> 00:00:45.550
+text messages, and e-mail.
+

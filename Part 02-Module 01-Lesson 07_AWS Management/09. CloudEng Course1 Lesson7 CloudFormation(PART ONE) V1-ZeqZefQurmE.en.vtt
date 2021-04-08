@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.759
+AWS Cloud Formation is AWS is infrastructure as code service.
+
+00:00:05.759 --> 00:00:08.279
+AWS Cloud formation allows you to model
+
+00:00:08.279 --> 00:00:11.445
+your entire infrastructure in a text file template,
+
+00:00:11.445 --> 00:00:16.185
+allowing you to provision AWS resources based on the scripts you write.
+
+00:00:16.184 --> 00:00:19.184
+This is an example of a Cloud formation script.
+
+00:00:19.184 --> 00:00:25.320
+Notice, we are able to provision EC2 instances, VPCs, and sub-nets.
+
+00:00:25.320 --> 00:00:27.885
+The templates are written using text,
+
+00:00:27.885 --> 00:00:29.820
+either JSON or YAML.
+
+00:00:29.820 --> 00:00:31.754
+You can write one from scratch,
+
+00:00:31.754 --> 00:00:35.129
+or re-use a blueprint provided by AWS.
+
+00:00:35.130 --> 00:00:37.665
+Cloud formation scripts can be created using
+
+00:00:37.664 --> 00:00:40.795
+a visual designer with drag and drop components.
+
+00:00:40.795 --> 00:00:43.289
+Since your infrastructure is now code,
+
+00:00:43.289 --> 00:00:46.490
+you can check your scripts into version control and even
+
+00:00:46.490 --> 00:00:50.760
+review the files with your team in order to receive feedback.
+

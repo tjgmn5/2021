@@ -1,0 +1,475 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab - Interacting with S3 Buckets via the CLI</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>AWS Management</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need logging and auditing in the cloud.html">02. Why do we need logging and auditing in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Cloud Trail.html">03. Cloud Trail</a>
+    </li>
+    <li class="">
+      <a href="04. CloudTrail - Create a Trail.html">04. CloudTrail - Create a Trail</a>
+    </li>
+    <li class="">
+      <a href="05. Cloud Watch.html">05. Cloud Watch</a>
+    </li>
+    <li class="">
+      <a href="06. Demo - Cloud Watch.html">06. Demo - Cloud Watch</a>
+    </li>
+    <li class="">
+      <a href="07. Lab - Cloud Watch.html">07. Lab - Cloud Watch</a>
+    </li>
+    <li class="">
+      <a href="08. What is Infrastructure as Code and why do we need it.html">08. What is Infrastructure as Code and why do we need it?</a>
+    </li>
+    <li class="">
+      <a href="09. Cloud Formation.html">09. Cloud Formation</a>
+    </li>
+    <li class="">
+      <a href="10. Demo - Cloud Formation.html">10. Demo - Cloud Formation</a>
+    </li>
+    <li class="">
+      <a href="11. Lab - Cloud Formation.html">11. Lab - Cloud Formation</a>
+    </li>
+    <li class="">
+      <a href="12. AWS Command Line Interface (CLI).html">12. AWS Command Line Interface (CLI)</a>
+    </li>
+    <li class="">
+      <a href="13. Demo - AWS Command Line Interface (CLI).html">13. Demo - AWS Command Line Interface (CLI)</a>
+    </li>
+    <li class="">
+      <a href="14. AWS - Install and Configure CLI v2.html">14. AWS - Install and Configure CLI v2</a>
+    </li>
+    <li class="">
+      <a href="15. Lab - Interacting with S3 Buckets via the CLI.html">15. Lab - Interacting with S3 Buckets via the CLI</a>
+    </li>
+    <li class="">
+      <a href="16. Lesson Recap.html">16. Lesson Recap</a>
+    </li>
+    <li class="">
+      <a href="17. Course Recap.html">17. Course Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">15. Lab - Interacting with S3 Buckets via the CLI</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="prerequisites">Prerequisites:</h3>
+<ol>
+<li>An AWS account</li>
+<li>AWS CLI installed on your client. If not, refer to the official <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" rel="noopener noreferrer" target="_blank">AWS instructions to install/update AWS CLI</a> (version 2) based on your underlying OS. </li>
+<li>[Optional] AWS root user's access keys configured in your CLI tool</li>
+</ol>
+<h3 id="topics-covered">Topics Covered:</h3>
+<ol>
+<li>Using the AWS console, create a new IAM user with Programmatic administrator access. **We will delete this user programmatically at the end of the exercise. **</li>
+<li>Using the CLI tool, create a bucket, upload a file to it, and then delete the bucket</li>
+<li>Using the CLI tool, delete an IAM user</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="step-1-create-a-new-iam-user">Step 1. Create a new IAM user</h2>
+<p>Let's create a new IAM user who would be allowed to interact with services in your AWS account as an administrator. The AWS allows us to choose if the new user should be granted a <em>Programmatic access</em>, or <em>AWS web console access</em>. The permissions to a user are granted in form of <strong>Policies</strong>, which are JSON documents. The AWS web console provides a pre-created list of policies to choose from. </p>
+<ol>
+<li>Navigate to the IAM console, and access the <a href="https://console.aws.amazon.com/iam/home#/users" rel="noopener noreferrer" target="_blank">IAM Users</a> service. Start the <strong>Add user</strong> wizard, as shown below. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-12.46.50-pm.png" alt="Launch the *Add user* wizard" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Launch the <em>Add user</em> wizard</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li>Set the user details, such as the name, and access type as <em>Programmatic access</em> only. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-12.47.55-pm.png" alt="Set the user name, and type (mode) of access " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Set the user name, and type (mode) of access </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li>Set the permissions to the new user by attaching the AWS Managed <strong>AdministratorAccess</strong> policy from the list of existing policies. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-12.48.57-pm.png" alt="Attach the *AdministratorAccess* policy from the list of pre-created policies" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Attach the <em>AdministratorAccess</em> policy from the list of pre-created policies</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="4">
+<li>Provide tags [optional], review the details of the new user, and finally create the new user.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="5">
+<li>Download the Access key file (.csv) that contains two items: an access key ID, and a secret. <strong>Don’t skip this step as this will be your only opportunity to download the Access key file.</strong></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-12.51.31-pm.png" alt="After a user is created successfully, download the access key file (.csv) containing the access key ID and a secret" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>After a user is created successfully, download the access key file (.csv) containing the access key ID and a secret</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="step-2-configure-a-new-profile-in-the-aws-cli">Step 2. Configure a new profile in the AWS CLI</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol>
+<li>Now, to allow the newly created user to interact with the AWS services via CLI, configure the access key in your CLI tool. Let's create a new profile <code>UdacityLab</code>, and associate the newly created access key to it. You can use the following commands:</li>
+</ol>
+<pre><code class="bash language-bash"># Navigate back to your home folder 
+cd
+# Set the UdacityLab profile credentials in the "credentials"  and "config" file
+aws configure --profile UdacityLab</code></pre>
+<p>It will prompt you to enter the following four values:</p>
+<ul>
+<li>AWS Access Key ID - Paste the value from the downloaded access key file</li>
+<li>AWS Secret Access Key - Paste the value from the downloaded access key file</li>
+<li>Default region name - Enter your preferred region name, such as us-east-2</li>
+<li>Default output format - It can accept either a json, yaml, text, or a table. Enter json for this exercise. </li>
+</ul>
+<ol>
+<li>You can review the current configuration as:</li>
+</ol>
+<pre><code># Check the configuration
+aws configure list
+#View the content of the credentials and configuration file
+cat ~/.aws/credentials
+cat ~/.aws/config</code></pre>
+<p>If you haven't configured any profile ever, you can set the environment variables as well.</p>
+<pre><code># Let the system know that your sensitive information is residing in the .aws folder
+export AWS_CONFIG_FILE=~/.aws/config
+export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials</code></pre>
+<blockquote>
+  <p><strong>Note</strong> - You can create multiple profiles, and use a specific one in any aws command using the <code>--profile &lt;profile-name&gt;</code> option.</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="step-3-interact-with-s3-service">Step 3. Interact with S3 service</h2>
+<ol>
+<li>Create a public bucket with name <code>my-033212455158-bucket</code> in the us-east-1 region, using the newly created <code>UdacityLab</code> profile. </li>
+</ol>
+<pre><code>aws s3api  create-bucket --bucket my-033212455158-bucket --acl public-read-write --region us-east-1 --profile UdacityLab</code></pre>
+<p>In the command above, </p>
+<ul>
+<li><p><code>--bucket</code> option specifies the bucket name of your choice. It must be unique across all AWS accounts. </p></li>
+<li><p><code>--profile</code> option specifies the profile whose credentials will be verified for authorization before accessing the S3 service. This option is OPTIONAL. If skipped, the aws CLI will use the default profile stored in your system.</p></li>
+<li><p><code>--acl</code> option specifies the accessibility level</p></li>
+<li><p><code>--region</code> specifies the AWS region where you want to create this bucket</p>
+<p>Reference - <a href="https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html" rel="noopener noreferrer" target="_blank">aws s3api create-bucket command</a></p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li>Upload a file to your bucket. The command below uploads a file names <code>Sample.html</code>, however, you can choose any file from your local system.</li>
+</ol>
+<pre><code class="bash language-bash">aws s3api put-object --bucket my-033212455158-bucket --key Sample.html --body Sample.html --profile UdacityLab</code></pre>
+<p>In the command above, </p>
+<ul>
+<li><p><code>--key</code> option specifies the name you want to assign to your object in&nbsp;the bucket</p></li>
+<li><p><code>--body</code> option specifies the file name (complete path) to upload from your local system</p>
+<p>Reference <a href="https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object.html" rel="noopener noreferrer" target="_blank">aws s3api put-object</a></p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li>Verify the S3 bucket by going to the AWS web console. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-12-23-at-1.40.20-pm.png" alt="A public bucket created using the CLI" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>A public bucket created using the CLI</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="4">
+<li>Delete the bucket and its content. A bucket can only be deleted if it is empty. Therefore, first delete the <code>Sample.html</code>, and then delete the bucket, as follows:</li>
+</ol>
+<pre><code class="bash language-bash">aws s3api delete-object --bucket my-033212455158-bucket --key Sample.html
+aws s3api delete-bucket --bucket my-033212455158-bucket --profile UdacityLab</code></pre>
+<p><strong>Reference</strong> - <a href="https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html#available-commands" rel="noopener noreferrer" target="_blank">aws s3api commands</a></p>
+<ol start="5">
+<li>Navigate back to the S3 dashboard (AWS web console), and verify if the bucket has been deleted successfully.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="step-4-optional-delete-the-newly-created-udacitylab-iam-user">Step 4. [Optional] Delete the newly created <code>UdacityLab</code> IAM user</h2>
+<p>Remember, you created the <code>UdacityLab</code> IAM user using the AWS web console. However, you can delete the newly created <code>UdacityLab</code> IAM user from your CLI tool as well. </p>
+<blockquote>
+  <p><strong>Note</strong> - We are assuming that your AWS <strong>root user access key</strong> is set in the <code>default</code> profile using the command <code>aws configure --profile default</code>. Use the <code>cat ~/.aws/credentials</code> command to list all the credentials set locally. </p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol>
+<li>View the list of all users (other than the root user) in your AWS account.</li>
+</ol>
+<pre><code class="bash language-bash">aws iam list-users</code></pre>
+<ol start="2">
+<li>A user can only be deleted only after deleting the attached user policies, and access key. The commands below are executed using the <code>default</code> profile, therefore we have not used the <code>--profile</code> option. </li>
+</ol>
+<pre><code class="bash language-bash"># List the policies attached to the UdacityLab user
+aws iam list-attached-user-policies --user-name UdacityLab
+# A policy can be detached using its ARN, a unique identifier
+aws iam detach-user-policy --user-name UdacityLab --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
+# List the access key for UdacityLab user
+aws iam list-access-keys --user-name UdacityLab
+# An access key can be deleted using its access key id
+aws iam delete-access-key  --user-name UdacityLab --access-key-id AKIAQGW4TBMDIZQP564S
+# Delete the user
+aws iam delete-user --user-name UdacityLab</code></pre>
+<p><strong>Reference</strong> - <a href="https://docs.aws.amazon.com/cli/latest/reference/iam/index.html#available-commands" rel="noopener noreferrer" target="_blank">aws iam commands</a></p>
+<ol start="3">
+<li>Navigate back to the IAM console, and access the <a href="https://console.aws.amazon.com/iam/home#/users" rel="noopener noreferrer" target="_blank">IAM Users</a> service to verify if the user has been successfully deleted.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="16. Lesson Recap.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('15. Lab - Interacting with S3 Buckets via the CLI')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

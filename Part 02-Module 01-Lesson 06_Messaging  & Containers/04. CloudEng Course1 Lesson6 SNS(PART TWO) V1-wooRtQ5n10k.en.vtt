@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.180
+Let's review an existing SNS topic.
+
+00:00:03.180 --> 00:00:05.564
+From the AWS management console,
+
+00:00:05.565 --> 00:00:09.525
+type in SNS and click on simple notification service.
+
+00:00:09.525 --> 00:00:12.345
+This brings you to the SNS dashboard.
+
+00:00:12.345 --> 00:00:15.735
+Notice I have four topics and for subscription.
+
+00:00:15.734 --> 00:00:17.804
+Let's click on topics.
+
+00:00:17.804 --> 00:00:21.140
+To see more detail about an existing topic,
+
+00:00:21.140 --> 00:00:22.699
+click on its name.
+
+00:00:22.699 --> 00:00:24.800
+Notice with this topic,
+
+00:00:24.800 --> 00:00:29.510
+I have one confirmed subscription and one pending confirmation.
+
+00:00:29.510 --> 00:00:35.405
+This is pending confirmation because the user has not confirmed the subscription yet.
+
+00:00:35.405 --> 00:00:38.450
+You can also see subscriptions by clicking
+
+00:00:38.450 --> 00:00:41.780
+on the subscriptions option on the left-hand pane.
+
+00:00:41.780 --> 00:00:47.704
+This will allow you to see across all of your topics, the different subscriptions.
+
+00:00:47.704 --> 00:00:50.960
+This has been a quick look at the SNS dashboard.
+
+00:00:50.960 --> 00:00:56.700
+You have an upcoming exercise where you will create your own topics and subscriptions.
+

@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.639
+It is important to have visibility into your cloud resources and applications.
+
+00:00:05.639 --> 00:00:08.129
+Being able to answer questions like,
+
+00:00:08.130 --> 00:00:10.214
+how is the server performing?
+
+00:00:10.214 --> 00:00:12.914
+What is the current load on the server?
+
+00:00:12.914 --> 00:00:17.594
+What is the root cause of an application error that a user is seeing?
+
+00:00:17.594 --> 00:00:20.714
+What is the path that leads to this error?
+
+00:00:20.714 --> 00:00:26.670
+Being able to answer these questions is imperative to providing good user experiences.
+
+00:00:26.670 --> 00:00:32.465
+However, monitoring distributed systems that run in the cloud can be difficult.
+
+00:00:32.465 --> 00:00:34.800
+For applications that run in the Cloud,
+
+00:00:34.799 --> 00:00:38.959
+you will need access to logging and auditing services to
+
+00:00:38.960 --> 00:00:44.370
+help you proactively monitor your resources and applications.
+

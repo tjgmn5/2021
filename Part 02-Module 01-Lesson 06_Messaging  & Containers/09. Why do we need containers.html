@@ -1,0 +1,320 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Why do we need containers?</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Messaging  &amp; Containers</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need messaging in the cloud.html">02. Why do we need messaging in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Simple Notification Service (SNS).html">03. Simple Notification Service (SNS)</a>
+    </li>
+    <li class="">
+      <a href="04. Demo - Simple Notification Service (SNS) .html">04. Demo - Simple Notification Service (SNS) </a>
+    </li>
+    <li class="">
+      <a href="05. Why do we need queuing technology.html">05. Why do we need queuing technology?</a>
+    </li>
+    <li class="">
+      <a href="06. Simple Queue Service (SQS).html">06. Simple Queue Service (SQS)</a>
+    </li>
+    <li class="">
+      <a href="07. SQS - Create a Queue.html">07. SQS - Create a Queue</a>
+    </li>
+    <li class="">
+      <a href="08. Lab - SNS.html">08. Lab - SNS</a>
+    </li>
+    <li class="">
+      <a href="09. Why do we need containers.html">09. Why do we need containers?</a>
+    </li>
+    <li class="">
+      <a href="10. Elastic Container Service (ECS).html">10. Elastic Container Service (ECS)</a>
+    </li>
+    <li class="">
+      <a href="11. Demo - Elastic Container Service.html">11. Demo - Elastic Container Service</a>
+    </li>
+    <li class="">
+      <a href="12. ECS - Create a Cluster.html">12. ECS - Create a Cluster</a>
+    </li>
+    <li class="">
+      <a href="13. Lesson Recap.html">13. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">09. Why do we need containers?</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>CloudEng Course1 Lesson6 WhyWeNeedContainers V1</p></h3>
+  <video controls>
+  <source src="09. CloudEng Course1 Lesson6 WhyWeNeedContainers V1-WXuXp3WSz6E.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="09. CloudEng Course1 Lesson6 WhyWeNeedContainers V1-WXuXp3WSz6E.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><em>We will be going more in-depth on the topic of microservices in Course: Microservices at Scale using AWS & Kubernetes</em></p>
+<p>Let's learn about a few key terms:</p>
+<h3 id="what-is-a-container">What is a Container?</h3>
+<p>OS level virtualization allows us to run <em>multiple isolated processes</em> in parallel. A container is an isolated process that consists of the following items, all bundled into one package:</p>
+<ul>
+<li>the application code, </li>
+<li>the required dependencies (e.g. libraries, utilities, configuration files), and </li>
+<li>the necessary runtime environment to run the application. </li>
+</ul>
+<p>Each container is an independent component that can run on its own and be moved from environment to environment.</p>
+<h3 id="benefit-of-containers">Benefit of Containers</h3>
+<ul>
+<li>Containers make it easier for developers to create, deploy, and run applications on different hardware and platforms, quickly and easily. </li>
+<li>Containers share a single kernel and share application libraries. </li>
+<li>Containers cause a lower system overhead as compared to Virtual Machines.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="how-to-create-containers">How to create containers?</h3>
+<p>Several platforms (called Container runtime/engines) allow us to create containers. A few such platforms are:</p>
+<ul>
+<li><a href="https://www.docker.com/products/container-runtime" target="_blank">Docker</a> </li>
+<li><a href="https://cri-o.io/" target="_blank">CRI-O</a></li>
+<li><a href="https://openvz.org/" target="_blank">OpenVZ</a></li>
+<li><a href="https://containerd.io/" target="_blank">Containerd</a></li>
+</ul>
+<p>In this ND, you will learn to create containers using the Docker engine.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="docker-containers-versus-virtual-machines">Docker Containers versus Virtual Machines</h4>
+<p>There are several benefits of using Containers over VMs:</p>
+<ul>
+<li>Size: Containers are much smaller than Virtual Machines (VM) and run as isolated processes versus virtualized hardware. VMs can be in GBs while containers are in MBs.</li>
+<li>Speed: Virtual Machines can be slow to boot and take minutes to launch. A container can spawn much more quickly typically in seconds.</li>
+<li>Composability: Containers are designed to be programmatically built and are defined as source code. Virtual Machines are often replicas of a conventional computer system. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-05-at-6.02.09-pm.png" alt="Comparing traditional, VMs, and containerized deployment" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Comparing traditional, VMs, and containerized deployment</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="2-docker">2. Docker</h3>
+<p>Docker is a (container runtime) tool that helps to build, test, and run containers. You can build containers locally using a <em>command-line utility</em>, <a href="https://docs.docker.com/desktop/" rel="noopener noreferrer" target="_blank">Docker Desktop</a>. If there are multiple containers running individual services of an application, you will need to use <a href="https://docs.docker.com/compose/" rel="noopener noreferrer" target="_blank">Docker Compose</a> utility to specify dependent relationships between containers.</p>
+<h3 id="3-docker-image">3. Docker Image</h3>
+<p>An <em>image</em> (or Docker image) is a portable auto-generated template that contains a set of instructions to create a container. An image can be instantiated multiple numbers of times to create multiple <em>containers</em>.</p>
+<h3 id="4-dockerfile">4. Dockerfile</h3>
+<p>A text file containing commands to create an image. In other words, Docker generates images by reading the commands from a Dockerfile. </p>
+<h3 id="recommended-read">Recommended Read</h3>
+<ul>
+<li><a href="https://www.docker.com/resources/what-container" rel="noopener noreferrer" target="_blank">What is a Container?</a></li>
+<li><a href="https://docs.docker.com/get-started/" rel="noopener noreferrer" target="_blank">How to Get Started with Docker?</a> - Watch the video tutorial available here. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Identify components contained in a container. Pick two.</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1558888012789" name="851137" id="a1558888012789">
+      <label for="a1558888012789"><p>Application</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558888030818" name="851137" id="a1558888030818">
+      <label for="a1558888030818"><p>Virtualized hardware</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558888031631" name="851137" id="a1558888031631">
+      <label for="a1558888031631"><p>Runtime libraries</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1558888032373" name="851137" id="a1558888032373">
+      <label for="a1558888032373"><p>Host operating system</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Application</li>
+      <li>Runtime libraries</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="10. Elastic Container Service (ECS).html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('09. Why do we need containers?')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

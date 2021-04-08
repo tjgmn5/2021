@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.669
+There are oftentimes that users of
+
+00:00:02.669 --> 00:00:07.004
+your applications need to be notified when certain events happen.
+
+00:00:07.004 --> 00:00:11.339
+For example, if a large withdrawal is made from your bank account,
+
+00:00:11.339 --> 00:00:13.964
+it would be nice to receive a text message.
+
+00:00:13.964 --> 00:00:17.100
+What if someone from outside of the US
+
+00:00:17.100 --> 00:00:20.895
+logs into your Netflix account which happened to me by the way.
+
+00:00:20.894 --> 00:00:25.079
+My receipt of an email alert allowed me to act quickly.
+
+00:00:25.079 --> 00:00:32.129
+Notifications such as text messages or emails can be sent through services in the Cloud.
+
+00:00:32.130 --> 00:00:35.700
+The use of the Cloud offers benefits like lower cost,
+
+00:00:35.700 --> 00:00:38.370
+increase storage, and flexibility.
+
+00:00:38.369 --> 00:00:40.729
+Through Cloud services, you can send
+
+00:00:40.729 --> 00:00:45.515
+notifications and even track the life cycle of those notifications.
+
+00:00:45.515 --> 00:00:48.799
+Messaging is a form of notifications,
+
+00:00:48.799 --> 00:00:53.984
+but instead of a human as the recipient of the message, an application is.
+
+00:00:53.984 --> 00:00:59.734
+Messaging typically occurs between Internet-based applications and devices.
+
+00:00:59.734 --> 00:01:03.530
+One system can send a message to another system.
+
+00:01:03.530 --> 00:01:09.120
+We will talk more about this concept when we discuss queuing technology.
+

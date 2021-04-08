@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.810
+EC2 auto-scaling is a service that monitors
+
+00:00:03.810 --> 00:00:08.384
+your EC2 instances and automatically adjust by adding or removing
+
+00:00:08.384 --> 00:00:13.230
+EC2 instances based on conditions you define in order to
+
+00:00:13.230 --> 00:00:18.734
+maintain application availability and to provide peak performance to your users.
+
+00:00:18.734 --> 00:00:21.329
+EC2 auto-scaling works with
+
+00:00:21.329 --> 00:00:25.859
+AWS messaging services like the simple notification service or
+
+00:00:25.859 --> 00:00:33.644
+SNS to alert you when EC2 auto-scaling is launching or terminating your EC2 instances.
+
+00:00:33.645 --> 00:00:37.760
+You can configure the alert message to contain information about the
+
+00:00:37.759 --> 00:00:42.829
+terminated or launched instance and the reason for termination or launch.
+
+00:00:42.829 --> 00:00:48.364
+There's also an AWS auto-scaling service that is different than the EC2
+
+00:00:48.365 --> 00:00:50.795
+auto-scaling that allows you to set up
+
+00:00:50.795 --> 00:00:56.520
+other services such as Dynamo DB to automatically scale.
+

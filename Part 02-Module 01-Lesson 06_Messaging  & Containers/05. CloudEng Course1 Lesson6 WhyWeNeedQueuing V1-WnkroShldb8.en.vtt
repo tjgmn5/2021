@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.934
+Queue is a data structure that holds requests, sometimes called messages.
+
+00:00:04.934 --> 00:00:09.375
+A queue is similar in concept to waiting in line at a department store.
+
+00:00:09.375 --> 00:00:10.785
+People join the line,
+
+00:00:10.785 --> 00:00:12.585
+and wait their turn to checkout.
+
+00:00:12.585 --> 00:00:17.265
+Similarly, messages join a queue and wait their turn to be processed.
+
+00:00:17.265 --> 00:00:20.670
+Messages in a queue are commonly processed in order,
+
+00:00:20.670 --> 00:00:23.715
+first-in, first-out or FIFO.
+
+00:00:23.714 --> 00:00:26.969
+Let's say you have a money transfer app with
+
+00:00:26.969 --> 00:00:30.599
+millions of users sending funds back and forth,
+
+00:00:30.600 --> 00:00:32.370
+instead of making a user wait for
+
+00:00:32.369 --> 00:00:36.209
+confirmation while money is being transferred through the platform,
+
+00:00:36.210 --> 00:00:40.954
+you let them know their request was submitted and allow them to go about their day.
+
+00:00:40.954 --> 00:00:45.829
+Behind the scenes, you place the money transfer request on a queue,
+
+00:00:45.829 --> 00:00:49.684
+and process that requests when system resources are available.
+
+00:00:49.685 --> 00:00:52.580
+Since the money transfer process along with
+
+00:00:52.579 --> 00:00:55.894
+doing security checks could take a while to process.
+
+00:00:55.895 --> 00:01:01.365
+The benefit of using a queue is that the user doesn't have to sit there waiting.
+
+00:01:01.365 --> 00:01:06.844
+The use of a messaging queue will help improve performance and scalability.
+
+00:01:06.844 --> 00:01:12.289
+The use of asynchronous processing where a user doesn't wait for a response,
+
+00:01:12.290 --> 00:01:15.990
+improves the overall user experience.
+

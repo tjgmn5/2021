@@ -1,0 +1,367 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab - Cloud Formation</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>AWS Management</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need logging and auditing in the cloud.html">02. Why do we need logging and auditing in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Cloud Trail.html">03. Cloud Trail</a>
+    </li>
+    <li class="">
+      <a href="04. CloudTrail - Create a Trail.html">04. CloudTrail - Create a Trail</a>
+    </li>
+    <li class="">
+      <a href="05. Cloud Watch.html">05. Cloud Watch</a>
+    </li>
+    <li class="">
+      <a href="06. Demo - Cloud Watch.html">06. Demo - Cloud Watch</a>
+    </li>
+    <li class="">
+      <a href="07. Lab - Cloud Watch.html">07. Lab - Cloud Watch</a>
+    </li>
+    <li class="">
+      <a href="08. What is Infrastructure as Code and why do we need it.html">08. What is Infrastructure as Code and why do we need it?</a>
+    </li>
+    <li class="">
+      <a href="09. Cloud Formation.html">09. Cloud Formation</a>
+    </li>
+    <li class="">
+      <a href="10. Demo - Cloud Formation.html">10. Demo - Cloud Formation</a>
+    </li>
+    <li class="">
+      <a href="11. Lab - Cloud Formation.html">11. Lab - Cloud Formation</a>
+    </li>
+    <li class="">
+      <a href="12. AWS Command Line Interface (CLI).html">12. AWS Command Line Interface (CLI)</a>
+    </li>
+    <li class="">
+      <a href="13. Demo - AWS Command Line Interface (CLI).html">13. Demo - AWS Command Line Interface (CLI)</a>
+    </li>
+    <li class="">
+      <a href="14. AWS - Install and Configure CLI v2.html">14. AWS - Install and Configure CLI v2</a>
+    </li>
+    <li class="">
+      <a href="15. Lab - Interacting with S3 Buckets via the CLI.html">15. Lab - Interacting with S3 Buckets via the CLI</a>
+    </li>
+    <li class="">
+      <a href="16. Lesson Recap.html">16. Lesson Recap</a>
+    </li>
+    <li class="">
+      <a href="17. Course Recap.html">17. Course Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">11. Lab - Cloud Formation</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-cloudformation"># CloudFormation</h2>
+<p>In this hands-on exercise, you will create an S3 bucket with AWS CloudFormation. </p>
+<ol>
+<li><p>Prerequisites: AWS account</p></li>
+<li><p>By the end of this lab, you will be able to:</p></li>
+</ol>
+<ul>
+<li>Create a CloudFormation stack using the CloudFormation Designer</li>
+<li>Launch S3 bucket using Infrastructure as Code</li>
+<li>Save and deploy a CloudFormation stack</li>
+<li>View resources created through CloudFormation</li>
+</ul>
+<p>Follow the exercise instructions described below:</p>
+<h2 id="steps">Steps:</h2>
+<ol>
+<li><strong>Create CloudFormation Stack</strong><ul>
+<li>On the AWS Management Console page, type <code>cloud formation</code> in the <code>Find Services</code> box and then select <code>CloudFormation</code>.</li></ul></li>
+</ol>
+<blockquote>
+  <p><strong><em>Important:</em></strong> The redesigned AWS CloudFormation console is available now. This tutorial covers the new designer. To access the new designer, click on the <code>Try it out now and provide us feedback.</code> message that displays in a message similar to what’s shown below. </p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-05-at-3.39.19-pm.png" alt="CloudFormation dashboard" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>CloudFormation dashboard</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ul>
+<li>If the left-hand menu options do not appear, expand the options by clicking on `` in the top left-hand corner.</li>
+<li>Select <code>Designer</code> from the left-hand menu.</li>
+<li>Locate <code>S3</code> in the <code>Resource Type</code> section and expand it.</li>
+<li>Select Bucket and drag it to the designer window on the right-hand side.</li>
+<li>Copy the JSON below and replace entirely the JSON found in the <code>Properties</code> tab.</li>
+</ul>
+<pre><code>{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Basic S3 Bucket CloudFormation template",
+  "Resources": {
+    "S3BucketCreatedByCloudFormation": {
+      "Type": "AWS::S3::Bucket",
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AccessControl": "PublicRead"
+      }
+    }
+  },
+  "Outputs": {
+    "BucketName": {
+      "Value": {
+        "Ref": "S3BucketCreatedByCloudFormation"
+      },
+      "Description": "Name of the newly created Amazon S3 Bucket"
+    }
+  }
+}</code></pre>
+<p>Hit the Refresh button in the upper right-hand corner so that the Designer is not out of date.</p>
+<ol start="2">
+<li><strong>Save CloudFormation Stack</strong><ul>
+<li>In the CloudFormation Designer Toolbar, click the Document icon , and click Save.</li>
+<li>Click <code>Local File</code> and click <code>Save</code>. The JSON file will download.</li>
+<li>In the AWS CloudFormation Designer toolbar, click to validate your template. You will see a message that states, <code>Template is valid</code>.</li></ul></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2021-01-05-at-3.53.00-pm.png" alt="Designer toolbar - save, verify, and then deploy the stack. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Designer toolbar - save, verify, and then deploy the stack. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li><strong>Deploy CloudFormation Stack</strong><ul>
+<li>In the CloudFormation Designer Toolbar, click to deploy the stack. The <code>Create stack</code> screen appears.</li>
+<li>Accept the defaults and click <code>Next</code>.</li>
+<li>Enter a <code>Stack name</code>. Leave <code>Parameters</code> empty. Click <code>Next</code>.</li>
+<li>Leave the defaults and click <code>Next</code>.</li>
+<li>Review the stack details and click <code>Create Stack</code>. The stack status will be <code>CREATE_IN_PROGRESS</code>. To the current status of the stack, select the Refresh button in the upper right-hand corner. Once the stack reaches the <code>CREATE_COMPLETE</code> status, the stack has been deployed.</li></ul></li>
+<li><strong>View S3 Bucket created by CloudFormation Stack</strong><ul>
+<li>From the <code>Services</code> menu option at the top, type in <code>S3</code> and select <code>S3</code>.</li>
+<li>To quickly find the bucket created by the CloudFormation Stack, click on <code>Date Created</code> in the column heading to sort by the most recent buckets created.</li>
+<li>The newly created bucket appears at the top, <code>cfs3stack-s3bucketcreatedbycloudformation-1at0fv1v9ndc1</code>.</li></ul></li>
+<li><strong>Delete CloudFormation Stack</strong><ul>
+<li>To avoid on-going charges, delete the stack by navigating to the stack, and click the <code>Delete</code> button in the upper right-hand corner.</li></ul></li>
+</ol>
+<blockquote>
+  <p><strong>Note:</strong> When the stack is deleted, all resources created by the stack template will also be deleted.<br />
+  <br/></p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Create an S3 bucket with AWS CloudFormation</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--0">
+        <label for="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--0"><p>Create CloudFormation Stack</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--1">
+        <label for="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--1"><p>Save CloudFormation Stack</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--2">
+        <label for="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--2"><p>Deploy CloudFormation Stack</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--3">
+        <label for="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--3"><p>View S3 Bucket created by CloudFormation Stack</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--4">
+        <label for="24ac80d7-c6c7-4c7a-9c42-6f70981d35c2--4"><p>Delete CloudFormation Stack</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>You're Doing Great!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="12. AWS Command Line Interface (CLI).html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('11. Lab - Cloud Formation')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.450
+Let's look at an existing ECS cluster.
+
+00:00:03.450 --> 00:00:05.714
+From the AWS management console,
+
+00:00:05.714 --> 00:00:08.925
+I'm going to type "ECS" and click on it.
+
+00:00:08.925 --> 00:00:13.425
+The first thing that I want to show you is what's called a task definition.
+
+00:00:13.425 --> 00:00:16.350
+This is an application blueprint that
+
+00:00:16.350 --> 00:00:19.350
+describes the container information for your application.
+
+00:00:19.350 --> 00:00:22.635
+In this case, the app is a web application.
+
+00:00:22.635 --> 00:00:24.315
+Let's click on this.
+
+00:00:24.315 --> 00:00:27.165
+Let's click on the second revision.
+
+00:00:27.164 --> 00:00:29.329
+Notice, among other things,
+
+00:00:29.329 --> 00:00:33.909
+the task definition defines the memory and the CPU needed.
+
+00:00:33.909 --> 00:00:40.159
+Overall, the Amazon ECS service launches and maintains copies of task definitions.
+
+00:00:40.159 --> 00:00:43.429
+That's why we saw multiple versions on the previous page.
+
+00:00:43.429 --> 00:00:47.975
+Next, there's a concept of what's called a cluster.
+
+00:00:47.975 --> 00:00:50.030
+So let's click on that.
+
+00:00:50.030 --> 00:00:55.804
+A cluster is simply a set of container Instances running the container agent.
+
+00:00:55.804 --> 00:00:58.579
+Let's click on the ''Default Cluster.''
+
+00:00:58.579 --> 00:01:03.109
+Within this cluster, there is one web application running,
+
+00:01:03.109 --> 00:01:04.265
+and it's shown here.
+
+00:01:04.265 --> 00:01:06.200
+Let's click on the service name.
+
+00:01:06.200 --> 00:01:10.189
+Next, I'm going to click on the "Load Balancer Name".
+
+00:01:10.189 --> 00:01:13.174
+I'm going to click on the "Load Balancer name".
+
+00:01:13.174 --> 00:01:17.560
+Again, here I'm trying to get to the URL for the web application.
+
+00:01:17.560 --> 00:01:19.530
+Notice that's shown here,
+
+00:01:19.530 --> 00:01:21.299
+under DNS name.
+
+00:01:21.299 --> 00:01:23.129
+Let's copy that.
+
+00:01:23.129 --> 00:01:25.974
+Let's open a new web browser,
+
+00:01:25.974 --> 00:01:28.614
+to bring up our web application.
+
+00:01:28.614 --> 00:01:32.359
+Now, we see a "Congratulations" message.
+
+00:01:32.359 --> 00:01:36.859
+This is simply the welcome message from the web application that shows
+
+00:01:36.859 --> 00:01:41.989
+we have a web app up and running on a container in Amazon ECS.
+
+00:01:41.989 --> 00:01:47.039
+This was a quick look at an existing ECS container.
+

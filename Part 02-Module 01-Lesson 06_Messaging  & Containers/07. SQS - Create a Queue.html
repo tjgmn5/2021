@@ -1,0 +1,435 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SQS - Create a Queue</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Messaging  &amp; Containers</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need messaging in the cloud.html">02. Why do we need messaging in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Simple Notification Service (SNS).html">03. Simple Notification Service (SNS)</a>
+    </li>
+    <li class="">
+      <a href="04. Demo - Simple Notification Service (SNS) .html">04. Demo - Simple Notification Service (SNS) </a>
+    </li>
+    <li class="">
+      <a href="05. Why do we need queuing technology.html">05. Why do we need queuing technology?</a>
+    </li>
+    <li class="">
+      <a href="06. Simple Queue Service (SQS).html">06. Simple Queue Service (SQS)</a>
+    </li>
+    <li class="">
+      <a href="07. SQS - Create a Queue.html">07. SQS - Create a Queue</a>
+    </li>
+    <li class="">
+      <a href="08. Lab - SNS.html">08. Lab - SNS</a>
+    </li>
+    <li class="">
+      <a href="09. Why do we need containers.html">09. Why do we need containers?</a>
+    </li>
+    <li class="">
+      <a href="10. Elastic Container Service (ECS).html">10. Elastic Container Service (ECS)</a>
+    </li>
+    <li class="">
+      <a href="11. Demo - Elastic Container Service.html">11. Demo - Elastic Container Service</a>
+    </li>
+    <li class="">
+      <a href="12. ECS - Create a Cluster.html">12. ECS - Create a Cluster</a>
+    </li>
+    <li class="">
+      <a href="13. Lesson Recap.html">13. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">07. SQS - Create a Queue</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p>Amazon SQS is a service that hosts the queue of messages (requests and responses) from the decoupled application components. Have a quick look at this <a href="https://d2yegcrkszs8ng.cloudfront.net/sqsconsole-20200912023453940/assets/images/5e3f44ce52788a4fb8b8432e4441bf3f-SQS-diagram.svg" rel="noopener noreferrer" target="_blank">SQS workflow</a> to understand it better. </p>
+</blockquote>
+<p>Let's see how to create an SQS queue, and learn to send/receive messages. </p>
+<h2 id="a-queues-dashboard">A. Queues Dashboard</h2>
+<p>From the AWS management console, select SQS (Simple Queue Service), or you can directly go to the <a href="https://console.aws.amazon.com/sqs/v2/home" rel="noopener noreferrer" target="_blank">Queues dashboard</a>. Start the <strong>Create queue</strong> wizard from there. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-26-at-8.10.59-pm.png" alt="Launch **Create queue** from Amazon SQS homepage" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Launch <strong>Create queue</strong> from Amazon SQS homepage</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-26-at-8.12.12-pm.png" alt="Launch **Create queue** from Queues dashboard" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Launch <strong>Create queue</strong> from Queues dashboard</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="b-create-a-queue">B. Create a Queue</h2>
+<p>A queue can be created quickly in three steps:</p>
+<ol>
+<li><em>General details</em> - Provide a case-sensitive name, and choose the type of queue - Standard or FIFO, you want to create. A standard queue supports an unlimited number of transactions per second (TPS) for each API action (SendMessage, ReceiveMessage, or DeleteMessage). Whereas, FIFO queues support up to 3000 messages per second while <em>strictly</em> preserving the message order.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-26-at-8.12.59-pm.png" alt="Snapshot: Create queue - General details" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Create queue - General details</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li><em>Configuration details</em> - You can set the following items:</li>
+</ol>
+<ul>
+<li><p><em>Visibility timeout</em> - The time-duration (0 seconds - 12 hours) after which a <em>consumer</em> message can become visible to the other consumers. Generally, the consumer must process and delete a message from the queue.<br><br></p></li>
+<li><p><em>Message retention period</em> - The duration (1 minute - 14 days) for which the queue retains a message that does not get deleted. Amazon SQS will automatically delete messages that have been in a queue for more than the specified period. <br><br></p></li>
+<li><p><em>Delivery delay</em> - The time (0 seconds - 15 minutes) to intentionally delay the delivery of each (new) message added to the queue. According to AWS:</p></li>
+</ul>
+<blockquote>
+  <p>If your consumers need additional time to process messages, you must delay each new message coming to the queue.</p>
+  <ul>
+  <li><em>Maximum message size</em> - It should be between 1 KB and 256 KB.</li>
+  </ul>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-26-at-8.13.32-pm.png" alt="Snapshot: Create queue - Configuration details" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Create queue - Configuration details</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="3">
+<li><em>Access policy</em> - You can define specifically who can send/receive messages to/from your queue. Choose the queue owner, or specified AWS accounts, IAM users, and roles as sender/receiver. The access policy can also be defined in JSON format. </li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-26-at-8.14.19-pm.png" alt="Snapshot: Create queue - Access policy" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Create queue - Access policy</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="c-details-of-an-existing-queue">C. Details of an Existing Queue</h2>
+<p>Select a queue from the <strong>Queues</strong> dashboard to view the basic details and configuration.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-26-at-9.45.30-pm.png" alt="Snapshot: Details of an existing queue" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Details of an existing queue</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>In the snapshot above, the URL <code>https://sqs.us-east-2.amazonaws.com/014421265158/MyQueue</code> is an essential field to use in your application components. In addition, you can also view details about the Lambda triggers, and the access policy. You can even monitor various metrics, such as approximate age of message, the number of messages sent/received/delayed/deleted/empty receives, and size consumed by sent messages.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="d-send-and-receive-messages">D. Send and receive messages</h2>
+<p>For the selected queue, you can either send/receive messages or configure Lambda function trigger. Let's see how to send and receive messages using a <em>Standard</em> queue.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol>
+<li><p><strong>Send message</strong><br><br />
+Specify the message body and delay duration while sending a message. As stated earlier, you must add a delay to each new message, if your consumers need additional time to process messages. In other words, your consumer will receive the message only after the duration specified here. </p>
+<p>You can also mention the metadata, such as timestamps, geospatial data, signatures, and identifiers in the form of <em>Message attributes</em>. </p>
+<p>In a FIFO queue, there is an additional concept of <em>message group</em>, to ensures that the messages belonging to a particular group are processed in a strict order. </p></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-26-at-10.55.16-pm.png" alt="Snapshot: Message body and delay duration while sending a message" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Message body and delay duration while sending a message</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <ol start="2">
+<li><p><strong>Receive messages</strong><br><br />
+A consumer cannot choose a specific message to receive. Instead, a consumer <em>polls</em> to receive up to 10 number of messages from the queue. The snapshot below shows a message received after polling. The default polling duration is set to 30 seconds. </p>
+<p>Next, click on the message ID to view the message details, body, and metadata. Later, delete the message manually, if not in use. </p></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-26-at-10.57.52-pm.png" alt="Snapshot: **Poll for messages** to receive messages " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: <strong>Poll for messages</strong> to receive messages </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-26-at-11.14.57-pm.png" alt="Snapshot: View the message details, body, and metadata. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: View the message details, body, and metadata. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p><strong>Note</strong>: SQS pricing is based on the count and size of messages, and the interactions with Amazon S3 and the AWS Key Management Service.</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="external-resource">External Resource</h2>
+<ol>
+<li><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-architecture.html" rel="noopener noreferrer" target="_blank">Basic Amazon SQS architecture</a></li>
+<li>Refer to the <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-getting-started.html" rel="noopener noreferrer" target="_blank">Getting started with Amazon SQS</a>, that demonstrates the following steps:</li>
+</ol>
+<ul>
+<li>Step 1: Create a queue</li>
+<li>Step 2: Send a message</li>
+<li>Step 3: Receive and delete your message</li>
+<li>Step 4: Delete your queue</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="08. Lab - SNS.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. SQS - Create a Queue')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

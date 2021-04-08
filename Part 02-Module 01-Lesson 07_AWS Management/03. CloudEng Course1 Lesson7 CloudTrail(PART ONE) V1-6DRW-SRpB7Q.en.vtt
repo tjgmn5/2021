@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.344
+Cloud Trail allows you to audit or review everything that occurs in your AWS account.
+
+00:00:06.344 --> 00:00:09.000
+For example, who has logged in,
+
+00:00:09.000 --> 00:00:12.179
+what services did they access, etc.
+
+00:00:12.179 --> 00:00:18.019
+Cloud trail does this by recording all of the AWS API calls occurring in your account,
+
+00:00:18.019 --> 00:00:20.460
+and delivering a log file to you.
+
+00:00:20.460 --> 00:00:26.130
+Cloud trail logs actions performed through the AWS management console,
+
+00:00:26.129 --> 00:00:29.939
+and the AWS, SDK or software development kit.
+
+00:00:29.940 --> 00:00:32.810
+This means, any application that uses
+
+00:00:32.810 --> 00:00:36.575
+this software development kit to interact with AWS services,
+
+00:00:36.575 --> 00:00:42.020
+command line tools and other AWS services will be logged via Cloud Trail.
+
+00:00:42.020 --> 00:00:47.420
+This log is very useful should suspicious or unexpected activity occur in your account.
+
+00:00:47.420 --> 00:00:53.240
+You can also set up alerts and alarms to notify you should certain activities occur.
+
+00:00:53.240 --> 00:00:56.520
+It is a very useful service.
+

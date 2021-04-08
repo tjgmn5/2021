@@ -1,0 +1,349 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EC2 - Auto Scaling Group</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Networking &amp; Elasticity</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Introduction.html">01. Lesson Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Why do we need networking in the cloud.html">02. Why do we need networking in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="03. Route 53.html">03. Route 53</a>
+    </li>
+    <li class="">
+      <a href="04. Why do we need elasticity in the cloud.html">04. Why do we need elasticity in the cloud?</a>
+    </li>
+    <li class="">
+      <a href="05. EC2 Auto Scaling.html">05. EC2 Auto Scaling</a>
+    </li>
+    <li class="">
+      <a href="06. EC2 - Create Auto Scaling group.html">06. EC2 - Create Auto Scaling group</a>
+    </li>
+    <li class="">
+      <a href="07. EC2 - Auto Scaling Group.html">07. EC2 - Auto Scaling Group</a>
+    </li>
+    <li class="">
+      <a href="08. Elastic Load Balancing.html">08. Elastic Load Balancing</a>
+    </li>
+    <li class="">
+      <a href="09. EC2 - Elastic Load Balancing.html">09. EC2 - Elastic Load Balancing</a>
+    </li>
+    <li class="">
+      <a href="10. EC2 - Lab NLB.html">10. EC2 - Lab NLB</a>
+    </li>
+    <li class="">
+      <a href="11. Lab - EC2 Auto Scaling.html">11. Lab - EC2 Auto Scaling</a>
+    </li>
+    <li class="">
+      <a href="12. Lesson Recap.html">12. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">07. EC2 - Auto Scaling Group</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Let's have a walkthrough of an Auto Scaling Group which has already been created. </p>
+<h3 id="1-select-an-auto-scaling-group">1. Select an Auto Scaling Group</h3>
+<p>Go to the <a href="console.aws.amazon.com/ec2/v2/home" rel="noopener noreferrer" target="_blank">EC2 Dashboard</a>, and select the <strong>Auto Scaling Groups</strong> service from the left navigation pane. Select an Auto Scaling Group which has already been created. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-10.12.35-pm.png" alt="Snapshot: Select an Auto Scaling Group" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Select an Auto Scaling Group</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="2-view-details-of-the-selected-auto-scaling-group">2. View Details of the Selected Auto Scaling Group</h3>
+<p>Once you select an Auto Scaling Group, you can view further details, as shown in the snapshots below. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-10.13.05-pm.png" alt="Snapshot: Details of an Auto Scaling group" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Details of an Auto Scaling group</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="3-launch-template">3. Launch template</h3>
+<blockquote>
+  <p>A Launch Template specifies instance configuration information, such as, the ID of the Amazon Machine Image (AMI), the instance type, a key pair, security groups, and the other parameters that will be used to launch EC2 instances.</p>
+</blockquote>
+<p>View the Launch template used in the current Auto Scaling group. In the snapshot below, we have the following configuration: </p>
+<ul>
+<li><code>Amazon Linux 2</code> AMI</li>
+<li><code>t2.nano</code> instance type</li>
+<li>An existing key pair to log in to the EC2 instances. We have kept the rest of the other things as default. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-10.17.11-pm.png" alt="Snapshot: The Launch template used in the current group" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: The Launch template used in the current group</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="4-activity">4. Activity</h3>
+<p>On the activity tab, the Status column shows the current status of your instances. In the snapshot below, notice that we have a list showing that one instance was created initially, and later it was terminated. Consequently, the auto scaling group has automatically spun up a new instance. </p>
+<p>While your instance is launching, the status column shows <strong>In progress</strong>. The status changes to <strong>successful</strong> after the instances are launched.</p>
+<p>You can also use the "Refresh" button to see the current status of your instances.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-10.17.38-pm.png" alt="Snapshot: Activity history" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Activity history</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="5-auto-scaling">5. Auto Scaling</h3>
+<p>Scaling policies allow you to dynamically scale your Amazon EC2 capacity automatically, based on demand. You can create and add either a step /simple/target scaling policy.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-10.28.44-pm.png" alt="Snapshot: View/add policies for the current group" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: View/add policies for the current group</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="6-instances-management">6. Instances Management</h3>
+<p>View the list of instances running as part of the current group. In the snapshot below, you can see that your autoscaling group has launched your EC2 instance and that it is <em>InService</em>. Similarly, you can view other details, such as AZs, and the health status of each instance.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-10.18.12-pm.png" alt="Snapshot: List of instances in the current group" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: List of instances in the current group</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="7-instance-refresh">7. Instance refresh</h3>
+<p>An instance refresh allows you to trigger a rolling replacement of all previously launched instances in the Auto Scaling group with a new group of instances.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screenshot-2020-11-24-at-10.19.00-pm.png" alt="Snapshot: Click on the &quot;Refresh&quot; icon for rolling replacement of the instances. " class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Snapshot: Click on the "Refresh" icon for rolling replacement of the instances. </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="08. Elastic Load Balancing.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. EC2 - Auto Scaling Group')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

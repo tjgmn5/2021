@@ -1,0 +1,133 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.194
+Let's see CloudFormation in action.
+
+00:00:03.194 --> 00:00:06.089
+From the AWS management console page,
+
+00:00:06.089 --> 00:00:10.980
+type CloudFormation, this brings you to the CloudFormation dashboard.
+
+00:00:10.980 --> 00:00:13.964
+I want to show you the designer first.
+
+00:00:13.964 --> 00:00:18.629
+The AWS CloudFormation designer is the graphic tool for creating,
+
+00:00:18.629 --> 00:00:22.410
+viewing, and modifying AWS CloudFormation templates.
+
+00:00:22.410 --> 00:00:24.059
+So with this designer,
+
+00:00:24.059 --> 00:00:29.114
+you can diagram your template resources using a drag and drop interface,
+
+00:00:29.114 --> 00:00:34.379
+and then actually edit the details using JSON or a YAML.
+
+00:00:34.380 --> 00:00:39.655
+So for example, let's say I wanted to stand up an auto scaling group.
+
+00:00:39.655 --> 00:00:42.755
+I would simply drag and drop it over here.
+
+00:00:42.755 --> 00:00:45.050
+Within that auto-scaling group,
+
+00:00:45.049 --> 00:00:47.884
+we will need an EC2 instance,
+
+00:00:47.884 --> 00:00:50.045
+drag and drop it over here.
+
+00:00:50.045 --> 00:00:53.719
+Now, there is a dependency for the auto-scaling group.
+
+00:00:53.719 --> 00:00:56.134
+There have to be instances running.
+
+00:00:56.134 --> 00:01:03.679
+So let's show that dependency by using this arrow, here we go.
+
+00:01:03.679 --> 00:01:05.180
+So this is a quick look.
+
+00:01:05.180 --> 00:01:08.750
+Let me show you an existing CloudFormation template that I
+
+00:01:08.750 --> 00:01:13.474
+created using this visual designer to actually create an S3 instance.
+
+00:01:13.474 --> 00:01:15.604
+So I'm going to open that file.
+
+00:01:15.605 --> 00:01:20.594
+It's something I saved locally, open.
+
+00:01:20.594 --> 00:01:24.935
+So notice here I've dragged and dropped an S3 bucket.
+
+00:01:24.935 --> 00:01:28.745
+So let's click on it and click on components.
+
+00:01:28.745 --> 00:01:31.885
+Notice the JSON here on line three,
+
+00:01:31.885 --> 00:01:33.859
+it shows the name of the bucket.
+
+00:01:33.859 --> 00:01:37.954
+Here on line six it shows the access control for the bucket,
+
+00:01:37.954 --> 00:01:39.545
+so the bucket is public.
+
+00:01:39.545 --> 00:01:43.534
+Now, let's close this designer by clicking on ''Close''.
+
+00:01:43.534 --> 00:01:48.769
+Let's take a look at the stack that was deployed to create an S3 bucket.
+
+00:01:48.769 --> 00:01:51.170
+So once I close the designer,
+
+00:01:51.170 --> 00:01:54.364
+it brings me back to the stack details page.
+
+00:01:54.364 --> 00:01:57.834
+So this is the very first stack that I'm going to click on,
+
+00:01:57.834 --> 00:01:59.829
+and click on "Events".
+
+00:01:59.829 --> 00:02:05.269
+This shows here on this second row that the S3 bucket was created,
+
+00:02:05.269 --> 00:02:08.210
+because I have a status of create complete.
+
+00:02:08.210 --> 00:02:15.415
+Let's navigate to S3 to see if a bucket was actually created and click on "Services",
+
+00:02:15.414 --> 00:02:17.504
+and we can go to S3.
+
+00:02:17.504 --> 00:02:21.144
+Let's sort this by the most recent first,
+
+00:02:21.145 --> 00:02:25.909
+and notice here this is the bucket that was created by the CloudFormation stack.
+
+00:02:25.909 --> 00:02:30.349
+Notice this portion here that is the name of the bucket that we identified.
+
+00:02:30.349 --> 00:02:35.430
+You can stand up all types of resources through CloudFormation in your hands-on lab,
+
+00:02:35.430 --> 00:02:39.460
+you will use CloudFormation to create an S3 bucket.
+

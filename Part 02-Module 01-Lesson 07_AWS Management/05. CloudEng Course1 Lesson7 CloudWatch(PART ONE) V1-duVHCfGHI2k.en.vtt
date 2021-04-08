@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.269
+CloudWatch is a service that monitors resources and applications that run on AWS.
+
+00:00:06.269 --> 00:00:11.189
+There are several useful features like collecting and tracking metrics,
+
+00:00:11.189 --> 00:00:14.024
+collecting and monitoring log files,
+
+00:00:14.025 --> 00:00:18.375
+setting alarms and creating triggers to run your AWS resources,
+
+00:00:18.375 --> 00:00:22.245
+and reacting to changes in your AWS resources.
+
+00:00:22.245 --> 00:00:24.929
+The ability to review log files is
+
+00:00:24.929 --> 00:00:29.009
+crucial during the development and support of applications.
+
+00:00:29.010 --> 00:00:33.444
+I routinely use CloudWatch logs written from my lambda functions,
+
+00:00:33.444 --> 00:00:37.460
+to diagnose issues and monitor application flow.
+
+00:00:37.460 --> 00:00:42.020
+I've also use CloudWatch as a trigger for my lambda functions,
+
+00:00:42.020 --> 00:00:45.170
+causing a lambda to run on a given schedule.
+
+00:00:45.170 --> 00:00:51.660
+CloudWatch is a flexible and powerful tool that provides several options.
+

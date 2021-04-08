@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.544
+Up to this point,
+
+00:00:01.544 --> 00:00:07.200
+we've only accessed AWS via the AWS management console in a web browser.
+
+00:00:07.200 --> 00:00:12.839
+But you can also access your AWS account via the command line interface or CLI.
+
+00:00:12.839 --> 00:00:17.910
+The AWS CLI allows you to access and control services running in
+
+00:00:17.910 --> 00:00:23.804
+your AWS account from the command line for Windows or from a terminal window for Mac.
+
+00:00:23.804 --> 00:00:27.329
+There are some instances where features are available through
+
+00:00:27.329 --> 00:00:30.989
+the CLI but not through the AWS management console.
+
+00:00:30.989 --> 00:00:34.619
+In my experience, the features that are unavailable via
+
+00:00:34.619 --> 00:00:38.699
+the AWS management console eventually make their way there.
+
+00:00:38.700 --> 00:00:40.320
+To use the CLI,
+
+00:00:40.320 --> 00:00:43.850
+you simply download, install, and configure it.
+
+00:00:43.850 --> 00:00:46.939
+You may find that you prefer using the CLI instead of
+
+00:00:46.939 --> 00:00:51.989
+the AWS management console to control services in your account.
+

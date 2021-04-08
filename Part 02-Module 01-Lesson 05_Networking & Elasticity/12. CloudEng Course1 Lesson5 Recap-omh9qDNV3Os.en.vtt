@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.620
+In this lesson, I introduced you to networking in the cloud.
+
+00:00:04.620 --> 00:00:06.570
+You learned about Route 53,
+
+00:00:06.570 --> 00:00:10.230
+a service that does more than just register your domain name.
+
+00:00:10.230 --> 00:00:14.339
+It also routes to Internet traffic to the resources for your domain,
+
+00:00:14.339 --> 00:00:17.234
+and even checks the health of your resources.
+
+00:00:17.234 --> 00:00:20.519
+Next, we discussed elasticity in the cloud,
+
+00:00:20.519 --> 00:00:25.274
+which allows you to stop guessing about capacity needed to run your applications.
+
+00:00:25.274 --> 00:00:27.359
+Lastly, we discussed using
+
+00:00:27.359 --> 00:00:31.739
+a load balancer to balance the load between two or more servers.
+
+00:00:31.739 --> 00:00:36.280
+Next, I will teach you about messaging and containers.
+

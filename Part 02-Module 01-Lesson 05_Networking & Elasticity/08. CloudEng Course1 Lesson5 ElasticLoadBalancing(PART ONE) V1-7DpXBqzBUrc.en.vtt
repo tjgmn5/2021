@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.434
+Elastic Load Balancer is a service that balances load between two or more servers,
+
+00:00:06.434 --> 00:00:08.699
+stands in front of a web server,
+
+00:00:08.699 --> 00:00:11.699
+and provides redundancy and performance.
+
+00:00:11.699 --> 00:00:15.689
+Redundancy simply means that if you lose a server,
+
+00:00:15.689 --> 00:00:19.530
+the load balancer will send requests to other working servers.
+
+00:00:19.530 --> 00:00:25.200
+Good performance simply means that if a server starts having issues or bottlenecks,
+
+00:00:25.199 --> 00:00:30.699
+the load balancer will add more servers to the pool of available servers.
+

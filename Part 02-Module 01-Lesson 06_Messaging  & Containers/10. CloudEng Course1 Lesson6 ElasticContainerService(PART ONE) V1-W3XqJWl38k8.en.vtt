@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.285
+Orchestration tools are used for automating deployment,
+
+00:00:03.285 --> 00:00:07.005
+scaling, and managing your containerized applications.
+
+00:00:07.004 --> 00:00:10.275
+Amazon ECS or Elastic Container Service
+
+00:00:10.275 --> 00:00:13.919
+is a container orchestration service that supports Docker,
+
+00:00:13.919 --> 00:00:16.545
+assisting with managing your containers.
+
+00:00:16.545 --> 00:00:18.780
+There are several useful features,
+
+00:00:18.780 --> 00:00:22.605
+including launching and stopping Docker containers,
+
+00:00:22.605 --> 00:00:27.644
+scaling your applications, querying the state of your applications, etc.
+
+00:00:27.644 --> 00:00:30.390
+It is really a convenience type service to
+
+00:00:30.390 --> 00:00:34.600
+assist you with the administration of your Docker containers.
+
