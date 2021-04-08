@@ -1,0 +1,240 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Debugging</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Container Orchestration with Kubernetes</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Install Kubernetes.html">01. Install Kubernetes</a>
+    </li>
+    <li class="">
+      <a href="02. Overview of Kubernetes.html">02. Overview of Kubernetes</a>
+    </li>
+    <li class="">
+      <a href="03. Monitoring, Logging and Debugging with Kubernetes.html">03. Monitoring, Logging and Debugging with Kubernetes</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Prometheus Monitoring.html">04. Exercise: Prometheus Monitoring</a>
+    </li>
+    <li class="">
+      <a href="05. Exercise Logging.html">05. Exercise: Logging</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Debugging.html">06. Exercise: Debugging</a>
+    </li>
+    <li class="">
+      <a href="07. Auto Scaling with CPU or Memory.html">07. Auto Scaling with CPU or Memory</a>
+    </li>
+    <li class="">
+      <a href="08. Summary.html">08. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">06. Exercise: Debugging</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Debugging Header</p></h3>
+  <div>
+  <h2 id="exercise-debugging">Exercise: Debugging</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Kubernetes-Demo</p></h3>
+  <video controls>
+  <source src="06. Kubernetes-Demo-9FqlLWAbjKs.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="06. Kubernetes-Demo-9FqlLWAbjKs.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <p>As with coding itself, once you have launched your app with Kubernetes, it's likely you will need to do some debugging to get everything working properly. Here, you'll do some debugging with an example app to build your skills with Kubernetes.</p>
+<p>Take a look at this sample bash script that shows how the <code>kubectl</code> commands would be run in the project root directory.  You will want to change the <code>dockerpath</code> to your container name and DockerHub username.</p>
+<pre><code class="bash language-bash">#!/usr/bin/env bash
+
+dockerpath="noahgift/flasksklearn"
+
+# Run in Docker Hub container with kubernetes
+kubectl run flaskskearlndemo\
+    --generator=run-pod/v1\
+    --image=$dockerpath\
+    --port=80 --labels app=flaskskearlndemo
+
+# List kubernetes pods
+kubectl get pods
+
+# Forward the container port to host
+kubectl port-forward flaskskearlndemo 8000:80</code></pre>
+<h3 id="instructions---pod-issues">Instructions - Pod Issues</h3>
+<p>Let's say you have deployed a Kubernetes app, but have the pod does not seem to be running.</p>
+<ol>
+<li>First, use <code>kubectl get pods</code> to check the names of your running pods. You may notice the pod with an issue is shown as in a <code>Pending</code> status instead of <code>Running</code>.</li>
+<li>Using the <code>NAME</code> of the specific pod from step 1, use <code>kubectl describe pod {POD NAME}</code> to get more information about that pod. </li>
+<li>From the output of the above command, search until you find the <code>Events</code> header. This should give you a <code>Reason</code> and <code>Message</code> related to the failure, such as <code>FailedScheduling</code>. An issue like this could be due to the necessary resources not being available for the pod, such as CPU limits. </li>
+<li>From what we have seen before, <code>kubectl scale</code> could be used in such a situation to correctly scale up and provide the necessary resources for our <code>Pending</code> pod. On the next page, you'll get to see an automated way to scale up your apps which improves on the manual functionality of <code>kubectl scale</code>.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="instructions---node-issues">Instructions - Node Issues</h3>
+<p>In this case, consider a Kubernetes app where the pod is working, but behaving strangely. Alternatively, you may have noticed an issue where no pod will schedule onto a particular node. In this case, there is likely an issue with the specific node that needs to be debugged. While the overall process is fairly similar to debugging issues, the syntax of commands is slightly different, so let's walk through these.</p>
+<ol>
+<li>First, use <code>kubectl get nodes</code> to check the names of the available nodes. You may notice the node with an issue is shown as in a <code>NotReady</code> status instead of <code>Ready</code>.</li>
+<li>Using the <code>NAME</code> of the specific node from step 1, use <code>kubectl describe node {NODE NAME}</code> to get more information about that node.</li>
+<li>The outputs here can vary quite a bit, but the issue could be caused by a disconnection from the network, some other negative <code>Event</code>, too high of resource usage, etc.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="07. Auto Scaling with CPU or Memory.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Exercise: Debugging')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

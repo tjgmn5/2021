@@ -1,0 +1,340 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.110 --> 00:00:03.840
+Let's get into some load testing here.
+
+00:00:03.840 --> 00:00:10.410
+What I'm going to do is take a look at this project called docker-flask-locust.
+
+00:00:10.410 --> 00:00:13.665
+It's in my GitHub repository noahgift.
+
+00:00:13.665 --> 00:00:16.800
+I'm going to go ahead and open up Cloud9 again.
+
+00:00:16.800 --> 00:00:19.695
+This is my favorite environment here.
+
+00:00:19.695 --> 00:00:22.800
+I've already got one open, it's called dockerbuild.
+
+00:00:22.800 --> 00:00:24.720
+I've already checked out this repo,
+
+00:00:24.720 --> 00:00:26.070
+and you can see where you're at.
+
+00:00:26.070 --> 00:00:28.890
+If you go to git remote-v,
+
+00:00:28.890 --> 00:00:34.710
+this will give you the access to the git repo that you're in.
+
+00:00:34.710 --> 00:00:36.720
+What I'm going to do is, I'm going to make
+
+00:00:36.720 --> 00:00:44.270
+a very simple load test application that could be later used for a larger system,
+
+00:00:44.270 --> 00:00:46.925
+but the logistics here are really
+
+00:00:46.925 --> 00:00:49.685
+going to be similar no matter what your microservice is.
+
+00:00:49.685 --> 00:00:53.390
+First, I'll build a Hello, World flask application.
+
+00:00:53.390 --> 00:00:55.460
+So just a few lines of code.
+
+00:00:55.460 --> 00:00:57.620
+I import the Flask module,
+
+00:00:57.620 --> 00:01:00.080
+I go through here and I create one route.
+
+00:01:00.080 --> 00:01:01.550
+All it does is run Hello, World.
+
+00:01:01.550 --> 00:01:02.900
+Let me show you how it runs.
+
+00:01:02.900 --> 00:01:07.015
+If I type in Python app.py,
+
+00:01:07.015 --> 00:01:11.825
+you can see it's going to run a foreground mode and it's also going to run on port 8080.
+
+00:01:11.825 --> 00:01:16.490
+Now, one of the things that's interesting about the Cloud9 environment is that you
+
+00:01:16.490 --> 00:01:21.545
+do need to expose any port you want to interact with via the security groups.
+
+00:01:21.545 --> 00:01:25.525
+So I'm going to go over to this EC2 instance here,
+
+00:01:25.525 --> 00:01:28.780
+and I'm going to look at the security groups.
+
+00:01:28.780 --> 00:01:32.975
+I'm going to find this dockerbuild instance I've got running,
+
+00:01:32.975 --> 00:01:34.690
+which is right here.
+
+00:01:34.690 --> 00:01:39.155
+I'm going to ensure that the ports that I need to interact with are open.
+
+00:01:39.155 --> 00:01:41.330
+So I've already done that,
+
+00:01:41.330 --> 00:01:42.830
+but let me show how you would do that.
+
+00:01:42.830 --> 00:01:48.255
+You click on "Edit," and you can see that I've exposed port 9090 to everybody,
+
+00:01:48.255 --> 00:01:51.750
+I've exposed port 8089,
+
+00:01:51.750 --> 00:01:54.230
+and I've also exposed port 8080.
+
+00:01:54.230 --> 00:01:57.050
+These are all some ports that I'm going to use
+
+00:01:57.050 --> 00:02:00.160
+in different capacities while I'm developing my Flask app.
+
+00:02:00.160 --> 00:02:03.770
+It means that I can later then connect to that instance,
+
+00:02:03.770 --> 00:02:05.220
+and how would I connect?
+
+00:02:05.220 --> 00:02:08.685
+Well, then go to the Instances tab here.
+
+00:02:08.685 --> 00:02:10.920
+You can see that this instance is running,
+
+00:02:10.920 --> 00:02:13.425
+that's that aws-cloud9 instance.
+
+00:02:13.425 --> 00:02:15.480
+If I select it,
+
+00:02:15.480 --> 00:02:17.220
+you can see that, in fact,
+
+00:02:17.220 --> 00:02:19.020
+I can just copy this to clipboard.
+
+00:02:19.020 --> 00:02:22.770
+This is the public DNS address and I can create a new tab,
+
+00:02:22.770 --> 00:02:26.945
+and I can go over here and type in colon 8080.
+
+00:02:26.945 --> 00:02:30.640
+This should give me access to that Flask app.
+
+00:02:30.640 --> 00:02:32.480
+There we go, Hello World.
+
+00:02:32.480 --> 00:02:35.510
+If I go back to my console, look,
+
+00:02:35.510 --> 00:02:42.725
+I can see that a web request went in and if I go back here again and refresh it,
+
+00:02:42.725 --> 00:02:45.240
+you can see that another request has gone in.
+
+00:02:45.240 --> 00:02:48.854
+So pretty powerful workflow inside of Cloud9,
+
+00:02:48.854 --> 00:02:52.685
+and immediately we can really get to work and start testing things out.
+
+00:02:52.685 --> 00:02:58.650
+Well, the next thing that I'm going to do is I'm going to go over to locust file here.
+
+00:02:58.650 --> 00:03:01.430
+I'm going to create a file called locust file.
+
+00:03:01.430 --> 00:03:04.565
+I've already created this previously,
+
+00:03:04.565 --> 00:03:10.190
+and I say from locust import HttpLocust, TaskSet, between.
+
+00:03:10.190 --> 00:03:12.475
+All I'm going to do here is,
+
+00:03:12.475 --> 00:03:17.600
+I'm going to create a function that is going to retrieve the main route here,
+
+00:03:17.600 --> 00:03:20.725
+which is just this Hello, World route.
+
+00:03:20.725 --> 00:03:23.730
+I'm going to create a user behavior,
+
+00:03:23.730 --> 00:03:26.100
+and really this is just boilerplate code.
+
+00:03:26.100 --> 00:03:29.750
+Then I'm going to put it inside of this class WebsiteUser,
+
+00:03:29.750 --> 00:03:32.940
+and I'm going to inherit from HttpLocust.
+
+00:03:32.940 --> 00:03:35.360
+You don't really need to know about how to create these,
+
+00:03:35.360 --> 00:03:36.710
+it is just boilerplate code.
+
+00:03:36.710 --> 00:03:37.910
+If you want to make more of them,
+
+00:03:37.910 --> 00:03:41.255
+you could potentially copy this code and make another route,
+
+00:03:41.255 --> 00:03:44.700
+and then put it inside of here as a task.
+
+00:03:44.700 --> 00:03:46.800
+But in our case, what this is going to do,
+
+00:03:46.800 --> 00:03:50.000
+it's going to allow us to run this command called locust.
+
+00:03:50.000 --> 00:03:52.730
+I've installed that via this requirements file here.
+
+00:03:52.730 --> 00:03:55.045
+So I have flask, pylint, locust.
+
+00:03:55.045 --> 00:03:57.980
+I've already covered that in previous videos
+
+00:03:57.980 --> 00:04:00.520
+about how you can create a virtual environment,
+
+00:04:00.520 --> 00:04:03.650
+and then inside a virtual environment and do an install.
+
+00:04:03.650 --> 00:04:05.480
+So how do I run this,
+
+00:04:05.480 --> 00:04:08.950
+and test this out, and get this running locally here?
+
+00:04:08.950 --> 00:04:15.545
+Well, what I can do, is that I can kill this right here,
+
+00:04:15.545 --> 00:04:23.945
+kill this process, and start this app again.
+
+00:04:23.945 --> 00:04:25.985
+So we'll go Python app.
+
+00:04:25.985 --> 00:04:27.695
+Then what I can do,
+
+00:04:27.695 --> 00:04:30.860
+in another window here,
+
+00:04:30.860 --> 00:04:33.335
+I can just type in the word locust.
+
+00:04:33.335 --> 00:04:35.270
+What this does is,
+
+00:04:35.270 --> 00:04:42.785
+it actually looks for a file called locust file and it starts to run it on port 8089.
+
+00:04:42.785 --> 00:04:44.720
+That's why I opened up that other port.
+
+00:04:44.720 --> 00:04:46.285
+If we go to that port,
+
+00:04:46.285 --> 00:04:49.680
+you can see here that here's port 8089,
+
+00:04:49.680 --> 00:04:50.925
+if I refresh that.
+
+00:04:50.925 --> 00:04:53.435
+It ask me, when I first log in,
+
+00:04:53.435 --> 00:04:55.290
+how many users do I want to simulate?
+
+00:04:55.290 --> 00:04:57.230
+So this is a really powerful tool here.
+
+00:04:57.230 --> 00:04:59.225
+I can say, I want to do,
+
+00:04:59.225 --> 00:05:06.040
+let's say 10 users and I want to launch another user every second. There we go.
+
+00:05:06.040 --> 00:05:07.790
+The host, well, what's the host going to be?
+
+00:05:07.790 --> 00:05:09.820
+It's going to be the same host that I'm on.
+
+00:05:09.820 --> 00:05:12.240
+But it's going to be the port 8080.
+
+00:05:12.240 --> 00:05:18.155
+So I'm going to paste that in there and just take this out and say port 8080,
+
+00:05:18.155 --> 00:05:23.780
+because that's the port that Flask is running on right here in this terminal.
+
+00:05:23.780 --> 00:05:26.305
+Let's go ahead and do that. We'll start swarming,
+
+00:05:26.305 --> 00:05:29.200
+and immediately you can see here that it starts to show
+
+00:05:29.200 --> 00:05:32.130
+the statistics of all the different requests.
+
+00:05:32.130 --> 00:05:33.475
+If I look at charts,
+
+00:05:33.475 --> 00:05:37.840
+it'll actually start building these charts out in real time here.
+
+00:05:37.840 --> 00:05:41.565
+So really powerful tool to use,
+
+00:05:41.565 --> 00:05:44.340
+locust to test a microservice.
+
+00:05:44.340 --> 00:05:47.415
+You could then containerize your app and test in a container.
+
+00:05:47.415 --> 00:05:49.325
+You can then put it into Kubernetes,
+
+00:05:49.325 --> 00:05:52.270
+and then have Kubernetes automatically do spawning.
+
+00:05:52.270 --> 00:05:55.165
+So this is a very powerful technique that is
+
+00:05:55.165 --> 00:06:00.110
+really straight forward to do. Go ahead and get started.
+

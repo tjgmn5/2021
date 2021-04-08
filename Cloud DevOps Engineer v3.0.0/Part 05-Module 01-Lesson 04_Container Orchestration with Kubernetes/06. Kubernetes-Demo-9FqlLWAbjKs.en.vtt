@@ -1,0 +1,277 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.290 --> 00:00:04.410
+Okay. Let's talk through some of the key issues with
+
+00:00:04.410 --> 00:00:08.969
+Kubernetes and why on one hand has incredible power.
+
+00:00:08.970 --> 00:00:15.810
+It's essentially a cloud in a box it can run billions of instances each week at Google,
+
+00:00:15.810 --> 00:00:19.754
+but that complexity also can cause problems.
+
+00:00:19.754 --> 00:00:23.419
+Let's take a look at what a Kubernetes cluster really is.
+
+00:00:23.420 --> 00:00:26.450
+From the onset, you see that there's
+
+00:00:26.449 --> 00:00:30.515
+this large cluster here and where can this cluster run?
+
+00:00:30.515 --> 00:00:35.075
+It can run locally if you have Docker Desktop installed and you've installed Kubernetes,
+
+00:00:35.075 --> 00:00:39.075
+that's actually one of the simplest ways to get Kubernetes cluster running.
+
+00:00:39.075 --> 00:00:42.170
+You can see that in fact it also needs to create
+
+00:00:42.170 --> 00:00:46.400
+this Kubernetes master node with the Kubernetes API.
+
+00:00:46.399 --> 00:00:47.479
+So that's how everything works.
+
+00:00:47.479 --> 00:00:53.000
+That's how the kubectl command is able to communicate with everything.
+
+00:00:53.000 --> 00:00:55.685
+Then next up is this pod here.
+
+00:00:55.685 --> 00:01:00.280
+You can see that there are many pods typically in a cluster.
+
+00:01:00.280 --> 00:01:03.469
+Unfortunately, there's even more complexity in
+
+00:01:03.469 --> 00:01:07.025
+that each pod can contain many different containers.
+
+00:01:07.025 --> 00:01:08.840
+Up until now we've been working with
+
+00:01:08.840 --> 00:01:13.850
+just this one docker container but in a large-scale system,
+
+00:01:13.849 --> 00:01:18.829
+there's often going to be mini containers located inside of
+
+00:01:18.829 --> 00:01:26.030
+one pod and then there will be potentially mini pods inside of one Kubernetes node.
+
+00:01:26.030 --> 00:01:28.730
+Then inside of the Kubernetes cluster,
+
+00:01:28.730 --> 00:01:31.070
+there's mini Kubernetes nodes,
+
+00:01:31.069 --> 00:01:32.599
+so there's a lot going on.
+
+00:01:32.599 --> 00:01:34.894
+Now, why would you want to do this and what's the point?
+
+00:01:34.894 --> 00:01:37.399
+Well, one of the reasons why you may want to have
+
+00:01:37.400 --> 00:01:41.299
+separate pods in a node is that potentially
+
+00:01:41.299 --> 00:01:48.080
+one pod contains your web application and you can scale it specific to those needs.
+
+00:01:48.079 --> 00:01:49.774
+It could be maybe,
+
+00:01:49.775 --> 00:01:52.550
+it'll has certain CPU requirements and
+
+00:01:52.549 --> 00:01:58.114
+then potentially another pod in a Kubernetes node could be maybe the monitoring.
+
+00:01:58.114 --> 00:02:01.474
+So you could have some monitoring that goes and sends it to,
+
+00:02:01.474 --> 00:02:05.109
+let's say, Prometheus or extends it to stackdriver.
+
+00:02:05.109 --> 00:02:08.000
+In potentially in a different system here,
+
+00:02:08.000 --> 00:02:11.134
+you could have a pod that has
+
+00:02:11.134 --> 00:02:15.514
+maybe a relational database or a specialized queuing system.
+
+00:02:15.514 --> 00:02:19.924
+So it's really a way to identify what components
+
+00:02:19.925 --> 00:02:24.890
+fit naturally together and it's not necessarily at the application level,
+
+00:02:24.889 --> 00:02:27.319
+it could be from a resource perspective.
+
+00:02:27.319 --> 00:02:32.180
+So let's go ahead and get rid of some of this complexity and
+
+00:02:32.180 --> 00:02:37.219
+walk through how to actually use Kubernetes on my desktop.
+
+00:02:37.219 --> 00:02:39.530
+So I'm going to move this screen away,
+
+00:02:39.530 --> 00:02:43.759
+and I'm going to briefly look at what the final project would look like.
+
+00:02:43.759 --> 00:02:45.959
+So let's look at the structure here,
+
+00:02:45.960 --> 00:02:48.450
+you can see there's all the good things we've talked about,
+
+00:02:48.449 --> 00:02:52.199
+a Dockerfile, Makefile and an app file.
+
+00:02:52.199 --> 00:02:56.689
+Now one of the things that I typically do when there's a complex series
+
+00:02:56.689 --> 00:03:00.889
+of commands is I will go through and create a script here.
+
+00:03:00.889 --> 00:03:04.039
+So let's go ahead and look at one of these scripts.
+
+00:03:04.039 --> 00:03:07.449
+So I'm going to look at this run Kubernetes script.
+
+00:03:07.449 --> 00:03:09.405
+Let's go and look at that.
+
+00:03:09.405 --> 00:03:11.745
+If you look at it,
+
+00:03:11.745 --> 00:03:17.210
+I have to set a Docker path and again this is for a local Kubernetes cluster.
+
+00:03:17.210 --> 00:03:21.760
+I then have to run the kubectl command and again, that's the API.
+
+00:03:21.759 --> 00:03:25.399
+Then it's really in a way similar except for in this case,
+
+00:03:25.400 --> 00:03:27.800
+I have to tell it which port I'm going to run
+
+00:03:27.800 --> 00:03:31.015
+on and actually label what the name of the app is.
+
+00:03:31.014 --> 00:03:33.599
+Next step, I run this command get pods,
+
+00:03:33.599 --> 00:03:38.210
+just to get a list of what pods are actually running and what's inside of them.
+
+00:03:38.210 --> 00:03:42.115
+Then finally, I forward the container port to the host.
+
+00:03:42.115 --> 00:03:45.500
+So you can see that it is going to allow me to test it.
+
+00:03:45.500 --> 00:03:48.889
+So first up, let's see if anything is running.
+
+00:03:48.889 --> 00:03:55.869
+So what I can do is I can say kubectl get pods.
+
+00:03:55.870 --> 00:03:59.090
+This allows me to query and see, oh great,
+
+00:03:59.090 --> 00:04:01.340
+I have this thing, a pod running.
+
+00:04:01.340 --> 00:04:04.370
+But remember a pod can contain mini containers.
+
+00:04:04.370 --> 00:04:07.025
+In this case we just have one and next up,
+
+00:04:07.025 --> 00:04:12.260
+what I'll do is I'll see what port it's running on.
+
+00:04:12.259 --> 00:04:18.154
+So we know that the app we'll listen eventually on port 80.
+
+00:04:18.154 --> 00:04:19.924
+So let me go ahead and curl that,
+
+00:04:19.925 --> 00:04:21.215
+oh I'm sorry, 8 thousand.
+
+00:04:21.214 --> 00:04:25.579
+Let me go ahead and curl that and see if anything is running currently.
+
+00:04:25.579 --> 00:04:27.139
+So if I curl that,
+
+00:04:27.139 --> 00:04:28.250
+you can see nothing's running.
+
+00:04:28.250 --> 00:04:30.589
+So I'm not forwarding those ports.
+
+00:04:30.589 --> 00:04:35.659
+So let's go ahead and run potentially this whole script here.
+
+00:04:35.660 --> 00:04:42.600
+So I'm going to go through here and do this run Kubernetes command. There we go.
+
+00:04:42.600 --> 00:04:49.340
+Now, what you can see is that it is in fact this pod was already running,
+
+00:04:49.339 --> 00:04:50.944
+so it gave me an error,
+
+00:04:50.944 --> 00:04:57.409
+but it did now forward this next port here and so that's what this command is right here.
+
+00:04:57.410 --> 00:05:01.310
+So next step, I can leave this in the foreground and I can open up
+
+00:05:01.310 --> 00:05:07.415
+a new tab and this new tab one might go head and try to run that curl command again.
+
+00:05:07.415 --> 00:05:12.004
+There we go. Now you can see that in fact I've been able to expose that port.
+
+00:05:12.004 --> 00:05:17.899
+So this is one of the best ways to really experiment with Kubernetes is to,
+
+00:05:17.899 --> 00:05:20.944
+in my opinion, put the commands into a batch script,
+
+00:05:20.944 --> 00:05:25.259
+step-by-step, play around with it and there was no way to hide it,
+
+00:05:25.259 --> 00:05:29.839
+Kubernetes is extremely complex and emerging technology and it's
+
+00:05:29.839 --> 00:05:34.685
+going to take some skill to walk through and step-by-step figure out what's happening.
+
+00:05:34.685 --> 00:05:36.310
+The best way to do that is in
+
+00:05:36.310 --> 00:05:41.259
+the smallest possible environment so you can limit the complexity of what you're doing.
+
+00:05:41.259 --> 00:05:44.849
+Alright, why don't you go ahead and do this on your own.
+

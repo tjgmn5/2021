@@ -1,0 +1,367 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Operationalize a Machine Learning Microservice API</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Operationalize a Machine Learning Microservice API</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Project Overview.html">02. Project Overview</a>
+    </li>
+    <li class="">
+      <a href="03. Project Structure &amp; Files.html">03. Project Structure &amp; Files</a>
+    </li>
+    <li class="">
+      <a href="04. Create the Project Environment.html">04. Create the Project Environment</a>
+    </li>
+    <li class="">
+      <a href="05. Detailed Project Tasks.html">05. Detailed Project Tasks</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Operationalize a Machine Learning Microservice API.html">Project Description - Operationalize a Machine Learning Microservice API</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Operationalize a Machine Learning Microservice API.html">Project Rubric - Operationalize a Machine Learning Microservice API</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">Operationalize a Machine Learning Microservice API</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            
+      <div>
+        <h2><p>Files Submitted</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>All files are submitted</p>
+        </td>
+        <td>
+          <p>The submitted repository includes a .circleci folder, a README.md file, a Dockerfile and Makefile, as well as an app.py file, a prediction script, and the necessary scripts to <strong>run</strong> and <strong>upload</strong> a microservice on Docker and Kubernetes.<br />
+There should also be two output text files: <code>docker_out.txt</code> and <code>kubernetes_out.txt</code> that include the log output after a prediction is made, given some sample input data.</p>
+<p><em>NOTE:  Before submitting a link to your complete, project repository, make sure you have included all required and complete files (including run_kubernetes.sh, run_docker.sh, docker_out.txt, kubernetes_out.txt, and a .circleci build directory).</em></p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p><code>.circleci</code> folder is included </p>
+        </td>
+        <td>
+          <p>A <code>.circleci</code> folder is included in the Github repository. The directory holds a <code>config.yml</code> that checks the project code for errors. Your project should pass, as indicated by a CircleCI status badge in the repository README.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Code Quality &amp; Enhancement</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Extend app.py to log a prediction value</p>
+        </td>
+        <td>
+          <p>Add an additional logging statement to <code>app.py</code> that prints as “info” the output prediction for some given input data. </p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>The project shows the proper use of documentation</p>
+        </td>
+        <td>
+          <p>The README file includes a summary of the project, how to run the Python scripts and web app, and an explanation of the files in the repository. </p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>The project passes linting via a Makefile</p>
+        </td>
+        <td>
+          <p>Both the Dockerfile and the python file pass linting using pylint and hadolint.  This may involve selectively customizing lint overrides in both tools.  The lint should be run for both tools via the command <code>make lint</code>.  Circleci build server validates step.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Docker Configuration</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Dockerfile is complete</p>
+        </td>
+        <td>
+          <p>The Dockerfile should create a working directory, install the necessary dependencies, expose port 80, and specify that <code>app.py</code> run at container launch.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Dockerfile passes linting via a Makefile</p>
+        </td>
+        <td>
+          <p>The Dockerfile should pass <code>make lint</code> without errors.  Circleci build server validates step.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Log output is saved in  <code>docker_out.txt</code> </p>
+        </td>
+        <td>
+          <p>While running the docker container, call the prediction script, <code>make_predictions.sh</code>; the log output, which includes the output prediction value, should be included in your submission as a text file, <code>docker_out.txt</code>.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p><code>run_docker.sh</code> is complete</p>
+        </td>
+        <td>
+          <p>Build, list, and run steps are completed in <code>run_docker.sh</code>. </p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Docker image is uploaded to docker via <code>upload_docker.sh</code></p>
+        </td>
+        <td>
+          <p>The built docker image is uploaded to your own personal Docker ID, as indicated by a complete <code>upload_docker.sh</code>.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Kubernetes Configuration</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p><code>run_kubernetes.sh</code> is complete</p>
+        </td>
+        <td>
+          <p>This script runs a docker image with kubernetes, lists the kubernetes pod(s), and forwards the container port to a host, using <code>kubectl</code> appropriately.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>An output prediction is saved in  <code>kubernetes_out.txt</code> </p>
+        </td>
+        <td>
+          <p>While running on kubernetes, call <code>make_predictions.sh</code>; the terminal output should be included in your submission as a text file, <code>kubernetes_out.txt</code>.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div class="jumbotron">
+        <h3>Tips to make your project standout:</h3>
+        <p><ol>
+<li>Extend the microservice to deliver additional functionality, say an additional prediction.</li>
+<li>Make the kubernetes deployment work on multiple cloud platforms:  i.e. GCP, AWS, and Azure.</li>
+<li>Record a demo video that shows the scale up and scale down characteristics of the kubernetes application.</li>
+<li>Create a simple web application front-end to accept user input data and produce a prediction.</li>
+</ol></p>
+      </div>
+    
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('Operationalize a Machine Learning Microservice API')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

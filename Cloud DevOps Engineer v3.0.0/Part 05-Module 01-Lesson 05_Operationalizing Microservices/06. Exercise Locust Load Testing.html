@@ -1,0 +1,275 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Locust Load Testing</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Operationalizing Microservices</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Alerts and Incidents Response.html">01. Alerts and Incidents Response</a>
+    </li>
+    <li class="">
+      <a href="02. Disaster Recovery.html">02. Disaster Recovery</a>
+    </li>
+    <li class="">
+      <a href="03. CICD Pipeline Integration.html">03. CI/CD Pipeline Integration</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise CircleCI.html">04. Exercise: CircleCI</a>
+    </li>
+    <li class="">
+      <a href="05. Load Testing.html">05. Load Testing</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Locust Load Testing.html">06. Exercise: Locust Load Testing</a>
+    </li>
+    <li class="">
+      <a href="07. Summary.html">07. Summary</a>
+    </li>
+    <li class="">
+      <a href="08. Course Wrap Up.html">08. Course Wrap Up</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">06. Exercise: Locust Load Testing</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Header</p></h3>
+  <div>
+  <h2 id="exercise-locust-load-testing">Exercise: Locust Load Testing</h2>
+<p>Load testing is a critical part of developing a reliable Microservice.  This allows you to verify that the application can perform at scale.  In this exercise, you will set up a basic load test with locust.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Docker-Flask-Locust</p></h3>
+  <video controls>
+  <source src="06. Docker-Flask-Locust-RDmLNEFrq8E.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="06. Docker-Flask-Locust-RDmLNEFrq8E.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Exercise: Locust Load Testing</p></h3>
+  <div>
+  <div>
+    <h4>Task Description:</h4>
+    <p>Below this task list is a walkthrough of some of what was shown in the video. Use that as a helpful resource while you work through this exercise.</p>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--0">
+        <label for="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--0"><p>Install locust using instructions <a href="https://docs.locust.io/en/latest/installation.html" rel="noopener noreferrer" target="_blank">here</a>.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--1">
+        <label for="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--1"><p>Configure a basic load test of the predict service endpoint in the sample app as shown <a href="https://docs.locust.io/en/latest/quickstart.html" rel="noopener noreferrer" target="_blank">here</a>.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--2">
+        <label for="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--2"><p>Find out how many requests your application accepts before latency significantly rises or crashes. What is that number?</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--3">
+        <label for="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--3"><p>Come up with a solution that will scale this on your own laptop or desktop (consider whether you can use some of the scaling techniques in the last lesson here!).</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--4">
+        <label for="6b42aeeb-5060-4cfa-a4cc-507f2c547eab--4"><p>Verify that you have solved your first bottleneck and increased the requests per second at least 10% higher.</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Great job!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="creating-a-locust-loadtest-with-flask">Creating a Locust Loadtest with Flask</h3>
+<p>One powerful way to create a simple loadtest is with Locust and Flask.  Here is an example of a simple flask hello world app.  The <a href="https://github.com/noahgift/docker-flask-locust" rel="noopener noreferrer" target="_blank">entire source code is found here</a>.</p>
+<pre><code class="python language-python">from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=8080, debug=True)</code></pre>
+<p>The loadtest file is very simple to configure.  Notice the <code>index</code> function calls into the main, and only flask route.</p>
+<pre><code class="python language-python">from locust import HttpLocust, TaskSet, between
+
+def index(l):
+    l.client.get("/")
+
+class UserBehavior(TaskSet):
+    tasks = {index: 1}
+
+class WebsiteUser(HttpLocust):
+    task_set = UserBehavior
+    wait_time = between(5.0, 9.0)</code></pre>
+<p>The login screen requires the number of users and also hostname and port.  In our case this will be the port 8080.</p>
+<p><img src="media/unnamed-900654-0.gif" alt="Screen Shot 2020-02-07 at 7 12 18 PM" /></p>
+<p>You can see how locust works when it runs.</p>
+<p><img src="media/unnamed-900654-1.gif" alt="Screen Shot 2020-02-07 at 7 08 49 PM" /></p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="07. Summary.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Exercise: Locust Load Testing')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

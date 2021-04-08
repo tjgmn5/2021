@@ -1,0 +1,283 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise: Prometheus Monitoring</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Container Orchestration with Kubernetes</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Install Kubernetes.html">01. Install Kubernetes</a>
+    </li>
+    <li class="">
+      <a href="02. Overview of Kubernetes.html">02. Overview of Kubernetes</a>
+    </li>
+    <li class="">
+      <a href="03. Monitoring, Logging and Debugging with Kubernetes.html">03. Monitoring, Logging and Debugging with Kubernetes</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Prometheus Monitoring.html">04. Exercise: Prometheus Monitoring</a>
+    </li>
+    <li class="">
+      <a href="05. Exercise Logging.html">05. Exercise: Logging</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Debugging.html">06. Exercise: Debugging</a>
+    </li>
+    <li class="">
+      <a href="07. Auto Scaling with CPU or Memory.html">07. Auto Scaling with CPU or Memory</a>
+    </li>
+    <li class="">
+      <a href="08. Summary.html">08. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. Exercise: Prometheus Monitoring</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Alerting Theory</p></h3>
+  <div>
+  <h2 id="exercise-prometheus-monitoring">Exercise: Prometheus Monitoring</h2>
+<p>Monitoring is an essential component of DevOps best practices. In this exercise, you will set up Prometheus Monitoring.</p>
+<h3 id="alerting-theory">Alerting Theory</h3>
+<p>For this exercise you will:</p>
+<ul>
+<li>Set up Prometheus monitoring.</li>
+<li>Consider a <a href="https://en.wikipedia.org/wiki/Normal_distribution" rel="noopener noreferrer" target="_blank">normal distribution</a>, "<a href="https://en.wikipedia.org/wiki/Six_Sigma_" rel="noopener noreferrer" target="_blank">six sigma</a>" and the <a href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule" rel="noopener noreferrer" target="_blank">68-95-99.7 rule</a>. Computer systems events are often normally distributed, meaning that all events within three standard deviations from the mean occur with 99.7 of the occurrences.</li>
+<li>Design a process that alerts senior engineers when events are greater than three standard deviations from the mean and write up how the alerts should work, i.e.<ul>
+<li>Who should get a page when an event is more significant than three standard deviants from the mean?</li>
+<li>Should there be a backup person who gets alerted if the first person doesn’t respond within five minutes?</li>
+<li>Should an alert wake up a team member at one standard deviation? What about two?</li></ul></li>
+</ul>
+<h2 id="getting-started-with-prometheus">Getting Started with Prometheus</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Prometheus</p></h3>
+  <video controls>
+  <source src="04. Prometheus-PStcuwCJtq0.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="04. Prometheus-PStcuwCJtq0.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <p><a href="https://prometheus.io/" rel="noopener noreferrer" target="_blank">Prometheus</a> is a popular metrics and alerting solution that is often used with containers and Kubernetes.  To run this tutorial please do the following.</p>
+<ul>
+<li>Use a local environment or preferably AWS Cloud9.  If you use AWS Cloud9, you will need to expose port 9090 via EC2 Security Group.</li>
+<li><a href="https://prometheus.io/download/" rel="noopener noreferrer" target="_blank">Download, install</a> and run Prometheus.  On AWS Cloud9 you would install the latest release that has <code>*.linux-amd64.tar.gz</code> in the name.  This would like something like <code>wget &lt;some release&gt;.linux-amd64.tar.gz</code>. </li>
+</ul>
+<pre><code class="bash language-bash">tar xvfz prometheus-*.tar.gz
+cd prometheus-*</code></pre>
+<ul>
+<li>Configure Prometheus by creating a <code>prometheus.yml</code> file</li>
+</ul>
+<pre><code class="yaml language-yaml">global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first.rules"
+  # - "second.rules"
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ['localhost:9090']</code></pre>
+<ul>
+<li>Start Prometheus</li>
+</ul>
+<p>Wait about 30 seconds for Prometheus to collect data.</p>
+<pre><code class="bash language-bash">./prometheus --config.file=prometheus.yml</code></pre>
+<ul>
+<li>View data through the expression browser</li>
+</ul>
+<p>Go to <a href="http://localhost:9090/graph" rel="noopener noreferrer" target="_blank">http://localhost:9090/graph</a>.  Choose the "console" within the graph. One metric that Prometheus collects is how many times <a href="http://localhost:9090/metrics" rel="noopener noreferrer" target="_blank">http://localhost:9090/metrics</a> has been called.  If you refresh a few times then type the following in the expression console you can see a time series result. </p>
+<pre><code class="bash language-bash">promhttp_metric_handler_requests_total</code></pre>
+<ul>
+<li>View data through the graphing interface</li>
+</ul>
+<p>Another way to view data is via the graphing interface.  Go to <a href="http://localhost:9090/graph" rel="noopener noreferrer" target="_blank">http://localhost:9090/graph</a>.  Use the "Graph" tab.</p>
+<pre><code class="bash language-bash">rate(promhttp_metric_handler_requests_total{code="200"}[1m])</code></pre>
+<ul>
+<li><em>(OPTIONAL)</em> Going further, feel free to experiment with how that would work by following the example below and changing to suite your needs.</li>
+</ul>
+<p>A more sophisticated example would <a href="https://prometheus.io/docs/prometheus/latest/getting_started/#downloading-and-running-prometheus" rel="noopener noreferrer" target="_blank">involve also collecting</a> data from clients.  Next download these <code>go</code> clients using the code below and run them.</p>
+<pre><code class="bash language-bash"># Fetch the client library code and compile example.
+git clone https://github.com/prometheus/client_golang.git
+cd client_golang/examples/random
+go get -d
+go build
+
+# Start 3 example targets in separate terminals:
+./random -listen-address=:8080
+./random -listen-address=:8081
+./random -listen-address=:8082</code></pre>
+<p>Next, add these clients in the <code>prometheus.yml</code></p>
+<pre><code class="yaml language-yaml">scrape_configs:
+  - job_name:       'example-random'
+
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: ['localhost:8080', 'localhost:8081']
+        labels:
+          group: 'production'
+
+      - targets: ['localhost:8082']
+        labels:
+          group: 'canary'</code></pre>
+<p>Restart prometheus and view this metric in the expression browser.</p>
+<p><code>rpc_durations_seconds</code>.</p>
+<p><em>Based on <a href="https://github.com/prometheus/docs/blob/432af848c749a7efa1d731f22f73c27ff927f779/content/docs/introduction/first_steps.md" rel="noopener noreferrer" target="_blank">guide from official Prometheus documentation</a> and <a href="https://prometheus.io/docs/prometheus/latest/getting_started/#downloading-and-running-prometheus" rel="noopener noreferrer" target="_blank">guide here</a></em></p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="05. Exercise Logging.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Exercise: Prometheus Monitoring')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

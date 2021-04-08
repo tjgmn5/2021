@@ -1,0 +1,302 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Alerts and Incidents Response</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Operationalizing Microservices</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Alerts and Incidents Response.html">01. Alerts and Incidents Response</a>
+    </li>
+    <li class="">
+      <a href="02. Disaster Recovery.html">02. Disaster Recovery</a>
+    </li>
+    <li class="">
+      <a href="03. CICD Pipeline Integration.html">03. CI/CD Pipeline Integration</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise CircleCI.html">04. Exercise: CircleCI</a>
+    </li>
+    <li class="">
+      <a href="05. Load Testing.html">05. Load Testing</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Locust Load Testing.html">06. Exercise: Locust Load Testing</a>
+    </li>
+    <li class="">
+      <a href="07. Summary.html">07. Summary</a>
+    </li>
+    <li class="">
+      <a href="08. Course Wrap Up.html">08. Course Wrap Up</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">01. Alerts and Incidents Response</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h2 id="alerts-and-incidents-response">Alerts and Incidents Response</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND#9991 C04 L05 A01 Alerts And Incedent Response</p></h3>
+  <video controls>
+  <source src="01. ND#9991 C04 L05 A01 Alerts And Incedent Response-7fz86xAInPo.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="01. ND#9991 C04 L05 A01 Alerts And Incedent Response-7fz86xAInPo.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Operationalizing a Microservice Overview</p></h3>
+  <div>
+  <h3 id="operationalizing-a-microservice-overview">Operationalizing a Microservice Overview</h3>
+<p>One important factor in developing a microservice is to think about the feedback loop.  In this diagram, a <a href="https://queue.acm.org/detail.cfm?id=3237207" rel="noopener noreferrer" target="_blank">GitOps</a> style workflow is described.  </p>
+<ol>
+<li>Application is stored in Git.</li>
+<li>Changes in Git trigger the continuous delivery server which then tests and deploys the code to a new environment.  This environment is configured as Infrastructure as Code (IaC).</li>
+<li>The microservice, which could be a containerized service running in Kubernetes or a FaaS (Function as a Service) running on AWS Lambda, has logging, metrics, and instrumentation.</li>
+<li>A load test using a tool like <a href="https://locust.io/" rel="noopener noreferrer" target="_blank">locust</a>.</li>
+</ol>
+<p><img src="media/unnamed-980853-0.gif" alt="operationalize-microservice" /></p>
+<ol start="5">
+<li>When the performance and auto-scaling is verified the code is merged to production and deployed</li>
+</ol>
+<p>What are some of the items that could be alerted on with Kubernetes?</p>
+<ul>
+<li>Alerting on application layer metrics</li>
+<li>Alerting on services running on Kubernetes</li>
+<li>Alerting on the Kubernetes infrastructure</li>
+<li>Alerting on the host/node layer</li>
+</ul>
+<p>How could you collect metrics with Kubernetes and Prometheus?  Here is a diagram that walks through a potential workflow. Note that there are two pods.  One pod is dedicated to the Prometheus collector and the second pod has a "sidecar" Prometheus container that sits alongside the Flask application. This all propagates up to a centralized monitoring system that visualizes the health of the clusters and trigger alerts.</p>
+<p><img src="media/unnamed-980853-1.gif" alt="prometheus-kubernetes" /></p>
+<p>Another helpful resource is an official sample project from Google Cloud <a href="https://cloud.google.com/solutions/monitoring-apps-running-on-multiple-gke-clusters-using-prometheus-and-stackdriver" rel="noopener noreferrer" target="_blank">Monitoring apps running on multiple GKE clusters using Prometheus and Stackdriver</a>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h4 id="reference">Reference</h4>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/debug-application-cluster/monitor-node-health/" rel="noopener noreferrer" target="_blank">Monitor Node Health</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Creating effective alerts</p></h3>
+  <div>
+  <h3 id="creating-effective-alerts">Creating Effective Alerts</h3>
+<p>At one company I worked at there was a homegrown monitoring system (again, initially created by the founders) that alerted on average every 3-4 hours, 24 hours a day.</p>
+<p>Because everyone in engineering, except the CTO, was on call, most of the engineering staff was always sleep deprived. This system guaranteed that every night there were alerts about the system not working. The "fix" to the alerts was to restart services.  I volunteered to be on call for one month straight to allow engineering the time to fix the problem.  This sustained period of suffering and lack of sleep led me to realize several things:  <strong>one</strong>, the monitoring system was no better than random;  <strong>two</strong>, I could potentially replace the entire system with a <em>random coin flip</em>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Scenario Image</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/monitoring.png" alt="**Alerts by Day**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Alerts by Day</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Story Continued</p></h3>
+  <div>
+  <p>Even more distressing, when looking at the data, it was clear that engineers had spent YEARS of their lives responding to pages and getting woken up at night. All that, and it was utterly useless.  The suffering and sacrifice accomplished nothing and reinforced the sad truth that life is not fair.  The unfairness of the situation was quite depressing, and it took quite a bit of convincing to get people to agree to turn off the alerts.  There is a built-in bias in human behavior to continue to do what you have always done.  Additionally, because the suffering was so severe and sustained, there was a tendency to attribute a deeper meaning to it.  Ultimately, it was a false God. </p>
+<p><em>Reference: Gift, Noah (2020) Python for DevOps: pg. 226</em></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Worse than No Alerts</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What can be worse than not having alerts for critical failures?</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="rbk1" name="900427" id="rbk1">
+      <label for="rbk1"><p>Too many alerts</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk2" name="900427" id="rbk2">
+      <label for="rbk2"><p>Alerts that are not actionable</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk3" name="900427" id="rbk3">
+      <label for="rbk3"><p>Alerts that can be automated but are not</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk4" name="900427" id="rbk4">
+      <label for="rbk4"><p>Alerts that compromise the health of employees</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Too many alerts</li>
+      <li>Alerts that are not actionable</li>
+      <li>Alerts that can be automated but are not</li>
+      <li>Alerts that compromise the health of employees</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="02. Disaster Recovery.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('01. Alerts and Incidents Response')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

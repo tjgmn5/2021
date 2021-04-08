@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.520
+Okay. Let's talk about this project now.
+
+00:00:02.520 --> 00:00:04.635
+So what's really fascinating about
+
+00:00:04.635 --> 00:00:06.960
+the world of machine learning and data science right now,
+
+00:00:06.960 --> 00:00:12.780
+is that there's a lot of emphasis on building things for cargo or
+
+00:00:12.780 --> 00:00:19.620
+opening up a statistics textbook and looking at linear regression or logistic regression.
+
+00:00:19.620 --> 00:00:22.830
+But what there's a lot less of is,
+
+00:00:22.830 --> 00:00:27.570
+are there people that know how to take that serialized model and deploy it to production?
+
+00:00:27.570 --> 00:00:30.510
+So that's what this project is really about is,
+
+00:00:30.510 --> 00:00:32.759
+can you as a DevOps professional,
+
+00:00:32.759 --> 00:00:36.870
+work with the data science team and take their models and deploy it to production?
+
+00:00:36.870 --> 00:00:39.795
+So we built out a Flask application.
+
+00:00:39.795 --> 00:00:43.580
+That flask application is going to take payloads that are going
+
+00:00:43.580 --> 00:00:47.585
+to be payloads that will be able to predict some given solution.
+
+00:00:47.585 --> 00:00:49.790
+Once the prediction is in place,
+
+00:00:49.790 --> 00:00:53.390
+it's then containerized using Docker and Kubernetes.
+
+00:00:53.390 --> 00:00:55.010
+So it allows us to build
+
+00:00:55.010 --> 00:01:00.740
+a completely scalable machine learning service that's available via Flask API.
+
+00:01:00.740 --> 00:01:03.620
+So it's your job to go through and make sure that you put
+
+00:01:03.620 --> 00:01:07.565
+the final touches on this machine learning application,
+
+00:01:07.565 --> 00:01:09.890
+that you can also call yourself a
+
+00:01:09.890 --> 00:01:13.340
+machine learning operations professional as well as a DevOps professionals.
+
+00:01:13.340 --> 00:01:17.470
+So good luck, and I know you'll be successful.
+

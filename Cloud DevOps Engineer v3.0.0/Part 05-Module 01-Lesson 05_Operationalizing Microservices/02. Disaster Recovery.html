@@ -1,0 +1,257 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Disaster Recovery</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Operationalizing Microservices</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Alerts and Incidents Response.html">01. Alerts and Incidents Response</a>
+    </li>
+    <li class="">
+      <a href="02. Disaster Recovery.html">02. Disaster Recovery</a>
+    </li>
+    <li class="">
+      <a href="03. CICD Pipeline Integration.html">03. CI/CD Pipeline Integration</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise CircleCI.html">04. Exercise: CircleCI</a>
+    </li>
+    <li class="">
+      <a href="05. Load Testing.html">05. Load Testing</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Locust Load Testing.html">06. Exercise: Locust Load Testing</a>
+    </li>
+    <li class="">
+      <a href="07. Summary.html">07. Summary</a>
+    </li>
+    <li class="">
+      <a href="08. Course Wrap Up.html">08. Course Wrap Up</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">02. Disaster Recovery</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Serverless Best Practices, Disaster Recovery and Backups for Microservices</p></h3>
+  <div>
+  <h2 id="disaster-recovery">Disaster Recovery</h2>
+<p>An important but often overlooked part of building production software is designing for failure.  There is an expression that the only two certainties in life are death and taxes.  We can add another certainty to the list, software system failure.  In the AWS whitepaper <a href="https://d1.awsstatic.com/whitepapers/architecture/AWS-Serverless-Applications-Lens.pdf" rel="noopener noreferrer" target="_blank">Serverless Application Lens</a> they discuss five pillars of a well architected serverless system:  operational excellence, reliability, performance efficiency and cost optimization.  <em>It is highly recommended to read this guide thoroughly.</em></p>
+<h3 id="five-pillars-of-a-well-architected-serverless-system">Five Pillars of a Well Architected Serverless System</h3>
+<h4 id="operational-excellence">Operational Excellence</h4>
+<p>How do you understand the health of a serverless application? One method is to use metrics and alerts.  These metrics could include business metrics, customer experience metrics and other metrics.  Another method is to have centralized logging.  This allows for unique transactions ideas that can narrow down critical failures.</p>
+<h4 id="security">Security</h4>
+<p>Have proper controls and using the POLP (Principle of Least Privilege).  Only give out the privileges needed to complete a task to a user, service or developer.  Protect data at rest and in transit.</p>
+<h4 id="reliability">Reliability</h4>
+<p>Plan on the fact that failure will occur.  Have retry logic for key service and build a system that can queue work when a service is unavailable.  Use highly available services that store multiple copies of the data like Amazon S3 and then archive key data to services that can store immutable backups.  Ensure that you have tested these backups and validated them on a recurring basis (say quarterly)</p>
+<h4 id="performance">Performance</h4>
+<p>One key way to validate performance is to load test an application that has proper instrumentation and logging.  Several load test tools include:  <a href="https://httpd.apache.org/docs/2.4/programs/ab.html" rel="noopener noreferrer" target="_blank">Apache Bench</a>, <a href="https://locust.io/" rel="noopener noreferrer" target="_blank">Locust</a> and load test services like <a href="https://loader.io/" rel="noopener noreferrer" target="_blank">loader.io</a></p>
+<h4 id="cost">Cost</h4>
+<p>Serverless technologies like AWS Lambda fit well with cost optimization because they are driven by usage.  Events trigger the execution of services and this saves a tremendous amount on cost if the architecture is designed to take advantage of this.  </p>
+<h3 id="summary-of-serverless-best-practices">Summary of Serverless Best Practices</h3>
+<p>One of the advantages of serverless application development is that it encourages the use of IaC and GitOps on top of highly durable infrastructure.  This means that entire environments can be spun up to mitigate severe unplanned outages in geographic regions.  Additionally, the use of automated load testing alongside comprehensive instrumentation and logging leads to environments that are robust in the face of disasters.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND#9991 C04 L05 A02 Disaster Recovery</p></h3>
+  <video controls>
+  <source src="02. ND#9991 C04 L05 A02 Disaster Recovery-m2XVJHfwSTw.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="02. ND#9991 C04 L05 A02 Disaster Recovery-m2XVJHfwSTw.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="reference">Reference</h3>
+<ul>
+<li>Backup and Migrate Kubernetes: <a href="https://github.com/heptio/velero" rel="noopener noreferrer" target="_blank">LINK</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Disaster Recovery</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What are some core principles of Disaster Recovery?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="900431" id="rbk1">
+        <label for="rbk1"><p>More than one copy of critical data</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="900431" id="rbk2">
+        <label for="rbk2"><p>Test restoring backups regularly</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="900431" id="rbk3">
+        <label for="rbk3"><p>Both of the above</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk4" name="900431" id="rbk4">
+        <label for="rbk4"><p>Back it up and forget about it</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk5" name="900431" id="rbk5">
+        <label for="rbk5"><p>Snapshots trump everything</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Both of the above
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="03. CICD Pipeline Integration.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('02. Disaster Recovery')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.495
+Another component of disaster recovery
+
+00:00:03.495 --> 00:00:07.245
+and working with operationalization of containers is
+
+00:00:07.245 --> 00:00:11.009
+this concept of understanding how to take a backup of your cluster
+
+00:00:11.009 --> 00:00:15.105
+and restore it in a situation where it is actually lost.
+
+00:00:15.105 --> 00:00:20.280
+So let's take a situation that is really a common situation where, let's say,
+
+00:00:20.280 --> 00:00:24.045
+you have a production database that's a NoSQL database,
+
+00:00:24.045 --> 00:00:28.530
+and it actually is the primary data store for your customers.
+
+00:00:28.530 --> 00:00:31.484
+It is actually something that does happen where
+
+00:00:31.484 --> 00:00:34.740
+you maybe have upgraded the version of your database,
+
+00:00:34.740 --> 00:00:38.190
+and it turns out that the upgraded version will delete the data.
+
+00:00:38.189 --> 00:00:41.030
+That's actually happened to me in the real world,
+
+00:00:41.030 --> 00:00:43.189
+and then hopefully what happens is you go back to
+
+00:00:43.189 --> 00:00:46.250
+your backups and you actually are able to restore.
+
+00:00:46.250 --> 00:00:48.484
+But if you haven't checked your backups,
+
+00:00:48.484 --> 00:00:51.100
+it could be that you thought you're backing up the data,
+
+00:00:51.100 --> 00:00:54.660
+and it turns out that you are just backing up the same file over and over again,
+
+00:00:54.659 --> 00:00:55.939
+and that's also happened to me.
+
+00:00:55.939 --> 00:01:00.259
+So really important to think about in terms of disaster recovery
+
+00:01:00.259 --> 00:01:05.594
+is have you double and triple and quadruple checked exactly what you're doing?
+
+00:01:05.594 --> 00:01:10.209
+Have you thought about the concept of what happens when you lose your primary data store?
+
+00:01:10.209 --> 00:01:14.104
+So that's really the concept of disaster recovery in a nutshell.
+
+00:01:14.105 --> 00:01:18.560
+Another thing to think about is in a confines of containers themselves,
+
+00:01:18.560 --> 00:01:21.350
+are you able to actually actively move the data
+
+00:01:21.349 --> 00:01:24.064
+quickly so that you can get production up and running again?
+
+00:01:24.064 --> 00:01:25.769
+It's one thing to, let's say,
+
+00:01:25.769 --> 00:01:29.989
+take six months and completely restore all your customer data.
+
+00:01:29.989 --> 00:01:33.929
+But what if, because it takes six months, you've got a business?
+
+00:01:33.930 --> 00:01:37.880
+It doesn't even matter that you've been able to perfectly restore what's happening.
+
+00:01:37.879 --> 00:01:42.829
+So you also have to have the idea of hot swappable or online systems,
+
+00:01:42.829 --> 00:01:46.730
+and really Kubernetes and clusters themselves that
+
+00:01:46.730 --> 00:01:50.780
+run containers are really readily designed for that kind of workflow.
+
+00:01:50.780 --> 00:01:53.989
+Another one is to think about replicating
+
+00:01:53.989 --> 00:01:58.819
+your production environment in a development environment and also a testing environment.
+
+00:01:58.819 --> 00:02:01.069
+So one thing that could come up is,
+
+00:02:01.069 --> 00:02:03.649
+if you don't have a complete replica of
+
+00:02:03.650 --> 00:02:06.320
+your production environment and the development environment,
+
+00:02:06.319 --> 00:02:08.569
+you could be developing a feature,
+
+00:02:08.569 --> 00:02:10.509
+think it works really well,
+
+00:02:10.509 --> 00:02:13.379
+and then because your production environment is a little bit different,
+
+00:02:13.379 --> 00:02:15.379
+you deploy it and completely take out
+
+00:02:15.379 --> 00:02:18.150
+your production environment and then you're down for,
+
+00:02:18.150 --> 00:02:21.930
+let's say, days or maybe even a week.
+
+00:02:21.930 --> 00:02:24.780
+These are really important things to think about,
+
+00:02:24.780 --> 00:02:28.280
+important considerations of disaster recovery that maybe don't
+
+00:02:28.280 --> 00:02:32.314
+initially come to mind when you're initially working with clusters,
+
+00:02:32.314 --> 00:02:37.770
+but it actually is a huge capability that clusters themselves,
+
+00:02:37.770 --> 00:02:39.409
+that run containers have,
+
+00:02:39.409 --> 00:02:42.889
+that previously didn't really exist is you have this ability to
+
+00:02:42.889 --> 00:02:48.125
+do continuous delivery and continuous deployment of your software.
+
+00:02:48.125 --> 00:02:50.300
+What that means is that you can have n number of
+
+00:02:50.300 --> 00:02:53.810
+environments and you can constantly be testing exactly what you're doing.
+
+00:02:53.810 --> 00:02:56.525
+So this is a really important topic that
+
+00:02:56.525 --> 00:03:00.020
+doesn't come up that often until it really bites you.
+
+00:03:00.020 --> 00:03:02.540
+If you're not thinking about disaster recovery,
+
+00:03:02.539 --> 00:03:04.804
+eventually, you're going to get burned.
+
+00:03:04.805 --> 00:03:09.784
+It could be a really bad situation that could even put your company out of business.
+
+00:03:09.784 --> 00:03:13.370
+So one solution that is in the space is Velero.
+
+00:03:13.370 --> 00:03:15.469
+It's something that you can look at on GitHub,
+
+00:03:15.469 --> 00:03:19.625
+and it has a lot of the capabilities that we've just talked about.
+
+00:03:19.625 --> 00:03:21.629
+It has a server that runs on your cluster,
+
+00:03:21.629 --> 00:03:26.509
+and it can actually go through and configure testing and
+
+00:03:26.509 --> 00:03:32.429
+configure backups and enhance some of the disaster recovery capabilities.
+

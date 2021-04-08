@@ -1,0 +1,277 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Auto Scaling with CPU or Memory</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Container Orchestration with Kubernetes</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Install Kubernetes.html">01. Install Kubernetes</a>
+    </li>
+    <li class="">
+      <a href="02. Overview of Kubernetes.html">02. Overview of Kubernetes</a>
+    </li>
+    <li class="">
+      <a href="03. Monitoring, Logging and Debugging with Kubernetes.html">03. Monitoring, Logging and Debugging with Kubernetes</a>
+    </li>
+    <li class="">
+      <a href="04. Exercise Prometheus Monitoring.html">04. Exercise: Prometheus Monitoring</a>
+    </li>
+    <li class="">
+      <a href="05. Exercise Logging.html">05. Exercise: Logging</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise Debugging.html">06. Exercise: Debugging</a>
+    </li>
+    <li class="">
+      <a href="07. Auto Scaling with CPU or Memory.html">07. Auto Scaling with CPU or Memory</a>
+    </li>
+    <li class="">
+      <a href="08. Summary.html">08. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">07. Auto Scaling with CPU or Memory</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h2 id="autoscaling-with-cpu-or-memory">Autoscaling with CPU or Memory</h2>
+<p>If you did the <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/scale/scale-intro/" rel="noopener noreferrer" target="_blank">Scaling Demo</a> earlier, you already saw one way to scale your apps:</p>
+<p><code>kubectl scale {deployment name} --replicas={desired number of replicas}</code></p>
+<p>The Horizontal Pod Autoscaler does this work for you.</p>
+<p>One of the "killer" features of Kubernetes is the ability to set up auto-scaling via the <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/" rel="noopener noreferrer" target="_blank">Horizontal Pod Autoscaler</a>. How does this work? The Kubernetes HPA (Horizontal Pod Autoscaler) will automatically scale the number of pods (<em>remember they can contain multiple containers</em>) in a replication controller, deployment or replica set.  The scaling is based on CPU utilization, memory or custom metrics defined in the Kubernetes Metrics Server.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Scaling Image</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/kubernetes-hpa.png" alt="**Kubernetes HPA (Horizontal Pod Autoscaler)**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Kubernetes HPA (Horizontal Pod Autoscaler)</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Docker Article</p></h3>
+  <div>
+  <p>There is a Docker article <a href="https://success.docker.com/article/kubernetes-autoscaling-in-ucp" rel="noopener noreferrer" target="_blank">Kubernetes autoscaling in UCP</a> that is a good guide to go deeper on this topic and experiment with it yourself.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND#9991 C04 L04 A04 Autoscaling With CPU Or Memory</p></h3>
+  <video controls>
+  <source src="07. ND#9991 C04 L04 A04 Autoscaling With CPU Or Memory-MFQ9lOUIit0.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="07. ND#9991 C04 L04 A04 Autoscaling With CPU Or Memory-MFQ9lOUIit0.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <p>The Horizontal Pod Autoscaler built into Kubernetes is incredibly useful for expanding the number of Pods available based on processing or memory needs. The underlying algorithm itself, somewhat simplified, is as follows:</p>
+<p><code>newNumPods = ceil(currentNumPods * (currentMetric / desiredMetric))</code></p>
+<p>This means, if by some metric, we are currently at 2.5X our desired metric level, we will scale up our number of pods by 2.5X, rounded up to the nearest one pod.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Autoscaling Quiz</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>If we currently have 27 pods, and a desired metric value of 137, how many pods will scale to we have if the metric currently has a value of 1,337?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="900702" id="rbk1">
+        <label for="rbk1"><p>27 pods</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="900702" id="rbk2">
+        <label for="rbk2"><p>270 pods</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="900702" id="rbk3">
+        <label for="rbk3"><p>263.5 pods</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk4" name="900702" id="rbk4">
+        <label for="rbk4"><p>264 pods</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk5" name="900702" id="rbk5">
+        <label for="rbk5"><p>263 pods</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    264 pods
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Untitled</p></h3>
+  <div>
+  <h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/" rel="noopener noreferrer" target="_blank">Autoscale Pod</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/" rel="noopener noreferrer" target="_blank">Additional HPA Walkthrough</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="08. Summary.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. Auto Scaling with CPU or Memory')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

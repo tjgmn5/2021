@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.219
+Now one of the real main reasons for running Kubernetes is that you want to have
+
+00:00:05.219 --> 00:00:10.904
+production quality containers and you want to actually run things that are maintainable,
+
+00:00:10.904 --> 00:00:14.039
+and this is a huge motivation for Kubernetes.
+
+00:00:14.039 --> 00:00:15.660
+So as a result,
+
+00:00:15.660 --> 00:00:18.839
+also you're going to want to consider things like monitoring,
+
+00:00:18.839 --> 00:00:21.480
+logging, and debugging with Kubernetes.
+
+00:00:21.480 --> 00:00:25.350
+In general, what that means is that you want to have proactive monitoring,
+
+00:00:25.350 --> 00:00:28.890
+you want to have cluster visibility and capacity planning,
+
+00:00:28.890 --> 00:00:31.844
+you want to be able to trigger alerts and notifications,
+
+00:00:31.844 --> 00:00:34.049
+and you want to have a metrics dashboard.
+
+00:00:34.049 --> 00:00:37.464
+So one of the things you can do is you can configure Prometheus.
+
+00:00:37.465 --> 00:00:42.734
+Prometheus is a monitoring system that integrates very well with Kubernetes.
+
+00:00:42.734 --> 00:00:46.914
+In general, there's something called Prometheus operator.
+
+00:00:46.914 --> 00:00:49.924
+Essentially, it maps directly into
+
+00:00:49.924 --> 00:00:52.789
+the workflow of containers and the workflow of Kubernetes.
+
+00:00:52.789 --> 00:00:55.920
+So that's the recommended monitoring solution,
+
+00:00:55.920 --> 00:00:58.175
+and it's something that you can follow up on
+
+00:00:58.174 --> 00:01:01.649
+by looking at the documentation of our lesson.
+
