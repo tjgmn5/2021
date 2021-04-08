@@ -1,0 +1,226 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:04.010 --> 00:00:07.395
+Hello. My name is Alfredo Deza.
+
+00:00:07.395 --> 00:00:11.550
+I'm going to give you a brief walk-through through
+
+00:00:11.550 --> 00:00:17.700
+the project to create a Jenkins Pipeline set up on AWS.
+
+00:00:17.700 --> 00:00:24.060
+Right here, we're seeing the AWS console for a specific user that has been
+
+00:00:24.060 --> 00:00:31.500
+created with the right permissions to run a T2 micro instance.
+
+00:00:31.500 --> 00:00:36.135
+It's a VM that is running on the US East zone,
+
+00:00:36.135 --> 00:00:42.020
+and the VM has been running for a little while now.
+
+00:00:43.800 --> 00:00:52.190
+We have gone ahead and set up this machine so that we can install and configure
+
+00:00:52.190 --> 00:00:56.745
+Jenkins and connect to your instance
+
+00:00:56.745 --> 00:01:01.640
+pop up gives you a little bit of an overview of how to get there,
+
+00:01:01.640 --> 00:01:05.850
+how to connect and get to your machine.
+
+00:01:05.850 --> 00:01:08.085
+This instance is now running.
+
+00:01:08.085 --> 00:01:17.415
+We're going to see that now Jenkins is running on this URL,
+
+00:01:17.415 --> 00:01:21.195
+and you can see the port 8080 is being used.
+
+00:01:21.195 --> 00:01:28.540
+This is the basic bare-bones Jenkins interface that we went ahead and
+
+00:01:28.540 --> 00:01:36.615
+installed and configured Blue Ocean which is the pipeline ready version of Jenkins,
+
+00:01:36.615 --> 00:01:41.105
+which should give us a nice interface
+
+00:01:41.105 --> 00:01:45.550
+or a nicer interface in these so that we can visualize better our pipelines.
+
+00:01:45.550 --> 00:01:49.240
+A link should appear here staying open Blue Ocean,
+
+00:01:49.240 --> 00:01:52.250
+and let's click that and see how that looks.
+
+00:01:52.340 --> 00:01:57.900
+Once this loads, you can see that there is, first of all,
+
+00:01:57.900 --> 00:01:59.370
+everything looks very different,
+
+00:01:59.370 --> 00:02:05.480
+and we have one item in our pipeline called static.
+
+00:02:05.480 --> 00:02:10.680
+Let's click on that and see how that looks again.
+
+00:02:10.680 --> 00:02:13.815
+You can see here there's been three runs.
+
+00:02:13.815 --> 00:02:17.275
+The first one when the project was created,
+
+00:02:17.275 --> 00:02:20.085
+then a passing one.
+
+00:02:20.085 --> 00:02:27.840
+Apparently things got fixed there and a third one where invalid HTML was done.
+
+00:02:28.970 --> 00:02:34.480
+The usefulness of pipelines here is that it
+
+00:02:34.480 --> 00:02:39.605
+will prevent certain items in the pipeline to continue if there is a failure.
+
+00:02:39.605 --> 00:02:44.525
+Let's look at how the first one got messed up.
+
+00:02:44.525 --> 00:02:53.005
+But you can see here that the linking step failed and nothing was uploaded to AWS.
+
+00:02:53.005 --> 00:02:59.895
+Basically, here was an error where the Linter was not installed.
+
+00:02:59.895 --> 00:03:01.890
+Here you get tidy not found.
+
+00:03:01.890 --> 00:03:04.965
+We're using tidy, which is an HTML Linter.
+
+00:03:04.965 --> 00:03:08.390
+After it got installed into the system,
+
+00:03:08.390 --> 00:03:10.285
+we went ahead and rerun,
+
+00:03:10.285 --> 00:03:17.595
+and you can see here how the Linting step went okay,
+
+00:03:17.595 --> 00:03:21.515
+and then the file was finally uploaded to AWS.
+
+00:03:21.515 --> 00:03:27.600
+This stage went and pushed the changes to Static Jenkins Pipeline,
+
+00:03:27.600 --> 00:03:29.040
+which is the bucket I created,
+
+00:03:29.040 --> 00:03:32.320
+and the upload was successful.
+
+00:03:32.630 --> 00:03:37.520
+The pipeline as well has been set up to be pulling changes from
+
+00:03:37.520 --> 00:03:43.290
+GitHub from the static repo or static project.
+
+00:03:43.430 --> 00:03:45.695
+Whenever there's a change,
+
+00:03:45.695 --> 00:03:46.775
+like you can see here,
+
+00:03:46.775 --> 00:03:50.900
+a change was pushed so that invalid HTML was created.
+
+00:03:50.900 --> 00:03:55.840
+It prevented an upload to AWS for the next step.
+
+00:03:55.840 --> 00:03:59.250
+When there's a problem with the Linting step,
+
+00:03:59.250 --> 00:04:03.235
+the Linter complains and
+
+00:04:03.235 --> 00:04:07.885
+in this case it's the complaints about it that shouldn't be there.
+
+00:04:07.885 --> 00:04:16.000
+This is all really useful and whenever there's a successful step like this one,
+
+00:04:16.000 --> 00:04:22.570
+the pipeline will push the changes to the static URL.
+
+00:04:22.570 --> 00:04:26.855
+Though the index file looks like this,
+
+00:04:26.855 --> 00:04:31.010
+and it's just very basic HTML that has
+
+00:04:31.010 --> 00:04:36.890
+a single line that says this is the first paragraph in a simple static HTML site,
+
+00:04:36.890 --> 00:04:40.860
+and there's no CSS or JavaScript.
+
+00:04:43.130 --> 00:04:47.224
+It was up on Amazon S3,
+
+00:04:47.224 --> 00:04:48.570
+which is this one.
+
+00:04:48.570 --> 00:04:50.420
+Static Jenkins pipeline, which again,
+
+00:04:50.420 --> 00:04:51.965
+this is the name of the bucket.
+
+00:04:51.965 --> 00:04:57.035
+It should be unique for every single packet that is created here,
+
+00:04:57.035 --> 00:05:01.820
+and it has enabled static hosting.
+
+00:05:01.820 --> 00:05:06.960
+It has DS3 website and it's on Amazon AWS.
+
+00:05:07.100 --> 00:05:12.235
+The contents of these is the exact same as in the repo.
+
+00:05:12.235 --> 00:05:17.869
+Though whenever a change is done to the repository that changes the index HTML
+
+00:05:17.869 --> 00:05:23.345
+and the pipeline is successful with a Linting and uploading files to Amazon,
+
+00:05:23.345 --> 00:05:25.615
+it will work fine.
+
+00:05:25.615 --> 00:05:34.750
+Again, this is just how things will work once everything is tied up together.
+
+00:05:34.750 --> 00:05:40.820
+There's a lot of things that you can do here like rerun and basically
+
+00:05:40.820 --> 00:05:48.005
+wait for things to get triggered once there are changes in GitHub.
+
+00:05:48.005 --> 00:05:54.315
+That's it. That's the overview for the Jenkins pipelines on AWS Project,
+
+00:05:54.315 --> 00:05:58.520
+and I hope you get to learn how to deploy and configure
+
+00:05:58.520 --> 00:06:04.620
+these and deploy some pipelines. Thank you.
+

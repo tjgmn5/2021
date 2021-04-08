@@ -1,0 +1,133 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.865
+Already. Now, that we have elasticsearch to aggregate our lawns,
+
+00:00:05.865 --> 00:00:09.765
+let's set up the front end to the service, Kibana.
+
+00:00:09.765 --> 00:00:14.920
+We're going to start by just doing an 'apt install Kibana'.
+
+00:00:25.429 --> 00:00:28.620
+Something important of note.
+
+00:00:28.620 --> 00:00:32.255
+You need to make sure that the version numbers of
+
+00:00:32.255 --> 00:00:35.929
+all the components that you're using match up correctly.
+
+00:00:35.929 --> 00:00:40.475
+So if you're using 7.2.0 version of Kibana,
+
+00:00:40.475 --> 00:00:44.825
+you have to use 7.2.0 version of Elasticsearch,
+
+00:00:44.825 --> 00:00:48.660
+and likewise of Logstash.
+
+00:00:48.820 --> 00:00:53.204
+So we've installed Kibana.
+
+00:00:53.204 --> 00:00:57.280
+Now, we need to install Nginx.
+
+00:01:02.689 --> 00:01:05.890
+Nginx is already installed.
+
+00:01:05.890 --> 00:01:11.210
+Let's go ahead and take a look at the Nginx configuration.
+
+00:01:13.540 --> 00:01:20.795
+We want to go into, etc/nginx/sites- enabled default.
+
+00:01:20.795 --> 00:01:22.894
+Here, what you'll see,
+
+00:01:22.894 --> 00:01:25.214
+is we have a list here on port 80,
+
+00:01:25.215 --> 00:01:30.545
+and we're just effectively using the Nginx as a proxy to another service,
+
+00:01:30.545 --> 00:01:32.965
+and then other service of course is Kibana.
+
+00:01:32.965 --> 00:01:34.870
+So our server name,
+
+00:01:34.870 --> 00:01:38.020
+we're just using an IP address here for this lesson.
+
+00:01:38.019 --> 00:01:42.310
+We're setting off basic restricted access,
+
+00:01:42.310 --> 00:01:44.665
+which we're going to set up very shortly,
+
+00:01:44.665 --> 00:01:50.965
+and we're proxy passing this to on the back end of the Kibana service,
+
+00:01:50.965 --> 00:01:54.924
+which is running on local host at port 5601.
+
+00:01:54.924 --> 00:02:01.114
+Let's go ahead and set up our Nginx configuration, authentication for Kibana.
+
+00:02:01.114 --> 00:02:04.109
+We're going to do this with this below command,
+
+00:02:04.109 --> 00:02:08.259
+"echo "kibanaadmin: 'openss/passwd-apr1'".
+
+00:02:19.270 --> 00:02:25.685
+Great. So this just provides some very basic authentication,
+
+00:02:25.685 --> 00:02:28.800
+and it enables us to use,
+
+00:02:28.800 --> 00:02:31.905
+so we're using the username with pass in here,
+
+00:02:31.905 --> 00:02:33.974
+and then the password we've typed in here,
+
+00:02:33.974 --> 00:02:37.659
+to get into our Kibana.
+
+00:02:38.199 --> 00:02:45.294
+So now, we can configure our elastic search connection string in Kibana.
+
+00:02:45.294 --> 00:02:50.659
+So for this, we're going to take a look at, etc/kibana/kibana.yml.
+
+00:02:53.580 --> 00:02:59.395
+The lines that we are concerned with, are the elasticsearch.username:"elastic",
+
+00:02:59.395 --> 00:03:03.460
+and elasticsearch.password:" So this is where
+
+00:03:03.460 --> 00:03:06.955
+you're going to choose a much better password than the one that we've chosen here.
+
+00:03:06.955 --> 00:03:11.469
+But this is the same password that you selected in your previous step,
+
+00:03:11.469 --> 00:03:14.840
+when you set a password for elasticsearch.
+
+00:03:15.210 --> 00:03:21.439
+Great. So let's go ahead and start our services.
+
+00:03:37.340 --> 00:03:43.564
+Great. Already, we have completed our setup of Kibana.
+
+00:03:43.564 --> 00:03:45.949
+Let's move on to the final component,
+
+00:03:45.949 --> 00:03:50.759
+where we actually put some contents into that log aggregation.
+

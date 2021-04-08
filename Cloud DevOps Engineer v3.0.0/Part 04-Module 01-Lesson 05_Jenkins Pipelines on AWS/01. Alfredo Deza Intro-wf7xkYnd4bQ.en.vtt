@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.060 --> 00:00:10.800
+Hello. My name is Alfredo Deza and I'm a software engineer with
+
+00:00:10.800 --> 00:00:14.565
+about 10 years of experience with Python
+
+00:00:14.565 --> 00:00:20.505
+and with a background on system administration and DevOps.
+
+00:00:20.505 --> 00:00:25.245
+I am excited to have the opportunity to have
+
+00:00:25.245 --> 00:00:32.280
+created the Jenkins Pipeline on AWS project for this course.
+
+00:00:32.280 --> 00:00:36.000
+I hope at the end of it you get to learn how to
+
+00:00:36.000 --> 00:00:40.609
+deploy and run an instance on AWS and configure Jenkins,
+
+00:00:40.609 --> 00:00:43.310
+and run some pipelines that might be able to
+
+00:00:43.310 --> 00:00:48.600
+deploy a static website on S3, at the end of it
+

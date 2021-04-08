@@ -1,0 +1,521 @@
+{
+  "data": {
+    "lesson": {
+      "id": 847125,
+      "key": "1597126d-6bef-475c-b248-fead1154776a",
+      "title": "Operationalize a Machine Learning Microservice API",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this project, you will continue your work on operationalizing microservices by deploying a machine learning inference API using docker and kubernetes.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/1597126d-6bef-475c-b248-fead1154776a/847125/1562138094394/Operationalize+a+Machine+Learning+Microservice+API+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/1597126d-6bef-475c-b248-fead1154776a/847125/1562138092384/Operationalize+a+Machine+Learning+Microservice+API+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "f309c8ee-4ae1-4693-8378-4692e2105a7e",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Operationalize a Machine Learning Microservice API",
+        "description": "# Project Overview\n\nIn this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. \n\n## The Project Files \n\nTo get the starting project files, it is recommended that you **clone the Github repository**, then work locally and push your complete project to a new, Github repository of your own. \n\nTo clone this repository from a command line or terminal, you should navigate to a directory where you want to save this repository (I often use my Desktop) and then copy-paste the following commands:\n```bash\ngit clone https://github.com/udacity/DevOps_Microservices.git\ncd DevOps_Microservices/project-ml-microservice-kubernetes\n```\n\n---\n\n## Project Submission\n\nBefore submitting a link to your complete, project repository, make sure you have included all required and complete files (including `run_kubernetes.sh`, `run_docker.sh`, `docker_out.txt`, `kubernetes_out.txt`, and a `.circleci` build directory). \n\n>**RUBRIC:** You should verify that your project is complete by reading each item in the [project rubric](https://review.udacity.com/#!/rubrics/2576/view).\n\nYour final project should cover the following tasks: \n* Test your project code using linting\n* Complete a Dockerfile to containerize this application\n* Deploy your containerized application using Docker and make a prediction\n* Improve the log statements in the source code for this application\n* Configure Kubernetes and create a Kubernetes cluster\n* Deploy a container using Kubernetes and make a prediction\n* Upload a complete Github repo with CircleCI to indicate that your code has been tested\n\n**The final implementation of the project will showcase your abilities to operationalize production microservices.**\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2576",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 859601,
+          "key": "5b81d350-eb57-4580-9375-21c2accd0b58",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5b81d350-eb57-4580-9375-21c2accd0b58",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 859602,
+              "key": "680ba660-6651-4ee4-996b-8da389746d5d",
+              "title": "ND#9991 C04 L05 A07 Project Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FhPbUgH8_E8",
+                "china_cdn_id": "FhPbUgH8_E8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 848091,
+          "key": "bf45e451-79c0-45fb-9b8c-f692e659187e",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bf45e451-79c0-45fb-9b8c-f692e659187e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 848092,
+              "key": "9277b416-51a6-45a6-b192-dd4422f675ea",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Overview\n\nIn this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. \n\nYou are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848094,
+              "key": "b2b96b92-d686-4f69-9793-86569d96e5ba",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cda07f2_screen-shot-2019-05-13-at-5.12.23-pm/screen-shot-2019-05-13-at-5.12.23-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b2b96b92-d686-4f69-9793-86569d96e5ba",
+              "caption": "Housing price prediction.",
+              "alt": "",
+              "width": 270,
+              "height": 346,
+              "instructor_notes": null
+            },
+            {
+              "id": 848095,
+              "key": "3cc69f17-55a6-4a62-9421-a4b7b8c796d4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Tasks\n\nYour project goal is to operationalize this working, machine learning microservice using [kubernetes](https://kubernetes.io/), which is an open-source system for automating the management of containerized applications. In this project you will:\n* Test your project code using linting\n* Complete a Dockerfile to containerize this application\n* Deploy your containerized application using Docker and make a prediction\n* Improve the log statements in the source code for this application\n* Configure Kubernetes and create a Kubernetes cluster\n* Deploy a container using Kubernetes and make a prediction\n* Upload a complete Github repo with CircleCI to indicate that your code has been tested\n\nYou can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view).\n\n**The final implementation of the project will showcase your abilities to operationalize production microservices.**\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 848096,
+          "key": "b55d095d-1be8-4aec-b323-62fa78f9f59a",
+          "title": "Project Structure & Files",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b55d095d-1be8-4aec-b323-62fa78f9f59a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "config.yml",
+                "uri": "https://video.udacity-data.com/topher/2019/May/5cda0d76_config/config.yml"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 848097,
+              "key": "8c771698-99d5-40a7-80a1-7752daf2a38e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Structure \n\n**This project includes *most* of the necessary files for submission.** \n\n* You will need to create a `.circleci` directory and `config.yml` file therein, but any other files will just need to be modified and completed.\n* You are expected to submit a complete project via a link to a Github repository; if this is your first time using Github, it may be helpful to take a look at our [free course on using Github for version control](https://www.udacity.com/course/version-control-with-git--ud123).\n* Many code tasks, will be marked as `Step x` or `TO DOs` in the project files; you should complete each step before submitting your project for review.\n\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848102,
+              "key": "097ee4d1-20cf-4266-9d18-cfcf4b0b34da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Project Files \n\nTo get the starting project files, it is recommended that you **clone the Github repository**, then work locally and push your complete project to a new, [Github](https://github.com/) repository of your own. Alternatively, you could download the code as a zip file.\n\n### Cloning a Repository \n\nTo clone this repository from a command line or terminal, you should navigate to a directory where you want to save this repository (I often use my Desktop) and then copy-paste this command:\n```bash\ngit clone https://github.com/udacity/DevOps_Microservices.git\n```\n\nThen navigate to the downloaded project directory using two more commands, in order:\n```bash\ncd DevOps_Microservices\ncd project-ml-microservice-kubernetes\n```\n\nThis should get you into the main working project directory that has all the starter files. You can test that you are in the correct directory by seeing if you can access one of the project files from the command line. You can type `cat Makefile` to see the starting `Makefile` in the project directory, for example.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848103,
+              "key": "d01aca86-26d7-457a-b0fb-78df683a9c63",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## CircleCI\n\nAgain, *most* of the project files are included as complete files or as files that you need to change and complete. The only file and directory you'll need to add will be when you create your own Github project repository.\n\nWhen you have your own repository, you will be required to add your own [CircleCI directory](https://circleci.com/docs/2.0/getting-started/#adding-a-yml-file) to your repository. The `yaml` file that tests your code can be downloaded by clicking [this link](https://s3.amazonaws.com/video.udacity-data.com/topher/2019/May/5cda0d76_config/config.yml). You can upload this directly to your repository or copy-paste the tests that are in it.  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 848104,
+          "key": "39314db9-0aab-476a-934b-d026cc4bbbbb",
+          "title": "Create the Project Environment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "39314db9-0aab-476a-934b-d026cc4bbbbb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 848106,
+              "key": "07cada0c-584b-4c30-b91c-e7f8207bab84",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create and activate an environment\n\nAll of these instructions are to be completed via a terminal/command line prompt. \n\n## 1. Create and Activate an Environment\n\n#### Git and version control\nThese instructions also assume you have `git` installed for working with Github from a terminal window, but if you do not, you can download that first from this [Github installation page](https://www.atlassian.com/git/tutorials/install-git).\n\n**Now, you're ready to create your local environment!**\n\n1. If you haven't already done so, clone the project repository, and navigate to the project folder. \n```bash\ngit clone https://github.com/udacity/DevOps_Microservices.git\ncd DevOps_Microservices/project-ml-microservice-kubernetes\n```\n\n2. Create (and activate) a new environment, named `.devops` with Python 3. If prompted to proceed with the install `(Proceed [y]/n)` type y.\n```bash\npython3 -m venv ~/.devops\nsource ~/.devops/bin/activate\n```\n\t\n    At this point your command line should look something like: `(.devops) <User>:project-ml-microservice-kubernetes<user>$`. The `(.devops)` indicates that your environment has been activated, and you can proceed with further package installations.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848108,
+              "key": "bcf803b2-1d84-411d-8cfb-be2b05d6883f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cda15ce_screen-shot-2019-05-13-at-6.11.34-pm/screen-shot-2019-05-13-at-6.11.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bcf803b2-1d84-411d-8cfb-be2b05d6883f",
+              "caption": "",
+              "alt": "Creating an environment",
+              "width": 500,
+              "height": 106,
+              "instructor_notes": null
+            },
+            {
+              "id": 848107,
+              "key": "92481b98-d389-4967-84a9-f28b7aae80a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Installing dependencies via project `Makefile`. Many of the project dependencies are listed in the file `requirements.txt`; these can be installed using `pip` commands in the provided `Makefile`. While in your project directory, type the following command to install these dependencies.\n```bash\nmake install\n```\n\nNow most of the `.devops` libraries are available to you. There are a couple of other libraries that we'll be using, which can be downloaded as specified, below. \n\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848109,
+              "key": "818d4ad9-297e-4f8f-a05d-b4f985cc24d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Other Libraries\n\nWhile you still have your `.devops` environment activated, you will still need to install:\n* Docker\n* Hadolint\n* Kubernetes (Minikube)\n\n## Docker\n\nYou will need to use Docker to build and upload a containerized application. If you already have this installed and created a docker account, you may skip this step.\n\n1. You’ll need to [create a free docker account](https://hub.docker.com/signup), where you’ll choose a unique username and link your email to a docker account. **Your username is your unique docker ID.**\n\n2. To install the latest version of docker, choose the Community Edition (CE) for your operating system, [on docker’s installation site](https://docs.docker.com/v17.12/install/). It is also recommended that you install the latest, **stable** release:\n\n3. After installation, you can verify that you’ve successfully installed docker by printing its version in your terminal: `docker --version`\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848112,
+              "key": "ab5c32fa-43b2-4d11-94cb-e82d04f96d16",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cda1a91_screen-shot-2019-05-13-at-6.31.52-pm/screen-shot-2019-05-13-at-6.31.52-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ab5c32fa-43b2-4d11-94cb-e82d04f96d16",
+              "caption": "",
+              "alt": "docker version",
+              "width": 500,
+              "height": 72,
+              "instructor_notes": null
+            },
+            {
+              "id": 848110,
+              "key": "91d8b2e3-6aa3-4111-bf88-700bb61e2602",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## Run Lint Checks\n\nThis project also must pass two lint checks; `hadolint` checks the Dockerfile for errors and `pylint` checks the `app.py` source code for errors.\n \n1. Install `hadolint` following the instructions, [on hadolint's page]( https://github.com/hadolint/hadolint): \n\n    **For Mac:**\n    ```bash\n    brew install hadolint\n    ```\n    **For Windows:**\n    ```bash\n    scoop install hadolint\n    ```\n2. In your terminal, type: `make lint` to run lint checks on the project code. If you haven’t changed any code, all requirements should be satisfied, and you should see a printed statement that rates your code (and prints out any additional comments):\n\n   ```bash\n   ------------------------------------\n   Your code has been rated at 10.00/10\n   ```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848111,
+              "key": "0e9ff328-26cd-4482-8df5-c00f5bacb782",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## Install Minikube\n\nTo run a Kubernetes cluster locally, for testing and project purposes, you need the Kubernetes package, Minikube. This operates in a virtual machine and so you'll need to download two things: A virtual machine (aka a hypervisor) then minikube. Thorough installation instructions can be found [here](https://kubernetes.io/docs/tasks/tools/install-minikube/). Here is how I installed minikube:\n\n1. Install VirtualBox:\n\n  **For Mac:**\n  ```bash\n  brew cask install virtualbox\n  ```\n  **For Windows**, I recommend using a [Windows host](https://www.virtualbox.org/wiki/Downloads).\n\n\n2. Install minikube:\n\n  **For Mac:**\n  ```bash\n  brew cask install minikube\n  ```\n  **For Windows**, I recommend using the [Windows installer](https://kubernetes.io/docs/tasks/tools/install-minikube/).\n   \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848113,
+              "key": "92717f27-9bf5-492b-baaa-7afbd5b8911b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## That's it! \n\nSetting up an environment is an important part of development. Now you are ready to start working on the project files to containerize a machine learning application!\n\nYou should return to this page if you need to troubleshoot any dependency issues.\n\n## Troubleshooting\n\n* In general, you can verify installation by checking the version of a library, ex. `kubectl version` or `docker --version`. If there is no package found, you may need to install that library.\n\n* **Mac issue**: If you get an error `error: invalid active developer path`, that means you need to install some Xcode developer tools. You can do this on Mac by running this terminal command: `xcode-select --install`",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 848105,
+          "key": "3d8293f6-660d-4cf3-ae10-2067364e596b",
+          "title": "Detailed Project Tasks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3d8293f6-660d-4cf3-ae10-2067364e596b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "config.yml",
+                "uri": "https://video.udacity-data.com/topher/2019/May/5cda234b_config/config.yml"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 848114,
+              "key": "7eb58016-ef9a-4da3-8fea-f5c826648e0b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Tasks \n\nAssuming you have a terminal window open, you’re in the project directory, and your `.devops` environment is activated, you can continue viewing and editing project files! \n\n>This section is quite dense and so, it is suggested that you approach one **task** at a time, carefully reading through the instructions and completing the task, then taking a break if you desire, and coming back to the *next* task. \n\n---\n## Task 1: Complete the Dockerfile\n\nDocker can build images automatically by reading the instructions from a `Dockerfile`. The Dockerfile contains all the commands a user could call on the command line to assemble an image. \n\nTo view the contents of the `Dockerfile` type: `cat Dockerfile`. You can edit any file by opening it in a text editor and saving it.\n\n### `Dockerfile`\n\nYou can see that you have been given a couple of lines of code in the `Dockerfile` and some instructions.\n\n`FROM` is provided for you; the FROM instruction initializes a new build stage and sets the **base image** for subsequent instructions. In this case, it specifies Python3 as the base image for this application. The rest of the `Dockerfile` instructions are left for you to complete. You should have instructions that:\n\n* Specify a working directory.\n* Copy the `app.py` source code to that directory\n* Install any dependencies in `requirements.txt` (do not delete the commented `# hadolint ignore` statement).\n* Expose a port when the container is created; port 80 is standard.\n* Specify that the app runs at container launch.\n\nAfter you complete this file and save it, it is recommended that you go back to your terminal and run `make lint` again to see if `hadolint` catches any errors in your Dockerfile. **You are required to pass these lint checks to pass the project.**\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848115,
+              "key": "a3a76ced-9f5b-466f-a5ec-26a5034a5537",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## Task 2: Run a Container & Make a Prediction \n\nIn order to run a containerized application, you’ll need to build and run the docker image that you defined in the `Dockerfile`, and then you should be able to test your application, locally, by having the containerized application accept some input data and produce a prediction about housing prices. \n`run_docker.sh`\n\nNext, open and complete the file, `run_docker.sh` to be able to get Docker running, locally.\n\nWithin `run_docker.sh`, complete the following steps:\n* Build the docker image from the Dockerfile; it is recommended that you use an optional `--tag` parameter as described in the [build documentation](https://docs.docker.com/engine/reference/commandline/build/).\n* List the created docker images (for logging purposes).\n* Run the containerized Flask app; publish the container’s port to a host port. **The appropriate container and host ports are in the Dockerfile and `make_prediction.sh` files, respectively.**\n\nYou can find a list of all the docker commands you might need to use in the [documentation](https://docs.docker.com/engine/reference/commandline/docker/).\n\n### Running the complete script\n\nThis file is a **shell script** which you can see from the extension `.sh`. To *run* a shell script from your terminal, you type `./<scriptname>`. \n\nTo run and build a docker image, you’ll type `./run_docker.sh`. After typing this command, you should see something like the following in your terminal, followed by a number of build steps:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848117,
+              "key": "685b1708-564f-48a8-99b3-99575b757ed6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cda1e18_screen-shot-2019-05-13-at-6.46.55-pm/screen-shot-2019-05-13-at-6.46.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/685b1708-564f-48a8-99b3-99575b757ed6",
+              "caption": "",
+              "alt": "run docker script",
+              "width": 500,
+              "height": 88,
+              "instructor_notes": null
+            },
+            {
+              "id": 848116,
+              "key": "80b15418-8ea5-49f5-bb34-5ea03b256b2f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "After a brief waiting period, you should see messages indicating a successful build, along with some indications that your app is being served on port 80 (also, a warning about the development server is to be expected, here).\n\n```bash\nSuccessfully built <build id>\nSuccessfully tagged <your tag>\n```\n\nThis indicates a successful build and **if you keep this application running** you can make predictions!\n\n### Making predictions \n\nThen, to make a prediction, you have to open a **separate tab or terminal window**. In this new window, navigate to the main project directory (some computers will do this automatically) and call `./make_prediction.sh`.\n\nThis shell script is responsible for sending some input data to your containerized application via the appropriate port. Each numerical value in here represents some feature that is important for determining the price of a house in Boston. The source code is responsible for passing that data through a trained, machine learning model, and giving back a predicted value for the house price. \n\nIn the prediction window, you should see the value of the prediction, and in your main window, where it indicates that your application is running, you should see some log statements print out. You’ll see that it prints out the input payload at multiple steps; when it is JSON and when it’s been converted to a DataFrame and about to be scaled. \n\n**After making a prediction, you can type `CTRL+C` (+enter) to quit running your application.** You can always re-run it with a call to `./run_docker.sh`.\n\nYour next task will be to add a log statement in `app.py` that prints out the pre-trained model **prediction** as Log.info. \n\nThe complete text output from these logs will be submitted as part of the complete project. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848118,
+              "key": "95d52cd4-05a0-4fb5-bd14-f3cfb30b2940",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## Task 3: Improve Logging & Save Output\n\nLogging is an important part of debugging and understandability. Many times, logs will be how engineers figure out what an app is doing as it processes some input. In this case, `app.py` is responsible for \n1. Accepting an input JSON payload, and converting that into a DataFrame.\n2. Scaling the DataFrame payload.\n3. Passing the scaled data to a pre-trained model and getting back a prediction.\n\nSo far, the logs print out the JSON and DataFrame payloads, but do not have any statements for the scaled input or the resultant prediction. The prediction is an especially important piece of information and so you definitely want that value in the logs. \n\n### Add a prediction log statement\nYour task is to **add at least one log statement to `app.py` that prints out the output `prediction` values**. You can add more log statements than that, but that is what is required. \n\nOnce you have updated your `app.py` code, save it and `./run_docker.sh` again and make the same prediction in a separate terminal window. \n\n### Create `docker_out.txt`\n\n**Copy and paste this terminal output, which has log info, in a text file `docker_out.txt`.** A sample output is shown below. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848119,
+              "key": "82dc8f1a-bc96-4c41-b944-4b49e1a03789",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cda1f8f_screen-shot-2019-05-13-at-6.52.55-pm/screen-shot-2019-05-13-at-6.52.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/82dc8f1a-bc96-4c41-b944-4b49e1a03789",
+              "caption": "Sample log output",
+              "alt": "",
+              "width": 600,
+              "height": 382,
+              "instructor_notes": null
+            },
+            {
+              "id": 848120,
+              "key": "882906e9-97c5-4ac2-b91d-eda8f683af97",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The `docker_out.txt` file should include all your log statements plus a line that reads something like `”POST /predict HTTP/1.1” 200 -` The 200 is a standard value indicating the good “health” of an interaction. **The `docker_out.txt` file will be one of two, log output files that will be part of a passing, project submission.**\n\nAgain, after making a prediction, you can type `CTRL+C` (+enter) to quit running your application. You’ll need to quit running before you can move on to the next steps and upload the built, docker image.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848121,
+              "key": "a20687c8-fd77-478e-8a77-f255abb1366a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## Task 4: Upload the Docker Image\n\nNow that you’ve tested your containerized image locally, you’ll want to upload your built image to docker. This will make it accessible to a Kubernets cluster. \n\n### Upload your Docker image\n\nTo upload an image to docker, you’ll need to complete the `upload_docker.sh` file:\n* Define a `dockerpath` which will be “<your docker ID>/path”; the path may be the same as the build tag you created in `run_docker.sh` or just some descriptive path name. Recall that your docker username is your unique docker ID.\n* Authenticate and tag   image; this step is responsible for creating a login step and ensuring that the uploaded docker image is tagged descriptively.\n* Similar to how you might push a change to a Github repository, push your docker image to the `dockerpath` defined in step 1. This push may take a moment to complete.\n\nAssuming you’ve already built the docker image with `./run_docker.sh`, you can now upload the image by calling the complete shell script `./upload_docker.sh`. \n\nIf you’ve successfully implemented authentication and tagging, you should see a successful login statement and a repository name that you specified, printed in your terminal. You should also be able to see your image as a repository in your [docker hub account](https://hub.docker.com/).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848122,
+              "key": "d01c415e-10e9-4012-840a-b828830823f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## Task 5: Configure Kubernetes to Run Locally\n\nYou should have a virtual machine like VirtualBox and `minikube` installed, as per the project environmet instructions. To start a local cluster, type the terminal command: `minikube start`.\n\n**After minikube starts, a cluster should be running locally.** You can check that you have one cluster running by typing `kubectl config view` where you should see at least one cluster with a `certificate-authority` and `server`. \n\nThis is a short task, but it may take some time to configure Kubernetes, and so this deserves its own task number.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848123,
+              "key": "167ab570-a692-4659-9242-9cbfee82561f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n\n## Task 6: Deploy with Kubernetes and Save Output Logs\n\nNow that you’ve uploaded a docker image and configured Kubernetes so that a cluster is running, you’ll be able to deploy your application on the Kubernetes cluster. This involves running your containerized application using `kubectl`, which is a command line interface for interacting with Kubernetes clusters.\n\n### `run_kubernetes.sh`\n\nTo deploy this application using `kubectl`, open and complete the file, `run_kubernetes.sh`:\n\nThe steps will be somewhat similar to what you did in both `run_docker.sh` and `upload_docker.sh` but specific to kubernetes clusters. Within `run_kubernetes.sh`, complete the following steps:\n* Define a `dockerpath` which will be “<your docker ID>/path”, this should be the same name as your uploaded repository (the same as in `upload_docker.sh`)\n* Run the docker container with `kubectl`; you’ll have to specify the container and the port\n* List the kubernetes pods\n* Forward the container port to a host port, using the same ports as before\n\nAfter completing the code, call the script `./run_kubernetes.sh`. This assumes you have a local cluster configured and running. This script should create a pod with a name you specify and you may get an initial output that looks as follows, with a cluster and status:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848124,
+              "key": "e77275b1-9d31-4475-9955-160c740c9401",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cda213f_screen-shot-2019-05-13-at-7.00.20-pm/screen-shot-2019-05-13-at-7.00.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e77275b1-9d31-4475-9955-160c740c9401",
+              "caption": "Pending pod",
+              "alt": "",
+              "width": 500,
+              "height": 154,
+              "instructor_notes": null
+            },
+            {
+              "id": 848125,
+              "key": "0042b02f-4804-4fec-9cf2-8c905be0bc65",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Initially, your pod may be in the process of being created, as indicated by `STATUS: ContainerCreating`, but you just have to wait a few minutes until the pod is ready, then you can run the script again.\n\n**Waiting: ** You can check on your pod’s status with a call to `kubectl get pod` and you should see the status change to `Running`. Then you can run the full `./run_kuberenets.sh` script again.\n\n### Make a prediction\n\nAfter you’ve called `run_kubernetes.sh`, and a pod is up and running, make a prediction using a *separate* terminal tab, and a call to `./make_prediction.sh`, as you did before.\n\n### `kubernetes.out.txt` \n\nAfter running a prediction via Kubernetes deployment, what do you see in your main terminal window?\n\n**Copy the text output after calling `run_kubernetes.sh` and paste it into a file `kubernetes_out.txt`.** This will be the second (out of two) text files that are required for submission. This output might look quite different from `docker_out.txt`; this new file should include your pod’s name and status, as well as the port forwarding and handling text.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848126,
+              "key": "5e496394-a42e-48c4-b96c-cbcbaad55cde",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## Task 7: [Important] Delete Cluster\nAfter you’re done deploying your containerized application and making test predictions via Kubernetes cluster, you should clean up your resources and **delete the kubernetes cluster** with a call to `minikube delete`.\n\n You can also pause your work and save the cluster state with a call to `minikube stop`. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848127,
+              "key": "a1a6710e-a6d1-4320-9dc3-89213f598c03",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n\n## Almost Ready for Project Submission\n\nNow, you are almost ready to submit your project! \n\n* Check that you have all complete files\n* Push your work to a Github repository\n* One last step: **CircleCI Integration**\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848128,
+              "key": "8e299b84-bd3c-438c-b8b8-8e31c71aeebd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## Task 8: CircleCI Integration\n\nCircleCI is a tool that defines an automated **testing environment**; getting a CircleCI _badge_ that reads \"Passed\" on a repository indicates that the project code has passed all lint tests. CircleCI uses a YAML file to identify how you want your testing environment set up and what tests you want to run. On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci`. On Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default.\n\n* To create the file and folder on GitHub, click the `Create new file` button on the repo page and type `.circleci/config.yml`. You should now have in front of you a blank `config.yml` file in a `.circleci` folder.\n\n* Then you can paste the text from [this yaml file](https://s3.amazonaws.com/video.udacity-data.com/topher/2019/May/5cda0d76_config/config.yml) into your file, and commit the change to your repository.\n\n* It may help to reference [this CircleCI blog post](https://circleci.com/blog/triggering-trusted-ci-jobs-on-untrusted-forks/) on Github integration.\n\n### Setting up and Building  a Project \n\nTo test your repository with CircleCI, you will need a CircleCI account, which you can get via their [signup page](https://circleci.com/signup) + clicking \"Start with GitHub.\" Once you have an account, you'll be able to build project using the CircleCI [dashboard](https://circleci.com/dashboard). \n\nOn the dashboard, you will be given the option to set up a new project. To add your new repo, ensure that your GitHub account is selected in the dropdown menu in the upper-left, find the project repository that you've created, and click the `Setup project` button next to it. You can leave all set up configurations as their default value then click `Start building`. \n\nYou should see your build start to run, and if your project passes the lint tests, you'll see that the project passes!\n\n* You can then add a [status badge](https://circleci.com/docs/2.0/status-badges/) indicating that your project has \"Passed\" CircleCI tests, by looking at the markdown in the Notifications section of your project’s settings > Status Badges.\n* Best practice is to add the badge via markdown into the Github project's README.md file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848129,
+              "key": "3fa1a0ba-e3fc-43ad-9490-f91354c10c11",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cda259e_screen-shot-2019-05-13-at-7.19.00-pm/screen-shot-2019-05-13-at-7.19.00-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3fa1a0ba-e3fc-43ad-9490-f91354c10c11",
+              "caption": "",
+              "alt": "passed status badge",
+              "width": 120,
+              "height": 46,
+              "instructor_notes": null
+            },
+            {
+              "id": 848131,
+              "key": "1feb9ffa-2d9b-4eb7-a460-76c85293d179",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n\n## Task 9: README.md\n\nA complete README file should include:\n1. A summary of the project\n2. Instructions on how to run the Python scripts and web app (simply listing command line calls will suffice), and\n3. A short explanation of the files in the repository.  \n\nThe README should also include the \"passed\" status badge (shown above) at the **top** of the README.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 848130,
+              "key": "6b061380-c663-4dc3-946e-48542fd94c4a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## Project Submission\n\nCongratuations, you have successfully containerized and deployed a machine learning application using Kubernetes. And you are ready to submit your complete Github repo!\n\nCheck that you’ve passed all [rubric items](https://review.udacity.com/#!/rubrics/2576/view), then **go to the next page** and submit via a link to your Github repo. After submission, your project will be sent to one of our reviewers, who will give you feedback on your project.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

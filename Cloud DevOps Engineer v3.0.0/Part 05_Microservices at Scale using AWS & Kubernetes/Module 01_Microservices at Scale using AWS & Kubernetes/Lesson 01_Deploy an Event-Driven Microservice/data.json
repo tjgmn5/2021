@@ -1,0 +1,1590 @@
+{
+  "data": {
+    "lesson": {
+      "id": 848076,
+      "key": "5544e6c3-d06a-4b28-b5a5-c45760f5529b",
+      "title": "Deploy an Event-Driven Microservice",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn about cloud-native applications and deploy functions as a service (FaaS) using AWS Lambda and Cloud9.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/5544e6c3-d06a-4b28-b5a5-c45760f5529b/848076/1582840056015/Deploy+an+Event-Driven+Microservice+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/5544e6c3-d06a-4b28-b5a5-c45760f5529b/848076/1582840050150/Deploy+an+Event-Driven+Microservice+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 851189,
+          "key": "558f73ee-c1c7-4993-a2d5-bd295b60400c",
+          "title": "Lesson Outline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "558f73ee-c1c7-4993-a2d5-bd295b60400c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 851197,
+              "key": "817acc26-3351-490b-9b86-9f4d32400e4d",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Outline\n\nIn this lesson, you'll learn to deploy serverless applications, using [AWS Lambda](https://aws.amazon.com/lambda/). This lesson breaks up the topic of serverless applications into smaller concepts:\n\n* What are Functions as a Service (FaaS)?\n* Characteristics of cloud-native applications\n* Creating an AWS Lambda function using Cloud9\n* Responding to events, such as HTTP **requests**\n* Creating a JSON **response**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851199,
+              "key": "36734271-4859-4156-a6d0-f6d32f15b6c6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5ceb62cd_screen-shot-2019-05-26-at-9.08.33-pm/screen-shot-2019-05-26-at-9.08.33-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/36734271-4859-4156-a6d0-f6d32f15b6c6",
+              "caption": "Request-response cycle",
+              "alt": "",
+              "width": 500,
+              "height": 310,
+              "instructor_notes": null
+            },
+            {
+              "id": 851198,
+              "key": "a4114262-5618-4565-a801-2216dbb54063",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n\n### Request-Response\n\nMuch of this lesson will rely on creating and understanding the **request-response** method of computer communication. From the [Wikipedia page](https://en.wikipedia.org/wiki/Request%E2%80%93response):\n\n\"**Request–response** ... is one of the basic methods computers use to _communicate_ with each other, in which the first computer sends a request for some data and the second responds to the request. Usually, there is a series of such interchanges until the complete message is sent; browsing a web page is an example of request–response communication. \n\n**Request–response can be seen as a telephone call, in which someone is called and they answer the call.**\"\n\nIn this lesson, requests are typically HTTP requests with some input data, and a response will be a JSON-formatted set of output values. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851200,
+              "key": "85f3840d-aaa5-477e-bc31-1e15fc272c2c",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n\nBy the end of this lesson, you'll have all the skills you need to develop and deploy serverless functions of your own design!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 851157,
+          "key": "cc30b717-250f-48cf-88bd-d4bda82cbdfb",
+          "title": "Functions as a Service (FaaS)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cc30b717-250f-48cf-88bd-d4bda82cbdfb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971616,
+              "key": "594294c1-135b-4955-992a-a7fcc6dca0a5",
+              "title": "FaaS Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Functions as a Service (FaaS)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859550,
+              "key": "d024fd8b-36ef-4e08-8040-d655543cb775",
+              "title": "ND9991 C04 L01 A01 FaaS (Function Of As A Service)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZkIfjISDYtM",
+                "china_cdn_id": "ZkIfjISDYtM.mp4"
+              }
+            },
+            {
+              "id": 851203,
+              "key": "7bca0868-a236-445b-99bd-54f44c2ebc89",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is AWS Lambda?\n\nFrom the [AWS documentation](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html):\n\n\"AWS Lambda is a compute service that lets you run code **without provisioning or managing servers**.\"\n\n* \"AWS Lambda executes your code only when needed and scales automatically, from a few requests per day to thousands per second. \n* You pay only for the compute time you consume - there is no charge when your code is not running.\"\n\n\"You can use AWS Lambda to run your code in response to events,\" such as HTTP requests.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857941,
+              "key": "db3cafd4-32fd-4dd4-94f7-301c556cfd87",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n### SQS Queue\n\nAmazon Simple Queue Service (Amazon SQS) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components.\n* A **queue** is just a type of list that orders data in a particular way; typically in a first-item-in = first-item-out order (FIFO), as shown below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857943,
+              "key": "b4d31c1a-458e-4243-bb85-7a7fab9333c8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e562740_02-sqs/02-sqs.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b4d31c1a-458e-4243-bb85-7a7fab9333c8",
+              "caption": "",
+              "alt": "",
+              "width": 608,
+              "height": 223,
+              "instructor_notes": null
+            },
+            {
+              "id": 857944,
+              "key": "62ddab95-f505-4c22-b65e-91e97a1f737c",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Learn more about SQS [in the documentation](https://aws.amazon.com/sqs/).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858599,
+              "key": "0b1a9090-0d38-4ca4-946f-c12af475176e",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n### MXNet and Lambda\n\n* Learn more about deploying models using MXNet and AWS Lambda in [this AWS blog post](https://aws.amazon.com/blogs/compute/seamlessly-scale-predictions-with-aws-lambda-and-mxnet/), where they link to a repository of example code!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 857945,
+          "key": "d92296ab-67bf-4e1d-b91d-47eb91f03b13",
+          "title": "A Model for Serverless",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d92296ab-67bf-4e1d-b91d-47eb91f03b13",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971618,
+              "key": "c7fb12fd-b583-41f3-aa4b-cddb4f75a3ac",
+              "title": "Model for Serverless Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## A Model for Serverless",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858582,
+              "key": "f22c5ea6-553f-4438-a590-76db56fe38b3",
+              "title": "ND9991 C04 L01 A01.1 FaaS (A Model For Serverless)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZucBmjMqoLU",
+                "china_cdn_id": "ZucBmjMqoLU.mp4"
+              }
+            },
+            {
+              "id": 857946,
+              "key": "ad15d1c7-5db3-4a87-bd65-7ef7cf882a24",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Models for Serverless\n\nThough we'll be using AWS cloud tools, there are a number of other providers that you can use to build serverless applications with auto-scaling capabilities. The skills you learn in this lesson will be widely applicable to these other platforms. Some of the larger, cloud providers include: \n* Amazon Web Services [ [Chalice](https://github.com/aws/chalice) & [Cloud Formation](https://aws.amazon.com/cloudformation/)]\n* [Terraform](https://www.terraform.io/)\n* [Google Cloud Platform](https://console.cloud.google.com/?pli=1)\n* [Microsoft Azure](https://azure.microsoft.com/en-us/)\n\nAnd you are welcome to check these out, especially if you have a platform that you already prefer.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 851158,
+          "key": "7b617ee9-ec44-4d81-af75-acc5c4760581",
+          "title": "Benefits of FaaS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7b617ee9-ec44-4d81-af75-acc5c4760581",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971633,
+              "key": "46cc52b1-3bf3-422c-a7cc-a054cd5eb098",
+              "title": "Benefits of Faas Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Benefits of FaaS",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858583,
+              "key": "326acf7c-9144-417d-8af4-3c95d3dbc26c",
+              "title": "ND9991 C04 L01 A02 Benefits Of FaaS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3FtxeF7sgis",
+                "china_cdn_id": "3FtxeF7sgis.mp4"
+              }
+            },
+            {
+              "id": 971617,
+              "key": "45742b36-b28d-442a-b5e6-3cc154c908de",
+              "title": "Why FaaS?",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Why FaaS?\n\n- Higher developer ROI because server infrastructure management no longer required.\n- More time focused on writing code, which leads to a higher developer velocity.\n- Functional programming is a design well suited to distributed computing.  Instead of scaling your entire application, you can scale your functions automatically and independently with usage.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 980733,
+              "key": "20e6f2c0-61c8-4a4c-a74d-69c7697edb04",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "20e6f2c0-61c8-4a4c-a74d-69c7697edb04",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What is the main benefit of FaaS? (There are multiple ways to answer this question; think about the features that FaaS have.)"
+              },
+              "answer": {
+                "text": "There are a few main benefits of FaaS. You may have thought about one of the following attributes:\n\n* Complete abstraction of servers away from the developer.\n* Cost-effective. There is billing on-demand; based on consumption and executions.\n* Services that are event-driven and instantaneously scalable.\n",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 851159,
+          "key": "e5d1a411-4dcf-46df-b650-9ce4bf0f8606",
+          "title": "Cloud-Native",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e5d1a411-4dcf-46df-b650-9ce4bf0f8606",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971619,
+              "key": "73830ae4-b582-4cbb-b8ff-985b04a364d1",
+              "title": "Cloud-Native Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Cloud-Native",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858584,
+              "key": "aa6e7892-28a2-4824-84e2-ac04b292dfa4",
+              "title": "ND9991 C04 L01 A03 Cloud Native",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XPSoLDJIl8o",
+                "china_cdn_id": "XPSoLDJIl8o.mp4"
+              }
+            },
+            {
+              "id": 980732,
+              "key": "8174fae4-c538-49ba-9317-98300f70ad62",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What are the Top Ten Benefits of Cloud Computing?\n\n#### Cost\n\nThere is no up-front cost and resources can be precisely metered to meet\ndemand.\n\n\n#### Speed\n\nThe cloud offers self-service, so an expert user can leverage the resources to build\nsolutions quickly.\n\n\n#### Global scale\n\nAll major cloud providers have a global scale, which means services can be provisioned\nall over the world to meet demand in a geographic region.\n\n#### Productivity\n\nMany tasks, such as racking servers, configuring network hardware, and physically\nsecuring a data center, no longer exists. Companies can focus on building\ncore intellectual property versus reinventing the wheel.\n\n#### Performance\n\nThe performance of applications can leverage a continuous upgrade cycle.  The network, the storage and the compute improve over time consistently.  Additionally, Cloud-Native applications are able to leverage new capabilities in the cloud to further increase performance.  \n\n#### Reliability\n\nThe core architecture of the cloud offers redundancy at every step. There are\nmultiple regions and multiple data centers in each region. Cloud-native architecture\ncan design around these capabilities, leading to highly available architectures.\nAdditionally, many-core cloud services are themselves highly available, like\nAmazon S3, which has nine nines, or 99.999999999% reliability.\n\n#### Security\n\nYou are only as good as your weakest link with security. By consolidating to centralized\nsecurity, a higher level of security occurs. Problems such as physical\naccess to a data center or encryption at rest become industry standard on day\none.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858605,
+              "key": "e99f7808-c697-4b1d-acd6-25e51a42f155",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Relational Database\n\nA [relational database](https://en.wikipedia.org/wiki/Relational_database) is a tabular system that stores a **finite** amount of information. You can think of a relational database as a spreadsheet of values/data, where each row in the spreadsheet has a unique ID. \n\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971621,
+              "key": "77a532a8-bb25-4f51-aade-a61eb2ad3f72",
+              "title": "What is Moore’s Law?",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is Moore's Law?\n\nThe general premise of Moore’s Law is “that the speed and capability of computers can be expected to double every two years, as a result of increases in the number of transistors a microchip can contain.” - <a href=\"https://www.investopedia.com/terms/m/mooreslaw.asp\" target=\"_blank\">Oxford dictionary</a>\n\nIn 2015, Moore’s Law was effectively over, and gains are at 3% a year.\nOne of the most challenging areas of computer science is distributed computing. In\nthe modern era of cloud computing, there are a few fundamental shifts that have changed\neverything. One of the most significant shifts is the rise of multicore machines and\nthe end of Moore’s Law.\n\nMoore’s Law exposed two fundamental problems that manifest themselves in the\ncloud era. The first problem is that CPUs are designed to be multipurpose processors.\nThey are not specialized to run parallel workloads. If you couple that with the ultimate\nphysical limits of increasing CPU speed, the CPU has become less critical in the\ncloud era. \n\nThe second problem is that making multiple core machines to counteract the limitations\nof single-processor speed has led to a ripple effect on software languages. Many\nlanguages previously had substantial problems taking advantage of multiple cores\nbecause they were designed in an era before multiple processors existed, let alone the\ninternet. What makes things even more challenging is that there is “no free lunch” by adding more cores to a problem that is not mostly parallel.",
+              "instructor_notes": null
+            },
+            {
+              "id": 971648,
+              "key": "fc3050ba-bba7-4ee7-ab28-ec0085519192",
+              "title": "End of Moore's Law",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e5627fa_03/03.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fc3050ba-bba7-4ee7-ab28-ec0085519192",
+              "caption": "[**End of Moore’s Law:  ACM**](https://cacm.acm.org/magazines/2019/2/234352-a-new-golden-age-for-computer-architecture/fulltext)",
+              "alt": "End of Moore’s Law:  ACM",
+              "width": 954,
+              "height": 623,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 857947,
+          "key": "53448696-d167-4040-8c85-6bfeda993d9b",
+          "title": "Characteristics of Cloud-Native Systems",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "53448696-d167-4040-8c85-6bfeda993d9b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971622,
+              "key": "8d9f044e-1b34-4e1e-9d3d-8f610f9d3f01",
+              "title": "Characteristics Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Characteristics of Cloud-Native Systems",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859551,
+              "key": "e474f423-727b-4427-a6de-79a6204f9466",
+              "title": "ND9991 C04 L01 A03.1 Characteristics Of Cloud Native Systems",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AsWnzQ-5804",
+                "china_cdn_id": "AsWnzQ-5804.mp4"
+              }
+            },
+            {
+              "id": 971623,
+              "key": "c09bd0ab-300a-4738-982b-d9b6844388d0",
+              "title": "What are some characteristics of Cloud-Native Systems?",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What are Some Characteristics of Cloud-Native Systems?\n\n#### Microservice oriented\n\nMicroservices more closely map business logic to code.  These systems can be updated and developed independently.  A good example of a Microservice architecture would be a Python AWS Lambda application that uses API Gateway.\n\n#### Elastic\n\nElastic systems can automatically scale to meet increased load without the involvement of humans. These same systems can then scale down again when load diminishes.  By eliminating human touchpoints, which are error-prone, the quality increases.  Likewise, because the system can scale up and down for demand, it is more efficient to run and costs less.\n\n#### Continuous Delivery\n\nCloud-native systems leverage IAC (infrastructure as code) to fully define the infrastructure.  This means that deployment can target a dynamically created environment and that software can be automatically deployed to a new environment as it is created.  Humans again are eliminated from the process of deployment increasing quality.\n\n#### DevOps\n\nCloud-native systems utilize DevOps.  DevOps is a combination of automation, processes, and tools that increase automation, collaboration, and operational efficiency.  Using Python for DevOps is a common way this automation is achieved.\n\n#### Agility\n\nThe agility of developing solutions improves.  The cloud speeds up development time and increases quality through the use of IaC (Infrastructure as Code) and Continuous Delivery.\n\n#### Composable\n\nCloud-Native solutions are highly composable.  The service design is one of integration. At the minimum, each service has an Application Programming Interface (API) that is consistent and discoverable. Other traits include well-defined behaviors for registration, discovery, and request management.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971624,
+              "key": "276e4f8f-1183-4697-a7ee-4fe68ad3f327",
+              "title": "What are some pros and cons of Cloud-Native architecture?",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Pros:\n\n* Ability to leverage near infinite resources of the cloud:  Compute, Disk I/O, Storage, and Memory.\n* No up-front costs and resources can be metered to meet demand like an electric or water utility.\n* Applications are able to “go global” immediately with no extra investment.\n* Increased reliability is increased as many cloud services are themselves highly available.  A good example is Amazon S3 which has nine nine’s availability or is 99.999999999% reliable.  \n* Security is improved by consolidating to a centralized security model where there is a shared security partnership with the cloud vendor.  They take care of portions of security such as access to the physical data center.\n* The speed applications can be developed and tested are dramatically improved.  With concepts like IAC (Infrastructure as Code), complete replicas of a production environment can be provisioned, tested, and then destroyed.  This leads to increased quality of software and speed in which software can be developed.\n\n#### Cons:\n\n* Risk of creating systems that rely on a specific cloud vendor.\n* The cost involved in migrating an application to a different architecture.\n* A current organization may need to hire a new workforce trained to use the cloud or retrain their workforce.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858611,
+              "key": "0a4b877d-69de-45a9-8524-acd36d03f9e2",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is Fault-Tolerance?\n\n**Fault Tolerance** - the property that enables a system to continue operating properly in the event of the failure of one or more of its components. \n\n* An example is a typical car, which is designed so it will continue to be drivable if one of the tires is punctured or damaged.\n* In computer systems, a fault-tolerant design enables a system to continue its intended operation, possibly at a reduced level, rather than failing completely, when some part of the system fails.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857948,
+              "key": "c20aa9a0-4643-4b6e-9634-7697c9b4378e",
+              "title": "Untitled",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c20aa9a0-4643-4b6e-9634-7697c9b4378e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is a characteristic of cloud-native systems?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "They are automatable",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "They run on a local data center",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "They have built-in Python",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "They are monolithic",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 851173,
+          "key": "69398b9e-56d5-4c8a-b91d-03ffb2af5674",
+          "title": "AWS Account & Resources",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "69398b9e-56d5-4c8a-b91d-03ffb2af5674",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 851174,
+              "key": "02c53baf-511b-4620-bac5-4e0c6cde9a02",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## AWS Console & Cloud9 Environment\n\nThe majority of work that you do in this lesson will be completed using [AWS Cloud9](https://aws.amazon.com/cloud9/), which lets you code, run, and debug code in your browser! For certain exercises, you will be expected to work through a Cloud9 environment, which has access to all the libraries we need as well as data management and deployment tools!\n\nIf you are familiar with the AWS console and Cloud9, you may proceed to the next video to get set up. If not, it is suggested that you read through these instructions carefully to set up an AWS account.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851175,
+              "key": "63418b1d-d699-4e6d-ac95-883e98b05f11",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n### 1. Create an AWS Account\n\nFirst, visit [Amazon AWS](https://aws.amazon.com) and click on the **Create an AWS Account** button.\n\n* If you have an AWS account already, sign in.\n* Otherwise, sign up for an AWS account.\n\nWhen you register, you will need to provide a credit card, but you won’t be charged for anything at this point. You will also need to choose a support plan, and you can choose the **free Basic Support Plan**.\n\nAfter you've signed up, you should receive your AWS account confirmation email in a few minutes. Then return to [Amazon AWS](https://aws.amazon.com) and sign in.\n\n### The Console\n\nIn the future, you can access the AWS console by visiting [console.aws.amazon.com](https://console.aws.amazon.com). The AWS console is a central hub from which you can access all of the various Amazon Web Services, including SageMaker.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851176,
+              "key": "25f680be-a905-4437-a964-7361f83608c4",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 2. Apply AWS Credits\n\nAll students are provided with a free set of AWS credits.  To get your AWS credits, go to the 'Resources' tab in the left of the classroom; there will be an 'AWS Credits' link to click there.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851177,
+              "key": "e25c1fce-0cd6-4945-8384-de9ef0b6c7c3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5ceb4718_screen-shot-2019-05-26-at-7.10.18-pm/screen-shot-2019-05-26-at-7.10.18-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e25c1fce-0cd6-4945-8384-de9ef0b6c7c3",
+              "caption": "AWS credits in the \"Resources\" tab",
+              "alt": "",
+              "width": 290,
+              "height": 240,
+              "instructor_notes": null
+            },
+            {
+              "id": 851178,
+              "key": "dbcb4dc3-1093-4950-bcdb-12df68432b6b",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Click on the 'Go to AWS' button to request your credits. This should bring up a form which you will need to complete.  \n> In your AWS account, **your AWS Account ID can be found under 'My Account',** which is itself found in the dropdown under the name of your account, between the bell and the 'Global' dropdown.\n\nAfter you've gone through all the steps, you'll receive an email with your code.  The email will be sent to the email address you entered on the AWS credits application.  It may take up to 48 hours to receive this email, though it is much quicker in most cases\n\nUnder \"AWS Promotional Credit \" in the email, you'll find your code. Use this code on the link provided, which is your [account credits page](https://console.aws.amazon.com/billing/home?#/credits).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851179,
+              "key": "78b0abab-6aba-42f6-9b64-c6e63bb2115c",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 3. Set up a Cloud9 Environment\n\nThen, you'll need to set up a Cloud9 environment that is connected to the [main Github repository](https://github.com/udacity/DevOps_Microservices) for this course.  This environment will be the primary way in which we interact with the Cloud9 ecosystem.\n\n> Watch the _next_ video to see how to set up this environment.\n\n>You can also read (instead of watch) the instructions for creating a Cloud9 environment on Noah's [Github page](https://github.com/noahgift/awslambda/blob/master/beginners_guide_aws_lambda.ipynb).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 851160,
+          "key": "6072e74b-bec5-4e02-9828-ae72c3222dad",
+          "title": "Cloud9 Environment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6072e74b-bec5-4e02-9828-ae72c3222dad",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 980864,
+              "key": "0cba9d49-ca84-4bcb-a46b-f6707933bad7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Follow Along\n\nIt is suggested that you follow along with these videos by having this classroom open in one tab and opening up a separate tab for environment creation and coding. \n* You can also read (instead of watching) the instructions for creating a Cloud9 environment on the [Jupyter notebook available in GitHub repo](https://github.com/udacity/DevOps_Microservices/blob/master/Supporting-material/beginners_guide_aws_lambda.ipynb).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858586,
+              "key": "9d4b0879-da4b-461a-b8aa-ead47f66be97",
+              "title": "ND9991 C04 L01 A04 AWS & Cloud 9",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "T_OdN3e-uQU",
+                "china_cdn_id": "T_OdN3e-uQU.mp4"
+              }
+            },
+            {
+              "id": 1127967,
+              "key": "b2e46c18-7f80-45fd-aaac-bf523ad00aaf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Note** - Create a `Cloud9` environment with `Platform` set as `Ubuntu  Server 18.04 LTS` (instead of `Amazon Linux`)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 851162,
+          "key": "ad541149-dfbb-4dff-8953-81258258f2ee",
+          "title": "Lambda Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ad541149-dfbb-4dff-8953-81258258f2ee",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971630,
+              "key": "49f1606b-b8b9-4c4f-af4c-a6aed558ada8",
+              "title": "What is AWS Lambda?",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is AWS Lambda?\n\nAWS Lambda is a new category of computing where business logic can be directly deployed to a production environment without thinking about servers.  Another word for this is serverless or FaaS (Function As A Service).  Some of the benefits of AWS Lambda include no servers to manage, continuous scaling, and billing at the sub-second level.\n\nAnother benefit of AWS Lambda includes being part of an ecosystem designed to exploit the capability.  Here are two examples of AWS Lambda.  The first example is AWS Step Functions. They build upon AWS Lambda to create more sophisticated workflows like polling for a job to finish and performing an action.  The second example is AWS DeepLens (a computer vision device). It uses AWS Lambda to serve out predictions.  Finally, if you look closely, almost every service on AWS can utilize AWS Lambda.\n\nThe AWS ecosystem allows Lambda functions to respond to events instead of constantly running.  This is similar to a motion detector that turns on a light in the garage.  The duration the light may run for could be only a few hours per year.  If the light switch was manually triggered it is possible the light would be run constantly for 365 days in the year.\n\nThe AWS Lambda ecosystem allows integration with other core services in AWS through triggers.  An example of a trigger would be a movie file that is uploaded to Amazon S3 storage.  An AWS Lambda function could be triggered that uses an AWS API to transcode the movie file to a different code or to add captioning.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858587,
+              "key": "99218f8b-2baf-47ea-b513-8c8c80c688e5",
+              "title": "ND9991 C04 L01 A05 Lambda Functions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bPXS4bOzobE",
+                "china_cdn_id": "bPXS4bOzobE.mp4"
+              }
+            },
+            {
+              "id": 851220,
+              "key": "5a684922-8933-48ad-a13a-cdb0a490c7d8",
+              "title": "Untitled",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5a684922-8933-48ad-a13a-cdb0a490c7d8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What parameter(s) does a basic `lambda_handler` accept as input?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "event",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "action",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "event, action",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "event, context",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 851163,
+          "key": "687ae8b3-5f83-4e24-ba91-123c51eace34",
+          "title": "Deploying and Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "687ae8b3-5f83-4e24-ba91-123c51eace34",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971625,
+              "key": "3924466c-ac94-4b5b-a100-7f5012784f28",
+              "title": "D & T Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deploying and Testing",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858588,
+              "key": "bff1059c-6bc5-4f1d-8e78-9872794c23be",
+              "title": "ND9991 C04 L01 A06 Deploying And Testing",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pH77MnBG0d0",
+                "china_cdn_id": "pH77MnBG0d0.mp4"
+              }
+            },
+            {
+              "id": 971632,
+              "key": "c8f10c8c-e996-4d10-8962-ab8c0fe9662e",
+              "title": "Operationalizing AWS Lambda",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Operationalizing AWS Lambda\n\nContinuing with the analogy of a motion-sensing light in the garage, imagine if there were many things that could turn on the light in the garage.  What are some triggers that could be set up to turn on the light in the garage?\n\n* Opening of the garage door\n* Home burglar alarm \n* A nightly timer that starts at 8 PM and ends at 8 AM\n\nJust like the home automation example, there are many ways to trigger a Lambda function.  One of the most common ways to trigger the Lambda function would be through API Gateway.  A web service is created by adding API Gateway to the lambda, and then, if the URL is requested by a browser or an API call, it would, in turn, trigger the Lambda function.\n\nAnother common way to trigger the AWS Lambda function would be to attach it to Amazon S3.  Instead of the Lambda function being triggered from the web service, it could be triggered every time a new file is placed in an S3 bucket.  Yet another trigger could be a CloudWatch Event Timer.  A timer could be set up to run every hour.  At the top of each hour, the Lambda function would be called.\n\nLet’s get into a real-world example now.  A company that needs to collect a competitor’s pricing, say for a similar washing machine they are selling, could create a Lambda function that scrapes the competitor’s website.  Next, a CloudWatch Event timer could run nightly to scrape the website and put the results into an S3 bucket.  When the S3 bucket receives the HTML results, a second AWS Lambda function could be triggered that extracts the pricing information from the HTML file and writes it to DynamoDB, if it is lower than the current value in the database.  Finally, the website itself could host a third AWS Lambda function that uses API Gateway to serve out the companies current prices, which will always be at least the same price or lower than their competitors.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 980734,
+              "key": "17e10de9-e589-463c-9024-7e0d9faf23ca",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e575e8a_untitled-drawing/untitled-drawing.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/17e10de9-e589-463c-9024-7e0d9faf23ca",
+              "caption": "",
+              "alt": "",
+              "width": 1703,
+              "height": 649,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 851164,
+          "key": "3bc206bc-6083-4103-883d-a6d0701b2c24",
+          "title": "Tutorial: Making Change",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3bc206bc-6083-4103-883d-a6d0701b2c24",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971641,
+              "key": "7bad8adf-fd67-40e4-be4e-e239877bacb1",
+              "title": "Making Change Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tutorial: Making Change",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971638,
+              "key": "77018ac5-a16d-4133-8ceb-99e91c710145",
+              "title": "Build Lambda Change Function in AWS Cloud9",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e576076_lambda-change/lambda-change.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/77018ac5-a16d-4133-8ceb-99e91c710145",
+              "caption": "**Testing an AWS Lambda Function in Cloud9**",
+              "alt": "Cloud9 Lambda Workflow",
+              "width": 1236,
+              "height": 578,
+              "instructor_notes": null
+            },
+            {
+              "id": 1047781,
+              "key": "56628cde-df9b-4aa6-869e-3819749b7f06",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nNow, you're ready to deploy a more complex Function as a Service (FaaS). The next interactive tutorial will be about event-handling for a function that automatically makes the smallest amount of change given an input amount of US currency. For example, given $0.63, the function should output: 2 quarters, 1 dime, 3 pennies. \n\n**It's suggested that you copy this tutorial code into your Cloud9 environment in a different, working tab so you can interact with and test the code as you go through the instructional videos in _this_ tab.** This way you can toggle between learning new skills and applying new skills.\n\nTo copy this code, you have two options:\n>- Copy the code directly from [Github](https://github.com/udacity/DevOps_Microservices/blob/master/Lesson-1-Lambda-functions/make-change-tutorial/make_change.py)\n- Clone the entire repo from [Github](https://github.com/udacity/DevOps_Microservices) and open the appropriate tutorial code from the path `Lesson-1-Lambda-functions` > `make-change-tutorial`.  You can either download the repository with `git clone https://github.com/udacity/DevOps_Microservices.git`, or download it as a zip file.\n\n### Instructions\n\n* Refer to the previous screenshot in **Build Lambda Change Function in AWS Cloud9**.  Notice that by “right-clicking” on the AWS Lambda function in AWS Cloud9 it can be tested using **Lamba(local)** \n\n* Create a new AWS Lambda functional locally in AWS Cloud9 and copy/paste the code into the **lambda_function** file that is created.\n\n* Write a test event, passing in some $ `amount` as a **request** to your function, and view the JSON response.  Remember this is accomplished by “right-clicking” on the AWS Lambda function.  The payload needs to be JSON formatted as shown in the screenshot.\nFor example, `{“amount”:1.45}`.\n\n* Once you get that working, feel free to try new values by putting different amounts into the JSON payload.  For example, `{“amount”:1.50}`.\n\n* *Optional Challenge #1: If you want to really challenge yourself, deploy the lambda by right-clicking on it and selecting “deploy”.  Now test it out in the AWS Lambda Console and make it give correct change.  [You can get inspiration on how to do that here.](https://youtu.be/AlRUeNFuObk)*\n* *Optional Challenge #2: If you want to really challenge yourself, [build your own text translation AWS Lambda as shown here.](https://www.youtube.com/watch?v=TaZqirmuBZM)*\n\nThis is a tutorial, meant to be demonstrative and educational; you do not need to modify any code here.  You only need to “run it”.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 851225,
+          "key": "cecb464b-a523-4588-9442-7ee3d41014a6",
+          "title": "Event-Handling",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cecb464b-a523-4588-9442-7ee3d41014a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971636,
+              "key": "a25cb9d1-2835-4644-a416-7447ee643f70",
+              "title": "Event Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Event-Handling",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858589,
+              "key": "6616077d-7309-421b-8daf-61f59a71e945",
+              "title": "ND9991 C04 L01 A07 Event Handling- Making Change",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "r84K6g1Z7eQ",
+                "china_cdn_id": "r84K6g1Z7eQ.mp4"
+              }
+            },
+            {
+              "id": 971631,
+              "key": "609bae85-c157-4a93-9ae6-c96994ba60c0",
+              "title": "Greedy Algorithms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This change example uses a “greedy algorithm”.  Greedy algorithms use a heuristic of finding the locally optimal choice to solve a global optimum.  There are many examples of greedy algorithms we use in the real world.  A reasonable solution to a famous optimization problem, [The Traveling Salesman problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem), can be found by randomly starting at a route, and then always picking the shortest distance to the next city. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971642,
+              "key": "6c24117a-959a-4310-9eb8-2c27ca70e574",
+              "title": "Api-Gateway-Trigger",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TvJi2qyP2Q0",
+                "china_cdn_id": "TvJi2qyP2Q0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 851165,
+          "key": "aa702e58-ef3f-4b8a-8a0e-6ee616db8d99",
+          "title": "Events & Response",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aa702e58-ef3f-4b8a-8a0e-6ee616db8d99",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971628,
+              "key": "5d371790-58fc-4907-9dbd-da7da025002e",
+              "title": "Events and Response Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Events & Response",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971637,
+              "key": "7e9acbb9-7564-4d33-b94c-9c3b83f6690c",
+              "title": "Lightbulb-Trigger",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xYnrqZuQXiU",
+                "china_cdn_id": "xYnrqZuQXiU.mp4"
+              }
+            },
+            {
+              "id": 971629,
+              "key": "826d1e54-421b-4d5d-b1a8-3d34ad694503",
+              "title": "Lightbulb in Garage Trigger vs AWS Lambda Trigger",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e562f10_07/07.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/826d1e54-421b-4d5d-b1a8-3d34ad694503",
+              "caption": "**Comparison of Light Bulb in Garage Triggers vs AWS Lambda Triggers**",
+              "alt": "Triggers for AWS Lambda",
+              "width": 960,
+              "height": 238,
+              "instructor_notes": null
+            },
+            {
+              "id": 971635,
+              "key": "843202e4-ad4f-4773-9b54-6e2d5144fe47",
+              "title": "Web/HTTP Status Codes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When a car approaches a traffic light, they can expect signals to output many things:  turn left, stop (red), slow (yellow), go (green).  Sometimes if there is a problem with the light, it may flash red.  Websites and APIs work in a similar fashion.  There are codes (signals) that are returned that indicate what a web request is doing:\n\n- 1xx (request received and processing)\n- 2xx (request successful)\n- 3xx (redirection)\n- 4xx (client error\n- 5xx (server error)\n\nIn practice this comes into play when testing an application or setting up alerts.  For monitoring that an error code that had, say 500 would signal a problem and a 200 would be a success.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851224,
+              "key": "6ff3d08c-06b7-40d4-95c5-98a79b284dc4",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Events & Response \n\nEvent-handling and creating a response are really important aspects of Functions as a Service. Take these quizzes to gauge how well you understand these aspects. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851222,
+              "key": "500967f3-088a-4e4c-a3bb-308c0c009b04",
+              "title": "Untitled",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "500967f3-088a-4e4c-a3bb-308c0c009b04",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Assuming an event has a `body`, how do you retrieve and save that JSON body in code?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "`body = event[\"body\"]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "`body = event[body]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "`body = json.loads(event[\"body\"])`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "`json.loads(event[\"body\"])`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1094291,
+              "key": "1a1e04ad-821c-4fb0-81bc-f0d30a262ed6",
+              "title": "Multiple Choice Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1a1e04ad-821c-4fb0-81bc-f0d30a262ed6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When formatting a JSON `response` you have to include several `\"string\":value` pairs. What strings are included in a simple JSON response? (Check **ALL** options that apply.)",
+                "answers": [
+                  {
+                    "id": "a1604314345898",
+                    "text": "statusCode",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1604314409534",
+                    "text": "response",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1604314416632",
+                    "text": "headers",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1604314426670",
+                    "text": "end",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1604314428723",
+                    "text": "body",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 858614,
+              "key": "af793cad-bce6-473a-a0ab-75306cd22a66",
+              "title": "Untitled",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "af793cad-bce6-473a-a0ab-75306cd22a66",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "To _send_ a JSON payload as input or as a test, what kind of HTTP method should you use?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "GET",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "PUT",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "POST",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "TEST",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 851166,
+          "key": "9e83a1bb-18f8-4df9-9272-9ac34332ea21",
+          "title": "Create a Test",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9e83a1bb-18f8-4df9-9272-9ac34332ea21",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 851206,
+              "key": "ca820599-98c0-4bed-90e1-a3e6adf75a1e",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create a Test Event\n\nIn the previous `helloudacity` example, you saw how to create a \"test request\" and trigger an event for your function to respond to. Now, you can do that with the make change example!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851207,
+              "key": "0818cb2e-5791-4a61-b9ac-18dca7aee506",
+              "title": "Untitled",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0818cb2e-5791-4a61-b9ac-18dca7aee506",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a test that passes in an {\"amount\": 1.42} as the body of a request."
+              ],
+              "positive_feedback": "Great! Note the output - does this seem like the correct amount of change for your input request?",
+              "video_feedback": null,
+              "description": "Create a test event."
+            },
+            {
+              "id": 851208,
+              "key": "1735e2e5-25a2-44e5-9ad4-6cbc5684957d",
+              "title": "Untitled",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1735e2e5-25a2-44e5-9ad4-6cbc5684957d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Look at the JSON response to the requested amount of 1.42, what is the exact format of the returned JSON response?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "{4: \"quarters\", 4: \"dimes\", 0: \"nickels\", 2: \"pennies\"}",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "{5: \"quarters\", 2: \"pennies\", 1: \"dime\", 1: \"nickel\"}",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "{5: \"quarters\", 1: \"dimes\", 1: \"nickels\", 2: \"pennies\"}",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "{5: \"quarters\", 1: \"dime\", 1: \"nickel\", 2: \"pennies\"}",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 851209,
+              "key": "42d4c20e-6931-4c1e-b1e5-6eaf6f1700c1",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## An Additional Challenge\n\nThere are many ways you can build off of this simple function, as an additional challenge:\n* See if you can make a similar function that calculates change in a different currency, such as in Mexican pesos.\n* See if you can write a different function that does currency conversion between two different currencies, at a current exchange rate.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 851167,
+          "key": "ba2de59a-f77b-40c2-979e-d605d384e249",
+          "title": "Deploy & Use API Gateway",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ba2de59a-f77b-40c2-979e-d605d384e249",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971644,
+              "key": "78587ae2-ec4c-442d-969d-0e1d16fb4df6",
+              "title": "Deploy Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deploy & Use API Gateway",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858590,
+              "key": "177e3819-2055-4c26-86f0-fe40d9a14418",
+              "title": "ND9991 C04 L01 A08 A09",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "E5H7TvBnqEg",
+                "china_cdn_id": "E5H7TvBnqEg.mp4"
+              }
+            },
+            {
+              "id": 899083,
+              "key": "ab65e4fc-116b-46f9-8fca-4595e822ef0e",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "*Note:* You may need to select and deploy an API Gateway for your own use within the AWS Lambda dashboard for your function in order to follow this video.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858617,
+              "key": "6ac92882-21fa-4c80-af89-dc17d141bf6e",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### IPython\n\nThe IPython environment gives you a way to write a program line-by-line in a terminal window, but the commands in this environment are different than typical shell commands. For example, if you want to do a `pip install ___` within an IPython environment, you have to put a `!` before the shell command: `!pip install ___`.\n\nYou can exit out of the IPython environment by typing in: `exit()`.  Note this also works on the regular Python interpreter. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971640,
+              "key": "75bd8538-87d2-4fcc-b971-9390b307124d",
+              "title": "Concept Summary:  Testing a Web Service built with API Gateway and Cloud9",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this section, the following steps occur:\n\n1. An AWS Lambda function was created in AWS Cloud9 in the local development environment.\n2. This AWS Lambda function returns the “correct” change and also has an API Gateway trigger.\n3. The AWS Lambda function was tested locally using a JSON payload.\n4. This AWS Lambda function was deployed to AWS. \n5. The deployment created an HTTP URL.\n6. Locally in Cloud9, the Python requests library was installed and it was used to make an API call to the HTTP URL.  This URL could be requested from anywhere in the world.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 851210,
+          "key": "af0e6bce-2aed-41f2-8865-9c9ce6fd90de",
+          "title": "Creating a Virtual Environment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "af0e6bce-2aed-41f2-8865-9c9ce6fd90de",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 851211,
+              "key": "dda1133f-ef3d-4c8c-8019-9b5f75118079",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a Virtual Environment\n\nIn the last video, you saw how to make requests locally after first creating a virtual environment from the terminal in a Cloud9 environment. The next couple quizzes are meant to check your understanding of the steps it takes to create a virtual environment.\n\nIf you find yourself unsure of an answer, it may help to read the [python documentation](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) for virtual environments. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971634,
+              "key": "c7d7de49-42ef-4347-9550-705b4cb01011",
+              "title": "Setting up and Using a Virtual Environment",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Setting Up and Using Virtualenv\n\nThe Python standard library includes a module called [`venv`](https://docs.python.org/3/tutorial/venv.html). A virtual environment solves a very important problem in Python.  It isolates the Python interpreter to a specific directory. In this example, a virtual environment is created in a user's home directory.\n\n`python3 -m venv ~/.hello`\n\nTo use this virtual environment it needs to be activated.\n\n`source  ~/.hello/bin/activate`\n\n### Using a Repeatable Convention to Create Virtual Environments\n\nConventions are a powerful way to simplify complex software engineering tasks in a series of easy to remember steps.  A convention based workflow with virtual environments can also dramatically simplify using them.  Here is a simple convention to use:\n\n1.  Create a virtual environment with a `~/.[reponame]` format\n\nThis removes the decision about where to put the virtual environment and what to name it.  If your git repository is called `hello`, then you would run the following command:\n\n`python3 -m venv ~/.hello`\n\nNote, that the `.` makes the virtual environment invisible.  This will prevent your home directory overflowing with virtual environments when you open it in a GUI or list the contents with `ls -l`.\n\n2.  Create an alias in your Bash or ZSH environment.\n\nWith ZSH, the config file to edit would be `~/.zshrc`. In Bash it would be `~/.bashrc`.  Inside of this config file add the following:\n\n```bash\n## Hello repo                                                                    \nalias hello=\"cd ~/hello && source ~/.hello/bin/activate\"       \n```\n\nThe next time you open your default shell, this alias will be available.  Here is an example of what this workflow looks like on my ZSH environment, which uses a package called [oh-my-zsh](https://ohmyz.sh/).\n\n```bash \n➜ hello\n(.hello) ➜  hello git:(master)\n(.hello) ➜  hello git:(master) which python\n/Users/noahgift/.hello/bin/python\n```\n\nThis convention based workflow, if followed, makes a tedious and error prone process easy to remember.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851215,
+              "key": "d0ee09cd-f5cd-46da-8994-aaa210fe39ec",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Alternatively, you can use the [`conda` package manager](https://docs.conda.io/en/latest/miniconda.html) to create and source virtual environments. This may be what you have used if you've ever taken Udacity's Deep Learning program , which has [instructions for downloading and using conda](https://github.com/udacity/deep-learning-v2-pytorch/blob/master/README.md) (in the main course repository) for environment creation.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851213,
+              "key": "bb23fd46-070a-4644-b14f-57c67233f89c",
+              "title": "Untitled",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bb23fd46-070a-4644-b14f-57c67233f89c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the terminal command for **creating** a virtual, python environment named `mycloud9`?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "`source ~/venv/bin/activate`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "`source ~/mycloud9/bin/activate`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "`python3 -m venv ~/mycloud9`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 851214,
+              "key": "1e04a1eb-6954-4017-b5f1-43c19089c413",
+              "title": "Untitled",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1e04a1eb-6954-4017-b5f1-43c19089c413",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the terminal command for **activating** a virtual, python environment named `mycloud9`?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "`source ~/venv/bin/activate`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "`source ~/mycloud9/bin/activate`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "`python3 -m venv ~/mycloud9`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 851212,
+              "key": "c872246d-e5e6-4c1a-8b40-a0b620c1e5b8",
+              "title": "Untitled",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c872246d-e5e6-4c1a-8b40-a0b620c1e5b8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "After you've created a virtual environment, which two steps do you then typically follow (in order)?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "1. install `venv` 2. navigate to the environment location",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "1. activate the environment, 2. install any required dependencies",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "1. create a requirements.txt file, 2. create an environment yaml file",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 851171,
+          "key": "4cee437b-a1f0-4666-b661-f013743cbc4c",
+          "title": "Exercise: Wikipedia",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4cee437b-a1f0-4666-b661-f013743cbc4c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971639,
+              "key": "5cf11fea-98d1-4d71-8cca-08d1afbabeee",
+              "title": "Wikipedia Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Wikipedia",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971643,
+              "key": "1ea0e768-32e5-4468-91dc-154606f806c1",
+              "title": "Wikipedia Test Event in AWS Cloud9",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e575ef8_wikipedia-lambda-event/wikipedia-lambda-event.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1ea0e768-32e5-4468-91dc-154606f806c1",
+              "caption": "**Example of Testing the Wikipedia Function in AWS Cloud9**",
+              "alt": "Wikipedia lambda",
+              "width": 837,
+              "height": 772,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094296,
+              "key": "a195a257-3913-4a29-9f45-4276e5669179",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, you're ready to complete some code of your own and deploy a FaaS that reads information from a Wikipedia page. \n\n**It's suggested that you copy the exercise code into your Cloud9 environment in a different, working tab and continue working on it as you go through the instructional videos in _this_ tab.** This way you can toggle between learning new skills and coding/applying new skills.\n\nTo checkout this exercise code, you have two options:\n>- Copy the code directly from the [Github repository](https://github.com/udacity/DevOps_Microservices/tree/master/Lesson-1-Lambda-functions/wikipedia-query) or from the next page.\n- Clone the entire repo from [Github](https://github.com/udacity/DevOps_Microservices) and open the appropriate code from the path `Lesson-1-Lambda-functions` > `wikipedia-query`.  You can either download the repository with `git clone https://github.com/udacity/DevOps_Microservices.git`, or download it as a zip file.\n\n### Instructions\n\n* Read in the JSON \"body\" from an `event`\n* Get the `entity` field of the JSON query\n* Format and return a JSON response with health code `200` and the wikipedia information to-be-returned\n* Review the image in **Wikipedia Test Event in AWS Cloud9** to ensure your test event looks similar.  Note that the payload follows the following syntax. The entity can be the name of any company you would like to retrieve.\n\n```bash\n{\n“entity”: “google”\n}\n```\n\nThis is a self-assessed lab. If you need any help or want to check your answers, feel free to check out the solutions notebook in the same folder, or by clicking [here](https://github.com/udacity/DevOps_Microservices/tree/master/Lesson-1-Lambda-functions/wikipedia-query/wikipedia_lambda_solution.py).\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 851216,
+          "key": "516b60c9-63b2-40d2-afab-a2af2f41b099",
+          "title": "Exercise Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "516b60c9-63b2-40d2-afab-a2af2f41b099",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 851217,
+              "key": "1c93d60b-bde4-4ad7-8de5-aed53645b587",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Complete the Code\n\nTry to complete this exercise code in a Cloud9 environment, by following the instructions in the commented `## TO DO's` before moving on.\n\n```python\nimport json\nimport wikipedia\n\n# prints when function loads\nprint('Loading function')\n\n\ndef lambda_handler(event, context):\n    ''' Wikipedia page summarizer.\n        :param event: a request with a wikipedia \"entity\" that has page information\n        :return: a response that contains the first sentence of a wikipedia page,\n            the response is JSON formatted.'''\n    \n    ## TO DO: Check that the request has some input body and save it\n    if 'body' in event:\n        body = None\n    \n    ## TO DO: Get the wikipedia \"entity\" from the body of the request\n    entity = None\n    res = wikipedia.summary(entity, sentences=1) # first sentence, result\n\n    # print statements\n    print(f\"context: {context}, event: {event}\")\n    print(f\"Response from wikipedia API: {res}\")\n    \n    ## TO DO: Format the response as JSON and return the result\n    response = {\n        ## your code here\n    }\n    \n    return response\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 851218,
+              "key": "8208e85c-4d57-43b2-8fa6-022aa943bd8c",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you get stuck or want to check your work, you can also watch the following **solution videos**, next.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 851169,
+          "key": "abb861f9-c9b7-4bd5-8752-e9d700b0ce25",
+          "title": "Wikipedia Example",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "abb861f9-c9b7-4bd5-8752-e9d700b0ce25",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971646,
+              "key": "c62e2afe-4814-4c04-8c49-6b18d5786ac8",
+              "title": "Wikipedia Example Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Wikipedia Example",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858592,
+              "key": "17f50860-c7ea-4fd7-b88a-8376e5635b23",
+              "title": "ND9991 C04 L01 A010 Wikipedia Example",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7iIXWjsjhJQ",
+                "china_cdn_id": "7iIXWjsjhJQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 851170,
+          "key": "7ffd0c33-cf2a-46fe-90cc-47b5687ab7c0",
+          "title": "Test & Response",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7ffd0c33-cf2a-46fe-90cc-47b5687ab7c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971647,
+              "key": "b846baf1-061a-4d08-bea7-d6813097e0ca",
+              "title": "T & R Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Test & Response",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858593,
+              "key": "62f69e40-f3f1-4ab3-b3bf-d429d1d3a010",
+              "title": "ND9991 C04 L01 A011 Test & Response",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rbChF22ZE_w",
+                "china_cdn_id": "rbChF22ZE_w.mp4"
+              }
+            },
+            {
+              "id": 851229,
+              "key": "82e3b2e5-f15d-41d8-a2bd-ef82eaed0049",
+              "title": "Untitled",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "82e3b2e5-f15d-41d8-a2bd-ef82eaed0049",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Query your function to return the first sentence of _any_ wikipedia page you want."
+              ],
+              "positive_feedback": "This is a useful application; you or your friends can get a quick query result back! I wonder what happens for a wiki page that does not yet exist.",
+              "video_feedback": null,
+              "description": "Create and run an event test of your own design."
+            }
+          ]
+        },
+        {
+          "id": 851172,
+          "key": "7b719c97-46a2-4a8d-bbcf-78fd7e793dc6",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7b719c97-46a2-4a8d-bbcf-78fd7e793dc6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971645,
+              "key": "8ec9e907-a014-4504-abfb-8402f1ce4c7d",
+              "title": "Summary Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Summary",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858594,
+              "key": "0008a8b9-2b3f-49f4-a277-0dc8b32bf073",
+              "title": "ND9991 C04 L01 A012 Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lHaBjfCjfIg",
+                "china_cdn_id": "lHaBjfCjfIg.mp4"
+              }
+            },
+            {
+              "id": 971650,
+              "key": "48ca95bd-e810-416e-b8af-90ec1826c7a2",
+              "title": "Key Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms:\n\n#### Microservice  \n\nA lightweight loosely coupled service.  It can be as small as a function.\n\n#### FaaS (Function as a Service)\n\nA type of cloud computing that facilitates functions that respond to events.\n\n#### AWS Lambda\n\nA serverless compute platform by AWS that has FaaS capability.\n\n#### Cloud-Native Applications\n\nCloud-Native applications are services that utilize the unique capabilities of the cloud, like serverless.\n\n#### SQS Queue\n\nA distributed messaging queue built by Amazon with near-infinite reads and writes.\n\n#### Serverless\n\nServerless is a technique of building applications based on functions and events.\n\n#### Moore's Law\n\nThe perception that for some time the number of transistors on a microchip doubles every two years.\n\n#### AWS Cloud9\n\nAWS Cloud9 cloud-based development environment running in AWS.  It has special hooks for developing serverless applications.\n\n#### Python Virtual Environment\n\nA python virtual environment is created by isolating a python interpreter to a directory and installing packages in that directory.  The python interpreter can perform this action via `python -m venv yournewenv`.\n\n*Source: https://noahgift.github.io/cloud-data-analysis-at-scale/topics/key-terms*",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

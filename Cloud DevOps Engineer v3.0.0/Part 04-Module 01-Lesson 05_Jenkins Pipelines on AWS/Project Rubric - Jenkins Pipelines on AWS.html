@@ -1,0 +1,307 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jenkins Pipelines on AWS</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Jenkins Pipelines on AWS</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Instructor&#x27;s Intro.html">01. Instructor&#x27;s Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Project Overview.html">02. Project Overview</a>
+    </li>
+    <li class="">
+      <a href="03. Project Details.html">03. Project Details</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Jenkins Pipelines on AWS.html">Project Description - Jenkins Pipelines on AWS</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Jenkins Pipelines on AWS.html">Project Rubric - Jenkins Pipelines on AWS</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">Jenkins Pipelines on AWS</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            
+      <div>
+        <h2><p>AWS Setup</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Set up IAM credentials properly.</p>
+        </td>
+        <td>
+          <p>A new user with EC2 and S3 access is created that is <em>not</em> the root/admin user in AWS. A screenshot with the unique AWS URL showing should be provided.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Launch EC2 instance.</p>
+        </td>
+        <td>
+          <p>An Ubuntu 18.04 t2.micro is launched and can be accessed via SSH using the PEM file.  A screenshot with the unique AWS URL showing should be provided.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Running Jenkins</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Jenkins is installed and running</p>
+        </td>
+        <td>
+          <p>The Jenkins instance can be reached over HTTP publicly, a login screen should show if not logged in. A screenshot with unique AWS url should be provided.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>‘Blue Ocean’ is enabled</p>
+        </td>
+        <td>
+          <p>The ‘Blue Ocean’ link should show in the sidebar and should load its interface, which is completely different from the standard Jenkins. A screenshot with unique AWS url should be provided.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Barebones Pipeline is added</p>
+        </td>
+        <td>
+          <p>The GitHub repository is added and shows in the BlueOcean dashboard, automatically recognizing the Jenkinsfile and setting up the initial pipeline that has 1 stage.  A screenshot with unique AWS url should be provided.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Working Pipeline</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Publishes the static site to S3</p>
+        </td>
+        <td>
+          <p>The index.html file is published to the correct bucket in the right region, and the url is accessible via HTTP from anywhere. A screenshot with unique AWS url should be provided.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Linter catches issues with HTML</p>
+        </td>
+        <td>
+          <p>After adding a linter, it catches HTML problems with the sample index.html, after addressing the problems with the html, the job passes and publishes the contents once again - build is passing. A screenshot with unique AWS url should be provided.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Jenkinsfile is demonstrated</p>
+        </td>
+        <td>
+          <p>A Jenkinsfile exists, that has the stages and steps defined that match how the pipeline looks in the Jenkins dashboard. For example ‘stage(‘Lint HTML’)’ should show as ‘Lint HTML’ in the pipeline. The AWS credentials and bucket name should all map to an existing S3 bucket that is publicly accessible and that it displays the contents of the index.html file. A screenshot with the S3 URL should be provided.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div class="jumbotron">
+        <h3>Tips to make your project standout:</h3>
+        <p><ol>
+<li>The Jenkinsfile can be extended easily, we added a linting stage, other steps can be added like ensuring content is up with a curl command.</li>
+<li>“Steps” have useful features like a ‘retry’, anything that can be added to make it a robust deployment is great. See the reference guide.<br />
+3.The project was created with a “poll” to check for Github changes. A webhook can be added instead that makes Github tell Jenkins to start building automatically. Github has a good guide on how to do this.</li>
+<li>Another option that can be done is using Canary Deployments. A Canary deployment is a more involved setup, and would require to progressively route users to the new version deployed, and fully transitioning over when confidence is high, otherwise reverting the release to the older version.<br />
+More info about canary deployments at: <a href="https://martinfowler.com/bliki/CanaryRelease.html" rel="noopener noreferrer" target="_blank">https://martinfowler.com/bliki/CanaryRelease.html</a></li>
+<li>A blue/green deployment, is similar to the canary deployment where two deployments exist and when the new version is available and passes certain conditions, it can be ‘swapped’ for the new one, and otherwise reverting to the older version. Amazon has a guide for CodePipeline that can be used as a reference: <a href="https://aws.amazon.com/quickstart/architecture/blue-green-deployment/" rel="noopener noreferrer" target="_blank">https://aws.amazon.com/quickstart/architecture/blue-green-deployment/</a></li>
+</ol></p>
+      </div>
+    
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('Jenkins Pipelines on AWS')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>
