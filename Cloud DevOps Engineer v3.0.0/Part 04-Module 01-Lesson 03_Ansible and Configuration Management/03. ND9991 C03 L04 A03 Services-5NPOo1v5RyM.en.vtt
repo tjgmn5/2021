@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.965
+Ansible services; starting, stopping, enabling, and disabling.
+
+00:00:04.965 --> 00:00:15.450
+So these refer to the Linux means of managing how a service is run.
+
+00:00:15.450 --> 00:00:19.200
+When we're talking about enabling,
+
+00:00:19.200 --> 00:00:22.245
+that means that when the system restarts,
+
+00:00:22.245 --> 00:00:25.245
+that service will start automagically.
+
+00:00:25.245 --> 00:00:27.180
+When we're talking about starting,
+
+00:00:27.180 --> 00:00:30.710
+we're just talking about in the temporal moment of now,
+
+00:00:30.710 --> 00:00:32.730
+of making that service run.
+
+00:00:32.730 --> 00:00:35.005
+But when the system restarts,
+
+00:00:35.005 --> 00:00:39.785
+the service will not necessarily start again unless it's in enabled state.
+
+00:00:39.785 --> 00:00:41.960
+So these are important distinctions.
+
+00:00:41.960 --> 00:00:47.045
+We also need to pay attention to the daemon reload.
+
+00:00:47.045 --> 00:00:49.310
+The reason why this is important is,
+
+00:00:49.310 --> 00:00:56.645
+let's say we've installed a new program and it hasn't yet been registered by systemd.
+
+00:00:56.645 --> 00:01:01.040
+With daemon reload, we can cause it to take
+
+00:01:01.040 --> 00:01:06.960
+those temporary state changes and put them into effect. This is very important.
+
