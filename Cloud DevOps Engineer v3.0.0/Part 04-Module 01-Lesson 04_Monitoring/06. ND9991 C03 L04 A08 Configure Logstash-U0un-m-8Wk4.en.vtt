@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:08.700
+Now finally, we're on the topic of actually sending our logs into our full stack.
+
+00:00:08.700 --> 00:00:12.585
+The primary means of doing this is with Logstash,
+
+00:00:12.585 --> 00:00:16.710
+but let's just take a brief sojourn into Kabana.
+
+00:00:16.710 --> 00:00:24.615
+Kabana has really been improved over this past, not even that long.
+
+00:00:24.615 --> 00:00:29.460
+So we can go straight to our IP address and because of our engine X proxy,
+
+00:00:29.460 --> 00:00:32.520
+it takes us straight into Kabana without us having to
+
+00:00:32.520 --> 00:00:35.825
+type an extra port number or anything like that.
+
+00:00:35.825 --> 00:00:40.940
+So the interface has really been upgraded significantly I feel like.
+
+00:00:40.940 --> 00:00:48.455
+We have all these canned box to solutions that they present to us right on our homepage.
+
+00:00:48.455 --> 00:00:52.410
+So let's click on under Logging, "Add log data."
+
+00:00:52.970 --> 00:00:58.310
+We see here all of the types of logs that it works with,
+
+00:00:58.310 --> 00:01:00.845
+which is truly quite impressive.
+
+00:01:00.845 --> 00:01:05.690
+But we're concerned primarily with Logstash at this exact moment.
+
+00:01:05.690 --> 00:01:08.590
+So we're going to click on that.
+
+00:01:08.590 --> 00:01:15.410
+We see here that we actually have support for four different operating systems,
+
+00:01:15.410 --> 00:01:18.970
+everything from Mac, to Windows,
+
+00:01:18.970 --> 00:01:21.360
+to Debian, and Red Hat.
+
+00:01:21.360 --> 00:01:23.040
+So Debian also covers Ubuntu,
+
+00:01:23.040 --> 00:01:25.265
+Ubuntu is a Debian based operating system.
+
+00:01:25.265 --> 00:01:28.840
+Red Hat also covers CentOS,
+
+00:01:28.840 --> 00:01:37.145
+and the main suite of it is for the paid version which is with all the Red Hat.
+
+00:01:37.145 --> 00:01:43.370
+But CentOS is the free and open source version of Red Hat.
+
+00:01:43.370 --> 00:01:51.485
+So this is just like a huge leap forward for open-source.
+
+00:01:51.485 --> 00:01:58.010
+So we're going to start with setting it up on just locally on our VM that we have here.
+
+00:01:58.010 --> 00:02:05.720
+But as a next step I think setting up from your computer to
+
+00:02:05.720 --> 00:02:09.200
+go into here is actually pretty cool and can
+
+00:02:09.200 --> 00:02:13.895
+bring home some of the points of how this technology works.
+
+00:02:13.895 --> 00:02:19.490
+So let's go ahead and just take a look at the configuration file for
+
+00:02:19.490 --> 00:02:25.470
+file beat because we specifically want to check the authentication.
+
+00:02:29.710 --> 00:02:33.970
+Right here we see for the output for elastic search,
+
+00:02:33.970 --> 00:02:35.590
+we specify the hosts,
+
+00:02:35.590 --> 00:02:43.985
+and in this case we're running the elastic pushing of logs from the same host.
+
+00:02:43.985 --> 00:02:48.395
+So we're just talking to local host and we're specifying our username.
+
+00:02:48.395 --> 00:02:52.680
+The default one is elastic and then we set a password.
+
+00:02:56.650 --> 00:03:03.910
+Great. So let's go ahead and just start file beat.
+
+00:03:07.400 --> 00:03:10.515
+We're going to switch back to Kabana,
+
+00:03:10.515 --> 00:03:15.715
+and we're going to come into our discovery place.
+
+00:03:15.715 --> 00:03:19.365
+This gives a drop down and we're just going to select,
+
+00:03:19.365 --> 00:03:21.150
+I saw a file beat here.
+
+00:03:21.150 --> 00:03:25.680
+We're going to change the time period two this week,
+
+00:03:25.680 --> 00:03:27.960
+which is a pretty broad spectrum here.
+
+00:03:27.960 --> 00:03:35.255
+We can see here just all of the capability that we have built into Elastic Search,
+
+00:03:35.255 --> 00:03:40.910
+which is being able to work with a huge number of fields.
+
+00:03:40.910 --> 00:03:47.485
+You're not limited it's really just based on what it detects built into these logs.
+
+00:03:47.485 --> 00:03:55.580
+So that in a nutshell is what we get with Kabana and Logstash.
+
+00:03:55.580 --> 00:03:59.010
+Great, let's move on.
+最新课程跟课件还有一对一辅导请加wx：udacity6
