@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.430
+Hello. My name is Noah Gift and I'm the Founder
+
+00:00:02.430 --> 00:00:04.860
+of Pragmatic AI Labs and I wrote the book,
+
+00:00:04.860 --> 00:00:08.605
+Pragmatic AI: An Introduction to Cloud-Based Machine Learning,
+
+00:00:08.605 --> 00:00:11.595
+as well as the book, Python for DevOps by O'Reilly.
+
+00:00:11.595 --> 00:00:15.315
+I lecture at Northwestern, UC Berkeley, and UC Davis.
+
+00:00:15.315 --> 00:00:21.310
+Today, I'm going to discuss container orchestration with Kubernetes. Let's get started.
+
+00:00:21.890 --> 00:00:25.550
+First, we're going to go through and install Kubernetes.
+
+00:00:25.550 --> 00:00:28.295
+Let's go ahead and pop into that screen and do that.
+
+00:00:28.295 --> 00:00:33.230
+One of the first components to install for Kubernetes is the kubectl command.
+
+00:00:33.230 --> 00:00:36.770
+You can see on this terminal that we're going to download
+
+00:00:36.770 --> 00:00:40.730
+the kubectl command itself from Google.
+
+00:00:40.730 --> 00:00:46.144
+There's a curl command I operate where I go through and I look at Kubernetes releases,
+
+00:00:46.144 --> 00:00:49.250
+and then I grab one specifically for my platform.
+
+00:00:49.250 --> 00:00:52.280
+In this case, it's going to be Darwin or the OS X platform.
+
+00:00:52.280 --> 00:00:58.240
+When I run this, it goes through and it verifies that I can actually curl a command.
+
+00:00:58.240 --> 00:01:03.830
+Then next, you can see that I can actually run kubectl to verify that,
+
+00:01:03.830 --> 00:01:05.095
+in fact, it does work.
+
+00:01:05.095 --> 00:01:06.640
+If I do the help message,
+
+00:01:06.640 --> 00:01:11.330
+I have all these options available that allow me to install kubectl.
+
+00:01:11.330 --> 00:01:14.975
+The second step is to actually install Minikube.
+
+00:01:14.975 --> 00:01:19.340
+There's also an option of I can install Kubernetes via the Docker framework.
+
+00:01:19.340 --> 00:01:22.225
+But let's go through and look at the Minikube option.
+
+00:01:22.225 --> 00:01:26.240
+To install Minikube, the first thing we want to do is make sure
+
+00:01:26.240 --> 00:01:30.410
+that the machine I'm running on actually supports virtualization.
+
+00:01:30.410 --> 00:01:34.310
+So what I'm going to do is I'm going to run this command on OS X
+
+00:01:34.310 --> 00:01:37.310
+that looks at all the features that are available for my CPU.
+
+00:01:37.310 --> 00:01:44.635
+One trick that I'm going to do is I'm going to grep for VMX.
+
+00:01:44.635 --> 00:01:49.000
+What that does is it shows me that in red,
+
+00:01:49.000 --> 00:01:51.590
+my machine actually supports virtualization.
+
+00:01:51.590 --> 00:01:53.915
+So great. I can install Minikube.
+
+00:01:53.915 --> 00:01:57.815
+Now that I've verified that my machine can run Minikube,
+
+00:01:57.815 --> 00:02:00.770
+I'm going to install it via the brew system.
+
+00:02:00.770 --> 00:02:05.070
+So I'm going to install brew cask install minikube.
+
+00:02:09.980 --> 00:02:13.755
+Great. Minikube was successfully installed.
+
+00:02:13.755 --> 00:02:17.670
+Now, we're ready to actually begin using Kubernetes.
+最新课程跟课件还有一对一辅导请加wx：udacity6

@@ -1,0 +1,220 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:07.139
+So now, we've got to go about curling node exporter.
+
+00:00:07.139 --> 00:00:11.969
+So now, we're going to extract that node exporter file with tar x, z,
+
+00:00:11.970 --> 00:00:16.875
+f. We're going to go inside of that sub-directory that we've just extracted.
+
+00:00:16.875 --> 00:00:21.285
+We're going to move node exporter into user local bin,
+
+00:00:21.285 --> 00:00:24.750
+so it's available on our local file system.
+
+00:00:25.339 --> 00:00:27.614
+We need to run this with sudo.
+
+00:00:27.614 --> 00:00:29.729
+So sudo bang bang,
+
+00:00:29.730 --> 00:00:33.734
+runs our previous command, we'll do that.
+
+00:00:33.734 --> 00:00:40.024
+Next, we're going to need to configure node exporter as a service.
+
+00:00:40.024 --> 00:00:46.414
+We're going to need to set up the node exporter service.
+
+00:00:46.414 --> 00:00:51.920
+So we're going to add into SE system, D system,
+
+00:00:51.920 --> 00:00:55.910
+node exporter, and we're just going to
+
+00:00:55.909 --> 00:01:01.414
+set it up so that we set the correct target and the correct exact path.
+
+00:01:01.414 --> 00:01:05.179
+We're going to save this file.
+
+00:01:05.180 --> 00:01:11.930
+Now, we're going to configure that service to actually be running.
+
+00:01:11.930 --> 00:01:15.435
+So going to restart.
+
+00:01:15.435 --> 00:01:17.790
+Well, we're doing a daemon reload,
+
+00:01:17.790 --> 00:01:22.600
+which is essential if you're changing one of your system D files,
+
+00:01:22.599 --> 00:01:24.280
+you always need to run the daemon reload.
+
+00:01:24.280 --> 00:01:28.480
+Now, we're going to start the node exporter service.
+
+00:01:28.480 --> 00:01:32.469
+So now we're going to check the status of the node exporter.
+
+00:01:32.469 --> 00:01:34.989
+We see here that is active,
+
+00:01:34.989 --> 00:01:37.329
+we can see if there are any error messages,
+
+00:01:37.329 --> 00:01:41.289
+and we see is listening on port 9100.
+
+00:01:41.290 --> 00:01:46.990
+So now, we're going to go into our Prometheus configuration file.
+
+00:01:46.989 --> 00:01:52.679
+We're going to need to run this as the root user because we're still on Ubuntu.
+
+00:01:53.000 --> 00:02:00.200
+So we have to sudo and in our Prometheus configuration file we need to add
+
+00:02:00.200 --> 00:02:08.530
+an additional job name for our newly monitored metric here.
+
+00:02:08.530 --> 00:02:11.069
+So at the end of the file,
+
+00:02:11.069 --> 00:02:15.599
+we're just going to create a new line and then we're going to
+
+00:02:15.599 --> 00:02:20.340
+paste in the contents of that.
+
+00:02:20.340 --> 00:02:25.650
+We're just going to change the target to be local host here.
+
+00:02:30.919 --> 00:02:35.639
+Great. So we're going to save that and now,
+
+00:02:35.639 --> 00:02:39.199
+we're just going to go ahead and restart Prometheus.
+
+00:02:40.639 --> 00:02:45.734
+Great. So now, we can actually pop on
+
+00:02:45.735 --> 00:02:50.445
+over to the web interface once we verify the status of Prometheus.
+
+00:02:50.444 --> 00:02:53.174
+It looks good, servers ready,
+
+00:02:53.175 --> 00:02:58.000
+demonstrates the port there, 000 going 1990.
+
+00:02:58.759 --> 00:03:01.794
+So you're going to put it in the IP address.
+
+00:03:01.794 --> 00:03:03.549
+So in this case,
+
+00:03:03.550 --> 00:03:07.070
+we're using the public IP address of the instance.
+
+00:03:14.060 --> 00:03:20.125
+We're going to first, start by going into Status and Targets.
+
+00:03:20.125 --> 00:03:23.289
+We're just going to see the values that are listed here.
+
+00:03:23.289 --> 00:03:30.699
+We can't actually click on these links because they're not valid endpoints.
+
+00:03:30.699 --> 00:03:34.119
+Although what we can do instead and we're going to demonstrate
+
+00:03:34.120 --> 00:03:37.870
+this is we're going to just alter the IP address,
+
+00:03:37.870 --> 00:03:41.450
+so we can show you what the metrics look like.
+
+00:03:41.449 --> 00:03:46.164
+Basically, what happens is for the boxes that are being monitored,
+
+00:03:46.164 --> 00:03:51.504
+they're just run a little web server on a nonstandard port,
+
+00:03:51.504 --> 00:03:53.840
+that is serving up this content.
+
+00:03:53.840 --> 00:04:00.289
+That Prometheus is then able to scrape and it makes it extremely
+
+00:04:00.289 --> 00:04:07.655
+flexible in terms of changing what is your monitoring, adding new things.
+
+00:04:07.655 --> 00:04:13.025
+So we're just going to take a look here at node memory mem available,
+
+00:04:13.025 --> 00:04:16.685
+and we're going to take this over to our Prometheus console.
+
+00:04:16.685 --> 00:04:21.199
+We're just going to plunk this right in there and now I'm doing
+
+00:04:21.199 --> 00:04:29.829
+them underscore, mem available.
+
+00:04:31.189 --> 00:04:34.259
+Let's go and just execute this.
+
+00:04:34.259 --> 00:04:38.685
+So we can see what we get is the current value for that.
+
+00:04:38.685 --> 00:04:45.160
+Great. So we have gone about installing Ansible.
+
+00:04:45.160 --> 00:04:48.450
+We have clone the Ansible-prometheus,
+
+00:04:48.449 --> 00:04:51.389
+and installed pip and tox,
+
+00:04:51.389 --> 00:04:55.050
+setup a role for this Ansible-prometheus.
+
+00:04:55.050 --> 00:04:56.579
+Created an inventory file,
+
+00:04:56.579 --> 00:04:59.599
+created a main YAML playbook and
+
+00:04:59.600 --> 00:05:02.930
+run the playbook that includes that role from the checkout.
+
+00:05:02.930 --> 00:05:07.235
+Installed node exporter and configured it.
+
+00:05:07.235 --> 00:05:10.569
+We've also just very briefly,
+
+00:05:10.569 --> 00:05:14.735
+dotted into the web interface but not really done very much, so forth.
+
+00:05:14.735 --> 00:05:19.925
+Wonderful. So now we've successfully installed Prometheus,
+
+00:05:19.925 --> 00:05:26.540
+we've gone in and verified in the web interface that we have data, inside of there.
+
+00:05:26.540 --> 00:05:30.590
+Now, we can go about looking into graphing some of
+
+00:05:30.589 --> 00:05:35.729
+this data with Grafana in the next section.
+

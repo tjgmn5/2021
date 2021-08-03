@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.264
+Okay, so now we have Prometheus fully configured,
+
+00:00:05.264 --> 00:00:09.779
+but the question is well how do we graph it?
+
+00:00:09.779 --> 00:00:14.474
+One of the answers to this question the most common one grafana.
+
+00:00:14.474 --> 00:00:20.144
+So let's go ahead and get grafana set up on our system.
+
+00:00:20.144 --> 00:00:24.719
+So we're going to first start with downloading
+
+00:00:24.719 --> 00:00:30.960
+grafana and then getting some dependencies of it and then starting the grafana service.
+
+00:00:30.960 --> 00:00:36.600
+Running the grafana service and configuring Prometheus to talk to it.
+
+00:00:39.500 --> 00:00:44.515
+So we download grafana with our control command.
+
+00:00:44.515 --> 00:00:49.954
+Pretty quick. Now we're installing end user and lib font config.
+
+00:00:49.954 --> 00:00:53.914
+We start the grafana server and we enable
+
+00:00:53.914 --> 00:00:59.659
+grafana server so that the next time the system restarts will have grafana still.
+
+00:00:59.659 --> 00:01:05.539
+So now we're going to punch in our IP address.
+
+00:01:05.540 --> 00:01:15.770
+3-18-2-2-1-1-16 and we're going
+
+00:01:15.769 --> 00:01:23.629
+to need to put in the correct IP address and in order to get to grafana.
+
+00:01:30.560 --> 00:01:35.640
+So you're going to go to a port 3,000 to pull
+
+00:01:35.640 --> 00:01:44.305
+grafana and I'm going
+
+00:01:44.305 --> 00:01:49.410
+go ahead and just log in with the standard credentials.
+
+00:01:49.599 --> 00:01:57.289
+So we're going to put in admin for the first time and admin and click login.
+
+00:01:57.290 --> 00:02:06.249
+Great. So now we've logged in for the first time and we're able to start configuring
+
+00:02:06.248 --> 00:02:14.469
+it and we already
+
+00:02:14.469 --> 00:02:18.264
+have set up a data source here.
+
+00:02:18.264 --> 00:02:22.733
+So what you're going to want to do is for a new DataSource,
+
+00:02:22.734 --> 00:02:25.270
+you'll set the name to Prometheus and you'll set
+
+00:02:25.270 --> 00:02:29.170
+the type to Prometheus and you're also going to set
+
+00:02:29.169 --> 00:02:35.199
+the IP address and port number that Prometheus is running on and let's go ahead
+
+00:02:35.199 --> 00:02:46.049
+and make sure going to run this as pseudo.
+
+00:02:47.080 --> 00:02:49.475
+Okay great.
+
+00:02:49.474 --> 00:02:57.539
+So let's go ahead and see if we can look at some of the data for Prometheus.
+
+00:03:03.729 --> 00:03:07.234
+So we just restarted Prometheus here.
+
+00:03:07.235 --> 00:03:10.200
+It's just going to take a second.
+
+00:03:13.120 --> 00:03:18.050
+So we see here our first little bits of data here.
+
+00:03:18.050 --> 00:03:20.225
+Head chunks is just coming in,
+
+00:03:20.224 --> 00:03:26.599
+query durations but everything else is like the graphs are just starting here.
+
+00:03:26.599 --> 00:03:31.259
+So there's just the bare minimum of data.
+
+00:03:31.300 --> 00:03:40.110
+Great. So now we have configured grafana to be able to talk to the Prometheus backend.
+

@@ -1,0 +1,136 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.669
+Story time. Okay folks.
+
+00:00:02.669 --> 00:00:07.785
+So I just want to do this to illustrate some of the real life implications and
+
+00:00:07.785 --> 00:00:13.379
+kind of disastrous complications if you don't either a,
+
+00:00:13.380 --> 00:00:17.054
+have monitoring configured; or b,
+
+00:00:17.054 --> 00:00:20.100
+pay sufficient attention to your monitoring system.
+
+00:00:20.100 --> 00:00:24.270
+So this is a real-life story at a startup that I'm
+
+00:00:24.269 --> 00:00:28.920
+not at the privilege to disclose the name of,
+
+00:00:28.920 --> 00:00:31.080
+but this has happened to multiple startups,
+
+00:00:31.079 --> 00:00:35.609
+this is not specific to any one technology,
+
+00:00:35.609 --> 00:00:40.844
+and this can happen to you as well with the same or different software.
+
+00:00:40.844 --> 00:00:45.509
+So in this particular problem scenario,
+
+00:00:45.509 --> 00:00:49.869
+I was on call and at this particular time,
+
+00:00:49.869 --> 00:00:55.134
+I started getting messages about the database,
+
+00:00:55.134 --> 00:01:00.570
+and these messages accumulated,
+
+00:01:00.570 --> 00:01:03.890
+and at first I wanted to ignore it.
+
+00:01:03.890 --> 00:01:06.290
+Of course you want to do whatever it is that you do
+
+00:01:06.290 --> 00:01:09.220
+on the weekends rather than pay attention to your monitoring system,
+
+00:01:09.219 --> 00:01:11.280
+but as they started to accumulate,
+
+00:01:11.280 --> 00:01:15.515
+it definitely appeared that there's something very seriously wrong.
+
+00:01:15.515 --> 00:01:23.694
+The contents of the message were that the database was running out of transaction IDs.
+
+00:01:23.694 --> 00:01:30.364
+This is something that is specific to a Postgre-style database,
+
+00:01:30.364 --> 00:01:34.729
+and you are limited to I believe it's like,
+
+00:01:34.730 --> 00:01:40.015
+I want to say 4 billion of transaction IDs, maybe it's million.
+
+00:01:40.015 --> 00:01:46.924
+Anyways, this is a finite number and in theory you have,
+
+00:01:46.924 --> 00:01:48.980
+through your regular processes,
+
+00:01:48.980 --> 00:01:53.625
+you are recycling those transaction IDs,
+
+00:01:53.625 --> 00:01:58.519
+but the problem was that the regular process to do
+
+00:01:58.519 --> 00:02:04.609
+this was not able to complete in time before the system would run out of transaction IDs.
+
+00:02:04.609 --> 00:02:06.780
+So the end result of
+
+00:02:06.780 --> 00:02:14.675
+this particularly [inaudible] course of events was that it brought about
+
+00:02:14.675 --> 00:02:17.600
+the entire website for
+
+00:02:17.599 --> 00:02:26.030
+a relatively large and popular company's entire business
+
+00:02:26.030 --> 00:02:34.229
+to not be operational for about two and half days to resolve this particular issue.
+
+00:02:35.000 --> 00:02:37.784
+The take homes are a,
+
+00:02:37.784 --> 00:02:42.530
+to how your monitoring system set up so you're monitoring the appropriate things
+
+00:02:42.530 --> 00:02:48.400
+because it's very easy to overlook something like database transaction IDs.
+
+00:02:48.400 --> 00:02:52.694
+B, that you're paying attention here monitoring system.
+
+00:02:52.694 --> 00:02:56.294
+C, working as a team.
+
+00:02:56.294 --> 00:02:59.959
+I mean, for the actual resolution of this particular problem
+
+00:02:59.960 --> 00:03:04.340
+involved many different group members within my company,
+
+00:03:04.340 --> 00:03:07.550
+and we all collaborated and got together,
+
+00:03:07.550 --> 00:03:12.110
+and ended up taking a huge amount of overtime by many people.
+
+00:03:12.110 --> 00:03:17.210
+So don't let this get too far out of hand.
+
+00:03:17.210 --> 00:03:19.890
+Just a warning to you.
+最新课程跟课件还有一对一辅导请加wx：udacity6

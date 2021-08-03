@@ -1,0 +1,217 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.640
+Okay. So what is Kubernetes?
+
+00:00:02.640 --> 00:00:05.024
+Kubernetes is a container platform,
+
+00:00:05.024 --> 00:00:06.630
+it's a micro service,
+
+00:00:06.630 --> 00:00:10.380
+and it's also a portable Cloud platform, and a lot more.
+
+00:00:10.380 --> 00:00:12.600
+So there's a few different things that can do.
+
+00:00:12.600 --> 00:00:14.220
+With modern web services,
+
+00:00:14.220 --> 00:00:17.955
+users expect applications to be available 24-7,
+
+00:00:17.955 --> 00:00:22.800
+and developers expect to deploy new versions of those applications many times a day.
+
+00:00:22.800 --> 00:00:27.330
+So containerization helps package software to serve those goals and
+
+00:00:27.330 --> 00:00:30.240
+enables applications in particular to be
+
+00:00:30.240 --> 00:00:34.115
+released and updated in an easy and fast way without downtime.
+
+00:00:34.115 --> 00:00:38.750
+So Kubernetes really helps you make sure that containerized applications can run
+
+00:00:38.750 --> 00:00:43.490
+anywhere you want and helps you find those resources and tools to work with them.
+
+00:00:43.490 --> 00:00:46.040
+It's a production ready, open-source platform,
+
+00:00:46.040 --> 00:00:48.910
+designed with Google's experience,
+
+00:00:48.910 --> 00:00:52.790
+and also their architecture in maintaining orchestration and
+
+00:00:52.790 --> 00:00:58.295
+also combines the best of breed ideas from the open source community.
+
+00:00:58.295 --> 00:01:00.850
+Now that we understand what Kubernetes is,
+
+00:01:00.850 --> 00:01:05.765
+we can go through and make a Kubernetes demo inside of our browser.
+
+00:01:05.765 --> 00:01:09.995
+Fortunately, this is available via the Kubernetes.IO platform.
+
+00:01:09.995 --> 00:01:11.830
+Let's go ahead and take a look.
+
+00:01:11.830 --> 00:01:17.675
+So first, what I do is I go to the interactive tutorial on creating a cluster.
+
+00:01:17.675 --> 00:01:20.195
+If you see at the beginning that says,
+
+00:01:20.195 --> 00:01:21.850
+the difficulty level is beginner,
+
+00:01:21.850 --> 00:01:24.320
+and this should take us a little under 10 minutes.
+
+00:01:24.320 --> 00:01:27.665
+So let's go ahead and start the scenario. Here we go.
+
+00:01:27.665 --> 00:01:30.350
+So when I first start running here,
+
+00:01:30.350 --> 00:01:35.250
+it's going to ask me to type in Minikube version. So let's go ahead and do that.
+
+00:01:37.960 --> 00:01:42.420
+Great. You can see it's version 0.34.1.
+
+00:01:42.420 --> 00:01:45.490
+Now, if I say Minikube start.
+
+00:01:49.970 --> 00:01:56.660
+Great. Now, it's going to go ahead and spin up the Kubernetes cluster for us.
+
+00:01:57.000 --> 00:01:59.020
+Once this is running,
+
+00:01:59.020 --> 00:02:00.460
+I can go to the next step.
+
+00:02:00.460 --> 00:02:02.260
+So you can see during
+
+00:02:02.260 --> 00:02:06.850
+this configuration phase is going to download the necessary components.
+
+00:02:06.850 --> 00:02:09.430
+It's going to then also launch Kubernetes.
+
+00:02:09.430 --> 00:02:10.990
+Once this is done,
+
+00:02:10.990 --> 00:02:14.574
+then we will have a fully running Kubernetes cluster,
+
+00:02:14.574 --> 00:02:18.530
+and it's something that we can run containers against.
+
+00:02:20.180 --> 00:02:23.015
+Great. Now that we've done that,
+
+00:02:23.015 --> 00:02:25.375
+we can move on to the next step.
+
+00:02:25.375 --> 00:02:29.440
+So we're going to go through and make sure that we have the right version.
+
+00:02:29.440 --> 00:02:33.665
+So let's go ahead and run kubectl version.
+
+00:02:33.665 --> 00:02:37.990
+Great, so it goes through and it tells us all the different information,
+
+00:02:37.990 --> 00:02:40.990
+the specific versions of even the Go software,
+
+00:02:40.990 --> 00:02:43.310
+and what compiler was used as well.
+
+00:02:43.310 --> 00:02:48.415
+Next, we're going to go through and find out the information about the cluster.
+
+00:02:48.415 --> 00:02:51.175
+So I'm going to go ahead and type that in.
+
+00:02:51.175 --> 00:02:54.430
+So I'm going to run kubectl cluster info,
+
+00:02:54.430 --> 00:02:59.395
+and this shows us the actual IP address of the master and also the kubeDNS.
+
+00:02:59.395 --> 00:03:01.720
+Next, I'm going to go through and I'm going to get the nodes
+
+00:03:01.720 --> 00:03:03.820
+that are available. Here we go.
+
+00:03:03.820 --> 00:03:05.815
+You can see that Minikube is ready,
+
+00:03:05.815 --> 00:03:07.660
+and it's in the master role,
+
+00:03:07.660 --> 00:03:10.820
+and it's actually been running for 51 seconds.
+
+00:03:10.820 --> 00:03:13.345
+Great. We've gone through and run
+
+00:03:13.345 --> 00:03:16.645
+the interactive tutorial which created a Kubernetes cluster.
+
+00:03:16.645 --> 00:03:20.660
+A few of the really fascinating things about what we did are that one,
+
+00:03:20.660 --> 00:03:22.910
+we ran it all inside of a web browser.
+
+00:03:22.910 --> 00:03:25.865
+So Kubernetes is an open source platform,
+
+00:03:25.865 --> 00:03:27.035
+but it also has
+
+00:03:27.035 --> 00:03:31.445
+this companion website that lets you walk through all the different steps.
+
+00:03:31.445 --> 00:03:34.520
+We are also able to make sure that the cluster
+
+00:03:34.520 --> 00:03:37.760
+had enough info by running kubectl cluster info,
+
+00:03:37.760 --> 00:03:40.250
+and this gave us all the different information about
+
+00:03:40.250 --> 00:03:43.265
+whether it's a master node or whether DNS is running,
+
+00:03:43.265 --> 00:03:44.810
+and then affirmation is right here,
+
+00:03:44.810 --> 00:03:50.060
+and then also we're able to actually get the existing nodes by running kubectl get node.
+
+00:03:50.060 --> 00:03:52.190
+So you can see, it takes just a few minutes
+
+00:03:52.190 --> 00:03:54.830
+to go through and configure a Kubernetes cluster.
+
+00:03:54.830 --> 00:03:58.710
+Once that's running, you're ready to run containers on your own.
+

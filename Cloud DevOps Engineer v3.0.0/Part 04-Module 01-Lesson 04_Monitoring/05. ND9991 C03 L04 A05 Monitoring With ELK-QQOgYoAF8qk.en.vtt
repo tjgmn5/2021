@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.179
+So you may start to notice some commonalities between Prometheus
+
+00:00:06.179 --> 00:00:12.269
+and ELK Stack and other Open-Source technologies in the sense that with these,
+
+00:00:12.269 --> 00:00:18.164
+you are having multiple components that are there in order to achieve the desired result.
+
+00:00:18.164 --> 00:00:21.219
+With Prometheus, you have Grafana,
+
+00:00:21.219 --> 00:00:24.570
+which you're using to do your actual graphing and
+
+00:00:24.570 --> 00:00:28.920
+aggregation of those numbers in a displayable manner.
+
+00:00:28.920 --> 00:00:33.975
+With ELK Stack, which is made up of three components;
+
+00:00:33.975 --> 00:00:37.395
+Elasticsearch, Logstash, and Kibana.
+
+00:00:37.395 --> 00:00:39.855
+Although from my perspective,
+
+00:00:39.854 --> 00:00:44.369
+the order is a little bit wonky because Logstash is what
+
+00:00:44.369 --> 00:00:49.054
+sends the logs that have to be aggregated under Elasticsearch,
+
+00:00:49.054 --> 00:00:52.085
+and Kibana is what displays the logs.
+
+00:00:52.085 --> 00:00:56.750
+But lack doesn't have quite the same ring to it as ELK.
+
+00:00:56.750 --> 00:00:59.929
+So anyways random aside.
+
+00:00:59.929 --> 00:01:05.760
+Let's go ahead and dive right into in Salinas onto our server.
+
