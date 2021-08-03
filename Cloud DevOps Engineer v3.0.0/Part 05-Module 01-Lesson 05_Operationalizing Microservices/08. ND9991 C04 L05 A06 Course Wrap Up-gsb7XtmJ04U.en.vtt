@@ -1,0 +1,193 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.019
+Okay, welcome back. So we've covered all the material of the course.
+
+00:00:04.019 --> 00:00:06.179
+Let's go through and break down each section.
+
+00:00:06.179 --> 00:00:07.949
+So in the first section,
+
+00:00:07.950 --> 00:00:11.324
+we talked about deploying highly available microservices
+
+00:00:11.324 --> 00:00:15.419
+and one of the really interesting concept we covered was cloud native.
+
+00:00:15.419 --> 00:00:18.285
+So what is cloud native and why is it so important?
+
+00:00:18.285 --> 00:00:21.329
+We next went into Cloud 9 and we went through
+
+00:00:21.329 --> 00:00:24.869
+a web-based environment for building Lambda functions.
+
+00:00:24.870 --> 00:00:27.960
+Then we also talked about how to build your own Lambda functions and
+
+00:00:27.960 --> 00:00:32.520
+how event-driven services are really the future of Cloud computing.
+
+00:00:32.520 --> 00:00:36.020
+Finally, we wrapped up that section with how to
+
+00:00:36.020 --> 00:00:40.010
+actually go through and scale Lambda functions and how in Python,
+
+00:00:40.009 --> 00:00:41.734
+in particular, you can write
+
+00:00:41.734 --> 00:00:45.799
+really interesting workflows with just a very small amount of code.
+
+00:00:45.799 --> 00:00:50.089
+In lesson two, we covered using Docker format containers.
+
+00:00:50.090 --> 00:00:53.795
+So what that meant was we set up a local development environment,
+
+00:00:53.795 --> 00:00:56.030
+we learned how to make something called a make
+
+00:00:56.030 --> 00:00:58.685
+file and we went through and installed Docker.
+
+00:00:58.685 --> 00:01:04.745
+We were linking our source code and integrated that with a SaaS build server, CircleCI.
+
+00:01:04.745 --> 00:01:09.020
+We ran through Docker containers locally and then we customized
+
+00:01:09.019 --> 00:01:14.569
+the containers by checking them into Amazon's ECR or Elastic Container Registry.
+
+00:01:14.569 --> 00:01:18.989
+In section three, we went over containerizing an existing app.
+
+00:01:18.989 --> 00:01:22.489
+So what this meant was taking a Docker base image,
+
+00:01:22.489 --> 00:01:24.699
+enhancing that Docker base image,
+
+00:01:24.700 --> 00:01:28.010
+making sure that the new Docker image has
+
+00:01:28.010 --> 00:01:31.750
+packages installed and that we were able to copy an application,
+
+00:01:31.750 --> 00:01:33.194
+set up an application,
+
+00:01:33.194 --> 00:01:37.354
+start an application, and then run it all within a container.
+
+00:01:37.355 --> 00:01:42.770
+In lesson four, we talked about containers and services orchestration with Kubernetes.
+
+00:01:42.769 --> 00:01:45.500
+So we went through installing Kubernetes and then
+
+00:01:45.500 --> 00:01:48.230
+we broke out what actually is Kubernetes.
+
+00:01:48.230 --> 00:01:52.085
+Why do we care about Kubernetes and what problem does it really solve?
+
+00:01:52.084 --> 00:01:54.390
+Next, we talked about monitoring,
+
+00:01:54.390 --> 00:01:56.730
+logging, and debugging of Kubernetes.
+
+00:01:56.730 --> 00:02:00.064
+Also, we talked about auto-scaling with CPU or memory.
+
+00:02:00.064 --> 00:02:05.750
+A huge aspect of Kubernetes is that it does allow you to build
+
+00:02:05.750 --> 00:02:08.960
+these architectures that previously were really complicated to
+
+00:02:08.960 --> 00:02:13.025
+build or even impossible before something like Kubernetes existed.
+
+00:02:13.025 --> 00:02:17.750
+In our final section, what we talked about was operationalizing a microservice.
+
+00:02:17.750 --> 00:02:19.444
+This meant a few things; one,
+
+00:02:19.444 --> 00:02:21.709
+that you have alerts and incident response;
+
+00:02:21.710 --> 00:02:24.965
+two, that you took disaster recovery seriously.
+
+00:02:24.965 --> 00:02:28.090
+It's really easy to not take disaster recovery
+
+00:02:28.090 --> 00:02:31.909
+seriously and then you have a critical event that wipes out your company.
+
+00:02:31.909 --> 00:02:33.469
+So this is maybe one of
+
+00:02:33.469 --> 00:02:38.479
+the most important aspects of any topic that we covered in DevOps.
+
+00:02:38.479 --> 00:02:42.139
+We also talked about continuous integration and continuous deployment and how
+
+00:02:42.139 --> 00:02:45.949
+that works really well with the concept of containers.
+
+00:02:45.949 --> 00:02:47.419
+We talked about how GitOps,
+
+00:02:47.419 --> 00:02:49.219
+in particular, ties into that.
+
+00:02:49.219 --> 00:02:52.069
+So all your source code for your project plus
+
+00:02:52.069 --> 00:02:54.979
+the source code for your infrastructure are combined in
+
+00:02:54.979 --> 00:02:58.639
+one commit and a pull request is able to show all that and then
+
+00:02:58.639 --> 00:03:02.509
+you're able to deploy both the container and the application simultaneously.
+
+00:03:02.509 --> 00:03:06.259
+Finally, we talked about logging and load testing and how both
+
+00:03:06.259 --> 00:03:10.129
+of those combined together can really do due diligence.
+
+00:03:10.129 --> 00:03:15.109
+So when you do it an important launched like building a game server or launching
+
+00:03:15.110 --> 00:03:17.510
+some really important financial service that you know
+
+00:03:17.509 --> 00:03:20.899
+exactly what the performance characteristics will be of your application.
+
+00:03:20.900 --> 00:03:24.275
+This is really a sweet spot for containers as well.
+
+00:03:24.275 --> 00:03:28.640
+So thank you so much for spending the time and going through the course with us.
+
+00:03:28.639 --> 00:03:31.189
+I really appreciate everything you did and I
+
+00:03:31.189 --> 00:03:35.310
+really wish you the best of luck using containers in production.
+

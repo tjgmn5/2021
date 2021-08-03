@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.250
+All right. So in this lesson,
+
+00:00:02.250 --> 00:00:06.285
+we covered quite a bit about operationalizing microservices,
+
+00:00:06.285 --> 00:00:09.074
+we covered alerts and incident responses,
+
+00:00:09.074 --> 00:00:10.754
+we covered disaster recovery,
+
+00:00:10.755 --> 00:00:13.470
+we covered continuous integration pipelines,
+
+00:00:13.470 --> 00:00:16.844
+we covered getopts, and then finally we talked about load testing.
+
+00:00:16.844 --> 00:00:21.929
+These are all critical pieces for operationalizing your microservice,
+
+00:00:21.929 --> 00:00:24.899
+and private being the final takeaway is that.
+
+00:00:24.899 --> 00:00:26.699
+Again, with disaster recovery,
+
+00:00:26.699 --> 00:00:31.544
+it's one of those things that is really something you should take very seriously.
+
+00:00:31.545 --> 00:00:35.359
+It doesn't mean you need to dedicate all your time to disaster recovery,
+
+00:00:35.359 --> 00:00:39.229
+but having seen this happen many times as an engineering manager.
+
+00:00:39.229 --> 00:00:41.869
+If you don't plan for the worst-case scenario,
+
+00:00:41.869 --> 00:00:45.829
+the worst-case scenario will be a situation that will potentially
+
+00:00:45.829 --> 00:00:49.920
+completely devastate your department or your organization.
+
+00:00:49.920 --> 00:00:51.745
+So when you plan ahead,
+
+00:00:51.744 --> 00:00:54.274
+you can expect those bad things to happen.
+
+00:00:54.274 --> 00:00:59.640
+Then as a result, you'll be able to gracefully handle any failure that comes your way.
+
