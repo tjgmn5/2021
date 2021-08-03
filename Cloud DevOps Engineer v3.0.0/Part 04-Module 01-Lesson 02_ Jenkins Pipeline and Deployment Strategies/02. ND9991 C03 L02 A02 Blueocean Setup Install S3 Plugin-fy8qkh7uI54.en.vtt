@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.240 --> 00:00:05.705
+All right. So S3 Jenkins setup.
+
+00:00:05.705 --> 00:00:07.765
+What we need to do is,
+
+00:00:07.764 --> 00:00:12.089
+we need to configure our Jenkins environment so that it has
+
+00:00:12.089 --> 00:00:17.355
+the correct package to be able to copy something into S3.
+
+00:00:17.355 --> 00:00:20.310
+So let's go ahead and do that.
+
+00:00:20.309 --> 00:00:24.789
+We're going to start with clicking on, "Manage Jenkins."
+
+00:00:25.010 --> 00:00:30.550
+Next we're going to go into our "Plug-in manager."
+
+00:00:31.010 --> 00:00:35.740
+Now, let's go ahead and click on "Available."
+
+00:00:37.520 --> 00:00:41.025
+You're going filter with
+
+00:00:41.024 --> 00:00:49.920
+AWS and we're going
+
+00:00:49.920 --> 00:00:54.060
+to select, "Pipeline AWS steps."
+
+00:00:54.060 --> 00:00:57.469
+This is going to give us a whole lot of stuff.
+
+00:01:06.920 --> 00:01:12.278
+Great. So let's go ahead and just restart
+
+00:01:12.278 --> 00:01:18.189
+Jenkins and we're going to actually do this step from the command line.
+
+00:01:18.189 --> 00:01:23.030
+It frequently crashes inside of the GUI there.
+
+00:01:55.549 --> 00:01:59.179
+So let's go ahead and log in again.
+
+00:02:17.490 --> 00:02:20.830
+Good. So now we've got our plugin
+
+00:02:20.830 --> 00:02:25.310
+installed and we can go ahead and move on the next step.
+

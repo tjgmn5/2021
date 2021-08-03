@@ -1,0 +1,256 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.714
+So now we're going to work with setting up our AWS environment,
+
+00:00:05.714 --> 00:00:10.169
+which for this we're going to need to use IAM.
+
+00:00:10.169 --> 00:00:14.219
+Basically, what you start with is you have your root credentials,
+
+00:00:14.220 --> 00:00:18.524
+but we want to use best practices within the space.
+
+00:00:18.524 --> 00:00:22.723
+So we're going to create a new user that will actually
+
+00:00:22.724 --> 00:00:27.820
+have access to the resources that we specifically assign them to do so.
+
+00:00:27.820 --> 00:00:31.804
+That's because you want to have a minimum permission model.
+
+00:00:31.804 --> 00:00:35.780
+So now we're going to dive into IAM with AWS,
+
+00:00:35.780 --> 00:00:40.024
+which I'm really excited to share with you guys because this is really
+
+00:00:40.024 --> 00:00:45.289
+what is the foundation for security in an AWS environment.
+
+00:00:45.289 --> 00:00:50.945
+So with this tool, we're rarely able to lock it down so that we can keep out bad actors,
+
+00:00:50.945 --> 00:00:56.185
+and we can also adopt a minimum permission model for our user.
+
+00:00:56.185 --> 00:00:58.590
+All right. So first things first,
+
+00:00:58.590 --> 00:01:01.685
+we are here about to create a policy
+
+00:01:01.685 --> 00:01:05.450
+and let's go ahead and come up with a good name for that policy.
+
+00:01:05.450 --> 00:01:11.250
+So we'll just say Minimum_Security_model.
+
+00:01:14.689 --> 00:01:21.200
+We've already given it full access to EC2 and full access to CloudWatch.
+
+00:01:21.200 --> 00:01:25.534
+However, we're not quite done with it just yet.
+
+00:01:25.534 --> 00:01:31.299
+We're also going to add access to S3.
+
+00:01:31.299 --> 00:01:37.968
+So for this, we have to grant it not only the actions that can perform,
+
+00:01:37.968 --> 00:01:41.500
+but also the resources that it can interact with.
+
+00:01:41.500 --> 00:01:46.040
+So one of the very beautiful things about what AWS gives us is
+
+00:01:46.040 --> 00:01:51.140
+a high degree of granularity in terms of breaking things apart.
+
+00:01:51.140 --> 00:01:55.715
+So for instance, you'll see bucket, job, and object.
+
+00:01:55.715 --> 00:01:59.344
+A bucket is analogous to a folder,
+
+00:01:59.344 --> 00:02:04.265
+an object would be analogous to a file in a folder.
+
+00:02:04.265 --> 00:02:09.050
+So we're going to go ahead and say all resources because right now we're
+
+00:02:09.050 --> 00:02:14.344
+just concerned with giving the overhead in terms of EC2,
+
+00:02:14.344 --> 00:02:18.379
+S3, CloudWatch actions, but in
+
+00:02:18.379 --> 00:02:22.504
+an actual production environment you'd be very concerned with locking these things down.
+
+00:02:22.504 --> 00:02:27.079
+So that's something that you yourself can dive into in a deeper basis later.
+
+00:02:27.080 --> 00:02:30.725
+So we've got EC2, S3, and CloudWatch.
+
+00:02:30.724 --> 00:02:33.829
+We're going to go ahead and review that policy.
+
+00:02:33.830 --> 00:02:39.350
+So we pay very close attention here to our access level and our resources,
+
+00:02:39.349 --> 00:02:43.864
+and that's not pertinent right now but we'll create policy,
+
+00:02:43.865 --> 00:02:45.650
+and let's see how this comes out.
+
+00:02:45.650 --> 00:02:51.110
+All right. So now we've created our policy and what we can do is we can filter.
+
+00:02:51.110 --> 00:02:55.835
+This makes it a lot easier to manage your own personal policies,
+
+00:02:55.835 --> 00:03:00.379
+because you want to separate those
+
+00:03:00.379 --> 00:03:04.954
+apart from the other policies just to be able to view them a little easier.
+
+00:03:04.955 --> 00:03:07.085
+So we filter to that,
+
+00:03:07.085 --> 00:03:08.495
+we have that there,
+
+00:03:08.495 --> 00:03:13.754
+and then we're going to use that information,
+
+00:03:13.754 --> 00:03:18.639
+that policy, to create a role.
+
+00:03:27.639 --> 00:03:31.699
+So we're going to set a group name here and it's just got to
+
+00:03:31.699 --> 00:03:35.194
+be something that seems applicable to you.
+
+00:03:35.194 --> 00:03:38.159
+We're going to say DevOpsC3.
+
+00:03:39.319 --> 00:03:45.064
+Now we're going to select our policy that we've created before,
+
+00:03:45.064 --> 00:03:48.634
+and we're going to apply that policy to our group.
+
+00:03:48.634 --> 00:03:51.215
+Then we have that policy added.
+
+00:03:51.215 --> 00:03:54.390
+So now we're going to go ahead and add our user.
+
+00:03:54.620 --> 00:04:00.879
+For this user, I'm ongoing to create access for myself,
+
+00:04:00.879 --> 00:04:04.549
+I'm going to give it programmatic access and this is very important because this is
+
+00:04:04.550 --> 00:04:08.510
+going to give us our access key and our secret access key,
+
+00:04:08.509 --> 00:04:11.810
+and then AWS management console access which will
+
+00:04:11.810 --> 00:04:15.455
+enable us to log in to what we're logged into right now.
+
+00:04:15.455 --> 00:04:22.865
+So we're going to just let it do all of this things and hit our next step.
+
+00:04:22.865 --> 00:04:26.480
+We have the capability
+
+00:04:26.480 --> 00:04:29.450
+of adding this user to group which we created in our previous step.
+
+00:04:29.449 --> 00:04:33.319
+So we're going to do that and then we can create tags.
+
+00:04:33.319 --> 00:04:36.769
+So tags is something that we're just going to cover very briefly.
+
+00:04:36.769 --> 00:04:41.524
+But basically, you want to use tags to label things
+
+00:04:41.524 --> 00:04:46.399
+so that you know what those things are associated with.
+
+00:04:46.399 --> 00:04:48.949
+So we're going to say,
+
+00:04:48.949 --> 00:04:58.069
+Instructor, and we'll say DevOps C3.
+
+00:04:58.069 --> 00:05:06.719
+Then we'll say, First_name.
+
+00:05:09.670 --> 00:05:14.674
+So each of these will more be on the business model of whatever
+
+00:05:14.673 --> 00:05:19.189
+the company needs to associate with these objects.
+
+00:05:19.189 --> 00:05:22.699
+So we'll click on "Create User",
+
+00:05:22.699 --> 00:05:26.329
+and now I am not going to
+
+00:05:26.329 --> 00:05:30.789
+let you guys look at that secret access key for obvious reasons.
+
+00:05:30.790 --> 00:05:36.569
+We can now pull up this in a new window to be able to login.
+
+00:05:38.800 --> 00:05:43.129
+So let's open that into an incognito window
+
+00:05:43.129 --> 00:05:46.894
+because we're logged in with our root access privileges.
+
+00:05:46.894 --> 00:05:50.704
+So now we're going to login with our newly created user
+
+00:05:50.704 --> 00:05:55.149
+and we have to use our old password that we've done with the creation of the user,
+
+00:05:55.149 --> 00:06:02.810
+and I strongly recommend that you create a new password and use a password manager.
+
+00:06:02.810 --> 00:06:06.780
+This is very important, because this will prevent you from forgetting it later,
+
+00:06:06.779 --> 00:06:10.504
+and it'll also help you with increase in the complexity requirements.
+
+00:06:10.504 --> 00:06:14.839
+So for instance, you can set it to 20 characters and mix and match
+
+00:06:14.839 --> 00:06:19.564
+between uppercase and lowercase in letters and numbers and special characters.
+
+00:06:19.564 --> 00:06:26.579
+So now we're going to go ahead and log that in for ourselves.
+
+00:06:36.949 --> 00:06:41.175
+Okay. So now we are here fully logged in with our new user,
+
+00:06:41.175 --> 00:06:47.639
+and we're going to get into setting up our EC2 instance in the next video.
+

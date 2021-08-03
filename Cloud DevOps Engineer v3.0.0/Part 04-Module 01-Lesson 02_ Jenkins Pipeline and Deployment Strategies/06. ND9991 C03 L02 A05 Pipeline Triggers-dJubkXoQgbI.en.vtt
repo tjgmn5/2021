@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.825
+Now, let's dive in a little deeper with pipelines.
+
+00:00:03.825 --> 00:00:06.990
+The main feature that we're concerned with right now is
+
+00:00:06.990 --> 00:00:10.410
+how you push off a continuous integration.
+
+00:00:10.410 --> 00:00:15.449
+The way that works in practice is with a trigger.
+
+00:00:15.449 --> 00:00:24.269
+This is very fundamental to the way that you do this action and it involves
+
+00:00:24.269 --> 00:00:28.410
+modifying things both in your GitHub repository and in
+
+00:00:28.410 --> 00:00:33.355
+your Jenkins interface so they can both kill each other off like,
+
+00:00:33.354 --> 00:00:38.449
+"Hey, I've got this new branch has been pull requested" or "Hey,
+
+00:00:38.450 --> 00:00:42.380
+I've taken this branch and I've built a new job."
+
+00:00:42.380 --> 00:00:47.510
+So there's this give-and-take that goes on between those components and that's
+
+00:00:47.509 --> 00:00:52.820
+really what we're going to focus in on how to set this up correctly.
+
+00:00:52.820 --> 00:00:59.009
+So let's go and see how this works in the Jenkins interface.
+

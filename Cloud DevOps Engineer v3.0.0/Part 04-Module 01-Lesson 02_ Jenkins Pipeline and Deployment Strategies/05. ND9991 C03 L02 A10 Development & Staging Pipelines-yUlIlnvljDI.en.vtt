@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.080 --> 00:00:05.325
+Now we're looking at how to segregate your environments.
+
+00:00:05.325 --> 00:00:08.460
+So you are going to be developing your code
+
+00:00:08.460 --> 00:00:11.880
+and that most normally be done in a development environment.
+
+00:00:11.880 --> 00:00:15.089
+Then when you have QA engineers test it,
+
+00:00:15.089 --> 00:00:18.390
+you want to do that in a staging environment.
+
+00:00:18.390 --> 00:00:21.734
+That's because you don't want to overwrite what they're doing.
+
+00:00:21.734 --> 00:00:24.600
+So you want to allow them to do
+
+00:00:24.600 --> 00:00:28.365
+their testing work and yet you still be able to develop your code.
+
+00:00:28.364 --> 00:00:31.409
+Otherwise, they couldn't get 400 level errors or
+
+00:00:31.410 --> 00:00:36.000
+500 level errors that will make them go several steps back and be like,
+
+00:00:36.000 --> 00:00:37.215
+"Well, what's going on here?"
+
+00:00:37.215 --> 00:00:42.490
+So let's go ahead and look at how this works, jumping right in.
+

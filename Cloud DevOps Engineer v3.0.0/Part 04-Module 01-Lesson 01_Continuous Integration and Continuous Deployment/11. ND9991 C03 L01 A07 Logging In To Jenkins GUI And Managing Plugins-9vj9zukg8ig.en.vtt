@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.445
+Great. So we have installed Jenkins on the command line.
+
+00:00:04.445 --> 00:00:08.339
+Let's go ahead and login for the first time in the GUI,
+
+00:00:08.339 --> 00:00:11.699
+which stands for graphic user interface.
+
+00:00:11.699 --> 00:00:16.769
+So we pull up our favorite web browser,
+
+00:00:16.769 --> 00:00:25.484
+and we're going to the public IP address and then make sure you put in :8080 and enter.
+
+00:00:25.484 --> 00:00:30.089
+We're going to login.
+
+00:00:30.089 --> 00:00:32.969
+When you see this the first time,
+
+00:00:32.969 --> 00:00:35.564
+you're going to have to enter in
+
+00:00:35.564 --> 00:00:42.359
+the initial admin password in which it will prompt you for and set up a user.
+
+00:00:46.340 --> 00:00:50.465
+We login, and the first time that we login,
+
+00:00:50.465 --> 00:00:53.950
+we need to configure Jenkins.
+
+00:00:53.950 --> 00:00:59.240
+So let's click on Manage Jenkins.
+
+00:01:01.609 --> 00:01:06.605
+I should mention that for a large environment,
+
+00:01:06.605 --> 00:01:09.385
+you will want to be able to have
+
+00:01:09.385 --> 00:01:15.344
+multiple users and it's highly advisable to use things like LDAP,
+
+00:01:15.344 --> 00:01:20.679
+which Active Directory incorporates LDAP inside of it to be able to
+
+00:01:20.680 --> 00:01:26.345
+authenticate all of these users against a common user group password source.
+
+00:01:26.344 --> 00:01:30.754
+We're going to cover managing the plugins right now.
+
+00:01:30.754 --> 00:01:32.989
+Let's hop on over here.
+
+00:01:32.989 --> 00:01:35.989
+The first tab is starch here is updates.
+
+00:01:35.989 --> 00:01:39.469
+But what we actually want is available.
+
+00:01:39.469 --> 00:01:41.409
+So we click over here,
+
+00:01:41.409 --> 00:01:44.045
+and then we're going to filter it.
+
+00:01:44.045 --> 00:01:48.230
+Let's filter for Blue Ocean.
+
+00:01:48.230 --> 00:01:51.350
+We of course want Blue Ocean.
+
+00:01:51.349 --> 00:01:55.204
+We also want quite a number of the pieces
+
+00:01:55.204 --> 00:02:00.900
+that give us additional tools: Git Pipeline for Blue Ocean,
+
+00:02:00.900 --> 00:02:04.600
+GitHub Pipeline for Blue Ocean.
+
+00:02:14.719 --> 00:02:18.909
+Now, once we've checked off all the components that we need,
+
+00:02:18.909 --> 00:02:24.490
+we have at the bottom of the screen Install without restart.
+
+00:02:24.490 --> 00:02:26.689
+So we'll click on that.
+
+00:02:31.580 --> 00:02:36.760
+Now, this is pretty cool because it's now able to go out
+
+00:02:36.759 --> 00:02:41.514
+to the Internet and pull down our plug-ins for us automatically,
+
+00:02:41.514 --> 00:02:44.889
+which everything that is automatic is cool.
+
+00:02:44.889 --> 00:02:49.719
+We can see it performing those actions in the background.
+
+00:02:50.719 --> 00:02:53.620
+Now, we have a checkbox down here.
+
+00:02:53.620 --> 00:02:57.625
+Restart Jenkins when installation is complete.
+
+00:02:57.625 --> 00:03:01.039
+So we'll let it go ahead and and do its thing.
+
+00:03:01.039 --> 00:03:06.889
+It has to completely reload the interface in order to bring up the new binaries.
+
+00:03:06.889 --> 00:03:11.119
+Great. So now we've got Blue Ocean the plugin installed,
+
+00:03:11.120 --> 00:03:14.735
+and we had to restart Jenkins in order to get those binaries to load correctly.
+
+00:03:14.735 --> 00:03:17.415
+So let's log back into Jenkins,
+
+00:03:17.414 --> 00:03:21.370
+and we can check out the Blue Ocean interface.
+
+00:03:27.189 --> 00:03:31.474
+So you will observe on the left-hand side of the screen,
+
+00:03:31.474 --> 00:03:35.180
+we have a link that's called open Blue Ocean.
+
+00:03:35.180 --> 00:03:38.610
+We're going to cover that in a subsequent lesson.
+
